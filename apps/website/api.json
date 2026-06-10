@@ -39,7 +39,7 @@
 								"name": "unstable_accentColor",
 								"type": "\"aurora\" | \"cobalt\" | undefined",
 								"optional": true,
-								"jsdoc": "The accent color to use for all components under the Root:\n\n- `\"aurora\"`: Default and preferred green accent color.\n- `\"cobalt\"`: Blue accent color to ensure compatibility with older applications.",
+								"jsdoc": "The accent color to use for all components under the Root:\n\n- `\"aurora\"`: StrataKit's preferred green accent color.\n- `\"cobalt\"`: Blue accent color for better compatibility with older, iTwinUI-based applications.",
 								"defaultValue": "\"aurora\""
 							}
 						],
@@ -222,6 +222,7 @@
 					],
 					"baseElement": "a",
 					"jsdoc": "A styled anchor element, typically used for navigating to a different location.",
+					"deprecated": true,
 					"barrelName": "Anchor"
 				},
 				"composition": [
@@ -242,7 +243,8 @@
 							}
 						],
 						"baseElement": "a",
-						"jsdoc": "A styled anchor element, typically used for navigating to a different location.\n\nSupports the convenience API (lesser code) and the composition API (more customization).\n\nExample of convenience API:\n```tsx\nimport { Anchor } from \"@stratakit/bricks\";\n\n<Anchor href=\"https://www.example.com\">Example</Anchor>\n```\n\nExample of composition API:\n```tsx\nimport * as Anchor from \"@stratakit/bricks/Anchor\";\n\n<Anchor.Root href=\"https://www.example.com\">Example</Anchor.Root>\n```"
+						"jsdoc": "A styled anchor element, typically used for navigating to a different location.\n\nSupports the convenience API (lesser code) and the composition API (more customization).\n\nExample of convenience API:\n```tsx\nimport { Anchor } from \"@stratakit/bricks\";\n\n<Anchor href=\"https://www.example.com\">Example</Anchor>\n```\n\nExample of composition API:\n```tsx\nimport * as Anchor from \"@stratakit/bricks/Anchor\";\n\n<Anchor.Root href=\"https://www.example.com\">Example</Anchor.Root>\n```",
+						"deprecated": true
 					},
 					{
 						"name": "Text",
@@ -256,7 +258,8 @@
 							}
 						],
 						"baseElement": "span",
-						"jsdoc": "Displays the anchor text."
+						"jsdoc": "Displays the anchor text.",
+						"deprecated": true
 					},
 					{
 						"name": "ExternalMarker",
@@ -271,7 +274,8 @@
 							}
 						],
 						"baseElement": "span",
-						"jsdoc": "Displays an external link marker, with visually hidden text for screen readers."
+						"jsdoc": "Displays an external link marker, with visually hidden text for screen readers.",
+						"deprecated": true
 					}
 				],
 				"exportName": "Anchor"
@@ -310,6 +314,7 @@
 					],
 					"baseElement": "span",
 					"jsdoc": "An avatar to represent a user or organization.\n\nBy default, this component assumes that the avatar is decorative, so it adds `aria-hidden` by default.\n```tsx\n<Avatar initials=\"JD\" />\n```\n\nIf the avatar is semantically meaningful, the `alt` prop can be used to provide alternative text.\n```tsx\n<Avatar initials=\"JD\" alt=\"John Doe\" />\n```\n\nImage & size examples:\n```tsx\n<Avatar initials=\"JD\" alt=\"John Doe\" size=\"xlarge\" image={<img src=\"…\" alt=\"\">} />\n<Avatar initials=\"JD\" alt=\"John Doe\" size=\"small\" image={<Icon href=\"…\">} />\n```",
+					"deprecated": true,
 					"barrelName": "Avatar"
 				},
 				"composition": [],
@@ -350,6 +355,7 @@
 					],
 					"baseElement": "span",
 					"jsdoc": "A badge component, typically used to designate the status of an item.\n\nExample:\n```tsx\n<Badge label=\"Value\" />\n<Badge label=\"Value\" tone=\"info\" variant=\"outline\" icon={…} />\n```",
+					"deprecated": true,
 					"barrelName": "Badge"
 				},
 				"composition": [],
@@ -383,6 +389,7 @@
 					],
 					"baseElement": "button",
 					"jsdoc": "A styled button element which allows the user to perform an action when clicked.\n\nExample:\n```tsx\n<Button onClick={() => doSomething()}>Click me</Button>\n```\n\nStart and end icons can be added by passing `Icon` as children.\n\n```tsx\n<Button>\n  <Icon href={…} />\n  Click me\n  <Icon href={…} />\n</Button>\n```\n\nThe button's appearance can be customized using the `variant` and `tone` props.",
+					"deprecated": true,
 					"barrelName": "Button"
 				},
 				"composition": [],
@@ -447,6 +454,7 @@
 					],
 					"baseElement": "input",
 					"jsdoc": "A styled checkbox element, typically used for selecting one or more options from a list.\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>Check me</Field.Label>\n  <Field.Control render={<Checkbox />} />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Checkbox id=\"newsletter\" name=\"newsletter\" aria-describedby=\"newsletter-description\" />\n<Label htmlFor=\"newsletter\">Sign me up for the newsletter.</Label>\n<Description id=\"newsletter-description\">No spam, we promise.</Description>\n```\n\nUnderneath, it's an HTML checkbox, i.e. `<input type=\"checkbox\">`, so it supports the same props,\nincluding `value`, `defaultChecked`, `checked`, and `onChange`.",
+					"deprecated": true,
 					"barrelName": "Checkbox"
 				},
 				"composition": [],
@@ -468,6 +476,7 @@
 					],
 					"baseElement": "div",
 					"jsdoc": "A presentational description.\n\nSee `Field.Description` for convenient usage with form controls.",
+					"deprecated": true,
 					"barrelName": "Description"
 				},
 				"composition": [],
@@ -503,6 +512,7 @@
 					],
 					"baseElement": "hr",
 					"jsdoc": "A styled \"separator\" element (e.g. `<hr>`), useful for grouping and dividing content within a layout.\n\nA `Divider` can be oriented horizontally or vertically (using the `orientation` prop),\nand can be a semantic divider or a purely presentational one (using the `presentational` prop).",
+					"deprecated": true,
 					"barrelName": "Divider"
 				},
 				"composition": [],
@@ -524,6 +534,7 @@
 						],
 						"baseElement": "div",
 						"jsdoc": "A container for form controls. It manages ID associations, and provides a\nconsistent layout and spacing.\n\nExample:\n```tsx\n<Field.Root>\n  <Field.Label>Label</Field.Label>\n  <Field.Control render={<TextBox.Input />} />\n</Field.Root>\n```\n\nSupports a `layout` prop, which can be set to `inline` to align the label and\ncontrol horizontally.\n\nShould contain a `Field.Label` component paired with a form control.\n\nSupported form controls include:\n- `TextBox.Input`\n- `TextBox.Textarea`\n- `Checkbox`\n- `Radio`\n- `Switch`",
+						"deprecated": true,
 						"barrelName": "Field.Root"
 					},
 					{
@@ -532,6 +543,7 @@
 						"props": [],
 						"baseElement": "label",
 						"jsdoc": "A label for the field’s control element. This is automatically associated\nwith the control’s `id`.",
+						"deprecated": true,
 						"barrelName": "Field.Label"
 					},
 					{
@@ -540,6 +552,7 @@
 						"props": [],
 						"baseElement": "div",
 						"jsdoc": "A description for the field’s control element. This is automatically\nassociated with the control.\n\nShould not include content without an adequate text alternative (e.g.\ninteractive elements).",
+						"deprecated": true,
 						"barrelName": "Field.Description"
 					},
 					{
@@ -560,6 +573,7 @@
 						],
 						"baseElement": "div",
 						"jsdoc": "The control component for the field.\n\nUse the `render` prop to render the control component.\n\n```tsx\n<Field.Control render={<TextBox.Input />} />\n```\n\nIf the rendered component uses a compositional API, then use a function\nwithin `render` to apply the `controlProps` to the correct sub-component:\n\n```tsx\n<Field.Control\n  render={(controlProps) => (\n    <TextBox.Root>\n      <TextBox.Icon href={svgPlaceholder} />\n      <TextBox.Input {...controlProps} />\n    </TextBox.Root>\n  )}\n/>\n```\n\nIf you need a custom `id` set for the control, set it on this component\ninstead of the control component within `render`.\n\n```tsx\n<Field.Control id=\"custom\" render={<TextBox.Input />} />\n```",
+						"deprecated": true,
 						"barrelName": "Field.Control"
 					},
 					{
@@ -568,6 +582,7 @@
 						"props": [],
 						"baseElement": "div",
 						"jsdoc": "An associated error message for a field. When used within `<Field.Root>`, the\nassociated form control will be rendered with `aria-invalid=\"true\"`.\n\nExample:\n```tsx\n<Field.Root>\n  <Field.Label>Label</Field.Label>\n  <Field.Control render={<TextBox.Input />} />\n  <Field.ErrorMessage>Something is wrong!</Field.ErrorMessage>\n</Field.Root>\n```",
+						"deprecated": true,
 						"barrelName": "Field.ErrorMessage"
 					}
 				],
@@ -658,6 +673,7 @@
 					],
 					"baseElement": "button",
 					"jsdoc": "An icon-only button, with a required accessible name.\n\nThe icon can be a URL from the `@stratakit/icons` package:\n```tsx\n<IconButton\n  label=\"Reveal full content\"\n  icon={new URL(\"@stratakit/icons/arrow.svg\", import.meta.url).href}\n/>\n```\n\nAlternatively, pass a JSX node such as an `<Icon>`.\n```tsx\n<IconButton\n  label={…}\n  icon={<Icon href={…} />}\n  variant=\"ghost\"\n/>\n```\n\nThe `active` prop can be used to turn this button into a toggle button.\n```tsx\nconst [active, setActive] = React.useState(false);\n\n<IconButton\n  label={…}\n  icon={…}\n  active={active}\n  onClick={() => setActive(!active)}\n/>\n```",
+					"deprecated": true,
 					"barrelName": "IconButton"
 				},
 				"composition": [],
@@ -684,6 +700,7 @@
 					],
 					"baseElement": "kbd",
 					"jsdoc": "A styled wrapper over the HTML `<kbd>` element. This is typically\nused for displaying keyboard shortcuts.\n\n```tsx\n<Kbd>Ctrl</Kbd> <Kbd>S</Kbd>\n```\n\n```tsx\n<Kbd symbol=\"Control\" />\n```",
+					"deprecated": true,
 					"barrelName": "Kbd"
 				},
 				"composition": [],
@@ -697,6 +714,7 @@
 					"props": [],
 					"baseElement": "label",
 					"jsdoc": "A styled wrapper over the HTML `<label>` element, used for labelling form\ncontrols.\n\nExample usage:\n```tsx\n<Label htmlFor=\"my-input\">Label</Label>\n<TextBox.Input id=\"my-input\" />\n```\n\nSee `Field.Label` for convenient usage with form controls (e.g. automatic\nassociation with adjacent form control).",
+					"deprecated": true,
 					"barrelName": "Label"
 				},
 				"composition": [],
@@ -738,6 +756,7 @@
 						],
 						"baseElement": "div",
 						"jsdoc": "A linear progress bar for indicating progress of an operation (or loading of data).\nThis component maps to the [ARIA `progressbar` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/progressbar_role)\nand must be labelled using `aria-labelledby`.\n\nNote: A progress bar is indeterminate if no `value` is passed.\n\nExample:\n```tsx\n<ProgressBar aria-labelledby={…} /> // indeterminate\n<ProgressBar aria-labelledby={…} value={50} /> // determinate\n```\n\nSupports a `tone` prop to change the tone (color) of the progress bar.\nSupports a `size` prop to change the size of the progress bar.",
+						"deprecated": true,
 						"barrelName": "ProgressBar"
 					}
 				],
@@ -796,6 +815,7 @@
 					],
 					"baseElement": "input",
 					"jsdoc": "A styled radio input element, typically used for selecting a single option from a list.\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>Choose one</Field.Label>\n  <Field.Control render={<Radio />} />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Radio id=\"editor-vim\" name=\"editor\" value=\"vim\" />\n<Label htmlFor=\"editor-vim\">Vim</Label>\n<Radio id=\"editor-emacs\" name=\"editor\" value=\"emacs\" />\n<Label htmlFor=\"editor-emacs\">Emacs</Label>\n```\n\nUnderneath, it's an HTML radio input, i.e. `<input type=\"radio\">`, so it supports the same props,\nincluding `value`, `defaultChecked`, `checked`, and `onChange`.",
+					"deprecated": true,
 					"barrelName": "Radio"
 				},
 				"composition": [],
@@ -810,6 +830,7 @@
 						"props": [],
 						"baseElement": "div",
 						"jsdoc": "Compound component for a select element, which allows the user to select a value from a list of options.\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>Fruit</Field.Label>\n  <Field.Control\n    render={(controlProps) => (\n      <Select.Root>\n        <Select.HtmlSelect name=\"fruit\" {...controlProps}>\n          <option value=\"kiwi\">Kiwi</option>\n          <option value=\"mango\">Mango</option>\n          <option value=\"papaya\">Papaya</option>\n        </Select.HtmlSelect>\n      </Select.Root>\n    )}\n  />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Label htmlFor=\"fruit\">Fruit</Label>\n<Description id=\"fruit-description\">Something to include in a fruit salad.</Description>\n<Select.Root>\n  <Select.HtmlSelect id=\"fruit\" aria-describedby=\"fruit-description\">\n    <option value=\"kiwi\">Kiwi</option>\n    <option value=\"mango\">Mango</option>\n    <option value=\"papaya\">Papaya</option>\n  </Select.HtmlSelect>\n</Select.Root>\n```",
+						"deprecated": true,
 						"barrelName": "Select.Root"
 					},
 					{
@@ -852,6 +873,7 @@
 						],
 						"baseElement": "select",
 						"jsdoc": "The actual select element to be used inside `Select.Root`. This is a wrapper around the\nHTML `<select>` element and should render HTML `<option>` elements as children.\n\nExample usage:\n```tsx\n<Select.HtmlSelect>\n  <option value=\"1\">Option 1</option>\n  <option value=\"2\">Option 2</option>\n  <option value=\"3\">Option 3</option>\n</Select.HtmlSelect>\n```\n\nThe usage of this component largely mirrors how the `<select>` element would be used in React.\nYou can use the same familiar props, including `name`, `defaultValue`, `value`, `onChange`, etc.",
+						"deprecated": true,
 						"barrelName": "Select.HtmlSelect"
 					}
 				],
@@ -886,6 +908,7 @@
 					],
 					"baseElement": "div",
 					"jsdoc": "Represents the loaded content before it finishes loading.\n\nExample:\n```tsx\n<Skeleton variant=\"object\" size=\"small\" />\n<Skeleton variant=\"text\" size=\"medium\" />\n```",
+					"deprecated": true,
 					"barrelName": "Skeleton"
 				},
 				"composition": [],
@@ -921,6 +944,7 @@
 					],
 					"baseElement": "div",
 					"jsdoc": "A loading spinner.\n\nExample:\n```tsx\n<Spinner />\n```\n\nSupports a `tone` prop to change the tone (color) of the spinner.\nSupports a `size` prop to change the size of the spinner.",
+					"deprecated": true,
 					"barrelName": "Spinner"
 				},
 				"composition": [],
@@ -985,10 +1009,80 @@
 					],
 					"baseElement": "input",
 					"jsdoc": "A toggle switch element, typically used for enabling or disabling a feature.\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>Enable feature</Field.Label>\n  <Field.Control render={<Switch />} />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Switch id=\"dark-mode\" />\n<Label htmlFor=\"dark-mode\">Dark mode</Label>\n```\n\nUnderneath, it's an HTML checkbox, i.e. `<input type=\"checkbox\">`, so it supports the same props,\nincluding `value`, `defaultChecked`, `checked`, and `onChange`.",
+					"deprecated": true,
 					"barrelName": "Switch"
 				},
 				"composition": [],
 				"exportName": "Switch"
+			},
+			{
+				"name": "Table",
+				"composition": [
+					{
+						"name": "HtmlTable",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "table",
+						"jsdoc": "A table is a grid of rows and columns that displays data in a structured format.\n\n`Table.HtmlTable` uses native HTML table elements for the table root *and its descendants*.\n\nE.g. `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`.\n\nRelated: `Table.CustomTable`\n\nExample:\n```tsx\n<Table.HtmlTable> // <table>\n  <Table.Caption>Table Caption</Table.Caption> // <caption>\n\n  <Table.Header> // <thead>\n\t   <Table.Row> // <tr>\n\t     <Table.Cell>Header 1</Table.Cell> // <th>\n\t \t   <Table.Cell>Header 2</Table.Cell> // <th>\n\t   </Table.Row>\n  </Table.Header>\n\n  <Table.Body> // <tbody>\n\t   <Table.Row> // <tr>\n\t\t   <Table.Cell>Cell 1.1</Table.Cell> // <td>\n\t\t   <Table.Cell>Cell 1.2</Table.Cell> // <td>\n\t   </Table.Row>\n\t   <Table.Row> // <tr>\n\t\t   <Table.Cell>Cell 2.1</Table.Cell> // <td>\n\t\t   <Table.Cell>Cell 2.2</Table.Cell> // <td>\n\t   </Table.Row>\n  </Table.Body>\n</Table.HtmlTable>\n```",
+						"deprecated": true,
+						"barrelName": "Table.HtmlTable"
+					},
+					{
+						"name": "CustomTable",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "A table is a grid of rows and columns that displays data in a structured format.\n\n`Table.CustomTable` implements the [WAI-ARIA table pattern](https://www.w3.org/WAI/ARIA/apg/patterns/table/) using\ndivs + appropriate roles for the table root *and its descendants*.\n\nE.g. `<div role=\"table\">`, `<div role=\"row\">`, `<div role=\"columnheader\">`, and `<div role=\"cell\">`.\n\nRelated: `Table.HtmlTable`\n\nExample:\n```tsx\n<Table.CustomTable> // <div role=\"table\">\n  <Table.Caption>Table Caption</Table.Caption> // <div role=\"caption\">\n\n  <Table.Header> // <div role=\"rowgroup\">\n\t   <Table.Row> // <div role=\"row\">\n\t     <Table.Cell>Header 1</Table.Cell> // <div role=\"columnheader\">\n\t \t   <Table.Cell>Header 2</Table.Cell> // <div role=\"columnheader\">\n\t   </Table.Row>\n  </Table.Header>\n\n  <Table.Body>\n\t   <Table.Row> // <div role=\"row\">\n\t\t   <Table.Cell>Cell 1.1</Table.Cell> // <div role=\"cell\">\n\t\t   <Table.Cell>Cell 1.2</Table.Cell> // <div role=\"cell\">\n\t   </Table.Row>\n\t   <Table.Row> // <div role=\"row\">\n\t\t   <Table.Cell>Cell 2.1</Table.Cell> // <div role=\"cell\">\n\t\t   <Table.Cell>Cell 2.2</Table.Cell> // <div role=\"cell\">\n\t   </Table.Row>\n  </Table.Body>\n</Table.CustomTable>\n```",
+						"deprecated": true,
+						"barrelName": "Table.CustomTable"
+					},
+					{
+						"name": "Header",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "`Table.Header` is a column component of cells that labels the columns of a table.\n`Table.Row` and `Table.Cell` can be nested inside a `Table.Header` to create a header row.\n\nIf within a `Table.HtmlTable`: it will render a `<thead>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"rowgroup\">` element.\n\nExample:\n```tsx\n<Table.Header>\n\t<Table.Row>\n\t\t<Table.Cell>Header 1</Table.Cell>\n\t\t\t<Table.Cell>Header 2</Table.Cell>\n\t</Table.Row>\n</Table.Header>\n```",
+						"deprecated": true,
+						"barrelName": "Table.Header"
+					},
+					{
+						"name": "Body",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "`Table.Body` is a component that contains the rows of table data.\nMultiple `Table.Row`s and `Table.Cell`s can be nested inside a `Table.Body` to create a table body.\n\nIf within a `Table.HtmlTable`: it will render a `<tbody>` element.\nIf within a `Table.CustomTable`: it will render a `<div>` element.\n\nExample:\n```tsx\n<Table.Body>\n\t<Table.Row>\n\t\t<Table.Cell>Cell 1.1</Table.Cell>\n\t\t<Table.Cell>Cell 1.2</Table.Cell>\n\t</Table.Row>\n\t<Table.Row>\n\t\t<Table.Cell>Cell 2.1</Table.Cell>\n\t\t<Table.Cell>Cell 2.2</Table.Cell>\n\t</Table.Row>\n</Table.Body>\n```",
+						"deprecated": true,
+						"barrelName": "Table.Body"
+					},
+					{
+						"name": "Row",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "`Table.Row` is a component that contains the cells of a table row.\n\nIf within a `Table.HtmlTable`: it will render a `<tr>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"row\">` element.\n\nExample:\n```tsx\n<Table.Row>\n\t<Table.Cell>Cell 1.1</Table.Cell>\n\t<Table.Cell>Cell 1.2</Table.Cell>\n</Table.Row>\n```\n\nRows that contain checked checkboxes are considered selected.\nThe `Checkbox` component can be rendered to add selection functionality for the table rows.\n\nExample:\n```tsx\n<Table.Row>\n  <Table.Cell><Checkbox /><Table.Cell>\n  <Table.Cell>Cell 1.1</Table.Cell>\n  <Table.Cell>Cell 1.2</Table.Cell>\n</Table.Row\n```",
+						"deprecated": true,
+						"barrelName": "Table.Row"
+					},
+					{
+						"name": "Caption",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "`Table.Caption` is a component that contains the caption of a table.\n\nIf within a `Table.HtmlTable`: it will render a `<caption>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"caption\">` element.\n\nExample:\n```tsx\n<Table.CustomTable> // Or <Table.HtmlTable>\n\t <Table.Caption>Table Caption</Table.Caption>\n\t …\n</Table.CustomTable> // Or </Table.HtmlTable>\n```",
+						"deprecated": true,
+						"barrelName": "Table.Caption"
+					},
+					{
+						"name": "Cell",
+						"baseProps": ["BaseProps.render"],
+						"props": [],
+						"baseElement": "div",
+						"jsdoc": "`Table.Cell` is a component that contains the data of a table cell.\n\n- If within a `Table.HtmlTable`: it will render a `<th>` element if also within a `Table.Header`, or a `<td>` element\nif also within a `Table.Body`.\n- If within a `Table.CustomTable`: it will render a `<div role=\"columnheader\">` element if also within a\n`Table.Header`, or a `<div role=\"cell\">` element if also within a `Table.Body`.\n\nExample:\n```tsx\n<Table.Cell>Cell 1.1</Table.Cell>\n```",
+						"deprecated": true,
+						"barrelName": "Table.Cell"
+					}
+				],
+				"exportName": "Table"
 			},
 			{
 				"name": "Text",
@@ -1005,6 +1099,7 @@
 					],
 					"baseElement": "div",
 					"jsdoc": "An element with text styles applied. Useful for paragraphs, headings, and other text content.\n\nExample usage:\n```tsx\n<Text variant=\"display-sm\">Hello, World!</Text>\n```\n\nUse the `render` prop to change the underlying element (defaults to a `<div>`):\n```tsx\n<Text render={<h1 />} variant=\"headline-lg\">Hello, World!</Text>\n```",
+					"deprecated": true,
 					"barrelName": "Text"
 				},
 				"composition": [],
@@ -1059,6 +1154,7 @@
 						],
 						"baseElement": "input",
 						"jsdoc": "An input component that allows users to enter text based values.\n\nExample usage:\n```tsx\n<TextBox.Input name=\"greeting\" defaultValue=\"Hello\" />\n```\n\nTo add additional decorations, see `TextBox.Root` component.\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>First name</Field.Label>\n  <Field.Control render={<TextBox.Input name=\"firstName\" />} />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Label htmlFor=\"fruit\">Fruit</Label>\n<TextBox.Input id=\"fruit\" aria-describedby=\"fruit-description\" />\n<Description id=\"fruit-description\">Something to include in a fruit salad.</Description>\n```\n\nUnderneath, it's an HTML input, i.e. `<input>`, so it supports the same props, including\n`value`, `defaultValue`, `onChange`, and `disabled`.\n\nFor a multiline text input, use the `TextBox.Textarea` component.",
+						"deprecated": true,
 						"barrelName": "TextBox.Input"
 					},
 					{
@@ -1072,6 +1168,7 @@
 						"props": [],
 						"baseElement": "textarea",
 						"jsdoc": "A styled textarea element that allows users to enter multiline text values.\n\nExample usage:\n```tsx\n<TextBox.Textarea defaultValue=\"Hello\" />\n```\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>Leave a comment, be kind</Field.Label>\n  <Field.Control render={<TextBox.Textarea name=\"comment\" />} />\n</Field.Root>\n```\n\nWithout the `Field` components you will need to manually associate labels,\ndescriptions, etc.:\n```tsx\n<Label htmlFor=\"fruit\">Fruit</Label>\n<TextBox.Input id=\"fruit\" aria-describedby=\"fruit-description\" />\n<Description id=\"fruit-description\">Something to include in a fruit salad.</Description>\n```\n\nUnderneath, it's an HTML textarea, i.e. `<textarea>`, so it supports the same props, including\n`value`, `defaultValue`, `onChange`, and `disabled`.",
+						"deprecated": true,
 						"barrelName": "TextBox.Textarea"
 					},
 					{
@@ -1080,6 +1177,7 @@
 						"props": [],
 						"baseElement": "div",
 						"jsdoc": "Compound component for a text input. Allows adding additional decorations.\n\nExample usage to add an end icon:\n```tsx\n<TextBox.Root>\n  <TextBox.Input defaultValue=\"Hello\" />\n  <TextBox.Icon href={...} />\n</TextBox.Root>\n```\n\nUse with the `Field` components to automatically handle ID associations for\nlabels and descriptions:\n```tsx\n<Field.Root>\n  <Field.Label>First name</Field.Label>\n  <Field.Control\n    render={(controlProps) => (\n      <TextBox.Root>\n        <TextBox.Input name=\"firstName\" {...controlProps} />\n        <TextBox.Icon href={…} />\n      </TextBox.Root>\n    )}\n  />\n</Field.Root>\n```",
+						"deprecated": true,
 						"barrelName": "TextBox.Root"
 					},
 					{
@@ -1124,6 +1222,7 @@
 						],
 						"baseElement": "svg",
 						"jsdoc": "A static icon decoration for the `TextBox.Root` component. Can be added before or after the `TextBox.Input`.",
+						"deprecated": true,
 						"barrelName": "TextBox.Icon"
 					},
 					{
@@ -1132,6 +1231,7 @@
 						"props": [],
 						"baseElement": "span",
 						"jsdoc": "A static text decoration for the `TextBox.Root` component. Can be added before or after the `TextBox.Input`.",
+						"deprecated": true,
 						"barrelName": "TextBox.Text"
 					}
 				],
@@ -1202,6 +1302,7 @@
 					],
 					"baseElement": "div",
 					"jsdoc": "A tooltip component that provides additional information or context for an interactive trigger element.\n\nExample usage:\n\n```tsx\n<Tooltip content=\"This is a tooltip\">\n  <button>Hover over me</button>\n</Tooltip>\n```\n\n**Note**: The trigger element must be a single interactive element, such as a button or link. Do not add a\ntooltip to a non-interactive static element (such as a `<div>` or `<svg>`).\n\n**Note**: If `type` is set to `\"none\"`, the tooltip will not use ARIA attributes.",
+					"deprecated": true,
 					"barrelName": "Tooltip"
 				},
 				"composition": [],
@@ -1215,6 +1316,7 @@
 					"props": [],
 					"baseElement": "span",
 					"jsdoc": "A visually hidden element that is still accessible to screen readers and other assistive technology.\n\nThis is useful when you want to provide a text alternative to a visual element (e.g. an icon or symbol).\n\nExample:\n```tsx\n<span aria-hidden=\"true\">⭐</span>\n<VisuallyHidden>Favorite</VisuallyHidden>\n```\n\n**Note**: The `IconButton` component utilizes `VisuallyHidden` internally when the `label` prop is set.",
+					"deprecated": true,
 					"barrelName": "VisuallyHidden"
 				},
 				"composition": [],
@@ -2290,63 +2392,16 @@
 				"name": "Table",
 				"composition": [
 					{
-						"name": "HtmlTable",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "table",
-						"jsdoc": "A table is a grid of rows and columns that displays data in a structured format.\n\n`Table.HtmlTable` uses native HTML table elements for the table root *and its descendants*.\n\nE.g. `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>`.\n\nRelated: `Table.CustomTable`\n\nExample:\n```tsx\n<Table.HtmlTable> // <table>\n  <Table.Caption>Table Caption</Table.Caption> // <caption>\n\n  <Table.Header> // <thead>\n\t   <Table.Row> // <tr>\n\t     <Table.Cell>Header 1</Table.Cell> // <th>\n\t \t   <Table.Cell>Header 2</Table.Cell> // <th>\n\t   </Table.Row>\n  </Table.Header>\n\n  <Table.Body> // <tbody>\n\t   <Table.Row> // <tr>\n\t\t   <Table.Cell>Cell 1.1</Table.Cell> // <td>\n\t\t   <Table.Cell>Cell 1.2</Table.Cell> // <td>\n\t   </Table.Row>\n\t   <Table.Row> // <tr>\n\t\t   <Table.Cell>Cell 2.1</Table.Cell> // <td>\n\t\t   <Table.Cell>Cell 2.2</Table.Cell> // <td>\n\t   </Table.Row>\n  </Table.Body>\n</Table.HtmlTable>\n```",
-						"barrelName": "Table.HtmlTable"
-					},
-					{
-						"name": "CustomTable",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "A table is a grid of rows and columns that displays data in a structured format.\n\n`Table.CustomTable` implements the [WAI-ARIA table pattern](https://www.w3.org/WAI/ARIA/apg/patterns/table/) using\ndivs + appropriate roles for the table root *and its descendants*.\n\nE.g. `<div role=\"table\">`, `<div role=\"row\">`, `<div role=\"columnheader\">`, and `<div role=\"cell\">`.\n\nRelated: `Table.HtmlTable`\n\nExample:\n```tsx\n<Table.CustomTable> // <div role=\"table\">\n  <Table.Caption>Table Caption</Table.Caption> // <div role=\"caption\">\n\n  <Table.Header> // <div role=\"rowgroup\">\n\t   <Table.Row> // <div role=\"row\">\n\t     <Table.Cell>Header 1</Table.Cell> // <div role=\"columnheader\">\n\t \t   <Table.Cell>Header 2</Table.Cell> // <div role=\"columnheader\">\n\t   </Table.Row>\n  </Table.Header>\n\n  <Table.Body>\n\t   <Table.Row> // <div role=\"row\">\n\t\t   <Table.Cell>Cell 1.1</Table.Cell> // <div role=\"cell\">\n\t\t   <Table.Cell>Cell 1.2</Table.Cell> // <div role=\"cell\">\n\t   </Table.Row>\n\t   <Table.Row> // <div role=\"row\">\n\t\t   <Table.Cell>Cell 2.1</Table.Cell> // <div role=\"cell\">\n\t\t   <Table.Cell>Cell 2.2</Table.Cell> // <div role=\"cell\">\n\t   </Table.Row>\n  </Table.Body>\n</Table.CustomTable>\n```",
-						"barrelName": "Table.CustomTable"
-					},
-					{
-						"name": "Header",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "`Table.Header` is a column component of cells that labels the columns of a table.\n`Table.Row` and `Table.Cell` can be nested inside a `Table.Header` to create a header row.\n\nIf within a `Table.HtmlTable`: it will render a `<thead>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"rowgroup\">` element.\n\nExample:\n```tsx\n<Table.Header>\n\t<Table.Row>\n\t\t<Table.Cell>Header 1</Table.Cell>\n\t\t\t<Table.Cell>Header 2</Table.Cell>\n\t</Table.Row>\n</Table.Header>\n```",
-						"barrelName": "Table.Header"
-					},
-					{
-						"name": "Body",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "`Table.Body` is a component that contains the rows of table data.\nMultiple `Table.Row`s and `Table.Cell`s can be nested inside a `Table.Body` to create a table body.\n\nIf within a `Table.HtmlTable`: it will render a `<tbody>` element.\nIf within a `Table.CustomTable`: it will render a `<div>` element.\n\nExample:\n```tsx\n<Table.Body>\n\t<Table.Row>\n\t\t<Table.Cell>Cell 1.1</Table.Cell>\n\t\t<Table.Cell>Cell 1.2</Table.Cell>\n\t</Table.Row>\n\t<Table.Row>\n\t\t<Table.Cell>Cell 2.1</Table.Cell>\n\t\t<Table.Cell>Cell 2.2</Table.Cell>\n\t</Table.Row>\n</Table.Body>\n```",
-						"barrelName": "Table.Body"
-					},
-					{
-						"name": "Row",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "`Table.Row` is a component that contains the cells of a table row.\n\nIf within a `Table.HtmlTable`: it will render a `<tr>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"row\">` element.\n\nExample:\n```tsx\n<Table.Row>\n\t<Table.Cell>Cell 1.1</Table.Cell>\n\t<Table.Cell>Cell 1.2</Table.Cell>\n</Table.Row>\n```\n\nRows that contain checked checkboxes are considered selected.\nThe `Checkbox` component can be rendered to add selection functionality for the table rows.\n\nExample:\n```tsx\n<Table.Row>\n  <Table.Cell><Checkbox /><Table.Cell>\n  <Table.Cell>Cell 1.1</Table.Cell>\n  <Table.Cell>Cell 1.2</Table.Cell>\n</Table.Row\n```",
-						"barrelName": "Table.Row"
-					},
-					{
-						"name": "Caption",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "`Table.Caption` is a component that contains the caption of a table.\n\nIf within a `Table.HtmlTable`: it will render a `<caption>` element.\nIf within a `Table.CustomTable`: it will render a `<div role=\"caption\">` element.\n\nExample:\n```tsx\n<Table.CustomTable> // Or <Table.HtmlTable>\n\t <Table.Caption>Table Caption</Table.Caption>\n\t …\n</Table.CustomTable> // Or </Table.HtmlTable>\n```",
-						"barrelName": "Table.Caption"
-					},
-					{
-						"name": "Cell",
-						"baseProps": ["BaseProps.render"],
-						"props": [],
-						"baseElement": "div",
-						"jsdoc": "`Table.Cell` is a component that contains the data of a table cell.\n\n- If within a `Table.HtmlTable`: it will render a `<th>` element if also within a `Table.Header`, or a `<td>` element\nif also within a `Table.Body`.\n- If within a `Table.CustomTable`: it will render a `<div role=\"columnheader\">` element if also within a\n`Table.Header`, or a `<div role=\"cell\">` element if also within a `Table.Body`.\n\nExample:\n```tsx\n<Table.Cell>Cell 1.1</Table.Cell>\n```",
-						"barrelName": "Table.Cell"
+						"name": "Table",
+						"baseProps": [],
+						"props": []
 					}
 				],
-				"exportName": "Table"
+				"exportName": "Table",
+				"reexport": {
+					"packageName": "bricks",
+					"apiName": "Table"
+				}
 			},
 			{
 				"name": "Tabs",

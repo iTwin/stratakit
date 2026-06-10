@@ -24,6 +24,9 @@ interface LabelProps extends BaseProps<"label"> {}
  *
  * See `Field.Label` for convenient usage with form controls (e.g. automatic
  * association with adjacent form control).
+ *
+ * @deprecated Use MUI [`FormLabel`](https://mui.com/material-ui/api/form-label/) or [`InputLabel`](https://mui.com/material-ui/api/input-label/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#field).
  */
 const Label = forwardRef<"label", LabelProps>((props, forwardedRef) => {
 	useInit();

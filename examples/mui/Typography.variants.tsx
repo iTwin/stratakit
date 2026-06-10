@@ -9,6 +9,23 @@ import Typography from "@mui/material/Typography";
 export default () => {
 	return (
 		<Stack spacing={1}>
+			<Typography variant="display-lg">display-lg</Typography>
+			<Typography variant="display-md">display-md</Typography>
+			<Typography variant="display-sm">display-sm</Typography>
+			<Typography variant="headline-lg">headline-lg</Typography>
+			<Typography variant="headline-md">headline-md</Typography>
+			<Typography variant="headline-sm">headline-sm</Typography>
+			<Typography variant="body-lg">body-lg</Typography>
+			<Typography variant="body-md">body-md</Typography>
+			<Typography variant="body-sm">body-sm</Typography>
+			<Typography variant="subtitle-lg">subtitle-lg</Typography>
+			<Typography variant="subtitle-md">subtitle-md</Typography>
+			<Typography variant="subtitle-sm">subtitle-sm</Typography>
+			<Typography variant="caption-lg">caption-lg</Typography>
+			<Typography variant="caption-md">caption-md</Typography>
+			<Typography variant="caption-sm">caption-sm</Typography>
+			<Typography variant="mono-sm">mono-sm</Typography>
+
 			<Typography variant="body1">Body1</Typography>
 			<Typography variant="body2">Body2</Typography>
 			<Typography variant="button">Button</Typography>

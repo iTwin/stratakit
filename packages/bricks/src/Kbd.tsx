@@ -41,6 +41,9 @@ interface KbdProps extends BaseProps<"kbd"> {
  * ```tsx
  * <Kbd symbol="Control" />
  * ```
+ *
+ * @deprecated Use the HTML [`<kbd>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/kbd) element instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#kbd).
  */
 const Kbd = forwardRef<"kbd", KbdProps>((props, forwardedRef) => {
 	useInit();

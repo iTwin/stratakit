@@ -57,6 +57,9 @@ interface AvatarProps extends Omit<BaseProps<"span">, "children"> {
  * <Avatar initials="JD" alt="John Doe" size="xlarge" image={<img src="…" alt="">} />
  * <Avatar initials="JD" alt="John Doe" size="small" image={<Icon href="…">} />
  * ```
+ *
+ * @deprecated Use MUI [`Avatar`](https://mui.com/material-ui/api/avatar/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#avatar).
  */
 const Avatar = forwardRef<"span", AvatarProps>((props, forwardedRef) => {
 	useInit();

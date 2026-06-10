@@ -21,6 +21,7 @@ export * as Select from "./Select.js";
 export { default as Skeleton } from "./Skeleton.js";
 export { default as Spinner } from "./Spinner.js";
 export { default as Switch } from "./Switch.js";
+export * as Table from "./Table.js";
 export { default as Text } from "./Text.js";
 export * as TextBox from "./TextBox.js";
 export { default as Tooltip } from "./Tooltip.js";

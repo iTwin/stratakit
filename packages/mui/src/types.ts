@@ -472,11 +472,30 @@ declare module "@mui/material/Typography" {
 		textTertiary: true;
 	}
 
+	interface TypographyPropsVariantOverrides {
+		"display-lg": true;
+		"display-md": true;
+		"display-sm": true;
+		"headline-lg": true;
+		"headline-md": true;
+		"headline-sm": true;
+		"body-lg": true;
+		"body-md": true;
+		"body-sm": true;
+		"subtitle-lg": true;
+		"subtitle-md": true;
+		"subtitle-sm": true;
+		"caption-lg": true;
+		"caption-md": true;
+		"caption-sm": true;
+		"mono-sm": true;
+	}
+
 	interface TypographyOwnProps {
 		/**
-		 * The default variant with `@stratakit/mui` is `"body2"`.
+		 * The default variant with `@stratakit/mui` is `"inherit"`.
 		 *
-		 * @default "body2"
+		 * @default "inherit"
 		 */
 		variant?: TypographyProps["variant"];
 	}

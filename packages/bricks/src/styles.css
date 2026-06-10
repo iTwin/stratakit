@@ -26,6 +26,7 @@
 @import "./Select.css" layer(stratakit.components);
 @import "./Skeleton.css" layer(stratakit.components);
 @import "./Switch.css" layer(stratakit.components);
+@import "./Table.css" layer(stratakit.components);
 @import "./Text.css" layer(stratakit.components);
 @import "./TextBox.css" layer(stratakit.components);
 @import "./Tooltip.css" layer(stratakit.components);

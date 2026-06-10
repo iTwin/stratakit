@@ -487,9 +487,9 @@ declare module "@mui/material/Typography" {
 
 	interface TypographyOwnProps {
 		/**
-		 * The default variant with `@stratakit/mui` is `"body-md"`.
+		 * The default variant with `@stratakit/mui` is `"inherit"`.
 		 *
-		 * @default "body-md"
+		 * @default "inherit"
 		 */
 		variant?: TypographyProps["variant"];
 	}

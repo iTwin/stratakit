@@ -13,7 +13,7 @@ links:
 - The `font-family` has been changed to `InterVariable`. See [self-hosting fonts](/getting-started/develop/#self-hosting-the-fonts).
 - The typography scale has been adjusted to better align with StrataKit's more compact visual language.
 - Several new [`variant`s](#variants) have been added.
-- The default `variant` is now `"body-md"` instead of `"body1"`.
+- The default `variant` is now `"inherit"` instead of `"body1"`.
 - A warning will be logged during development if a heading variant is used without explicitly setting the `render` prop.
 - The `"secondary"` color value has been removed. A `"textTertiary"` color value has been added.
 

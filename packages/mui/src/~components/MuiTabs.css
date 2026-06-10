@@ -221,6 +221,10 @@
 	--_MuiTabs-scroller-fade-inset-start: 0px;
 	--_MuiTabs-scroller-fade-inset-end: 0px;
 
+	@media (pointer: coarse) {
+		scrollbar-width: thin;
+	}
+
 	@media (pointer: fine) {
 		--_MuiTabs-scroller-fade-inset-start: var(--_MuiTab-height);
 		--_MuiTabs-scroller-fade-inset-end: var(--_MuiTab-height);

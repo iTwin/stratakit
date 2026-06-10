@@ -47,6 +47,7 @@ import {
 	MuiTableCell,
 	MuiTableHead,
 } from "./~components/MuiTable.js";
+import { MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography } from "./~components/MuiTypography.js";
 import {
@@ -67,8 +68,14 @@ import {
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
 
+interface CreateThemeArgs {
+	portalContainer?: HTMLElement | null;
+}
+
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
-function createTheme() {
+function createTheme(args: CreateThemeArgs) {
+	const { portalContainer: container } = args;
+
 	// Map the JS palette back to MUI's own CSS variables, which will then be mapped to the correct StrataKit tokens in CSS.
 	// (This is a fallback for any code that uses MUI's theme.palette values directly instead of CSS variables)
 	const palette = {
@@ -153,6 +160,7 @@ function createTheme() {
 				defaultProps: {
 					component: MuiAlert,
 					variant: "outlined",
+					severity: "none",
 					iconMapping: {
 						error: <ErrorIcon />,
 						info: <InfoIcon />,
@@ -374,7 +382,7 @@ function createTheme() {
 			MuiMenuItem: { defaultProps: { component: Role.li } },
 			MuiMenuList: { defaultProps: { component: Role.ul } },
 			MuiMobileStepper: { defaultProps: { component: Role.div } },
-			MuiModal: { defaultProps: { component: Role.div } },
+			MuiModal: { defaultProps: { component: Role.div, container } },
 			MuiOutlinedInput: {
 				defaultProps: {
 					notched: false, // Removes masked border from Select
@@ -398,12 +406,19 @@ function createTheme() {
 				defaultProps: {
 					component: Role.div,
 					disableScrollLock: true,
+					// Popover passes down `container` prop to `Modal` https://github.com/mui/material-ui/blob/708ef10e874efa63d2e4972bd902befa1912f2dc/packages/mui-material/src/Popover/Popover.js#L389
+					container,
 					slots: {
 						paper: MuiPopoverPaperSlot,
 					},
 					slotProps: {
 						paper: { role: "dialog" },
 					},
+				},
+			},
+			MuiPopper: {
+				defaultProps: {
+					container,
 				},
 			},
 			MuiRadio: {
@@ -466,7 +481,7 @@ function createTheme() {
 			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
-			MuiTabs: { defaultProps: { component: Role.div } },
+			MuiTabs: { defaultProps: { component: MuiTabs } },
 			MuiTab: { defaultProps: { iconPosition: "start" } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {

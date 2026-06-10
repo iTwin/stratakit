@@ -4,13 +4,19 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiAccordion-root {
-	--_MuiAccordion-border-radius: 0;
+	--✨radius: 8px;
+
+	--_MuiAccordion-border-radius-top: 0;
+	--_MuiAccordion-border-radius-bottom: 0;
 	--_MuiAccordion-padding: var(--stratakit-space-x3);
 	--_MuiAccordion-column-gap: var(--stratakit-space-x3);
 
 	background-color: transparent;
 	border-color: var(--stratakit-color-border-neutral-muted);
-	border-radius: var(--_MuiAccordion-border-radius);
+	border-start-start-radius: var(--_MuiAccordion-border-radius-top);
+	border-start-end-radius: var(--_MuiAccordion-border-radius-top);
+	border-end-start-radius: var(--_MuiAccordion-border-radius-bottom);
+	border-end-end-radius: var(--_MuiAccordion-border-radius-bottom);
 	overflow-anchor: none; /* Prevent scroll jump with exclusive accordions */
 
 	@container (inline-size < 500px) {
@@ -26,11 +32,24 @@
 	}
 
 	&:where(.MuiPaper-rounded) {
-		--_MuiAccordion-border-radius: 8px;
+		&:where(:nth-child(1 of &)) {
+			--_MuiAccordion-border-radius-top: var(--✨radius);
+		}
+
+		&:where(:nth-last-child(1 of &)) {
+			--_MuiAccordion-border-radius-bottom: var(--✨radius);
+		}
 	}
 
-	&:where(.MuiPaper-outlined)::before {
-		display: none; /* Divider is not needed since the border is already visible */
+	&:where(:not(:nth-child(1 of &))) {
+		&:where(.MuiPaper-elevation) {
+			border-block-start-width: 1px;
+			border-block-start-style: solid;
+		}
+
+		&:where(.MuiPaper-outlined) {
+			border-block-start-width: 0; /* Prevents double border when multiple accordions are stacked */
+		}
 	}
 
 	&:where(.Mui-disabled) {
@@ -42,15 +61,25 @@
 	--_MuiAccordion-expand-icon-color: var(--stratakit-color-icon-neutral-base);
 
 	background-color: transparent; /* Prevents `background-color` change on focus */
-	border-radius: var(--_MuiAccordion-border-radius);
+	border-start-start-radius: calc(var(--_MuiAccordion-border-radius-top) - 1px);
+	border-start-end-radius: calc(var(--_MuiAccordion-border-radius-top) - 1px);
+	border-end-start-radius: calc(var(--_MuiAccordion-border-radius-bottom) - 1px);
+	border-end-end-radius: calc(var(--_MuiAccordion-border-radius-bottom) - 1px);
 	column-gap: var(--_MuiAccordion-column-gap);
 	min-block-size: var(--stratakit-size-control-listitem-height-large);
 	padding-inline-start: var(--_MuiAccordion-padding);
 	padding-inline-end: var(--_MuiAccordion-padding);
 
+	:where(.MuiAccordion-root.MuiPaper-elevation) & {
+		--🥝focus-outline-offset: -2px;
+	}
+
+	:where(.MuiAccordion-root.MuiPaper-outlined) & {
+		--🥝focus-outline-offset: -1px;
+	}
+
 	&:where(.Mui-expanded) {
-		border-end-start-radius: 0;
-		border-end-end-radius: 0;
+		--_MuiAccordion-border-radius-bottom: 0;
 	}
 
 	@media (any-hover: hover) {
@@ -78,6 +107,19 @@
 .MuiAccordionSummary-expandIconWrapper {
 	color: var(--_MuiAccordion-expand-icon-color);
 	order: var(--_MuiAccordion-expand-icon-order, -1);
+
+	@supports (rotate: if(else: -0.5turn)) {
+		transform: none;
+		transition: rotate 150ms ease-in-out;
+
+		:where(.MuiAccordion-root.Mui-expanded) & {
+			rotate: if(style(--_MuiAccordion-expand-icon-order: 0): 0.5turn; else: -0.5turn);
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
 }
 
 .MuiAccordionDetails-root {
@@ -90,4 +132,10 @@
 	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--_MuiAccordion-padding);
 	padding-inline-start: var(--_MuiAccordion-details-indent, var(--✨indent));
+}
+
+.MuiCollapse-root {
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
 }

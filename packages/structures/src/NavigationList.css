@@ -147,7 +147,7 @@
 		--🌀NavigationListAnchor-state--hover: var(--🌀NavigationListAnchor-state,);
 		--🌀NavigationListAnchor-state--pressed: var(--🌀NavigationListAnchor-state,);
 		--🌀NavigationListAnchor-state--active: var(--🌀NavigationListAnchor-state,);
-		--🌀NavigationListAnchor-state--disabled: var(--🌀NavigationListAnchor-state,)
+		--🌀NavigationListAnchor-state--disabled: var(--🌀NavigationListAnchor-state,);
 	}
 }
 

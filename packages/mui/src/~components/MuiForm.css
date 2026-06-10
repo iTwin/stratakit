@@ -38,7 +38,7 @@
 .MuiFormHelperText-root {
 	inline-size: fit-content;
 	margin: 0;
-	@apply --typography("body-sm");
+	@apply --typography("caption-lg");
 
 	&:where(.Mui-error) {
 		color: var(--stratakit-color-text-critical-base);

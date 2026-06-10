@@ -3,6 +3,4 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-/// <reference types="@stratakit/mui/types.d.ts" />
-
 declare const __VERSION__: string;

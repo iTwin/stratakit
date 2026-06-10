@@ -17,7 +17,6 @@
 @import "./NavigationList.css" layer(stratakit.components);
 @import "./NavigationRail.css" layer(stratakit.components);
 @import "./Popover.css" layer(stratakit.components);
-@import "./Table.css" layer(stratakit.components);
 @import "./Tabs.css" layer(stratakit.components);
 @import "./Toolbar.css" layer(stratakit.components);
 @import "./Tree.css" layer(stratakit.components);

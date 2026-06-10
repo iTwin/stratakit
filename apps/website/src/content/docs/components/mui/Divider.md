@@ -18,6 +18,10 @@ The **Divider** comes in two forms: _semantic_ and _presentational_. By default,
 | As a separator, marking a division between options, such as in a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role) | ✅         | ❌               |
 | As a visual indicator marking the separation of two lists                                                                                                                | ❌         | ✅               |
 
+## StrataKit MUI modifications
+
+- Renders a semantic [`<hr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hr) by default, switching to a `<div>` when it has children, is [vertical](#orientation), or is [presentational](#presentational-dividers).
+
 ## Examples
 
 ### Separating flow content
@@ -28,7 +32,7 @@ In the following example, [from the HTML5 specification](https://html.spec.whatw
 
 ### Presentational dividers
 
-You may wish to make a **Divider** _presentational_ by removing its semantics, i.e. by passing [`role="presentation"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/presentation_role) and rendering it as a `<div>` element.
+You may wish to make a **Divider** _presentational_ by removing its semantics, i.e. by passing [`role="presentation"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/presentation_role).
 
 For example, your navigation may be subdivided into multiple lists which are already separated semantically. You can use a _presentational_ **Divider** to visually mark where one list ends and the next begins.
 

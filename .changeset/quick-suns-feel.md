@@ -1,5 +1,5 @@
 ---
-"@stratakit/mui": minor
+"@stratakit/mui": patch
 ---
 
-Added `solid`, `muted`, and `outline` variants to `Badge` while removing `standard` and `dot`.
+Added `emphasis` prop to `Badge` which accepts `subtle`, `moderate`, or `strong`.

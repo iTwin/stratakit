@@ -9,9 +9,9 @@ import Stack from "@mui/material/Stack";
 export default () => {
 	return (
 		<Stack spacing={1} direction="row">
-			<Badge badgeContent="Solid" variant="solid" inline />
-			<Badge badgeContent="Muted" variant="muted" inline />
-			<Badge badgeContent="Outline" variant="outline" inline />
+			<Badge badgeContent="Strong" emphasis="strong" inline />
+			<Badge badgeContent="Moderate" emphasis="moderate" inline />
+			<Badge badgeContent="Subtle" emphasis="subtle" inline />
 		</Stack>
 	);
 };

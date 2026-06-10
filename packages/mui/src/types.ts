@@ -115,14 +115,6 @@ declare module "@mui/material/Badge" {
 		default: false;
 	}
 
-	interface BadgePropsVariantOverrides {
-		standard: false;
-		dot: false;
-		solid: true;
-		muted: true;
-		outline: true;
-	}
-
 	interface BadgeOwnProps {
 		/**
 		 * When `true`, the badge is rendered in normal document flow,
@@ -138,11 +130,11 @@ declare module "@mui/material/Badge" {
 		 */
 		color?: BadgeProps["color"];
 		/**
-		 * The visual variant of the badge.
+		 * The emphasis of the badge styling.
 		 *
-		 * @default 'solid'
+		 * @default 'strong'
 		 */
-		variant?: "solid" | "muted" | "outline";
+		emphasis?: "subtle" | "moderate" | "strong";
 	}
 }
 

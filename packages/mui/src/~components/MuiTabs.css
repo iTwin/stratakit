@@ -6,6 +6,7 @@
 .MuiTabs-root {
 	--_MuiTabs-indicator-gap: var(--stratakit-space-x2);
 	--_MuiTab-height: var(--stratakit-size-control-field-height-medium);
+	--_MuiTab-max-width: 360px;
 	--_MuiTab-padding-block: var(--stratakit-space-x1);
 	--_MuiTab-padding-inline: var(--stratakit-space-x3);
 
@@ -49,6 +50,7 @@
 	border-radius: 4px;
 	color: var(--_MuiTab-color);
 	gap: var(--stratakit-space-x1);
+	max-inline-size: var(--_MuiTab-max-width);
 	min-block-size: var(--_MuiTab-height);
 	min-inline-size: var(--_MuiTab-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
 	overflow: visible;
@@ -76,13 +78,11 @@
 	}
 
 	:where(.MuiTabs-list:not(.MuiTabs-vertical)) & {
-		margin-block-start: var(--_MuiTabs-indicator-gap);
 		margin-block-end: var(--_MuiTabs-indicator-gap);
 		--_MuiTab-tap-target-inset-block: var(--✨inset);
 	}
 
 	:where(.MuiTabs-list.MuiTabs-vertical) & {
-		margin-inline-start: var(--_MuiTabs-indicator-gap);
 		margin-inline-end: var(--_MuiTabs-indicator-gap);
 		--_MuiTab-tap-target-inset-inline: var(--✨inset);
 	}
@@ -159,11 +159,15 @@
 .MuiTabScrollButton-root {
 	--🥝Icon-color: var(--stratakit-color-icon-neutral-base);
 
+	background-color: var(--_MuiTab-scroll-button-background-color, transparent);
+	border-radius: 4px;
 	opacity: 1;
 	position: absolute;
+	transition: background-color 150ms ease-out;
 	z-index: 1;
 
 	&:where(.MuiTabScrollButton-horizontal) {
+		block-size: var(--_MuiTab-height);
 		inline-size: var(--_MuiTab-height);
 		inset-block: 0;
 
@@ -179,6 +183,7 @@
 	&:where(.MuiTabScrollButton-vertical) {
 		block-size: var(--_MuiTab-height);
 		inset-inline: 0;
+		max-inline-size: var(--_MuiTab-max-width);
 
 		&:where(:nth-child(1 of &)) {
 			inset-block-start: 0;
@@ -191,6 +196,9 @@
 
 	@media (any-hover: hover) {
 		&:where(:hover) {
+			--_MuiTab-scroll-button-background-color: var(
+				--stratakit-color-bg-glow-on-surface-neutral-hover
+			);
 			--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
 		}
 	}

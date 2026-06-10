@@ -71,6 +71,9 @@ interface TextBoxInputProps extends Omit<BaseInputProps, "children" | "type"> {
  * `value`, `defaultValue`, `onChange`, and `disabled`.
  *
  * For a multiline text input, use the `TextBox.Textarea` component.
+ *
+ * @deprecated Use MUI [`TextField`](https://mui.com/material-ui/api/text-field/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#textbox).
  */
 const TextBoxInput = forwardRef<"input", TextBoxInputProps>(
 	(props, forwardedRef) => {
@@ -135,6 +138,9 @@ interface TextareaProps extends FocusableProps<"textarea"> {}
  *
  * Underneath, it's an HTML textarea, i.e. `<textarea>`, so it supports the same props, including
  * `value`, `defaultValue`, `onChange`, and `disabled`.
+ *
+ * @deprecated Use MUI [`TextField`](https://mui.com/material-ui/api/text-field/) component with `multiline` instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#textbox).
  */
 const TextBoxTextarea = forwardRef<"textarea", TextareaProps>(
 	(props, forwardedRef) => {
@@ -193,6 +199,9 @@ interface TextBoxRootProps extends BaseProps {}
  *   />
  * </Field.Root>
  * ```
+ *
+ * @deprecated Use MUI [`TextField`](https://mui.com/material-ui/api/text-field/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#textbox).
  */
 const TextBoxRoot = forwardRef<"div", TextBoxRootProps>(
 	(props, forwardedRef) => {
@@ -228,6 +237,9 @@ interface TextBoxIconProps extends React.ComponentProps<typeof Icon> {}
 
 /**
  * A static icon decoration for the `TextBox.Root` component. Can be added before or after the `TextBox.Input`.
+ *
+ * @deprecated Use MUI [`TextField`](https://mui.com/material-ui/api/text-field/) component with input adornments instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#textbox).
  */
 const TextBoxIcon = forwardRef<"svg", TextBoxIconProps>(
 	(props, forwardedRef) => {
@@ -248,6 +260,9 @@ interface TextBoxTextProps extends BaseProps<"span"> {}
 
 /**
  * A static text decoration for the `TextBox.Root` component. Can be added before or after the `TextBox.Input`.
+ *
+ * @deprecated Use MUI [`TextField`](https://mui.com/material-ui/api/text-field/) component with input adornments instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#textbox).
  */
 const TextBoxText = forwardRef<"span", TextBoxTextProps>(
 	(props, forwardedRef) => {

@@ -46,6 +46,9 @@ interface ButtonProps extends FocusableProps<"button"> {
  * ```
  *
  * The button's appearance can be customized using the `variant` and `tone` props.
+ *
+ * @deprecated Use MUI [`Button`](https://mui.com/material-ui/api/button/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#button).
  */
 const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) => {
 	useInit();

@@ -160,6 +160,7 @@ function createTheme(args: CreateThemeArgs) {
 				defaultProps: {
 					component: MuiAlert,
 					variant: "outlined",
+					severity: "none",
 					iconMapping: {
 						error: <ErrorIcon />,
 						info: <InfoIcon />,
@@ -562,7 +563,7 @@ function createTheme(args: CreateThemeArgs) {
 			},
 			MuiTypography: {
 				defaultProps: {
-					variant: "body2",
+					variant: "inherit",
 					component: MuiTypography,
 				},
 				variants: [

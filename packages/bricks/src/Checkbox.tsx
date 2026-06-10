@@ -46,6 +46,9 @@ interface CheckboxProps extends InputBaseProps, CheckboxOwnProps {}
  *
  * Underneath, it's an HTML checkbox, i.e. `<input type="checkbox">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
+ *
+ * @deprecated Use MUI [`Checkbox`](https://mui.com/material-ui/api/checkbox/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#checkbox).
  */
 const Checkbox = forwardRef<"input", CheckboxProps>((props, forwardedRef) => {
 	useInit();

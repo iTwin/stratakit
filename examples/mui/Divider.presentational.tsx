@@ -19,11 +19,7 @@ export default () => {
 					<Link href="/create">Create</Link>
 				</li>
 			</ul>
-			<Divider
-				className={styles.divider}
-				render={<div />}
-				role="presentation"
-			/>
+			<Divider className={styles.divider} role="presentation" />
 			<ul className={styles.list}>
 				<li>
 					<Link href="/account">Account</Link>

@@ -8,6 +8,7 @@
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
 import type { RoleProps } from "@ariakit/react/role";
+import type { AlertProps } from "@mui/material/Alert";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { CommonProps } from "@mui/material/OverridableComponent";
@@ -62,13 +63,24 @@ declare module "@mui/material/Alert" {
 		standard: false;
 	}
 
+	interface AlertPropsColorOverrides {
+		none: true;
+	}
+
 	interface AlertOwnProps {
 		/**
 		 * The default variant with `@stratakit/mui` is `"outlined"`.
 		 *
 		 * @default 'outlined'
 		 */
-		variant?: "filled" | "outlined";
+		variant?: AlertProps["variant"];
+
+		/**
+		 * The default severity with `@stratakit/mui` is `"none"`.
+		 *
+		 * @default 'none'
+		 */
+		severity?: AlertProps["severity"];
 	}
 }
 
@@ -457,11 +469,30 @@ declare module "@mui/material/Typography" {
 		textTertiary: true;
 	}
 
+	interface TypographyPropsVariantOverrides {
+		"display-lg": true;
+		"display-md": true;
+		"display-sm": true;
+		"headline-lg": true;
+		"headline-md": true;
+		"headline-sm": true;
+		"body-lg": true;
+		"body-md": true;
+		"body-sm": true;
+		"subtitle-lg": true;
+		"subtitle-md": true;
+		"subtitle-sm": true;
+		"caption-lg": true;
+		"caption-md": true;
+		"caption-sm": true;
+		"mono-sm": true;
+	}
+
 	interface TypographyOwnProps {
 		/**
-		 * The default variant with `@stratakit/mui` is `"body2"`.
+		 * The default variant with `@stratakit/mui` is `"inherit"`.
 		 *
-		 * @default "body2"
+		 * @default "inherit"
 		 */
 		variant?: TypographyProps["variant"];
 	}

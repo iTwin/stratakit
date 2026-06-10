@@ -28,7 +28,9 @@ const variantMapping = {
 	overline: "span",
 } satisfies TypographyOwnProps["variantMapping"];
 
-const variants = Object.keys(variantMapping) as TypographyOwnProps["variant"][];
+const muiVariants = Object.keys(
+	variantMapping,
+) as (keyof typeof variantMapping)[];
 
 /** These variants are currently rendered as headings by default. */
 const headings = ["h1", "h2", "h3", "h4", "h5", "h6", "subtitle1", "subtitle2"];
@@ -39,21 +41,22 @@ const MuiTypography = forwardRef<"p", BaseProps<"p">>((props, forwardedRef) => {
 	const classList = props.className?.split(" ").filter(Boolean);
 
 	// Derive the variant from the className passed to the DOM element.
-	const variant = (() => {
-		const variant = variants.find((name) =>
+	const muiVariant = (() => {
+		const variant = muiVariants.find((name) =>
 			classList?.includes(`MuiTypography-${name}`),
 		);
 		return variant || "body2";
 	})();
 
-	DEV: if (!props.render && headings.includes(variant)) {
+	DEV: if (!props.render && headings.includes(muiVariant)) {
 		console.warn(
 			"MuiTypography: Please explicitly set the `render` prop to ensure correct heading structure.",
 		);
 	}
 
 	const render = (() => {
-		const Element = variantMapping[variant] || "p";
+		const Element =
+			muiVariant in variantMapping ? variantMapping[muiVariant] : "p";
 		return <Element />;
 	})();
 

@@ -35,6 +35,9 @@ type SkeletonProps = SkeletonPropsBase & {
  * <Skeleton variant="object" size="small" />
  * <Skeleton variant="text" size="medium" />
  * ```
+ *
+ * @deprecated Use MUI [`Skeleton`](https://mui.com/material-ui/api/skeleton/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#skeleton).
  */
 const Skeleton = forwardRef<"div", SkeletonProps>((props, forwardedRef) => {
 	useInit();

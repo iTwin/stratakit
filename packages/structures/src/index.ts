@@ -13,7 +13,7 @@ export * as unstable_ErrorRegion from "./ErrorRegion.js";
 export * as unstable_NavigationList from "./NavigationList.js";
 export * as unstable_NavigationRail from "./NavigationRail.js";
 export { default as unstable_Popover } from "./Popover.js";
-export * as Table from "./Table.js";
+export { Table } from "./Table.js";
 export * as Tabs from "./Tabs.js";
 export * as unstable_Toolbar from "./Toolbar.js";
 export * as Tree from "./Tree.js";

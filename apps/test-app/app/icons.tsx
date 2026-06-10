@@ -5,9 +5,8 @@
 
 import * as React from "react";
 import Container from "@mui/material/Container";
-import { Divider, Text } from "@stratakit/bricks";
+import { Divider, Table, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
-import { Table } from "@stratakit/structures";
 import { SkipLinkContext } from "./~navigation.tsx";
 
 import type { MetaFunction } from "react-router";

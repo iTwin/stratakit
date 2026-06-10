@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.BBEuJiU3.js";import{S as n}from"./Stack.Cq4xu9NH.js";import{B as e}from"./Badge.BhafaWUe.js";const o=()=>t.jsxs(n,{spacing:1,direction:"row",children:[t.jsx(e,{badgeContent:"Solid",variant:"solid",inline:!0}),t.jsx(e,{badgeContent:"Muted",variant:"muted",inline:!0}),t.jsx(e,{badgeContent:"Outline",variant:"outline",inline:!0})]});export{o as default};

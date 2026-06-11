@@ -251,14 +251,12 @@
 	);
 
 	&:where(.MuiTabs-scrollableX) {
-		--_MuiTabs-scroller-axis: inline;
 		--_MuiTabs-scroller-direction: right;
 		overscroll-behavior-x: contain;
 		scroll-padding-inline: var(--✨scroll-padding);
 	}
 
 	&:where(.MuiTabs-scrollableY) {
-		--_MuiTabs-scroller-axis: block;
 		--_MuiTabs-scroller-direction: bottom;
 		overscroll-behavior-y: contain;
 		scroll-padding-block: var(--✨scroll-padding);

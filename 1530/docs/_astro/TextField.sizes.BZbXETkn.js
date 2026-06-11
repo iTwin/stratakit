@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.Bl5VqDO7.js";import{S as i}from"./Stack.BWuSzT8u.js";import{T as s}from"./TextField.DxD5Lni4.js";const m=()=>e.jsxs(i,{spacing:1,direction:"row",sx:{alignItems:"center"},children:[e.jsx(s,{size:"small",label:"Small:"}),e.jsx(s,{size:"medium",label:"Medium:"})]});export{m as default};

@@ -6,7 +6,6 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 
-import type { TypographyOwnProps } from "@mui/material/Typography";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
@@ -26,7 +25,7 @@ const variantMapping = {
 	button: "span",
 	caption: "span",
 	overline: "span",
-} satisfies TypographyOwnProps["variantMapping"];
+};
 
 const muiVariants = Object.keys(
 	variantMapping,

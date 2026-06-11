@@ -11,7 +11,11 @@ import type { RoleProps } from "@ariakit/react/role";
 import type { AlertProps } from "@mui/material/Alert";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { IconButtonProps } from "@mui/material/IconButton";
-import type { CommonProps } from "@mui/material/OverridableComponent";
+import type {
+	CommonProps,
+	DefaultComponentProps,
+	OverridableTypeMap,
+} from "@mui/material/OverridableComponent";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
 import type { TabsProps } from "@mui/material/Tabs";
@@ -20,7 +24,10 @@ import type {
 	TextFieldVariants,
 } from "@mui/material/TextField";
 import type { TooltipProps } from "@mui/material/Tooltip";
-import type { TypographyProps } from "@mui/material/Typography";
+import type {
+	TypographyProps,
+	TypographyTypeMap,
+} from "@mui/material/Typography";
 import type * as React from "react";
 
 declare module "@mui/material/OverridableComponent" {
@@ -40,6 +47,15 @@ declare module "@mui/material/OverridableComponent" {
 
 		/** @deprecated Use `render` prop instead. */
 		component?: React.ElementType;
+	}
+
+	interface OverridableComponent<TypeMap extends OverridableTypeMap> {
+		// biome-ignore lint/style/useShorthandFunctionType: Interface with call signature is necessary when merging.
+		(
+			props:
+				| DefaultComponentProps<TypeMap>
+				| TypographyOverridableComponentProps<TypeMap>,
+		): React.JSX.Element | null;
 	}
 }
 
@@ -460,6 +476,52 @@ declare module "@mui/material/Tooltip" {
 	}
 }
 
+// These headings variants are declared separately from TypographyPropsVariantOverrides,
+// so that we can force the `render` prop to be required for these variants.
+type TypographyHeadingVariantProps = {
+	variant:
+		| "display-lg"
+		| "display-md"
+		| "display-sm"
+		| "headline-lg"
+		| "headline-md"
+		| "headline-sm"
+		| "subtitle-lg"
+		| "subtitle-md"
+		| "subtitle-sm"
+		| "h1"
+		| "h2"
+		| "h3"
+		| "h4"
+		| "h5"
+		| "h6"
+		| "subtitle1"
+		| "subtitle2";
+	/**
+	 * When using a heading-like `variant`, the `render` prop must be manually set to the most semantically appropriate element.
+	 *
+	 * Pick the most appropriate heading element ([`<h1>` to `<h6>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements))
+	 * required to maintain proper [heading structure](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) in your application.
+	 *
+	 * @example
+	 * ```tsx
+	 * render={<h2 />}>
+	 * ```
+	 *
+	 * Do not use heading elements when you simply want to grab attention with large variants.
+	 */
+	render: NonNullable<RoleProps["render"]>;
+};
+
+type TypographyOverridableComponentProps<TypeMap extends OverridableTypeMap> =
+	TypeMap extends TypographyTypeMap
+		? Omit<
+				DefaultComponentProps<TypeMap>,
+				keyof TypographyHeadingVariantProps
+			> &
+				TypographyHeadingVariantProps
+		: never;
+
 declare module "@mui/material/Typography" {
 	interface TypographyPropsColorOverrides {
 		secondary: false;
@@ -467,22 +529,24 @@ declare module "@mui/material/Typography" {
 	}
 
 	interface TypographyPropsVariantOverrides {
-		"display-lg": true;
-		"display-md": true;
-		"display-sm": true;
-		"headline-lg": true;
-		"headline-md": true;
-		"headline-sm": true;
+		// Additional custom variants (non-heading).
 		"body-lg": true;
 		"body-md": true;
 		"body-sm": true;
-		"subtitle-lg": true;
-		"subtitle-md": true;
-		"subtitle-sm": true;
 		"caption-lg": true;
 		"caption-md": true;
 		"caption-sm": true;
 		"mono-sm": true;
+
+		// Stock MUI heading variants are removed here and re-added above, with the `render` prop required.
+		h1: false;
+		h2: false;
+		h3: false;
+		h4: false;
+		h5: false;
+		h6: false;
+		subtitle1: false;
+		subtitle2: false;
 	}
 
 	interface TypographyOwnProps {

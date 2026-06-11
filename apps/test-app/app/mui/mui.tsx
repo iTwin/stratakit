@@ -135,7 +135,7 @@ export default function Page() {
 				tabIndex={-1}
 				id={React.use(SkipLinkContext)?.id}
 			>
-				<Typography variant="h4" render={<h1 />} className={styles.h1}>
+				<Typography variant="headline-lg" render={<h1 />} className={styles.h1}>
 					StrataKit MUI theme
 				</Typography>
 

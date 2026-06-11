@@ -22,31 +22,25 @@ const MuiBadgeContext = React.createContext<{ inline?: boolean } | undefined>(
 
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
-interface MuiBadgeRootProps
-	extends BaseProps<"span">,
-		Pick<BadgeProps, "inline"> {}
-
-const MuiBadgeRoot = forwardRef<"span", MuiBadgeRootProps>(
-	(props, forwardedRef) => {
-		const { inline, ...rest } = props;
-		return (
-			<MuiBadgeContext.Provider value={{ inline }}>
-				<Role.span
-					{...rest}
-					data-_sk-inline={inline ? "" : undefined}
-					ref={forwardedRef}
-				/>
-			</MuiBadgeContext.Provider>
-		);
-	},
-);
-DEV: MuiBadgeRoot.displayName = "MuiBadgeRoot";
-
-// ----------------------------------------------------------------------------
-
 interface MuiBadgeProps extends BaseProps<"span">, Pick<BadgeProps, "inline"> {}
 
 const MuiBadge = forwardRef<"span", MuiBadgeProps>((props, forwardedRef) => {
+	const { inline, ...rest } = props;
+	return (
+		<MuiBadgeContext.Provider value={{ inline }}>
+			<Role.span
+				{...rest}
+				data-_sk-inline={inline ? "" : undefined}
+				ref={forwardedRef}
+			/>
+		</MuiBadgeContext.Provider>
+	);
+});
+DEV: MuiBadge.displayName = "MuiBadge";
+
+// ----------------------------------------------------------------------------
+
+const MuiBadgeBadge = forwardRef<"span", BaseProps>((props, forwardedRef) => {
 	const { inline } = useSafeContext(MuiBadgeContext);
 	return (
 		<Role.span
@@ -56,7 +50,8 @@ const MuiBadge = forwardRef<"span", MuiBadgeProps>((props, forwardedRef) => {
 		/>
 	);
 });
-DEV: MuiBadge.displayName = "MuiBadge";
+DEV: MuiBadgeBadge.displayName = "MuiBadgeBadge";
 
 // ----------------------------------------------------------------------------
-export { MuiBadge, MuiBadgeRoot };
+
+export { MuiBadge, MuiBadgeBadge };

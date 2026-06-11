@@ -21,7 +21,7 @@ import {
 	MuiAutocompleteClearIndicator,
 } from "./~components/MuiAutocomplete.js";
 import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
-import { MuiBadge } from "./~components/MuiBadge.js";
+import { MuiBadge, MuiBadgeRoot } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import {
@@ -237,8 +237,9 @@ function createTheme(args: CreateThemeArgs) {
 			MuiBackdrop: { defaultProps: { component: Role.div } },
 			MuiBadge: {
 				defaultProps: {
-					component: MuiBadge,
+					component: MuiBadgeRoot,
 					color: "secondary",
+					slotProps: { badge: { component: MuiBadge } },
 				},
 			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },

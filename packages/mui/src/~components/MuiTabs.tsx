@@ -4,14 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
-import {
-	type BaseProps,
-	forwardRef,
-import useMediaQuery from "@mui/material/useMediaQuery";
-import {
-	type BaseProps,
-	forwardRef,
-	useEventHandlers,
 import useMediaQuery from "@mui/material/useMediaQuery";
 import {
 	type BaseProps,

@@ -170,9 +170,13 @@
 	}
 
 	&:where(.MuiTabScrollButton-horizontal) {
-		block-size: var(--_MuiTab-height);
-		inline-size: var(--_MuiTab-height);
+		block-size: var(--stratakit-size-control-field-height-small);
+		inline-size: var(--stratakit-size-control-field-height-small);
 		inset-block: 0;
+
+		:where(.MuiTabs-root:not([data-_sk-size="small"])) & {
+			margin-block-start: var(--stratakit-space-x1);
+		}
 
 		&:where(:nth-child(1 of &)) {
 			inset-inline-start: 0;
@@ -180,7 +184,7 @@
 	}
 
 	&:where(.MuiTabScrollButton-vertical) {
-		block-size: var(--_MuiTab-height);
+		block-size: var(--stratakit-size-control-field-height-small);
 		inset-inline: 0;
 		max-inline-size: var(--_MuiTab-max-width);
 
@@ -209,7 +213,7 @@
 
 .MuiTabs-scroller {
 	--✨fade-size: var(--stratakit-space-x2);
-	--✨scroll-padding: calc(var(--✨fade-size) + var(--_MuiTab-height));
+	--✨scroll-padding: calc(var(--✨fade-size) + var(--stratakit-size-control-field-height-small));
 
 	--_MuiTabs-scroller-fade-start: var(--✨fade-size);
 	--_MuiTabs-scroller-fade-end: var(--✨fade-size);
@@ -220,7 +224,7 @@
 	}
 
 	@media (pointer: fine) {
-		--_MuiTabs-scroller-fade-inset-start: var(--_MuiTab-height);
+		--_MuiTabs-scroller-fade-inset-start: var(--stratakit-size-control-field-height-small);
 	}
 
 	:where(.MuiTabs-root:has(> .MuiTabScrollButton-root.Mui-disabled:first-child)) & {

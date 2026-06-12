@@ -49,7 +49,7 @@ import {
 } from "./~components/MuiTable.js";
 import { MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
-import { MuiTypography } from "./~components/MuiTypography.js";
+import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -554,6 +554,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTypography: {
 				defaultProps: {
 					variant: "inherit",
+					variantMapping,
 					component: MuiTypography,
 				},
 				variants: [

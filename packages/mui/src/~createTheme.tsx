@@ -274,7 +274,12 @@ function createTheme(args: CreateThemeArgs) {
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
-			MuiCard: { defaultProps: { component: MuiCard } },
+			MuiCard: {
+				defaultProps: {
+					component: MuiCard,
+					variant: "outlined",
+				},
+			},
 			MuiCardActionArea: {
 				defaultProps: {
 					component: MuiCardActionArea,

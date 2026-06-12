@@ -14,7 +14,7 @@ import styles from "./Card.default.module.css";
 
 export default () => {
 	return (
-		<Card className={styles.card} variant="outlined">
+		<Card className={styles.card}>
 			<CardMedia
 				className={styles.media}
 				render={

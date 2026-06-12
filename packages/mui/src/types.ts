@@ -181,6 +181,17 @@ declare module "@mui/material/BottomNavigationAction" {
 	}
 }
 
+declare module "@mui/material/Card" {
+	interface CardOwnProps {
+		/**
+		 * The default variant with `@stratakit/mui` is `"outlined"`.
+		 *
+		 * @default 'outlined'
+		 */
+		variant?: "outlined" | "elevation";
+	}
+}
+
 declare module "@mui/material/CardActionArea" {
 	interface CardActionAreaOwnProps {
 		LinkComponent?: never;

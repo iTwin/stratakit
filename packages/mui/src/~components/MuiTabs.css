@@ -186,6 +186,7 @@
 	--🥝Icon-color: var(--stratakit-color-icon-neutral-base);
 
 	background-color: var(--_MuiTab-scroll-button-background-color, transparent);
+	block-size: var(--_MuiTab-scroll-button-size);
 	border-radius: 4px;
 	opacity: 1;
 	transition: background-color 150ms ease-out;
@@ -196,7 +197,6 @@
 	}
 
 	&:where(.MuiTabScrollButton-horizontal) {
-		block-size: var(--_MuiTab-scroll-button-size);
 		inline-size: var(--_MuiTab-scroll-button-size);
 		inset-block: 0;
 
@@ -210,7 +210,6 @@
 	}
 
 	&:where(.MuiTabScrollButton-vertical) {
-		block-size: var(--_MuiTab-scroll-button-size);
 		inset-inline: 0;
 		max-inline-size: var(--_MuiTab-max-width);
 

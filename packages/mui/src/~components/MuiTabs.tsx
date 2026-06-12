@@ -32,19 +32,21 @@ DEV: MuiTabs.displayName = "MuiTabs";
 
 const MuiTab = forwardRef<"button", BaseProps<"button">>(
 	(props, forwardedRef) => {
-		const { onFocus, ...rest } = props;
+		const motionOk = useMediaQuery("(prefers-reduced-motion: no-preference)");
 
-		const handleFocus: React.FocusEventHandler<HTMLButtonElement> = (event) => {
-			(onFocus as React.FocusEventHandler<HTMLButtonElement> | undefined)?.(
-				event,
-			);
-			event.currentTarget.scrollIntoView({
-				block: "nearest",
-				inline: "nearest",
-			});
-		};
-
-		return <Role.button {...rest} onFocus={handleFocus} ref={forwardedRef} />;
+		return (
+			<Role.button
+				{...props}
+				onFocus={useEventHandlers(props.onFocus, (event) => {
+					event?.currentTarget?.scrollIntoView({
+						block: "nearest",
+						inline: "nearest",
+						behavior: motionOk ? "smooth" : "auto",
+					});
+				})}
+				ref={forwardedRef}
+			/>
+		);
 	},
 );
 DEV: MuiTab.displayName = "MuiTab";

@@ -41,7 +41,8 @@
 		&:where(
 				:has(> .MuiTabScrollButton-root.MuiTabScrollButton-vertical:not(.Mui-disabled):first-child)
 			)::after {
-			inset: 0 0 auto 0;
+			inset: 0;
+			inset-block-end: auto;
 			block-size: var(--_MuiTab-scroll-button-size);
 		}
 	}

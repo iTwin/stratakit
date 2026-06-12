@@ -7,6 +7,11 @@ import { Role } from "@ariakit/react/role";
 import {
 	type BaseProps,
 	forwardRef,
+import useMediaQuery from "@mui/material/useMediaQuery";
+import {
+	type BaseProps,
+	forwardRef,
+	useEventHandlers,
 } from "@stratakit/foundations/secret-internals";
 
 import type Tabs from "@mui/material/Tabs";

@@ -6,7 +6,7 @@
 .MuiTabs-root {
 	--_MuiTabs-indicator-gap: var(--stratakit-space-x2);
 	--_MuiTab-height: var(--stratakit-size-control-field-height-medium);
-	--_MuiTab-max-width: 360px;
+	--_MuiTab-max-width: 70ch;
 	--_MuiTab-padding-block: var(--stratakit-space-x1);
 	--_MuiTab-padding-inline: var(--stratakit-space-x3);
 	--_MuiTab-scroll-button-size: var(--stratakit-size-control-field-height-small);

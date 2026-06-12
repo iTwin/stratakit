@@ -9,6 +9,7 @@
 	--_MuiTab-max-width: 360px;
 	--_MuiTab-padding-block: var(--stratakit-space-x1);
 	--_MuiTab-padding-inline: var(--stratakit-space-x3);
+	--_MuiTab-scroll-button-size: var(--stratakit-size-control-field-height-small);
 
 	isolation: isolate;
 	min-block-size: unset; /* Allow `.MuiTab-root` to define height */
@@ -33,14 +34,14 @@
 				)
 			)::after {
 			inset: 0 auto 0 0;
-			inline-size: var(--stratakit-size-control-field-height-small);
+			inline-size: var(--_MuiTab-scroll-button-size);
 		}
 
 		&:where(
 				:has(> .MuiTabScrollButton-root.MuiTabScrollButton-vertical:not(.Mui-disabled):first-child)
 			)::after {
 			inset: 0 0 auto 0;
-			block-size: var(--stratakit-size-control-field-height-small);
+			block-size: var(--_MuiTab-scroll-button-size);
 		}
 	}
 	/* #endregion */
@@ -195,8 +196,8 @@
 	}
 
 	&:where(.MuiTabScrollButton-horizontal) {
-		block-size: var(--stratakit-size-control-field-height-small);
-		inline-size: var(--stratakit-size-control-field-height-small);
+		block-size: var(--_MuiTab-scroll-button-size);
+		inline-size: var(--_MuiTab-scroll-button-size);
 		inset-block: 0;
 
 		:where(.MuiTabs-root:not([data-_sk-size="small"])) & {
@@ -209,7 +210,7 @@
 	}
 
 	&:where(.MuiTabScrollButton-vertical) {
-		block-size: var(--stratakit-size-control-field-height-small);
+		block-size: var(--_MuiTab-scroll-button-size);
 		inset-inline: 0;
 		max-inline-size: var(--_MuiTab-max-width);
 
@@ -238,7 +239,7 @@
 
 .MuiTabs-scroller {
 	--✨fade-size: var(--stratakit-space-x2);
-	--✨scroll-padding: calc(var(--✨fade-size) + var(--stratakit-size-control-field-height-small));
+	--✨scroll-padding: calc(var(--✨fade-size) + var(--_MuiTab-scroll-button-size));
 
 	--_MuiTabs-scroller-fade-start: var(--✨fade-size);
 	--_MuiTabs-scroller-fade-end: var(--✨fade-size);
@@ -249,7 +250,7 @@
 	}
 
 	@media (pointer: fine) {
-		--_MuiTabs-scroller-fade-inset-start: var(--stratakit-size-control-field-height-small);
+		--_MuiTabs-scroller-fade-inset-start: var(--_MuiTab-scroll-button-size);
 	}
 
 	:where(.MuiTabs-root:has(> .MuiTabScrollButton-root.Mui-disabled:first-child)) & {

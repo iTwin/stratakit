@@ -122,8 +122,13 @@
 	--_MuiTab-background-color: var(--✨bg--default);
 	--_MuiTab-color: var(--✨color--default);
 	--🥝Icon-color: var(--✨icon--default);
+	--_MuiTab-selected-color: var(--✨color--default);
+	--_MuiTab-selected-icon-color: var(--✨icon--default);
 
 	&:where(.MuiTab-textColorPrimary) {
+		--_MuiTab-selected-color: var(--✨color--selected-accent);
+		--_MuiTab-selected-icon-color: var(--✨icon--selected-accent);
+
 		@media (any-hover: hover) {
 			&:where(:not(.Mui-disabled):hover) {
 				--_MuiTab-background-color: var(--✨bg--hover-accent);
@@ -131,14 +136,12 @@
 				--🥝Icon-color: var(--✨icon--selected-accent);
 			}
 		}
-
-		&:where(.Mui-selected) {
-			--_MuiTab-color: var(--✨color--selected-accent);
-			--🥝Icon-color: var(--✨icon--selected-accent);
-		}
 	}
 
 	&:where(.MuiTab-textColorSecondary) {
+		--_MuiTab-selected-color: var(--✨color--selected-neutral);
+		--_MuiTab-selected-icon-color: var(--✨icon--selected-neutral);
+
 		@media (any-hover: hover) {
 			&:where(:not(.Mui-disabled):hover) {
 				--_MuiTab-background-color: var(--✨bg--hover-neutral);
@@ -146,11 +149,11 @@
 				--🥝Icon-color: var(--✨icon--selected-neutral);
 			}
 		}
+	}
 
-		&:where(.Mui-selected) {
-			--_MuiTab-color: var(--✨color--selected-neutral);
-			--🥝Icon-color: var(--✨icon--selected-neutral);
-		}
+	&:where(.Mui-selected) {
+		--_MuiTab-color: var(--_MuiTab-selected-color);
+		--🥝Icon-color: var(--_MuiTab-selected-icon-color);
 	}
 
 	&:where(.Mui-disabled) {

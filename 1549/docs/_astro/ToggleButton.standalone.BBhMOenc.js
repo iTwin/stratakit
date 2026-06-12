@@ -1,1 +1,0 @@
-import{j as t,I as r}from"./_utils.CUbY3css.js";import{r as a}from"./styles.internal.CaJWceVp.js";import{s as n}from"./edit.GbLRSQuX.js";import{T as l}from"./ToggleButton.BJN9q_H6.js";const f=()=>{const[e,o]=a.useState(!1);return t.jsx(l,{value:"edit",label:"Edit",selected:e,onChange:()=>{o(s=>!s)},children:t.jsx(r,{href:n})})};export{f as default};

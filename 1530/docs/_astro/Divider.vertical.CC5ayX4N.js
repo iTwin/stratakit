@@ -1,0 +1,1 @@
+import{j as i}from"./_utils.DBMNU78G.js";import{D as r}from"./Divider.OFT_0l2-.js";const o=()=>i.jsx("div",{style:{blockSize:"calc(100dvh - 16px * 2)"},children:i.jsx(r,{orientation:"vertical"})});export{o as default};

@@ -12,6 +12,11 @@ import {
 	type BaseProps,
 	forwardRef,
 	useEventHandlers,
+import useMediaQuery from "@mui/material/useMediaQuery";
+import {
+	type BaseProps,
+	forwardRef,
+	useEventHandlers,
 } from "@stratakit/foundations/secret-internals";
 
 import type Tabs from "@mui/material/Tabs";

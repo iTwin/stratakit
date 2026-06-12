@@ -113,15 +113,19 @@ function createTheme(args: CreateThemeArgs) {
 			// These are only hardcoded here as fallback. The CSS will take precedence.
 			body1: { fontSize: 16 },
 			body2: { fontSize: 14 },
-			h1: { fontSize: 48 },
-			h2: { fontSize: 40 },
-			h3: { fontSize: 32 },
-			h4: { fontSize: 28 },
-			h5: { fontSize: 24 },
-			h6: { fontSize: 20 },
+			h1: { fontSize: 20 },
+			h2: { fontSize: 18 },
+			h3: { fontSize: 16 },
+			h4: { fontSize: 14 },
+			h5: { fontSize: 12 },
+			h6: { fontSize: 12 },
 			caption: { fontSize: 12 },
-			subtitle1: { fontSize: 12 },
-			subtitle2: { fontSize: 11 },
+			overline: {
+				fontSize: 12,
+				textTransform: "none",
+			},
+			subtitle1: { fontSize: 16 },
+			subtitle2: { fontSize: 14 },
 		},
 		shadows: [
 			"none", // 0

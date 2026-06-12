@@ -162,9 +162,12 @@
 	background-color: var(--_MuiTab-scroll-button-background-color, transparent);
 	border-radius: 4px;
 	opacity: 1;
-	position: absolute;
 	transition: background-color 150ms ease-out;
-	z-index: 1;
+
+	&:where(:nth-child(1 of &)) {
+		position: absolute;
+		z-index: 1;
+	}
 
 	&:where(.MuiTabScrollButton-horizontal) {
 		block-size: var(--_MuiTab-height);
@@ -173,10 +176,6 @@
 
 		&:where(:nth-child(1 of &)) {
 			inset-inline-start: 0;
-		}
-
-		&:where(:nth-last-child(1 of &)) {
-			inset-inline-end: 0;
 		}
 	}
 
@@ -187,10 +186,6 @@
 
 		&:where(:nth-child(1 of &)) {
 			inset-block-start: 0;
-		}
-
-		&:where(:nth-last-child(1 of &)) {
-			inset-block-end: 0;
 		}
 	}
 
@@ -219,7 +214,6 @@
 	--_MuiTabs-scroller-fade-start: var(--✨fade-size);
 	--_MuiTabs-scroller-fade-end: var(--✨fade-size);
 	--_MuiTabs-scroller-fade-inset-start: 0px;
-	--_MuiTabs-scroller-fade-inset-end: 0px;
 
 	@media (pointer: coarse) {
 		scrollbar-width: thin;
@@ -227,7 +221,6 @@
 
 	@media (pointer: fine) {
 		--_MuiTabs-scroller-fade-inset-start: var(--_MuiTab-height);
-		--_MuiTabs-scroller-fade-inset-end: var(--_MuiTab-height);
 	}
 
 	:where(.MuiTabs-root:has(> .MuiTabScrollButton-root.Mui-disabled:first-child)) & {
@@ -237,7 +230,6 @@
 
 	:where(.MuiTabs-root:has(> .MuiTabScrollButton-root.Mui-disabled:last-child)) & {
 		--_MuiTabs-scroller-fade-end: 0px;
-		--_MuiTabs-scroller-fade-inset-end: 0px;
 	}
 
 	mask-image: linear-gradient(
@@ -245,8 +237,8 @@
 		transparent,
 		transparent var(--_MuiTabs-scroller-fade-inset-start),
 		#000 calc(var(--_MuiTabs-scroller-fade-inset-start) + var(--_MuiTabs-scroller-fade-start)),
-		#000 calc(100% - (var(--_MuiTabs-scroller-fade-inset-end) + var(--_MuiTabs-scroller-fade-end))),
-		transparent calc(100% - var(--_MuiTabs-scroller-fade-inset-end)),
+		#000 calc(100% - var(--_MuiTabs-scroller-fade-end)),
+		transparent 100%,
 		transparent
 	);
 

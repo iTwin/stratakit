@@ -6,9 +6,10 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Popover from "@mui/material/Popover";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 import styles from "./Popover.default.module.css";
-import { Stack, Typography } from "@mui/material";
 
 export default () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(

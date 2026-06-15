@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.6A7yFE1j.js";import{C as e}from"./Checkbox.CdtR8ycY.js";import{F as r,a as s,b as t}from"./Field.D8ceJ8Om.js";const d=()=>o.jsxs(r,{children:[o.jsx(s,{render:o.jsx(e,{})}),o.jsx(t,{children:"Don’t show again"})]});export{d as default};

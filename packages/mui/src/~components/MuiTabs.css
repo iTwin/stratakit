@@ -9,7 +9,9 @@
 	--_MuiTab-max-width: 70ch;
 	--_MuiTab-padding-block: var(--stratakit-space-x1);
 	--_MuiTab-padding-inline: var(--stratakit-space-x3);
-	--_MuiTab-scroll-button-size: var(--stratakit-size-control-field-height-small);
+	--_MuiTab-scroll-button-size: var(
+		--stratakit-size-control-field-height-small
+	); /* Uses small size to minimize obscuring tabs. */
 
 	isolation: isolate;
 	min-block-size: unset; /* Allow `.MuiTab-root` to define height */
@@ -196,6 +198,7 @@
 	opacity: 1;
 	transition: background-color 150ms ease-out;
 
+	/* First scroll button is absolute positioned to prevent layout shift */
 	&:where(:nth-child(1 of &)) {
 		position: absolute;
 		z-index: 1;
@@ -250,7 +253,7 @@
 	--_MuiTabs-scroller-fade-inset-start: 0px;
 
 	@media (pointer: coarse) {
-		scrollbar-width: thin;
+		scrollbar-width: thin; /* Show a scrollbar on touch; on mouse, scroll buttons provide the extra affordance. */
 	}
 
 	@media (pointer: fine) {

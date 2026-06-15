@@ -154,20 +154,20 @@ The heading elements (`<h1>` to `<h6>`) are numbered according to section depth.
 
 Headings, and a logical application of heading levels, are indispensable for describing the relationships of belonging that make up the document’s structure. Landmarks and headings together expose the information topology to different users, their assistive software, and agents.
 
-If you are applying a suitable heading level but need control over the element’s styling, use the [**Typography**](/components/typography) component and set the level using the `render` prop:
+The [**Typography**](/components/typography) component allows you to control the heading level using the `render` prop, with the `variant` prop controlling the visual presentation.
 
 ```jsx
-<Typography variant="h4" render={<h2 />}>
-	This must render as an `h2`, but looks smaller, like an `h4`.
+<Typography variant="subtitle-sm" render={<h2 />}>
+	This small subtitle will render as an `h2`.
 </Typography>
 ```
 
 :::caution[False headings]
 
-Just because some text appears large or **bold** does not make it a heading. A heading must introduce a section (or subsection) of thematically distinct content. For large (or otherwise attention grabbing) text, not intended as a heading, use a [**Typography**](/components/typography) heading `variant` but change the underlying element using the `render` prop:
+Just because some text appears large or **bold** does not make it a heading. A heading must introduce a section (or subsection) of thematically distinct content. For large (or otherwise attention grabbing) text not intended as a heading, change the underlying element to a non-heading element (e.g. `<p>`) using the `render` prop:
 
 ```jsx
-<Typography variant="h4" render={<span />}>
+<Typography variant="subtitle-lg" render={<p />}>
 	This change cannot be undone.
 </Typography>
 ```

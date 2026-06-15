@@ -14,34 +14,15 @@ links:
 - The typography scale has been adjusted to better align with StrataKit's more compact visual language.
 - Several new [`variant`s](#variants) have been added.
 - The default `variant` is now `"inherit"` instead of `"body1"`.
-- A warning will be logged during development if a heading variant is used without explicitly setting the `render` prop.
+- The `render` prop is required to be set for all heading variants.
+- The stock MUI heading and subtitle `variant`s all map to `<h2>` elements by default, except for the `"h1"` variant which still maps to `<h1>`. In all these cases, the `render` prop is required.
 - The `"secondary"` color value has been removed. A `"textTertiary"` color value has been added.
 
 ## Examples
 
-### Heading
-
-Heading `variant`s of the **Typography** will render the respective [`<h1>` to `<h6>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) heading elements. You should use the `render` prop to override the rendered element and maintain proper [heading structure](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) in your application. When the `render` prop is not set, StrataKit will log a warning during development.
-
-::example{src="mui/Typography.heading"}
-
-:::caution[Grabbing attention]
-
-You may want a statement to _stand out_. This statement might regard a special offer, or perhaps a warning. Standalone statements are _not_ headings, since they do not introduce a new section of content.
-
-In these cases, combine a larger `variant` with the `render` prop to set a generic `<span>` or `<div>` element:
-
-```jsx
-<Typography variant="h6" render={<span />}>
-	This change cannot be undone.
-</Typography>
-```
-
-:::
-
 ### Variants
 
-All of the stock MUI **Typography** `variant`s are available, with sizing adjusted to fit StrataKit's more compact visual language. Additionally, the following custom `variant`s are available:
+The following custom **Typography** `variant`s are available:
 
 - `"display-lg"` / `"display-md"` / `"display-sm"`
 - `"headline-lg"` / `"headline-md"` / `"headline-sm"`
@@ -51,6 +32,28 @@ All of the stock MUI **Typography** `variant`s are available, with sizing adjust
 - `"mono-sm"`
 
 ::example{src="mui/Typography.variants" min-height="600px"}
+
+All of the stock MUI **Typography** `variant`s are also available for backwards compatibility, but not recommended for use.
+
+### Heading
+
+StrataKit decouples the visual presentation of **Typography** from its semantic meaning. Any visual `variant` can be rendered as any HTML element using the `render` prop. This allows for maximum flexibility without compromising accessibility.
+
+When using a heading `variant`, the `render` prop should typically be set to a heading element ([`<h1>` to `<h6>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements)). Be sure to pick the most appropriate heading element required to maintain proper [heading structure](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) in your application.
+
+::example{src="mui/Typography.heading"}
+
+:::caution[Grabbing attention]
+
+You may want a statement to _stand out_. This statement might regard a special offer, or perhaps a warning. Standalone statements are _not_ headings, since they do not introduce a new section of content. Do _not_ use a semantic heading element in these cases. Instead, set the `render` prop to a generic element (`<p>` or `<span>` or `<div>`):
+
+```jsx
+<Typography variant="subtitle-lg" render={<p />}>
+	This change cannot be undone.
+</Typography>
+```
+
+:::
 
 ### Colors
 
@@ -73,7 +76,7 @@ The following color are available for the `color` prop:
 ## ✅ Do
 
 - Use the `variant` prop of the **Typography** component to affect the visual presentation of the text.
-- Use the `render` prop to set the most semantically appropriate element. This is especially important for heading variants.
+- Use the `render` prop to set the most semantically appropriate element. This is required for heading variants.
 
 ## 🚫 Don't
 

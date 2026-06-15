@@ -21,7 +21,7 @@ import {
 	MuiAutocompleteClearIndicator,
 } from "./~components/MuiAutocomplete.js";
 import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
-import { MuiBadge } from "./~components/MuiBadge.js";
+import { MuiBadge, MuiBadgeBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import {
@@ -49,7 +49,7 @@ import {
 } from "./~components/MuiTable.js";
 import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
-import { MuiTypography } from "./~components/MuiTypography.js";
+import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -239,6 +239,7 @@ function createTheme(args: CreateThemeArgs) {
 				defaultProps: {
 					component: MuiBadge,
 					color: "secondary",
+					slotProps: { badge: { component: MuiBadgeBadge } },
 				},
 			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
@@ -273,7 +274,12 @@ function createTheme(args: CreateThemeArgs) {
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
-			MuiCard: { defaultProps: { component: MuiCard } },
+			MuiCard: {
+				defaultProps: {
+					component: MuiCard,
+					variant: "outlined",
+				},
+			},
 			MuiCardActionArea: {
 				defaultProps: {
 					component: MuiCardActionArea,
@@ -564,6 +570,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTypography: {
 				defaultProps: {
 					variant: "inherit",
+					variantMapping,
 					component: MuiTypography,
 				},
 				variants: [

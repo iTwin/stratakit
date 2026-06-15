@@ -21,7 +21,7 @@ import styles from "./Card.menu.module.css";
 
 export default () => {
 	return (
-		<Card className={styles.card} variant="outlined">
+		<Card className={styles.card}>
 			<CardMedia
 				className={styles.media}
 				render={
@@ -38,7 +38,7 @@ export default () => {
 				action={<ActionsMenu />}
 			/>
 			<CardContent>
-				<Typography variant="body2">
+				<Typography>
 					Stadium is a place for outdoor sports, concerts, or other events and
 					activities.
 				</Typography>

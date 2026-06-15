@@ -1,0 +1,1 @@
+import{j as s}from"./_utils.DL47ady7.js";import{K as t}from"./Kbd.BpTc9cRd.js";const i=()=>s.jsxs("div",{className:"flex",children:[s.jsx(t,{variant:"solid",children:"Solid"}),s.jsx(t,{variant:"muted",children:"Muted"}),s.jsx(t,{variant:"ghost",children:"Ghost"})]});export{i as default};

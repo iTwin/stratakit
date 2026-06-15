@@ -15,11 +15,11 @@
 }
 
 .Mui-focusVisible .MuiRating-iconActive {
-  outline: var(--🥝focus-outline);
+	outline: var(--🥝focus-outline);
 	outline-offset: var(--🥝focus-outline-offset);
 }
 
 .MuiRating-labelEmptyValueActive {
-  outline: var(--🥝focus-outline);
+	outline: var(--🥝focus-outline);
 	outline-offset: var(--🥝focus-outline-offset);
 }

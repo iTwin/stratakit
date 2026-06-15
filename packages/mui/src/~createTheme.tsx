@@ -49,7 +49,7 @@ import {
 } from "./~components/MuiTable.js";
 import { MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
-import { MuiTypography } from "./~components/MuiTypography.js";
+import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -274,7 +274,12 @@ function createTheme(args: CreateThemeArgs) {
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
-			MuiCard: { defaultProps: { component: MuiCard } },
+			MuiCard: {
+				defaultProps: {
+					component: MuiCard,
+					variant: "outlined",
+				},
+			},
 			MuiCardActionArea: {
 				defaultProps: {
 					component: MuiCardActionArea,
@@ -549,6 +554,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTypography: {
 				defaultProps: {
 					variant: "inherit",
+					variantMapping,
 					component: MuiTypography,
 				},
 				variants: [

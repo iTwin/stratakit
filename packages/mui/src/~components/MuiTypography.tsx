@@ -6,7 +6,6 @@
 import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
 
-import type { TypographyOwnProps } from "@mui/material/Typography";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
@@ -14,19 +13,19 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 const variantMapping = {
 	h1: "h1",
 	h2: "h2",
-	h3: "h3",
-	h4: "h4",
-	h5: "h5",
-	h6: "h6",
-	subtitle1: "h6",
-	subtitle2: "h6",
+	h3: "h2",
+	h4: "h2",
+	h5: "h2",
+	h6: "h2",
+	subtitle1: "h2",
+	subtitle2: "h2",
 	body1: "p",
 	body2: "p",
 	inherit: "p",
 	button: "span",
 	caption: "span",
 	overline: "span",
-} satisfies TypographyOwnProps["variantMapping"];
+};
 
 const muiVariants = Object.keys(
 	variantMapping,
@@ -66,4 +65,4 @@ DEV: MuiTypography.displayName = "MuiTypography";
 
 // ----------------------------------------------------------------------------
 
-export { MuiTypography };
+export { MuiTypography, variantMapping };

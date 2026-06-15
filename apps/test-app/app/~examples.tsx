@@ -54,7 +54,7 @@ export function ExamplesShowcase(props: ExamplesShowcaseProps) {
 		>
 			<hgroup className={styles.exampleHeader}>
 				<Typography
-					variant="h5"
+					variant="headline-md"
 					render={<h2 />}
 					id={id}
 					className={styles.exampleTitle}
@@ -122,7 +122,12 @@ export function KnobControlEntrypoint(
 					},
 				}}
 			>
-				<Typography variant="body2" render={<h2 />} id={headingId} gutterBottom>
+				<Typography
+					variant="body-md"
+					render={<h2 />}
+					id={headingId}
+					gutterBottom
+				>
 					Knobs
 				</Typography>
 				<FormGroup>

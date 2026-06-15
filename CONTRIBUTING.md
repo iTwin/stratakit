@@ -83,6 +83,10 @@ Examples:
 
 Also, there’s [an internal package](./internal) which is used for configuration files and common variables for the workspace at large.
 
+### Customizing Material UI
+
+StrataKit uses [themed components](https://mui.com/material-ui/customization/theme-components/) and [https://mui.com/material-ui/customization/overriding-component-structure/](customized component structures) to align the default Material UI components with the StrataKit design system.
+
 ### Development environment
 
 To start the development server, run the following command from the root.

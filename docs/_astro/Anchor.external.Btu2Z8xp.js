@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.DmcUwL4P.js";import{a as r,b as e,c as s}from"./Anchor.Cg1AaeYo.js";const a=()=>t.jsxs(r,{href:"https://youtu.be/dQw4w9WgXcQ",target:"_blank",children:[t.jsx(e,{children:"Rick Astley’s biggest hit"}),t.jsx(s,{alt:"opens in new tab"})]});export{a as default};

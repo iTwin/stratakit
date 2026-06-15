@@ -1,0 +1,25 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.MuiRating-root {
+	color: var(--stratakit-color-icon-neutral-base);
+}
+
+.MuiRating-root.Mui-disabled {
+	color: var(--stratakit-color-icon-neutral-disabled);
+}
+
+.MuiRating-iconHover {
+	color: var(--stratakit-color-icon-neutral-primary);
+}
+
+.Mui-focusVisible .MuiRating-iconActive {
+  outline: var(--🥝focus-outline);
+	outline-offset: var(--🥝focus-outline-offset);
+}
+
+.MuiRating-labelEmptyValueActive {
+  outline: var(--🥝focus-outline);
+	outline-offset: var(--🥝focus-outline-offset);
+}

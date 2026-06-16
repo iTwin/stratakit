@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Table } from "@stratakit/structures";
+import { Table } from "@stratakit/bricks";
 
 export default () => {
 	return (

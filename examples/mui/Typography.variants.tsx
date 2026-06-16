@@ -9,36 +9,40 @@ import Typography from "@mui/material/Typography";
 export default () => {
 	return (
 		<Stack spacing={1}>
-			<Typography variant="body1">Body1</Typography>
-			<Typography variant="body2">Body2</Typography>
-			<Typography variant="button">Button</Typography>
-			<Typography variant="caption">Caption</Typography>
-			<Typography variant="h1" render={<div />}>
-				H1
+			<Typography variant="display-lg" render={<div />}>
+				display-lg
 			</Typography>
-			<Typography variant="h2" render={<div />}>
-				H2
+			<Typography variant="display-md" render={<div />}>
+				display-md
 			</Typography>
-			<Typography variant="h3" render={<div />}>
-				H3
+			<Typography variant="display-sm" render={<div />}>
+				display-sm
 			</Typography>
-			<Typography variant="h4" render={<div />}>
-				H4
+			<Typography variant="headline-lg" render={<div />}>
+				headline-lg
 			</Typography>
-			<Typography variant="h5" render={<div />}>
-				H5
+			<Typography variant="headline-md" render={<div />}>
+				headline-md
 			</Typography>
-			<Typography variant="h6" render={<div />}>
-				H6
+			<Typography variant="headline-sm" render={<div />}>
+				headline-sm
 			</Typography>
-			<Typography variant="inherit">inherit</Typography>
-			<Typography variant="overline">overline</Typography>
-			<Typography variant="subtitle1" render={<div />}>
-				subtitle1
+			<Typography variant="body-lg">body-lg</Typography>
+			<Typography variant="body-md">body-md</Typography>
+			<Typography variant="body-sm">body-sm</Typography>
+			<Typography variant="subtitle-lg" render={<div />}>
+				subtitle-lg
 			</Typography>
-			<Typography variant="subtitle2" render={<div />}>
-				subtitle2
+			<Typography variant="subtitle-md" render={<div />}>
+				subtitle-md
 			</Typography>
+			<Typography variant="subtitle-sm" render={<div />}>
+				subtitle-sm
+			</Typography>
+			<Typography variant="caption-lg">caption-lg</Typography>
+			<Typography variant="caption-md">caption-md</Typography>
+			<Typography variant="caption-sm">caption-sm</Typography>
+			<Typography variant="mono-sm">mono-sm</Typography>
 		</Stack>
 	);
 };

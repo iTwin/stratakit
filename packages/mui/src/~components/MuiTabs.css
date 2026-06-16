@@ -10,6 +10,12 @@
 	--_MuiTab-padding-inline: var(--stratakit-space-x3);
 
 	min-block-size: unset; /* Allow `.MuiTab-root` to define height */
+
+	&:where([data-_sk-size="small"]) {
+		--_MuiTab-height: var(--stratakit-size-control-field-height-small);
+		--_MuiTab-padding-block: var(--stratakit-space-x05);
+		--_MuiTab-padding-inline: var(--stratakit-space-x2);
+	}
 }
 
 .MuiTabs-list {
@@ -52,6 +58,10 @@
 	transition:
 		background-color 150ms ease-out,
 		color 150ms ease-out;
+
+	:where(.MuiTabs-root[data-_sk-size="small"]) & {
+		@apply --typography("body-sm");
+	}
 
 	/* This pseudo-element increases tap target size */
 	&::before {

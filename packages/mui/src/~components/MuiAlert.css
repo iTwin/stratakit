@@ -37,6 +37,10 @@
 	opacity: 1; /* Stock MUI reduces the icon opacity for some reason. */
 	margin-inline-end: var(--stratakit-space-x2);
 
+	&:where(:empty) {
+		display: none;
+	}
+
 	:where(.MuiAlert-root.MuiAlert-colorSuccess) & {
 		color: var(--stratakit-color-icon-positive-base);
 	}

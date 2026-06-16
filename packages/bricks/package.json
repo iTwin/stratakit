@@ -121,6 +121,12 @@
 			"development": "./dist/DEV/Switch.js",
 			"default": "./dist/Switch.js"
 		},
+		"./Table": {
+			"@stratakit/source": "./src/Table.tsx",
+			"types": "./dist/Table.d.ts",
+			"development": "./dist/DEV/Table.js",
+			"default": "./dist/Table.js"
+		},
 		"./Text": {
 			"@stratakit/source": "./src/Text.tsx",
 			"types": "./dist/Text.d.ts",
@@ -177,7 +183,7 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.25",
+		"@ariakit/react": "^0.4.29",
 		"@stratakit/foundations": "^0.4.6",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"

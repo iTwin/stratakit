@@ -156,7 +156,7 @@
 .MuiSlider-markLabel {
 	--✨gap: calc(var(--_MuiSlider-thumb-size) + var(--stratakit-space-x1));
 
-	@apply --typography("caption-lg");
+	@apply --typography("caption-md");
 	color: var(--stratakit-color-text-neutral-tertiary);
 	user-select: none; /* Disabled because slider intercepts all pointer events */
 

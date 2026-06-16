@@ -20,8 +20,6 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
 
-const theme = createTheme();
-
 const packageName = "@stratakit/mui";
 const key = `${packageName}@${__VERSION__}`;
 
@@ -52,6 +50,13 @@ interface RootProps
 const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const { children, colorScheme, unstable_accentColor, ...rest } = props;
 
+	const [portalContainer, setPortalContainer] =
+		React.useState<HTMLDivElement | null>();
+
+	const theme = React.useMemo(
+		() => createTheme({ portalContainer }),
+		[portalContainer],
+	);
 	return (
 		<StyledEngineProvider>
 			<ThemeProvider
@@ -66,6 +71,7 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 					{...rest}
 					colorScheme={colorScheme}
 					unstable_accentColor={unstable_accentColor}
+					portalContainerRef={setPortalContainer}
 					ref={forwardedRef}
 				>
 					<Styles />
@@ -81,18 +87,26 @@ DEV: Root.displayName = "Root";
 
 interface RootInnerProps
 	extends BaseProps<"div">,
-		Pick<RootProps, "colorScheme" | "unstable_accentColor" | "rootNode"> {}
+		Pick<RootProps, "colorScheme" | "unstable_accentColor" | "rootNode"> {
+	portalContainerRef: React.Ref<HTMLDivElement>;
+}
 
 /** @private */
 const RootInner = forwardRef<"div", RootInnerProps>((props, forwardedRef) => {
-	const { children, colorScheme, unstable_accentColor, rootNode, ...rest } =
-		props;
+	const {
+		children,
+		colorScheme,
+		unstable_accentColor,
+		rootNode,
+		portalContainerRef,
+		...rest
+	} = props;
 
 	return (
 		<StrataKitRoot
 			{...rest}
 			className={cx("🥝MuiRoot", props.className)}
-			portalContainer={<div className="🥝MuiRoot" />}
+			portalContainer={<div className="🥝MuiRoot" ref={portalContainerRef} />}
 			colorScheme={colorScheme}
 			unstable_accentColor={unstable_accentColor}
 			rootNode={rootNode}

@@ -22,6 +22,9 @@ interface DescriptionProps extends BaseProps {
  * A presentational description.
  *
  * See `Field.Description` for convenient usage with form controls.
+ *
+ * @deprecated Use MUI [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#description).
  */
 const Description = forwardRef<"div", DescriptionProps>(
 	(props, forwardedRef) => {

@@ -22,7 +22,7 @@
 
 @media (forced-colors: active) {
 	.🥝IconButton {
-		&:where([inert]) {
+		&:where([inert], [aria-hidden="true"]) {
 			border: none;
 		}
 	}

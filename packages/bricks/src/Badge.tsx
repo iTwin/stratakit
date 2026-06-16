@@ -47,6 +47,9 @@ interface BadgeProps extends Omit<BaseProps<"span">, "children"> {
  * <Badge label="Value" />
  * <Badge label="Value" tone="info" variant="outline" icon={…} />
  * ```
+ *
+ * @deprecated Use MUI [`Badge`](https://mui.com/material-ui/api/badge/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#badge).
  */
 const Badge = forwardRef<"span", BadgeProps>((props, forwardedRef) => {
 	useInit();

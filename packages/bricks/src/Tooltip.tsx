@@ -75,6 +75,9 @@ interface TooltipProps
  * tooltip to a non-interactive static element (such as a `<div>` or `<svg>`).
  *
  * **Note**: If `type` is set to `"none"`, the tooltip will not use ARIA attributes.
+ *
+ * @deprecated Use MUI [`Tooltip`](https://mui.com/material-ui/api/tooltip/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#tooltip).
  */
 const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 	useInit();

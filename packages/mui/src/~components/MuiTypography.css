@@ -39,4 +39,58 @@
 	&:where(.MuiTypography-subtitle2) {
 		@apply --typography("subtitle-md");
 	}
+
+	&:where(.MuiTypography-display-lg) {
+		@apply --typography("display-lg");
+	}
+	&:where(.MuiTypography-display-md) {
+		@apply --typography("display-md");
+	}
+	&:where(.MuiTypography-display-sm) {
+		@apply --typography("display-sm");
+	}
+
+	&:where(.MuiTypography-headline-lg) {
+		@apply --typography("headline-lg");
+	}
+	&:where(.MuiTypography-headline-md) {
+		@apply --typography("headline-md");
+	}
+	&:where(.MuiTypography-headline-sm) {
+		@apply --typography("headline-sm");
+	}
+
+	&:where(.MuiTypography-body-lg) {
+		@apply --typography("body-lg");
+	}
+	&:where(.MuiTypography-body-md) {
+		@apply --typography("body-md");
+	}
+	&:where(.MuiTypography-body-sm) {
+		@apply --typography("body-sm");
+	}
+
+	&:where(.MuiTypography-subtitle-lg) {
+		@apply --typography("subtitle-lg");
+	}
+	&:where(.MuiTypography-subtitle-md) {
+		@apply --typography("subtitle-md");
+	}
+	&:where(.MuiTypography-subtitle-sm) {
+		@apply --typography("subtitle-sm");
+	}
+
+	&:where(.MuiTypography-caption-lg) {
+		@apply --typography("caption-lg");
+	}
+	&:where(.MuiTypography-caption-md) {
+		@apply --typography("caption-md");
+	}
+	&:where(.MuiTypography-caption-sm) {
+		@apply --typography("caption-sm");
+	}
+
+	&:where(.MuiTypography-mono-sm) {
+		@apply --typography("mono-sm");
+	}
 }

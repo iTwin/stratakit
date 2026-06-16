@@ -118,14 +118,6 @@ Choose a [`NavigationRail.Anchor`](/reference/structures/NavigationRail#Navigati
 
 Mark a [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor)’s current link destination with the [`active`](/reference/structures/NavigationRail#NavigationRail.Anchor.active) prop. This prop is not supported on [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
 
-### The `suffix` prop
-
-Use the [`suffix`](/reference/structures/NavigationRail#NavigationRail.Anchor.suffix) prop to display additional information. For example, for items that open in a new tab, render an icon with the alternate text "(opens in a new tab)".
-
-```jsx
-<NavigationRail.Anchor suffix="(opens in a new tab)">Help</NavigationRail.Anchor>
-```
-
 :::caution[Routing]
 
 Each [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) must take the user to a separate screen belonging to the application. Each screen/page must have a [unique title](/guides/language-and-labels/#the-page-title). If you are using a single-page application architecture, the `<title>` will have to be updated dynamically. When the new screen is rendered, keyboard focus must be relocated. Typically, this will be to the `<h1>` heading of the new screen, giving context to screen reader users.
@@ -133,6 +125,14 @@ Each [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRa
 Your router component may implement some of these behaviors for you.
 
 :::
+
+### The `suffix` prop
+
+Use the [`suffix`](/reference/structures/NavigationRail#NavigationRail.Anchor.suffix) prop to display additional information. For example, for items that open in a new tab, render an icon with the alternate text "(opens in a new tab)".
+
+```jsx
+<NavigationRail.Anchor suffix="(opens in a new tab)">Help</NavigationRail.Anchor>
+```
 
 ## Examples
 
@@ -159,5 +159,5 @@ Combine **NavigationRail** with other components to create a more complex naviga
 ## 🚫 Don't
 
 - Don't insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
-- Don't place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer)
+- Don't place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer).
 - Don't make multiple `NavigationRail.Anchor`s `active` at the same time.

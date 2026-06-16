@@ -158,5 +158,6 @@ Combine **NavigationRail** with other components to create a more complex naviga
 
 ## 🚫 Don't
 
-- Don’t insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
-- Don’t place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer)
+- Don't insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
+- Don't place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer)
+- Don't make multiple `NavigationRail.Anchor`s `active` at the same time.

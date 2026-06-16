@@ -140,7 +140,7 @@ Use the [`suffix`](/reference/structures/NavigationRail#NavigationRail.Anchor.su
 
 Combine **NavigationRail** with other components to create a more complex navigation experience.
 
-::example{src="structures/NavigationRail.comprehensive" min-height="450px" min-width="450px" vertical-stretch}
+In the example below:
 
 - The [`NavigationRail.Root`](/reference/structures/NavigationRail/#NavigationRail.Root) state is controlled via the [`expanded`](/reference/structures/NavigationRail#NavigationRail.Root.expanded) and [`setExpanded`](/reference/structures/NavigationRail#NavigationRail.Root.setExpanded) props, enabling conditional rendering based on whether the rail is expanded or collapsed.
 - The [**Badge**](/components/badge/) component is used to display a notification indicator for the "Notifications" item.
@@ -148,6 +148,8 @@ Combine **NavigationRail** with other components to create a more complex naviga
   - When the rail is expanded, an [inline badge](/components/badge/#inline) with the notification count "3" is displayed next to the label via the `suffix` prop.
   - In both states, the `suffix` prop contributes to the accessible name by adding a "(3 unread)" message, resulting in the accessible name "Notifications (3 unread)".
 - The [**Menu**](/components/menu/) component is used to expose multiple related actions for the "Account" item.
+
+::example{src="structures/NavigationRail.comprehensive" min-height="450px" min-width="450px" vertical-stretch}
 
 ## ✅ Do
 

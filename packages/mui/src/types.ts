@@ -425,6 +425,9 @@ declare module "@mui/material/Tabs" {
 
 		/** @deprecated DO NOT USE. */
 		allowScrollButtonsMobile?: boolean;
+
+		/** @deprecated DO NOT USE. */
+		scrollButtons?: TabsProps["scrollButtons"];
 	}
 }
 

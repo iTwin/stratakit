@@ -6,16 +6,49 @@
 .MuiTabs-root {
 	--_MuiTabs-indicator-gap: var(--stratakit-space-x2);
 	--_MuiTab-height: var(--stratakit-size-control-field-height-medium);
+	--_MuiTab-max-width: 70ch;
 	--_MuiTab-padding-block: var(--stratakit-space-x1);
 	--_MuiTab-padding-inline: var(--stratakit-space-x3);
+	--_MuiTab-scroll-button-size: var(
+		--stratakit-size-control-field-height-small
+	); /* Uses small size to minimize obscuring tabs. */
 
+	isolation: isolate;
 	min-block-size: unset; /* Allow `.MuiTab-root` to define height */
+	position: relative;
 
 	&:where([data-_sk-size="small"]) {
 		--_MuiTab-height: var(--stratakit-size-control-field-height-small);
 		--_MuiTab-padding-block: var(--stratakit-space-x05);
 		--_MuiTab-padding-inline: var(--stratakit-space-x2);
 	}
+
+	/* #region Pseudo element to prevent accidental tab clicks near first scroll button */
+	@media (pointer: fine) {
+		&:where(:has(> .MuiTabScrollButton-root:not(.Mui-disabled):first-child))::after {
+			content: "";
+			position: absolute;
+		}
+
+		&:where(
+				:has(
+					> .MuiTabScrollButton-root.MuiTabScrollButton-horizontal:not(.Mui-disabled):first-child
+				)
+			)::after {
+			inset: 0;
+			inset-inline-end: auto;
+			inline-size: var(--_MuiTab-scroll-button-size);
+		}
+
+		&:where(
+				:has(> .MuiTabScrollButton-root.MuiTabScrollButton-vertical:not(.Mui-disabled):first-child)
+			)::after {
+			inset: 0;
+			inset-block-end: auto;
+			block-size: var(--_MuiTab-scroll-button-size);
+		}
+	}
+	/* #endregion */
 }
 
 .MuiTabs-list {
@@ -47,6 +80,7 @@
 	border-radius: 4px;
 	color: var(--_MuiTab-color);
 	gap: var(--stratakit-space-x1);
+	max-inline-size: var(--_MuiTab-max-width);
 	min-block-size: var(--_MuiTab-height);
 	min-inline-size: var(--_MuiTab-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
 	overflow: visible;
@@ -74,13 +108,11 @@
 	}
 
 	:where(.MuiTabs-list:not(.MuiTabs-vertical)) & {
-		margin-block-start: var(--_MuiTabs-indicator-gap);
 		margin-block-end: var(--_MuiTabs-indicator-gap);
 		--_MuiTab-tap-target-inset-block: var(--✨inset);
 	}
 
 	:where(.MuiTabs-list.MuiTabs-vertical) & {
-		margin-inline-start: var(--_MuiTabs-indicator-gap);
 		margin-inline-end: var(--_MuiTabs-indicator-gap);
 		--_MuiTab-tap-target-inset-inline: var(--✨inset);
 	}
@@ -94,8 +126,13 @@
 	--_MuiTab-background-color: var(--✨bg--default);
 	--_MuiTab-color: var(--✨color--default);
 	--🥝Icon-color: var(--✨icon--default);
+	--_MuiTab-selected-color: var(--✨color--default);
+	--_MuiTab-selected-icon-color: var(--✨icon--default);
 
 	&:where(.MuiTab-textColorPrimary) {
+		--_MuiTab-selected-color: var(--✨color--selected-accent);
+		--_MuiTab-selected-icon-color: var(--✨icon--selected-accent);
+
 		@media (any-hover: hover) {
 			&:where(:not(.Mui-disabled):hover) {
 				--_MuiTab-background-color: var(--✨bg--hover-accent);
@@ -103,14 +140,12 @@
 				--🥝Icon-color: var(--✨icon--selected-accent);
 			}
 		}
-
-		&:where(.Mui-selected) {
-			--_MuiTab-color: var(--✨color--selected-accent);
-			--🥝Icon-color: var(--✨icon--selected-accent);
-		}
 	}
 
 	&:where(.MuiTab-textColorSecondary) {
+		--_MuiTab-selected-color: var(--✨color--selected-neutral);
+		--_MuiTab-selected-icon-color: var(--✨icon--selected-neutral);
+
 		@media (any-hover: hover) {
 			&:where(:not(.Mui-disabled):hover) {
 				--_MuiTab-background-color: var(--✨bg--hover-neutral);
@@ -118,11 +153,11 @@
 				--🥝Icon-color: var(--✨icon--selected-neutral);
 			}
 		}
+	}
 
-		&:where(.Mui-selected) {
-			--_MuiTab-color: var(--✨color--selected-neutral);
-			--🥝Icon-color: var(--✨icon--selected-neutral);
-		}
+	&:where(.Mui-selected) {
+		--_MuiTab-color: var(--_MuiTab-selected-color);
+		--🥝Icon-color: var(--_MuiTab-selected-icon-color);
 	}
 
 	&:where(.Mui-disabled) {
@@ -151,5 +186,113 @@
 
 	@media (prefers-reduced-motion: reduce) {
 		transition: none;
+	}
+}
+
+.MuiTabScrollButton-root {
+	--🥝Icon-color: var(--stratakit-color-icon-neutral-base);
+
+	background-color: var(--_MuiTab-scroll-button-background-color, transparent);
+	block-size: var(--_MuiTab-scroll-button-size);
+	border-radius: 4px;
+	opacity: 1;
+	transition: background-color 150ms ease-out;
+
+	/* First scroll button is absolute positioned to prevent layout shift */
+	&:where(:nth-child(1 of &)) {
+		position: absolute;
+		z-index: 1;
+	}
+
+	&:where(.MuiTabScrollButton-horizontal) {
+		inline-size: var(--_MuiTab-scroll-button-size);
+		inset-block: 0;
+
+		:where(.MuiTabs-root:not([data-_sk-size="small"])) & {
+			margin-block-start: var(--stratakit-space-x1);
+		}
+
+		&:where(:nth-child(1 of &)) {
+			inset-inline-start: 0;
+		}
+	}
+
+	&:where(.MuiTabScrollButton-vertical) {
+		inset-inline: 0;
+		max-inline-size: var(--_MuiTab-max-width);
+
+		&:where(:nth-child(1 of &)) {
+			inset-block-start: 0;
+		}
+	}
+
+	@media (any-hover: hover) {
+		&:where(:not(.Mui-disabled):hover) {
+			--_MuiTab-scroll-button-background-color: var(
+				--stratakit-color-bg-glow-on-surface-neutral-hover
+			);
+			--🥝Icon-color: var(--stratakit-color-icon-neutral-primary);
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+
+	/* First scroll button disappears when disabled because of absolute positioning */
+	&:where(.Mui-disabled:nth-child(1 of &)) {
+		display: none;
+	}
+
+	@media (pointer: coarse) {
+		display: none;
+	}
+}
+
+.MuiTabs-scroller {
+	--✨fade-size: var(--stratakit-space-x2);
+	--✨scroll-padding: calc(var(--✨fade-size) + var(--_MuiTab-scroll-button-size));
+
+	--_MuiTabs-scroller-fade-start: var(--✨fade-size);
+	--_MuiTabs-scroller-fade-end: var(--✨fade-size);
+	--_MuiTabs-scroller-fade-inset-start: 0px;
+
+	@media (pointer: coarse) {
+		scrollbar-width: thin; /* Show a scrollbar on touch; on mouse, scroll buttons provide the extra affordance. */
+	}
+
+	@media (pointer: fine) {
+		--_MuiTabs-scroller-fade-inset-start: var(--_MuiTab-scroll-button-size);
+	}
+
+	:where(.MuiTabs-root:has(> .MuiTabScrollButton-root.Mui-disabled:first-child)) & {
+		--_MuiTabs-scroller-fade-start: 0px;
+		--_MuiTabs-scroller-fade-inset-start: 0px;
+	}
+
+	:where(.MuiTabs-root:has(> .MuiTabScrollButton-root.Mui-disabled:last-child)) & {
+		--_MuiTabs-scroller-fade-end: 0px;
+	}
+
+	mask-image: linear-gradient(
+		to var(--_MuiTabs-scroller-direction),
+		transparent,
+		transparent var(--_MuiTabs-scroller-fade-inset-start),
+		#000 calc(var(--_MuiTabs-scroller-fade-inset-start) + var(--_MuiTabs-scroller-fade-start)),
+		#000 calc(100% - var(--_MuiTabs-scroller-fade-end)),
+		transparent 100%,
+		transparent
+	);
+
+	&:where(.MuiTabs-scrollableX) {
+		--_MuiTabs-scroller-direction: right;
+		overscroll-behavior-x: contain;
+		scroll-padding-inline: var(--✨scroll-padding);
+	}
+
+	&:where(.MuiTabs-scrollableY) {
+		--_MuiTabs-scroller-direction: bottom;
+		overscroll-behavior-y: contain;
+		scroll-padding-block: var(--✨scroll-padding);
 	}
 }

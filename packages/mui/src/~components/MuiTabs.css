@@ -227,7 +227,7 @@
 	}
 
 	@media (any-hover: hover) {
-		&:where(:hover) {
+		&:where(:not(.Mui-disabled):hover) {
 			--_MuiTab-scroll-button-background-color: var(
 				--stratakit-color-bg-glow-on-surface-neutral-hover
 			);
@@ -236,6 +236,11 @@
 	}
 
 	&:where(.Mui-disabled) {
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-disabled);
+	}
+
+	/* First scroll button disappears when disabled because of absolute positioning */
+	&:where(.Mui-disabled:nth-child(1 of &)) {
 		display: none;
 	}
 

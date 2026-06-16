@@ -28,7 +28,7 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 
 ## Setting up
 
-- Follow the [quick start guide](https://github.com/iTwin/stratakit/blob/main/apps/website/src/content/docs/getting-started/develop.mdx)
+- Follow the [quick start guide](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/develop.mdx)
 
 ## Packages
 
@@ -36,7 +36,7 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 - **`@stratakit/structures`** - Larger, structure level components with complex behavior
 - **`@stratakit/icons`** - Source of all icons
 - **`@stratakit/foundations`** - Design tokens and CSS reset. Use directly in non-React UIs only; otherwise use `@stratakit/mui`
-- **`@stratakit/bricks`** - Legacy package that should never be used. Replace with `@mui/material` using the [migration guide](https://github.com/iTwin/stratakit/blob/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx).
+- **`@stratakit/bricks`** - Legacy package that should never be used. Replace with `@mui/material` using the [migration guide](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx).
 
 ## Consult documentation
 
@@ -51,7 +51,7 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 
 - [Examples page](https://stratakit.bentley.com/docs/examples/)
 - [Examples source](https://github.com/iTwin/stratakit/tree/main/examples)
-- Examples are embedded using the `::example` directive. E.g. `::example{src="mui/Button.default"}` embeds the example from https://github.com/iTwin/stratakit/blob/main/examples/mui/Button.default.tsx
+- Examples are embedded using the `::example` directive. E.g. `::example{src="mui/Button.default"}` embeds the example from https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/examples/mui/Button.default.tsx
 - Use `data-src` attribute of `<example-embed>` element to identify the embedded examples
 - Access embedded example source via "View source on GitHub" links
 
@@ -63,25 +63,25 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 ## Component usage
 
 - Follow the [components overview](https://stratakit.bentley.com/docs/components/overview/)
-- Always consult the documentation before using the component. E.g. [`Button` documentation](https://stratakit.bentley.com/docs/components/button/) and its [source code](https://github.com/iTwin/stratakit/blob/main/apps/website/src/content/docs/components/mui/Button.md)
-- Always follow embedded examples to understand correct usage patterns. E.g. the [`Button` default example](https://github.com/iTwin/stratakit/blob/main/examples/mui/Button.default.tsx)
+- Always consult the documentation before using the component. E.g. [`Button` documentation](https://stratakit.bentley.com/docs/components/button/) and its [source code](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/mui/Button.md)
+- Always follow embedded examples to understand correct usage patterns. E.g. the [`Button` default example](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/examples/mui/Button.default.tsx)
 
 ## `@mui/material` usage
 
 - Use MUI components from `@mui/material` package after setting up StrataKit
 - Use documentation to understand StrataKit's modifications to MUI components
-- [MUI type augmentation source](https://github.com/iTwin/stratakit/blob/main/packages/mui/src/types.ts)
+- [MUI type augmentation source](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/packages/mui/src/types.ts)
 - Never use `component` prop of MUI components; use `render` prop instead
 
 ## `@stratakit/structures` usage
 
-- Use only [`ErrorRegion`](https://github.com/iTwin/stratakit/blob/main/apps/website/src/content/docs/components/stratakit/ErrorRegion.md), [`NavigationRail`](https://github.com/iTwin/stratakit/blob/main/apps/website/src/content/docs/components/stratakit/NavigationRail.md), [`Toolbar`](https://github.com/iTwin/stratakit/blob/main/apps/website/src/content/docs/components/stratakit/Toolbar.md), [`Tree`](https://github.com/iTwin/stratakit/blob/main/apps/website/src/content/docs/components/stratakit/Tree.md) components
-- Do not use `AccordionItem`, `Banner`, `Chip`, `Dialog`, `DropdownMenu`, `Popover`, `Table`, `Tabs` from `@stratakit/structures`. Use [alternatives](https://github.com/iTwin/stratakit/blob/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx) from `@mui/material` instead
+- Use only [`ErrorRegion`](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/ErrorRegion.md), [`NavigationRail`](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/NavigationRail.md), [`Toolbar`](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/Toolbar.md), [`Tree`](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/Tree.md) components
+- Do not use `AccordionItem`, `Banner`, `Chip`, `Dialog`, `DropdownMenu`, `Popover`, `Table`, `Tabs` from `@stratakit/structures`. Use [alternatives](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx) from `@mui/material` instead
 
 ## Icon usage
 
 - [Icons documentation](https://stratakit.bentley.com/docs/icons/)
-- [`Icon` component](https://github.com/iTwin/stratakit/blob/main/apps/website/src/content/docs/components/stratakit/Icon.md)
+- [`Icon` component](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/Icon.md)
 - Icons are listed in `node_modules/@stratakit/icons/icons-list.json`
 - Always use icons from `@stratakit/icons` package
 - Never use `@mui/icons-material` or other icon libraries
@@ -89,7 +89,7 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 ## Token usage
 
 - [Available tokens](https://stratakit.bentley.com/tokens/)
-- [Spacing tokens](https://github.com/iTwin/stratakit/blob/main/packages/foundations/src/~space.css)
+- [Spacing tokens](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/packages/foundations/src/%7Espace.css)
 - Tokens are exposed as [CSS custom properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascading_variables/Using_custom_properties)
 - Never use internal tokens, prefixed with `--_stratakit-` or `--🥝`
 

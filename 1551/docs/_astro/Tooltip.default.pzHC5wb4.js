@@ -1,0 +1,1 @@
+import{j as t,T as e}from"./_utils.D3DMBOox.js";import{B as i}from"./Button.CiA5tABP.js";const a=()=>t.jsx(e,{title:"Save is disabled until you finish reading the documentation",children:t.jsx(i,{disabled:!0,children:"Save"})});export{a as default};

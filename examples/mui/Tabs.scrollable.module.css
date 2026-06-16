@@ -4,9 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 .container {
-	max-inline-size: 400px;
-}
-
-.scrollButton:where(.disabled) {
-	opacity: 0.3;
+	inline-size: 400px;
+	max-inline-size: 100%;
 }

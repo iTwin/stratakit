@@ -47,7 +47,7 @@ import {
 	MuiTableCell,
 	MuiTableHead,
 } from "./~components/MuiTable.js";
-import { MuiTabs } from "./~components/MuiTabs.js";
+import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
@@ -487,8 +487,24 @@ function createTheme(args: CreateThemeArgs) {
 			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
-			MuiTabs: { defaultProps: { component: MuiTabs } },
-			MuiTab: { defaultProps: { iconPosition: "start" } },
+			MuiTabs: {
+				defaultProps: {
+					component: MuiTabs,
+					allowScrollButtonsMobile: true,
+					slotProps: {
+						scrollButtons: {
+							"aria-hidden": true,
+						},
+						startScrollButtonIcon: {
+							component: ChevronLeftIcon,
+						},
+						endScrollButtonIcon: {
+							component: ChevronRightIcon,
+						},
+					},
+				},
+			},
+			MuiTab: { defaultProps: { component: MuiTab, iconPosition: "start" } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
 				defaultProps: {

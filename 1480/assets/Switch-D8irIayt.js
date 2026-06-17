@@ -1,0 +1,1 @@
+import{j as a}from"./index-BGd00B3N.js";import{C as r}from"./checkbox-DWZC9JRI.js";import{z as t,ai as o,H as i}from"./~utils-eoiDvYER.js";import{u as c}from"./Field.internal-Bikk_D8W.js";const m=t((e,s)=>(o(),c("checkable"),a.jsx(r,{accessibleWhenDisabled:!0,...e,className:i("🥝Switch",e.className),role:"switch",ref:s})));var n=m;export{n as S};

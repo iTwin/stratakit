@@ -32,7 +32,7 @@ const MuiBadge = forwardRef<"span", MuiBadgeProps>((props, forwardedRef) => {
 		<MuiBadgeContext.Provider value={{ inline }}>
 			<Role.span
 				{...rest}
-				data-_sk-emphasis={emphasis ?? "strong"}
+				data-_sk-emphasis={emphasis}
 				data-_sk-inline={inline ? "" : undefined}
 				ref={forwardedRef}
 			/>

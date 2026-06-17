@@ -48,6 +48,8 @@ In most cases, you should supplement the `color` with [iconography](#icons).
 
 ### Emphasis
 
+Use the `emphasis` prop to adjust the visual prominence of an [`inline`](#inline) **Badge**.
+
 - **Strong:** The default, use when you need the strongest emphasis.
 - **Moderate:** Use when you want a balanced level of emphasis.
 - **Subtle:** Use when you need the least emphasis.

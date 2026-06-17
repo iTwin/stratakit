@@ -48,7 +48,3 @@
 		background-color: oklch(from var(--stratakit-color-bg-elevation-overlay) l c h / 0.8);
 	}
 }
-
-.MuiRating-root {
-	inline-size: fit-content;
-}

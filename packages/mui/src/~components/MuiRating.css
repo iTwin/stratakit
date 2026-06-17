@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .MuiRating-root {
 	color: var(--stratakit-color-icon-neutral-base);
+	inline-size: fit-content;
 
 	&:where(.Mui-disabled) {
 		color: var(--stratakit-color-icon-neutral-disabled);

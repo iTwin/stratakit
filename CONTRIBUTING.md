@@ -173,6 +173,16 @@ Before creating a pull request, make sure your changes address a specific issue.
 
 To enable us to quickly review and accept your pull requests, always create one pull request per issue. Never merge multiple requests in one unless they have the same root cause. Be sure to follow best practices and keep code changes as small as possible. Avoid pure formatting changes or random "fixes" that are unrelated to the linked issue.
 
+### Merging
+
+#### Non-core contributors
+
+Non-core team member contributors should have their pull requests reviewed and merged by a core team member.
+
+#### Core Team members
+
+Team members should merge their own pull requests once it has two approvals. This is not a hard rule and it may be acceptable to merge with only one review or merge another member's pull request depending on the circumstances.
+
 ### AI use
 
 If artificial intelligence is used to generate any portion of the code, tests, or documentation in your pull request, you are still fully responsible for reviewing the output for correctness and adherence to project standards prior to submission.

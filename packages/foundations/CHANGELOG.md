@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.9
+
+### Patch Changes
+
+- [#1516](https://github.com/iTwin/stratakit/pull/1516): Updated sizes for `"caption-lg"`, `"caption-md"` and `"caption-sm"` typogrpahy variants.
+
 ## 0.4.8
 
 - [#1327](https://github.com/iTwin/stratakit/pull/1327): Added `unstable_accentColor` prop to `Root` component. When `"cobalt"` value is specified, the accent color is changed to blue.

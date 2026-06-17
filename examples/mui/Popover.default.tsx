@@ -43,7 +43,7 @@ export default () => {
 					},
 				}}
 			>
-				<Stack spacing={1} sx={{ p: 1 }}>
+				<Stack spacing={1}>
 					<Typography variant="headline-sm" render={<h2 />} id={headingId}>
 						Coordinate System
 					</Typography>

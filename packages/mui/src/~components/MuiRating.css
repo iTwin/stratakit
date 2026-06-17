@@ -4,22 +4,22 @@
  *--------------------------------------------------------------------------------------------*/
 .MuiRating-root {
 	color: var(--stratakit-color-icon-neutral-base);
-}
 
-.MuiRating-root.Mui-disabled {
-	color: var(--stratakit-color-icon-neutral-disabled);
-}
+	&:where(.Mui-disabled) {
+		color: var(--stratakit-color-icon-neutral-disabled);
+	}
 
-.MuiRating-iconHover {
-	color: var(--stratakit-color-icon-neutral-primary);
-}
+	& :where(.MuiRating-iconHover) {
+		color: var(--stratakit-color-icon-neutral-primary);
+	}
 
-.Mui-focusVisible .MuiRating-iconActive {
-	outline: var(--🥝focus-outline);
-	outline-offset: var(--🥝focus-outline-offset);
-}
+	:where(.Mui-focusVisible) & :where(.MuiRating-iconActive) {
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
 
-.MuiRating-labelEmptyValueActive {
-	outline: var(--🥝focus-outline);
-	outline-offset: var(--🥝focus-outline-offset);
+	& :where(.MuiRating-labelEmptyValueActive) {
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
 }

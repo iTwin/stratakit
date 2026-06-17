@@ -2,10 +2,8 @@
 
 ## 0.5.8
 
-### Patch Changes
-
 - [#1445](https://github.com/iTwin/stratakit/pull/1445): Added `suffix` prop to `NavigationRail.Anchor` and `NavigationRail.Button` components.
-- [#1516](https://github.com/iTwin/stratakit/pull/1516): Updated sizes for `"caption-lg"`, `"caption-md"` and `"caption-sm"` typogrpahy variants.
+- [#1516](https://github.com/iTwin/stratakit/pull/1516): Adjusted sizes for `caption-*` typography variants.
 - [#1529](https://github.com/iTwin/stratakit/pull/1529): Removed an unnecessary instance of `inert` attribute which was triggering warnings in React 18.
 - [#1553](https://github.com/iTwin/stratakit/pull/1553): Fixed font-size for inherited typographical elements inside `ErrorRegion.Item` actions.
 - [#1541](https://github.com/iTwin/stratakit/pull/1541): The `Table` component has been moved from `@stratakit/structures` to `@stratakit/bricks` and marked as deprecated. Please update your imports:

@@ -2,9 +2,8 @@
 
 ## 0.4.9
 
-### Patch Changes
-
-- [#1516](https://github.com/iTwin/stratakit/pull/1516): Updated sizes for `"caption-lg"`, `"caption-md"` and `"caption-sm"` typogrpahy variants.
+- [#1516](https://github.com/iTwin/stratakit/pull/1516): Adjusted sizes for `caption-*` typography variants.
+- [#1551](https://github.com/iTwin/stratakit/pull/1551): Adjusted sizes for the `display-*` and `headline-°` typography variants.
 
 ## 0.4.8
 

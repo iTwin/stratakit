@@ -2,25 +2,22 @@
 
 ## 0.4.0
 
-### Minor Changes
+### Breaking changes
 
-- [#1475](https://github.com/iTwin/stratakit/pull/1475): Removed aliases for the following icons which were previously marked as deprecated:
+- [#1475](https://github.com/iTwin/stratakit/pull/1475): ⚠️ Removed the following icons which were previously marked as deprecated:
+  - `android-logo.svg`
+  - `apple.svg`
+  - `bentley-systems.svg`
+  - `windows.svg`
+  - `object-zoom.svg`
 
-  | Old name              | New name                    |
-  | --------------------- | --------------------------- |
-  | `android-logo.svg`    | `brand-android.svg`         |
-  | `apple.svg`           | `brand-apple.svg`           |
-  | `bentley-systems.svg` | `brand-bentley-systems.svg` |
-  | `windows.svg`         | `brand-windows.svg`         |
-  | `object-zoom.svg`     | `object-zoom-to.svg`        |
-
-### Patch Changes
+### Non-breaking changes
 
 - [#1558](https://github.com/iTwin/stratakit/pull/1558): Updated `sort-ascending.svg` and `sort-descending.svg`.
 
 ## 0.3.2
 
-- [#1474](https://github.com/iTwin/stratakit/pull/1474): ⚠️ Renamed the following icons:
+- [#1474](https://github.com/iTwin/stratakit/pull/1474): Renamed the following icons:
 
   | Old name              | New name                    |
   | --------------------- | --------------------------- |

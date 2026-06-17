@@ -87,6 +87,19 @@ Also, there’s [an internal package](./internal) which is used for configuratio
 
 StrataKit uses [themed components](https://mui.com/material-ui/customization/theme-components/) and [https://mui.com/material-ui/customization/overriding-component-structure/](customized component structures) to align the default Material UI components with the StrataKit design system.
 
+### Style Guide
+
+#### TSX
+
+- For Material UI imports prefer `import Rating from "@mui/material/Rating"` instead of `import { Rating } from "@mui/material"`. For more information see [MUI's guide on reducing bundle size](https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-barrel-imports)
+- For React imports prefer `import * as React from "react"`.
+- Keep imports organized via running `pnpm run lint --write`
+
+#### CSS
+
+- [Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (selector to identify main outerr lent of the component). If there are multiple components (eg. tab list and tabs), use multiple groups.
+- Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to reduce specificity of rules. This makes it easier for consumers who are not using layers to override the StrataKit styling if need.
+
 ### Development environment
 
 To start the development server, run the following command from the root.

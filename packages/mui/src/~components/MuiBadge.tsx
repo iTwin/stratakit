@@ -27,7 +27,7 @@ interface MuiBadgeProps
 		Pick<BadgeProps, "emphasis" | "inline"> {}
 
 const MuiBadge = forwardRef<"span", MuiBadgeProps>((props, forwardedRef) => {
-	const { emphasis, inline, ...rest } = props;
+	const { emphasis = "strong", inline, ...rest } = props;
 	return (
 		<MuiBadgeContext.Provider value={{ inline }}>
 			<Role.span

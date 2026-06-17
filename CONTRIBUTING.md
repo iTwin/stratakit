@@ -91,14 +91,65 @@ StrataKit uses [themed components](https://mui.com/material-ui/customization/the
 
 #### TSX
 
-- For Material UI imports prefer `import Rating from "@mui/material/Rating"` instead of `import { Rating } from "@mui/material"`. For more information see [MUI's guide on reducing bundle size](https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-barrel-imports)
-- For React imports prefer `import * as React from "react"`.
+##### Imports
+
+- For Material UI imports use `import Rating from "@mui/material/Rating"` instead of `import { Rating } from "@mui/material"`. For more information see [MUI's guide on reducing bundle size](https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-barrel-imports)
+- For React imports use `import * as React from "react"`.
 - Keep imports organized via running `pnpm run lint --write`
 
 #### CSS
 
-- [Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (selector to identify main outerr lent of the component). If there are multiple components (eg. tab list and tabs), use multiple groups.
-- Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to reduce specificity of rules. This makes it easier for consumers who are not using layers to override the StrataKit styling if need.
+##### Nest CSS rules
+
+[Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (selector to identify main outerr lent of the component). If there are multiple components (eg. tab list and tabs), use multiple groups.
+
+**Do**
+
+```css
+.MuiToggleButton-root {
+	// ...
+
+	&:where(.Mui-selected) {
+		// ...
+	}
+}
+```
+
+**Don't**
+
+```css
+.MuiToggleBottom-root {
+	// ...
+}
+
+.MuiTogglButton-root:where(.Mui-selected) {
+	//...
+}
+```
+
+#### Lower specificity
+
+Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to reduce specificity of rules. This makes it easier for consumers who are not using layers to override the StrataKit styling if need.
+
+| Selector                               | Specificity |          |
+| -------------------------------------- | ----------- | -------- |
+| `.MuiRating-root.Mui-disabled`         | `0, 2, 0`   | ❌ Don't |
+| `.MuiRating-root:where(.Mui-disabled)` | `0, 1, 0`   | ✅ Do    |
+
+#### Use CSS logical properties
+
+Use [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values) instead of physical properties. This is to support different locales that do use a left-right top-bottom layout.
+
+Below are some examples. Refer to the documentation logical properties for a complete list.
+
+| Physical property | Logical property    |
+| ----------------- | ------------------- |
+| margin-top        | margin-block-start  |
+| margin-bottom     | margin-block-end    |
+| margin-left       | margin-inline-start |
+| magin-right       | margin-inline-end   |
+| max-width         | max-inline-size     |
+| max-height        | max-block-size      |
 
 ### Development environment
 
@@ -172,6 +223,10 @@ export const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) =>
 Before creating a pull request, make sure your changes address a specific issue. Do a search to see if there are any existing issues that are still open. If you don't find one, you can create one. For user-facing changes, add a [changeset](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) by running the `pnpm changeset` command.
 
 To enable us to quickly review and accept your pull requests, always create one pull request per issue. Never merge multiple requests in one unless they have the same root cause. Be sure to follow best practices and keep code changes as small as possible. Avoid pure formatting changes or random "fixes" that are unrelated to the linked issue.
+
+### Responding to reviews
+
+When updating the pull request based on feedback, link to the commit that resolves the comment and allow the reviewer to choose to resolve the comment if they are satisfied.
 
 ### Merging
 

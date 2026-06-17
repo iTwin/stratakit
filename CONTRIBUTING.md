@@ -85,7 +85,7 @@ Also, there’s [an internal package](./internal) which is used for configuratio
 
 ### Customizing Material UI
 
-StrataKit uses [themed components](https://mui.com/material-ui/customization/theme-components/) and [https://mui.com/material-ui/customization/overriding-component-structure/](customized component structures) to align the default Material UI components with the StrataKit design system.
+StrataKit uses [themed components](https://mui.com/material-ui/customization/theme-components/) and [customized component structures](https://mui.com/material-ui/customization/overriding-component-structure/) to align the default Material UI components with the StrataKit design system.
 
 ### Style Guide
 
@@ -101,7 +101,7 @@ StrataKit uses [themed components](https://mui.com/material-ui/customization/the
 
 ##### Nest CSS rules
 
-[Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (selector to identify main outerr lent of the component). If there are multiple components (eg. tab list and tabs), use multiple groups.
+[Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (selector to identify main outer element of the component). If there are multiple components (eg. tab list and tabs), use multiple groups.
 
 **Do**
 

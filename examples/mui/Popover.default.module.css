@@ -5,5 +5,5 @@
 
 .popover {
 	padding: var(--stratakit-space-x4);
-	max-width: 20rem;
+	max-inline-size: 20rem;
 }

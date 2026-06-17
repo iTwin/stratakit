@@ -6,7 +6,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Popover from "@mui/material/Popover";
-import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import styles from "./Popover.default.module.css";
@@ -43,16 +42,19 @@ export default () => {
 					},
 				}}
 			>
-				<Stack spacing={1}>
-					<Typography variant="headline-sm" render={<h2 />} id={headingId}>
-						Coordinate System
-					</Typography>
-					<Typography variant="body-sm">WGS84 (EPSG:4326)</Typography>
-					<Typography variant="caption-md" color="textSecondary">
-						Current projection uses latitude/longitude coordinates with
-						EPSG:4326 WGS84 datum for mapping visualization.
-					</Typography>
-				</Stack>
+				<Typography
+					variant="headline-sm"
+					render={<h2 />}
+					id={headingId}
+					gutterBottom={true}
+				>
+					Coordinate System
+				</Typography>
+				<Typography gutterBottom={true}>WGS84 (EPSG:4326)</Typography>
+				<Typography color="textSecondary" gutterBottom={false}>
+					Current projection uses latitude/longitude coordinates with EPSG:4326
+					WGS84 datum for mapping visualization.
+				</Typography>
 			</Popover>
 		</>
 	);

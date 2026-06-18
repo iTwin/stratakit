@@ -55,6 +55,7 @@
 		"@emotion/styled": "^11.14.1",
 		"@stratakit/foundations": "^0.4.9",
 		"@stratakit/icons": "^0.4.1",
+		"@stratakit/internal-utils": "^0.0.0",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"
 	},
@@ -78,6 +79,7 @@
 				"build:js",
 				"build:DEV",
 				"build:types",
+				"../internal-utils:build",
 				"../foundations:build"
 			]
 		},
@@ -116,6 +118,7 @@
 				"dist/**/*.d.ts"
 			],
 			"dependencies": [
+				"../internal-utils:build:types",
 				"../foundations:build:types"
 			]
 		},

@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { isBrowser, supportsPopover } from "./~utils.js";
+import { isBrowser, supportsPopover } from "./utils.js";
 
-import type { AnyFunction } from "./~utils.js";
+import type { AnyFunction } from "./utils.js";
 
 /**
  * SSR-safe wrapper over `React.useLayoutEffect`.

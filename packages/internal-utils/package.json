@@ -1,7 +1,7 @@
 {
-	"name": "@stratakit/foundations",
+	"name": "@stratakit/internal-utils",
 	"type": "module",
-	"version": "0.4.9",
+	"version": "0.0.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -12,12 +12,6 @@
 			"development": "./dist/DEV/index.js",
 			"default": "./dist/index.js"
 		},
-		"./secret-internals": {
-			"@stratakit/source": "./src/secret-internals.ts",
-			"types": "./dist/secret-internals.d.ts",
-			"development": "./dist/DEV/secret-internals.js",
-			"default": "./dist/secret-internals.js"
-		},
 		"./package.json": "./package.json"
 	},
 	"files": [
@@ -25,27 +19,16 @@
 		"CHANGELOG.md",
 		"LICENSE.md"
 	],
-	"description": "Foundational pieces of StrataKit",
+	"description": "Internal utilities for StrataKit packages",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/stratakit",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/iTwin/stratakit.git",
-		"directory": "packages/foundations"
+		"directory": "packages/internal-utils"
 	},
 	"keywords": [
-		"component",
-		"components",
-		"design-system",
-		"design",
-		"frontend",
-		"itwin",
-		"itwinui",
-		"strata",
-		"stratakit",
-		"react",
-		"ui",
-		"tokens"
+		"stratakit"
 	],
 	"scripts": {
 		"build": "wireit",
@@ -53,16 +36,12 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.29",
-		"@stratakit/internal-utils": "^0.0.0",
-		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"
 	},
 	"devDependencies": {
-		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"esbuild": "catalog:",
-		"lightningcss": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"typescript": "catalog:"
@@ -71,21 +50,12 @@
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},
-	"peerDependenciesMeta": {
-		"react": {
-			"optional": true
-		},
-		"react-dom": {
-			"optional": true
-		}
-	},
 	"wireit": {
 		"build": {
 			"dependencies": [
 				"build:js",
 				"build:DEV",
-				"build:types",
-				"../internal-utils:build"
+				"build:types"
 			]
 		},
 		"build:js": {
@@ -93,9 +63,7 @@
 			"files": [
 				"src",
 				"scripts",
-				"../../internal",
-				"../bricks/src/*.css",
-				"../structures/src/*.css"
+				"../../internal"
 			],
 			"output": [
 				"dist/**/*.js",
@@ -107,9 +75,7 @@
 			"files": [
 				"src",
 				"scripts",
-				"../../internal",
-				"../bricks/src/*.css",
-				"../structures/src/*.css"
+				"../../internal"
 			],
 			"output": [
 				"dist/DEV/**/*.js"
@@ -125,9 +91,6 @@
 			],
 			"output": [
 				"dist/**/*.d.ts"
-			],
-			"dependencies": [
-				"../internal-utils:build:types"
 			]
 		},
 		"dev": {

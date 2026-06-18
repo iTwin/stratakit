@@ -349,6 +349,9 @@ importers:
       "@stratakit/foundations":
         specifier: ^0.4.9
         version: link:../foundations
+      "@stratakit/internal-utils":
+        specifier: ^0.0.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -383,6 +386,9 @@ importers:
       "@ariakit/react":
         specifier: ^0.4.29
         version: 0.4.29(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      "@stratakit/internal-utils":
+        specifier: ^0.0.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -417,6 +423,34 @@ importers:
 
   packages/icons: {}
 
+  packages/internal-utils:
+    dependencies:
+      "@ariakit/react":
+        specifier: ^0.4.29
+        version: 0.4.29(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      react-compiler-runtime:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.2.7)
+    devDependencies:
+      "@types/react":
+        specifier: "catalog:"
+        version: 19.2.16
+      "@types/react-dom":
+        specifier: "catalog:"
+        version: 19.2.3(@types/react@19.2.16)
+      esbuild:
+        specifier: "catalog:"
+        version: 0.28.0
+      react:
+        specifier: "catalog:"
+        version: 19.2.7
+      react-dom:
+        specifier: "catalog:"
+        version: 19.2.7(react@19.2.7)
+      typescript:
+        specifier: "catalog:"
+        version: 6.0.3
+
   packages/mui:
     dependencies:
       "@ariakit/react":
@@ -440,6 +474,9 @@ importers:
       "@stratakit/icons":
         specifier: ^0.4.1
         version: link:../icons
+      "@stratakit/internal-utils":
+        specifier: ^0.0.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -480,6 +517,9 @@ importers:
       "@stratakit/foundations":
         specifier: ^0.4.9
         version: link:../foundations
+      "@stratakit/internal-utils":
+        specifier: ^0.0.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1

@@ -1,7 +1,7 @@
 {
-	"name": "@stratakit/mui",
+	"name": "@stratakit/internal-utils",
 	"type": "module",
-	"version": "0.5.3",
+	"version": "0.0.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -12,11 +12,6 @@
 			"development": "./dist/DEV/index.js",
 			"default": "./dist/index.js"
 		},
-		"./types.d.ts": {
-			"@stratakit/source": "./src/types.d.ts",
-			"types": "./dist/types.d.ts",
-			"default": "./dist/types.d.ts"
-		},
 		"./package.json": "./package.json"
 	},
 	"files": [
@@ -24,25 +19,16 @@
 		"CHANGELOG.md",
 		"LICENSE.md"
 	],
-	"description": "StrataKit theme for Material UI",
+	"description": "Internal utilities for StrataKit packages",
 	"author": "Bentley Systems",
 	"homepage": "https://github.com/iTwin/stratakit",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/iTwin/stratakit.git",
-		"directory": "packages/mui"
+		"directory": "packages/internal-utils"
 	},
 	"keywords": [
-		"frontend",
-		"itwin",
-		"itwinui",
-		"strata",
-		"stratakit",
-		"react",
-		"react-component",
-		"mui",
-		"material-ui",
-		"design system"
+		"stratakit"
 	],
 	"scripts": {
 		"build": "wireit",
@@ -50,26 +36,17 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.29",
-		"@emotion/cache": "^11.14.0",
-		"@emotion/react": "^11.14.0",
-		"@emotion/styled": "^11.14.1",
-		"@stratakit/foundations": "^0.4.10",
-		"@stratakit/icons": "^0.4.3",
-		"@stratakit/internal-utils": "^0.0.0",
-		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"
 	},
 	"devDependencies": {
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
-		"@mui/x-date-pickers": "catalog:",
 		"esbuild": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@mui/material": "^9.0.0",
 		"react": ">=18.0.0",
 		"react-dom": ">=18.0.0"
 	},
@@ -78,9 +55,7 @@
 			"dependencies": [
 				"build:js",
 				"build:DEV",
-				"build:types",
-				"../internal-utils:build",
-				"../foundations:build"
+				"build:types"
 			]
 		},
 		"build:js": {
@@ -116,10 +91,6 @@
 			],
 			"output": [
 				"dist/**/*.d.ts"
-			],
-			"dependencies": [
-				"../internal-utils:build:types",
-				"../foundations:build:types"
 			]
 		},
 		"dev": {

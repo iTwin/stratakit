@@ -3,13 +3,23 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import {
-	createIconFromPath,
-	forwardRef,
-} from "@stratakit/foundations/secret-internals";
+import { Icon } from "@stratakit/foundations";
+import { createSvgFromPath, forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
+
+// ----------------------------------------------------------------------------
+
+/** Creates an inline icon component for the specified `<path>` definition (`d` attribute). */
+function createIconFromPath(d: string) {
+	const Svg = createSvgFromPath(d);
+	return forwardRef<"svg", Omit<BaseProps<"svg">, "children">>(
+		(props, forwardedRef) => {
+			return <Icon render={<Svg {...props} ref={forwardedRef} />} />;
+		},
+	);
+}
 
 // ----------------------------------------------------------------------------
 

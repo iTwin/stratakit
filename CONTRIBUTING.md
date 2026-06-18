@@ -48,7 +48,7 @@ _Before running this command, make sure [Docker](https://www.docker.com/) is run
 
 ### To lint and fix autofixable errors
 
-`pnpm run lint`
+`pnpm run lint --write`
 
 ### To run the docs website
 

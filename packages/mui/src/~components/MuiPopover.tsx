@@ -5,13 +5,10 @@
 
 import * as React from "react";
 import { PopoverPaper } from "@mui/material/Popover";
-import {
-	forwardRef,
-	useMergedRefs,
-} from "@stratakit/foundations/secret-internals";
+import { forwardRef, useMergedRefs } from "@stratakit/internal-utils";
 
 import type { PopoverOwnerState } from "@mui/material/Popover";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

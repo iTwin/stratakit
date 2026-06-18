@@ -14,17 +14,14 @@ import {
 	useMergedRefs,
 	useSafeContext,
 	useStableCallback,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils";
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
 import { combine } from "zustand/middleware";
 import { useWarnOnInteractiveDescendants } from "./~hooks.js";
 import { useInit } from "./~utils.useInit.js";
 
-import type {
-	BaseProps,
-	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

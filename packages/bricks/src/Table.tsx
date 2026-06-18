@@ -9,11 +9,11 @@ import {
 	forwardRef,
 	useMergedRefs,
 	useSafeContext,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

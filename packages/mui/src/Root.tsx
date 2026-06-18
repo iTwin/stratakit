@@ -6,17 +6,14 @@
 import * as React from "react";
 import { ThemeProvider, useColorScheme } from "@mui/material/styles";
 import { Root as StrataKitRoot } from "@stratakit/foundations";
-import {
-	forwardRef,
-	RootContext,
-	useSafeContext,
-} from "@stratakit/foundations/secret-internals";
+import { RootContext } from "@stratakit/foundations/secret-internals";
+import { forwardRef, useSafeContext } from "@stratakit/internal-utils";
 import cx from "classnames";
 import { createTheme } from "./~createTheme.js";
 import { StyledEngineProvider } from "./Root.internal.js";
 import css from "./styles.css.js";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

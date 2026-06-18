@@ -11,15 +11,12 @@ import {
 	forwardRef,
 	useEventHandlers,
 	useMergedRefs,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import { useFieldControlType } from "./Field.internal.js";
 
-import type {
-	BaseProps,
-	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

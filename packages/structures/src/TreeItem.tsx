@@ -13,16 +13,13 @@ import {
 	IconButtonPresentation,
 } from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
-import {
-	forwardRef,
-	useEventHandlers,
-} from "@stratakit/foundations/secret-internals";
+import { forwardRef, useEventHandlers } from "@stratakit/internal-utils";
 import cx from "classnames";
 import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
 import * as DropdownMenu from "./DropdownMenu.js";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

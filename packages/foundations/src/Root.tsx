@@ -7,8 +7,6 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
-import cx from "classnames";
-import css from "./~styles.css.js";
 import {
 	forwardRef,
 	getOwnerDocument,
@@ -16,7 +14,9 @@ import {
 	identity,
 	isBrowser,
 	isDocument,
-} from "./~utils.js";
+} from "@stratakit/internal-utils";
+import cx from "classnames";
+import css from "./~styles.css.js";
 import {
 	HtmlSanitizerContext,
 	RootContext,
@@ -26,7 +26,7 @@ import {
 } from "./Root.internal.js";
 import { loadStyles } from "./styles.internal.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 const packageName = "@stratakit/foundations";
 const key = `${packageName}@${__VERSION__}`;

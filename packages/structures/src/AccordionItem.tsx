@@ -14,15 +14,12 @@ import {
 	GhostAligner,
 	IconButtonPresentation,
 } from "@stratakit/bricks/secret-internals";
-import {
-	forwardRef,
-	useControlledState,
-} from "@stratakit/foundations/secret-internals";
+import { forwardRef, useControlledState } from "@stratakit/internal-utils";
 import cx from "classnames";
 import { ChevronDown } from "./~utils.icons.js";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 interface AccordionItemProps extends BaseProps {
 	/**

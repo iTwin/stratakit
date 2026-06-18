@@ -9,7 +9,7 @@ import {
 	type BaseProps,
 	forwardRef,
 	useEventHandlers,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils";
 
 import type Tabs from "@mui/material/Tabs";
 

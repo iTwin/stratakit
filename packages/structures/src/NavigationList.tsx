@@ -10,15 +10,12 @@ import { Focusable } from "@ariakit/react/focusable";
 import { Role } from "@ariakit/react/role";
 import { Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 import { ChevronDown } from "./~utils.icons.js";
 import { useInit } from "./~utils.useInit.js";
 
-import type {
-	BaseProps,
-	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

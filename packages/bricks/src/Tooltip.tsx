@@ -11,12 +11,12 @@ import {
 	useEventHandlers,
 	usePopoverApi,
 	useStableCallback,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import { TooltipContext } from "./Tooltip.internal.js";
 
-import type { FocusableProps } from "@stratakit/foundations/secret-internals";
+import type { FocusableProps } from "@stratakit/internal-utils";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,

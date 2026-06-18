@@ -9,14 +9,11 @@ import {
 	forwardRef,
 	isBrowser,
 	useStableCallback,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
-import type {
-	BaseProps,
-	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

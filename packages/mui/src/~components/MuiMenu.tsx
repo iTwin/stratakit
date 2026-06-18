@@ -4,10 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import MenuList from "@mui/material/MenuList";
-import {
-	forwardRef,
-	useMergedRefs,
-} from "@stratakit/foundations/secret-internals";
+import { forwardRef, useMergedRefs } from "@stratakit/internal-utils";
 import { useFallbackLabel } from "./MuiPopover.js";
 
 import type { MenuOwnerState } from "@mui/material/Menu";

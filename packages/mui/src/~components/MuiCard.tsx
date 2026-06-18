@@ -10,10 +10,10 @@ import {
 	forwardRef,
 	useEventHandlers,
 	useMergedRefs,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

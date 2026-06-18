@@ -18,18 +18,15 @@ import {
 } from "@ariakit/react/menu";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, Kbd, Text } from "@stratakit/bricks";
-import {
-	DisclosureArrow,
-	Dot,
-	predefinedSymbols,
-} from "@stratakit/bricks/secret-internals";
+import { DisclosureArrow, Dot } from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
 import {
 	forwardRef,
+	predefinedSymbols,
 	usePopoverApi,
 	useSafeContext,
 	useStableCallback,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils";
 import cx from "classnames";
 import { Checkmark, ChevronRight } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
@@ -40,12 +37,12 @@ import type {
 	MenuProviderProps,
 	MenuStore,
 } from "@ariakit/react/menu";
-import type { PredefinedSymbol } from "@stratakit/bricks/secret-internals";
 import type {
 	AnyString,
 	BaseProps,
 	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+	PredefinedSymbol,
+} from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

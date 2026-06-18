@@ -5,12 +5,9 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import {
-	forwardRef,
-	useSafeContext,
-} from "@stratakit/foundations/secret-internals";
+import { forwardRef, useSafeContext } from "@stratakit/internal-utils";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

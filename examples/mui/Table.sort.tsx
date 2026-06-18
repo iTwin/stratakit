@@ -12,6 +12,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
+import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
 	const rows = [
@@ -58,13 +59,19 @@ export default () => {
 				<TableHead>
 					<TableRow>
 						<TableCell>Dessert (100g serving)</TableCell>
-						<TableCell align="right">
+						<TableCell align="right" sortDirection={direction}>
 							Calories{" "}
 							<TableSortLabel
 								direction={direction}
 								active={true}
 								onClick={changeSortDirection}
-							/>
+							>
+								<span style={visuallyHidden}>
+									{direction === "asc"
+										? "sorted ascending"
+										: "sorted descending"}
+								</span>
+							</TableSortLabel>
 						</TableCell>
 						<TableCell align="right">Fat&nbsp;(g)</TableCell>
 					</TableRow>

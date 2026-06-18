@@ -7,6 +7,8 @@
 	--_MuiBadge-border-color: var(--stratakit-color-border-glow-strong-default);
 	--_MuiBadge-color: var(--stratakit-color-text-neutral-emphasis);
 	--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
+	--🥝selection-color-bg: var(--stratakit-color-static-white);
+	--🥝selection-color-text: var(--stratakit-color-static-black);
 
 	background-color: var(--_MuiBadge-background-color);
 	box-shadow: 0px 0px 0px 1px var(--_MuiBadge-border-color) inset;
@@ -39,41 +41,6 @@
 	:where(.MuiBadge-root[data-_sk-inline]) & {
 		position: static;
 		transform: none;
-	}
-
-	:where([data-_sk-emphasis="strong"], [data-_sk-emphasis="moderate"]) & {
-		--🥝selection-color-bg: var(--stratakit-color-static-white);
-		--🥝selection-color-text: var(--stratakit-color-static-black);
-	}
-
-	:where([data-_sk-emphasis="strong"]) & {
-		--_MuiBadge-border-color: var(--stratakit-color-border-glow-strong-default);
-		--_MuiBadge-color: var(--stratakit-color-text-neutral-emphasis);
-		--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
-
-		&:where(.MuiBadge-colorError) {
-			--_MuiBadge-background-color: var(--stratakit-color-bg-critical-base);
-		}
-
-		&:where(.MuiBadge-colorInfo) {
-			--_MuiBadge-background-color: var(--stratakit-color-bg-info-base);
-		}
-
-		&:where(.MuiBadge-colorPrimary) {
-			--_MuiBadge-background-color: var(--stratakit-color-bg-accent-base);
-		}
-
-		&:where(.MuiBadge-colorSecondary) {
-			--_MuiBadge-background-color: var(--stratakit-color-bg-mono-base);
-		}
-
-		&:where(.MuiBadge-colorSuccess) {
-			--_MuiBadge-background-color: var(--stratakit-color-bg-positive-base);
-		}
-
-		&:where(.MuiBadge-colorWarning) {
-			--_MuiBadge-background-color: var(--stratakit-color-bg-attention-base);
-		}
 	}
 
 	:where([data-_sk-emphasis="moderate"]) & {
@@ -122,6 +89,8 @@
 
 	:where([data-_sk-emphasis="subtle"]) & {
 		--_MuiBadge-background-color: transparent;
+		--🥝selection-color-bg: var(--stratakit-color-bg-accent-base);
+		--🥝selection-color-text: var(--stratakit-color-text-neutral-emphasis);
 
 		&:where(.MuiBadge-colorError) {
 			--_MuiBadge-color: var(--stratakit-color-text-critical-base);

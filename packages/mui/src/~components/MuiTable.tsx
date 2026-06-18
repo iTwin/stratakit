@@ -7,6 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { ThemeProvider } from "@mui/material/styles";
 import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { SortAscendingIcon, SortDescendingIcon } from "../Icon.js";
 
 import type { Theme } from "@mui/material/styles";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
@@ -68,4 +69,18 @@ DEV: MuiTableCell.displayName = "MuiTableCell";
 
 // ----------------------------------------------------------------------------
 
-export { MuiTableBody, MuiTableCell, MuiTableHead };
+const MuiTableSortLabelIcon = forwardRef<
+	"svg",
+	BaseProps<"svg"> & { direction: "asc" | "desc" }
+>(({ direction, ...props }, forwardRef) => {
+	return direction === "asc" ? (
+		<SortAscendingIcon {...props} ref={forwardRef} />
+	) : (
+		<SortDescendingIcon {...props} ref={forwardRef} />
+	);
+});
+DEV: MuiTableSortLabelIcon.displayName = "MuiTableSortLabelIcon";
+
+// ----------------------------------------------------------------------------
+
+export { MuiTableBody, MuiTableCell, MuiTableHead, MuiTableSortLabelIcon };

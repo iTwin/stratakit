@@ -46,6 +46,7 @@ import {
 	MuiTableBody,
 	MuiTableCell,
 	MuiTableHead,
+	MuiTableSortLabelIcon,
 } from "./~components/MuiTable.js";
 import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
@@ -60,8 +61,6 @@ import {
 	DismissIcon,
 	ErrorIcon,
 	InfoIcon,
-	SortAscendingIcon,
-	SortDescendingIcon,
 	SuccessIcon,
 	WarningIcon,
 } from "./Icon.js";
@@ -537,13 +536,9 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTableSortLabel: {
 				defaultProps: {
 					component: Role.span,
-					slots: {
-						icon: ({ ownerState }) =>
-							ownerState.direction === "asc" ? (
-								<SortAscendingIcon />
-							) : (
-								<SortDescendingIcon />
-							),
+					IconComponent: MuiTableSortLabelIcon,
+					slotProps: {
+						icon: ({ direction }) => ({ direction }),
 					},
 				},
 			},

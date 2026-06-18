@@ -39,17 +39,27 @@ export default () => {
 		React.useState<React.ComponentProps<typeof TableSortLabel>["direction"]>(
 			"asc",
 		);
+	const [sortedColumn, setSortedColumn] = React.useState<"calories" | "fat">(
+		"calories",
+	);
 
-	const changeSortDirection = React.useCallback(() => {
-		setDirection((current) => (current === "asc" ? "desc" : "asc"));
-	}, []);
+	const updateSort = (column: "calories" | "fat") => {
+		if (column === sortedColumn) {
+			setDirection((current) => (current === "asc" ? "desc" : "asc"));
+		} else {
+			setSortedColumn(column);
+			setDirection("asc");
+		}
+	};
 
 	const sortedRows = React.useMemo(
 		() =>
 			Array.from(rows).sort((a, b) =>
-				direction === "asc" ? a.calories - b.calories : b.calories - a.calories,
+				direction === "asc"
+					? a[sortedColumn] - b[sortedColumn]
+					: b[sortedColumn] - a[sortedColumn],
 			),
-		[direction],
+		[direction, sortedColumn],
 	);
 
 	return (
@@ -59,21 +69,44 @@ export default () => {
 				<TableHead>
 					<TableRow>
 						<TableCell>Dessert (100g serving)</TableCell>
-						<TableCell align="right" sortDirection={direction}>
-							Calories{" "}
+						<TableCell
+							align="right"
+							sortDirection={sortedColumn === "calories" && direction}
+						>
 							<TableSortLabel
-								direction={direction}
-								active={true}
-								onClick={changeSortDirection}
+								direction={sortedColumn === "calories" ? direction : "asc"}
+								active={sortedColumn === "calories"}
+								onClick={() => updateSort("calories")}
 							>
-								<span style={visuallyHidden}>
-									{direction === "asc"
-										? "sorted ascending"
-										: "sorted descending"}
-								</span>
+								Calories
+								{sortedColumn === "calories" ? (
+									<span style={visuallyHidden}>
+										{direction === "asc"
+											? " sorted ascending"
+											: " sorted descending"}
+									</span>
+								) : null}
 							</TableSortLabel>
 						</TableCell>
-						<TableCell align="right">Fat&nbsp;(g)</TableCell>
+						<TableCell
+							align="right"
+							sortDirection={sortedColumn === "fat" && direction}
+						>
+							<TableSortLabel
+								direction={sortedColumn === "fat" ? direction : "asc"}
+								active={sortedColumn === "fat"}
+								onClick={() => updateSort("fat")}
+							>
+								Fat&nbsp;(g)
+								{sortedColumn === "fat" ? (
+									<span style={visuallyHidden}>
+										{direction === "asc"
+											? " sorted ascending"
+											: " sorted descending"}
+									</span>
+								) : null}
+							</TableSortLabel>
+						</TableCell>
 					</TableRow>
 				</TableHead>
 				<TableBody>

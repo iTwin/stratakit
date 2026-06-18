@@ -537,13 +537,12 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTableSortLabel: {
 				defaultProps: {
 					component: Role.span,
-
 					slots: {
-						icon: ({ ownerState, ...props }) =>
+						icon: ({ ownerState }) =>
 							ownerState.direction === "asc" ? (
-								<SortAscendingIcon {...props} />
+								<SortAscendingIcon />
 							) : (
-								<SortDescendingIcon {...props} />
+								<SortDescendingIcon />
 							),
 					},
 				},

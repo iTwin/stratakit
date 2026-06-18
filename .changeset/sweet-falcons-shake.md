@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Update colors for Rating component
+Updated colors for `Rating` component.

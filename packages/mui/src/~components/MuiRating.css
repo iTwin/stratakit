@@ -10,16 +10,16 @@
 		color: var(--stratakit-color-icon-neutral-disabled);
 	}
 
-	& :where(.MuiRating-iconHover) {
+ :where(.MuiRating-iconHover) {
 		color: var(--stratakit-color-icon-neutral-primary);
 	}
 
-	:where(.Mui-focusVisible) & :where(.MuiRating-iconActive) {
+	&:where(.Mui-focusVisible)  :where(.MuiRating-iconActive) {
 		outline: var(--🥝focus-outline);
 		outline-offset: var(--🥝focus-outline-offset);
 	}
 
-	& :where(.MuiRating-labelEmptyValueActive) {
+	:where(.MuiRating-labelEmptyValueActive) {
 		outline: var(--🥝focus-outline);
 		outline-offset: var(--🥝focus-outline-offset);
 	}

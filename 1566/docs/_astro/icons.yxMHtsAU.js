@@ -1,0 +1,1 @@
+import{j as r,a as i}from"./_utils.lmERA7I5.js";import{f as a}from"./styles.internal.GFz1HU3m.js";function s(e){return a((o,t)=>r.jsx(i.svg,{width:"16",height:"16",fill:"none",viewBox:"0 0 16 16",...o,ref:t,children:r.jsx("path",{fill:"currentColor",d:e})}))}export{s as c};

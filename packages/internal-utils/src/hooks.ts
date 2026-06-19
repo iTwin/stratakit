@@ -4,20 +4,21 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { isBrowser, supportsPopover } from "./utils.js";
+import { supportsPopover } from "./utils.internal.js";
+import { isBrowser } from "./utils.js";
 
-import type { AnyFunction } from "./utils.js";
+import type { AnyFunction } from "./utils.internal.js";
+
+// ----------------------------------------------------------------------------
 
 /**
  * SSR-safe wrapper over `React.useLayoutEffect`.
  *
  * @see https://fb.me/react-uselayouteffect-ssr
- *
- * @private
  */
-export const useLayoutEffect = isBrowser
-	? React.useLayoutEffect
-	: React.useEffect;
+const useLayoutEffect = isBrowser ? React.useLayoutEffect : React.useEffect;
+
+// ----------------------------------------------------------------------------
 
 /**
  * Wrapper over `useState` that always gives preference to the
@@ -34,10 +35,8 @@ export const useLayoutEffect = isBrowser
  *   props.onChange
  * );
  * ```
- *
- * @private
  */
-export function useControlledState<T>(
+function useControlledState<T>(
 	initialValue: T,
 	controlledState: T | undefined,
 	setControlledState?: React.Dispatch<React.SetStateAction<T>>,
@@ -63,6 +62,8 @@ export function useControlledState<T>(
 	return [state, setState] as const;
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Hook that keeps track of the latest value in a ref.
  * This is useful for referencing unmemoized values inside Effects.
@@ -70,10 +71,8 @@ export function useControlledState<T>(
  * ```tsx
  * const valueRef = useLatestRef(props.value);
  * ```
- *
- * @private
  */
-export function useLatestRef<T>(value: T) {
+function useLatestRef<T>(value: T) {
 	const valueRef = React.useRef<T>(value);
 
 	React.useInsertionEffect(() => {
@@ -82,6 +81,8 @@ export function useLatestRef<T>(value: T) {
 
 	return valueRef;
 }
+
+// ----------------------------------------------------------------------------
 
 /**
  * Returns a memoized callback ref that merges the provided refs.
@@ -97,10 +98,8 @@ export function useLatestRef<T>(value: T) {
  * const internalRef = useRef(null);
  * return <div ref={useMergedRefs(internalRef, forwardedRef)} />;
  * ```
- *
- * @private
  */
-export function useMergedRefs<T>(
+function useMergedRefs<T>(
 	...refs: ReadonlyArray<React.Ref<T> | React.LegacyRef<T> | undefined | null>
 ) {
 	// biome-ignore lint/correctness/useExhaustiveDependencies: we are spreading the refs instead of referencing the array
@@ -118,18 +117,16 @@ export function useMergedRefs<T>(
 	);
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Hook that "memoizes" a function by skipping reactivity, similar to `React.useEffectEvent`.
  *
  * The memoization technique used by this hook ensures that only the "latest" callback is ever called,
  * regardless of its dependencies. The "latest" callback is stored in a ref and updated on each render
  * in an Effect. The result is that the callback passed to this hook does not need to be memoized.
- *
- * @private
  */
-export function useUnreactiveCallback<T extends AnyFunction>(
-	callback: T | undefined,
-) {
+function useUnreactiveCallback<T extends AnyFunction>(callback: T | undefined) {
 	const latestCallback = useLatestRef(callback);
 
 	return React.useCallback<AnyFunction>(
@@ -137,6 +134,8 @@ export function useUnreactiveCallback<T extends AnyFunction>(
 		[latestCallback],
 	) as T;
 }
+
+// ----------------------------------------------------------------------------
 
 /**
  * Hook that accepts a list of event handlers and returns a single memoized (unreactive)
@@ -146,10 +145,8 @@ export function useUnreactiveCallback<T extends AnyFunction>(
  * ```tsx
  * <button onClick={useEventHandlers(props.onClick, ownOnClick)}>
  * ```
- *
- * @private
  */
-export function useEventHandlers<E extends React.SyntheticEvent>(
+function useEventHandlers<E extends React.SyntheticEvent>(
 	...handlers: Array<((event: E) => void) | undefined>
 ) {
 	const latestHandlers = useLatestRef(handlers);
@@ -165,15 +162,15 @@ export function useEventHandlers<E extends React.SyntheticEvent>(
 	);
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Wrapper hook around `useContext` to ensure that the Context is provided.
  * The component calling this hook will throw an error if the Context is not found.
  *
  * The Context's `displayName` will be used for a more useful error message.
- *
- * @private
  */
-export function useSafeContext<C>(context: React.Context<C>) {
+function useSafeContext<C>(context: React.Context<C>) {
 	const value = React.useContext(context);
 
 	if (value === undefined) {
@@ -183,6 +180,8 @@ export function useSafeContext<C>(context: React.Context<C>) {
 	return value;
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Hook that makes it easy to use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) consistently.
  *
@@ -190,10 +189,8 @@ export function useSafeContext<C>(context: React.Context<C>) {
  * to automatically handle "light dismiss" behavior when the popover is open.
  *
  * Returns a set of DOM props that should be passed back to the element.
- *
- * @private
  */
-export function usePopoverApi({
+function usePopoverApi({
 	element,
 	open,
 	setOpen,
@@ -230,18 +227,32 @@ export function usePopoverApi({
 	);
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Hook that returns true for the first "full" client render.
  * Useful to guard against using client APIs during SSR.
  *
  * Note: This will return `false` during hydration.
- *
- * @private
  */
-export function useIsClient() {
+function useIsClient() {
 	return React.useSyncExternalStore(
 		React.useCallback(() => () => {}, []),
 		() => true,
 		() => false,
 	);
 }
+
+// ----------------------------------------------------------------------------
+
+export {
+	useControlledState,
+	useEventHandlers,
+	useIsClient,
+	useLatestRef,
+	useLayoutEffect,
+	useMergedRefs,
+	usePopoverApi,
+	useSafeContext,
+	useUnreactiveCallback,
+};

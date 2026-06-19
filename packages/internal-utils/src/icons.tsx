@@ -11,7 +11,7 @@ import type { BaseProps } from "./utils.js";
 // ----------------------------------------------------------------------------
 
 /** Creates an inline svg for the specified `<path>` definition (`d` attribute). */
-export function createSvgFromPath(d: string) {
+function createSvgFromPath(d: string) {
 	return forwardRef<"svg", Omit<BaseProps<"svg">, "children">>(
 		(props, forwardedRef) => {
 			return (
@@ -29,3 +29,7 @@ export function createSvgFromPath(d: string) {
 		},
 	);
 }
+
+// ----------------------------------------------------------------------------
+
+export { createSvgFromPath };

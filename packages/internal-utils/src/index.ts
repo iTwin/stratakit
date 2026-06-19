@@ -4,5 +4,5 @@
  *--------------------------------------------------------------------------------------------*/
 
 export * from "./hooks.js";
-export * from "./utils.icons.js";
+export * from "./icons.js";
 export * from "./utils.js";

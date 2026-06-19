@@ -13,7 +13,6 @@ const isDev = process.env.NODE_ENV === "development";
 
 const entryPoints = await fg("src/**/*.{ts,tsx}", {
 	onlyFiles: true,
-	ignore: ["**/*.d.ts"],
 });
 
 await esbuild.build({

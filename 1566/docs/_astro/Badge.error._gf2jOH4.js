@@ -1,1 +1,0 @@
-import{j as r,I as e}from"./_utils.B0nL4z-o.js";import{s}from"./status-warning.B1Hg6n7A.js";import{B as a}from"./Badge.rZwKjRNg.js";const o="_badge_2rb1l_6",t={badge:o},l=()=>r.jsx(a,{badgeContent:r.jsxs(r.Fragment,{children:[r.jsx(e,{href:s}),"Unstable"]}),color:"error",inline:!0,slotProps:{badge:{className:t.badge}}});export{l as default};

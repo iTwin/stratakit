@@ -5,4 +5,5 @@
 
 export * from "./hooks.js";
 export * from "./icons.js";
+export * from "./symbol.js";
 export * from "./utils.js";

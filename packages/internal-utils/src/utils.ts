@@ -87,7 +87,7 @@ type AnyString = string & {};
 // ----------------------------------------------------------------------------
 
 /** Returns the value unchanged. */
-const identity = <T,>(value: T) => value;
+const identity = <T>(value: T) => value;
 
 // ----------------------------------------------------------------------------
 

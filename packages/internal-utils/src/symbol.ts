@@ -2,9 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-export type PredefinedSymbol = keyof typeof predefinedSymbols;
 
-export const predefinedSymbols = {
+// ----------------------------------------------------------------------------
+
+const predefinedSymbols = {
 	Backspace: "\u232b",
 	Command: "\u2318",
 	Control: "Ctrl",
@@ -20,3 +21,13 @@ export const predefinedSymbols = {
 	Tab: "Tab",
 	Up: "\u2191",
 } as const;
+
+// ----------------------------------------------------------------------------
+
+type PredefinedSymbol = keyof typeof predefinedSymbols;
+
+// ----------------------------------------------------------------------------
+
+export type { PredefinedSymbol };
+
+export { predefinedSymbols };

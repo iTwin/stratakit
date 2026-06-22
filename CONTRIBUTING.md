@@ -101,7 +101,7 @@ StrataKit uses [themed components](https://mui.com/material-ui/customization/the
 
 ##### Nest CSS rules
 
-[Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (selector to identify main outer element of the component). If there are multiple components (eg. tab list and tabs), use multiple groups.
+[Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (selector to identify the DOM element). If there are multiple DOM elements (eg. tab list and tabs), use multiple groups.
 
 **Do**
 

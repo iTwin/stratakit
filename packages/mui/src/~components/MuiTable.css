@@ -80,4 +80,5 @@
 
 .MuiTableSortLabel-icon {
 	transform: none;
+	margin-inline-end: var(--stratakit-space-x1);
 }

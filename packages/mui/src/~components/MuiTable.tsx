@@ -10,6 +10,7 @@ import { forwardRef } from "@stratakit/foundations/secret-internals";
 import { SortAscendingIcon, SortDescendingIcon } from "../Icon.js";
 
 import type { Theme } from "@mui/material/styles";
+import type { TableSortLabelOwnerState } from "@mui/material/TableSortLabel";
 import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 // ----------------------------------------------------------------------------
@@ -71,9 +72,13 @@ DEV: MuiTableCell.displayName = "MuiTableCell";
 
 const MuiTableSortLabelIcon = forwardRef<
 	"svg",
-	BaseProps<"svg"> & { direction: "asc" | "desc" }
->(({ direction, ...props }, forwardRef) => {
-	return direction === "asc" ? (
+	BaseProps<"svg"> & {
+		ownerState?: TableSortLabelOwnerState;
+		as?: React.ElementType;
+	}
+>((allProps, forwardRef) => {
+	const { ownerState, as, ...props } = allProps;
+	return ownerState?.direction === "asc" ? (
 		<SortAscendingIcon {...props} ref={forwardRef} />
 	) : (
 		<SortDescendingIcon {...props} ref={forwardRef} />

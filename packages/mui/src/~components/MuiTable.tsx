@@ -78,11 +78,14 @@ const MuiTableSortLabelIcon = forwardRef<
 	}
 >((allProps, forwardRef) => {
 	const { ownerState, as, ...props } = allProps;
-	return ownerState?.direction === "asc" ? (
-		<SortAscendingIcon {...props} ref={forwardRef} />
-	) : (
-		<SortDescendingIcon {...props} ref={forwardRef} />
-	);
+	switch (ownerState?.direction) {
+		case "asc":
+			return <SortAscendingIcon {...props} ref={forwardRef} />;
+		case "desc":
+			return <SortDescendingIcon {...props} ref={forwardRef} />;
+		default:
+			return null;
+	}
 });
 DEV: MuiTableSortLabelIcon.displayName = "MuiTableSortLabelIcon";
 

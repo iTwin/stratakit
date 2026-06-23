@@ -82,7 +82,7 @@ Note the _standalone_ [`NavigationRail.Anchor`](/reference/structures/Navigation
 
 Note that the [**Divider**](/components/divider/) takes `role="presentation"`. The closing of one list and the opening of the next is already determinable. An explicit `role="separator"` element is not needed.
 
-See the [presentational dividers](https://stratakit.bentley.com/docs/components/divider/#presentational-dividers) section in the **Divider** guide.
+See the [presentational dividers](/components/divider/#presentational-dividers) section in the **Divider** guide.
 
 :::
 

@@ -188,6 +188,7 @@ const MuiCardMedia = forwardRef<"div", BaseProps<"div">>(
 		// Removing `background-image` from media elements. These should use `src` instead.
 		const style = (() => {
 			if (!isMediaComponent) return props.style;
+			// biome-ignore lint/correctness/noUnusedVariables: intentionally unused to remove backgroundImage from return
 			const { backgroundImage, ...restStyle } = props.style ?? {};
 			return restStyle;
 		})();

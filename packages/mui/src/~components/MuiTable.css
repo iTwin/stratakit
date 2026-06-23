@@ -81,10 +81,10 @@
 .MuiTableSortLabel-icon {
 	transform: none; /* MUI uses single icon and changes transform, but Stratakit uses two icons so don't transform */
 	margin-inline-end: var(--stratakit-space-x1);
-	opacity:0; /* MUI sets opacity:0 to hide the icon when it isn't active and then overrides it with 1 when it should be shown */
+	opacity: 0; /* MUI sets opacity:0 to hide the icon when it isn't active and then overrides it with 1 when it should be shown */
 
 	:where(.MuiTableSortLabel-root.Mui-active) & {
-		opacity:1;
+		opacity: 1;
 	}
 
 	@media (any-hover: hover) {

@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.5
+
+- [#1487](https://github.com/iTwin/stratakit/pull/1487): Marked all components from `@stratakit/bricks` as deprecated. Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#use-mui-components) for details on how to migrate to `@mui/material`.
+- [#1516](https://github.com/iTwin/stratakit/pull/1516): Adjusted sizes for `caption-*` typography variants.
+- [#1529](https://github.com/iTwin/stratakit/pull/1529): Removed an unnecessary instance of `inert` attribute which was triggering warnings in React 18.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.9
+
 ## 0.5.4
 
 - [#1122](https://github.com/iTwin/stratakit/pull/1122): Moved `@stratakit/foundations` from `peerDependencies` to direct `dependencies`.

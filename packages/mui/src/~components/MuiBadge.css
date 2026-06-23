@@ -6,7 +6,6 @@
 .MuiBadge-badge {
 	--_MuiBadge-border-color: var(--stratakit-color-border-glow-strong-default);
 	--_MuiBadge-color: var(--stratakit-color-text-neutral-emphasis);
-	--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 	--🥝selection-color-bg: var(--stratakit-color-static-white);
 	--🥝selection-color-text: var(--stratakit-color-static-black);
 
@@ -48,42 +47,36 @@
 			--_MuiBadge-background-color: var(--stratakit-color-bg-critical-muted);
 			--_MuiBadge-border-color: var(--stratakit-color-border-critical-muted);
 			--_MuiBadge-color: var(--stratakit-color-text-critical-faded);
-			--🥝Icon-color: var(--stratakit-color-icon-critical-faded);
 		}
 
 		&:where(.MuiBadge-colorInfo) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-info-muted);
 			--_MuiBadge-border-color: var(--stratakit-color-border-info-muted);
 			--_MuiBadge-color: var(--stratakit-color-text-info-faded);
-			--🥝Icon-color: var(--stratakit-color-icon-info-faded);
 		}
 
 		&:where(.MuiBadge-colorPrimary) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-accent-muted);
 			--_MuiBadge-border-color: var(--stratakit-color-border-accent-muted);
 			--_MuiBadge-color: var(--stratakit-color-text-accent-faded);
-			--🥝Icon-color: var(--stratakit-color-icon-accent-faded);
 		}
 
 		&:where(.MuiBadge-colorSecondary) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-mono-muted);
 			--_MuiBadge-border-color: var(--stratakit-color-border-mono-muted);
 			--_MuiBadge-color: var(--stratakit-color-text-mono-faded);
-			--🥝Icon-color: var(--stratakit-color-icon-neutral-faded);
 		}
 
 		&:where(.MuiBadge-colorSuccess) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-positive-muted);
 			--_MuiBadge-border-color: var(--stratakit-color-border-positive-muted);
 			--_MuiBadge-color: var(--stratakit-color-text-positive-faded);
-			--🥝Icon-color: var(--stratakit-color-icon-positive-faded);
 		}
 
 		&:where(.MuiBadge-colorWarning) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-attention-muted);
 			--_MuiBadge-border-color: var(--stratakit-color-border-attention-muted);
 			--_MuiBadge-color: var(--stratakit-color-text-attention-faded);
-			--🥝Icon-color: var(--stratakit-color-icon-attention-faded);
 		}
 	}
 
@@ -95,37 +88,31 @@
 		&:where(.MuiBadge-colorError) {
 			--_MuiBadge-color: var(--stratakit-color-text-critical-base);
 			--_MuiBadge-border-color: var(--stratakit-color-border-critical-base);
-			--🥝Icon-color: var(--stratakit-color-icon-critical-base);
 		}
 
 		&:where(.MuiBadge-colorInfo) {
 			--_MuiBadge-color: var(--stratakit-color-text-info-base);
 			--_MuiBadge-border-color: var(--stratakit-color-border-info-base);
-			--🥝Icon-color: var(--stratakit-color-icon-info-base);
 		}
 
 		&:where(.MuiBadge-colorPrimary) {
 			--_MuiBadge-color: var(--stratakit-color-text-accent-base);
 			--_MuiBadge-border-color: var(--stratakit-color-border-accent-base);
-			--🥝Icon-color: var(--stratakit-color-icon-accent-base);
 		}
 
 		&:where(.MuiBadge-colorSecondary) {
 			--_MuiBadge-color: var(--stratakit-color-text-mono-base);
 			--_MuiBadge-border-color: var(--stratakit-color-border-mono-base);
-			--🥝Icon-color: var(--stratakit-color-icon-neutral-base);
 		}
 
 		&:where(.MuiBadge-colorSuccess) {
 			--_MuiBadge-color: var(--stratakit-color-text-positive-base);
 			--_MuiBadge-border-color: var(--stratakit-color-border-positive-base);
-			--🥝Icon-color: var(--stratakit-color-icon-positive-base);
 		}
 
 		&:where(.MuiBadge-colorWarning) {
 			--_MuiBadge-color: var(--stratakit-color-text-attention-base);
 			--_MuiBadge-border-color: var(--stratakit-color-border-attention-base);
-			--🥝Icon-color: var(--stratakit-color-icon-attention-base);
 		}
 	}
 }

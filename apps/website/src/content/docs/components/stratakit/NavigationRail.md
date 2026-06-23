@@ -26,9 +26,9 @@ Make sure the **NavigationRail** is suitable for your use case. There may be oth
 
 **NavigationRail** is divided into three main sections:
 
-- [`NavigationRail.Header`](/reference/structures/NavigationRail#NavigationRail.Header)
-- [`NavigationRail.Content`](/reference/structures/NavigationRail#NavigationRail.Content)
-- [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer)
+- [`NavigationRail.Header`](#navigationrailheader)
+- [`NavigationRail.Content`](#navigationrailcontent)
+- [`NavigationRail.Footer`](#navigationrailfooter)
 
 These are used to create the following basic structure. Note that `NavigationRail.Footer` is nested inside `NavigationRail.Content`.
 

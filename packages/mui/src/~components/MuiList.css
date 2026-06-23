@@ -11,10 +11,10 @@
 }
 
 :is(
-	.MuiListItemButton-root,
-	.MuiListSubheader-root,
-	.MuiListItem-root:where(.MuiListItem-padding)
-) {
+		.MuiListItemButton-root,
+		.MuiListSubheader-root,
+		.MuiListItem-root:where(.MuiListItem-padding)
+	) {
 	line-height: unset;
 	min-block-size: var(--stratakit-size-control-listitem-height-large);
 	align-content: center;

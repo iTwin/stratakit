@@ -34,11 +34,11 @@ These are used to create the following basic structure. Note that `NavigationRai
 
 ```jsx
 <NavigationRail.Root>
-  <NavigationRail.Header>...</NavigationRail.Header>
-  <NavigationRail.Content>
-    ...
-    <NavigationRail.Footer>...</NavigationRail.Footer>
-  </NavigationRail.Content>
+	<NavigationRail.Header>...</NavigationRail.Header>
+	<NavigationRail.Content>
+		...
+		<NavigationRail.Footer>...</NavigationRail.Footer>
+	</NavigationRail.Content>
 </NavigationRail.Root>
 ```
 

@@ -130,9 +130,9 @@
 			&:where([role="cell"], td) {
 				:where(
 						.🥝TableRow:hover:has(
-							input[type="checkbox"]:checked,
-							[role="checkbox"][aria-checked="true"]
-						)
+								input[type="checkbox"]:checked,
+								[role="checkbox"][aria-checked="true"]
+							)
 					)
 					& {
 					--🌀TableCell-state: var(--🌀TableCell-state--active-hover);

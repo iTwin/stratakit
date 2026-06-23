@@ -71,7 +71,7 @@
 				"noUnusedImports": "info",
 				"noUnusedLabels": "off",
 				"noUnusedVariables": {
-					"level": "error",
+					"level": "warn",
 					"options": { "ignoreRestSiblings": false }
 				}
 			},

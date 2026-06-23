@@ -170,14 +170,7 @@ When updating the pull request based on feedback, link to the commit that resolv
 
 ### Merging
 
-#### Non-core contributors
-
-Non-core team member contributors should have their pull requests reviewed and merged by a core team member.
-
-#### Core Team members
-
-Team members should merge their own pull requests once it has two approvals. This is not a hard rule and it may be acceptable to merge with only one review or merge another member's pull request depending on the circumstances.
-
+Pull requests should be merged after at least two approvals from core team members. It is preferred for core team members to merge their own PRs. This is not a hard rule and it may be acceptable to merge with only one approval or by other core team members.
 ### AI use
 
 If artificial intelligence is used to generate any portion of the code, tests, or documentation in your pull request, you are still fully responsible for reviewing the output for correctness and adherence to project standards prior to submission.

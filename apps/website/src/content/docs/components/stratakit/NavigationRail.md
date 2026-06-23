@@ -163,4 +163,4 @@ In the example below:
 
 - Don't insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
 - Don't place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer).
-- Don't make multiple `NavigationRail.Anchor`s `active` at the same time.
+- Don't make multiple [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor)s `active` at the same time.

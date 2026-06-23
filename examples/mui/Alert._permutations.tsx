@@ -9,6 +9,7 @@ import Alert from "@mui/material/Alert";
 export default () => {
 	return (["outlined", "filled"] as const).map((variant) => (
 		<React.Fragment key={variant}>
+			<Alert>This is the default Alert.</Alert>
 			<Alert severity="success" variant={variant}>
 				This is a success Alert.
 			</Alert>

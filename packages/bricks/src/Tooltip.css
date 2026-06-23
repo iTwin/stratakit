@@ -10,7 +10,7 @@
 	--✨border-width: 1px;
 
 	@layer base {
-		@apply --typography("body-sm");
+		@apply --typography("caption-lg");
 		overflow-wrap: anywhere;
 		hyphens: auto;
 

@@ -41,6 +41,9 @@ interface SpinnerProps extends BaseProps {
  *
  * Supports a `tone` prop to change the tone (color) of the spinner.
  * Supports a `size` prop to change the size of the spinner.
+ *
+ * @deprecated Use MUI [`CircularProgress`](https://mui.com/material-ui/api/circular-progress/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#spinner).
  */
 const Spinner = forwardRef<"div", SpinnerProps>((props, forwardedRef) => {
 	useInit();

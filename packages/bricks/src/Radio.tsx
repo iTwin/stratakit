@@ -41,6 +41,9 @@ interface RadioProps extends InputBaseProps, RadioOwnProps {}
  *
  * Underneath, it's an HTML radio input, i.e. `<input type="radio">`, so it supports the same props,
  * including `value`, `defaultChecked`, `checked`, and `onChange`.
+ *
+ * @deprecated Use MUI [`Radio`](https://mui.com/material-ui/api/radio/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#radio).
  */
 const Radio = forwardRef<"input", RadioProps>((props, forwardedRef) => {
 	useInit();

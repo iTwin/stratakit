@@ -10,8 +10,10 @@ links:
 
 ## StrataKit MUI modifications
 
+- Added [`size`](#sizes) prop.
 - `<Tabs>` does not support the `indicatorColor` prop.
 - `<Tabs>` does not support `textColor="inherit"`.
+- `<Tabs>` does not support `allowScrollButtonsMobile` or `scrollButtons`. Scroll buttons are automatically shown for mouse users and hidden for touch users.
 - `<Tab>` default value for `iconPosition` is now `"start"`.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
@@ -39,4 +41,13 @@ Use a [**Tooltip**](/components/tooltip) with `describeChild={false}` when a tab
 
 ### Scrollable
 
+When there are too many tabs, the tab list becomes scrollable. A fade indicates additional content, and scroll buttons appear for mouse users.
+
 ::example{src="mui/Tabs.scrollable"}
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Tabs.sizes"}

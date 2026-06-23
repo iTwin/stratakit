@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.5.8
+
+- [#1445](https://github.com/iTwin/stratakit/pull/1445): Added `suffix` prop to `NavigationRail.Anchor` and `NavigationRail.Button` components.
+- [#1516](https://github.com/iTwin/stratakit/pull/1516): Adjusted sizes for `caption-*` typography variants.
+- [#1529](https://github.com/iTwin/stratakit/pull/1529): Removed an unnecessary instance of `inert` attribute which was triggering warnings in React 18.
+- [#1553](https://github.com/iTwin/stratakit/pull/1553): Fixed font-size for inherited typographical elements inside `ErrorRegion.Item` actions.
+- [#1541](https://github.com/iTwin/stratakit/pull/1541): The `Table` component has been moved from `@stratakit/structures` to `@stratakit/bricks` and marked as deprecated. Please update your imports:
+
+  ```diff
+  - import { Table } from "@stratakit/structures";
+  + import { Table } from "@stratakit/bricks";
+  ```
+
+- Updated dependencies:
+  - @stratakit/bricks@0.5.5
+  - @stratakit/foundations@0.4.9
+
 ## 0.5.7
 
 - [#1380](https://github.com/iTwin/stratakit/pull/1380): Deprecated [`unstable_AccordionItem`](https://stratakit.bentley.com/docs/reference/structures/AccordionItem/) components in favor of MUI [`Accordion`](https://mui.com/material-ui/api/accordion/) component. Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#accordionitem) for additional details.

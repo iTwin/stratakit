@@ -51,6 +51,7 @@
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);
+	inline-size: var(--_MuiSwitch-height);
 	inset: unset;
 	padding: var(--_MuiSwitch-padding);
 	transform: var(--_MuiSwitch-thumb-position-off);

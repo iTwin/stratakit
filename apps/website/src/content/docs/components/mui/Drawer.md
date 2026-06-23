@@ -8,6 +8,10 @@ links:
 
 ::example{src="mui/Drawer.default"}
 
+## StrataKit MUI modifications
+
+- The default portal container is now the [root portal container](/components/root/#portal-container).
+
 ## Examples
 
 ### SwipeableDrawer

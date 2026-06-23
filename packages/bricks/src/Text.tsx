@@ -42,6 +42,9 @@ interface TextProps extends BaseProps {
  * ```tsx
  * <Text render={<h1 />} variant="headline-lg">Hello, World!</Text>
  * ```
+ *
+ * @deprecated Use MUI [`Typography`](https://mui.com/material-ui/api/typography/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#text).
  */
 const Text = forwardRef<"div", TextProps>((props, forwardedRef) => {
 	useInit();

@@ -4,8 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Checkbox, VisuallyHidden } from "@stratakit/bricks";
-import { Table } from "@stratakit/structures";
+import { Checkbox, Table, VisuallyHidden } from "@stratakit/bricks";
 import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Table" };

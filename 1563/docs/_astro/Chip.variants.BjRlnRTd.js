@@ -1,0 +1,1 @@
+import{j as a}from"./_utils.FxBT_TcD.js";import{C as i}from"./Chip.umnur-_k.js";const l=()=>a.jsxs("div",{className:"flex",children:[a.jsx(i,{variant:"solid",label:"Solid"}),a.jsx(i,{variant:"outline",label:"Outline"})]});export{l as default};

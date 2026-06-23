@@ -3,11 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .MuiRating-root {
-	--_MuiRating-color: var(--stratakit-color-icon-neutral-base);
+	--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-base);
 	inline-size: fit-content;
 
 	&:where(.Mui-disabled) {
-		--_MuiRating-color: var(--stratakit-color-icon-neutral-disabled);
+		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-disabled);
 		cursor: not-allowed;
 		opacity: 1;
 		pointer-events: auto; /* Revert MUI's disabled pointer-events */
@@ -15,14 +15,14 @@
 }
 
 .MuiRating-icon {
-	color: var(--_MuiRating-color);
+	color: var(--_MuiRating-icon-color);
 
 	&:where(.MuiRating-iconHover) {
-		--_MuiRating-color: var(--stratakit-color-icon-neutral-primary);
+		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
 	}
 
 	&:where(.Mui-iconActive) {
-		--_MuiRating-color: var(--stratakit-color-icon-neutral-primary);
+		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
 	}
 
 	:where(.MuiRating-root.Mui-focusVisible) &:where(.MuiRating-iconActive) {

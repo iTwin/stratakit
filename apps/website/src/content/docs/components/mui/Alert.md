@@ -8,6 +8,12 @@ links:
 
 ::example{src="mui/Alert.default"}
 
+## Examples
+
+### With close button
+
+::example{src="mui/Alert.close"}
+
 ## StrataKit MUI modifications
 
 - Restyled using StrataKit's visual language.

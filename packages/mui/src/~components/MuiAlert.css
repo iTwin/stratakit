@@ -59,6 +59,10 @@
 	padding: 0;
 }
 
+.MuiAlert-action {
+	padding-block-start: 0;
+}
+
 .MuiAlertTitle-root {
 	margin: 0;
 	margin-block-end: var(--stratakit-space-x1);

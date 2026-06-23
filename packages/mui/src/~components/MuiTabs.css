@@ -32,8 +32,8 @@
 
 		&:where(
 				:has(
-						> .MuiTabScrollButton-root.MuiTabScrollButton-horizontal:not(.Mui-disabled):first-child
-					)
+					> .MuiTabScrollButton-root.MuiTabScrollButton-horizontal:not(.Mui-disabled):first-child
+				)
 			)::after {
 			inset: 0;
 			inset-inline-end: auto;

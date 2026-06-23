@@ -73,6 +73,7 @@ You can group related navigation components using the [`NavigationRail.List`](/r
 	</NavigationRail.List>
 	<Divider role="presentation" />
 	<NavigationRail.Anchor>...</NavigationRail.Anchor>
+
 	<NavigationRail.Footer>...</NavigationRail.Footer>
 </NavigationRail.Content>
 ```

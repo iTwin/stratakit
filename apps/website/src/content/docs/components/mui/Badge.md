@@ -30,6 +30,15 @@ Set the `inline` prop to display the badge in normal document flow instead of po
 
 ::example{src="mui/Badge.inline"}
 
+### Sizes
+
+The `size` prop can only be set when [`inline`](#inline).
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Badge.sizes"}
+
 ### Colors
 
 - **Secondary:** The default.

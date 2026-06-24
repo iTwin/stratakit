@@ -4,13 +4,30 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiBadge-badge {
+	--🥝Icon-size: 1.14286em;
 	--🥝selection-color-bg: var(--stratakit-color-static-white);
 	--🥝selection-color-text: var(--stratakit-color-static-black);
 
+	@apply --typography("body-md");
+	border-radius: calc(infinity * 1px);
 	box-shadow: 0px 0px 0px 1px var(--stratakit-color-border-glow-strong-default) inset;
 
 	:where(.MuiBadge-root[data-_sk-inline]) & {
+		--_MuiBadge-gap: var(--stratakit-space-x1);
+		--_MuiBadge-padding: var(--stratakit-space-x2);
+
+		block-size: 1.5rem;
+		column-gap: var(--stratakit-space-x1);
+		padding-inline-start: var(--_MuiBadge-padding);
+		padding-inline-end: var(--_MuiBadge-padding);
 		position: static;
 		transform: none;
+	}
+
+	:where(.MuiBadge-root[data-_sk-inline][data-_sk-size="small"]) & {
+		@apply --typography("body-sm");
+		--_MuiBadge-padding: var(--stratakit-space-x1);
+		block-size: 1.25rem;
+		column-gap: var(--stratakit-space-x05);
 	}
 }

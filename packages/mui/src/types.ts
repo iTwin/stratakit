@@ -140,6 +140,12 @@ declare module "@mui/material/Badge" {
 		 */
 		inline?: boolean;
 		/**
+		 * The size of the badge.
+		 *
+		 * @default 'medium'
+		 */
+		size?: "small" | "medium";
+		/**
 		 * The default color with `@stratakit/mui` is `"secondary"`.
 		 *
 		 * @default 'secondary'

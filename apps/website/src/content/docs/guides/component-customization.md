@@ -3,7 +3,7 @@ title: Component customization
 description: Taking care when changing component HTML
 ---
 
-Consider a simple `<button>` element with the [label](/guides/language-and-labels) _“Save”_. The label tells us what the element _does_, but it's also useful to know _how_. Since the element looks like a button, we can expect button-like behavior.
+Consider a simple `<button>` element with the [label](/guides/language-and-labels) _“Save”_. The label tells us what the element _does_, but it's also useful to know _how it does it_. Since the element looks like a button, we can expect it to behave like one.
 
 But what about people who cannot see the button? Fortunately, the `<button>` element comes with a button _role_: it is identified as a button programmatically. Parsers like screen readers will announce the role (what the `<button>` is) and the label (what it does) together: _“save, button”_.
 

@@ -47,11 +47,9 @@ In most cases, you should supplement the `color` with [iconography](#icons).
 
 ### Icons
 
-All [colors](#colors) except **secondary** and **primary** convey a specific type of status. Supplement those colors with an icon so that color is not the only means of communication. See [WCAG's Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
+All [colors](#colors) except **secondary** and **primary** convey a specific type of status. You must supplement those colors with an icon so that color is not the only means of communication. See [WCAG's Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
 
-For example, include the `status-warning` icon when applying the ‘error' color.
-
-::example{src="mui/Badge.error"}
+::example{src="mui/Badge.icon"}
 
 ## ✅ Do
 

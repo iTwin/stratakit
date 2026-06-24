@@ -44,10 +44,6 @@ Set the `inline` prop to display the badge in normal document flow instead of po
 In most cases, you should supplement the `color` with iconography so that color is not the only means of communication. See [WCAG's Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
 :::
 
-:::note[Primary color]
-While the `primary` color is available, we discourage its use to prevent confusion with a selected [Chip](/components/chip).
-:::
-
 ## ✅ Do
 
 - Use **Badge** for indicating state or status.

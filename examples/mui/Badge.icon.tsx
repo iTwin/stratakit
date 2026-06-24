@@ -18,16 +18,6 @@ export default () => {
 			<Badge
 				badgeContent={
 					<>
-						<Icon href={svgRejected} />
-						Rejected
-					</>
-				}
-				color="error"
-				inline
-			/>
-			<Badge
-				badgeContent={
-					<>
 						<Icon href={svgRunning} />
 						Running
 					</>
@@ -53,6 +43,16 @@ export default () => {
 					</>
 				}
 				color="warning"
+				inline
+			/>
+			<Badge
+				badgeContent={
+					<>
+						<Icon href={svgRejected} />
+						Rejected
+					</>
+				}
+				color="error"
 				inline
 			/>
 		</Stack>

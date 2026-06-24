@@ -8,7 +8,7 @@ import Stack from "@mui/material/Stack";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="row">
+		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
 			<Badge badgeContent="Strong" emphasis="strong" inline />
 			<Badge badgeContent="Moderate" emphasis="moderate" inline />
 			<Badge badgeContent="Subtle" emphasis="subtle" inline />

@@ -34,7 +34,6 @@ Set the `inline` prop to display the badge in normal document flow instead of po
 ### Colors
 
 - **Secondary:** The default.
-- **Primary:** Use accent when high emphasis is required.
 - **Info:** Use to call out an object or action as having an important attribute.
 - **Success:** Use to indicate a successful or completed state when it's important to provide positive reinforcement.
 - **Warning:** Use for warnings and time-sensitive issues that require attention and potential action.
@@ -43,7 +42,7 @@ Set the `inline` prop to display the badge in normal document flow instead of po
 ::example{src="mui/Badge.colors"}
 
 :::caution[Using icons]
-In most cases, you should supplement the `color` with [iconography](#icons).
+In most cases, you should supplement the `color` with iconography so that color is not the only means of communication. See [WCAG's Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
 :::
 
 ### Emphasis
@@ -55,14 +54,6 @@ Use the `emphasis` prop to adjust the visual prominence of an [`inline`](#inline
 - **Subtle:** Use when you need the least emphasis.
 
 ::example{src="mui/Badge.emphasis"}
-
-### Icons
-
-All [colors](#colors) except **secondary** and **primary** convey a specific type of status. Supplement those colors with an icon so that color is not the only means of communication. See [WCAG's Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
-
-For example, include the `status-warning` icon when applying the ‘error' color.
-
-::example{src="mui/Badge.error"}
 
 ## ✅ Do
 

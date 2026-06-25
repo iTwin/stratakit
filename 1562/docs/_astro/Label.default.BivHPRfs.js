@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.PMex-_Ys.js";import{r as e}from"./styles.internal.Cf9SRLEZ.js";import{L as o}from"./Label.asfURYOp.js";import{T as s}from"./TextBox.BA9CRNWa.js";const p=()=>{const r=e.useId();return t.jsxs(t.Fragment,{children:[t.jsx(o,{htmlFor:r,children:"Name "}),t.jsx(s,{id:r})]})};export{p as default};

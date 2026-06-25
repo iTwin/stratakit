@@ -7,7 +7,6 @@
 	--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 	--🥝selection-color-bg: var(--stratakit-color-static-white);
 	--🥝selection-color-text: var(--stratakit-color-static-black);
-	--_MuiBadge-border-color: var(--stratakit-color-border-glow-strong-default);
 	--_MuiBadge-color: var(--stratakit-color-text-neutral-emphasis);
 
 	background-color: var(--_MuiBadge-background-color);
@@ -16,26 +15,32 @@
 
 	&:where(.MuiBadge-colorError) {
 		--_MuiBadge-background-color: var(--stratakit-color-bg-critical-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-critical-base);
 	}
 
 	&:where(.MuiBadge-colorInfo) {
 		--_MuiBadge-background-color: var(--stratakit-color-bg-info-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-info-base);
 	}
 
 	&:where(.MuiBadge-colorPrimary) {
 		--_MuiBadge-background-color: var(--stratakit-color-bg-accent-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-accent-base);
 	}
 
 	&:where(.MuiBadge-colorSecondary) {
 		--_MuiBadge-background-color: var(--stratakit-color-bg-mono-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-glow-strong-default);
 	}
 
 	&:where(.MuiBadge-colorSuccess) {
 		--_MuiBadge-background-color: var(--stratakit-color-bg-positive-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-positive-base);
 	}
 
 	&:where(.MuiBadge-colorWarning) {
 		--_MuiBadge-background-color: var(--stratakit-color-bg-attention-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-attention-base);
 	}
 
 	:where(.MuiBadge-root[data-_sk-inline]) & {
@@ -45,40 +50,30 @@
 	}
 
 	:where([data-_sk-emphasis="moderate"]) & {
+		--_MuiBadge-color: var(--stratakit-color-text-neutral-primary);
+
 		&:where(.MuiBadge-colorError) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-critical-muted);
-			--_MuiBadge-border-color: var(--stratakit-color-border-critical-muted);
-			--_MuiBadge-color: var(--stratakit-color-text-critical-faded);
 		}
 
 		&:where(.MuiBadge-colorInfo) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-info-muted);
-			--_MuiBadge-border-color: var(--stratakit-color-border-info-muted);
-			--_MuiBadge-color: var(--stratakit-color-text-info-faded);
 		}
 
 		&:where(.MuiBadge-colorPrimary) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-accent-muted);
-			--_MuiBadge-border-color: var(--stratakit-color-border-accent-muted);
-			--_MuiBadge-color: var(--stratakit-color-text-accent-faded);
 		}
 
 		&:where(.MuiBadge-colorSecondary) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-mono-muted);
-			--_MuiBadge-border-color: var(--stratakit-color-border-mono-muted);
-			--_MuiBadge-color: var(--stratakit-color-text-mono-faded);
 		}
 
 		&:where(.MuiBadge-colorSuccess) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-positive-muted);
-			--_MuiBadge-border-color: var(--stratakit-color-border-positive-muted);
-			--_MuiBadge-color: var(--stratakit-color-text-positive-faded);
 		}
 
 		&:where(.MuiBadge-colorWarning) {
 			--_MuiBadge-background-color: var(--stratakit-color-bg-attention-muted);
-			--_MuiBadge-border-color: var(--stratakit-color-border-attention-muted);
-			--_MuiBadge-color: var(--stratakit-color-text-attention-faded);
 		}
 	}
 
@@ -89,32 +84,27 @@
 
 		&:where(.MuiBadge-colorError) {
 			--_MuiBadge-color: var(--stratakit-color-text-critical-base);
-			--_MuiBadge-border-color: var(--stratakit-color-border-critical-base);
 		}
 
 		&:where(.MuiBadge-colorInfo) {
 			--_MuiBadge-color: var(--stratakit-color-text-info-base);
-			--_MuiBadge-border-color: var(--stratakit-color-border-info-base);
 		}
 
 		&:where(.MuiBadge-colorPrimary) {
 			--_MuiBadge-color: var(--stratakit-color-text-accent-base);
-			--_MuiBadge-border-color: var(--stratakit-color-border-accent-base);
 		}
 
 		&:where(.MuiBadge-colorSecondary) {
 			--_MuiBadge-color: var(--stratakit-color-text-mono-base);
-			--_MuiBadge-border-color: var(--stratakit-color-border-mono-base);
+			--_MuiBadge-border-color: var(--stratakit-color-border-neutral-base);
 		}
 
 		&:where(.MuiBadge-colorSuccess) {
 			--_MuiBadge-color: var(--stratakit-color-text-positive-base);
-			--_MuiBadge-border-color: var(--stratakit-color-border-positive-base);
 		}
 
 		&:where(.MuiBadge-colorWarning) {
 			--_MuiBadge-color: var(--stratakit-color-text-attention-base);
-			--_MuiBadge-border-color: var(--stratakit-color-border-attention-base);
 		}
 	}
 }

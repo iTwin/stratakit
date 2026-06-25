@@ -23,14 +23,12 @@ const { packageName, componentName } = Astro.props;
 <style>
   .component-breadcrumb {
     display: flex;
-    gap: var(--space-x1, 4px);
     align-items: center;
-    margin-bottom: 2rem;
+    margin-block-end: var(--stratakit-space-x8);
   }
 
   .component-breadcrumb ol {
     display: flex;
-    gap: var(--space-x1, 4px);
     list-style: none;
     padding: 0;
     margin: 0;
@@ -48,8 +46,11 @@ const { packageName, componentName } = Astro.props;
 
   .component-breadcrumb li + li::before {
     content: "›";
-    margin-right: var(--space-x1, 4px);
-    margin-left: var(--space-x1, 4px);
+    display: inline-block;
+    width: var(--stratakit-space-x4);
+    text-align: center;
+    margin-inline-start: var(--stratakit-space-x1);
+    margin-inline-end: var(--stratakit-space-x1);
     color: var(--stratakit-color-text-neutral-disabled);
     font-weight: var(--stratakit-font-weight-medium);
   }

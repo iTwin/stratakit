@@ -82,6 +82,10 @@ export default defineConfig({
 						},
 					],
 				},
+				{
+					label: "Patterns",
+					items: [{ autogenerate: { directory: "patterns" } }],
+				},
 				{ label: "Icons", slug: "icons" },
 				{ label: "Examples", link: "/examples" },
 				{ label: "API Reference", link: "/reference" },

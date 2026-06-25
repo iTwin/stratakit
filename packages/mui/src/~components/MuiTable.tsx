@@ -70,25 +70,26 @@ DEV: MuiTableCell.displayName = "MuiTableCell";
 
 // ----------------------------------------------------------------------------
 
-const MuiTableSortLabelIcon = forwardRef<
+type MuiTableSortLcableIconSlotProps = BaseProps<"svg"> & {
+	ownerState?: TableSortLabelOwnerState;
+	as?: React.ElementType;
+};
+const MuiTableSortLabelIconSlot = forwardRef<
 	"svg",
-	BaseProps<"svg"> & {
-		ownerState?: TableSortLabelOwnerState;
-		as?: React.ElementType;
-	}
->((allProps, forwardRef) => {
-	const { ownerState, as, ...props } = allProps;
+	MuiTableSortLcableIconSlotProps
+>((props, forwardRef) => {
+	const { ownerState, as, ...rest } = props;
 	switch (ownerState?.direction) {
 		case "asc":
-			return <SortAscendingIcon {...props} ref={forwardRef} />;
+			return <SortAscendingIcon {...rest} ref={forwardRef} />;
 		case "desc":
-			return <SortDescendingIcon {...props} ref={forwardRef} />;
+			return <SortDescendingIcon {...rest} ref={forwardRef} />;
 		default:
 			return null;
 	}
 });
-DEV: MuiTableSortLabelIcon.displayName = "MuiTableSortLabelIcon";
+DEV: MuiTableSortLabelIconSlot.displayName = "MuiTableSortLabelIconSlot";
 
 // ----------------------------------------------------------------------------
 
-export { MuiTableBody, MuiTableCell, MuiTableHead, MuiTableSortLabelIcon };
+export { MuiTableBody, MuiTableCell, MuiTableHead, MuiTableSortLabelIconSlot };

@@ -46,7 +46,7 @@ import {
 	MuiTableBody,
 	MuiTableCell,
 	MuiTableHead,
-	MuiTableSortLabelIcon,
+	MuiTableSortLabelIconSlot,
 } from "./~components/MuiTable.js";
 import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
@@ -536,7 +536,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTableSortLabel: {
 				defaultProps: {
 					slots: {
-						icon: MuiTableSortLabelIcon,
+						icon: MuiTableSortLabelIconSlot,
 					},
 				},
 			},

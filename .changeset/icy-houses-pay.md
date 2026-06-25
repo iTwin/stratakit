@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Remove top padding on the `Alert` action so it appears more top aligned
+Fixed spacing for `Alert` when used with an action.

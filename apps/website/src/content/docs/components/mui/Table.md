@@ -1,6 +1,7 @@
 ---
 title: Table
 description: Tables are used to display information from a data set.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-table/
   apiReference: https://mui.com/material-ui/api/table/

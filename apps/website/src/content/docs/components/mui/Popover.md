@@ -1,6 +1,7 @@
 ---
 title: Popover
 description: Popovers display content in a non-modal window overlay that is positioned relative to a trigger element.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-popover/
   apiReference: https://mui.com/material-ui/api/popover/

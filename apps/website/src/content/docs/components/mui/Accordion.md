@@ -1,6 +1,7 @@
 ---
 title: Accordion
 description: Accordions are used to progressively disclose information.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-accordion/
   apiReference: https://mui.com/material-ui/api/accordion/

@@ -1,6 +1,7 @@
 ---
 title: Chip
 description: Chips are used to filter content or trigger actions.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-chip/
   apiReference: https://mui.com/material-ui/api/chip/

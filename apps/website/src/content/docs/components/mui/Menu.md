@@ -1,6 +1,7 @@
 ---
 title: Menu
 description: Dropdown menus are used to display a list of quick actions in a floating surface.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-menu/
   apiReference: https://mui.com/material-ui/api/menu/

@@ -1,10 +1,15 @@
 ---
 // See https://starlight.astro.build/reference/overrides/#pagetitle
 
+import ComponentBreadcrumb from "./ComponentBreadcrumb.astro";
+
 const { entry } = Astro.locals.starlightRoute;
 
 const status = entry.data.status;
 const links = entry.data.links || {};
+
+// Detect if this is a component page and extract package info;
+const isComponentPage = Astro.url.pathname.includes("/components/") && entry.data.package
 
 const muiDocsUrl = links.muiDocs;
 const componentStatusOverviewUrl = `${import.meta.env.BASE_URL}/components/overview/#component-status`;
@@ -19,6 +24,10 @@ const apiReferenceUrl = (() => {
 	return url;
 })();
 ---
+
+{isComponentPage && (
+	<ComponentBreadcrumb packageName={entry.data.package} componentName={entry.data.title} />
+)}
 
 <hgroup>
 	<h1 id="_top">{entry.data.title}</h1>

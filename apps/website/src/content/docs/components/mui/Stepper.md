@@ -1,6 +1,7 @@
 ---
 title: Stepper
 description: Steppers are used to display progress through a sequence of steps.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-stepper/
   apiReference: https://mui.com/material-ui/api/stepper/

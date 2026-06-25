@@ -1,0 +1,57 @@
+---
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+type Props = {
+	packageName: string;
+	componentName: string;
+};
+
+const { packageName, componentName } = Astro.props;
+---
+
+<nav aria-label="breadcrumb" class="component-breadcrumb">
+	<ol>
+		<li>Components</li>
+		<li>{packageName}</li>
+		<li aria-current="page">{componentName}</li>
+	</ol>
+</nav>
+
+<style>
+  .component-breadcrumb {
+    display: flex;
+    gap: var(--space-x1, 4px);
+    align-items: center;
+    margin-bottom: 2rem;
+  }
+
+  .component-breadcrumb ol {
+    display: flex;
+    gap: var(--space-x1, 4px);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    align-items: center;
+  }
+
+  .component-breadcrumb li {
+    color: var(--stratakit-color-text-neutral-primary);
+    font-family: var(--stratakit-font-family-sans), system-ui, sans-serif;
+    font-size: var(--stratakit-font-size-12);
+    font-weight: var(--stratakit-font-weight-regular);
+    line-height: 1.3333; /* body-sm line-height */
+    white-space: nowrap;
+  }
+
+  .component-breadcrumb li + li::before {
+    content: "›";
+    margin-right: var(--space-x1, 4px);
+    margin-left: var(--space-x1, 4px);
+    color: var(--stratakit-color-text-neutral-disabled);
+    font-weight: var(--stratakit-font-weight-medium);
+  }
+</style>
+

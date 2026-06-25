@@ -2,6 +2,7 @@
 title: Icon
 description: Icons are used to visually represent actions or information.
 status: stable
+package: "@stratakit/mui"
 links:
   apiReference: /reference/mui/Icon/
 ---

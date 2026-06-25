@@ -40,6 +40,7 @@ export const collections = {
 		schema: docsSchema({
 			extend: z.object({
 				status: z.enum(["unstable", "stable", "deprecated"]).optional(),
+				package: z.string().optional(),
 				links: z
 					.object({
 						muiDocs: z.string().optional(),

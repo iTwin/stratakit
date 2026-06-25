@@ -1,6 +1,7 @@
 ---
 title: Progress
 description: Progress indicators are used to display a loading state or visualize the progress of an operation.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-progress/
   apiReference: https://mui.com/material-ui/api/circular-progress/

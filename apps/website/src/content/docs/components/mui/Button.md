@@ -1,6 +1,7 @@
 ---
 title: Button
 description: Buttons are used to initiate actions.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-button/
   apiReference: https://mui.com/material-ui/api/button/

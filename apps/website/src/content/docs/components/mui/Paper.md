@@ -1,6 +1,7 @@
 ---
 title: Paper
 description: Paper is an elevated surface that displays content.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-paper/
   apiReference: https://mui.com/material-ui/api/paper/

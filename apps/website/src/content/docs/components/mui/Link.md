@@ -1,6 +1,7 @@
 ---
 title: Link
 description: Links are styled hyperlinks between pages and sections within pages.
+package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-link/
   apiReference: https://mui.com/material-ui/api/link/

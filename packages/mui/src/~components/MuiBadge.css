@@ -103,7 +103,7 @@
 		&:where(.MuiBadge-colorSecondary) {
 			--🥝Icon-color: var(--stratakit-color-icon-neutral-hover);
 			--_MuiBadge-color: var(--stratakit-color-text-mono-base);
-			--_MuiBadge-border-color: var(--stratakit-color-border-neutral-base);
+			--_MuiBadge-border-color: var(--stratakit-color-border-neutral-faded);
 		}
 
 		&:where(.MuiBadge-colorSuccess) {

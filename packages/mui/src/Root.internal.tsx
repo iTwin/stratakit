@@ -21,7 +21,7 @@ export function StyledEngineProvider({ children }: React.PropsWithChildren) {
 
 function createEmotionCache() {
 	const cache = createCache({
-		key: "css",
+		key: "mui",
 		speedy: true, // This injects styles using the `insertRule` API.
 		stylisPlugins: [prefixer],
 	});

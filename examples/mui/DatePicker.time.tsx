@@ -3,28 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Badge from "@mui/material/Badge";
-import { Icon } from "@stratakit/mui";
-
-import svgWarning from "@stratakit/icons/status-warning.svg";
-import styles from "./Badge.error.module.css";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 
 export default () => {
 	return (
-		<Badge
-			badgeContent={
-				<>
-					<Icon href={svgWarning} />
-					Unstable
-				</>
-			}
-			color="error"
-			inline
-			slotProps={{
-				badge: {
-					className: styles.badge,
-				},
-			}}
-		/>
+		<LocalizationProvider dateAdapter={AdapterDateFns}>
+			<TimePicker label="Time" />
+		</LocalizationProvider>
 	);
 };

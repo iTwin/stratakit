@@ -1,5 +1,106 @@
 # Changelog
 
+## 0.5.0
+
+### Breaking changes
+
+- [#1388](https://github.com/iTwin/stratakit/pull/1388): Changed the `Alert` component's `role` from `"alert"` to [`"group"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role). The `Alert` will no longer be a live region by default. The `AlertTitle` subcomponent will now provide the accessible name for the `Alert`.
+- [#1540](https://github.com/iTwin/stratakit/pull/1540): Updated the default `severity` of `Alert` to a newly added `"none"` value.
+- [#1422](https://github.com/iTwin/stratakit/pull/1422): Removed the `variant` prop from `Avatar` and `AvatarGroup`.
+- [#1549](https://github.com/iTwin/stratakit/pull/1549): Changed the stock heading and subtitle variants of the `Typography` component to render as `<h2>` elements by default, except for the `"h1"` variant which still renders as `<h1>`. For all of these variants, the `render` prop is now required.
+- [#1505](https://github.com/iTwin/stratakit/pull/1505): Removed `color="secondary"` from `Typography`.
+- [#1547](https://github.com/iTwin/stratakit/pull/1547): Updated types for `Typography` so that `render` prop is required for heading-like variants.
+- [#1503](https://github.com/iTwin/stratakit/pull/1503): Removed support for `textColor="inherit"` from `Tabs`.
+- [#1503](https://github.com/iTwin/stratakit/pull/1503): Removed support for the `indicatorColor` prop from `Tabs`.
+- [#1530](https://github.com/iTwin/stratakit/pull/1530): Removed support for the `scrollButtons` prop from `Tabs`.
+- [#1530](https://github.com/iTwin/stratakit/pull/1530): Removed support for the `allowScrollButtonsMobile` prop from `Tabs`.
+- [#1493](https://github.com/iTwin/stratakit/pull/1493): Removed support for the `underline` prop from `Link`.
+- [#1483](https://github.com/iTwin/stratakit/pull/1483): Disabled the `storageManager` in `ThemeProvider`. The `colorScheme` must now be manually synchronized to `localStorage` if you want to persist it across sessions.
+
+### Non-breaking changes
+
+- [#1513](https://github.com/iTwin/stratakit/pull/1513): Updated the default portal container of `Autocomplete`, `Dialog`, `Drawer`, `Menu`, `Modal`, `Popover`, `Popper`, `Select`, `SwipeableDrawer` and `Tooltip` components to use the root portal container instead of the `<body>` element.
+- Typography:
+  - [#1433](https://github.com/iTwin/stratakit/pull/1433): Added several new variants to the `Typography` component: `display-*`, `heading-*`, `subheading-*`, `body-*`, `caption-*` and `mono-sm`. These variants match the ones that were originally available in the `Text` component from `@stratakit/bricks`.
+  - [#1516](https://github.com/iTwin/stratakit/pull/1516): Adjusted sizes for `caption-*` typography variants.
+  - [#1551](https://github.com/iTwin/stratakit/pull/1551): Adjusted sizes for the `display-*` and `headline-°` typography variants.
+  - [#1505](https://github.com/iTwin/stratakit/pull/1505): Added `color="textTertiary"` to `Typography`.
+  - [#1505](https://github.com/iTwin/stratakit/pull/1505): Fixed styling for `Typography` colors.
+  - [#1433](https://github.com/iTwin/stratakit/pull/1433): Updated the default `variant` of `Typography` to `"inherit"`.
+- Accordion:
+  - [#1514](https://github.com/iTwin/stratakit/pull/1514): Improved styling of adjacent `Accordion`s.
+  - [#1499](https://github.com/iTwin/stratakit/pull/1499): Indent `AccordionDetails` when the summary marker is left-aligned.
+  - [#1477](https://github.com/iTwin/stratakit/pull/1477): Added responsive `AccordionSummary` marker placement, with a new `markerPlacement` prop to force the marker to the start or end.
+  - [#1498](https://github.com/iTwin/stratakit/pull/1498): Updated `Accordion` to use `slots.root` instead of `slotProps.root` for setting the default value of the `square` prop.
+  - [#1525](https://github.com/iTwin/stratakit/pull/1525): Improved animations for `Accordion`.
+- Autocomplete:
+  - [#1216](https://github.com/iTwin/stratakit/pull/1216): Changed tab order of `Autocomplete` component so that input comes before the selected chips ("tags").
+  - [#1216](https://github.com/iTwin/stratakit/pull/1216): Added [`list`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [`listitem`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) semantics to tags of `Autocomplete` component.
+  - [#1507](https://github.com/iTwin/stratakit/pull/1507): Fixed `Autocomplete` options size when `size="small"`.
+- Card:
+  - [#1494](https://github.com/iTwin/stratakit/pull/1494): Fixed `Card` ignoring the `role` prop.
+  - [#1548](https://github.com/iTwin/stratakit/pull/1548): Changed the default `variant` of `Card` to `"outlined"`.
+  - [#1510](https://github.com/iTwin/stratakit/pull/1510): `CardContent` will now use `--stratakit-color-text-neutral-secondary` for its descendants.
+  - [#1504](https://github.com/iTwin/stratakit/pull/1504): Added fallback handling for when `CardActionArea` is rendered as an ancestor of the `CardHeader` title.
+- Tabs:
+  - [#1522](https://github.com/iTwin/stratakit/pull/1522): Added `size` prop to `Tabs`.
+  - [#1503](https://github.com/iTwin/stratakit/pull/1503): Styled `Tabs` to match the Strata visual design language.
+  - [#1530](https://github.com/iTwin/stratakit/pull/1530): Improved visuals of `Tabs` scroll buttons.
+- [#1523](https://github.com/iTwin/stratakit/pull/1523): Fixed `Alert` icon shrinking issue.
+- [#1423](https://github.com/iTwin/stratakit/pull/1423): `AvatarGroup` uses a mask rather than a border to achieve the overlapping `Avatar` cutout effect.
+- [#1545](https://github.com/iTwin/stratakit/pull/1545): Removed `aria-hidden` from inline `Badge` when used with `@mui/material@^9.1.0`.
+- [#1493](https://github.com/iTwin/stratakit/pull/1493): Improved styling for static `Link`.
+- [#1483](https://github.com/iTwin/stratakit/pull/1483): Disabled transitions and double rendering in `ThemeProvider`.
+- [#1482](https://github.com/iTwin/stratakit/pull/1482): Added hover & disabled styling to `Chip`.
+- [#1508](https://github.com/iTwin/stratakit/pull/1508): Fixed `InputLabel` styles for `size="small"`.
+- [#1491](https://github.com/iTwin/stratakit/pull/1491): Fixed `FormControlLabel` layout when `labelPlacement` is `top` or `bottom`.
+- [#1476](https://github.com/iTwin/stratakit/pull/1476): Fixed `Slider` cursor when active.
+- [#1511](https://github.com/iTwin/stratakit/pull/1511): Updated spacing for `RadioGroup` and `FormGroup`.
+- [#1544](https://github.com/iTwin/stratakit/pull/1544): Fixed aspect ratio issue present in some versions of Safari.
+- [#1550](https://github.com/iTwin/stratakit/pull/1550): Updated the sizes of stock MUI typography variants.
+- [#1471](https://github.com/iTwin/stratakit/pull/1471): Updated `MenuItem` styling to support `role="menuitemradio"` and `role="menuitemcheckbox"` with `aria-checked`.
+- [#1527](https://github.com/iTwin/stratakit/pull/1527): The `Divider` is rendered as a `<div>` element when `role="presentation"` is set.
+- [#1539](https://github.com/iTwin/stratakit/pull/1539): Fixed `edge` prop for `IconButton`.
+- [#1495](https://github.com/iTwin/stratakit/pull/1495): Disabled scroll lock for `Popover`, `Menu` and `Select` components so that the page can still be scrolled when the popup is open.
+- [#1492](https://github.com/iTwin/stratakit/pull/1492): Added fallback mechanism for automatically labelling `Menu` and `Popover` components using `anchorEl`.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.9
+  - @stratakit/icons@0.4.0
+
+## 0.4.2
+
+- [#1464](https://github.com/iTwin/stratakit/pull/1464): Removed `role="dialog"` from the `paper` slot of the `Menu` component.
+- [#1455](https://github.com/iTwin/stratakit/pull/1455): Added minimum size to the `Dialog` component.
+- [#1451](https://github.com/iTwin/stratakit/pull/1451): Fixed pagination disabled and disabled + active styling.
+- [#1456](https://github.com/iTwin/stratakit/pull/1456): Improved `MenuItem` styling by adding active + hover state styling.
+- [#1453](https://github.com/iTwin/stratakit/pull/1453): Improved `ToggleButton` styling by fixing active + disabled state and added active + hover state.
+- [#1465](https://github.com/iTwin/stratakit/pull/1465): Improved `Alert` styling by adjusting gap, alignment and icon colors.
+- [#1469](https://github.com/iTwin/stratakit/pull/1469): Fixed `Rating` component collapsing to zero width in Safari.
+- Updated dependencies:
+  - @stratakit/icons@0.3.2
+
+## 0.4.1
+
+- [#1442](https://github.com/iTwin/stratakit/pull/1442): Added a new `labelPlacement` prop to `IconButton` and `ToggleButton` components to control the placement of a tooltip that is shown when the `label` prop is specified.
+- [#1393](https://github.com/iTwin/stratakit/pull/1393): Added ability to display text in the `ToggleButton` when rendered as a `Button`.
+- [#1444](https://github.com/iTwin/stratakit/pull/1444): Enabled `hover` prop for `TableRow` when inside `TableBody`.
+- [#1416](https://github.com/iTwin/stratakit/pull/1416): `Typography` will now log a warning during development if a heading variant is used without explicitly setting the `render` prop. This change is to help developers ensure correct heading structure.
+- Accessibility improvements:
+  - [#1417](https://github.com/iTwin/stratakit/pull/1417): `AvatarGroup` DOM order now matches the visual display order.
+  - [#1437](https://github.com/iTwin/stratakit/pull/1437): Added list semantics to `AvatarGroup` and nested `Avatar`s.
+  - [#1420](https://github.com/iTwin/stratakit/pull/1420): Add `role="dialog"` to `Popover`'s `paper` slot.
+  - [#1215](https://github.com/iTwin/stratakit/pull/1215): Added [`group` role](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role) to `Autocomplete`.
+- Styling changes:
+  - [#1360](https://github.com/iTwin/stratakit/pull/1360): Updated styling for `Table` row height & hover state.
+  - [#1431](https://github.com/iTwin/stratakit/pull/1431): Fixed visual appearance of `Switch` thumb.
+  - [#1428](https://github.com/iTwin/stratakit/pull/1428): Decreased the font-size of `DialogContentText`.
+  - [#1432](https://github.com/iTwin/stratakit/pull/1432): Updated `Typography` styles for `"subtitle1"` and `"subtitle2"` variants.
+  - [#1424](https://github.com/iTwin/stratakit/pull/1424): Styled `Slider`'s mark labels to match the Strata visual design language.
+  - [#1398](https://github.com/iTwin/stratakit/pull/1398): Styled `Slider`'s tooltip to match the Strata visual design language.
+  - [#1393](https://github.com/iTwin/stratakit/pull/1393): Styled `ToggleButton` to visually match the `IconButton` component.
+  - [#1430](https://github.com/iTwin/stratakit/pull/1430): Adjusted spacing between `CardHeader` and `CardContent` / `CardActions`.
+  - [#1426](https://github.com/iTwin/stratakit/pull/1426): The `AvatarGroup` surplus element no longer defaults to uppercase.
+
 ## 0.4.0
 
 ### Breaking changes

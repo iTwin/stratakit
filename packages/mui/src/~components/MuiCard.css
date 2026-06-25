@@ -27,6 +27,12 @@
 	}
 }
 
+.MuiCardHeader-root {
+	&:where(:has(+ .MuiCardContent-root, + .MuiCardActions-root)) {
+		padding-block-end: 0;
+	}
+}
+
 .MuiCardHeader-title {
 	@apply --typography("headline-sm");
 	font-weight: 500;
@@ -45,8 +51,14 @@
 }
 
 .MuiCardContent-root {
+	color: var(--stratakit-color-text-neutral-secondary);
+
 	&:where(:has(+ .MuiCardActions-root)) {
 		padding-block-end: 0;
+	}
+
+	:where(.MuiCardHeader-root) + & {
+		padding-block-start: var(--stratakit-space-x2);
 	}
 }
 
@@ -57,10 +69,6 @@
 	&:where(.Mui-focusVisible) {
 		outline: none !important; /* Focus outline will be shown around the Card instead */
 	}
-}
-
-.MuiCardActionArea-focusHighlight {
-	display: none;
 }
 
 .MuiCardActions-root {

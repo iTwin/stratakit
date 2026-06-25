@@ -34,6 +34,9 @@ interface DividerProps
  *
  * A `Divider` can be oriented horizontally or vertically (using the `orientation` prop),
  * and can be a semantic divider or a purely presentational one (using the `presentational` prop).
+ *
+ * @deprecated Use MUI [`Divider`](https://mui.com/material-ui/api/divider/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#divider).
  */
 const Divider = forwardRef<"hr", DividerProps>((props, forwardedRef) => {
 	useInit();

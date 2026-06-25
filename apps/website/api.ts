@@ -7,6 +7,7 @@ import * as fs from "node:fs";
 import {
 	type CallExpression,
 	type JSDoc,
+	type JSDocableNode,
 	Project,
 	type PropertySignature,
 	type SourceFile,
@@ -53,6 +54,7 @@ namespace Api {
 		 * Dot separated if star export: `unstable_ErrorRegion.Root`
 		 */
 		barrelName?: string;
+		deprecated?: boolean;
 	}
 
 	export interface Type {
@@ -265,9 +267,15 @@ function getConvenienceComponent({ sourceFile }: { sourceFile: SourceFile }) {
 function getCompositionComponents({ sourceFile }: { sourceFile: SourceFile }) {
 	const defaultExportSymbol = sourceFile.getDefaultExportSymbol();
 	const allExportSymbols = sourceFile.getExportSymbols();
-	const exportSymbols = allExportSymbols.filter((symbol) => {
-		return symbol !== defaultExportSymbol;
-	});
+	const exportSymbols = allExportSymbols
+		// Exclude default export, which is extracted as a convenience component.
+		.filter((symbol) => symbol !== defaultExportSymbol)
+		// Sort by source order, instead of order in the export declaration.
+		.sort((a, b) => {
+			const aPos = getSymbolSourcePos(sourceFile, a);
+			const bPos = getSymbolSourcePos(sourceFile, b);
+			return aPos - bPos;
+		});
 
 	const composition: Api.Component[] = [];
 	for (const exportSymbol of exportSymbols) {
@@ -280,6 +288,19 @@ function getCompositionComponents({ sourceFile }: { sourceFile: SourceFile }) {
 	}
 
 	return composition;
+}
+
+/** Returns the earliest position of the symbol declaration in the specific source file. */
+function getSymbolSourcePos(sourceFile: SourceFile, symbol: TSMorphSymbol) {
+	const aliasedSymbol = symbol.getAliasedSymbol();
+	const declarations = [
+		...symbol.getDeclarations(),
+		...(aliasedSymbol?.getDeclarations() ?? []),
+	];
+	return declarations.reduce((pos, decl) => {
+		if (decl.getSourceFile() !== sourceFile) return pos;
+		return Math.min(pos, decl.getPos());
+	}, Infinity);
 }
 
 function getComponent({ exportSymbol }: { exportSymbol: TSMorphSymbol }) {
@@ -311,12 +332,14 @@ function getComponent({ exportSymbol }: { exportSymbol: TSMorphSymbol }) {
 		declaration.getFirstAncestorByKind(SyntaxKind.VariableStatement) ??
 		declaration.asKind(SyntaxKind.FunctionDeclaration);
 	const jsdoc = statement?.getJsDocs().at(0);
+	const deprecated = statement ? getDeprecated(statement) : false;
 	return {
 		name,
 		baseProps,
 		props,
 		baseElement,
 		jsdoc: getJsdocComment(jsdoc),
+		...(deprecated ? { deprecated } : {}),
 	} satisfies Api.Component;
 }
 
@@ -585,6 +608,15 @@ function getBaseTypeName(type: TSMorphType) {
 		);
 		return text.startsWith(baseTypeName);
 	});
+}
+
+function getDeprecated(node: JSDocableNode) {
+	const jsdoc = node.getJsDocs().at(0);
+	if (!jsdoc) return false;
+	const deprecated = jsdoc
+		.getTags()
+		.find((tag) => tag.getTagName() === "deprecated");
+	return !!deprecated;
 }
 
 generateApi();

@@ -9,13 +9,14 @@ import { Icon } from "@stratakit/foundations";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import { definePage, type VariantProps } from "~/~utils.tsx";
 
-import svgBentley from "@stratakit/icons/bentley-systems.svg";
+import svgBentley from "@stratakit/icons/brand-bentley-systems.svg";
 import svgHelp from "@stratakit/icons/help.svg";
 import svgNotifications from "@stratakit/icons/notifications.svg";
 import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 import svgPlugins from "@stratakit/icons/plugins.svg";
 import svgSettings from "@stratakit/icons/settings.svg";
 import svgUser from "@stratakit/icons/user.svg";
+import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 
 export const handle = { title: "NavigationRail" };
 
@@ -78,6 +79,7 @@ export default definePage(
 						href="#"
 						label="Marketplace"
 						icon={svgPlugins}
+						suffix={<Icon alt="(opens in new tab)" href={svgWindowPopout} />}
 					/>
 
 					<NavigationRail.Footer>
@@ -146,6 +148,7 @@ function VisualTest() {
 							href="#"
 							icon={svgPlaceholder}
 							label="Item #3"
+							suffix={<Icon alt="(opens in new tab)" href={svgWindowPopout} />}
 						/>
 					</NavigationRail.ListItem>
 				</NavigationRail.List>

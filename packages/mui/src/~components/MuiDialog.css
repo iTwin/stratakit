@@ -3,6 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiDialog-paper {
+	--✨min-inset: var(--stratakit-space-x4);
+
+	min-block-size: min(calc(100% - var(--✨min-inset)), 100px);
+	min-inline-size: min(calc(100% - var(--✨min-inset)), 100%, 296px);
+}
+
 .MuiDialogActions-root {
 	background-color: var(--stratakit-color-bg-page-base);
 	background-clip: padding-box; /* Ensure background-color doesn't bleed into transparent border */
@@ -12,7 +19,9 @@
 	border-end-start-radius: inherit;
 
 	&:where(.MuiDialogActions-spacing) {
-		padding-block: var(--stratakit-space-x4);
-		padding-inline: var(--stratakit-space-x5);
+		padding-block-start: var(--stratakit-space-x4);
+		padding-block-end: var(--stratakit-space-x4);
+		padding-inline-start: var(--stratakit-space-x5);
+		padding-inline-end: var(--stratakit-space-x5);
 	}
 }

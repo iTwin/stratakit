@@ -38,6 +38,9 @@ interface AnchorRootProps extends FocusableProps<"a"> {
  *
  * <Anchor.Root href="https://www.example.com">Example</Anchor.Root>
  * ```
+ *
+ * @deprecated Use MUI [`Link`](https://mui.com/material-ui/api/link/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#anchor).
  */
 const AnchorRoot = forwardRef<"a", AnchorRootProps>((props, forwardedRef) => {
 	useInit();
@@ -69,6 +72,8 @@ interface AnchorTextProps extends BaseProps<"span"> {
 
 /**
  * Displays the anchor text.
+ *
+ * @deprecated
  */
 const AnchorText = forwardRef<"span", AnchorTextProps>(
 	(props, forwardedRef) => {
@@ -96,6 +101,8 @@ interface AnchorExternalMarkerProps
 
 /**
  * Displays an external link marker, with visually hidden text for screen readers.
+ *
+ * @deprecated
  */
 const AnchorExternalMarker = forwardRef<"span", AnchorExternalMarkerProps>(
 	(props, forwardedRef) => {
@@ -125,6 +132,9 @@ interface AnchorProps
 
 /**
  * A styled anchor element, typically used for navigating to a different location.
+ *
+ * @deprecated Use MUI [`Link`](https://mui.com/material-ui/api/link/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#anchor).
  */
 const Anchor = forwardRef<"a", AnchorProps>((props, forwardedRef) => {
 	const { tone = "neutral", ...rest } = props;

@@ -2,18 +2,23 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Divider } from "@stratakit/bricks";
-import { Icon } from "@stratakit/foundations";
+
+import Divider from "@mui/material/Divider";
+import { Icon } from "@stratakit/mui";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 
-import svgBentley from "@stratakit/icons/bentley-systems.svg";
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
-import styles from "./NavigationRail.default.module.css";
+import svgBentley from "@stratakit/icons/brand-bentley-systems.svg";
+import svgDisconnect from "@stratakit/icons/disconnect.svg";
+import svgInspection from "@stratakit/icons/inspection.svg";
+import svgReport from "@stratakit/icons/report.svg";
+import svgSettings from "@stratakit/icons/settings.svg";
+import svgWindowPopout from "@stratakit/icons/window-popout.svg";
+import styles from "./NavigationRail.comprehensive.module.css";
 
 export default () => {
 	return (
 		<div className={styles.container}>
-			<NavigationRail.Root className={styles.root}>
+			<NavigationRail.Root>
 				<NavigationRail.Header>
 					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
 					<NavigationRail.ToggleButton />
@@ -24,38 +29,32 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={svgPlaceholder}
-								label="Item #1"
+								icon={`${svgReport}#icon-large`}
+								label="Reports"
 								active
 							/>
 						</NavigationRail.ListItem>
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={svgPlaceholder}
-								label="Item #2"
-							/>
-						</NavigationRail.ListItem>
-						<Divider presentational />
-						<NavigationRail.ListItem>
-							<NavigationRail.Anchor
-								href="#"
-								icon={svgPlaceholder}
-								label="Item #3"
+								icon={`${svgInspection}#icon-large`}
+								label="Logs"
 							/>
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
-
+					<Divider className={styles.divider} role="presentation" />
+					<NavigationRail.Anchor
+						href="#"
+						icon={`${svgDisconnect}#icon-large`}
+						label="Integrations"
+						suffix={<Icon href={svgWindowPopout} alt="(opens in new tab)" />}
+					/>
 					<NavigationRail.Footer>
-						<NavigationRail.List>
-							<NavigationRail.ListItem>
-								<NavigationRail.Button icon={svgPlaceholder} label="Item #4" />
-							</NavigationRail.ListItem>
-							<Divider presentational />
-							<NavigationRail.ListItem>
-								<NavigationRail.Button icon={svgPlaceholder} label="Item #5" />
-							</NavigationRail.ListItem>
-						</NavigationRail.List>
+						<Divider className={styles.divider} />
+						<NavigationRail.Button
+							icon={`${svgSettings}#icon-large`}
+							label="Settings"
+						/>
 					</NavigationRail.Footer>
 				</NavigationRail.Content>
 			</NavigationRail.Root>

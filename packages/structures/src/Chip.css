@@ -11,7 +11,8 @@
 		position: relative;
 
 		--🥝Chip-padding-inline: var(--stratakit-space-x2);
-		padding-inline: var(--🥝Chip-padding-inline);
+		padding-inline-start: var(--🥝Chip-padding-inline);
+		padding-inline-end: var(--🥝Chip-padding-inline);
 
 		min-block-size: 1.5rem;
 

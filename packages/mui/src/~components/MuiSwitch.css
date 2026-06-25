@@ -51,6 +51,7 @@
 
 	aspect-ratio: 1;
 	block-size: var(--_MuiSwitch-height);
+	inline-size: var(--_MuiSwitch-height);
 	inset: unset;
 	padding: var(--_MuiSwitch-padding);
 	transform: var(--_MuiSwitch-thumb-position-off);
@@ -107,6 +108,7 @@
 	aspect-ratio: inherit; /* Inherited from `.MuiSwitch-switchBase` */
 	background-color: var(--_MuiSwitch-thumb-background-color);
 	box-shadow: var(--_MuiSwitch-thumb-box-shadow);
+	border: none;
 	border-radius: var(--_MuiSwitch-thumb-border-radius);
 	block-size: 100%;
 	inline-size: 100%;

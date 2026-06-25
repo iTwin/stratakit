@@ -26,7 +26,7 @@ jobs:
         # with:
         #   token: ${{ secrets.IMJS_ADMIN_GH_TOKEN }}
 
-      - uses: pnpm/action-setup@v5
+      - uses: pnpm/action-setup@v6
         with:
           version: 10.30.1
 
@@ -39,7 +39,7 @@ jobs:
       - run: pnpm install
 
       - name: Create release PR or publish to npm
-        uses: changesets/action@6a0a831ff30acef54f2c6aa1cbbc1096b066edaf # v1.7.0
+        uses: changesets/action@63a615b9cd06ba9a3e6d13796c7fbcb080a60a0b # v1.8.0
         with:
           version: pnpm run changeset:version
           publish: pnpm run changeset:publish

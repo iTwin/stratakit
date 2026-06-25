@@ -270,3 +270,14 @@ starlight-menu-button button {
 	text-indent: 0;
 	font-variant: tabular-nums;
 }
+
+.sl-heading-wrapper:has(:target) {
+	:target {
+		outline: 2px solid var(--stratakit-color-border-neutral-faded);
+		outline-offset: 4px;
+	}
+
+	.sl-anchor-link {
+		opacity: 1;
+	}
+}

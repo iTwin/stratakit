@@ -5,6 +5,8 @@
 
 .MuiAlert-root {
 	border: 1px solid var(--stratakit-color-border-neutral-base);
+	padding-block-start: var(--stratakit-space-x3);
+	padding-block-end: var(--stratakit-space-x3);
 
 	&:where(.MuiAlert-outlined) {
 		background-color: var(--stratakit-color-bg-elevation-base);
@@ -25,7 +27,19 @@
 }
 
 .MuiAlert-icon {
-	align-items: center; /* Fix vertical alignment of differently sized icons */
+	align-self: start;
+	align-items: center;
+	font-size: inherit;
+	block-size: 1lh;
+	flex-shrink: 0;
+
+	padding: 0;
+	opacity: 1; /* Stock MUI reduces the icon opacity for some reason. */
+	margin-inline-end: var(--stratakit-space-x2);
+
+	&:where(:empty) {
+		display: none;
+	}
 
 	:where(.MuiAlert-root.MuiAlert-colorSuccess) & {
 		color: var(--stratakit-color-icon-positive-base);
@@ -39,4 +53,13 @@
 	:where(.MuiAlert-root.MuiAlert-colorError) & {
 		color: var(--stratakit-color-icon-critical-base);
 	}
+}
+
+.MuiAlert-message {
+	padding: 0;
+}
+
+.MuiAlertTitle-root {
+	margin: 0;
+	margin-block-end: var(--stratakit-space-x1);
 }

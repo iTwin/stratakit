@@ -8,10 +8,10 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 
 export default () => {
 	return (
-		<ButtonGroup aria-label="Text formatting">
-			<Button>Bold</Button>
-			<Button>Italic</Button>
-			<Button>Underline</Button>
+		<ButtonGroup aria-label="File actions">
+			<Button>Edit</Button>
+			<Button>Move</Button>
+			<Button>Delete</Button>
 		</ButtonGroup>
 	);
 };

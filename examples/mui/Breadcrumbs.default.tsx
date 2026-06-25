@@ -5,14 +5,15 @@
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
 		<Breadcrumbs aria-label="breadcrumb">
 			<Link href="/">Home</Link>
 			<Link href="#packages">Packages</Link>
-			<Typography color="text.primary">@stratakit/mui</Typography>
+			<Link aria-current="true" color="textSecondary">
+				@stratakit/mui
+			</Link>
 		</Breadcrumbs>
 	);
 };

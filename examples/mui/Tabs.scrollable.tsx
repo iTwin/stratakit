@@ -22,30 +22,17 @@ export default () => {
 				variant="scrollable"
 				value={value}
 				onChange={(_, value) => setValue(value)}
-				slotProps={{
-					scrollButtons: {
-						className: styles.scrollButton,
-						classes: {
-							disabled: styles.disabled,
-						},
-					},
-				}}
 			>
 				{tabs.map((_, index) => (
 					<Tab
 						key={index}
-						label={`Item ${index}`}
+						label={`Item ${index + 1}`}
 						id={`${baseId}-tab${index}`}
-						aria-controls={`${baseId}-panel${index}`}
 					/>
 				))}
 			</Tabs>
-			<div
-				role="tabpanel"
-				id={`${baseId}-panel${value}`}
-				aria-labelledby={`${baseId}-tab${value}`}
-			>
-				Item {value}
+			<div role="tabpanel" aria-labelledby={`${baseId}-tab${value}`}>
+				Item {value + 1}
 			</div>
 		</Box>
 	);

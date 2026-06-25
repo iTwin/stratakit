@@ -107,6 +107,9 @@ interface IconButtonProps
  *   onClick={() => setActive(!active)}
  * />
  * ```
+ *
+ * @deprecated Use MUI [`IconButton`](https://mui.com/material-ui/api/icon-button/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#iconbutton).
  */
 const IconButton = forwardRef<"button", IconButtonProps>(
 	(props, forwardedRef) => {

@@ -29,6 +29,7 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 - The [`describeChild`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-describeChild) prop defaults to `true`.
 - Change default placement from `"bottom"` to `"top"`.
 - Includes full `forced-colors` support.
+- The default portal container is now the [root portal container](/components/root/#portal-container).
 
 ## Examples
 
@@ -48,20 +49,20 @@ Use the `describeChild` prop to provide an accessible label via [`aria-label`](h
 
 The **Tooltip** is integrated into the [**IconButton**](/components/iconbutton) component and available via the `label` prop. The **Tooltip** component is _not_ needed.
 
-Since the **IconButton’s** tooltip represents its principle label, choose a `label` value that adequately explains the **IconButton’s** purpose.
+Since the **IconButton's** tooltip represents its principle label, choose a `label` value that adequately explains the **IconButton's** purpose.
 
 ::example{src="mui/IconButton.default"}
 
 ## ✅ Do
 
 - Use **IconButton** `label` prop to automatically apply **Tooltip**.
-- Use **Tooltips** as descriptions for **Button** elements, supplementing the **Button’s** existing label.
+- Use **Tooltips** as descriptions for **Button** elements, supplementing the **Button's** existing label.
 - Keep tooltip content _brief_, _relevant_, and _helpful_.
 
-## 🚫 Don’t
+## 🚫 Don't
 
-- Don’t use **Tooltips** around static elements (e.g. `<div>` or `<span>`).
-- Don’t place interactive elements _inside_ the **Tooltip** content. Use [**Popover**](/components/popover) instead.
-- Don’t use **Tooltips** for the labels or descriptions of form inputs. Use inline text elements instead.
-- Don’t use **Tooltips** for revealing truncated text.
-- Don’t omit a programmatically associated label or description unless an [accessible label/name](https://developer.mozilla.org/en-US/docs/Glossary/Accessible_name) is in place by other means.
+- Don't use **Tooltips** around static elements (e.g. `<div>` or `<span>`).
+- Don't place interactive elements _inside_ the **Tooltip** content. Use [**Popover**](/components/popover) instead.
+- Don't use **Tooltips** for the labels or descriptions of form inputs. Use inline text elements instead.
+- Don't use **Tooltips** for revealing truncated text.
+- Don't omit a programmatically associated label or description unless an [accessible label/name](https://developer.mozilla.org/en-US/docs/Glossary/Accessible_name) is in place by other means.

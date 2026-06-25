@@ -24,6 +24,9 @@ interface VisuallyHiddenProps extends BaseProps<"span"> {}
  * ```
  *
  * **Note**: The `IconButton` component utilizes `VisuallyHidden` internally when the `label` prop is set.
+ *
+ * @deprecated Use MUI [`visuallyHidden`](https://mui.com/system/screen-readers/#visually-hidden-elements) CSS utility instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#visuallyhidden).
  */
 const VisuallyHidden = forwardRef<"span", VisuallyHiddenProps>(
 	(props, forwardedRef) => {

@@ -9,14 +9,25 @@ import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
-import { MuiAutocomplete } from "./~components/MuiAutocomplete.js";
+import {
+	MuiAccordionRootSlot,
+	MuiAccordionSummary,
+} from "./~components/MuiAccordion.js";
+import { MuiAlert, MuiAlertTitle } from "./~components/MuiAlert.js";
+import {
+	MuiAutocomplete,
+	MuiAutocompleteChip,
+	MuiAutocompleteChipDeleteIcon,
+	MuiAutocompleteClearIndicator,
+} from "./~components/MuiAutocomplete.js";
 import { MuiAvatarGroup } from "./~components/MuiAvatarGroup.js";
-import { MuiBadge } from "./~components/MuiBadge.js";
+import { MuiBadge, MuiBadgeBadge } from "./~components/MuiBadge.js";
 import { MuiBottomNavigationAction } from "./~components/MuiBottomNavigation.js";
 import { MuiButtonBase } from "./~components/MuiButtonBase.js";
 import {
 	MuiCard,
 	MuiCardActionArea,
+	MuiCardHeaderTitle,
 	MuiCardMedia,
 } from "./~components/MuiCard.js";
 import {
@@ -27,10 +38,18 @@ import {
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
+import { MuiMenuListSlot } from "./~components/MuiMenu.js";
+import { MuiPopoverPaperSlot } from "./~components/MuiPopover.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
-import { MuiTableCell, MuiTableHead } from "./~components/MuiTable.js";
-import { MuiTypography } from "./~components/MuiTypography.js";
+import {
+	MuiTableBody,
+	MuiTableCell,
+	MuiTableHead,
+} from "./~components/MuiTable.js";
+import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
+import { MuiToggleButton } from "./~components/MuiToggleButton.js";
+import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	ArrowDownIcon,
 	CaretsUpDownIcon,
@@ -49,8 +68,14 @@ import {
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
 
+interface CreateThemeArgs {
+	portalContainer?: HTMLElement | null;
+}
+
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
-function createTheme() {
+function createTheme(args: CreateThemeArgs) {
+	const { portalContainer: container } = args;
+
 	// Map the JS palette back to MUI's own CSS variables, which will then be mapped to the correct StrataKit tokens in CSS.
 	// (This is a fallback for any code that uses MUI's theme.palette values directly instead of CSS variables)
 	const palette = {
@@ -88,15 +113,19 @@ function createTheme() {
 			// These are only hardcoded here as fallback. The CSS will take precedence.
 			body1: { fontSize: 16 },
 			body2: { fontSize: 14 },
-			h1: { fontSize: 48 },
-			h2: { fontSize: 40 },
-			h3: { fontSize: 32 },
-			h4: { fontSize: 28 },
-			h5: { fontSize: 24 },
-			h6: { fontSize: 20 },
+			h1: { fontSize: 20 },
+			h2: { fontSize: 18 },
+			h3: { fontSize: 16 },
+			h4: { fontSize: 14 },
+			h5: { fontSize: 12 },
+			h6: { fontSize: 12 },
 			caption: { fontSize: 12 },
-			subtitle1: { fontSize: 12 },
-			subtitle2: { fontSize: 11 },
+			overline: {
+				fontSize: 12,
+				textTransform: "none",
+			},
+			subtitle1: { fontSize: 16 },
+			subtitle2: { fontSize: 14 },
 		},
 		shadows: [
 			"none", // 0
@@ -112,6 +141,10 @@ function createTheme() {
 			MuiAccordion: {
 				defaultProps: {
 					component: Role.div,
+					disableGutters: true,
+					slots: {
+						root: MuiAccordionRootSlot,
+					},
 					slotProps: {
 						region: {
 							role: undefined,
@@ -122,24 +155,30 @@ function createTheme() {
 			},
 			MuiAccordionSummary: {
 				defaultProps: {
-					component: Role.div,
+					component: MuiAccordionSummary,
 					nativeButton: false,
 					expandIcon: <ChevronDownIcon />,
 				},
 			},
 			MuiAlert: {
 				defaultProps: {
-					component: Role.div,
+					component: MuiAlert,
 					variant: "outlined",
+					severity: "none",
 					iconMapping: {
 						error: <ErrorIcon />,
 						info: <InfoIcon />,
 						success: <SuccessIcon />,
 						warning: <WarningIcon />,
 					},
+					slotProps: {
+						root: {
+							role: "group", // Overriding role="alert".
+						},
+					},
 				},
 			},
-			MuiAlertTitle: { defaultProps: { component: Role.div } },
+			MuiAlertTitle: { defaultProps: { component: MuiAlertTitle } },
 			MuiAutocomplete: {
 				defaultProps: {
 					popupIcon: <ChevronDownIcon />,
@@ -149,6 +188,7 @@ function createTheme() {
 							key={key}
 							{...props}
 							className={cx("MuiMenuItem-root", props.className)}
+							data-_sk-dense={ownerState.size === "small" ? "" : undefined}
 						>
 							{ownerState.getOptionLabel(option)}
 						</li>
@@ -162,8 +202,11 @@ function createTheme() {
 						},
 						chip: {
 							size: "small",
+							component: MuiAutocompleteChip,
+							deleteIcon: <MuiAutocompleteChipDeleteIcon />,
 						},
 						clearIndicator: {
+							component: MuiAutocompleteClearIndicator,
 							tabIndex: 0, // make clear indicator focusable
 							size: "small",
 						},
@@ -185,12 +228,22 @@ function createTheme() {
 					},
 				},
 			},
-			MuiAvatarGroup: { defaultProps: { component: MuiAvatarGroup } },
+			MuiAvatarGroup: {
+				defaultProps: {
+					component: MuiAvatarGroup,
+					slotProps: {
+						surplus: {
+							["data-_sk-surplus" as keyof React.HTMLAttributes<HTMLDivElement>]: ``,
+						},
+					},
+				},
+			},
 			MuiBackdrop: { defaultProps: { component: Role.div } },
 			MuiBadge: {
 				defaultProps: {
 					component: MuiBadge,
 					color: "secondary",
+					slotProps: { badge: { component: MuiBadgeBadge } },
 				},
 			},
 			MuiBottomNavigation: { defaultProps: { component: Role.div } },
@@ -225,8 +278,18 @@ function createTheme() {
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
-			MuiCard: { defaultProps: { component: MuiCard } },
-			MuiCardActionArea: { defaultProps: { component: MuiCardActionArea } },
+			MuiCard: {
+				defaultProps: {
+					component: MuiCard,
+					variant: "outlined",
+				},
+			},
+			MuiCardActionArea: {
+				defaultProps: {
+					component: MuiCardActionArea,
+					slots: { focusHighlight: Nothing },
+				},
+			},
 			MuiCardContent: { defaultProps: { component: Role.div } },
 			MuiCardHeader: {
 				defaultProps: {
@@ -234,7 +297,7 @@ function createTheme() {
 					slotProps: {
 						title: {
 							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
-							component: Role.h2 as any,
+							component: MuiCardHeaderTitle as any,
 						},
 					},
 				},
@@ -262,7 +325,12 @@ function createTheme() {
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
 			MuiDialog: { defaultProps: { component: Role.div } },
-			MuiDialogContentText: { defaultProps: { component: Role.p } },
+			MuiDialogContentText: {
+				defaultProps: {
+					component: Role.p,
+					variant: "inherit",
+				},
+			},
 			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
@@ -291,32 +359,6 @@ function createTheme() {
 			},
 			MuiLink: {
 				defaultProps: { component: Role.a, color: "textPrimary" },
-				variants: [
-					{
-						props: { color: "primary" },
-						style: { color: "var(--stratakit-color-text-accent-strong)" },
-					},
-					{
-						props: { color: "secondary" },
-						style: { color: "var(--stratakit-color-text-neutral-primary)" },
-					},
-					{
-						props: { color: "error" },
-						style: { color: "var(--stratakit-color-text-critical-base)" },
-					},
-					{
-						props: { color: "info" },
-						style: { color: "var(--stratakit-color-text-info-base)" },
-					},
-					{
-						props: { color: "success" },
-						style: { color: "var(--stratakit-color-text-positive-base)" },
-					},
-					{
-						props: { color: "warning" },
-						style: { color: "var(--stratakit-color-text-attention-base)" },
-					},
-				],
 			},
 			MuiList: { defaultProps: { component: Role.ul } },
 			MuiListItem: { defaultProps: { component: Role.li } },
@@ -334,11 +376,23 @@ function createTheme() {
 				},
 			},
 			MuiListSubheader: { defaultProps: { component: Role.li } },
-			MuiMenu: { defaultProps: { component: Role.div } },
+			MuiMenu: {
+				defaultProps: {
+					component: Role.div,
+					slots: {
+						list: MuiMenuListSlot,
+					},
+					slotProps: {
+						paper: {
+							role: "presentation", // Removes role="dialog"
+						},
+					},
+				},
+			},
 			MuiMenuItem: { defaultProps: { component: Role.li } },
 			MuiMenuList: { defaultProps: { component: Role.ul } },
 			MuiMobileStepper: { defaultProps: { component: Role.div } },
-			MuiModal: { defaultProps: { component: Role.div } },
+			MuiModal: { defaultProps: { component: Role.div, container } },
 			MuiOutlinedInput: {
 				defaultProps: {
 					notched: false, // Removes masked border from Select
@@ -358,7 +412,25 @@ function createTheme() {
 				},
 			},
 			MuiPaper: { defaultProps: { component: Role.div } },
-			MuiPopover: { defaultProps: { component: Role.div } },
+			MuiPopover: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true,
+					// Popover passes down `container` prop to `Modal` https://github.com/mui/material-ui/blob/708ef10e874efa63d2e4972bd902befa1912f2dc/packages/mui-material/src/Popover/Popover.js#L389
+					container,
+					slots: {
+						paper: MuiPopoverPaperSlot,
+					},
+					slotProps: {
+						paper: { role: "dialog" },
+					},
+				},
+			},
+			MuiPopper: {
+				defaultProps: {
+					container,
+				},
+			},
 			MuiRadio: {
 				defaultProps: {
 					component: Role.span,
@@ -380,7 +452,16 @@ function createTheme() {
 				},
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },
-			MuiSlider: { defaultProps: { component: Role.span } },
+			MuiSlider: {
+				defaultProps: {
+					component: Role.span,
+					slotProps: {
+						valueLabel: {
+							className: "MuiTooltip-tooltip",
+						},
+					},
+				},
+			},
 			MuiSnackbar: {
 				defaultProps: {
 					slotProps: {
@@ -410,11 +491,28 @@ function createTheme() {
 			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
-			MuiTabs: { defaultProps: { component: Role.div } },
+			MuiTabs: {
+				defaultProps: {
+					component: MuiTabs,
+					allowScrollButtonsMobile: true,
+					slotProps: {
+						scrollButtons: {
+							"aria-hidden": true,
+						},
+						startScrollButtonIcon: {
+							component: ChevronLeftIcon,
+						},
+						endScrollButtonIcon: {
+							component: ChevronRightIcon,
+						},
+					},
+				},
+			},
+			MuiTab: { defaultProps: { component: MuiTab, iconPosition: "start" } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
 				defaultProps: {
-					component: withRenderProp(Role, "tbody"),
+					component: MuiTableBody,
 					role: undefined, // Removing role="rowgroup". See https://github.com/iTwin/stratakit/pull/1361
 				},
 			},
@@ -453,7 +551,7 @@ function createTheme() {
 				},
 			},
 			MuiTextField: { defaultProps: { component: Role.div } },
-			MuiToggleButton: { defaultProps: { component: MuiIconButton } },
+			MuiToggleButton: { defaultProps: { component: MuiToggleButton } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
 				defaultProps: {
@@ -475,9 +573,40 @@ function createTheme() {
 			},
 			MuiTypography: {
 				defaultProps: {
-					variant: "body2",
+					variant: "inherit",
+					variantMapping,
 					component: MuiTypography,
 				},
+				variants: [
+					{
+						props: { color: "primary" },
+						style: { color: "var(--stratakit-color-text-accent-strong)" },
+					},
+					{
+						props: { color: "secondary" },
+						style: { color: "var(--stratakit-color-text-neutral-primary)" },
+					},
+					{
+						props: { color: "textTertiary" },
+						style: { color: "var(--stratakit-color-text-neutral-tertiary)" },
+					},
+					{
+						props: { color: "error" },
+						style: { color: "var(--stratakit-color-text-critical-base)" },
+					},
+					{
+						props: { color: "info" },
+						style: { color: "var(--stratakit-color-text-info-base)" },
+					},
+					{
+						props: { color: "success" },
+						style: { color: "var(--stratakit-color-text-positive-base)" },
+					},
+					{
+						props: { color: "warning" },
+						style: { color: "var(--stratakit-color-text-attention-base)" },
+					},
+				],
 			},
 		},
 	});

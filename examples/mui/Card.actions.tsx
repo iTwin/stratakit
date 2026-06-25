@@ -7,6 +7,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
+import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import Typography from "@mui/material/Typography";
 
@@ -14,7 +15,7 @@ import styles from "./Card.actions.module.css";
 
 export default () => {
 	return (
-		<Card className={styles.card} variant="outlined">
+		<Card className={styles.card}>
 			<CardMedia
 				className={styles.media}
 				render={
@@ -25,18 +26,20 @@ export default () => {
 					/>
 				}
 			/>
+			<CardHeader title="Stadium" />
 			<CardContent>
-				<Typography gutterBottom variant="h6" render={<h2 />}>
-					Stadium
-				</Typography>
-				<Typography variant="body2" color="text.secondary">
+				<Typography>
 					Stadium is a place for outdoor sports, concerts, or other events and
 					activities.
 				</Typography>
 			</CardContent>
 			<CardActions>
-				<Button>View</Button>
-				<Button>Edit</Button>
+				<Button render={<a href="#" />} nativeButton={false}>
+					View
+				</Button>
+				<Button render={<a href="#" />} nativeButton={false}>
+					Edit
+				</Button>
 			</CardActions>
 		</Card>
 	);

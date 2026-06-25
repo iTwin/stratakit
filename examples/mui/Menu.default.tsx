@@ -15,31 +15,16 @@ export default () => {
 		setAnchorEl(null);
 	};
 
-	const buttonId = React.useId();
-	const menuId = React.useId();
-
 	return (
 		<>
 			<Button
-				id={buttonId}
-				aria-controls={open ? menuId : undefined}
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
 			>
 				User actions
 			</Button>
-			<Menu
-				id={menuId}
-				anchorEl={anchorEl}
-				open={open}
-				onClose={handleClose}
-				slotProps={{
-					list: {
-						"aria-labelledby": buttonId,
-					},
-				}}
-			>
+			<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
 				<MenuItem onClick={handleClose}>Profile</MenuItem>
 				<MenuItem onClick={handleClose}>My account</MenuItem>
 				<MenuItem onClick={handleClose}>Logout</MenuItem>

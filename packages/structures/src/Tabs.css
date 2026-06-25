@@ -67,7 +67,8 @@
 		border: none;
 		border-radius: 4px;
 		block-size: var(--✨height);
-		padding-inline: var(--🥝Tab-padding-inline);
+		padding-inline-start: var(--🥝Tab-padding-inline);
+		padding-inline-end: var(--🥝Tab-padding-inline);
 		position: relative;
 		user-select: none;
 		white-space: nowrap;

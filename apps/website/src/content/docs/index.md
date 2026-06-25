@@ -12,7 +12,7 @@ Drawing its name from _strata_ (the vertical layers in rock), **StrataKit** is o
 
 ## Tokens
 
-**StrataKit’s** design tokens (aka "variables") were built from the ground up, with accessibility in mind. Colors are defined using the [Oklab color space](https://en.wikipedia.org/wiki/Oklab_color_space) for its wide gamut and programmatic composability in CSS. The typographic scale is optimized for readability in dense and complex interfaces. [Inter](https://rsms.me/inter/) is **StrataKit’s** principle font, chosen for its configurability via multiple OpenType features.
+**StrataKit's** design tokens (aka "variables") were built from the ground up, with accessibility in mind. Colors are defined using the [Oklab color space](https://en.wikipedia.org/wiki/Oklab_color_space) for its wide gamut and programmatic composability in CSS. The typographic scale is optimized for readability in dense and complex interfaces. [Inter](https://rsms.me/inter/) is **StrataKit's** principle font, chosen for its configurability via multiple OpenType features.
 
 ## Icons
 
@@ -20,7 +20,7 @@ Drawing its name from _strata_ (the vertical layers in rock), **StrataKit** is o
 
 ## Components
 
-Elemental **StrataKit** components are taken from the open source **Material UI** (MUI) library and **StrataKit’s** custom MUI theme is optimized for accessibility. More complex and specialized components are custom made, incorporating the same **Tokens** for consistency. This site exemplifies how to correctly implement the entire component catalogue.
+Elemental **StrataKit** components are taken from the open source **Material UI** (MUI) library and **StrataKit's** custom MUI theme is optimized for accessibility. More complex and specialized components are custom made, incorporating the same **Tokens** for consistency. This site exemplifies how to correctly implement the entire component catalogue.
 
 ## Patterns
 

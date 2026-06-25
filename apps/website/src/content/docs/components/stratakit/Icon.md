@@ -39,7 +39,7 @@ In the example below, the Button already has an accessible name, so the **Icon**
 
 ### Color
 
-Use the [`color` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color) to adjust the **Icon's** color. Prefer usage of StrataKit color tokens when adjusting the **Icon's** color.
+By default, the **Icon** component inherits the ancestor's color. Use the [`color` CSS property](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color) to adjust the **Icon's** color. Prefer usage of StrataKit color tokens when adjusting the **Icon's** color.
 
 ::example{src="mui/Icon.color"}
 

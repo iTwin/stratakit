@@ -56,6 +56,9 @@ interface FieldRootProps extends BaseProps {
  * - `Checkbox`
  * - `Radio`
  * - `Switch`
+ *
+ * @deprecated Use the MUI [`FormControl`](https://mui.com/material-ui/api/form-control/) and related components instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#field).
  */
 const FieldRoot = forwardRef<"div", FieldRootProps>((props, forwardedRef) => {
 	useInit();
@@ -80,6 +83,9 @@ DEV: FieldRoot.displayName = "Field.Root";
 /**
  * A label for the field’s control element. This is automatically associated
  * with the control’s `id`.
+ *
+ * @deprecated Use the MUI [`FormLabel`](https://mui.com/material-ui/api/form-label/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#field).
  */
 const FieldLabel = forwardRef<"label", BaseProps<"label">>(
 	(props, forwardedRef) => {
@@ -119,6 +125,9 @@ DEV: FieldLabel.displayName = "Field.Label";
  *
  * Should not include content without an adequate text alternative (e.g.
  * interactive elements).
+ *
+ * @deprecated Use MUI [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#field).
  */
 const FieldDescription = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 	const generatedId = React.useId();
@@ -185,6 +194,9 @@ interface FieldCollectionItemControlProps
  * ```tsx
  * <Field.Control id="custom" render={<TextBox.Input />} />
  * ```
+ *
+ * @deprecated Use the MUI [`FormControl`](https://mui.com/material-ui/api/form-control/) and related components instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#field).
  */
 const FieldControl = forwardRef<"div", FieldCollectionItemControlProps>(
 	(props, forwardedRef) => {
@@ -263,6 +275,9 @@ DEV: FieldControl.displayName = "Field.Control";
  *   <Field.ErrorMessage>Something is wrong!</Field.ErrorMessage>
  * </Field.Root>
  * ```
+ *
+ * @deprecated Use MUI [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#field).
  */
 const FieldErrorMessage = forwardRef<"div", BaseProps>(
 	(props, forwardedRef) => {

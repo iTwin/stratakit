@@ -19,7 +19,12 @@ const MuiDivider = forwardRef<"hr", MuiDividerProps>((props, forwardedRef) => {
 	const { children, ...rest } = props;
 
 	const defaultRender = (() => {
-		if (children || props["aria-orientation"] === "vertical") return <div />;
+		if (
+			children ||
+			props["aria-orientation"] === "vertical" ||
+			props.role === "presentation"
+		)
+			return <div />;
 		return <hr />;
 	})();
 

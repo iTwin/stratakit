@@ -69,7 +69,11 @@
 			"correctness": {
 				"noUnknownProperty": "off",
 				"noUnusedImports": "info",
-				"noUnusedLabels": "off"
+				"noUnusedLabels": "off",
+				"noUnusedVariables": {
+					"level": "warn",
+					"options": { "ignoreRestSiblings": false }
+				}
 			},
 			"suspicious": {
 				"noDuplicateCustomProperties": "off",

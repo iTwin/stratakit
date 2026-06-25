@@ -34,6 +34,8 @@
 @import "./~components/MuiToggleButton.css";
 @import "./~components/MuiTooltip.css";
 
+@import "./~components/MuiDatePicker.css";
+
 .MuiAppBar-root {
 	background-color: var(--stratakit-color-bg-page-base);
 	box-shadow: none;

@@ -7,9 +7,18 @@ The **Platform Bar** pattern uses the [**Navigation Rail**](/components/navigati
 
 The **Platform Bar** enables predictable navigation patterns that help users remain oriented and move efficiently between primary workflows across products.
 
+[Image to follow]
+
+
 ## Use cases
 
 Make sure the **Platform Bar** pattern is suitable for your use cases. There may be more appropriate components available.
+
+The Platform Bar helps users to:
+
+- Maintain context while navigating between product's areas
+- Build a consistent mental model across products
+- Access primary sections and frequently used actions quickly 
 
 | Use case                                                 | Platform Bar ([Navigation Rail](/components/navigationrail)) | [Breadcrumbs](/components/breadcrumbs/) | [Tabs](/components/tabs)                | [Pagination](/components/pagination/)   | [Stepper](/components/stepper)        | [Toolbar](/components/toolbar)         | [Menu](/components/menu) |
 | -------------------------------------------------------- | ------------------------------------------------------------ | --------------------------------------- | --------------------------------------- | --------------------------------------- | ------------------------------------- | -------------------------------------- | ------------------------ |
@@ -30,6 +39,7 @@ The **Platform Bar** is structured as follows.
 | 3. **Capabilities Tray**     | The **Capabilities Tray** provides entry points to the core features, tools, and workflows available to the user.                                                                                                | `NavigationRail.Content` |
 | 4. **Utilities**             | Supporting tools and system functions, including notifications, help, application settings, and user profile access.                                                                                             | `NavigationRail.Footer`  |
 
+[Image to follow]
 
 ## Interaction
 

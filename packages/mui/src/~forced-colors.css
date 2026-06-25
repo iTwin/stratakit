@@ -199,6 +199,23 @@
 	}
 }
 
+.MuiPaper-elevation {
+	border: 1px solid;
+}
+
+.MuiPickerDay-root {
+	&:where(.MuiPickerDay-today) {
+		&::after {
+			background-color: CanvasText;
+		}
+	}
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+
 .MuiPopover-paper {
 	border: 1px solid;
 }

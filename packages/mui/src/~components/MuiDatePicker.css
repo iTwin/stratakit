@@ -12,3 +12,104 @@
 		content: none;
 	}
 }
+
+.MuiDayCalendar-root {
+	--_MuiDayCalendar-day-size: var(--stratakit-size-control-field-height-medium);
+	--_MuiDayCalendar-day-margin: var(--stratakit-space-x1);
+}
+
+.MuiDayCalendar-weekDayLabel {
+	aspect-ratio: 1;
+	block-size: var(--_MuiDayCalendar-day-size);
+	inline-size: var(--_MuiDayCalendar-day-size);
+	color: var(--stratakit-color-text-neutral-tertiary);
+	margin-inline: var(--_MuiDayCalendar-day-margin);
+	user-select: none;
+}
+
+.MuiPickerDay-root {
+	aspect-ratio: 1;
+	background-color: var(--_MuiPickerDay-background-color, transparent);
+	block-size: var(--_MuiDayCalendar-day-size);
+	inline-size: var(--_MuiDayCalendar-day-size);
+	border: 1px solid var(--_MuiPickerDay-border-color, transparent);
+	border-radius: 4px;
+	margin: var(--_MuiDayCalendar-day-margin);
+	transition:
+		background-color 150ms ease-out,
+		border-color 150ms ease-out,
+		color 150ms ease-out;
+
+	@media (any-hover: hover) {
+		&:where(:not(.Mui-disabled):hover) {
+			--_MuiPickerDay-background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+		}
+	}
+
+	&:where(.MuiPickerDay-today) {
+		--_MuiPickerDay-border-color: var(--stratakit-color-border-neutral-base);
+		font-weight: 500;
+		outline: unset;
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset-block-end: var(--stratakit-space-x05);
+			aspect-ratio: 1;
+			background-color: var(
+				--_MuiPickerDay-today-dot-background-color,
+				var(--stratakit-color-icon-neutral-base)
+			);
+			block-size: var(--stratakit-space-x1);
+			inline-size: var(--stratakit-space-x1);
+			border-radius: calc(infinity * 1px);
+			transition: background-color 150ms ease-out;
+		}
+
+		@media (any-hover: hover) {
+			&:where(:not(.Mui-disabled):hover) {
+				--_MuiPickerDay-today-dot-background-color: var(--stratakit-color-icon-neutral-primary);
+				border-color: color-mix(
+					in oklch,
+					var(--_MuiPickerDay-border-color) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
+				);
+			}
+		}
+	}
+
+	&:where(.Mui-selected) {
+		--_MuiPickerDay-background-color: var(--stratakit-color-bg-accent-base);
+		--_MuiPickerDay-border-color: var(--stratakit-color-border-accent-base);
+		font-weight: 600;
+
+		@media (any-hover: hover) {
+			&:where(:not(.Mui-disabled):hover) {
+				background-color: color-mix(
+					in oklch,
+					var(--_MuiPickerDay-background-color) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
+				);
+				border-color: color-mix(
+					in oklch,
+					var(--_MuiPickerDay-border-color) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
+				);
+			}
+		}
+	}
+
+	&:where(.MuiPickerDay-dayOutsideMonth, .Mui-disabled) {
+		--_MuiPickerDay-today-dot-background-color: var(--stratakit-color-icon-neutral-disabled);
+		/* --_MuiPickerDay-border-color: var(--stratakit-color-border-neutral-disabled); */
+		color: var(--stratakit-color-text-neutral-disabled);
+	}
+}
+
+.MuiDayCalendar-weekContainer {
+	margin: 0;
+}
+
+.MuiDayCalendar-monthContainer {
+	block-size: calc(var(--_MuiDayCalendar-day-size) * 6 + var(--_MuiDayCalendar-day-margin) * 12);
+}

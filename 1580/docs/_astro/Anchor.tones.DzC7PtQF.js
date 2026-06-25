@@ -1,1 +1,0 @@
-import{j as e}from"./_utils.DH9a4-xp.js";import{A as t}from"./Anchor.Dse5mQRm.js";const n=()=>e.jsxs("div",{className:"flex",children:[e.jsx(t,{tone:"accent",href:"https://www.example.com/",children:"Accent"}),e.jsx(t,{tone:"neutral",href:"https://www.example.com/",children:"Neutral"})]});export{n as default};

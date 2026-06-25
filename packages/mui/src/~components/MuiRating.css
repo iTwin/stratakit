@@ -8,9 +8,7 @@
 
 	&:where(.Mui-disabled) {
 		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-disabled);
-		cursor: not-allowed;
 		opacity: 1;
-		pointer-events: auto; /* Revert MUI's disabled pointer-events */
 	}
 }
 
@@ -21,13 +19,13 @@
 		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
 	}
 
-	&:where(.Mui-iconActive) {
+	&:where(.MuiRating-iconActive) {
 		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
-	}
 
-	:where(.MuiRating-root.Mui-focusVisible) &:where(.MuiRating-iconActive) {
-		outline: var(--🥝focus-outline);
-		outline-offset: var(--🥝focus-outline-offset);
+		:where(.MuiRating-root.Mui-focusVisible) & {
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
+		}
 	}
 }
 

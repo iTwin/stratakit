@@ -78,7 +78,7 @@ const MuiTableSortLabelIconSlot = forwardRef<
 	"svg",
 	MuiTableSortLcableIconSlotProps
 >((props, forwardRef) => {
-	const { ownerState, as, ...rest } = props;
+	const { ownerState, as: _, ...rest } = props;
 	switch (ownerState?.direction) {
 		case "asc":
 			return <SortAscendingIcon {...rest} ref={forwardRef} />;

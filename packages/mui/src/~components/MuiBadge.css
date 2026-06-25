@@ -13,6 +13,13 @@
 	box-shadow: 0px 0px 0px 1px var(--_MuiBadge-border-color) inset;
 	color: var(--_MuiBadge-color);
 
+	:where(.MuiBadge-root[data-_sk-inline]) & {
+		column-gap: var(--stratakit-space-x05);
+		position: static;
+		transform: none;
+	}
+
+	/* #region Emphasis: strong */
 	&:where(.MuiBadge-colorError) {
 		--_MuiBadge-background-color: var(--stratakit-color-bg-critical-base);
 		--_MuiBadge-border-color: var(--stratakit-color-border-critical-base);
@@ -42,12 +49,7 @@
 		--_MuiBadge-background-color: var(--stratakit-color-bg-attention-base);
 		--_MuiBadge-border-color: var(--stratakit-color-border-attention-base);
 	}
-
-	:where(.MuiBadge-root[data-_sk-inline]) & {
-		column-gap: var(--stratakit-space-x05);
-		position: static;
-		transform: none;
-	}
+	/* #endregion */
 
 	:where([data-_sk-emphasis="moderate"]) & {
 		--🥝Icon-color: var(--stratakit-color-icon-neutral-hover);

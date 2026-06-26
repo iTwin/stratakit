@@ -199,21 +199,31 @@
 	}
 }
 
-.MuiPaper-elevation {
-	border: 1px solid;
-}
-
 .MuiPickerDay-root {
+	background-color: ButtonFace;
+	border-color: ButtonBorder;
+	color: ButtonText;
+
 	&:where(.MuiPickerDay-today) {
 		&::after {
-			background-color: CanvasText;
+			background-color: Highlight;
 		}
 	}
+
 	&:where(.Mui-selected) {
 		background-color: SelectedItem;
 		color: SelectedItemText;
 		forced-color-adjust: none; /* removing the backplate */
 	}
+
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+		color: GrayText;
+	}
+}
+
+.MuiPickerPopper-paper {
+	border: 1px solid;
 }
 
 .MuiPopover-paper {

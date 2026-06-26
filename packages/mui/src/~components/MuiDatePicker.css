@@ -18,6 +18,15 @@
 	--_MuiDayCalendar-day-margin: var(--stratakit-space-x1);
 }
 
+.MuiDayCalendar-monthContainer {
+	/* Accounts for 6 rows of weeks */
+	block-size: calc((var(--_MuiDayCalendar-day-size) + var(--_MuiDayCalendar-day-margin) * 2) * 6);
+}
+
+.MuiDayCalendar-weekContainer {
+	margin: 0;
+}
+
 .MuiDayCalendar-weekDayLabel {
 	aspect-ratio: 1;
 	block-size: var(--_MuiDayCalendar-day-size);
@@ -28,26 +37,58 @@
 }
 
 .MuiPickerDay-root {
+	/* #region Variables */
+	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--selected: var(--stratakit-color-bg-accent-base);
+	--✨bg--selected-hover: color-mix(
+		in oklch,
+		var(--✨bg--selected) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
+	);
+
+	--✨border--today: var(--stratakit-color-border-neutral-base);
+	--✨border--today-hover: color-mix(
+		in oklch,
+		var(--✨border--today) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
+	);
+	--✨border--selected: var(--stratakit-color-border-accent-base);
+	--✨border--selected-hover: color-mix(
+		in oklch,
+		var(--✨border--selected) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
+	);
+
+	--✨color--default: var(--stratakit-color-text-neutral-primary);
+	--✨color--selected: var(--stratakit-color-text-neutral-emphasis);
+	--✨color--outside: var(--stratakit-color-text-neutral-disabled);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	--✨dot--default: var(--stratakit-color-icon-neutral-base);
+	--✨dot--hover: var(--stratakit-color-icon-neutral-primary);
+	--✨dot--outside: var(--stratakit-color-icon-neutral-disabled);
+	--✨dot--disabled: var(--stratakit-color-icon-neutral-disabled);
+	/* #endregion */
+
 	aspect-ratio: 1;
 	background-color: var(--_MuiPickerDay-background-color, transparent);
 	block-size: var(--_MuiDayCalendar-day-size);
 	inline-size: var(--_MuiDayCalendar-day-size);
 	border: 1px solid var(--_MuiPickerDay-border-color, transparent);
 	border-radius: 4px;
+	color: var(--_MuiPickerDay-color, var(--✨color--default));
 	margin: var(--_MuiDayCalendar-day-margin);
-	transition:
-		background-color 150ms ease-out,
-		border-color 150ms ease-out,
-		color 150ms ease-out;
+	transition: all 150ms ease-out;
+	transition-property: background-color, border-color, color;
 
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled):hover) {
-			--_MuiPickerDay-background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+			--_MuiPickerDay-background-color: var(--✨bg--hover);
 		}
 	}
 
 	&:where(.MuiPickerDay-today) {
-		--_MuiPickerDay-border-color: var(--stratakit-color-border-neutral-base);
+		--_MuiPickerDay-border-color: var(--✨border--today);
 		font-weight: 500;
 		outline: unset;
 
@@ -56,10 +97,7 @@
 			position: absolute;
 			inset-block-end: var(--stratakit-space-x05);
 			aspect-ratio: 1;
-			background-color: var(
-				--_MuiPickerDay-today-dot-background-color,
-				var(--stratakit-color-icon-neutral-base)
-			);
+			background-color: var(--_MuiPickerDay-today-dot-background-color, var(--✨dot--default));
 			block-size: var(--stratakit-space-x1);
 			inline-size: var(--stratakit-space-x1);
 			border-radius: calc(infinity * 1px);
@@ -68,48 +106,34 @@
 
 		@media (any-hover: hover) {
 			&:where(:not(.Mui-disabled):hover) {
-				--_MuiPickerDay-today-dot-background-color: var(--stratakit-color-icon-neutral-primary);
-				border-color: color-mix(
-					in oklch,
-					var(--_MuiPickerDay-border-color) 100%,
-					var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
-				);
+				--_MuiPickerDay-border-color: var(--✨border--today-hover);
+				--_MuiPickerDay-today-dot-background-color: var(--✨dot--hover);
 			}
 		}
 	}
 
+	&:where(.MuiPickerDay-dayOutsideMonth) {
+		--_MuiPickerDay-color: var(--✨color--outside);
+		--_MuiPickerDay-today-dot-background-color: var(--✨dot--outside);
+	}
+
 	&:where(.Mui-selected) {
-		--_MuiPickerDay-background-color: var(--stratakit-color-bg-accent-base);
-		--_MuiPickerDay-border-color: var(--stratakit-color-border-accent-base);
+		--_MuiPickerDay-background-color: var(--✨bg--selected);
+		--_MuiPickerDay-border-color: var(--✨border--selected);
+		--_MuiPickerDay-color: var(--✨color--selected);
+
 		font-weight: 600;
 
 		@media (any-hover: hover) {
 			&:where(:not(.Mui-disabled):hover) {
-				background-color: color-mix(
-					in oklch,
-					var(--_MuiPickerDay-background-color) 100%,
-					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
-				);
-				border-color: color-mix(
-					in oklch,
-					var(--_MuiPickerDay-border-color) 100%,
-					var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
-				);
+				--_MuiPickerDay-background-color: var(--✨bg--selected-hover);
+				--_MuiPickerDay-border-color: var(--✨border--selected-hover);
 			}
 		}
 	}
 
-	&:where(.MuiPickerDay-dayOutsideMonth, .Mui-disabled) {
-		--_MuiPickerDay-today-dot-background-color: var(--stratakit-color-icon-neutral-disabled);
-		/* --_MuiPickerDay-border-color: var(--stratakit-color-border-neutral-disabled); */
-		color: var(--stratakit-color-text-neutral-disabled);
+	&:where(.Mui-disabled) {
+		--_MuiPickerDay-color: var(--✨color--disabled);
+		--_MuiPickerDay-today-dot-background-color: var(--✨dot--disabled);
 	}
-}
-
-.MuiDayCalendar-weekContainer {
-	margin: 0;
-}
-
-.MuiDayCalendar-monthContainer {
-	block-size: calc(var(--_MuiDayCalendar-day-size) * 6 + var(--_MuiDayCalendar-day-margin) * 12);
 }

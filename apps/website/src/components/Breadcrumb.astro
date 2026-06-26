@@ -57,25 +57,19 @@ const { crumbs } = Astro.props;
 		font-weight: var(--stratakit-font-weight-regular);
 		line-height: 1.3333; /* body-sm line-height */
 		white-space: nowrap;
+
+    & + li::before {
+      content: "›";
+      display: inline-block;
+      width: var(--stratakit-space-x4);
+      text-align: center;
+      margin-inline-start: var(--stratakit-space-x1);
+      margin-inline-end: var(--stratakit-space-x1);
+      color: var(--stratakit-color-text-neutral-disabled);
+      font-weight: var(--stratakit-font-weight-medium);
+    }
 	}
 
-	.breadcrumb a {
-		color: var(--stratakit-color-text-neutral-primary);
-		text-decoration: none;
-	}
 
-	.breadcrumb a:hover {
-		text-decoration: underline;
-	}
 
-	.breadcrumb li + li::before {
-		content: "›";
-		display: inline-block;
-		width: var(--stratakit-space-x4);
-		text-align: center;
-		margin-inline-start: var(--stratakit-space-x1);
-		margin-inline-end: var(--stratakit-space-x1);
-		color: var(--stratakit-color-text-neutral-disabled);
-		font-weight: var(--stratakit-font-weight-medium);
-	}
 </style>

@@ -1,7 +1,6 @@
 ---
 title: Card
 description: A Card concisely introduces a subject and its related actions.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-card/
   apiReference: https://mui.com/material-ui/api/card/

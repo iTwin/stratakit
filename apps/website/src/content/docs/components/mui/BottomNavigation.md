@@ -1,7 +1,6 @@
 ---
 title: BottomNavigation
 description: Bottom navigation bars are used to navigate between primary application views.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-bottom-navigation/
   apiReference: https://mui.com/material-ui/api/bottom-navigation/

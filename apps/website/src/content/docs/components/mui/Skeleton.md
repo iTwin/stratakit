@@ -1,7 +1,6 @@
 ---
 title: Skeleton
 description: Skeleton loaders are used to show placeholder content for a loading state.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-skeleton/
   apiReference: https://mui.com/material-ui/api/skeleton/

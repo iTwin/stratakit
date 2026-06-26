@@ -2,7 +2,6 @@
 title: ErrorRegion
 description: Error regions are used to display errors collected from different parts of a section.
 status: unstable
-package: "@stratakit/mui"
 links:
   apiReference: /reference/structures/ErrorRegion
 ---

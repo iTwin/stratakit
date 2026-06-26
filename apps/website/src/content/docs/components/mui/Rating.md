@@ -1,7 +1,6 @@
 ---
 title: Rating
 description: Ratings are used to indicate the quality of a particular item.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-rating/
   apiReference: https://mui.com/material-ui/api/rating/

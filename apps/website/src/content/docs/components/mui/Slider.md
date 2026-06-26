@@ -1,7 +1,6 @@
 ---
 title: Slider
 description: Sliders allow users to select from a range of values.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-slider/
   apiReference: https://mui.com/material-ui/api/slider/

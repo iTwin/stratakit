@@ -1,7 +1,6 @@
 ---
 title: Tabs
 description: Tabs are used to alternate between views.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-tabs/
   apiReference: https://mui.com/material-ui/api/tabs/

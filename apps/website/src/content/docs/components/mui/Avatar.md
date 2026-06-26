@@ -1,7 +1,6 @@
 ---
 title: Avatar
 description: Avatars are used to show a representation of an individual.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-avatar/
   apiReference: https://mui.com/material-ui/api/avatar/

@@ -1,7 +1,6 @@
 ---
 title: Select
 description: Selects are a form input offering a dropdown menu of predefined options.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-select/
   apiReference: https://mui.com/material-ui/api/select/

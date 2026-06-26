@@ -1,7 +1,6 @@
 ---
 title: ButtonGroup
 description: Button groups are used to group related buttons.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-button-group/
   apiReference: https://mui.com/material-ui/api/button-group/

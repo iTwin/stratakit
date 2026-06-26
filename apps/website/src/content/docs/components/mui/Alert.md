@@ -1,7 +1,6 @@
 ---
 title: Alert
 description: Alerts are used to provide feedback without interrupting the user's workflow.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-alert/
   apiReference: https://mui.com/material-ui/api/alert/

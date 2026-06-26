@@ -2,7 +2,6 @@
 title: Root
 description: Root is the required wrapper for all StrataKit components.
 status: stable
-package: "@stratakit/mui"
 links:
   apiReference: /reference/mui/Root
 sidebar:

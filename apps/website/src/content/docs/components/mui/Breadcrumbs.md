@@ -1,7 +1,6 @@
 ---
 title: Breadcrumbs
 description: Breadcrumbs display the current page's location within a navigational hierarchy.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-breadcrumbs/
   apiReference: https://mui.com/material-ui/api/breadcrumbs/

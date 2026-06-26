@@ -1,7 +1,6 @@
 ---
 title: Drawer
 description: Drawers are used to display navigation in a sliding panel.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-drawer/
   apiReference: https://mui.com/material-ui/api/drawer/

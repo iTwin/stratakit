@@ -1,7 +1,6 @@
 ---
 title: Tooltip
 description: Tooltips are used to convey additional context on interactive elements.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-tooltip/
   apiReference: https://mui.com/material-ui/api/tooltip/

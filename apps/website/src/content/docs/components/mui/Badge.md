@@ -1,7 +1,6 @@
 ---
 title: Badge
 description: Badges show notifications, counts, or status information.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-badge/
   apiReference: https://mui.com/material-ui/api/badge/

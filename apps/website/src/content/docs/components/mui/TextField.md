@@ -1,7 +1,6 @@
 ---
 title: TextField
 description: Text fields are used to input single or multiple lines of text.
-package: "@mui/material"
 links:
   muiDocs: https://mui.com/material-ui/react-text-field/
   apiReference: https://mui.com/material-ui/api/text-field/

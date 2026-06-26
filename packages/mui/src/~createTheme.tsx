@@ -332,6 +332,11 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
+			MuiDateCalendar: {
+				defaultProps: {
+					showDaysOutsideCurrentMonth: true,
+				},
+			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {

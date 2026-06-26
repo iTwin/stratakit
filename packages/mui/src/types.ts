@@ -35,6 +35,7 @@ declare module "@mui/material/styles" {
 		MuiDateCalendar?: {
 			defaultProps?: {
 				showDaysOutsideCurrentMonth?: boolean;
+				dayOfWeekFormatter?: (date: Date) => string;
 			};
 		};
 	}

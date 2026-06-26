@@ -335,6 +335,10 @@ function createTheme(args: CreateThemeArgs) {
 			MuiDateCalendar: {
 				defaultProps: {
 					showDaysOutsideCurrentMonth: true,
+					dayOfWeekFormatter: (date: Date) =>
+						date
+							.toLocaleDateString(undefined, { weekday: "short" })
+							.slice(0, 2),
 				},
 			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },

@@ -1,0 +1,81 @@
+---
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+type Crumb = {
+	label: string;
+	href?: string;
+};
+
+type Props = {
+	crumbs: Crumb[];
+};
+
+const { crumbs } = Astro.props;
+---
+
+<nav aria-label="breadcrumb" class="breadcrumb">
+	<ol>
+		{
+			crumbs.map((crumb, index) => {
+				const isCurrent = index === crumbs.length - 1;
+				return (
+					<li>
+						{crumb.href && !isCurrent ? (
+							<a href={crumb.href}>{crumb.label}</a>
+						) : (
+							<span aria-current={isCurrent ? "page" : undefined}>{crumb.label}</span>
+						)}
+					</li>
+				);
+			})
+		}
+	</ol>
+</nav>
+
+<style>
+	.breadcrumb {
+		display: flex;
+		align-items: center;
+		margin-block-end: var(--stratakit-space-x8);
+	}
+
+	.breadcrumb ol {
+		display: flex;
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		align-items: center;
+	}
+
+	.breadcrumb li {
+		color: var(--stratakit-color-text-neutral-primary);
+		font-family: var(--stratakit-font-family-sans), system-ui, sans-serif;
+		font-size: var(--stratakit-font-size-12);
+		font-weight: var(--stratakit-font-weight-regular);
+		line-height: 1.3333; /* body-sm line-height */
+		white-space: nowrap;
+	}
+
+	.breadcrumb a {
+		color: var(--stratakit-color-text-neutral-primary);
+		text-decoration: none;
+	}
+
+	.breadcrumb a:hover {
+		text-decoration: underline;
+	}
+
+	.breadcrumb li + li::before {
+		content: "›";
+		display: inline-block;
+		width: var(--stratakit-space-x4);
+		text-align: center;
+		margin-inline-start: var(--stratakit-space-x1);
+		margin-inline-end: var(--stratakit-space-x1);
+		color: var(--stratakit-color-text-neutral-disabled);
+		font-weight: var(--stratakit-font-weight-medium);
+	}
+</style>

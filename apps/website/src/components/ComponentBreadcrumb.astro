@@ -4,55 +4,21 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import Breadcrumb from "./Breadcrumb.astro";
+
 type Props = {
 	packageName: string;
 	componentName: string;
 };
 
 const { packageName, componentName } = Astro.props;
+
+const crumbs = [
+	{ label: "Components" },
+	{ label: packageName },
+	{ label: componentName },
+];
 ---
 
-<nav aria-label="breadcrumb" class="component-breadcrumb">
-	<ol>
-		<li>Components</li>
-		<li>{packageName}</li>
-		<li aria-current="page">{componentName}</li>
-	</ol>
-</nav>
-
-<style>
-  .component-breadcrumb {
-    display: flex;
-    align-items: center;
-    margin-block-end: var(--stratakit-space-x8);
-  }
-
-  .component-breadcrumb ol {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    align-items: center;
-  }
-
-  .component-breadcrumb li {
-    color: var(--stratakit-color-text-neutral-primary);
-    font-family: var(--stratakit-font-family-sans), system-ui, sans-serif;
-    font-size: var(--stratakit-font-size-12);
-    font-weight: var(--stratakit-font-weight-regular);
-    line-height: 1.3333; /* body-sm line-height */
-    white-space: nowrap;
-  }
-
-  .component-breadcrumb li + li::before {
-    content: "›";
-    display: inline-block;
-    width: var(--stratakit-space-x4);
-    text-align: center;
-    margin-inline-start: var(--stratakit-space-x1);
-    margin-inline-end: var(--stratakit-space-x1);
-    color: var(--stratakit-color-text-neutral-disabled);
-    font-weight: var(--stratakit-font-weight-medium);
-  }
-</style>
+<Breadcrumb {crumbs} />
 

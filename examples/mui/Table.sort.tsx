@@ -12,9 +12,9 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
-import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
+	const sortId = React.useId();
 	const rows = [
 		{ name: "Cupcake", calories: 305, fat: 3.7, carbs: 67, protein: 4.3 },
 		{ name: "Eclair", calories: 262, fat: 16.0, carbs: 24, protein: 6.0 },
@@ -64,6 +64,9 @@ export default () => {
 
 	return (
 		<TableContainer render={<Paper />}>
+			<span id={sortId} style={{ display: "none" }}>
+				sort
+			</span>
 			<Table>
 				<caption>Dessert nutrition sorted</caption>
 				<TableHead>
@@ -77,15 +80,9 @@ export default () => {
 								direction={sortedColumn === "calories" ? direction : "asc"}
 								active={sortedColumn === "calories"}
 								onClick={() => updateSort("calories")}
+								slotProps={{ root: { "aria-describedby": sortId } }}
 							>
 								Calories
-								{sortedColumn === "calories" ? (
-									<span style={visuallyHidden}>
-										{direction === "asc"
-											? " sorted ascending"
-											: " sorted descending"}
-									</span>
-								) : null}
 							</TableSortLabel>
 						</TableCell>
 						<TableCell
@@ -96,15 +93,9 @@ export default () => {
 								direction={sortedColumn === "fat" ? direction : "asc"}
 								active={sortedColumn === "fat"}
 								onClick={() => updateSort("fat")}
+								slotProps={{ root: { "aria-describedby": sortId } }}
 							>
 								Fat&nbsp;(g)
-								{sortedColumn === "fat" ? (
-									<span style={visuallyHidden}>
-										{direction === "asc"
-											? " sorted ascending"
-											: " sorted descending"}
-									</span>
-								) : null}
 							</TableSortLabel>
 						</TableCell>
 					</TableRow>

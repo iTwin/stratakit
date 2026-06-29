@@ -3,9 +3,9 @@ title: Component customization
 description: Taking care when changing component HTML
 ---
 
-Consider a simple `<button>` element with the [label](/guides/language-and-labels) _“Save”_. The label tells us what the element _does_, but it's also useful to know _how it does it_. If the element looks like a button, we can expect it to behave like one.
+Consider a simple `<button>` element with the [label](/guides/language-and-labels) _“Save”_. The label tells us what the element _does_, but it's also useful to know _how it does it_. If the element looks like a button, we can expect it to behave like one. That is, we'd expect it to _make something happen_, but not _take us somewhere_ like a link should.
 
-But what about people who cannot see the button? Fortunately, the `<button>` element comes with a button _role_: it is identified as a button programmatically. Parsers like screen readers will announce the role (what the `<button>` is) and the label (what it does) together: _“save, button”_.
+What about people who cannot see the button? Fortunately, the `<button>` element comes with a button _role_: it is identified as a button programmatically. Parsers like screen readers will announce the role (what the `<button>` is) and the label (what it does) together: _“save, button”_.
 
 The button role comes for free, just by using `<button>`. It is, therefore, said to be an _implicit_ role. However, you can change the role by either replacing the `<button>` with a different element, or by applying an explicit [WAI-ARIA role attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles).
 
@@ -43,7 +43,7 @@ If the aim is to make a link _appear_ as a button, supply an `href`. Since `<but
 <Button render={<a href="/path/to/permalink" />}>View</Button>
 ```
 
-In general, buttons should look like buttons and links like links. The appearance sets expectations about behaviors: buttons _make things happen_ and links _take you places_.
+In general, buttons should look like buttons and links like links. The appearance sets expectations about behaviors. Pressing this false button, you wouldn't expect to navigate to a new screen.
 
 Occasionally, an element must support a certain type of behavior, but is better seen or understood with a different appearance. So long as there are sufficient contextual clues and a suitable label, it is permissible to change the underlying element.
 

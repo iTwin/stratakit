@@ -34,6 +34,7 @@ import {
 	PanelGroup,
 	PanelResizeHandle,
 } from "react-resizable-panels";
+import { SkipLinkContext } from "~/~navigation.tsx";
 import { toUpperCamelCase } from "~/~utils.tsx";
 
 import type { UseQueryResult } from "@tanstack/react-query";
@@ -94,7 +95,7 @@ export const meta: MetaFunction = () => {
 
 export default function Page() {
 	return (
-		<div className={styles.appLayout}>
+		<div className={styles.appLayout} id={React.use(SkipLinkContext)?.id}>
 			<Header />
 			<PanelGroup
 				direction="horizontal"

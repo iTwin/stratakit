@@ -12,7 +12,7 @@ links:
 
 ### Actions
 
-Providing an `onClose` prop with include a close icon button on the `Alert`. Other actions can be provided using the `actions` prop. See the [Material UI Component documentation for Alert actions](https://mui.com/material-ui/react-alert/#actions) for more examples.
+Providing an `onClose` prop will include a close icon button on the `Alert`. Other actions can be provided using the `actions` prop. See the [Material UI Component documentation for Alert actions](https://mui.com/material-ui/react-alert/#actions) for more examples.
 
 ::example{src="mui/Alert.close"}
 

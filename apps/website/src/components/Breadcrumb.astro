@@ -36,14 +36,9 @@ const { crumbs } = Astro.props;
 </nav>
 
 <style>
-	.breadcrumb {
-		display: flex;
-		align-items: center;
-		margin-block-end: var(--stratakit-space-x8);
-	}
-
 	.breadcrumb ol {
 		display: flex;
+		flex-wrap: wrap;
 		list-style: none;
 		padding: 0;
 		margin: 0;
@@ -58,18 +53,15 @@ const { crumbs } = Astro.props;
 		line-height: 1.3333; /* body-sm line-height */
 		white-space: nowrap;
 
-    & + li::before {
-      content: "›";
-      display: inline-block;
-      width: var(--stratakit-space-x4);
-      text-align: center;
-      margin-inline-start: var(--stratakit-space-x1);
-      margin-inline-end: var(--stratakit-space-x1);
-      color: var(--stratakit-color-text-neutral-disabled);
-      font-weight: var(--stratakit-font-weight-medium);
-    }
+		&:not(:last-of-type)::after {
+			content: "›";
+			display: inline-block;
+			width: var(--stratakit-space-x4);
+			text-align: center;
+			margin-inline-start: var(--stratakit-space-x1);
+			margin-inline-end: var(--stratakit-space-x1);
+			color: var(--stratakit-color-text-neutral-disabled);
+			font-weight: var(--stratakit-font-weight-medium);
+		}
 	}
-
-
-
 </style>

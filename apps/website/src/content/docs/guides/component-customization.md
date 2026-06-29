@@ -16,7 +16,7 @@ Using the `<button>` element automatically provides the button role without addi
 
 This link is a lie. While it identifies its role as “link”, it still behaves as a button. In general, you should avoid overriding element roles in this way.
 
-If I really wanted a link, I could use a link ([anchor](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a)) element:
+If you really wanted a link, you could use a link ([anchor](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a)) element:
 
 ```html
 <!-- ❌ don't do this -->

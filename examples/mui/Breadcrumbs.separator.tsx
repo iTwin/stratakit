@@ -3,16 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import BreadcrumbsButton from "examples/mui/Breadcrumbs.button.tsx";
-import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
-import BreadcrumbsSeparator from "examples/mui/Breadcrumbs.separator.tsx";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Link from "@mui/material/Link";
 
-export default function BreadcrumbsExamples() {
+export default () => {
 	return (
-		<>
-			<BreadcrumbsDefault />
-			<BreadcrumbsSeparator />
-			<BreadcrumbsButton />
-		</>
+		<Breadcrumbs aria-label="breadcrumb" separator="/">
+			<Link href="/">Home</Link>
+			<Link href="#packages">Packages</Link>
+			<Link aria-current="true" color="textSecondary">
+				@stratakit/mui
+			</Link>
+		</Breadcrumbs>
 	);
-}
+};

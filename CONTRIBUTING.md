@@ -85,7 +85,7 @@ Also, there’s [an internal package](./internal) which is used for configuratio
 
 ### Customizing Material UI
 
-StrataKit uses [themed components](https://mui.com/material-ui/customization/theme-components/) and [customized component structures](https://mui.com/material-ui/customization/overriding-component-structure/) to align the default Material UI components with the StrataKit design system.
+The `@stratakit/mui` package uses [themed components](https://mui.com/material-ui/customization/theme-components/) and [customized component structures](https://mui.com/material-ui/customization/overriding-component-structure/) to align the default Material UI components with the StrataKit design system.
 
 ### Project code style and conventions
 
@@ -166,11 +166,14 @@ To enable us to quickly review and accept your pull requests, always create one 
 
 ### Responding to reviews
 
-When updating the pull request based on feedback, link to the commit that resolves the comment and allow the reviewer to choose to resolve the comment if they are satisfied.
+- When updating the pull request based on feedback, link to the commit that resolves the comment and allow the reviewer to choose to resolve the comment if they are satisfied.
+- Don't resolve threads started by others.
+- Keep your branch up-to-date with the latest changes from main.
 
 ### Merging
 
-Pull requests should be merged after at least two approvals from core team members. It is preferred for core team members to merge their own PRs. This is not a hard rule and it may be acceptable to merge with only one approval or by other core team members.
+Pull requests should be merged after at least two approvals from core team members. Core team members are expected to merge their own PRs. This is not a hard rule and it may be acceptable to merge with only one approval or by other core team members.
+
 ### AI use
 
 If artificial intelligence is used to generate any portion of the code, tests, or documentation in your pull request, you are still fully responsible for reviewing the output for correctness and adherence to project standards prior to submission.

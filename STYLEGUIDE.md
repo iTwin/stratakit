@@ -10,13 +10,17 @@ This style guide describes conventions and best practices for the StrataKit proj
 - For React imports use `import * as React from "react"`.
 - Keep imports organized via running `pnpm run lint --write`
 
+### forwardRef
+
+Use the `forwardRef` from [packages/foundations](./packages/foundations/src/~utils.tsx) instead of `React.forwarrd`. The internal version allows refs to be loosely typed as `HTMLElement`.
+
 ## CSS
 
-### Nest CSS rules
+### Group CSS rules by target element
 
 [Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (selector to identify the DOM element). If there are multiple DOM elements (eg. tab list and tabs), use multiple groups.
 
-**Do**
+**✅ Do**
 
 ```css
 .MuiToggleButton-root {
@@ -28,7 +32,7 @@ This style guide describes conventions and best practices for the StrataKit proj
 }
 ```
 
-**Don't**
+**❌ Don't**
 
 ```css
 .MuiToggleBottom-root {
@@ -40,20 +44,33 @@ This style guide describes conventions and best practices for the StrataKit proj
 }
 ```
 
-### Lower specificity
+### Target 0,1,0 sepecificity with rules
 
-Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to reduce specificity of rules. This makes it easier for consumers who are not using layers to override the StrataKit styling if need.
+Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to try and keep a flat specifcificy of 0,1,0. This makes it easier for consumers who are not using layers to override the StrataKit styling if need.
 
-| Selector                               | Specificity |          |
-| -------------------------------------- | ----------- | -------- |
-| `.MuiRating-root.Mui-disabled`         | `0, 2, 0`   | ❌ Don't |
-| `.MuiRating-root:where(.Mui-disabled)` | `0, 1, 0`   | ✅ Do    |
+You can use `:where`
+
+**✅ Do**
+
+```css
+.MuiRating-root:where(.Mui-disabled) {
+	/* 0,1,0 specificity */
+}
+```
+
+**❌ Don't**
+
+```css
+.MuiRating-root.Mui-disabled {
+	/* 0,2,0 specificity */
+}
+```
 
 ### Use CSS logical properties
 
 Use [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values) instead of physical properties. This is to support different locales that do use a left-right top-bottom layout.
 
-Below are some examples. Refer to the documentation logical properties for a complete list.
+Wrap any rules relating to hover with the [`any-hover` media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/any-hover). This prevents an undesirable situation on touch devices where the hover state may get stuck on after a tap.
 
 | Physical property | Logical property    |
 | ----------------- | ------------------- |
@@ -70,7 +87,7 @@ Wrap any rules relating to hover with a media query. This prevents a bug on iOS 
 
 ```css
 @media (any-hover: hover) {
-	:where(.MuiTableSortLabel-root:hover) & {
+	:where(:hover) & {
 		opacity: 1;
 	}
 }

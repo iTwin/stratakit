@@ -31,6 +31,7 @@ Modifications specific to `Button`:
 
 - Restyled using StrataKit's visual language.
 - The default `variant` is now `"contained"`.
+- The default `loadingPosition` is now `"start"`.
 - The `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
 - The `size` options (`"small"`, `"medium"`, `"large"`) have all been decreased in height.
 
@@ -70,6 +71,10 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button's*
 | Primary call-to-action                | ✅        | ✅      | ❌    |
 | Modal confirmation or form submission | ❌        | ✅      | ❌    |
 | Destructive call-to-action            | ❌        | ❌      | ✅    |
+
+### Loading
+
+::example{src="mui/Button.loading"}
 
 ### Sizes
 

@@ -6,6 +6,8 @@ import ButtonIcons_ from "examples/mui/Button._icons.tsx";
 import ButtonPermutations_ from "examples/mui/Button._permutations.js";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
+import ButtonFullWidth from "examples/mui/Button.fullWidth.tsx";
+import ButtonLoading from "examples/mui/Button.loading.tsx";
 import ButtonSizes from "examples/mui/Button.sizes.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
 import { createKnob, isProduction } from "~/~utils.tsx";
@@ -19,6 +21,8 @@ export default function ButtonExamples() {
 			<ButtonColors />
 			{!isProduction && <ButtonIcons_ />}
 			{!isProduction && <ButtonPermutations_ />}
+			<ButtonLoading />
+			<ButtonFullWidth />
 		</>
 	);
 }
@@ -28,6 +32,13 @@ export const knobs = {
 		props: {
 			MuiButton: {
 				disabled: true,
+			},
+		},
+	}),
+	loading: createKnob({
+		props: {
+			MuiButton: {
+				loading: true,
 			},
 		},
 	}),

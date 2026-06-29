@@ -29,7 +29,7 @@ Each component comes with a [**Use cases** section](/components/button#use-cases
 
 ## The `render` prop
 
-The universal `render` prop lets you change the HTML element used to render a component, changing the role along with it. As already established, this has a lot of potential as a [footgun](https://en.wiktionary.org/wiki/footgun):
+Available to all MUI and **StrataKit** components, the `render` prop lets you change the HTML element or React component used to render the component in hand. It is a powerful feature and has a lot of potential as a [footgun](https://en.wiktionary.org/wiki/footgun).
 
 ```jsx
 /* ❌ don't do this */

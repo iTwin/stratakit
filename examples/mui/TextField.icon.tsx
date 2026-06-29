@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { InputAdornment } from "@mui/material";
+import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import { Icon } from "@stratakit/mui";
 

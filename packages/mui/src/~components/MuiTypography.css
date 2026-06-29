@@ -12,27 +12,31 @@
 	}
 
 	&:where(.MuiTypography-h1) {
-		@apply --typography("display-lg");
-	}
-	&:where(.MuiTypography-h2) {
-		@apply --typography("display-md");
-	}
-	&:where(.MuiTypography-h3) {
-		@apply --typography("display-sm");
-	}
-	&:where(.MuiTypography-h4) {
-		@apply --typography("headline-lg");
-	}
-	&:where(.MuiTypography-h5) {
 		@apply --typography("headline-md");
 	}
-	&:where(.MuiTypography-h6) {
+	&:where(.MuiTypography-h2) {
 		@apply --typography("headline-sm");
+	}
+	&:where(.MuiTypography-h3) {
+		@apply --typography("subtitle-lg");
+	}
+	&:where(.MuiTypography-h4) {
+		@apply --typography("body-md");
+	}
+	&:where(.MuiTypography-h5) {
+		@apply --typography("body-sm");
+	}
+	&:where(.MuiTypography-h6) {
+		@apply --typography("body-sm");
 	}
 
 	&:where(.MuiTypography-caption) {
 		@apply --typography("body-sm");
 	}
+	&:where(.MuiTypography-overline) {
+		@apply --typography("body-sm");
+	}
+
 	&:where(.MuiTypography-subtitle1) {
 		@apply --typography("subtitle-lg");
 	}

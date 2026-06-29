@@ -90,6 +90,13 @@
 				"unit": "rem"
 			}
 		},
+		"18": {
+			"$type": "dimension",
+			"$value": {
+				"value": 1.125,
+				"unit": "rem"
+			}
+		},
 		"20": {
 			"$type": "dimension",
 			"$value": {
@@ -129,6 +136,13 @@
 			"$type": "dimension",
 			"$value": {
 				"value": 3,
+				"unit": "rem"
+			}
+		},
+		"64": {
+			"$type": "dimension",
+			"$value": {
+				"value": 4,
 				"unit": "rem"
 			}
 		}

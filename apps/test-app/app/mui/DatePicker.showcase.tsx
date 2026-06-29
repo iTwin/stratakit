@@ -3,6 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.badge {
-	gap: var(--stratakit-space-x1);
+import DatePickerDefault from "examples/mui/DatePicker.default.tsx";
+import DatePickerTime from "examples/mui/DatePicker.time.tsx";
+
+export default function DatePickerExamples() {
+	return (
+		<>
+			<DatePickerDefault />
+			<DatePickerTime />
+		</>
+	);
 }

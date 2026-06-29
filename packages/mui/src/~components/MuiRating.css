@@ -27,6 +27,15 @@
 			outline-offset: var(--🥝focus-outline-offset);
 		}
 	}
+
+	:where(svg, img) {
+		/* 
+		reset css sets max-inline-size to 100%, however the Rating component + precision
+		prop relies on the svg size being greater than than the width of the
+		container and getting clipped.  Unset it here to allow the icon to overflow and clip.
+		*/
+		max-inline-size: unset;
+	}
 }
 
 .MuiRating-label {

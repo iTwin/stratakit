@@ -7,7 +7,7 @@ Consider a simple `<button>` element with the [label](/guides/language-and-label
 
 What about people who cannot see the button? Fortunately, the `<button>` element comes with a button _role_: it is identified as a button programmatically. Parsers like screen readers will announce the role (what the `<button>` is) and the label (what it does) together: _“save, button”_.
 
-The button role comes for free, just by using `<button>`. It is, therefore, said to be an _implicit_ role. However, you can change the role by either replacing the `<button>` with a different element, or by applying an explicit [WAI-ARIA role attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles).
+Using the `<button>` element automatically provides the button role without additional code. It is, therefore, said to be an _implicit_ role. However, you can change the role by either replacing the `<button>` with a different element, or by applying an explicit [WAI-ARIA role attribute](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles).
 
 ```html
 <!-- ❌ don't do this -->
@@ -16,7 +16,7 @@ The button role comes for free, just by using `<button>`. It is, therefore, said
 
 This link is a lie. While it identifies its role as “link”, it still behaves as a button. In general, you should avoid overriding element roles in this way.
 
-If I really wanted a link, I could use a link ([anchor](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a)) element:
+If you really wanted a link, you could use a link ([anchor](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a)) element:
 
 ```html
 <!-- ❌ don't do this -->

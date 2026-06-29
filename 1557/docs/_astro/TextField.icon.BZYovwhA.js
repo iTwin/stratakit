@@ -1,1 +1,0 @@
-import{j as t,I as s}from"./_utils.b1bZbFIL.js";import{T as o}from"./TextField.BYq1OcBb.js";import{I as r}from"./InputAdornment.Bg88jBuT.js";const e="/1557/docs/_astro/email-at.BYClD7Uv.svg",m=()=>t.jsx(o,{label:"Username:",slotProps:{input:{startAdornment:t.jsx(r,{position:"start",children:t.jsx(s,{href:e})})}}});export{m as default};

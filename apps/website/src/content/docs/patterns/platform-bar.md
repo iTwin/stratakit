@@ -7,8 +7,7 @@ The **Platform Bar** pattern uses the [**Navigation Rail**](/components/navigati
 
 The **Platform Bar** enables predictable navigation patterns that help users remain oriented and move efficiently between primary workflows across products.
 
-[Image to follow]
-
+![A screen with the Platform Bar positioned on the left-hand side](../../../assets/images/platform_bar_screen.jpeg)
 
 ## Use cases
 
@@ -39,7 +38,7 @@ The **Platform Bar** is structured as follows.
 | 3. **Capabilities Tray**     | The **Capabilities Tray** provides entry points to the core features, tools, and workflows available to the user.                                                                                                | `NavigationRail.Content` |
 | 4. **Utilities**             | Supporting tools and system functions, including notifications, help, application settings, and user profile access.                                                                                             | `NavigationRail.Footer`  |
 
-[Image to follow]
+![Diagram numbering the different sections from 1 (at the top) to 4 (at the bottom)](../../../assets/images/platform_bar_anatomy.jpeg)
 
 ## Interaction
 
@@ -55,4 +54,4 @@ The **Platform Bar** must conform to certain rules of interaction:
 
 ## Examples
 
-[Image to follow]
+![Set of three example implementations from 3 Bentley products. From left to right, it’s Open X, ITS, and BIC.](../../../assets/images/platform_bar_examples.jpeg)

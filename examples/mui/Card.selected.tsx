@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import React from "react";
-import { CardActions, Checkbox, Stack } from "@mui/material";
 import Card from "@mui/material/Card";
 import CardActionArea from "@mui/material/CardActionArea";
 import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { visuallyHidden } from "@mui/utils";
 import { Icon } from "@stratakit/foundations";

@@ -28,7 +28,7 @@ export default () => {
 				/>
 			</FormGroup>
 			<FormHelperText id={descriptionId}>
-				You can change these settings at any time
+				You can change these settings at any time.
 			</FormHelperText>
 		</FormControl>
 	);

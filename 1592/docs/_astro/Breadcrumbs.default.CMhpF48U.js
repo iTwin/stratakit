@@ -1,1 +1,0 @@
-import{j as r}from"./_utils.C98MabGJ.js";import{B as a}from"./Breadcrumbs.CAb6hDQB.js";import{L as e}from"./Link.Ch6wBUPy.js";const i=()=>r.jsxs(a,{"aria-label":"breadcrumb",children:[r.jsx(e,{href:"/",children:"Home"}),r.jsx(e,{href:"#packages",children:"Packages"}),r.jsx(e,{"aria-current":"true",color:"textSecondary",children:"@stratakit/mui"})]});export{i as default};

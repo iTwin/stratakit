@@ -1,1 +1,0 @@
-import{D as o,g as e}from"./ExamplePreview.BeJLxCBO.js";import{j as i}from"./_utils.Dc_Ei333.js";function n(r={}){return i.jsx(o,{value:e(r),children:r.children})}export{n as D};

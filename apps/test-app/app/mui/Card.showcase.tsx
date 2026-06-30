@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import CardActions from "examples/mui/Card.actions.tsx";
 import CardDefault from "examples/mui/Card.default.tsx";
+import CardLoading from "examples/mui/Card.loading.tsx";
 import CardHeader from "examples/mui/Card.menu.tsx";
 
 export default function CardExamples() {
@@ -12,6 +13,7 @@ export default function CardExamples() {
 			<CardDefault />
 			<CardActions />
 			<CardHeader />
+			<CardLoading />
 		</>
 	);
 }

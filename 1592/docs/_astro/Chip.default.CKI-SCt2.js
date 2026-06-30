@@ -1,1 +1,0 @@
-import{j as s}from"./_utils.C7zk-B7A.js";import{C as e}from"./Chip.BfB06dja.js";const t=()=>s.jsxs("div",{className:"flex",children:[s.jsx(e,{label:"HTML"}),s.jsx(e,{label:"CSS"}),s.jsx(e,{label:"JS"})]});export{t as default};

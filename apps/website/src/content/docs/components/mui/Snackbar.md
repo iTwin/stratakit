@@ -11,3 +11,13 @@ links:
 ## StrataKit MUI modifications
 
 - `Snackbar` is rendered using a [portal](https://react.dev/reference/react-dom/createPortal).
+
+## Examples
+
+### Status
+
+::example{src="mui/Snackbar.status"}
+
+### Processing
+
+::example{src="mui/Snackbar.processing"}

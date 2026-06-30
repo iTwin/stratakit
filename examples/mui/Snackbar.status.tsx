@@ -27,8 +27,12 @@ export default () => {
 		<>
 			<Stack spacing={2} direction="row">
 				{statusValues.map((status) => (
-					<Button key={status} onClick={() => setActiveStatus(status)}>
-						Show {status} snackbar
+					<Button
+						key={status}
+						onClick={() => setActiveStatus(status)}
+						sx={{ textTransform: "capitalize" }}
+					>
+						{status}
 					</Button>
 				))}
 			</Stack>

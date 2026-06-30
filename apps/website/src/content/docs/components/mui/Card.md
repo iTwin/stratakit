@@ -68,6 +68,10 @@ Use `slotProps` to give the [`CardHeader`](https://mui.com/material-ui/api/card-
 
 ::example{src="mui/Card.loading"}
 
+### Selected
+
+::example{src="mui/Card.selected"}
+
 ## ✅ Do
 
 - Choose [an appropriate heading level](https://www.a11yproject.com/posts/how-to-accessible-heading-structure/) for the `CardHeader` title.

@@ -1,0 +1,28 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiCircularProgress-track {
+	opacity: 1;
+
+	:where(.MuiCircularProgress-root.MuiCircularProgress-colorPrimary) & {
+		stroke: var(--stratakit-color-bg-accent-muted);
+	}
+
+	:where(.MuiCircularProgress-root.MuiCircularProgress-colorSecondary) & {
+		stroke: var(--stratakit-color-border-page-base);
+	}
+}
+
+.MuiCircularProgress-circle {
+	stroke-linecap: round;
+
+	:where(.MuiCircularProgress-root.MuiCircularProgress-colorPrimary) & {
+		stroke: var(--stratakit-color-border-accent-strong);
+	}
+
+	:where(.MuiCircularProgress-root.MuiCircularProgress-colorSecondary) & {
+		stroke: var(--stratakit-color-border-mono-faded);
+	}
+}

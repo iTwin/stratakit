@@ -8,6 +8,10 @@ links:
 
 ::example{src="mui/CircularProgress.default"}
 
+## StrataKit MUI modifications
+
+- The `enableTrackSlot` prop defaults to true for `CircularProgress`.
+
 ## Examples
 
 ### Linear

@@ -114,6 +114,15 @@
 	}
 }
 
+.MuiCircularProgress-track {
+	stroke: CanvasText;
+	opacity: 0.25;
+}
+
+.MuiCircularProgress-circle {
+	stroke: CanvasText;
+}
+
 .MuiDialog-paper {
 	border: 1px solid;
 }

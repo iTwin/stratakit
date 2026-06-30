@@ -1,0 +1,1 @@
+import{j as e,V as t}from"./_utils.Dc_Ei333.js";import{M as s}from"./MenuItem.3Db4Vthz.js";const o=()=>e.jsxs(t,{children:[e.jsx(s,{children:"Profile"}),e.jsx(s,{children:"My account"}),e.jsx(s,{children:"Logout"})]});export{o as default};

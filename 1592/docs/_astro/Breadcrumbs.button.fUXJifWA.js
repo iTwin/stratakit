@@ -1,0 +1,1 @@
+import{j as r}from"./_utils.xUsY0PtC.js";import{B as a}from"./Breadcrumbs.DHoycDUi.js";import{B as t}from"./Button.cYlnhA6h.js";const n=()=>r.jsxs(a,{"aria-label":"breadcrumb",children:[r.jsx(t,{variant:"text",children:"Home"}),r.jsx(t,{variant:"text",children:"Packages"}),r.jsx(t,{variant:"text","aria-current":"true",children:"@stratakit/mui"})]});export{n as default};

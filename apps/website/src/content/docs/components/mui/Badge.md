@@ -19,7 +19,7 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 
 ## StrataKit MUI modifications
 
-- Added [`emphasis`](#emphasis) prop.
+- Added [`type`](#type) prop.
 - Added [`inline`](#inline) prop.
 - The `"default"` color has been removed. The default color is now `"secondary"`.
 
@@ -45,15 +45,15 @@ Set the `inline` prop to display the badge in normal document flow instead of po
 In most cases, you should supplement the `color` with iconography so that color is not the only means of communication. See [WCAG's Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
 :::
 
-### Emphasis
+### Type
 
-Use the `emphasis` prop to adjust the visual prominence of an [`inline`](#inline) **Badge**.
+Use the `type` prop to adjust the visual prominence of an [`inline`](#inline) **Badge**.
 
 - **Strong:** The default, use when you need the strongest emphasis.
 - **Moderate:** Use when you want a balanced level of emphasis.
 - **Subtle:** Use when you need the least emphasis.
 
-::example{src="mui/Badge.emphasis"}
+::example{src="mui/Badge.type"}
 
 ## ✅ Do
 

@@ -146,13 +146,13 @@ declare module "@mui/material/Badge" {
 		 */
 		color?: BadgeProps["color"];
 		/**
-		 * The emphasis of the badge styling.
+		 * The visual type of the badge styling.
 		 *
 		 * This prop can only be applied when `inline` is `true`.
 		 *
 		 * @default 'strong'
 		 */
-		emphasis?: "subtle" | "moderate" | "strong";
+		type?: "subtle" | "moderate" | "strong";
 	}
 }
 

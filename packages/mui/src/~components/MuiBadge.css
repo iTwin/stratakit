@@ -18,7 +18,7 @@
 		transform: none;
 	}
 
-	/* #region Emphasis: strong */
+	/* #region Type: strong */
 	&:where(.MuiBadge-colorError) {
 		--_MuiBadge-background-color: var(--stratakit-color-bg-critical-base);
 		--_MuiBadge-border-color: var(--stratakit-color-border-critical-base);
@@ -50,7 +50,7 @@
 	}
 	/* #endregion */
 
-	:where([data-_sk-emphasis="moderate"]) & {
+	:where([data-_sk-type="moderate"]) & {
 		--_MuiBadge-color: var(--stratakit-color-text-neutral-primary);
 
 		&:where(.MuiBadge-colorError) {
@@ -78,7 +78,7 @@
 		}
 	}
 
-	:where([data-_sk-emphasis="subtle"]) & {
+	:where([data-_sk-type="subtle"]) & {
 		--_MuiBadge-background-color: transparent;
 		--🥝selection-color-bg: var(--stratakit-color-bg-accent-base);
 		--🥝selection-color-text: var(--stratakit-color-text-neutral-emphasis);

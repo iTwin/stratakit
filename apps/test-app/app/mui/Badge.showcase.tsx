@@ -5,8 +5,8 @@
 import BadgeColors from "examples/mui/Badge.colors.tsx";
 import BadgeDefault from "examples/mui/Badge.default.tsx";
 import BadgeDot from "examples/mui/Badge.dot.tsx";
-import BadgeEmphasis from "examples/mui/Badge.emphasis.tsx";
 import BadgeInline from "examples/mui/Badge.inline.tsx";
+import BadgeType from "examples/mui/Badge.type.tsx";
 
 export default function BadgeExamples() {
 	return (
@@ -15,7 +15,7 @@ export default function BadgeExamples() {
 			<BadgeDot />
 			<BadgeInline />
 			<BadgeColors />
-			<BadgeEmphasis />
+			<BadgeType />
 		</>
 	);
 }

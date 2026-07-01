@@ -24,15 +24,15 @@ type BadgeProps = React.ComponentProps<typeof Badge>;
 
 interface MuiBadgeProps
 	extends BaseProps<"span">,
-		Pick<BadgeProps, "emphasis" | "inline"> {}
+		Pick<BadgeProps, "type" | "inline"> {}
 
 const MuiBadge = forwardRef<"span", MuiBadgeProps>((props, forwardedRef) => {
-	const { emphasis = "strong", inline, ...rest } = props;
+	const { type = "strong", inline, ...rest } = props;
 	return (
 		<MuiBadgeContext.Provider value={{ inline }}>
 			<Role.span
 				{...rest}
-				data-_sk-emphasis={inline ? emphasis : undefined}
+				data-_sk-type={inline ? type : undefined}
 				data-_sk-inline={inline ? "" : undefined}
 				ref={forwardedRef}
 			/>

@@ -3,14 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
+import DatePickerDefault from "examples/mui/DatePicker.default.tsx";
+import DatePickerTime from "examples/mui/DatePicker.time.tsx";
 
-export default () => {
+export default function DatePickerExamples() {
 	return (
-		<Stack spacing={1} direction="row" sx={{ alignItems: "center" }}>
-			<TextField size="small" label="Small" />
-			<TextField size="medium" label="Medium" />
-		</Stack>
+		<>
+			<DatePickerDefault />
+			<DatePickerTime />
+		</>
 	);
-};
+}

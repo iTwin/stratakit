@@ -8,8 +8,8 @@ import Button from "@mui/material/Button";
 import MobileStepper from "@mui/material/MobileStepper";
 import { Icon } from "@stratakit/mui";
 
-import svgBack from "@stratakit/icons/caret-left.svg";
-import svgNext from "@stratakit/icons/caret-right.svg";
+import svgBack from "@stratakit/icons/chevron-left.svg";
+import svgNext from "@stratakit/icons/chevron-right.svg";
 
 export default () => {
 	const [activeStep, setActiveStep] = React.useState(0);

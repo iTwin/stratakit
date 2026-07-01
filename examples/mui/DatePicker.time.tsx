@@ -3,14 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import Stack from "@mui/material/Stack";
-import TextField from "@mui/material/TextField";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { TimePicker } from "@mui/x-date-pickers/TimePicker";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="row" sx={{ alignItems: "center" }}>
-			<TextField size="small" label="Small" />
-			<TextField size="medium" label="Medium" />
-		</Stack>
+		<LocalizationProvider dateAdapter={AdapterDateFns}>
+			<TimePicker label="Time" />
+		</LocalizationProvider>
 	);
 };

@@ -21,7 +21,7 @@ export default () => {
 
 const SmallSelect = () => {
 	const id = React.useId();
-	const label = "Favorite small animal:";
+	const label = "Favorite small animal";
 	return (
 		<FormControl>
 			<InputLabel id={id} size="small">
@@ -37,7 +37,7 @@ const SmallSelect = () => {
 
 const MediumSelect = () => {
 	const id = React.useId();
-	const label = "Favorite medium animal:";
+	const label = "Favorite medium animal";
 	return (
 		<FormControl>
 			<InputLabel id={id}>{label}</InputLabel>

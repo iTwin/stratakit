@@ -12,7 +12,7 @@ This style guide describes conventions and best practices for the StrataKit proj
 
 ### forwardRef
 
-Use the `forwardRef` from [packages/foundations](./packages/foundations/src/~utils.tsx) instead of `React.forwarrd`. The internal version allows refs to be loosely typed as `HTMLElement`.
+Use the `forwardRef` from [packages/foundations](./packages/foundations/src/~utils.tsx) instead of `React.forward`. The internal version allows refs to be loosely typed as `HTMLElement`.
 
 ## CSS
 

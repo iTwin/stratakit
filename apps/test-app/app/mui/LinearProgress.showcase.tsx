@@ -5,12 +5,14 @@
 import Stack from "@mui/material/Stack";
 import LinearProgressColors_ from "examples/mui/LinearProgress._colors.tsx";
 import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
+import LinearProgressDeterminate from "examples/mui/LinearProgress.determinate.tsx";
 import { isProduction } from "~/~utils.tsx";
 
 export default function LinearProgressExamples() {
 	return (
 		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
 			<LinearProgressDefault />
+			<LinearProgressDeterminate />
 			{!isProduction && <LinearProgressColors_ />}
 		</Stack>
 	);

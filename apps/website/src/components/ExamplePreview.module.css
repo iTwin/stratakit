@@ -5,7 +5,7 @@
 
 @layer {
 	.exampleEmbedRoot {
-		display: grid;
+		display: block;
 		align-items: var(--example-align-items, center);
 
 		> * {
@@ -27,6 +27,11 @@
 		place-self: end;
 		display: flex;
 		padding: 4px;
+		grid-row: 2 / 3;
+	}
+
+	.code pre {
+		padding: 2rem;
 	}
 }
 

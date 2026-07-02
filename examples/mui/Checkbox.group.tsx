@@ -15,7 +15,7 @@ export default () => {
 	const descriptionId = React.useId();
 	return (
 		<FormControl render={<fieldset />} aria-describedby={descriptionId}>
-			<FormLabel render={<legend />}>Privacy preferences:</FormLabel>
+			<FormLabel render={<legend />}>Privacy preferences</FormLabel>
 			<FormGroup>
 				<FormControlLabel control={<Checkbox />} label="Allow cookies" />
 				<FormControlLabel
@@ -28,7 +28,7 @@ export default () => {
 				/>
 			</FormGroup>
 			<FormHelperText id={descriptionId}>
-				You can change these settings at any time
+				You can change these settings at any time.
 			</FormHelperText>
 		</FormControl>
 	);

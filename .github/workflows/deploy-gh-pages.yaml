@@ -63,7 +63,7 @@ jobs:
       GH_PAGES_URL: ${{ vars.GH_PAGES_URL }}
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
 

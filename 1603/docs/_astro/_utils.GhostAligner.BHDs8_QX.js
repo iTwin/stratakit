@@ -1,0 +1,1 @@
+import{j as n}from"./_utils.CG6dFufd.js";import{r as e}from"./styles.internal.Cf9SRLEZ.js";const r=e.createContext(void 0);function s(t){return n.jsx(r.Provider,{value:t.align,children:t.children})}function u(){return e.useContext(r)}export{s as G,u};

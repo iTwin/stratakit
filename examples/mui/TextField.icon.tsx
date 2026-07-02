@@ -12,7 +12,7 @@ import svgEmailAt from "@stratakit/icons/email-at.svg";
 export default () => {
 	return (
 		<TextField
-			label="Username:"
+			label="Username"
 			slotProps={{
 				input: {
 					startAdornment: (

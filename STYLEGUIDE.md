@@ -4,12 +4,6 @@ This style guide describes conventions and best practices for the StrataKit proj
 
 ## TSX
 
-### Imports
-
-- For Material UI imports use `import Rating from "@mui/material/Rating"` instead of `import { Rating } from "@mui/material"`. For more information see [MUI's guide on reducing bundle size](https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-barrel-imports)
-- For React imports use `import * as React from "react"`.
-- Keep imports organized via running `pnpm run lint --write`
-
 ### forwardRef
 
 Use the `forwardRef` utility from [packages/foundations](./packages/foundations/src/~utils.tsx) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.

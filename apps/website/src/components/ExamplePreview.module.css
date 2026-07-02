@@ -33,6 +33,11 @@
 		border-radius: 0;
 	}
 
+	.code {
+		overflow: auto;
+		max-block-size: 20rem;
+	}
+
 	.code pre {
 		background: unset !important; /* override the background color inline on the element */
 		padding: 2rem;

@@ -90,11 +90,17 @@ function useSourceCode(src: string) {
 
 /** Extract the return statement/value from a component's JSX body */
 const extractReturnValue = (code: string): string | null => {
-	// Match return statement and extract its content, preserving first line indentation
-	const returnMatch = code.match(/return\s*\(\n([\s\S]*?)\n\s*\);/);
-	if (!returnMatch) return null;
+	// Try multi-line format with parentheses first
+	let returnMatch = code.match(/return\s*\(\n([\s\S]*?)\n\s*\);/);
+	let returnContent = returnMatch?.[1];
 
-	let returnContent = returnMatch[1];
+	// If not found, try single-line format
+	if (!returnContent) {
+		returnMatch = code.match(/return\s+(<[\s\S]*?);/);
+		returnContent = returnMatch?.[1];
+	}
+
+	if (!returnContent) return null;
 
 	// Remove wrapping parentheses if they exist
 	if (returnContent.startsWith("(") && returnContent.endsWith(")")) {

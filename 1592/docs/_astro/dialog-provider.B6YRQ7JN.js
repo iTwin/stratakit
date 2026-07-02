@@ -1,1 +1,0 @@
-import{D as o,g as e}from"./ExamplePreview.CW0-5hUc.js";import{j as i}from"./_utils.TTrGCahG.js";function n(r={}){return i.jsx(o,{value:e(r),children:r.children})}export{n as D};

@@ -1,1 +1,0 @@
-import{j as t}from"./_utils.CKPBYzD9.js";import{S as e}from"./Skeleton.CnT0ee86.js";import{V as a}from"./ExamplePreview.B5UKI9GY.js";const n=()=>t.jsxs("div",{className:"flex",style:{alignItems:"center"},children:[t.jsx(e,{variant:"object"}),t.jsx(e,{variant:"text"}),t.jsx(a,{children:"Loading…"})]});export{n as default};

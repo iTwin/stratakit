@@ -92,7 +92,7 @@
 					"options": {
 						"paths": {
 							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead.",
-							"@mui/material": "Use of Material's barrel is discouraged. Import Material components from their individual entrypoints instead."
+							"@mui/material": "Use of MUI's barrel is discouraged. Import MUI components from their individual entrypoints instead."
 						}
 					}
 				}

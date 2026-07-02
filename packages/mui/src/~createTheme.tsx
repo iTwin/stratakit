@@ -175,6 +175,9 @@ function createTheme(args: CreateThemeArgs) {
 						root: {
 							role: "group", // Overriding role="alert".
 						},
+						closeButton: {
+							edge: "end",
+						},
 					},
 				},
 			},

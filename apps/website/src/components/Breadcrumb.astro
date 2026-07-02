@@ -13,10 +13,10 @@ type Props = {
 	crumbs: Crumb[];
 };
 
-const { crumbs } = Astro.props;
+const { crumbs, ...rest } = Astro.props;
 ---
 
-<nav aria-label="breadcrumb" class="breadcrumb">
+<nav aria-label="breadcrumb" class="breadcrumb" {...rest}>
 	<ol>
 		{
 			crumbs.map((crumb, index) => {
@@ -36,7 +36,7 @@ const { crumbs } = Astro.props;
 </nav>
 
 <style>
-	.breadcrumb ol {
+	ol {
 		display: flex;
 		flex-wrap: wrap;
 		list-style: none;
@@ -45,7 +45,7 @@ const { crumbs } = Astro.props;
 		align-items: center;
 	}
 
-	.breadcrumb li {
+	li {
 		color: var(--stratakit-color-text-neutral-primary);
 		font-family: var(--stratakit-font-family-sans), system-ui, sans-serif;
 		font-size: var(--stratakit-font-size-12);
@@ -54,7 +54,7 @@ const { crumbs } = Astro.props;
 		white-space: nowrap;
 
 		&:not(:last-of-type)::after {
-			content: "›";
+			content: "›" / "" ;
 			display: inline-block;
 			width: var(--stratakit-space-x4);
 			text-align: center;

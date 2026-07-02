@@ -9,7 +9,7 @@ import { visuallyHidden } from "@mui/utils";
 export default () => {
 	return (
 		<TextField
-			label="Email:"
+			label="Email"
 			error
 			helperText={
 				<>

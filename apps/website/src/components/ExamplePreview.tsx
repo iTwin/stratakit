@@ -2,13 +2,18 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
 import * as React from "react";
-import { IconButton } from "@stratakit/bricks";
-import { Root } from "@stratakit/mui";
+import { Box, IconButton, Paper, Skeleton, Switch } from "@mui/material";
+import { visuallyHidden } from "@mui/utils";
+import { Icon, Root } from "@stratakit/mui";
 import { codeToHtml } from "shiki";
 import { useColorScheme } from "./~utils.ts";
 
+import svgCopy from "@stratakit/icons/copy.svg";
 import svgScript from "@stratakit/icons/script.svg";
+import svgError from "@stratakit/icons/status-error.svg";
+import svgSuccess from "@stratakit/icons/status-success.svg";
 import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./ExamplePreview.module.css";
 
@@ -43,51 +48,45 @@ const exampleSources = {
 
 // ----------------------------------------------------------------------------
 
-export function ExampleEmbed({ src }: { src: string }) {
+type Status = "idle" | "loading" | "complete" | "error";
+type Brevity = "snippet" | "full";
+
+function useSourceCode(src: string) {
+	const [status, setStatus] = React.useState<Status>("idle");
+	const [source, setSource] = React.useState<string | null>(null);
+
 	const { exampleName, packageName } = parseSrc(src);
-	const labelId = React.useId();
+	const modulePath = `/node_modules/examples/${packageName}/${exampleName}.tsx`;
 
-	return (
-		<div
-			className={styles.exampleEmbedRoot}
-			role="group"
-			aria-labelledby={labelId}
-		>
-			<span id={labelId} hidden>
-				Live example ({src})
-			</span>
+	React.useEffect(() => {
+		const load = async () => {
+			try {
+				const sources =
+					exampleSources[packageName as keyof typeof exampleSources];
+				const sourceLoader = sources[modulePath] as () => Promise<string>;
+				if (!sourceLoader) {
+					setStatus("error");
+					return;
+				}
 
-			<div className={styles.examplePreviewWrapper}>
-				<ExamplePreview exampleName={exampleName} packageName={packageName} />
-			</div>
+				const source = await sourceLoader();
+				setSource(source);
+				setStatus("complete");
+			} catch (error) {
+				setStatus("error");
+				console.error(
+					`Failed to load source for ${packageName}/${exampleName}:`,
+					error,
+				);
+			}
+		};
 
-			<div className={styles.toolbar}>
-				<IconButton
-					icon={svgWindowPopout}
-					label="Open in new tab"
-					variant="ghost"
-					render={
-						<a
-							href={`${import.meta.env.BASE_URL}/examples/${src}`}
-							target="_blank"
-						/>
-					}
-				/>
-				<IconButton
-					icon={svgScript}
-					label="View source on GitHub"
-					variant="ghost"
-					render={<a href={`${examplesSrcUrl}${src}.tsx`} target="_blank" />}
-				/>
-			</div>
-			<ExampleSource src={src} />
-		</div>
-	);
+		setStatus("loading");
+		load();
+	}, [exampleName, packageName]);
+
+	return { status, source };
 }
-
-const stripBentleyHeader = (code: string) => {
-	return code.replace(/\/\*-+[\s\S]*?-+\*\/\n*/, "").trim();
-};
 
 /** Extract the return statement/value from a component's JSX body */
 const extractReturnValue = (code: string): string | null => {
@@ -105,8 +104,12 @@ const extractReturnValue = (code: string): string | null => {
 	return returnContent.trimEnd();
 };
 
+const stripBentleyHeader = (code: string) => {
+	return code.replace(/\/\*-+[\s\S]*?-+\*\/\n*/, "").trim();
+};
+
 /** Remove indentation based on the first line's indent */
-const dedentByFirstLine = (code: string): string => {
+const removeLeadingIndentation = (code: string): string => {
 	const lines = code.split("\n");
 	if (lines.length === 0) return code;
 
@@ -121,84 +124,186 @@ const dedentByFirstLine = (code: string): string => {
 		.trim();
 };
 
-function ExampleSource({
-	src,
-	view,
-}: {
-	src: string;
-	view: "snippet" | "full";
-}) {
-	const [codeHtml, setCodeHtml] = React.useState<{
-		snippet: string;
-		full: string;
-	} | null>(null);
-	const [status, setStatus] = React.useState<
-		"idle" | "loading" | "complete" | "error"
-	>("idle");
+function truncateCode(code: string) {
+	const noTabs = code.replace(/\t/g, "  "); // use two spaces for tab indent
+	const full = stripBentleyHeader(noTabs);
+	const justReturn = extractReturnValue(full);
+	const snippet = removeLeadingIndentation(justReturn ?? "");
 
-	const { exampleName, packageName } = parseSrc(src);
-	const modulePath = `/node_modules/examples/${packageName}/${exampleName}.tsx`;
+	return { full, snippet };
+}
+
+function CopyButton({ valueToCopy }: { valueToCopy: string }) {
+	const [status, setStatus] = React.useState<Status>("idle");
 
 	React.useEffect(() => {
-		const loadFullSources = async () => {
-			try {
-				const sources =
-					exampleSources[packageName as keyof typeof exampleSources];
-				const sourceLoader = sources[modulePath] as () => Promise<string>;
-				if (!sourceLoader) {
-					setStatus("error");
-					return;
-				}
+		if (status !== "complete" && status !== "error") {
+			return;
+		}
 
-				let source = await sourceLoader();
-				source = stripBentleyHeader(source);
-				source = source.replace(/\t/g, "  "); // use two spaces for tab indent
+		const timeoutId = setTimeout(() => {
+			setStatus("idle");
+		}, 2500);
+		return () => window.clearTimeout(timeoutId);
+	}, [status]);
 
-				const fullHtml = await codeToHtml(source, {
-					lang: "tsx",
-					theme: "github-dark",
-				});
-
-				let snippet = extractReturnValue(source);
-				snippet = dedentByFirstLine(snippet ?? "");
-				const snippetHtml = await codeToHtml(snippet, {
-					lang: "tsx",
-					theme: "github-dark",
-				});
-
-				setCodeHtml({ snippet: snippetHtml, full: fullHtml });
-				setStatus("complete");
-			} catch (error) {
-				setStatus("error");
-				console.error(
-					`Failed to load source for ${packageName}/${exampleName}:`,
-					error,
-				);
-			}
-		};
-
-		setStatus("loading");
-		loadFullSources();
-	}, [exampleName, packageName]);
-
-	const html = view === "snippet" ? codeHtml?.snippet : codeHtml?.full;
-
+	let color: React.ComponentProps<typeof IconButton>["color"];
+	let message = "";
 	switch (status) {
 		case "idle":
 		case "loading":
-			return <div>Loading</div>;
+			color = undefined;
+			break;
 		case "complete":
-			return (
-				<div
-					className={styles.code}
-					dangerouslySetInnerHTML={{
-						__html: html ?? "",
-					}}
-				/>
-			);
+			color = "primary";
+			message = "Code copied to clipboard";
+			break;
 		case "error":
-			return <div>Error</div>;
+			color = "error";
+			message = "Failed to copy";
+			break;
 	}
+
+	return (
+		<>
+			<IconButton
+				label="Copy"
+				color={color}
+				className={styles.copyButton}
+				onClick={() => {
+					setStatus("loading");
+					navigator.clipboard
+						.writeText(valueToCopy)
+						.then(() => {
+							setStatus("complete");
+						})
+						.catch((error) => {
+							setStatus("error");
+							console.error("failed to copy code to clipboard", error);
+						});
+				}}
+			>
+				<Icon
+					href={svgError}
+					className={styles.copyButtonIcon}
+					data-active={status === "error"}
+				/>
+				<Icon
+					href={svgCopy}
+					className={styles.copyButtonIcon}
+					data-active={status === "idle" || status === "loading"}
+				/>
+				<Icon
+					href={svgSuccess}
+					className={styles.copyButtonIcon}
+					data-active={status === "complete"}
+				/>
+			</IconButton>
+			<Box sx={visuallyHidden} aria-live="polite">
+				{message}
+			</Box>
+		</>
+	);
+}
+
+export function ExampleEmbed({ src }: { src: string }) {
+	const { exampleName, packageName } = parseSrc(src);
+	const labelId = React.useId();
+	const [brevity, setCodeBrevity] = React.useState<Brevity>("snippet");
+
+	const { source, status } = useSourceCode(src);
+	const { full, snippet } = React.useMemo(
+		() => (source ? truncateCode(source) : { full: "", snippet: "" }),
+		[source],
+	);
+
+	const codeToShow = brevity === "full" ? full : snippet;
+
+	return (
+		<div
+			className={styles.exampleEmbedRoot}
+			role="group"
+			aria-labelledby={labelId}
+		>
+			<span id={labelId} hidden>
+				Live example ({src})
+			</span>
+
+			<div className={styles.examplePreviewWrapper}>
+				<ExamplePreview exampleName={exampleName} packageName={packageName} />
+			</div>
+
+			<Paper elevation={2} className={styles.toolbar}>
+				<IconButton
+					label="Open in new tab"
+					render={
+						<a
+							href={`${import.meta.env.BASE_URL}/examples/${src}`}
+							target="_blank"
+						/>
+					}
+				>
+					<Icon href={svgWindowPopout} />
+				</IconButton>
+				<IconButton
+					label="View source on GitHub"
+					render={<a href={`${examplesSrcUrl}${src}.tsx`} target="_blank" />}
+				>
+					<Icon href={svgScript} />
+				</IconButton>
+				<CopyButton valueToCopy={codeToShow} />
+				<label>
+					<Switch
+						size="small"
+						checked={brevity === "full"}
+						onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
+							setCodeBrevity(event.target.checked ? "full" : "snippet");
+						}}
+					/>{" "}
+					Full source
+				</label>
+			</Paper>
+			{status === "complete" ? (
+				<CodeBlock code={codeToShow} />
+			) : (
+				<CodeSkeleton />
+			)}
+		</div>
+	);
+}
+
+function CodeSkeleton() {
+	return (
+		<div className={styles.code} data-status={status}>
+			<pre>
+				<Skeleton width="10rem" />
+				<Skeleton sx={{ marginInlineStart: "1rem" }} width="50%" />
+				<Skeleton sx={{ marginInlineStart: "1rem" }} width="20%" />
+				<Skeleton sx={{ marginInlineStart: "1rem" }} width="25%" />
+				<Skeleton width="1rem" />
+			</pre>
+		</div>
+	);
+}
+
+function CodeBlock({ code }: { code: string }) {
+	const [formattedHtml, setFormattedHtml] = React.useState("");
+
+	React.useEffect(() => {
+		codeToHtml(code, {
+			lang: "tsx",
+			theme: "github-dark",
+		}).then(setFormattedHtml);
+	}, [code]);
+
+	return (
+		<div
+			className={styles.code}
+			dangerouslySetInnerHTML={{
+				__html: formattedHtml,
+			}}
+		/>
+	);
 }
 
 // ----------------------------------------------------------------------------

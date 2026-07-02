@@ -212,6 +212,9 @@ importers:
       "@mui/material":
         specifier: "catalog:"
         version: 9.0.1(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
+      "@mui/utils":
+        specifier: "catalog:"
+        version: 9.0.1(@types/react@19.2.16)(react@19.2.7)
       "@stratakit/bricks":
         specifier: workspace:*
         version: link:../../packages/bricks

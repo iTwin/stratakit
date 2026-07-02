@@ -14,7 +14,7 @@ export default function CircularProgressExamples() {
 			<CircularProgressDefault />
 			<CircularProgressDeterminate />
 			{!isProduction && (
-				<Stack spacing={1} direction="row">
+				<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
 					<CircularProgressColors_ />
 				</Stack>
 			)}

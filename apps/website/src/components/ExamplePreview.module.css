@@ -4,15 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 @layer {
-	.exampleEmbedRoot {
-		display: block;
-		align-items: var(--example-align-items, center);
-
-		> * {
-			grid-area: 1 / 1 / -1 / -1;
-		}
-	}
-
 	.examplePreviewWrapper {
 		margin-inline: auto;
 		padding: 2rem;
@@ -27,8 +18,8 @@
 	.toolbar {
 		display: flex;
 		padding: 4px 2rem;
-		grid-row: 2 / 3;
 		align-items: center;
+		justify-content: end;
 		gap: 0.5rem;
 		border-radius: 0;
 	}

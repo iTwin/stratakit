@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Box, IconButton, Paper, Skeleton, Switch } from "@mui/material";
+import { Box, Button, IconButton, Paper, Skeleton } from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { Icon, Root } from "@stratakit/mui";
 import { codeToHtml } from "shiki";
@@ -49,7 +49,6 @@ const exampleSources = {
 // ----------------------------------------------------------------------------
 
 type Status = "idle" | "loading" | "complete" | "error";
-type Brevity = "snippet" | "full";
 
 function useSourceCode(src: string) {
 	const [status, setStatus] = React.useState<Status>("idle");
@@ -215,7 +214,8 @@ function CopyButton({ valueToCopy }: { valueToCopy: string }) {
 export function ExampleEmbed({ src }: { src: string }) {
 	const { exampleName, packageName } = parseSrc(src);
 	const labelId = React.useId();
-	const [brevity, setCodeBrevity] = React.useState<Brevity>("snippet");
+	const [codeExpanded, setCodeExpanded] = React.useState(false);
+	const codeId = React.useId();
 
 	const { source, status } = useSourceCode(src);
 	const { full, snippet } = React.useMemo(
@@ -223,7 +223,7 @@ export function ExampleEmbed({ src }: { src: string }) {
 		[source],
 	);
 
-	const codeToShow = brevity === "full" ? full : snippet;
+	const codeToShow = codeExpanded ? full : snippet;
 
 	return (
 		<div
@@ -240,6 +240,18 @@ export function ExampleEmbed({ src }: { src: string }) {
 			</div>
 
 			<Paper elevation={2} className={styles.toolbar}>
+				<Button
+					variant="text"
+					size="small"
+					aria-expanded={codeExpanded}
+					aria-controls={codeId}
+					onClick={() => {
+						setCodeExpanded((expanded) => !expanded);
+					}}
+				>
+					{codeExpanded ? "Collapse source" : "Expand source"}
+				</Button>
+				<CopyButton valueToCopy={codeToShow} />
 				<IconButton
 					label="Open in new tab"
 					render={
@@ -257,20 +269,9 @@ export function ExampleEmbed({ src }: { src: string }) {
 				>
 					<Icon href={svgScript} />
 				</IconButton>
-				<CopyButton valueToCopy={codeToShow} />
-				<label>
-					<Switch
-						size="small"
-						checked={brevity === "full"}
-						onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
-							setCodeBrevity(event.target.checked ? "full" : "snippet");
-						}}
-					/>{" "}
-					Full source
-				</label>
 			</Paper>
 			{status === "complete" ? (
-				<CodeBlock code={codeToShow} />
+				<CodeBlock code={codeToShow} id={codeId} />
 			) : (
 				<CodeSkeleton />
 			)}
@@ -292,7 +293,7 @@ function CodeSkeleton() {
 	);
 }
 
-function CodeBlock({ code }: { code: string }) {
+function CodeBlock({ code, id }: { code: string; id?: string }) {
 	const [formattedHtml, setFormattedHtml] = React.useState("");
 
 	React.useEffect(() => {
@@ -304,6 +305,7 @@ function CodeBlock({ code }: { code: string }) {
 
 	return (
 		<div
+			id={id}
 			className={styles.code}
 			dangerouslySetInnerHTML={{
 				__html: formattedHtml,

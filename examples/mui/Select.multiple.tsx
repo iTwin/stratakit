@@ -11,7 +11,7 @@ import Select from "@mui/material/Select";
 
 export default () => {
 	const labelId = React.useId();
-	const label = "Design systems:";
+	const label = "Design systems";
 	return (
 		<FormControl>
 			<InputLabel id={labelId}>{label}</InputLabel>

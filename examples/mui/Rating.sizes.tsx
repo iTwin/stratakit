@@ -11,17 +11,17 @@ export default () => {
 	return (
 		<>
 			<FormControl render={<fieldset />} role="radiogroup">
-				<FormLabel render={<legend />}>Small rating:</FormLabel>
+				<FormLabel render={<legend />}>Small rating</FormLabel>
 				<Rating size="small" name="product-rating-small" defaultValue={1} />
 			</FormControl>
 
 			<FormControl render={<fieldset />} role="radiogroup">
-				<FormLabel render={<legend />}>Medium rating:</FormLabel>
+				<FormLabel render={<legend />}>Medium rating</FormLabel>
 				<Rating size="medium" name="product-rating-medium" defaultValue={3} />
 			</FormControl>
 
 			<FormControl render={<fieldset />} role="radiogroup">
-				<FormLabel render={<legend />}>Large rating:</FormLabel>
+				<FormLabel render={<legend />}>Large rating</FormLabel>
 				<Rating size="large" name="product-rating-large" defaultValue={5} />
 			</FormControl>
 		</>

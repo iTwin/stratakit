@@ -5,6 +5,7 @@
 
 import BreadcrumbsButton from "examples/mui/Breadcrumbs.button.tsx";
 import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
+import BreadcrumbsMenu from "examples/mui/Breadcrumbs.menu.tsx";
 import BreadcrumbsSeparator from "examples/mui/Breadcrumbs.separator.tsx";
 
 export default function BreadcrumbsExamples() {
@@ -13,6 +14,7 @@ export default function BreadcrumbsExamples() {
 			<BreadcrumbsDefault />
 			<BreadcrumbsSeparator />
 			<BreadcrumbsButton />
+			<BreadcrumbsMenu />
 		</>
 	);
 }

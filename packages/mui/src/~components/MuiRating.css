@@ -18,7 +18,9 @@
 	}
 }
 
-.MuiRating-icon {
+/* class name varies depending on value of precision prop, so list both here */
+.MuiRating-icon,
+.MuiRating-decimal {
 	color: var(--_MuiRating-icon-color);
 
 	&:where(.MuiRating-iconHover) {

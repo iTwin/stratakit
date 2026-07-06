@@ -340,15 +340,6 @@ function createTheme(args: CreateThemeArgs) {
 					variant: "body-lg",
 				},
 			},
-			MuiDateCalendar: {
-				defaultProps: {
-					showDaysOutsideCurrentMonth: true,
-					dayOfWeekFormatter: (date: Date) =>
-						date
-							.toLocaleDateString(undefined, { weekday: "short" })
-							.slice(0, 2),
-				},
-			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {

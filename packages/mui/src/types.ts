@@ -30,17 +30,6 @@ import type {
 } from "@mui/material/Typography";
 import type * as React from "react";
 
-declare module "@mui/material/styles" {
-	interface Components<Theme = unknown> {
-		MuiDateCalendar?: {
-			defaultProps?: {
-				showDaysOutsideCurrentMonth?: boolean;
-				dayOfWeekFormatter?: (date: Date) => string;
-			};
-		};
-	}
-}
-
 declare module "@mui/material/OverridableComponent" {
 	interface CommonProps {
 		/**

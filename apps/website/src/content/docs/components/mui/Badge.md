@@ -25,6 +25,12 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 
 ## Examples
 
+### Dot
+
+Use `variant="dot"` to display the badge without a count inside.
+
+::example{src="mui/Badge.dot"}
+
 ### Inline
 
 Set the `inline` prop to display the badge in normal document flow instead of positioned relative to its child.

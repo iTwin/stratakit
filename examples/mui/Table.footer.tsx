@@ -67,6 +67,7 @@ export default () => {
 					<TableRow>
 						<TablePagination
 							rowsPerPageOptions={[5, 10, 25, { label: "All", value: -1 }]}
+							labelRowsPerPage="Rows per page"
 							colSpan={5}
 							count={100}
 							rowsPerPage={10}

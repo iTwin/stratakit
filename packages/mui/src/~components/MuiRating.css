@@ -1,0 +1,43 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.MuiRating-root {
+	--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-base);
+	inline-size: fit-content;
+	border-radius: var(--stratakit-mui-shape-borderRadius);
+
+	&:where(.Mui-disabled) {
+		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-disabled);
+		opacity: 1;
+	}
+
+	&.Mui-focusVisible {
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+}
+
+.MuiRating-icon {
+	color: var(--_MuiRating-icon-color);
+
+	&:where(.MuiRating-iconHover) {
+		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
+	}
+
+	&:where(.MuiRating-iconActive) {
+		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
+
+		:where(.MuiRating-root.Mui-focusVisible) & {
+			outline: 0;
+		}
+	}
+}
+
+.MuiRating-label {
+	&:where(.MuiRating-labelEmptyValueActive) {
+		border-radius: var(--stratakit-mui-shape-borderRadius);
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+}

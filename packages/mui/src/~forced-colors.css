@@ -230,6 +230,12 @@
 	border: 1px solid;
 }
 
+.MuiRating-root {
+	&:where(.Mui-disabled) {
+		--_MuiRating-icon-color: GrayText;
+	}
+}
+
 .MuiSlider-root {
 	--_MuiSlider-track-background-color: SelectedItem;
 

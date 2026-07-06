@@ -26,7 +26,7 @@ const SmallSlider = () => {
 		<FormControl fullWidth>
 			<FormLabel htmlFor={id}>
 				Small size
-				<span style={visuallyHidden}> from 0 to 100 inches</span>:
+				<span style={visuallyHidden}> from 0 to 100 inches</span>
 			</FormLabel>
 			<Stack spacing={1} direction="row" sx={{ alignItems: "center", mb: 1 }}>
 				<Typography aria-hidden="true">0″</Typography>
@@ -43,7 +43,7 @@ const MediumSlider = () => {
 		<FormControl fullWidth>
 			<FormLabel htmlFor={id}>
 				Medium size
-				<span style={visuallyHidden}> from 0 to 100 feet</span>:
+				<span style={visuallyHidden}> from 0 to 100 feet</span>
 			</FormLabel>
 			<Stack spacing={1} direction="row" sx={{ alignItems: "center", mb: 1 }}>
 				<Typography aria-hidden="true" sx={{ textWrap: "nowrap" }}>

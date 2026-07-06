@@ -34,7 +34,13 @@ export default () => {
 						{variants.map((variant) => {
 							const variantName = `${variant.charAt(0).toUpperCase()}${variant.slice(1)}`;
 							return (
-								<Stack key={variant} spacing={1} direction="row">
+								<Stack
+									key={variant}
+									spacing={1}
+									direction="row"
+									useFlexGap
+									sx={{ flexWrap: "wrap" }}
+								>
 									{colors.map((color) => {
 										return (
 											<Button

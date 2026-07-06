@@ -3,16 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import DatePickerCalendar from "examples/mui/DatePicker.calendar.tsx";
-import DatePickerDefault from "examples/mui/DatePicker.default.tsx";
-import DatePickerTime from "examples/mui/DatePicker.time.tsx";
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 
-export default function DatePickerExamples() {
+export default () => {
 	return (
-		<>
-			<DatePickerDefault />
-			<DatePickerTime />
-			<DatePickerCalendar />
-		</>
+		<LocalizationProvider dateAdapter={AdapterDateFns}>
+			<DateCalendar />
+		</LocalizationProvider>
 	);
-}
+};

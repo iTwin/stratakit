@@ -1,1 +1,0 @@
-import{j as r}from"./_utils.CG6dFufd.js";import{T as e}from"./TextField.BGx7VjMA.js";import{v as s}from"./ExamplePreview.oR3t_8Zj.js";const i=()=>r.jsx(e,{label:"Email",error:!0,helperText:r.jsxs(r.Fragment,{children:[r.jsx("span",{style:s,children:"Error: "}),"Invalid email address."]})});export{i as default};

@@ -15,7 +15,7 @@
 	}
 
 	:where(.MuiCircularProgress-root.MuiCircularProgress-colorSecondary) & {
-		stroke: var(--stratakit-color-border-page-base);
+		stroke: var(--stratakit-color-border-neutral-muted);
 	}
 }
 
@@ -27,6 +27,6 @@
 	}
 
 	:where(.MuiCircularProgress-root.MuiCircularProgress-colorSecondary) & {
-		stroke: var(--stratakit-color-border-mono-faded);
+		stroke: var(--stratakit-color-border-neutral-inverse);
 	}
 }

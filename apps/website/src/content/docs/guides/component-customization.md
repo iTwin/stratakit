@@ -104,3 +104,5 @@ This number must be associated with the [**IconButton**](/components/iconbutton)
 ```
 
 It’s not always possible to ship all of the necessary semantic information as part of a component. Some attribution must be applied during the assembly of your product interface. Study the component guides and examples carefully. These exemplify how to apply `render` and ARIA attribution to improve component accessibility and robustness.
+
+Verify the correct semantic information is present by examining the rendered HTML code. To see what's available in screen reader output specifically, examine the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree). The Chrome, you can view the accessibility tree by opening the inspector and choosing the accessibility tab (**Elements > Accessibility**).

@@ -16,7 +16,7 @@ type Props = {
 const { crumbs, ...rest } = Astro.props;
 ---
 
-<nav aria-label="breadcrumb" class="breadcrumb" {...rest}>
+<nav aria-label="breadcrumb" {...rest}>
 	<ol>
 		{
 			crumbs.map((crumb, index) => {
@@ -45,23 +45,14 @@ const { crumbs, ...rest } = Astro.props;
 		align-items: center;
 	}
 
-	li {
-		color: var(--stratakit-color-text-neutral-primary);
-		font-family: var(--stratakit-font-family-sans), system-ui, sans-serif;
-		font-size: var(--stratakit-font-size-12);
-		font-weight: var(--stratakit-font-weight-regular);
-		line-height: 1.3333; /* body-sm line-height */
-		white-space: nowrap;
-
-		&:not(:last-of-type)::after {
+	li:not(:last-of-type)::after {
 			content: "›" / "" ;
 			display: inline-block;
 			width: var(--stratakit-space-x4);
 			text-align: center;
 			margin-inline-start: var(--stratakit-space-x1);
 			margin-inline-end: var(--stratakit-space-x1);
-			color: var(--stratakit-color-text-neutral-disabled);
-			font-weight: var(--stratakit-font-weight-medium);
+			color: var(--stratakit-color-icon-neutral-base);
+			font-weight: var(--stratakit-font-weight-medium); 
 		}
-	}
 </style>

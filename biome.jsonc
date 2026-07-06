@@ -91,7 +91,8 @@
 					"level": "warn",
 					"options": {
 						"paths": {
-							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead."
+							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead.",
+							"@mui/material": "Use of MUI's barrel is discouraged. Import MUI components from their individual entrypoints instead.  See https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-barrel-imports"
 						}
 					}
 				}

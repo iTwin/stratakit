@@ -36,6 +36,7 @@
 @import "./~components/MuiTooltip.css";
 
 @import "./~components/MuiDatePicker.css";
+@import "./~components/MuiPickersInput.css";
 
 .MuiAppBar-root {
 	background-color: var(--stratakit-color-bg-page-base);

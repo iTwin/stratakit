@@ -52,12 +52,14 @@ import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	ArrowDownIcon,
+	CalendarIcon,
 	CaretsUpDownIcon,
 	ChevronDownIcon,
 	ChevronLeftDoubleIcon,
 	ChevronLeftIcon,
 	ChevronRightDoubleIcon,
 	ChevronRightIcon,
+	ClockIcon,
 	DismissIcon,
 	ErrorIcon,
 	InfoIcon,
@@ -137,6 +139,7 @@ function createTheme(args: CreateThemeArgs) {
 			// biome-ignore lint/suspicious/noExplicitAny: MUI expects 25 items in the shadows array
 		] as any,
 		components: {
+			...(datePickerDefaults as object),
 			MuiAppBar: { defaultProps: { component: Role.header } },
 			MuiAccordion: {
 				defaultProps: {
@@ -619,6 +622,40 @@ function createTheme(args: CreateThemeArgs) {
 		},
 	});
 }
+
+// ----------------------------------------------------------------------------
+
+const datePickerDefaults = {
+	MuiPickersInputBase: {
+		defaultProps: {
+			className: "MuiInputBase-root",
+		},
+	},
+	MuiDatePicker: {
+		defaultProps: {
+			slots: {
+				openPickerIcon: CalendarIcon,
+			},
+			slotProps: {
+				openPickerButton: {
+					size: "small",
+				},
+			},
+		},
+	},
+	MuiTimePicker: {
+		defaultProps: {
+			slots: {
+				openPickerIcon: ClockIcon,
+			},
+			slotProps: {
+				openPickerButton: {
+					size: "small",
+				},
+			},
+		},
+	},
+};
 
 // ----------------------------------------------------------------------------
 

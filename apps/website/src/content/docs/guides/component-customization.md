@@ -53,28 +53,19 @@ The previous example was taken from a [**Card**](/components/card). **Card** act
 
 ### Heading levels
 
-The [**Language and labels**](/guides/structure/#headings) guide sets out the importance of applying the correct heading levels when describing the interface structure. By default, `font-size` indicates the level visually:
+The [**Language and labels**](/guides/structure/#headings) guide sets out the importance of applying the correct heading levels when describing the interface structure.
 
-| Heading level | `font-size` | token         |
-| ------------- | ----------- | ------------- |
-| h1            | `20px`      | `headline-md` |
-| h2            | `18px`      | `headline-sm` |
-| h3            | `16px`      | `subtitle-sg` |
-| h4            | `14px`      | `body-md`     |
+Sometimes the heading level is correct for the structure but the `font-size` is too large for the available space. You must not change the level—and break the structure—just to downsize the text. 
 
-Sometimes the heading level is correct for the structure but the `font-size` is too large for the available space. Do not change the level—and break the structure—just to downsize the text. Instead, use the [**Typography**](/components/typography/#heading) component, which decouples semantic meaning (`render`) from visual presentation (`variant`).
+Instead, use the [**Typography**](/components/typography/#heading) component, but be careful: [MUI's stock heading variants](https://mui.com/material-ui/react-typography/#usage)—`h1` to `h6`—automatically change the underlying heading element.
+
+Instead, use a [**StrataKit** `variant`](https://stratakit.bentley.com/docs/components/typography/#variants) with an explicit `render` property:
 
 ```jsx
 <Typography variant="headline-sg" render={<h1 />}>
 	Heading text
 </Typography>
 ```
-
-:::note[Required rendering]
-
-For heading `variant`s, the `render` prop is required. Since there is really no sensible default for a heading level, you are asked to apply one explicitly, in each case.
-
-:::
 
 ## ARIA attribution
 

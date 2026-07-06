@@ -4,7 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Box, Button, IconButton, Paper, Skeleton } from "@mui/material";
+import {
+	Box,
+	Button,
+	colors,
+	IconButton,
+	Paper,
+	Skeleton,
+} from "@mui/material";
 import { visuallyHidden } from "@mui/utils";
 import { Icon, Root } from "@stratakit/mui";
 import { codeToHtml } from "shiki";
@@ -294,14 +301,16 @@ function CodeSkeleton() {
 }
 
 function CodeBlock({ code, id }: { code: string; id?: string }) {
+	const colorScheme = useColorScheme();
 	const [formattedHtml, setFormattedHtml] = React.useState("");
 
 	React.useEffect(() => {
+		const theme = colorScheme === "dark" ? "github-dark" : "github-light";
 		codeToHtml(code, {
 			lang: "tsx",
-			theme: "github-dark",
+			theme,
 		}).then(setFormattedHtml);
-	}, [code]);
+	}, [code, colorScheme]);
 
 	return (
 		<div

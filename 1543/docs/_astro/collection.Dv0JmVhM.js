@@ -1,1 +1,0 @@
-import{a as l,C as c}from"./collection-store.BwoU5fer.js";import{f as i,d as r,e as s,l as u,k as C,j as d}from"./_utils.BK78U4sN.js";const m="div",f=s(function({store:e,...o}){const n=l();return e=e||n,o=u(o,a=>d.jsx(c,{value:e,children:a}),[e]),C(o)}),j=i(function(e){return r(m,f(e))});export{j as C};

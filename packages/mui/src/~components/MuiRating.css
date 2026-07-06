@@ -18,25 +18,26 @@
 	}
 }
 
-/* class name varies depending on value of precision prop, so list both here */
-.MuiRating-icon,
-.MuiRating-decimal {
+.MuiRating-icon {
 	color: var(--_MuiRating-icon-color);
 
-	&:where(.MuiRating-iconHover) {
+	&:where(.MuiRating-iconHover, .MuiRating-iconFocus, .MuiRating-iconActive) {
 		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
-	}
-
-	&:where(.MuiRating-iconActive) {
-		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
-
-		:where(.MuiRating-root.Mui-focusVisible) & {
-			outline: 0;
-		}
+		outline: 0;
 	}
 }
 
-:where(.MuiRating-icon, .MuiRating-decimal) .MuiSvgIcon-root {
+/*	When using a non-integer precision value the MuiIcon gets wrapped in element
+		with an MuiDecimal class. However the MuiRating-iconActive class is still
+		applied to the MuiDecimal element instead of the MuiRating-icon element.
+		The other classes still apply to the MuiRating-icon element, so only the
+		MuiRating-iconActive rule is duplicated here */
+.MuiRating-decimal:where(.MuiRating-iconActive) {
+	--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
+	outline: 0;
+}
+
+:where(.MuiRating-decimal) .MuiSvgIcon-root {
 	/* 
 		reset css sets max-inline-size to 100%, however the Rating component + precision
 		prop relies on the svg size being greater than than the width of the

@@ -16,7 +16,7 @@ export default () => {
 	const errorId = React.useId();
 	return (
 		<FormControl render={<fieldset />} error aria-describedby={errorId}>
-			<FormLabel render={<legend />}>Privacy preferences:</FormLabel>
+			<FormLabel render={<legend />}>Privacy preferences</FormLabel>
 			<FormGroup>
 				<FormControlLabel control={<Checkbox />} label="Allow cookies" />
 				<FormControlLabel

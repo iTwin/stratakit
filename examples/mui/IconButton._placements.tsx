@@ -10,10 +10,10 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 type IconButtonProps = React.ComponentProps<typeof IconButton>;
 const placements = [
-	"top",
-	"right",
-	"bottom",
 	"left",
+	"top",
+	"bottom",
+	"right",
 ] as const satisfies IconButtonProps["labelPlacement"][];
 
 export default () => {

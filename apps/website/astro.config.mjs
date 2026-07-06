@@ -126,7 +126,6 @@ export default defineConfig({
 		plugins: [vitePluginFixAstroSvg()],
 	},
 	server: {
-		host: "127.0.0.1",
 		port: DEV_PORT,
 	},
 });

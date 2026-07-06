@@ -74,7 +74,6 @@ export default defineConfig({
 		assetsDir: basename ? `${basename.replace(/^\//, "")}/assets` : "assets",
 	},
 	server: {
-		host: "127.0.0.1",
 		port: 1800, // dev server port
 		warmup: { clientFiles: ["./app/root.tsx"] }, // https://github.com/remix-run/react-router/issues/12786#issuecomment-2634033513
 	},

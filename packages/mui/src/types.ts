@@ -152,7 +152,7 @@ declare module "@mui/material/Badge" {
 		 *
 		 * @default 'strong'
 		 */
-		type?: "subtle" | "moderate" | "strong";
+		type?: "outlined" | "muted" | "strong";
 	}
 }
 

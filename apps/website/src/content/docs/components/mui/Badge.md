@@ -56,8 +56,8 @@ In most cases, you should supplement the `color` with iconography so that color 
 Use the `type` prop to adjust the visual prominence of an [`inline`](#inline) **Badge**.
 
 - **Strong:** The default, use when you need the strongest emphasis.
-- **Moderate:** Use when you want a balanced level of emphasis.
-- **Subtle:** Use when you need the least emphasis.
+- **Muted:** Use when you want a balanced level of emphasis.
+- **Outlined:** Use when you need the least emphasis.
 
 ::example{src="mui/Badge.type"}
 

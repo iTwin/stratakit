@@ -10,8 +10,8 @@ export default () => {
 	return (
 		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
 			<Badge badgeContent="Strong" type="strong" inline />
-			<Badge badgeContent="Moderate" type="moderate" inline />
-			<Badge badgeContent="Subtle" type="subtle" inline />
+			<Badge badgeContent="Muted" type="muted" inline />
+			<Badge badgeContent="Outlined" type="outlined" inline />
 		</Stack>
 	);
 };

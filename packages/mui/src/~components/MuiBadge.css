@@ -50,7 +50,7 @@
 	}
 	/* #endregion */
 
-	:where([data-_sk-type="moderate"]) & {
+	:where([data-_sk-type="muted"]) & {
 		--_MuiBadge-color: var(--stratakit-color-text-neutral-primary);
 
 		&:where(.MuiBadge-colorError) {
@@ -78,7 +78,7 @@
 		}
 	}
 
-	:where([data-_sk-type="subtle"]) & {
+	:where([data-_sk-type="outlined"]) & {
 		--_MuiBadge-background-color: transparent;
 		--🥝selection-color-bg: var(--stratakit-color-bg-accent-base);
 		--🥝selection-color-text: var(--stratakit-color-text-neutral-emphasis);

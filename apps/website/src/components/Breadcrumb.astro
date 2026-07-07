@@ -1,9 +1,4 @@
 ---
-/*---------------------------------------------------------------------------------------------
- * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
- * See LICENSE.md in the project root for license terms and full copyright notice.
- *--------------------------------------------------------------------------------------------*/
-
 type Crumb = {
 	label: string;
 	href?: string;
@@ -46,13 +41,13 @@ const { crumbs, ...rest } = Astro.props;
 	}
 
 	li:not(:last-of-type)::after {
-			content: "›" / "" ;
-			display: inline-block;
-			width: var(--stratakit-space-x4);
-			text-align: center;
-			margin-inline-start: var(--stratakit-space-x1);
-			margin-inline-end: var(--stratakit-space-x1);
-			color: var(--stratakit-color-icon-neutral-base);
-			font-weight: var(--stratakit-font-weight-medium); 
-		}
+		content: "›" / "";
+		display: inline-block;
+		width: var(--stratakit-space-x4);
+		text-align: center;
+		margin-inline-start: var(--stratakit-space-x1);
+		margin-inline-end: var(--stratakit-space-x1);
+		color: var(--stratakit-color-icon-neutral-base);
+		font-weight: var(--stratakit-font-weight-medium);
+	}
 </style>

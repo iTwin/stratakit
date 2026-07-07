@@ -44,9 +44,7 @@ Use the `forwardRef` utility from [packages/foundations](./packages/foundations/
 
 ### Target 0,1,0 sepecificity with rules
 
-Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to try and keep a flat specifcificy of 0,1,0. This makes it easier for consumers who are not using layers to override the StrataKit styling if need.
-
-You can use `:where` to target selectors without increasing the specificity.
+Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to try and keep a flat specifcificy of 0,1,0. This supports reading the CSS from top to bottom, knowing the declarations further down take priority.
 
 **✅ Do**
 

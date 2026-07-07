@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.DuSg4NGg.js";import{B as o}from"./ButtonGroup.sE5OC7SA.js";import{B as r}from"./Button.KMJZnJfi.js";const n=()=>t.jsxs(o,{"aria-label":"File actions",children:[t.jsx(r,{children:"Edit"}),t.jsx(r,{children:"Move"}),t.jsx(r,{children:"Delete"})]});export{n as default};

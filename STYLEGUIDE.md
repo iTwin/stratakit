@@ -64,8 +64,6 @@ You can use `:where`
 
 Use [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values) instead of physical properties. This is to support different locales that do use a left-right top-bottom layout.
 
-Wrap any rules relating to hover with the [`any-hover` media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/any-hover). This prevents an undesirable situation on touch devices where the hover state may get stuck on after a tap.
-
 | Physical property | Logical property    |
 | ----------------- | ------------------- |
 | margin-top        | margin-block-start  |

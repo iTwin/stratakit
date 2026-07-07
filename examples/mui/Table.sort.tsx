@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import React from "react";
+import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -13,27 +14,28 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableSortLabel from "@mui/material/TableSortLabel";
 
+const rows = [
+	{ name: "Cupcake", calories: 305, fat: 3.7, carbs: 67, protein: 4.3 },
+	{ name: "Eclair", calories: 262, fat: 16.0, carbs: 24, protein: 6.0 },
+	{
+		name: "Frozen yoghurt",
+		calories: 159,
+		fat: 6.0,
+		carbs: 24,
+		protein: 4.0,
+	},
+	{ name: "Gingerbread", calories: 356, fat: 16.0, carbs: 49, protein: 3.9 },
+	{
+		name: "Ice cream sandwich",
+		calories: 237,
+		fat: 9.0,
+		carbs: 37,
+		protein: 4.3,
+	},
+];
+
 export default () => {
-	const sortId = React.useId();
-	const rows = [
-		{ name: "Cupcake", calories: 305, fat: 3.7, carbs: 67, protein: 4.3 },
-		{ name: "Eclair", calories: 262, fat: 16.0, carbs: 24, protein: 6.0 },
-		{
-			name: "Frozen yoghurt",
-			calories: 159,
-			fat: 6.0,
-			carbs: 24,
-			protein: 4.0,
-		},
-		{ name: "Gingerbread", calories: 356, fat: 16.0, carbs: 49, protein: 3.9 },
-		{
-			name: "Ice cream sandwich",
-			calories: 237,
-			fat: 9.0,
-			carbs: 37,
-			protein: 4.3,
-		},
-	];
+	const changeSortId = React.useId();
 
 	const [direction, setDirection] =
 		React.useState<React.ComponentProps<typeof TableSortLabel>["direction"]>(
@@ -64,11 +66,11 @@ export default () => {
 
 	return (
 		<TableContainer render={<Paper />}>
-			<span id={sortId} style={{ display: "none" }}>
-				sort
-			</span>
+			<Box sx={{ display: "none" }} id={changeSortId}>
+				change sort
+			</Box>
 			<Table>
-				<caption>Dessert nutrition sorted</caption>
+				<caption>Dessert nutrition</caption>
 				<TableHead>
 					<TableRow>
 						<TableCell>Dessert (100g serving)</TableCell>
@@ -80,7 +82,7 @@ export default () => {
 								direction={sortedColumn === "calories" ? direction : "asc"}
 								active={sortedColumn === "calories"}
 								onClick={() => updateSort("calories")}
-								slotProps={{ root: { "aria-describedby": sortId } }}
+								slotProps={{ root: { "aria-describedby": changeSortId } }}
 							>
 								Calories
 							</TableSortLabel>
@@ -93,7 +95,7 @@ export default () => {
 								direction={sortedColumn === "fat" ? direction : "asc"}
 								active={sortedColumn === "fat"}
 								onClick={() => updateSort("fat")}
-								slotProps={{ root: { "aria-describedby": sortId } }}
+								slotProps={{ root: { "aria-describedby": changeSortId } }}
 							>
 								Fat&nbsp;(g)
 							</TableSortLabel>

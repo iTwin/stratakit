@@ -7,11 +7,11 @@
 	border-radius: calc(infinity * 1px);
 
 	&:where(.MuiLinearProgress-colorPrimary) {
-		background-color: var(--stratakit-color-bg-accent-muted);
+		background-color: var(--stratakit-color-border-accent-muted);
 	}
 
 	&:where(.MuiLinearProgress-colorSecondary) {
-		background-color: var(--stratakit-color-border-page-base);
+		background-color: var(--stratakit-color-border-neutral-muted);
 	}
 }
 
@@ -19,10 +19,10 @@
 	border-radius: calc(infinity * 1px);
 
 	:where(.MuiLinearProgress-root.MuiLinearProgress-colorPrimary) & {
-		background-color: var(--stratakit-color-border-accent-strong);
+		background-color: var(--stratakit-color-icon-accent-strong);
 	}
 
 	:where(.MuiLinearProgress-root.MuiLinearProgress-colorSecondary) & {
-		background-color: var(--stratakit-color-border-mono-faded);
+		background-color: var(--stratakit-color-icon-neutral-base);
 	}
 }

@@ -57,16 +57,20 @@ Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selector
 **✅ Do**
 
 ```css
-.MuiRating-root:where(.Mui-disabled) {
-	/* 0,1,0 specificity */
+.MuiRating-root {
+	&:where(.Mui-disabled) {
+		/* 0,1,0 specificity */
+	}
 }
 ```
 
 **❌ Don't**
 
 ```css
-.MuiRating-root.Mui-disabled {
-	/* 0,2,0 specificity */
+.MuiRating-root {
+	&.Mui-disabled {
+		/* 0,2,0 specificity */
+	}
 }
 ```
 

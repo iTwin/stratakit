@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.B2chVR-_.js";import{I as t}from"./ExamplePreview.DFLQ17T1.js";import{s as a}from"./download.CXT7JOYK.js";const e=()=>o.jsx(t,{label:"Download",icon:a});export{e as default};

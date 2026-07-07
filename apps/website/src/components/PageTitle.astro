@@ -2,12 +2,13 @@
 // See https://starlight.astro.build/reference/overrides/#pagetitle
 
 import Breadcrumb from "./Breadcrumb.astro";
+import { getBreadcrumbsFromRoute } from "../utils/getBreadcrumbsFromRoute";
 
 const { entry } = Astro.locals.starlightRoute;
 
 const status = entry.data.status;
 const links = entry.data.links || {};
-const breadcrumbs = Astro.locals.pageBreadcrumbs;
+const breadcrumbs = getBreadcrumbsFromRoute(Astro.locals.starlightRoute);
 
 const muiDocsUrl = links.muiDocs;
 const componentStatusOverviewUrl = `${import.meta.env.BASE_URL}/components/overview/#component-status`;

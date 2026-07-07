@@ -1,5 +1,6 @@
 {
 	"image": "mcr.microsoft.com/devcontainers/universal",
+	"runArgs": ["--sysctl", "net.ipv6.conf.all.disable_ipv6=1"],
 	"customizations": {
 		"codespaces": {
 			"openFiles": ["apps/test-app/app/index.tsx"]

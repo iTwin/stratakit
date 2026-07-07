@@ -1,1 +1,0 @@
-import{a as o}from"./disclosure-store.BPphuGRp.js";import{u as i}from"./dialog.LCvnU6N2.js";import{j as e}from"./_utils.CxaIolOO.js";function n(r={}){return e.jsx(o,{value:i(r),children:r.children})}export{n as D};

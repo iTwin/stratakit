@@ -33,7 +33,7 @@ Use the `forwardRef` utility from [packages/foundations](./packages/foundations/
 	// ...
 }
 
-.MuiTogglButton-root:where(.Mui-selected) {
+.MuiToggleButton-root:where(.Mui-selected) {
 	//...
 }
 ```

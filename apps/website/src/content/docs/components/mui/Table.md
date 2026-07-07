@@ -34,3 +34,7 @@ Use a [**Checkbox**](/components/checkbox) within the **Table**'s first column t
 :::caution
 Placing a "select all" checkbox within the column header is not recommended.
 :::
+
+### Sorting
+
+::example{src="mui/Table.sort"}

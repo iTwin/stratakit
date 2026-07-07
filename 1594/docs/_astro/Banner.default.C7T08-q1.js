@@ -1,1 +1,0 @@
-import{j as e}from"./_utils.Ddo62nQ-.js";import{B as s}from"./Banner.1l_GUHAr.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

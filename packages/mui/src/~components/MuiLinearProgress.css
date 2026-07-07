@@ -4,25 +4,40 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiLinearProgress-root {
+	/* #region Variables */
+	--✨color-track--primary: var(--stratakit-color-border-accent-muted);
+	--✨color-track--secondary: var(--stratakit-color-border-neutral-muted);
+	--✨color-fill--primary: var(--stratakit-color-icon-accent-strong);
+	--✨color-fill--secondary: var(--stratakit-color-icon-neutral-base);
+	/* #endregion */
+
+	background-color: var(--_MuiLinearProgress-track-color);
 	border-radius: calc(infinity * 1px);
 
 	&:where(.MuiLinearProgress-colorPrimary) {
-		background-color: var(--stratakit-color-border-accent-muted);
+		--_MuiLinearProgress-track-color: var(--✨color-track--primary);
+		--_MuiLinearProgress-fill-color: var(--✨color-fill--primary);
 	}
 
 	&:where(.MuiLinearProgress-colorSecondary) {
-		background-color: var(--stratakit-color-border-neutral-muted);
+		--_MuiLinearProgress-track-color: var(--✨color-track--secondary);
+		--_MuiLinearProgress-fill-color: var(--✨color-fill--secondary);
+	}
+
+	&:where(.MuiLinearProgress-determinate) {
+		&::after {
+			content: "";
+			position: absolute;
+			inset-inline-end: 0;
+			inset-block: 0;
+			aspect-ratio: 1;
+			background-color: var(--_MuiLinearProgress-fill-color);
+			border-radius: inherit;
+		}
 	}
 }
 
 .MuiLinearProgress-bar {
-	border-radius: calc(infinity * 1px);
-
-	:where(.MuiLinearProgress-root.MuiLinearProgress-colorPrimary) & {
-		background-color: var(--stratakit-color-icon-accent-strong);
-	}
-
-	:where(.MuiLinearProgress-root.MuiLinearProgress-colorSecondary) & {
-		background-color: var(--stratakit-color-icon-neutral-base);
-	}
+	background-color: var(--_MuiLinearProgress-fill-color);
+	border-radius: inherit;
 }

@@ -34,10 +34,6 @@
 		padding: 2rem;
 	}
 
-	.copyButton {
-		position: realtive;
-	}
-
 	.copyButtonIcon {
 		transition: all 300ms ease-in-out;
 		opacity: 0;

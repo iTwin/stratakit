@@ -2,7 +2,6 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
 import * as React from "react";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -178,7 +177,6 @@ function CopyButton({ valueToCopy }: { valueToCopy: string }) {
 			<IconButton
 				label="Copy"
 				color={color}
-				className={styles.copyButton}
 				onClick={() => {
 					setStatus("loading");
 					navigator.clipboard

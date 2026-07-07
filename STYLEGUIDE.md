@@ -21,24 +21,32 @@ Use the `forwardRef` utility from [packages/foundations](./packages/foundations/
 **✅ Do**
 
 ```css
-.MuiToggleButton-root {
-	// ...
+.MuiButton-root {
+	/* ... */
 
 	&:where(.Mui-selected) {
-		// ...
+		/* ... */
 	}
+}
+
+.MuiButton-icon {
+	/* ... */
 }
 ```
 
 **❌ Don't**
 
 ```css
-.MuiToggleBottom-root {
-	// ...
-}
+.MuiButton-root {
+	/* ... */
 
-.MuiToggleButton-root:where(.Mui-selected) {
-	//...
+	&:where(.Mui-selected) {
+		/* ... */
+	}
+
+	.MuiButton-icon {
+		/* ... */
+	}
 }
 ```
 

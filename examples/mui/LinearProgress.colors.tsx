@@ -2,14 +2,18 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import CircularProgressColors from "examples/mui/CircularProgress.colors.tsx";
-import CircularProgressDefault from "examples/mui/CircularProgress.default.tsx";
 
-export default function CircularProgressExamples() {
+import * as React from "react";
+import LinearProgress from "@mui/material/LinearProgress";
+import Typography from "@mui/material/Typography";
+
+export default () => {
+	const labelId = React.useId();
+
 	return (
 		<>
-			<CircularProgressDefault />
-			<CircularProgressColors />
+			<LinearProgress color="secondary" aria-labelledby={labelId} />
+			<Typography id={labelId}>Analyzing results…</Typography>
 		</>
 	);
-}
+};

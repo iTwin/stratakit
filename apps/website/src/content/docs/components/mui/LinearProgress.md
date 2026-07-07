@@ -11,3 +11,12 @@ links:
 ## StrataKit MUI modifications
 
 - Added an end marker when the `variant` prop is set to `"determinate"`.
+
+## Examples
+
+### Colors
+
+- **Primary:** The default. Use when indicating the primary loading state on a page.
+- **Secondary:** Use when indicating a secondary loading state or when multiple loading states are shown at once.
+
+::example{src="mui/LinearProgress.colors"}

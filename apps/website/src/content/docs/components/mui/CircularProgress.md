@@ -11,3 +11,12 @@ links:
 ## StrataKit MUI modifications
 
 - The `enableTrackSlot` prop defaults to true.
+
+## Examples
+
+### Colors
+
+- **Primary:** The default. Use when indicating the primary loading state on a page.
+- **Secondary:** Use when indicating a secondary loading state or when multiple loading states are shown at once.
+
+::example{src="mui/CircularProgress.colors"}

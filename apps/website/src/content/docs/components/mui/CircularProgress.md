@@ -20,3 +20,9 @@ links:
 - **Secondary:** Use when indicating a secondary loading state or when multiple loading states are shown at once.
 
 ::example{src="mui/CircularProgress.colors"}
+
+### Determinate
+
+Set the `variant` prop to `"determinate"` when the completion percentage is known.
+
+::example{src="mui/CircularProgress.determinate"}

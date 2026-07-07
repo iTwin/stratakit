@@ -45,6 +45,31 @@
 	}
 }
 
+.resizeHandle {
+	align-self: stretch;
+
+	display: grid;
+	place-items: center;
+	inline-size: 24px;
+
+	color: var(--stratakit-color-icon-neutral-base);
+	border-radius: 4px;
+	cursor: ew-resize;
+
+	&:where(
+			:hover,
+			:focus-visible,
+			[data-resize-handle-state="hover"],
+			[data-resize-handle-state="drag"]
+		) {
+		color: var(--stratakit-color-icon-neutral-primary);
+	}
+
+	&:focus-visible {
+		outline-offset: -2px;
+	}
+}
+
 .exampleToolbar {
 	position: absolute;
 	inset-block-start: 0;

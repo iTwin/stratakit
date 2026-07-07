@@ -16,7 +16,6 @@ export interface Breadcrumb {
 export function getBreadcrumbsFromRoute(
 	route: StarlightRouteData,
 ): Breadcrumb[] | undefined {
-	console.debug(route.entry);
 	const entry = route?.entry;
 	if (!entry) {
 		return undefined;

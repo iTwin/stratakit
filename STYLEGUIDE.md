@@ -81,7 +81,7 @@ Wrap any rules relating to hover with the [`any-hover` media query](https://deve
 
 ```css
 @media (any-hover: hover) {
-	:where(:hover) & {
+	&:where(:hover) {
 		opacity: 1;
 	}
 }

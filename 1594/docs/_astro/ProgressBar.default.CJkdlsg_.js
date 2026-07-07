@@ -1,1 +1,0 @@
-import{j as r}from"./_utils.COmiViAy.js";import{r as a}from"./styles.internal.Cf9SRLEZ.js";import{P as t}from"./Progress.nNCl5Kr4.js";import{T as e}from"./Text.Dfq9qiAi.js";const d=()=>{const s=a.useId();return r.jsxs(r.Fragment,{children:[r.jsx(t,{"aria-labelledby":s}),r.jsx(e,{variant:"body-sm",id:s,children:"Analyzing results…"})]})};export{d as default};

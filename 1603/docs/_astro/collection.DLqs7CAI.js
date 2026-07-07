@@ -1,1 +1,0 @@
-import{a as c,C as l}from"./collection-store.CHr-Psub.js";import{f as i,d as r,e as s,x as u,w as C,j as d}from"./_utils.CxaIolOO.js";const m="div",f=s(function({store:e,...o}){const n=c();return e=e||n,o=u(o,a=>d.jsx(l,{value:e,children:a}),[e]),C(o)}),j=i(function(e){return r(m,f(e))});export{j as C};

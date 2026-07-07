@@ -42,7 +42,7 @@ Use the `forwardRef` utility from [packages/foundations](./packages/foundations/
 
 Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to try and keep a flat specifcificy of 0,1,0. This makes it easier for consumers who are not using layers to override the StrataKit styling if need.
 
-You can use `:where`
+You can use `:where` to target selectors without increasing the specificity.
 
 **✅ Do**
 

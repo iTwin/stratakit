@@ -31,23 +31,25 @@ const { crumbs, ...rest } = Astro.props;
 </nav>
 
 <style>
-	ol {
-		display: flex;
-		flex-wrap: wrap;
-		list-style: none;
-		padding: 0;
-		margin: 0;
-		align-items: center;
-	}
+	@layer page {
+		ol {
+			display: flex;
+			flex-wrap: wrap;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			align-items: center;
+		}
 
-	li:not(:last-of-type)::after {
-		content: "›" / "";
-		display: inline-block;
-		width: var(--stratakit-space-x4);
-		text-align: center;
-		margin-inline-start: var(--stratakit-space-x1);
-		margin-inline-end: var(--stratakit-space-x1);
-		color: var(--stratakit-color-icon-neutral-base);
-		font-weight: var(--stratakit-font-weight-medium);
+		li:not(:last-of-type)::after {
+			content: "›" / "";
+			display: inline-block;
+			width: var(--stratakit-space-x4);
+			text-align: center;
+			margin-inline-start: var(--stratakit-space-x1);
+			margin-inline-end: var(--stratakit-space-x1);
+			color: var(--stratakit-color-icon-neutral-base);
+			font-weight: var(--stratakit-font-weight-medium);
+		}
 	}
 </style>

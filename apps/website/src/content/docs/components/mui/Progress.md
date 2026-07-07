@@ -11,6 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - The `enableTrackSlot` prop defaults to true for `CircularProgress`.
+- Added an end marker to `LinearProgress` when the `variant` prop is set to `"determinate"`.
 
 ## Examples
 

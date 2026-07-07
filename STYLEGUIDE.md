@@ -16,7 +16,7 @@ Use the `forwardRef` utility from [packages/foundations](./packages/foundations/
 
 ### Group CSS rules by target element
 
-[Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (selector to identify the DOM element). If there are multiple DOM elements (eg. tab list and tabs), use multiple groups.
+[Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (i.e. selector to identify the DOM element). If there are multiple DOM elements (e.g. tab list and tabs), use multiple groups.
 
 **✅ Do**
 

@@ -1,0 +1,25 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.container {
+	position: relative;
+}
+
+.icon {
+	opacity: 0;
+	position: absolute;
+	left: var(--stratakit-space-x1);
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
+
+	@media (prefers-reduced-motion: no-preference) {
+		will-change: opacity;
+		transition: opacity 0.15s ease-out;
+	}
+
+	:has(:global(.Mui-checked)) + & {
+		opacity: 1;
+	}
+}

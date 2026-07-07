@@ -4,6 +4,10 @@ This style guide describes conventions and best practices for the StrataKit proj
 
 ## TSX
 
+### Use `interface` instead `type`
+
+Although they are very similar, use `interface` for consistency and [better detection of type errors](https://ariakit.com/guide/coding-guidelines#prefer-interface-over-type).
+
 ### forwardRef
 
 Use the `forwardRef` utility from [packages/foundations](./packages/foundations/src/~utils.tsx) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.

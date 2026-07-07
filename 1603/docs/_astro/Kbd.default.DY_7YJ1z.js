@@ -1,0 +1,10 @@
+const t=`/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+import { Kbd } from "@stratakit/bricks";
+
+export default () => {
+	return <Kbd>A</Kbd>;
+};
+`;export{t as default};

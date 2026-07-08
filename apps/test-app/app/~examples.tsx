@@ -117,9 +117,9 @@ function Resizable(props: ResizableProps) {
 		<PanelGroup
 			direction="horizontal"
 			keyboardResizeBy={5}
-			style={{ overflow: "visible" }} // Prevent clipping
+			style={{ overflow: "auto" }}
 		>
-			<Panel defaultSize={100} minSize={25} style={{ overflow: "visible" }}>
+			<Panel defaultSize={100} minSize={25} style={{ overflow: "auto" }}>
 				{children}
 			</Panel>
 

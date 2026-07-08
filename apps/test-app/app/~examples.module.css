@@ -33,15 +33,28 @@
 .exampleContent {
 	position: relative;
 
+	anchor-name: --example-content;
+	anchor-scope: --example-content;
+
 	background-color: var(--stratakit-color-bg-page-base);
 	border: 1px solid var(--stratakit-color-border-neutral-muted);
 
 	padding: calc(var(--stratakit-size-control-field-height-small) / 2 + var(--stratakit-space-x3));
 	border-radius: 8px;
 
-	:where(.exampleContainer[data-highlight]) & {
+	:where(.exampleContainer[data-highlight]) &::before {
+		content: "";
+		pointer-events: none;
+
+		position: fixed;
+		position-anchor: --example-content;
+		position-area: center center;
+		inline-size: anchor-size();
+		block-size: anchor-size();
+
 		outline: 1px solid var(--stratakit-color-border-mono-base);
 		outline-offset: 1px;
+		border-radius: inherit;
 	}
 }
 
@@ -71,10 +84,12 @@
 }
 
 .exampleToolbar {
-	position: absolute;
-	inset-block-start: 0;
-	inset-inline-end: 8px;
-	translate: 0 -50%;
+	position: fixed;
+	position-anchor: --example-content;
+
+	inset-block-start: anchor(start);
+	inset-inline-end: calc(anchor(end) + 8px); /* offset from rounded corner */
+	translate: 0 -50%; /* center vertically on top edge */
 
 	background-color: var(--stratakit-color-bg-page-base);
 	border-radius: 4px;

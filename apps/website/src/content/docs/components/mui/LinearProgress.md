@@ -10,7 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
-- Added an end marker when the `variant` prop is set to `"determinate"`.
+- Added an end marker when the `variant` prop is set to `"determinate"` or `"buffer"`.
 
 ## Examples
 
@@ -26,3 +26,9 @@ links:
 Set the `variant` prop to `"determinate"` when the completion percentage is known.
 
 ::example{src="mui/LinearProgress.determinate"}
+
+### Buffer
+
+Set the `variant` prop to `"buffer"` when progress and buffered work are tracked separately.
+
+::example{src="mui/LinearProgress.buffer"}

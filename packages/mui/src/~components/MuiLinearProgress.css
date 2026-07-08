@@ -24,7 +24,11 @@
 		--_MuiLinearProgress-fill-color: var(--✨color-fill--secondary);
 	}
 
-	&:where(.MuiLinearProgress-determinate) {
+	&:where(.MuiLinearProgress-buffer) {
+		background-color: transparent;
+	}
+
+	&:where(.MuiLinearProgress-buffer, .MuiLinearProgress-determinate) {
 		&::after {
 			content: "";
 			position: absolute;
@@ -38,6 +42,20 @@
 }
 
 .MuiLinearProgress-bar {
-	background-color: var(--_MuiLinearProgress-fill-color);
 	border-radius: inherit;
+	background-color: var(--_MuiLinearProgress-fill-color);
+}
+
+.MuiLinearProgress-bar2 {
+	:where(.MuiLinearProgress-root.MuiLinearProgress-buffer) & {
+		background-color: var(--_MuiLinearProgress-track-color);
+	}
+}
+
+.MuiLinearProgress-dashed {
+	background-image: radial-gradient(
+		var(--_MuiLinearProgress-track-color) 0%,
+		var(--_MuiLinearProgress-track-color) 16%,
+		transparent 42%
+	);
 }

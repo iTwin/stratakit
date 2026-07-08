@@ -25,47 +25,69 @@ If you really wanted a link, you could use a link ([anchor](https://developer.mo
 
 But that's no good either. We've mismatched roles and behaviors again. Hitting “Save” does not take anyone anywhere, so there’s nothing to put in the `href`. And without an `href`, a link is not focusable or functional.
 
-Each component comes with a [**Use cases** section](/components/button#use-cases) to help match roles with behaviors. However, sometimes component HTML _needs_ to be updated to suit context, align with presentational convention, or signify state. That's what the `render` prop is for.
+Each component comes with a [**Use cases** section](/components/button#use-cases) to help match roles with behaviors. However, sometimes component HTML _needs_ to be updated to suit context, align with presentational convention, or signify state.
 
-## The `render` prop
+## Changing component output
 
-Available to all MUI and **StrataKit** components, the `render` prop lets you change the HTML element or React component used to render the component in hand. It is a powerful feature and has a lot of potential as a [footgun](https://en.wiktionary.org/wiki/footgun).
+There are two props that let you change the HTML element used to render a component:
 
-```jsx
-/* ❌ don't do this */
-<Button render={<a />}>View</Button>
-```
+1. The `component` prop: This comes from MUI and you must not use it.
+2. The `render` prop: This is **StrataKit’s** optimized alternative to `component`. Use this sparingly.
 
-If the aim is to make a link _appear_ as a button, supply an `href`. Since `<button>` does not support the `href` property, the `href` must appear on the supplied `<a>`:
+### Changing a heading level
 
-```jsx
-/* ✅ */
-<Button render={<a href="/path/to/permalink" />}>View</Button>
-```
+The [**Language and labels**](/guides/structure/#headings) guide sets out the importance of applying the correct heading levels when describing the interface structure. Heading levels are set using the elements `<h1>` to `<h6>`. 
 
-In general, buttons should look like buttons and links like links. The appearance sets expectations about behaviors. Pressing this false button, you wouldn't expect to navigate to a new screen.
+The [**Typography**](/components/typography/#heading) component supports `render` for setting the element and `variant` for setting an accompanying style token. This decoupling of semantics and style lets you set the correct structure while calibrating visual hierarchy.
 
-Occasionally, an element must support a certain type of behavior, but is better seen or understood with a different appearance. So long as there are sufficient contextual clues and a suitable label, it is permissible to change the underlying element.
-
-The previous example was taken from a [**Card**](/components/card). **Card** actions conventionally appear as buttons, even where they act as links. The label _“View”_ helps prepare the user for a change of context.
-
-::example{src="mui/Card.actions"}
-
-### Heading levels
-
-The [**Language and labels**](/guides/structure/#headings) guide sets out the importance of applying the correct heading levels when describing the interface structure.
-
-Sometimes the heading level is correct for the structure but the `font-size` is too large for the available space. You must not change the level—and break the structure—just to downsize the text. 
-
-Instead, use the [**Typography**](/components/typography/#heading) component, but be careful: [MUI's stock heading variants](https://mui.com/material-ui/react-typography/#usage)—`h1` to `h6`—automatically change the underlying heading element.
-
-Instead, use a [**StrataKit** `variant`](https://stratakit.bentley.com/docs/components/typography/#variants) with an explicit `render` property:
+In the following example, `<h1>` is the correct element, since it is the main heading for the page. But, since the context requires a diminished font-size, a `headline`-prefixed token is preferred over a larger `display` variant. 
 
 ```jsx
 <Typography variant="headline-sg" render={<h1 />}>
 	Heading text
 </Typography>
 ```
+
+### `slots` and `slotProps`
+
+Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements by _slot_. Where needed, change your [**Accordion**](/components/accordion) item’s heading via the `slot` prop and its `heading` key:
+
+```jsx
+<Accordion
+	variant="outlined"
+	role="listitem"
+	slots={{
+		heading: "h2",
+	}}
+>...
+</Accordion>
+```
+
+The `slotProps` alternative gives you finer grained control. For each element, you can set multiple props, including a `render` prop where applicable. For example, the [**NativeSelect**](/components/nativeselect)’s input needs both `name` and `id` set:
+
+
+```jsx
+<FormControl>
+	<InputLabel variant="standard" htmlFor={inputId}>
+		Design system:
+	</InputLabel>
+	<NativeSelect
+		defaultValue={2}
+		slotProps={{
+			input: {
+				name: "design-system",
+				id: inputId,
+			},
+		}}
+	>
+		<option value={1}>iTwinUI</option>
+		<option value={2}>StrataKit</option>
+		<option value={3}>Other</option>
+	</NativeSelect>
+</FormControl>
+```
+
+The `id` is necessary for creating the association between the select element and its correponding label. The `id` and `htmlFor` values must match.
 
 ## ARIA attribution
 

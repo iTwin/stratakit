@@ -36,6 +36,7 @@ import type { SelectProps } from "@mui/material/Select";
 import type {} from "@mui/material/Slide";
 import type {} from "@mui/material/Stepper";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
+import type { SwitchProps } from "@mui/material/Switch";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
 import type { TabsProps } from "@mui/material/Tabs";
@@ -953,6 +954,17 @@ declare module "@mui/material/Switch" {
 		success: false;
 		warning: false;
 		error: false;
+	}
+
+	interface SwitchOwnProps {
+		/** @deprecated DO NOT USE. */
+		checkedIcon?: SwitchProps["checkedIcon"];
+
+		/** @deprecated DO NOT USE. */
+		disableRipple?: SwitchProps["disableRipple"];
+
+		/** @deprecated DO NOT USE. */
+		icon?: SwitchProps["icon"];
 	}
 }
 

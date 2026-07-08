@@ -1,0 +1,55 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.MuiRating-root {
+	--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-base);
+	inline-size: fit-content;
+	border-radius: var(--stratakit-mui-shape-borderRadius);
+
+	&:where(.Mui-disabled) {
+		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-disabled);
+		opacity: 1;
+	}
+
+	&.Mui-focusVisible {
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+}
+
+.MuiRating-icon {
+	color: var(--_MuiRating-icon-color);
+
+	&:where(.MuiRating-iconHover, .MuiRating-iconFocus, .MuiRating-iconActive) {
+		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
+		outline: 0;
+	}
+}
+
+/*	When using a non-integer precision value the MuiIcon gets wrapped in element
+		with an MuiDecimal class. However the MuiRating-iconActive class is still
+		applied to the MuiDecimal element instead of the MuiRating-icon element.
+		The other classes still apply to the MuiRating-icon element, so only the
+		MuiRating-iconActive rule is duplicated here */
+.MuiRating-decimal:where(.MuiRating-iconActive) {
+	--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
+	outline: 0;
+}
+
+:where(.MuiRating-decimal) .MuiSvgIcon-root {
+	/* 
+		reset css sets max-inline-size to 100%, however the Rating component + precision
+		prop relies on the svg size being greater than than the width of the
+		container and getting clipped.  Unset it here to allow the icon to overflow and clip.
+		*/
+	max-inline-size: unset;
+}
+
+.MuiRating-label {
+	&:where(.MuiRating-labelEmptyValueActive) {
+		border-radius: var(--stratakit-mui-shape-borderRadius);
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+}

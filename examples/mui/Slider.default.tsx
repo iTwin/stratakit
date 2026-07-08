@@ -21,7 +21,6 @@ export default () => {
 					{" "}
 					from 0 (very sad) to 100 (very happy)
 				</span>
-				:
 			</FormLabel>
 			<Stack spacing={1} direction="row" sx={{ alignItems: "center", mb: 1 }}>
 				<Typography aria-hidden="true">Sad</Typography>

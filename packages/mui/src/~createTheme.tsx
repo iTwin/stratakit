@@ -47,7 +47,7 @@ import {
 	MuiTableCell,
 	MuiTableHead,
 } from "./~components/MuiTable.js";
-import { MuiTabs } from "./~components/MuiTabs.js";
+import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
@@ -113,15 +113,19 @@ function createTheme(args: CreateThemeArgs) {
 			// These are only hardcoded here as fallback. The CSS will take precedence.
 			body1: { fontSize: 16 },
 			body2: { fontSize: 14 },
-			h1: { fontSize: 48 },
-			h2: { fontSize: 40 },
-			h3: { fontSize: 32 },
-			h4: { fontSize: 28 },
-			h5: { fontSize: 24 },
-			h6: { fontSize: 20 },
+			h1: { fontSize: 20 },
+			h2: { fontSize: 18 },
+			h3: { fontSize: 16 },
+			h4: { fontSize: 14 },
+			h5: { fontSize: 12 },
+			h6: { fontSize: 12 },
 			caption: { fontSize: 12 },
-			subtitle1: { fontSize: 12 },
-			subtitle2: { fontSize: 11 },
+			overline: {
+				fontSize: 12,
+				textTransform: "none",
+			},
+			subtitle1: { fontSize: 16 },
+			subtitle2: { fontSize: 14 },
 		},
 		shadows: [
 			"none", // 0
@@ -170,6 +174,9 @@ function createTheme(args: CreateThemeArgs) {
 					slotProps: {
 						root: {
 							role: "group", // Overriding role="alert".
+						},
+						closeButton: {
+							edge: "end",
 						},
 					},
 				},
@@ -327,7 +334,12 @@ function createTheme(args: CreateThemeArgs) {
 					variant: "inherit",
 				},
 			},
-			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
+			MuiDialogTitle: {
+				defaultProps: {
+					component: Role.h2,
+					variant: "body-lg",
+				},
+			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {
@@ -487,8 +499,24 @@ function createTheme(args: CreateThemeArgs) {
 			},
 			MuiSvgIcon: { defaultProps: { component: Role.svg } },
 			MuiSwipeableDrawer: { defaultProps: { component: Role.div } },
-			MuiTabs: { defaultProps: { component: MuiTabs } },
-			MuiTab: { defaultProps: { iconPosition: "start" } },
+			MuiTabs: {
+				defaultProps: {
+					component: MuiTabs,
+					allowScrollButtonsMobile: true,
+					slotProps: {
+						scrollButtons: {
+							"aria-hidden": true,
+						},
+						startScrollButtonIcon: {
+							component: ChevronLeftIcon,
+						},
+						endScrollButtonIcon: {
+							component: ChevronRightIcon,
+						},
+					},
+				},
+			},
+			MuiTab: { defaultProps: { component: MuiTab, iconPosition: "start" } },
 			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
 			MuiTableBody: {
 				defaultProps: {

@@ -6,6 +6,7 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
 
 import styles from "./Popover.default.module.css";
 
@@ -14,6 +15,7 @@ export default () => {
 		null,
 	);
 	const [open, setOpen] = React.useState(false);
+	const headingId = React.useId();
 
 	return (
 		<>
@@ -23,7 +25,7 @@ export default () => {
 				onClick={() => setOpen(true)}
 				ref={setAnchorEl}
 			>
-				Open popover
+				About Coordinate System
 			</Button>
 			<Popover
 				open={open}
@@ -36,10 +38,23 @@ export default () => {
 				slotProps={{
 					paper: {
 						className: styles.popover,
+						"aria-labelledby": headingId,
 					},
 				}}
 			>
-				The content of the Popover.
+				<Typography
+					variant="headline-sm"
+					render={<h2 />}
+					id={headingId}
+					gutterBottom={true}
+				>
+					Coordinate System
+				</Typography>
+				<Typography gutterBottom={true}>WGS84 (EPSG:4326)</Typography>
+				<Typography color="textSecondary" gutterBottom={false}>
+					Current projection uses latitude/longitude coordinates with EPSG:4326
+					WGS84 datum for mapping visualization.
+				</Typography>
 			</Popover>
 		</>
 	);

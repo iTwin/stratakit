@@ -22,6 +22,7 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 ## StrataKit MUI modifications
 
 - The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled).
+- The `checkedIcon`, `disableRipple`, and `icon` props are deprecated and should not be used.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 

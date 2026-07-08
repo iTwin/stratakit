@@ -5,34 +5,19 @@
 
 import * as React from "react";
 import LinearProgress from "@mui/material/LinearProgress";
-import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 export default () => {
 	const labelId = React.useId();
-	const [value, setValue] = React.useState(10);
-
-	React.useEffect(() => {
-		const timer = setInterval(() => {
-			setValue((prevValue) => (prevValue >= 100 ? 0 : prevValue + 10));
-		}, 800);
-
-		return () => {
-			clearInterval(timer);
-		};
-	}, []);
 
 	return (
 		<>
 			<LinearProgress
-				aria-labelledby={labelId}
-				value={value}
 				variant="determinate"
+				value={50}
+				aria-labelledby={labelId}
 			/>
-			<Stack direction="row" sx={{ justifyContent: "space-between" }}>
-				<Typography id={labelId}>Uploading…</Typography>
-				<Typography>{value}%</Typography>
-			</Stack>
+			<Typography id={labelId}>Analyzing results…</Typography>
 		</>
 	);
 };

@@ -1,5 +1,5 @@
 ---
-"@stratakit/mui": minor
+"@stratakit/mui": patch
 ---
 
-`<Switch>` does not support the `checkedIcon`, `disableRipple`, and `icon` prop.
+`<Switch>` props `checkedIcon`, `disableRipple`, and `icon` have been deprecated.

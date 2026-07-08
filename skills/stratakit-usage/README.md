@@ -10,12 +10,11 @@ An [agent skill](https://agentskills.io/) that helps AI coding agents how to bui
 
 ## How to install
 
-The skill lives in the `skills` directory of the [`iTwin/stratakit`](https://github.com/iTwin/stratakit) repository. Install it using the preferred method for your agent, for example:
+The skill lives in the `skills` directory of the [`iTwin/stratakit`](https://github.com/iTwin/stratakit) repository. Install it using the [`gh`](https://cli.github.com/manual/gh_skill) CLI:
 
-| CLI                                              | Command                                                  |
-| ------------------------------------------------ | -------------------------------------------------------- |
-| [`gh`](https://cli.github.com/manual/gh_skill)   | `gh skill install iTwin/stratakit stratakit-usage`       |
-| [`skills`](https://www.npmjs.com/package/skills) | `npx skills add iTwin/stratakit --skill stratakit-usage` |
+```
+gh skill install iTwin/stratakit stratakit-usage
+```
 
 ## How to invoke
 

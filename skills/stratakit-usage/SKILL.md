@@ -41,7 +41,7 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 ## Consult documentation
 
 - [Documentation site](https://stratakit.bentley.com/docs/)
-- [Documentation source](https://github.com/iTwin/stratakit/tree/main/apps/website/src/content/docs)
+- [Documentation source](https://api.github.com/repos/iTwin/stratakit/contents/apps/website/src/content/docs)
 - Documentation is the source of truth for correct usage of StrataKit
 - Always read relevant documentation before suggesting changes
 - Follow in-page links rather than guessing a page URL
@@ -50,7 +50,7 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 ## Using examples
 
 - [Examples page](https://stratakit.bentley.com/docs/examples/)
-- [Examples source](https://github.com/iTwin/stratakit/tree/main/examples)
+- [Examples source](https://api.github.com/repos/iTwin/stratakit/contents/examples/)
 - Examples are embedded using the `::example` directive. E.g. `::example{src="mui/Button.default"}` embeds the example from https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/examples/mui/Button.default.tsx
 - Use `data-src` attribute of `<example-embed>` element to identify the embedded examples
 - Access embedded example source via "View source on GitHub" links

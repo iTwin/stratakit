@@ -1,1 +1,0 @@
-import{j as r}from"./_utils.CBv7VeLj.js";import{r as s}from"./styles.internal.Cf9SRLEZ.js";import{P as a}from"./Progress.CL-Wq8NU.js";import{T as t}from"./Text.t7QYvBhr.js";const d=()=>{const e=s.useId();return r.jsxs(r.Fragment,{children:[r.jsx(a,{value:50,"aria-labelledby":e}),r.jsx(t,{variant:"body-sm",id:e,children:"Uploading files…"})]})};export{d as default};

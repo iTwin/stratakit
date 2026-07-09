@@ -345,6 +345,16 @@ declare module "@mui/material/InputBase" {
 	}
 }
 
+declare module "@mui/material/LinearProgress" {
+	interface LinearProgressPropsColorOverrides {
+		inherit: false;
+		error: false;
+		info: false;
+		success: false;
+		warning: false;
+	}
+}
+
 declare module "@mui/material/Link" {
 	interface LinkOwnProps {
 		/** @deprecated DO NOT USE */

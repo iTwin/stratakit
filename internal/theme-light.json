@@ -702,11 +702,11 @@
 			"page": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.black.8}"
+					"$value": "{p-color.black.48}"
 				},
 				"depth": {
 					"$type": "color",
-					"$value": "{p-color.black.8}"
+					"$value": "{p-color.black.40}"
 				}
 			},
 			"control": {

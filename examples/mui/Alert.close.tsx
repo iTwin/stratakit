@@ -2,7 +2,12 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import Alert from "@mui/material/Alert";
 
-.badge {
-	gap: var(--stratakit-space-x1);
-}
+export default () => {
+	return (
+		<Alert severity="error" onClose={() => {}}>
+			The request was not approved.
+		</Alert>
+	);
+};

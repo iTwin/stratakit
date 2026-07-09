@@ -14,14 +14,14 @@ export default () => {
 				size="small"
 				options={["Mouse", "Worm"]}
 				renderInput={(params) => (
-					<TextField {...params} label="Favorite small animal:" />
+					<TextField {...params} label="Favorite small animal" />
 				)}
 			/>
 
 			<Autocomplete
 				options={["Cat", "Dog"]}
 				renderInput={(params) => (
-					<TextField {...params} label="Favorite medium animal:" />
+					<TextField {...params} label="Favorite medium animal" />
 				)}
 			/>
 		</Stack>

@@ -151,6 +151,14 @@ declare module "@mui/material/Badge" {
 		 * @default 'secondary'
 		 */
 		color?: BadgeProps["color"];
+		/**
+		 * The visual type of the badge styling.
+		 *
+		 * This prop can only be applied when `inline` is `true`.
+		 *
+		 * @default 'strong'
+		 */
+		type?: "outlined" | "muted" | "strong";
 	}
 }
 

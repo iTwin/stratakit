@@ -175,6 +175,9 @@ function createTheme(args: CreateThemeArgs) {
 						root: {
 							role: "group", // Overriding role="alert".
 						},
+						closeButton: {
+							edge: "end",
+						},
 					},
 				},
 			},
@@ -331,7 +334,12 @@ function createTheme(args: CreateThemeArgs) {
 					variant: "inherit",
 				},
 			},
-			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
+			MuiDialogTitle: {
+				defaultProps: {
+					component: Role.h2,
+					variant: "body-lg",
+				},
+			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {

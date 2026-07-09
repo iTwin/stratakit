@@ -1,0 +1,17 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import Badge from "@mui/material/Badge";
+import Stack from "@mui/material/Stack";
+
+export default () => {
+	return (
+		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
+			<Badge badgeContent="Strong" type="strong" inline />
+			<Badge badgeContent="Muted" type="muted" inline />
+			<Badge badgeContent="Outlined" type="outlined" inline />
+		</Stack>
+	);
+};

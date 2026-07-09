@@ -19,10 +19,17 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 
 ## StrataKit MUI modifications
 
+- Added [`type`](#type) prop.
 - Added [`inline`](#inline) prop.
 - The `"default"` color has been removed. The default color is now `"secondary"`.
 
 ## Examples
+
+### Dot
+
+Use `variant="dot"` to display the badge without a count inside.
+
+::example{src="mui/Badge.dot"}
 
 ### Inline
 
@@ -42,7 +49,6 @@ The `size` prop can only be set when [`inline`](#inline).
 ### Colors
 
 - **Secondary:** The default.
-- **Primary:** Use accent when high emphasis is required.
 - **Info:** Use to call out an object or action as having an important attribute.
 - **Success:** Use to indicate a successful or completed state when it's important to provide positive reinforcement.
 - **Warning:** Use for warnings and time-sensitive issues that require attention and potential action.
@@ -51,16 +57,18 @@ The `size` prop can only be set when [`inline`](#inline).
 ::example{src="mui/Badge.colors"}
 
 :::caution[Using icons]
-In most cases, you should supplement the `color` with [iconography](#icons).
+In most cases, you should supplement the `color` with iconography so that color is not the only means of communication. See [WCAG's Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
 :::
 
-### Icons
+### Type
 
-All [colors](#colors) except **secondary** and **primary** convey a specific type of status. Supplement those colors with an icon so that color is not the only means of communication. See [WCAG's Use Of Color](https://www.w3.org/WAI/WCAG22/Understanding/use-of-color.html).
+Use the `type` prop to adjust the visual prominence of an [`inline`](#inline) **Badge**.
 
-For example, include the `status-warning` icon when applying the ‘error' color.
+- **Strong:** The default, use when you need the strongest emphasis.
+- **Muted:** Use when you want a balanced level of emphasis.
+- **Outlined:** Use when you need the least emphasis.
 
-::example{src="mui/Badge.error"}
+::example{src="mui/Badge.type"}
 
 ## ✅ Do
 

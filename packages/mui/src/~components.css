@@ -25,6 +25,7 @@
 @import "./~components/MuiList.css";
 @import "./~components/MuiMenu.css";
 @import "./~components/MuiPagination.css";
+@import "./~components/MuiRating.css";
 @import "./~components/MuiSelect.css";
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiStepper.css";
@@ -33,6 +34,8 @@
 @import "./~components/MuiTabs.css";
 @import "./~components/MuiToggleButton.css";
 @import "./~components/MuiTooltip.css";
+
+@import "./~components/MuiDatePicker.css";
 
 .MuiAppBar-root {
 	background-color: var(--stratakit-color-bg-page-base);
@@ -46,8 +49,4 @@
 	&:where(:not(.MuiBackdrop-invisible)) {
 		background-color: oklch(from var(--stratakit-color-bg-elevation-overlay) l c h / 0.8);
 	}
-}
-
-.MuiRating-root {
-	inline-size: fit-content;
 }

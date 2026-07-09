@@ -246,6 +246,16 @@ declare module "@mui/material/Chip" {
 	}
 }
 
+declare module "@mui/material/CircularProgress" {
+	interface CircularProgressPropsColorOverrides {
+		inherit: false;
+		error: false;
+		info: false;
+		success: false;
+		warning: false;
+	}
+}
+
 declare module "@mui/material/Dialog" {
 	interface DialogProps extends Pick<CommonProps, "render"> {
 		/** @deprecated Use `render` prop instead. */

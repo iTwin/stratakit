@@ -16,7 +16,6 @@ export default () => {
 
 	return (
 		<Stack direction={horizontalLayout ? "row" : "column"}>
-			{" "}
 			<Typography>Item</Typography>
 			<Divider
 				flexItem
@@ -44,7 +43,7 @@ export default () => {
 						onChange={(event) => setHorizontalLayout(event.target.checked)}
 					/>
 				}
-				label="Left to right"
+				label="Vertical divider"
 			/>
 			<Divider
 				flexItem

@@ -3,12 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .MuiDivider-root {
-	&:where(:not(.MuiDivider-horizontal)[data-_sk-block-margin="true"]) {
+	&:where(:not(.MuiDivider-vertical)[data-_sk-margin]) {
 		margin-block-start: var(--stratakit-space-x1);
 		margin-block-end: var(--stratakit-space-x1);
 	}
 
-	&:where(.MuiDivider-vertical[data-_sk-block-margin="true"]) {
+	&:where(.MuiDivider-vertical[data-_sk-margin]) {
 		margin-inline-start: var(--stratakit-space-x1);
 		margin-inline-end: var(--stratakit-space-x1);
 	}

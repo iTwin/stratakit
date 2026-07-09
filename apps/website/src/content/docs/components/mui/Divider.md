@@ -50,6 +50,12 @@ By default, the **Divider** appears in a horizontal orientation. Reorientate it 
 
 :::
 
+### Margin
+
+By default, **Divider** does not include any margins. Setting `margin=true` will add x1 space before and after the divider.
+
+::example{src="mui/Divider.margin"}
+
 ## ✅ Do
 
 - Use the **Divider** to break up flow content.

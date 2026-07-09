@@ -31,7 +31,7 @@ const MuiDivider = forwardRef<"hr", MuiDividerProps>((props, forwardedRef) => {
 	return (
 		<Role
 			render={defaultRender}
-			data-_sk-block-margin={!!margin}
+			data-_sk-margin={margin ? "" : undefined}
 			{...rest}
 			ref={forwardedRef}
 		>

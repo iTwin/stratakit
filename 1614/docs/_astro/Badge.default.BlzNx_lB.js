@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.By_L0A1V.js";import{B as t}from"./Badge.D7D90Id3.js";const o=()=>e.jsx(t,{label:"Pending"});export{o as default};

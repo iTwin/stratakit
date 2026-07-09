@@ -12,16 +12,11 @@ import Typography from "@mui/material/Typography";
 
 export default () => {
 	const [margin, setMargin] = React.useState(true);
-	const [horizontalLayout, setHorizontalLayout] = React.useState(false);
 
 	return (
-		<Stack direction={horizontalLayout ? "row" : "column"}>
+		<Stack>
 			<Typography>Item</Typography>
-			<Divider
-				flexItem
-				margin={margin}
-				orientation={horizontalLayout ? "vertical" : "horizontal"}
-			/>
+			<Divider flexItem margin={margin} />
 			<FormControlLabel
 				control={
 					<Switch
@@ -31,25 +26,7 @@ export default () => {
 				}
 				label="Margin"
 			/>
-			<Divider
-				flexItem
-				margin={margin}
-				orientation={horizontalLayout ? "vertical" : "horizontal"}
-			/>
-			<FormControlLabel
-				control={
-					<Switch
-						checked={horizontalLayout}
-						onChange={(event) => setHorizontalLayout(event.target.checked)}
-					/>
-				}
-				label="Vertical divider"
-			/>
-			<Divider
-				flexItem
-				margin={margin}
-				orientation={horizontalLayout ? "vertical" : "horizontal"}
-			/>
+			<Divider flexItem margin={margin} />
 			<Typography>Item</Typography>
 		</Stack>
 	);

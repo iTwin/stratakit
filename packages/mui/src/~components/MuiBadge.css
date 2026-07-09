@@ -23,7 +23,6 @@
 		column-gap: var(--stratakit-space-x1);
 		padding-inline-start: var(--_MuiBadge-padding);
 		padding-inline-end: var(--_MuiBadge-padding);
-		column-gap: var(--stratakit-space-x05);
 		position: static;
 		transform: none;
 	}

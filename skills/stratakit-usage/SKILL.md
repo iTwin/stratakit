@@ -33,7 +33,6 @@ StrataKit design system guidelines for building user interfaces with the StrataK
 - Documentation is the source of truth for correct usage of StrataKit
 - Always read relevant documentation before suggesting changes
 - Follow in-page links rather than guessing a page URL
-- Use the site's search box to locate the relevant information
 
 ## Examples
 

@@ -11,7 +11,7 @@ export default () => {
 	return (
 		<FormControl render={<fieldset />} role="radiogroup">
 			<FormLabel render={<legend />}>Precision rating:</FormLabel>
-			<Rating name="product-rating" defaultValue={2.5} precision={0.5} />
+			<Rating name="precision-rating" defaultValue={2.5} precision={0.5} />
 		</FormControl>
 	);
 };

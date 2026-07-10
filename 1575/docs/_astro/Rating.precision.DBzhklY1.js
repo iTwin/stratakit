@@ -1,1 +1,0 @@
-import{j as r}from"./_utils._wYsvN2M.js";import{a as e,F as o}from"./FormControl.Bl0YWS_q.js";import{R as i}from"./Rating.AWoL1D1_.js";const a=()=>r.jsxs(e,{render:r.jsx("fieldset",{}),role:"radiogroup",children:[r.jsx(o,{render:r.jsx("legend",{}),children:"Precision rating:"}),r.jsx(i,{name:"product-rating",defaultValue:2.5,precision:.5})]});export{a as default};

@@ -7,7 +7,6 @@ import * as React from "react";
 
 import type { FocusableProps as AkFocusableProps } from "@ariakit/react/focusable";
 import type { RoleProps } from "@ariakit/react/role";
-import type { ForwardRefHelper, MergeProps } from "./utils.internal.js";
 
 // ----------------------------------------------------------------------------
 
@@ -47,6 +46,19 @@ function parseDOM(
 
 // ----------------------------------------------------------------------------
 
+type ForwardRefHelper = <
+	DefaultElement extends React.ElementType,
+	Props extends {},
+>(
+	render: React.ForwardRefRenderFunction<
+		React.ComponentRef<DefaultElement>,
+		React.PropsWithoutRef<Props>
+	>,
+) => React.ForwardRefExoticComponent<
+	React.PropsWithoutRef<Props> &
+		React.RefAttributes<React.ComponentRef<DefaultElement> | HTMLElement>
+>;
+
 /**
  * Wrapper over `React.forwardRef` which allows refs to be loosely typed as `HTMLElement`.
  *
@@ -65,6 +77,13 @@ function parseDOM(
 const forwardRef = React.forwardRef as ForwardRefHelper;
 
 // ----------------------------------------------------------------------------
+
+/** Element type props merged with custom props. */
+type MergeProps<
+	ElementType extends React.ElementType,
+	CustomProps extends Record<string, unknown>,
+> = CustomProps &
+	Omit<React.ComponentPropsWithoutRef<ElementType>, keyof CustomProps>;
 
 /** Base component props with custom props. */
 type BaseProps<ElementType extends React.ElementType = "div"> = MergeProps<

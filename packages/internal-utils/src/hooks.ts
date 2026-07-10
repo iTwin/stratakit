@@ -4,10 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { supportsPopover } from "./utils.internal.js";
 import { isBrowser } from "./utils.js";
 
-import type { AnyFunction } from "./utils.internal.js";
+// ----------------------------------------------------------------------------
+
+const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
+
+// ----------------------------------------------------------------------------
+
+// biome-ignore lint/suspicious/noExplicitAny: allow any type of function
+type AnyFunction = (...args: any) => any;
 
 // ----------------------------------------------------------------------------
 

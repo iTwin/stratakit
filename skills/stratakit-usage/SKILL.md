@@ -44,8 +44,7 @@ Available packages are documented in [README.md](https://raw.githubusercontent.c
 
 ## Using examples
 
-- [Examples page](https://stratakit.bentley.com/docs/examples/)
-- [Examples source](https://api.github.com/repos/iTwin/stratakit/contents/examples/)
+- [Available examples](https://api.github.com/repos/iTwin/stratakit/contents/examples/)
 - Examples are embedded using the `::example` directive. E.g. `::example{src="mui/Button.default"}` embeds the example from https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/examples/mui/Button.default.tsx
 - Use `data-src` attribute of `<example-embed>` element to identify the embedded examples
 - Access embedded example source via "View source on GitHub" links
@@ -57,8 +56,8 @@ Available packages are documented in [README.md](https://raw.githubusercontent.c
 
 ## Component usage
 
-- Follow the [components overview](https://stratakit.bentley.com/docs/components/overview/)
-- Always consult the documentation before using the component. E.g. [`Button` documentation](https://stratakit.bentley.com/docs/components/button/) and its [source code](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/mui/Button.md)
+- Follow the [components overview](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/overview.md)
+- Always consult the documentation before using the component. E.g. [`Button` documentation](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/mui/Button.md)
 - Always follow embedded examples to understand correct usage patterns. E.g. the [`Button` default example](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/examples/mui/Button.default.tsx)
 
 ## `@mui/material` usage
@@ -74,7 +73,7 @@ Available packages are documented in [README.md](https://raw.githubusercontent.c
 
 ## Icon usage
 
-- [Icons documentation](https://stratakit.bentley.com/docs/icons/)
+- [Icons documentation](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/icons.mdx)
 - [`Icon` component](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/Icon.md)
 - Icons are listed in `node_modules/@stratakit/icons/icons-list.json`
 - Always use icons from `@stratakit/icons` package

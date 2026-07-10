@@ -350,7 +350,7 @@ importers:
         specifier: ^0.4.9
         version: link:../foundations
       "@stratakit/internal-utils":
-        specifier: ^0.0.0
+        specifier: ^0.1.0
         version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
@@ -387,7 +387,7 @@ importers:
         specifier: ^0.4.29
         version: 0.4.29(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       "@stratakit/internal-utils":
-        specifier: ^0.0.0
+        specifier: ^0.1.0
         version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
@@ -475,7 +475,7 @@ importers:
         specifier: ^0.4.3
         version: link:../icons
       "@stratakit/internal-utils":
-        specifier: ^0.0.0
+        specifier: ^0.1.0
         version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
@@ -518,7 +518,7 @@ importers:
         specifier: ^0.4.10
         version: link:../foundations
       "@stratakit/internal-utils":
-        specifier: ^0.0.0
+        specifier: ^0.1.0
         version: link:../internal-utils
       classnames:
         specifier: ^2.5.1

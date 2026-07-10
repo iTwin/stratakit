@@ -1,0 +1,1 @@
+import{j as a}from"./_utils.e5PkuW_o.js";import{C as i}from"./Chip.CzBPML4N.js";const l=()=>a.jsxs("div",{className:"flex",children:[a.jsx(i,{variant:"solid",label:"Solid"}),a.jsx(i,{variant:"outline",label:"Outline"})]});export{l as default};

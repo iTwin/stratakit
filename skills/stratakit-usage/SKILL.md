@@ -30,14 +30,6 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 
 - Follow the [quick start guide](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/develop.mdx)
 
-## Packages
-
-- **`@stratakit/mui`** - Primary package that includes foundations, theme and type augmentations for MUI. Exposes `Root` and `Icon` components
-- **`@stratakit/structures`** - Larger, structure level components with complex behavior
-- **`@stratakit/icons`** - Source of all icons
-- **`@stratakit/foundations`** - Design tokens and CSS reset. Use directly in non-React UIs only; otherwise use `@stratakit/mui`
-- **`@stratakit/bricks`** - Legacy package that should never be used. Replace with `@mui/material` using the [migration guide](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx).
-
 ## Consult documentation
 
 - [Documentation site](https://stratakit.bentley.com/docs/)

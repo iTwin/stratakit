@@ -30,6 +30,10 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 
 - Follow the [quick start guide](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/develop.mdx)
 
+## Packages
+
+Available packages are documented in [README.md](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/README.md)
+
 ## Consult documentation
 
 - [Documentation site](https://stratakit.bentley.com/docs/)

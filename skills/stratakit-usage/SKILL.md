@@ -74,8 +74,7 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 
 ## `@stratakit/structures` usage
 
-- Use only [`ErrorRegion`](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/ErrorRegion.md), [`NavigationRail`](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/NavigationRail.md), [`Toolbar`](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/Toolbar.md), [`Tree`](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/Tree.md) components
-- Do not use `AccordionItem`, `Banner`, `Chip`, `Dialog`, `DropdownMenu`, `Popover`, `Table`, `Tabs` from `@stratakit/structures`. Use [alternatives](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx) from `@mui/material` instead
+- Use [alternatives](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx) instead of deprecated components
 
 ## Icon usage
 

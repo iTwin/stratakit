@@ -3,15 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import Rating from "@mui/material/Rating";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 
 export default () => {
 	return (
-		<FormControl render={<fieldset />} role="radiogroup">
-			<FormLabel render={<legend />}>Precision rating:</FormLabel>
-			<Rating name="precision-rating" defaultValue={2.5} precision={0.5} />
-		</FormControl>
+		<Alert severity="error" role="alert">
+			<AlertTitle>Invalid credit card</AlertTitle>
+			Your bank has declined the charge to your card. Please check the card
+			number or contact your bank.
+		</Alert>
 	);
 };

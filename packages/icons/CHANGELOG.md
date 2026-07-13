@@ -2,10 +2,12 @@
 
 ## 0.4.1
 
-### Patch Changes
+- [#1619](https://github.com/iTwin/stratakit/pull/1619): Added new icon:
+  - `production-sheet.svg` (matches the `production-drawing.svg` icon from before this release)
 
-- [#1619](https://github.com/iTwin/stratakit/pull/1619): - Added icon: `production-sheet.svg` (matches the `production-drawing.svg` icon from before this release)
-  - Updated icon: `production-drawing.svg` (reverted to the original version from before 0.3.1)
+  Updated icon:
+  - `production-drawing.svg` (reverted to the original version from before 0.3.1)
+
 - [#1597](https://github.com/iTwin/stratakit/pull/1597): Added new icons:
   - `add-region.svg`
   - `annotate-balloon.svg`

@@ -425,9 +425,6 @@ importers:
 
   packages/internal-utils:
     dependencies:
-      "@ariakit/react":
-        specifier: ^0.4.29
-        version: 0.4.29(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       react-compiler-runtime:
         specifier: ^1.0.0
         version: 1.0.0(react@19.2.7)

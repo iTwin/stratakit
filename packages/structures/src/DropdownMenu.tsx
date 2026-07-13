@@ -22,12 +22,12 @@ import { DisclosureArrow, Dot } from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
 import {
 	forwardRef,
-	predefinedSymbols,
 	usePopoverApi,
 	useSafeContext,
 	useStableCallback,
 } from "@stratakit/internal-utils";
 import cx from "classnames";
+import { predefinedSymbols } from "../../bricks/dist/Kbd.internal.js";
 import { Checkmark, ChevronRight } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
 import { useInit } from "./~utils.useInit.js";
@@ -38,11 +38,11 @@ import type {
 	MenuStore,
 } from "@ariakit/react/menu";
 import type {
-	AnyString,
 	BaseProps,
 	FocusableProps,
-	PredefinedSymbol,
-} from "@stratakit/internal-utils";
+} from "@stratakit/bricks/secret-internals";
+import type { AnyString } from "@stratakit/internal-utils";
+import type { PredefinedSymbol } from "../../bricks/dist/Kbd.internal.js";
 
 // ----------------------------------------------------------------------------
 

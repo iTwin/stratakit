@@ -26,7 +26,7 @@ import {
 } from "./Root.internal.js";
 import { loadStyles } from "./styles.internal.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "./~props.js";
 
 const packageName = "@stratakit/foundations";
 const key = `${packageName}@${__VERSION__}`;

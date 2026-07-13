@@ -9,7 +9,7 @@ import { forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 import { useGhostAlignment } from "./~utils.GhostAligner.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "./~utils.props.js";
 import type Button from "./Button.js";
 
 // ----------------------------------------------------------------------------

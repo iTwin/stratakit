@@ -9,7 +9,7 @@ import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import VisuallyHidden from "./VisuallyHidden.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "./~utils.props.js";
 
 interface SpinnerProps extends BaseProps {
 	/**

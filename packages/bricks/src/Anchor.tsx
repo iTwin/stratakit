@@ -10,7 +10,7 @@ import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import VisuallyHidden from "./VisuallyHidden.js";
 
-import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
+import type { BaseProps, FocusableProps } from "./~utils.props.js";
 
 interface AnchorRootProps extends FocusableProps<"a"> {
 	/** @default "neutral" */

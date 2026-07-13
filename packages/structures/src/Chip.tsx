@@ -13,7 +13,7 @@ import { combine } from "zustand/middleware";
 import { Dismiss } from "./~utils.icons.js";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/bricks/secret-internals";
 import type { ExtractState } from "zustand";
 
 // ----------------------------------------------------------------------------

@@ -9,7 +9,7 @@ import { forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "./~utils.props.js";
 
 interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	/**

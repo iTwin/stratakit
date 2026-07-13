@@ -21,7 +21,10 @@ import { combine } from "zustand/middleware";
 import { useWarnOnInteractiveDescendants } from "./~hooks.js";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/bricks/secret-internals";
 
 // ----------------------------------------------------------------------------
 

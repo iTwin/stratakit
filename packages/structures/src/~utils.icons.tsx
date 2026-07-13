@@ -7,7 +7,7 @@ import { createIconFromPath } from "@stratakit/bricks/secret-internals";
 import { forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/bricks/secret-internals";
 
 // ----------------------------------------------------------------------------
 

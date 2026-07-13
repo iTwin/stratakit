@@ -6,7 +6,7 @@
 import { forwardRef } from "@stratakit/internal-utils";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "../~props.js";
 
 // ----------------------------------------------------------------------------
 

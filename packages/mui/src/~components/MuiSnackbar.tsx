@@ -6,7 +6,7 @@
 import { Portal } from "@ariakit/react/portal";
 import { forwardRef } from "@stratakit/internal-utils";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "../~props.js";
 
 // ----------------------------------------------------------------------------
 

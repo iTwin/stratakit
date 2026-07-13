@@ -19,7 +19,7 @@ import { ChevronDown, MoreHorizontal, StatusIcon } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
 import * as DropdownMenu from "./DropdownMenu.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/bricks/secret-internals";
 
 // ----------------------------------------------------------------------------
 

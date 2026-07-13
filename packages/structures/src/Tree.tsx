@@ -10,7 +10,7 @@ import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import { Action as TreeItemAction, Root as TreeItemRoot } from "./TreeItem.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/bricks/secret-internals";
 
 // ----------------------------------------------------------------------------
 

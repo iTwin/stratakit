@@ -7,7 +7,7 @@ import { Role } from "@ariakit/react/role";
 import { forwardRef, useSafeContext } from "@stratakit/internal-utils";
 
 import type Badge from "@mui/material/Badge";
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "../~props.js";
 
 // ----------------------------------------------------------------------------
 

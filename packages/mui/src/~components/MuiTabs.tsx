@@ -5,13 +5,10 @@
 
 import { Role } from "@ariakit/react/role";
 import useMediaQuery from "@mui/material/useMediaQuery";
-import {
-	type BaseProps,
-	forwardRef,
-	useEventHandlers,
-} from "@stratakit/internal-utils";
+import { forwardRef, useEventHandlers } from "@stratakit/internal-utils";
 
 import type Tabs from "@mui/material/Tabs";
+import type { BaseProps } from "../~props.js";
 
 // ----------------------------------------------------------------------------
 

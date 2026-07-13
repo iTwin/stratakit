@@ -13,7 +13,7 @@ import { DismissCircleIcon } from "../Icon.js";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
 import type Chip from "@mui/material/Chip";
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "../~props.js";
 
 // ----------------------------------------------------------------------------
 

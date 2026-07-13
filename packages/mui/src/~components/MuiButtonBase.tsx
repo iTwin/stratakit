@@ -8,7 +8,7 @@ import { Role } from "@ariakit/react/role";
 import { forwardRef, useMergedRefs } from "@stratakit/internal-utils";
 
 import type { ButtonOwnProps } from "@mui/material/Button";
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "../~props.js";
 
 // ----------------------------------------------------------------------------
 

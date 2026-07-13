@@ -17,7 +17,7 @@ import { MuiInputLabelContext } from "./MuiInputLabel.js";
 
 import type Autocomplete from "@mui/material/Autocomplete";
 import type { Theme } from "@mui/material/styles";
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "../~props.js";
 
 // ----------------------------------------------------------------------------
 

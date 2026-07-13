@@ -8,7 +8,7 @@ import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import Text from "./Text.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "./~utils.props.js";
 
 interface DescriptionProps extends BaseProps {
 	/**

@@ -10,7 +10,7 @@ import { useInit } from "./~utils.useInit.js";
 import { useFieldControlType } from "./Field.internal.js";
 
 import type { CheckboxProps as AkCheckboxProps } from "@ariakit/react/checkbox";
-import type { FocusableProps } from "@stratakit/internal-utils";
+import type { FocusableProps } from "./~utils.props.js";
 
 type InputBaseProps = Omit<
 	FocusableProps<"input">,

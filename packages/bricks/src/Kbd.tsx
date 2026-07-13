@@ -4,13 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
-import { forwardRef, predefinedSymbols } from "@stratakit/internal-utils";
+import { forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
+import { predefinedSymbols } from "./Kbd.internal.js";
 import VisuallyHidden from "./VisuallyHidden.js";
 
 import type { RoleProps } from "@ariakit/react/role";
-import type { BaseProps, PredefinedSymbol } from "@stratakit/internal-utils";
+import type { BaseProps } from "./~utils.props.js";
+import type { PredefinedSymbol } from "./Kbd.internal.js";
 
 interface KbdProps extends BaseProps<"kbd"> {
 	/** @default "solid" */

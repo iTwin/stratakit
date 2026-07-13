@@ -7,7 +7,7 @@ import { Role } from "@ariakit/react/role";
 import { forwardRef } from "@stratakit/internal-utils";
 import { CheckmarkIcon, ErrorIcon } from "../Icon.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "../~props.js";
 
 // ----------------------------------------------------------------------------
 

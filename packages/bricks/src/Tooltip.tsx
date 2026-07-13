@@ -16,7 +16,7 @@ import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import { TooltipContext } from "./Tooltip.internal.js";
 
-import type { FocusableProps } from "@stratakit/internal-utils";
+import type { FocusableProps } from "./~utils.props.js";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,

@@ -170,14 +170,11 @@
 	--_MuiLinearProgress-track-color: Canvas;
 	--_MuiLinearProgress-fill-color: CanvasText;
 
-	position: relative;
-
-	&:where(:not(.MuiLinearProgress-buffer))::before {
-		content: "";
-		position: absolute;
-		inset: 0;
-		background-color: var(--_MuiLinearProgress-fill-color);
-		opacity: 0.25;
+	&:where(.MuiLinearProgress-determinate, .MuiLinearProgress-indeterminate) {
+		&::before {
+			background-color: var(--_MuiLinearProgress-fill-color);
+			opacity: 0.25;
+		}
 	}
 }
 
@@ -189,11 +186,6 @@
 	:where(.MuiLinearProgress-root.MuiLinearProgress-buffer) & {
 		opacity: 0.25;
 	}
-}
-
-.MuiLinearProgress-dashed {
-	forced-color-adjust: none;
-	background-image: radial-gradient(CanvasText 0%, CanvasText 16%, transparent 42%);
 }
 
 .MuiListItemIcon-root {

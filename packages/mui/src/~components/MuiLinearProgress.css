@@ -11,7 +11,7 @@
 	--✨color-fill--secondary: var(--stratakit-color-icon-neutral-base);
 	/* #endregion */
 
-	background-color: var(--_MuiLinearProgress-track-color);
+	background-color: transparent;
 	border-radius: calc(infinity * 1px);
 
 	&:where(.MuiLinearProgress-colorPrimary) {
@@ -24,8 +24,15 @@
 		--_MuiLinearProgress-fill-color: var(--✨color-fill--secondary);
 	}
 
-	&:where(.MuiLinearProgress-buffer) {
-		background-color: transparent;
+	&:where(.MuiLinearProgress-determinate, .MuiLinearProgress-indeterminate) {
+		&::before {
+			content: "";
+			position: absolute;
+			inset-block: 1px;
+			inset-inline: 0;
+			background-color: var(--_MuiLinearProgress-track-color);
+			border-radius: inherit;
+		}
 	}
 
 	&:where(.MuiLinearProgress-buffer, .MuiLinearProgress-determinate) {
@@ -49,13 +56,14 @@
 .MuiLinearProgress-bar2 {
 	:where(.MuiLinearProgress-root.MuiLinearProgress-buffer) & {
 		background-color: var(--_MuiLinearProgress-track-color);
+		inset-block: 1px;
 	}
 }
 
 .MuiLinearProgress-dashed {
-	background-image: radial-gradient(
-		var(--_MuiLinearProgress-track-color) 0%,
-		var(--_MuiLinearProgress-track-color) 16%,
-		transparent 42%
-	);
+	background-color: transparent;
+	background-image: unset;
+	background-size: unset;
+	block-size: unset;
+	inset-block: 1px;
 }

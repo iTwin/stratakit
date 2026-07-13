@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiBadge-badge {
-	--🥝Icon-size: 1.14286em;
 	--🥝selection-color-bg: var(--stratakit-color-static-white);
 	--🥝selection-color-text: var(--stratakit-color-static-black);
 	--_MuiBadge-color: var(--stratakit-color-text-neutral-emphasis);

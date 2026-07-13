@@ -7,7 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import cx from "classnames";
 import { useLatestRef, useSafeContext } from "./~hooks.js";
-import { forwardRef, getOwnerDocument, parseDOM } from "./~utils.js";
+import { forwardRef, getOwnerDocument } from "./~utils.js";
 import {
 	HtmlSanitizerContext,
 	spriteSheetId,
@@ -114,6 +114,18 @@ DEV: Icon.displayName = "Icon";
 function toIconHref(hrefBase: string) {
 	if (!hrefBase.includes("#")) return `${hrefBase}${DEFAULT_ICON_HASH}`;
 	return hrefBase;
+}
+
+// ----------------------------------------------------------------------------
+
+/** "Parses" a string of HTML into a DocumentFragment. */
+function parseDOM(
+	htmlString: string,
+	{ ownerDocument }: { ownerDocument: Document },
+) {
+	const template = ownerDocument.createElement("template");
+	template.innerHTML = htmlString;
+	return template.content;
 }
 
 // ----------------------------------------------------------------------------

@@ -31,18 +31,6 @@ function getWindow(node: Node) {
 
 // ----------------------------------------------------------------------------
 
-/** "Parses" a string of HTML into a DocumentFragment. */
-function parseDOM(
-	htmlString: string,
-	{ ownerDocument }: { ownerDocument: Document },
-) {
-	const template = ownerDocument.createElement("template");
-	template.innerHTML = htmlString;
-	return template.content;
-}
-
-// ----------------------------------------------------------------------------
-
 type ForwardRefHelper = <
 	DefaultElement extends React.ElementType,
 	Props extends {},
@@ -94,5 +82,4 @@ export {
 	identity,
 	isBrowser,
 	isDocument,
-	parseDOM,
 };

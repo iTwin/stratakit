@@ -52,7 +52,7 @@ By default, the **Divider** appears in a horizontal orientation. Reorientate it 
 
 ### Margin
 
-By default, **Divider** does not include any margins. Setting `margin=true` will add x1 space before and after the divider.
+The `margin` prop can be set to include some space before and after the **Divider**.
 
 ::example{src="mui/Divider.margin"}
 

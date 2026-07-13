@@ -7,30 +7,6 @@ import * as React from "react";
 
 // ----------------------------------------------------------------------------
 
-const isBrowser = typeof document !== "undefined";
-
-// ----------------------------------------------------------------------------
-
-function isDocument(node?: Node): node is Document {
-	return node?.nodeType === Node.DOCUMENT_NODE;
-}
-
-// ----------------------------------------------------------------------------
-
-function getOwnerDocument(node?: Node | null) {
-	if (!node) return null;
-	return (isDocument(node) ? node : node.ownerDocument) || null;
-}
-
-// ----------------------------------------------------------------------------
-
-function getWindow(node: Node) {
-	const ownerDocument = getOwnerDocument(node);
-	return ownerDocument?.defaultView || null;
-}
-
-// ----------------------------------------------------------------------------
-
 type ForwardRefHelper = <
 	DefaultElement extends React.ElementType,
 	Props extends {},
@@ -63,23 +39,4 @@ const forwardRef = React.forwardRef as ForwardRefHelper;
 
 // ----------------------------------------------------------------------------
 
-/** See https://github.com/Microsoft/TypeScript/issues/29729 */
-type AnyString = string & {};
-
-// ----------------------------------------------------------------------------
-
-/** Returns the value unchanged. */
-const identity = <T>(value: T) => value;
-
-// ----------------------------------------------------------------------------
-
-export type { AnyString };
-
-export {
-	forwardRef,
-	getOwnerDocument,
-	getWindow,
-	identity,
-	isBrowser,
-	isDocument,
-};
+export { forwardRef };

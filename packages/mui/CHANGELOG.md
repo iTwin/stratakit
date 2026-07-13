@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.6.0
+
+### Minor Changes
+
+- [#1615](https://github.com/iTwin/stratakit/pull/1615): Fix bug preventing the `role` prop on `Alert` from being applied.
+
+### Patch Changes
+
+- [#1590](https://github.com/iTwin/stratakit/pull/1590): Display focus ring around entire `Rating` component intead of individual values.
+- [#1576](https://github.com/iTwin/stratakit/pull/1576): Added icon styling to `Badge`.
+- [#1613](https://github.com/iTwin/stratakit/pull/1613): Fixed `<Slider>` when `track` prop is set to `"inverted"`.
+- [#1589](https://github.com/iTwin/stratakit/pull/1589): Fix bug with non-integer `precision` prop for `Rating` component.
+- [#1570](https://github.com/iTwin/stratakit/pull/1570): Fixed spacing for `Alert` when used with an action.
+- [#1614](https://github.com/iTwin/stratakit/pull/1614): Add a `margin` prop to `Divider`
+- [#1568](https://github.com/iTwin/stratakit/pull/1568): Changed the `key` used for `@emotion/cache`.
+- [#1571](https://github.com/iTwin/stratakit/pull/1571): Increased contrast of `Tabs` icons and labels.
+- [#1580](https://github.com/iTwin/stratakit/pull/1580): Fixed text alignment for buttons in `DatePicker` and `TimePicker`.
+- [#1543](https://github.com/iTwin/stratakit/pull/1543): Added `type` prop to `Badge` which accepts `outlined`, `muted`, or `strong`.
+- [#1605](https://github.com/iTwin/stratakit/pull/1605): Fixed the size of `DialogTitle`.
+- [#1557](https://github.com/iTwin/stratakit/pull/1557): Updated colors for `Rating` component.
+- Updated dependencies:
+  - @stratakit/icons@0.4.1
+
 ## 0.5.0
 
 ### Breaking changes

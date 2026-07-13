@@ -35,7 +35,6 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.29",
 		"react-compiler-runtime": "^1.0.0"
 	},
 	"devDependencies": {

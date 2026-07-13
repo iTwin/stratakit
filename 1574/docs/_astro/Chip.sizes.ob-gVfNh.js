@@ -1,0 +1,1 @@
+import{j as s}from"./_utils.PrYLcXEH.js";import{S as r}from"./Stack.CnvcuDGJ.js";import{C as e}from"./Chip.COOpmiag.js";const l=()=>s.jsxs(r,{spacing:1,direction:"row",useFlexGap:!0,sx:{alignItems:"center",flexWrap:"wrap"},children:[s.jsx(e,{size:"small",label:"Small"}),s.jsx(e,{label:"Medium"})]});export{l as default};

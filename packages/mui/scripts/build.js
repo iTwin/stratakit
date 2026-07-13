@@ -19,6 +19,7 @@ const entryPoints = await fg("src/**/*.{ts,tsx}", {
 	ignore: [
 		"**/*.d.ts",
 		"**/types.ts", // This will be used for generating a `types.d.ts` file only.
+		"**/~props.ts",
 	],
 });
 

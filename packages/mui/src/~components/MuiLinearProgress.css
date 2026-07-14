@@ -9,9 +9,13 @@
 	--✨color-track--secondary: var(--stratakit-color-border-neutral-muted);
 	--✨color-fill--primary: var(--stratakit-color-icon-accent-strong);
 	--✨color-fill--secondary: var(--stratakit-color-icon-neutral-base);
+
+	--_MuiLinearProgress-track-thickness: 1px;
+	--_MuiLinearProgress-fill-thickness: 4px;
 	/* #endregion */
 
 	background-color: transparent;
+	block-size: var(--_MuiLinearProgress-fill-thickness);
 	border-radius: calc(infinity * 1px);
 
 	&:where(.MuiLinearProgress-colorPrimary) {
@@ -28,8 +32,11 @@
 		&::before {
 			content: "";
 			position: absolute;
-			inset-block: 1px;
-			inset-inline: 0;
+			inset-block: calc(
+				(var(--_MuiLinearProgress-fill-thickness) - var(--_MuiLinearProgress-track-thickness)) *
+				0.5
+			);
+			inset-inline: calc(var(--_MuiLinearProgress-fill-thickness) * 0.5);
 			background-color: var(--_MuiLinearProgress-track-color);
 			border-radius: inherit;
 		}
@@ -56,7 +63,10 @@
 .MuiLinearProgress-bar2 {
 	:where(.MuiLinearProgress-root.MuiLinearProgress-buffer) & {
 		background-color: var(--_MuiLinearProgress-track-color);
-		inset-block: 1px;
+		inset-block: calc(
+			(var(--_MuiLinearProgress-fill-thickness) - var(--_MuiLinearProgress-track-thickness)) *
+			0.5
+		);
 	}
 }
 

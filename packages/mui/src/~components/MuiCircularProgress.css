@@ -3,8 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiCircularProgress-root {
+	--_MuiCircularProgress-track-thickness: 1px;
+	--_MuiCircularProgress-fill-thickness: 4px;
+}
+
 .MuiCircularProgress-track {
 	opacity: 1;
+	stroke-width: var(--_MuiCircularProgress-track-thickness);
 
 	:where(.MuiCircularProgress-root.MuiCircularProgress-colorPrimary) & {
 		stroke: var(--stratakit-color-border-accent-muted);
@@ -17,6 +23,7 @@
 
 .MuiCircularProgress-circle {
 	stroke-linecap: round;
+	stroke-width: var(--_MuiCircularProgress-fill-thickness);
 
 	:where(.MuiCircularProgress-root.MuiCircularProgress-colorPrimary) & {
 		stroke: var(--stratakit-color-icon-accent-strong);

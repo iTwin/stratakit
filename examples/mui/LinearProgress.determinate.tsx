@@ -5,19 +5,24 @@
 
 import * as React from "react";
 import LinearProgress from "@mui/material/LinearProgress";
+import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 export default () => {
 	const labelId = React.useId();
+	const progress = 50;
 
 	return (
 		<>
 			<LinearProgress
 				variant="determinate"
-				value={50}
+				value={progress}
 				aria-labelledby={labelId}
 			/>
-			<Typography id={labelId}>Analyzing results…</Typography>
+			<Stack direction="row" sx={{ justifyContent: "space-between" }}>
+				<Typography id={labelId}>Uploading…</Typography>
+				<Typography>{progress}%</Typography>
+			</Stack>
 		</>
 	);
 };

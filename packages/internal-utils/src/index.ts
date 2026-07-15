@@ -6,5 +6,6 @@
 export * from "./common.js";
 export * from "./dom.js";
 export * from "./hooks.js";
-export * from "./props.js";
 export * from "./react.js";
+
+export type * from "./props.js";

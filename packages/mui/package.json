@@ -61,6 +61,7 @@
 	"devDependencies": {
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
+		"@mui/x-date-pickers": "catalog:",
 		"esbuild": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",

@@ -18,7 +18,7 @@ import { FieldCollection, FieldControlTypeContext } from "./Field.internal.js";
 import Label from "./Label.js";
 
 import type { CollectionItemProps } from "@ariakit/react/collection";
-import type { BaseProps } from "./~utils.props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 import type {
 	CollectionStoreItem,
 	FieldCollectionStoreItem,

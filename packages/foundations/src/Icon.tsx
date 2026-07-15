@@ -19,7 +19,7 @@ import {
 	useRootNode,
 } from "./Root.internal.js";
 
-import type { BaseProps } from "./~props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

@@ -16,7 +16,7 @@ import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import { useFieldControlType } from "./Field.internal.js";
 
-import type { BaseProps, FocusableProps } from "./~utils.props.js";
+import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

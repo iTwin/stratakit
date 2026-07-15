@@ -8,7 +8,7 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { forwardRef, useEventHandlers } from "@stratakit/internal-utils";
 
 import type Tabs from "@mui/material/Tabs";
-import type { BaseProps } from "../~props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

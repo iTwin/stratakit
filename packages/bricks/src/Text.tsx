@@ -8,7 +8,7 @@ import { forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps } from "./~utils.props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 interface TextProps extends BaseProps {
 	/**

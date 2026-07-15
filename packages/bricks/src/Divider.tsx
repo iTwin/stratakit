@@ -10,7 +10,7 @@ import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
 import type { SeparatorProps } from "@ariakit/react/separator";
-import type { BaseProps } from "./~utils.props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 interface DividerProps
 	extends BaseProps<"hr">,

@@ -9,7 +9,7 @@ import cx from "classnames";
 import { useGhostAlignment } from "./~utils.GhostAligner.js";
 import { useInit } from "./~utils.useInit.js";
 
-import type { FocusableProps } from "./~utils.props.js";
+import type { FocusableProps } from "@stratakit/internal-utils";
 
 interface ButtonProps extends FocusableProps<"button"> {
 	/**

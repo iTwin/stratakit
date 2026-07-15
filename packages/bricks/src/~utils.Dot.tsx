@@ -8,7 +8,7 @@ import { forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 import VisuallyHidden from "./VisuallyHidden.js";
 
-import type { BaseProps } from "./~utils.props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 interface DotProps extends BaseProps<"span"> {
 	/**

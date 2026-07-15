@@ -9,7 +9,7 @@ import { forwardRef } from "@stratakit/internal-utils";
 
 import type { AccordionOwnerState } from "@mui/material/Accordion";
 import type { AccordionSummaryOwnProps } from "@mui/material/AccordionSummary";
-import type { BaseProps } from "../~props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

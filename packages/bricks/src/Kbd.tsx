@@ -11,7 +11,7 @@ import { predefinedSymbols } from "./Kbd.internal.js";
 import VisuallyHidden from "./VisuallyHidden.js";
 
 import type { RoleProps } from "@ariakit/react/role";
-import type { BaseProps } from "./~utils.props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 import type { PredefinedSymbol } from "./Kbd.internal.js";
 
 interface KbdProps extends BaseProps<"kbd"> {

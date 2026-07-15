@@ -8,7 +8,7 @@ import { PopoverPaper } from "@mui/material/Popover";
 import { forwardRef, useMergedRefs } from "@stratakit/internal-utils";
 
 import type { PopoverOwnerState } from "@mui/material/Popover";
-import type { BaseProps } from "../~props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

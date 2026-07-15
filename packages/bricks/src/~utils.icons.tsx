@@ -8,7 +8,7 @@ import { Icon } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 
-import type { BaseProps } from "./~utils.props.js";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

@@ -50,6 +50,12 @@ By default, the **Divider** appears in a horizontal orientation. Reorientate it 
 
 :::
 
+### Margin
+
+The `margin` prop can be set to include some space before and after the **Divider**.
+
+::example{src="mui/Divider.margin"}
+
 ## ✅ Do
 
 - Use the **Divider** to break up flow content.

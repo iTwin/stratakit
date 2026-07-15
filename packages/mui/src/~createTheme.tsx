@@ -165,6 +165,7 @@ function createTheme(args: CreateThemeArgs) {
 					component: MuiAlert,
 					variant: "outlined",
 					severity: "none",
+					role: "group", // Overriding role="alert".
 					iconMapping: {
 						error: <ErrorIcon />,
 						info: <InfoIcon />,
@@ -172,8 +173,8 @@ function createTheme(args: CreateThemeArgs) {
 						warning: <WarningIcon />,
 					},
 					slotProps: {
-						root: {
-							role: "group", // Overriding role="alert".
+						closeButton: {
+							edge: "end",
 						},
 					},
 				},
@@ -331,7 +332,12 @@ function createTheme(args: CreateThemeArgs) {
 					variant: "inherit",
 				},
 			},
-			MuiDialogTitle: { defaultProps: { component: Role.h2 } },
+			MuiDialogTitle: {
+				defaultProps: {
+					component: Role.h2,
+					variant: "body-lg",
+				},
+			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
 			MuiDrawer: { defaultProps: { component: Role.div } },
 			MuiFab: {

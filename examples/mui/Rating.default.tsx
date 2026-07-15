@@ -10,7 +10,7 @@ import Rating from "@mui/material/Rating";
 export default () => {
 	return (
 		<FormControl render={<fieldset />} role="radiogroup">
-			<FormLabel render={<legend />}>Product rating:</FormLabel>
+			<FormLabel render={<legend />}>Product rating</FormLabel>
 			<Rating name="product-rating" defaultValue={2} />
 		</FormControl>
 	);

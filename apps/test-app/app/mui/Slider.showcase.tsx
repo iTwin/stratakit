@@ -29,6 +29,9 @@ export const knobs = {
 			MuiFormControl: {
 				disabled: true,
 			},
+			MuiSlider: {
+				disabled: true,
+			},
 		},
 	}),
 };

@@ -18,7 +18,7 @@ import { Root as StrataKitMuiRoot } from "@stratakit/mui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AppNavigationRail } from "./~navigation.tsx";
 import { useSettingsStore } from "./~settings.tsx";
-import { useColorScheme } from "./~utils.tsx";
+import { isProduction, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
 
@@ -30,10 +30,12 @@ const queryClient = new QueryClient({
 });
 
 export const links: LinksFunction = () => {
+	const faviconHref = isProduction ? "/favicon.svg" : "/favicon-dev.svg";
+
 	return [
 		{
 			rel: "icon",
-			href: "/favicon.svg",
+			href: faviconHref,
 			type: "image/svg+xml",
 		},
 		{ rel: "manifest", href: "/manifest.json", crossOrigin: "use-credentials" },

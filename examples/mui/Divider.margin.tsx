@@ -3,15 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import Rating from "@mui/material/Rating";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
-		<FormControl render={<fieldset />} role="radiogroup">
-			<FormLabel render={<legend />}>Precision rating:</FormLabel>
-			<Rating name="precision-rating" defaultValue={2.5} precision={0.5} />
-		</FormControl>
+		<Stack>
+			<Typography>Item</Typography>
+			<Divider flexItem margin />
+			<Typography>Item</Typography>
+			<Divider flexItem margin />
+			<Typography>Item</Typography>
+		</Stack>
 	);
 };

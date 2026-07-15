@@ -22,14 +22,17 @@ const MuiBadgeContext = React.createContext<{ inline?: boolean } | undefined>(
 
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
-interface MuiBadgeProps extends BaseProps<"span">, Pick<BadgeProps, "inline"> {}
+interface MuiBadgeProps
+	extends BaseProps<"span">,
+		Pick<BadgeProps, "type" | "inline"> {}
 
 const MuiBadge = forwardRef<"span", MuiBadgeProps>((props, forwardedRef) => {
-	const { inline, ...rest } = props;
+	const { type = "strong", inline, ...rest } = props;
 	return (
 		<MuiBadgeContext.Provider value={{ inline }}>
 			<Role.span
 				{...rest}
+				data-_sk-type={inline ? type : undefined}
 				data-_sk-inline={inline ? "" : undefined}
 				ref={forwardedRef}
 			/>

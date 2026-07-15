@@ -165,6 +165,7 @@ function createTheme(args: CreateThemeArgs) {
 					component: MuiAlert,
 					variant: "outlined",
 					severity: "none",
+					role: "group", // Overriding role="alert".
 					iconMapping: {
 						error: <ErrorIcon />,
 						info: <InfoIcon />,
@@ -172,9 +173,6 @@ function createTheme(args: CreateThemeArgs) {
 						warning: <WarningIcon />,
 					},
 					slotProps: {
-						root: {
-							role: "group", // Overriding role="alert".
-						},
 						closeButton: {
 							edge: "end",
 						},

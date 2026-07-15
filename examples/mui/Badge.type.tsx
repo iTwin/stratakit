@@ -3,15 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
-import Rating from "@mui/material/Rating";
+import Badge from "@mui/material/Badge";
+import Stack from "@mui/material/Stack";
 
 export default () => {
 	return (
-		<FormControl render={<fieldset />} role="radiogroup">
-			<FormLabel render={<legend />}>Precision rating:</FormLabel>
-			<Rating name="precision-rating" defaultValue={2.5} precision={0.5} />
-		</FormControl>
+		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
+			<Badge badgeContent="Strong" type="strong" inline />
+			<Badge badgeContent="Muted" type="muted" inline />
+			<Badge badgeContent="Outlined" type="outlined" inline />
+		</Stack>
 	);
 };

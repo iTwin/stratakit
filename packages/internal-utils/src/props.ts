@@ -21,7 +21,7 @@ type RenderProp<
 	},
 > = (props: P) => React.ReactNode;
 
-interface RoleOptions {
+type RoleOptions = {
 	/**
 	 * Allows the component to be rendered as a different HTML element or React
 	 * component. The value can be a React element or a function that takes in the
@@ -29,9 +29,9 @@ interface RoleOptions {
 	 * merged.
 	 */
 	render?: RenderProp | React.ReactElement;
-}
+};
 
-interface FocusableOptions {
+type FocusableOptions = {
 	/**
 	 * Determines if the element is disabled. This sets the `aria-disabled`
 	 * attribute accordingly, enabling support for all elements, including those
@@ -68,7 +68,7 @@ interface FocusableOptions {
 	 * controls](https://www.w3.org/WAI/ARIA/apg/practices/keyboard-interface/#focusabilityofdisabledcontrols).
 	 */
 	accessibleWhenDisabled?: boolean;
-}
+};
 
 // ----------------------------------------------------------------------------
 

@@ -56,6 +56,12 @@ The `margin` prop can be set to include some space before and after the **Divide
 
 ::example{src="mui/Divider.margin"}
 
+### Variant
+
+The variant can control how much of the container the **Divider** spans. The default is `fullWidth`. Use `middle` in toolbars.
+
+::example{src="mui/Divider.variant"}
+
 ## ✅ Do
 
 - Use the **Divider** to break up flow content.

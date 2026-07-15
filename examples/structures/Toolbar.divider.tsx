@@ -30,7 +30,7 @@ export default () => {
 					</IconButton>
 				}
 			/>
-			<Divider orientation="vertical" flexItem margin />
+			<Divider orientation="vertical" flexItem margin variant="middle" />
 			<Toolbar.Item
 				render={
 					<IconButton label="Save">

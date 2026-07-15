@@ -31,7 +31,7 @@ Each component comes with a [**Use cases** section](/components/button#use-cases
 
 There are two props that let you change the HTML element used to render a component:
 
-1. The `component` prop: This comes from MUI and you must not use it.
+1. The `component` prop: This comes from MUI and you must use `render` (2) in place of it.
 2. The `render` prop: This is **StrataKit’s** optimized alternative to `component`. Use this sparingly.
 
 ### Changing a heading level
@@ -87,7 +87,7 @@ The `slotProps` alternative gives you finer grained control. For each element, y
 </FormControl>
 ```
 
-The `id` is necessary for creating the association between the select element and its correponding label. The `id` and `htmlFor` values must match.
+The `id` is necessary for creating the association between the select element and its corresponding label. The `id` and `htmlFor` values must match.
 
 ## ARIA attribution
 

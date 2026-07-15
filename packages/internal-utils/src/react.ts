@@ -4,6 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { isBrowser } from "./dom.js";
+
+// ----------------------------------------------------------------------------
+
+/**
+ * SSR-safe wrapper over `React.useLayoutEffect`.
+ *
+ * @see https://fb.me/react-uselayouteffect-ssr
+ */
+const useLayoutEffect = isBrowser ? React.useLayoutEffect : React.useEffect;
 
 // ----------------------------------------------------------------------------
 
@@ -39,4 +49,4 @@ const forwardRef = React.forwardRef as ForwardRefHelper;
 
 // ----------------------------------------------------------------------------
 
-export { forwardRef };
+export { forwardRef, useLayoutEffect };

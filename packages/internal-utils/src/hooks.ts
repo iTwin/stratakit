@@ -18,15 +18,6 @@ type AnyFunction = (...args: any) => any;
 // ----------------------------------------------------------------------------
 
 /**
- * SSR-safe wrapper over `React.useLayoutEffect`.
- *
- * @see https://fb.me/react-uselayouteffect-ssr
- */
-const useLayoutEffect = isBrowser ? React.useLayoutEffect : React.useEffect;
-
-// ----------------------------------------------------------------------------
-
-/**
  * Wrapper over `useState` that always gives preference to the
  * controlled state (which often comes from a prop).
  *
@@ -256,7 +247,6 @@ export {
 	useEventHandlers,
 	useIsClient,
 	useLatestRef,
-	useLayoutEffect,
 	useMergedRefs,
 	usePopoverApi,
 	useSafeContext,

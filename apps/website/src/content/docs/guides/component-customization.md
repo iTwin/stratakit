@@ -73,7 +73,7 @@ In the previous example, the outer **Link** is able to use **RouterLink’s** [`
 
 ### `slots` and `slotProps`
 
-Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements by _slot_. Where needed, change your [**Accordion**](/components/accordion) item’s heading via the `slot` prop and its `heading` key:
+Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements by _slot_. Where needed, change your [**Accordion**](/components/accordion) item’s heading via the `heading` slot:
 
 ```jsx
 <Accordion
@@ -112,42 +112,8 @@ The `slotProps` alternative gives you finer grained control. For each element, y
 
 The `id` is necessary for creating the association between the select element and its corresponding label. The `id` and `htmlFor` values must match.
 
-## ARIA attribution
+## Some assembly required
 
-The [WAI-ARIA](https://www.w3.org/WAI/standards-guidelines/aria/) standard lets you override and extend the information carried by HTML. As established, overriding roles is a notorious [footgun](https://en.wiktionary.org/wiki/footgun). However, some roles supported in ARIA are not yet supported in base HTML. These can occasionally improve the fidelity with which components are identified.
-
-For example, a checkbox used as a switch benefits from `role="switch"`:
-
-```html
-<label for="dark-mode">
-	Dark mode
-	<input type="checkbox" role="switch" id="dark-mode" />
-</label>
-```
-
-The [**Switch**](/components/switch) implements this for you automatically. You just need to supply a label. MUI's [**FormControlLabel**](https://mui.com/material-ui/api/form-control-label/) offers a `label` prop. The `control` prop behaves like `render` (and each support React components, not just base HTML elements):
-
-```jsx
-<FormControlLabel control={<Switch />} label="Dark mode" />
-```
-
-In other cases, you must apply ARIA attribution directly, during implementation. For example, a [**Badge**](/components/badge) can be used to display a notification count:
-
-::example{src="mui/Badge.default"}
-
-This number must be associated with the [**IconButton**](/components/iconbutton) that displays it. In [the **Badge** example](https://github.com/iTwin/stratakit/blob/main/examples/mui/Badge.default.tsx), this association is made with matching `aria-describedby` and `id` values:
-
-```jsx
-<IconButton label="Notifications" aria-describedby={descriptionId}>
-	<Badge badgeContent={4} color="primary">
-		<Icon href={`${svgNotifications}#icon-large`} size="large" />
-		<span id={descriptionId} hidden>
-			You have 4 unread notifications
-		</span>
-	</Badge>
-</IconButton>
-```
-
-It’s not always possible to ship all of the necessary semantic information as part of a component. Some attribution must be applied during the assembly of your product interface. Study the component guides and examples carefully. These exemplify how to apply `render` and ARIA attribution to improve component accessibility and robustness.
+It’s not always possible to ship all of the necessary semantic information as part of a component. As in the last example, some attribution must be applied during the assembly of your product interface. Study the component guides and examples carefully. These exemplify how to apply `render` and [ARIA attribution](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA) to improve component accessibility and robustness.
 
 Verify the correct semantic information is present by examining the rendered HTML code. To see what's available in screen reader output specifically, examine the [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree). In Chrome, you can view the accessibility tree by opening the inspector and choosing the accessibility tab (**Elements > Accessibility**).

@@ -48,6 +48,29 @@ In the following example, `<h1>` is the correct element, since it is the main he
 </Typography>
 ```
 
+### Changing a React component
+
+The `render` prop is capable of replacing not just HTML elements but React components.
+
+Your application may use the popular [**React Router**](https://reactrouter.com/home) library and its [**Link**](https://reactrouter.com/api/components/Link) component. However, you may wish to render **React Router’s** **Link** using the styling associated with the generic [**Link**](/components/link/) coming from MUI.
+
+Import **React Router’s** **Link** as **RouterLink** and apply it using the `render` prop.
+
+```jsx
+import Link from "@mui/material/Link";
+import { Link as RouterLink } from "react-router";
+
+export default () => {
+	return <Link to="/" render={<RouterLink />}>Home</Link>;
+};
+```
+
+:::note[Prop compatibility]
+
+In the previous example, the outer **Link** is able to use **RouterLink’s** [`to` prop](https://reactrouter.com/api/components/Link#to). For some rerendered components, it may be necessary to place the prop on the inner (`render`-encapsulated) component.
+
+:::
+
 ### `slots` and `slotProps`
 
 Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements by _slot_. Where needed, change your [**Accordion**](/components/accordion) item’s heading via the `slot` prop and its `heading` key:

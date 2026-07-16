@@ -81,9 +81,7 @@ export default () => {
 								direction={sortedColumn === "calories" ? direction : "asc"}
 								active={sortedColumn === "calories"}
 								onClick={() => updateSort("calories")}
-								slotProps={{
-									root: { "aria-describedby": sortButtonDescriptionId },
-								}}
+								aria-describedby={sortButtonDescriptionId}
 							>
 								Calories
 							</TableSortLabel>
@@ -96,9 +94,7 @@ export default () => {
 								direction={sortedColumn === "fat" ? direction : "asc"}
 								active={sortedColumn === "fat"}
 								onClick={() => updateSort("fat")}
-								slotProps={{
-									root: { "aria-describedby": sortButtonDescriptionId },
-								}}
+								aria-describedby={sortButtonDescriptionId}
 							>
 								Fat&nbsp;(g)
 							</TableSortLabel>

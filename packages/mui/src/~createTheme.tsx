@@ -541,6 +541,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
 			MuiTableSortLabel: {
 				defaultProps: {
+					component: Role.span,
 					slots: {
 						icon: MuiTableSortLabelIconSlot,
 					},

@@ -58,7 +58,7 @@ The `margin` prop can be set to include some space before and after the **Divide
 
 ### Variant
 
-The variant can control how much of the container the **Divider** spans. The default is `fullWidth`. Use `middle` in toolbars.
+The variant can control how much of the container the **Divider** spans. The default is `fullWidth`. `middle` will leave space on either side of the **Divider**.
 
 ::example{src="mui/Divider.variant"}
 

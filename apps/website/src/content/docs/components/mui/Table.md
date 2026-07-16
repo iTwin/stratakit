@@ -37,9 +37,10 @@ Placing a "select all" checkbox within the column header is not recommended.
 
 ### Sorting
 
-Allows sorting by a single column. Uses the `TableSortLabel` for displaying the sort button. An additional sort description is included the buttons based on [Sortable Table Columns](https://adrianroselli.com/2021/04/sortable-table-columns.html) by Adrian Roselli.
+`TableSortLabel` provides the interactive sort control and displays the current sort direction. The `sortDirection` prop on `TableCell` sets the appropriate `aria-sort` value on the column header so assistive technologies can announce the current sort state. A visually hidden description (`change sort`) is associated with each sort button using `aria-describedby` to provide additional context for screen reader users before activating the control. The button omits the sort direction because it may be read as the column header by some screen readers.
 
-- [Material UI Table Sorting Example](https://mui.com/material-ui/react-table/#sorting-selecting)
-- [TableSortLabel API](https://mui.com/material-ui/api/table-sort-label)
+This example follows the accessibility guidance described in [Adrian Roselli's article on sortable table columns](https://adrianroselli.com/2021/04/sortable-table-columns.html).
+
+See the [MUI Table Sorting Example](https://mui.com/material-ui/react-table/#sorting-selecting) and the [TableSortLabel API documentation](https://mui.com/material-ui/api/table-sort-label) for additional implementation details.
 
 ::example{src="mui/Table.sort"}

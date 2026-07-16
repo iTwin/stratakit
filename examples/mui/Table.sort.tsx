@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import React from "react";
-import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
@@ -66,9 +65,9 @@ export default () => {
 
 	return (
 		<TableContainer render={<Paper />}>
-			<Box sx={{ display: "none" }} id={sortButtonDescriptionId}>
+			<span hidden id={sortButtonDescriptionId}>
 				change sort
-			</Box>
+			</span>
 			<Table>
 				<caption>Dessert nutrition</caption>
 				<TableHead>

@@ -35,7 +35,7 @@ const rows = [
 ];
 
 export default () => {
-	const changeSortId = React.useId();
+	const sortButtonDescriptionId = React.useId();
 
 	const [direction, setDirection] =
 		React.useState<React.ComponentProps<typeof TableSortLabel>["direction"]>(
@@ -66,7 +66,7 @@ export default () => {
 
 	return (
 		<TableContainer render={<Paper />}>
-			<Box sx={{ display: "none" }} id={changeSortId}>
+			<Box sx={{ display: "none" }} id={sortButtonDescriptionId}>
 				change sort
 			</Box>
 			<Table>
@@ -82,7 +82,9 @@ export default () => {
 								direction={sortedColumn === "calories" ? direction : "asc"}
 								active={sortedColumn === "calories"}
 								onClick={() => updateSort("calories")}
-								slotProps={{ root: { "aria-describedby": changeSortId } }}
+								slotProps={{
+									root: { "aria-describedby": sortButtonDescriptionId },
+								}}
 							>
 								Calories
 							</TableSortLabel>
@@ -95,7 +97,9 @@ export default () => {
 								direction={sortedColumn === "fat" ? direction : "asc"}
 								active={sortedColumn === "fat"}
 								onClick={() => updateSort("fat")}
-								slotProps={{ root: { "aria-describedby": changeSortId } }}
+								slotProps={{
+									root: { "aria-describedby": sortButtonDescriptionId },
+								}}
 							>
 								Fat&nbsp;(g)
 							</TableSortLabel>

@@ -131,7 +131,7 @@ If you are using multiple **Skeletons** to construct a representative UI (as in 
 
 Here's what needs to happen, in order, for each change of route:
 
-1. The user clicks a link to a screen within the application. This can be a standard `<a>` element, with an `href`, or any React component that renders as such.
+1. The user must click a link to a screen within the application. This can be a standard `<a>` element, with an `href`, or any React component that renders as such.
 2. If the new route's data takes time to load:
     - Replace the previous screen's main content with a [**Progress**](/components/progress) or [**Skeleton**](/components/skeleton).
     - Focus the (labelled) `role="progressbar"` element.

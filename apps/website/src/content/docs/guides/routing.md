@@ -62,9 +62,9 @@ To remedy this, you must move focus deliberately, onto a suitable element. For t
 
 :::note[Missing main headings]
 
-Each screen should be introduced with an `<h1>`. However, if your screen does not have an `<h1>` (and this cannot presently be resolved), direct focus to another element. 
+Each screen should be introduced with an `<h1>`. See [**Structure**](/guides/structure) for guidance on structuring screens using landmarks and headings.
 
-The `<main>` landmark, housing the screen's main content, is an acceptable interim solution. 
+However, if your screen does not have an `<h1>` (and this cannot presently be resolved), direct focus to another element. The [`<main>` landmark](/guides/structure#landmarks), housing the screen's main content, is an acceptable interim solution. 
 
 ```html
 <main id="main" tabindex="-1">...</main>

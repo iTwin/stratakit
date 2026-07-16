@@ -9,14 +9,42 @@
 			margin-block-end: var(--stratakit-space-x1);
 		}
 
-		&:where([data-_sk-middle]) {
+		&:where(.MuiDivider-middle) {
 			margin-inline-start: 25%;
 			margin-inline-end: 25%;
 		}
 	}
 
-	&:where(.MuiDivider-vertical[data-_sk-margin]) {
-		margin-inline-start: var(--stratakit-space-x1);
-		margin-inline-end: var(--stratakit-space-x1);
+	&:where(.MuiDivider-vertical) {
+		&:where([data-_sk-margin]) {
+			margin-inline-start: var(--stratakit-space-x1);
+			margin-inline-end: var(--stratakit-space-x1);
+		}
+
+		&:where(.MuiDivider-middle) {
+			/** 
+				CSS computes the margin percentage values based on the containing block
+				width so margin-block-start: 25% will not work.  See
+				https://drafts.csswg.org/css-box-3/#margin-physical.  
+				Instead of trying to set a percentage top/bottom margin, use an
+				absolutely positioned pseudo element with top/bottom set to get the same effect.
+			*/
+			position: relative;
+			margin-block: 0;
+			/** 
+				Reserve space for the child element's border. Otherwise the width is 0
+			 	and the child pseudo element ends up drawing its border in the margin
+			*/
+			border-inline-end: thin solid transparent;
+
+			&::after {
+				position: absolute;
+				content: "";
+				display: block;
+				border-inline-end: thin solid var(--stratakit-mui-palette-divider);
+				top: 25%;
+				bottom: 25%;
+			}
+		}
 	}
 }

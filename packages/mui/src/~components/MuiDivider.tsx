@@ -16,8 +16,7 @@ interface MuiDividerProps
 		Pick<DividerOwnProps, "children" | "margin" | "variant"> {}
 
 const MuiDivider = forwardRef<"hr", MuiDividerProps>((props, forwardedRef) => {
-	const { children, margin, className, ...rest } = props;
-	const middle = className?.split(/\s+/).includes("MuiDivider-middle");
+	const { children, margin, ...rest } = props;
 	const defaultRender = (() => {
 		if (
 			children ||
@@ -32,9 +31,7 @@ const MuiDivider = forwardRef<"hr", MuiDividerProps>((props, forwardedRef) => {
 		<Role
 			render={defaultRender}
 			data-_sk-margin={margin ? "" : undefined}
-			data-_sk-middle={middle ? "" : undefined}
 			{...rest}
-			className={className}
 			ref={forwardedRef}
 		>
 			{children}

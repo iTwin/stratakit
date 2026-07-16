@@ -15,11 +15,9 @@ export default () => {
 			</Typography>
 			<Divider margin />
 			<Typography gutterBottom>
-				A center-aligned divider that occupies 50% of the available width
-				provides a more subtle visual break. By leaving equal whitespace on both
-				sides, it draws less attention than a full-width divider and can be used
-				to separate related content while preserving a lighter, more balanced
-				appearance.
+				A middle divider provides a space between the edge of the container and
+				the start of the divider. This keeps the divider visually distinct from
+				any container borders.
 			</Typography>
 			<Divider variant="middle" margin />
 			<Typography gutterBottom>

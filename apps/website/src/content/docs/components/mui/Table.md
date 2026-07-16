@@ -37,10 +37,10 @@ Placing a "select all" checkbox within the column header is not recommended.
 
 ### Sorting
 
-`TableSortLabel` provides the interactive sort control and displays the current sort direction. The `sortDirection` prop on `TableCell` sets the appropriate `aria-sort` value on the column header so assistive technologies can announce the current sort state. A visually hidden description (`change sort`) is associated with each sort button using `aria-describedby` to provide additional context for screen reader users before activating the control. The button omits the sort direction because it may be read as the column header by some screen readers.
+The [`TableSortLabel`](https://mui.com/material-ui/api/table-sort-label) component renders an interactive sort button and displays the current sort direction. A hidden description (`"change sort"`) can be associated with each sort button using `aria-describedby` to provide additional context for assistive technologies without affecting the column header.
 
-This example follows the accessibility guidance described in [Adrian Roselli's article on sortable table columns](https://adrianroselli.com/2021/04/sortable-table-columns.html).
+The [`sortDirection`](https://mui.com/material-ui/api/table-cell/#table-cell-prop-sortDirection) prop on `TableCell` sets the appropriate [`aria-sort`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-sort) value on the column header so assistive technologies can announce the current sort state.
 
-See the [MUI Table Sorting Example](https://mui.com/material-ui/react-table/#sorting-selecting) and the [TableSortLabel API documentation](https://mui.com/material-ui/api/table-sort-label) for additional implementation details.
+This example is adapted from the [MUI Table Sorting example](https://mui.com/material-ui/react-table/#sorting-selecting) and follows the accessibility guidance described in [Adrian Roselli's article on sortable table columns](https://adrianroselli.com/2021/04/sortable-table-columns.html).
 
 ::example{src="mui/Table.sort"}

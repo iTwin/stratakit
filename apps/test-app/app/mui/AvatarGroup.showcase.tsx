@@ -5,12 +5,10 @@
 
 import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
 import AvatarGroupMultiple from "examples/mui/AvatarGroup.multiple.tsx";
-import AvatarGroupSingle from "examples/mui/AvatarGroup.single.tsx";
 
 export default function AvatarGroupExamples() {
 	return (
 		<>
-			<AvatarGroupSingle />
 			<AvatarGroupMultiple />
 			<AvatarGroupDefault />
 		</>

@@ -257,15 +257,28 @@ function extractMuiMaterialComponents(
 		`${muiMaterialPath}/ButtonBase/index.d.ts`,
 		`${muiMaterialPath}/OverridableComponent/index.d.ts`,
 	];
-	for (const path of depPaths) {
-		if (fs.existsSync(path)) {
-			sourceFilePaths.push(path);
+	for (const depPath of depPaths) {
+		if (fs.existsSync(depPath)) {
+			sourceFilePaths.push(depPath);
 		}
 	}
 
+	// Resolve symlinks to real paths in the pnpm virtual store before adding to the
+	// project. The symlinked paths (packages/mui/node_modules/@mui/material/...) walk
+	// up through a node_modules tree where transitive deps like @mui/types are absent.
+	// The real paths in .pnpm land in a node_modules directory that has @mui/types as
+	// a sibling, so TypeScript's module resolution can find it automatically.
+	const resolvedSourceFilePaths = sourceFilePaths.map((p) => {
+		try {
+			return fs.realpathSync(p);
+		} catch {
+			return p;
+		}
+	});
+
 	// Add all source files to the project
-	if (sourceFilePaths.length > 0) {
-		project.addSourceFilesAtPaths(sourceFilePaths);
+	if (resolvedSourceFilePaths.length > 0) {
+		project.addSourceFilesAtPaths(resolvedSourceFilePaths);
 	}
 
 	// Extract components

@@ -20,7 +20,12 @@ import {
 
 const repoPath = process.env.REPO_PATH || "../..";
 
-const packageNames = ["mui", "foundations", "bricks", "structures"];
+const packageNames = [
+	"@stratakit/mui",
+	"@stratakit/foundations",
+	"@stratakit/bricks",
+	"@stratakit/structures",
+];
 
 const baseTypeNames = ["BaseProps", "FocusableProps"];
 const utilityFunctions = ["loadFoundationsStyles"];
@@ -280,7 +285,7 @@ function extractMuiMaterialComponents(
 		}
 	}
 
-	return apis.length > 0 ? { name: "mui-material", apis } : undefined;
+	return apis.length > 0 ? { name: "@mui/material", apis } : undefined;
 }
 
 function extractMuiComponent(
@@ -664,13 +669,14 @@ function generateApi() {
 	let muiProject: Project | undefined;
 
 	for (const packageName of packageNames) {
-		const packageDir = `${repoPath}/packages/${packageName}`;
+		const dirName = packageName.replace(/^@stratakit\//, "");
+		const packageDir = `${repoPath}/packages/${dirName}`;
 		const project = new Project({
 			tsConfigFilePath: `${packageDir}/tsconfig.json`,
 		});
 
 		// Store the mui project for later use in extracting @mui/material components
-		if (packageName === "mui") {
+		if (packageName === "@stratakit/mui") {
 			muiProject = project;
 		}
 
@@ -849,7 +855,7 @@ function getReexport(symbol: TSMorphSymbol): Api.Reexport | undefined {
 function getPackageNameFromFilePath(symbol: TSMorphSymbol) {
 	const name = symbol.getFullyQualifiedName();
 	const match = name.match(/\/packages\/([^/]+)\//);
-	return match ? match[1] : undefined;
+	return match ? `@stratakit/${match[1]}` : undefined;
 }
 
 function getConvenienceComponent({ sourceFile }: { sourceFile: SourceFile }) {

@@ -73,7 +73,7 @@ function packagesLoader() {
 		parser: (content) => {
 			const packages = JSON.parse(content) as Api;
 			return packages.map((pkg) => ({
-				id: pkg.name,
+				id: pkg.name.replace(/^@[^/]+\//, ""),
 				...pkg,
 				apis: pkg.apis.map((api) => {
 					const status = getApiStatus(api);

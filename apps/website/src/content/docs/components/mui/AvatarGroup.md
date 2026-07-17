@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/avatar-group/
 ---
 
-::example{src="mui/AvatarGroups.default}
+::example{src="mui/AvatarGroup.default}
 
 ## StrataKit MUI modifications
 
@@ -22,4 +22,4 @@ links:
 
 When multiple **Avatars** exceed the configured [`max`](https://mui.com/material-ui/api/avatar-group/#avatar-group-prop-max) limit of the **AvatarGroup**, a surplus item can be shown using the [`renderSurplus`](https://mui.com/material-ui/api/avatar-group/#avatar-group-prop-renderSurplus) prop.
 
-::example{src="mui/AvatarGroups.surplus"}
+::example{src="mui/AvatarGroup.surplus"}

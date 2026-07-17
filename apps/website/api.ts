@@ -59,7 +59,7 @@ namespace Api {
 		 * Dot separated if star export: `unstable_ErrorRegion.Root`
 		 */
 		barrelName?: string;
-		deprecated?: boolean;
+		deprecated?: string | boolean;
 	}
 
 	export interface Type {
@@ -74,7 +74,7 @@ namespace Api {
 		optional: boolean;
 		jsdoc?: string;
 		defaultValue?: string;
-		deprecated?: boolean;
+		deprecated?: string | boolean;
 	}
 
 	export interface Reexport {
@@ -346,7 +346,7 @@ function extractMuiComponent(
 
 		// Extract JSDoc and deprecated flag from the exported symbol
 		let jsdoc: JSDoc | undefined;
-		let deprecated = false;
+		let deprecated: string | boolean = false;
 		try {
 			const exportSymbols = componentSourceFile.getExportSymbols();
 			const exportedSymbol = exportSymbols.find(
@@ -624,7 +624,7 @@ function buildStrataKitAugmentedPropsMap(
 interface MuiPropJsdocData {
 	comment: string | undefined;
 	defaultValue: string | undefined;
-	deprecated: boolean;
+	deprecated: string | boolean;
 }
 
 function getMuiPropJsdocData(
@@ -653,8 +653,13 @@ function getMuiPropJsdocData(
 			.find((tag) => tag.getTagName() === "default")
 			?.getCommentText();
 
-	const isDeprecated = (jsdoc: JSDoc | undefined) =>
-		!!jsdoc?.getTags().find((tag) => tag.getTagName() === "deprecated");
+	const isDeprecated = (jsdoc: JSDoc | undefined): string | boolean => {
+		const tag = jsdoc
+			?.getTags()
+			.find((tag) => tag.getTagName() === "deprecated");
+		if (!tag) return false;
+		return tag.getCommentText() || true;
+	};
 
 	return {
 		comment: getJsdocComment(strataKitJsdoc) ?? getJsdocComment(muiJsdoc),
@@ -1212,13 +1217,14 @@ function getBaseTypeName(type: TSMorphType) {
 	});
 }
 
-function getDeprecated(node: JSDocableNode) {
+function getDeprecated(node: JSDocableNode): string | boolean {
 	const jsdoc = node.getJsDocs().at(0);
 	if (!jsdoc) return false;
 	const deprecated = jsdoc
 		.getTags()
 		.find((tag) => tag.getTagName() === "deprecated");
-	return !!deprecated;
+	if (!deprecated) return false;
+	return deprecated.getCommentText() || true;
 }
 
 generateApi();

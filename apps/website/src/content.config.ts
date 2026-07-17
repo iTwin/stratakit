@@ -133,7 +133,7 @@ function packagesSchema() {
 			optional: z.boolean().optional(),
 			jsdoc: reference("jsdoc").optional(),
 			defaultValue: z.string().optional(),
-			deprecated: z.boolean().optional(),
+			deprecated: z.union([z.boolean(), z.string()]).optional(),
 		}),
 	);
 	const component = z.object({
@@ -143,7 +143,7 @@ function packagesSchema() {
 		baseProps: z.array(z.string()),
 		props,
 		barrelName: z.string().optional(),
-		deprecated: z.boolean().optional(),
+		deprecated: z.union([z.boolean(), z.string()]).optional(),
 	});
 	return z.object({
 		name: z.string(),

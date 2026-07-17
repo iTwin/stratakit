@@ -171,6 +171,9 @@ function getBaseElementLink(baseElement: string) {
 										</>
 									)}
 								</AnchorHeading>
+								{typeof prop.deprecated === "string" && (
+									<Aside type="caution">{prop.deprecated}</Aside>
+								)}
 								<div>
 									<strong>Type:</strong>
 									<code>{prop.type}</code>

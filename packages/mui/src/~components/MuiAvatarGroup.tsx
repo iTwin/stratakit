@@ -18,6 +18,10 @@ const MuiAvatarGroup = forwardRef<"div", MuiAvatarGroupProps>(
 		const { children: childrenProp, ...rest } = props;
 
 		const children = React.Children.map(childrenProp, (child) => {
+			// When no surplus chip is present, the first child is null. We must skip it,
+			// or it will render an empty list item.
+			if (child == null) return null;
+
 			return (
 				<div className="🥝MuiAvatarGroupItem" role="listitem">
 					{child}

@@ -67,6 +67,7 @@ import {
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
+import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 interface CreateThemeArgs {
 	portalContainer?: HTMLElement | null;

@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/avatar-group/
 ---
 
-::example{src="mui/AvatarGroup.default}
+::example{src="mui/AvatarGroup.default"}
 
 ## StrataKit MUI modifications
 

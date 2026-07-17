@@ -164,6 +164,12 @@ function getBaseElementLink(baseElement: string) {
 							<>
 								<AnchorHeading level={propHeading.depth} id={propHeading.slug}>
 									{propHeading.text}
+									{prop.deprecated && (
+										<>
+											{" "}
+											<Badge variant="danger" text="Deprecated" />
+										</>
+									)}
 								</AnchorHeading>
 								<div>
 									<strong>Type:</strong>

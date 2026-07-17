@@ -133,6 +133,7 @@ function packagesSchema() {
 			optional: z.boolean().optional(),
 			jsdoc: reference("jsdoc").optional(),
 			defaultValue: z.string().optional(),
+			deprecated: z.boolean().optional(),
 		}),
 	);
 	const component = z.object({

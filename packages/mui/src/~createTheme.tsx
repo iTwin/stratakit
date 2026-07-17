@@ -46,12 +46,12 @@ import {
 	MuiTableBody,
 	MuiTableCell,
 	MuiTableHead,
+	MuiTableSortLabelIconSlot,
 } from "./~components/MuiTable.js";
 import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
-	ArrowDownIcon,
 	CaretsUpDownIcon,
 	ChevronDownIcon,
 	ChevronLeftDoubleIcon,
@@ -67,6 +67,7 @@ import {
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
+import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 interface CreateThemeArgs {
 	portalContainer?: HTMLElement | null;
@@ -542,8 +543,9 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTableSortLabel: {
 				defaultProps: {
 					component: Role.span,
-					// TODO: This should use sort-ascending and sort-descending icons, but that requires disabling MUI's built-in icon rotation.
-					IconComponent: ArrowDownIcon,
+					slots: {
+						icon: MuiTableSortLabelIconSlot,
+					},
 				},
 			},
 			MuiTablePaginationActions: {

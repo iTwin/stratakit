@@ -4,13 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
-import AvatarGroupMultiple from "examples/mui/AvatarGroup.multiple.tsx";
+import AvatarGroupSurplus from "examples/mui/AvatarGroup.surplus.tsx";
 
 export default function AvatarGroupExamples() {
 	return (
 		<>
-			<AvatarGroupMultiple />
 			<AvatarGroupDefault />
+			<AvatarGroupSurplus />
 		</>
 	);
 }

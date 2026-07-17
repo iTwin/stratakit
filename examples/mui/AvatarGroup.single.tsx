@@ -3,16 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
-import AvatarGroupMultiple from "examples/mui/AvatarGroup.multiple.tsx";
-import AvatarGroupSingle from "examples/mui/AvatarGroup.single.tsx";
+import Avatar from "@mui/material/Avatar";
+import AvatarGroup from "@mui/material/AvatarGroup";
 
-export default function AvatarGroupExamples() {
+export default () => {
 	return (
-		<>
-			<AvatarGroupSingle />
-			<AvatarGroupMultiple />
-			<AvatarGroupDefault />
-		</>
+		<AvatarGroup>
+			<Avatar aria-label="John Doe" role="img">
+				<abbr aria-hidden="true">J</abbr>
+			</Avatar>
+		</AvatarGroup>
 	);
-}
+};

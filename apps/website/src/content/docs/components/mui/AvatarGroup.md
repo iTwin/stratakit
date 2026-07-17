@@ -15,3 +15,17 @@ links:
 - `Avatar`s use a mask rather than a border to achieve the overlapping cutout effect.
 - The `variant` prop is not supported. The **AvatarGroup** will always be _circular_.
 - Added list semantics to `AvatarGroup`. Each child `Avatar` is wrapped in a list item element.
+
+## Examples
+
+### Multiple
+
+Multiple **Avatars** shown in a group.
+
+::example{src="mui/AvatarGroups.multiple}
+
+### Surplus
+
+Multiple **Avatars** shown in a group, exceeding the configured limit. In this case a surplus item is shown.
+
+::example{src="mui/AvatarGroups.default}

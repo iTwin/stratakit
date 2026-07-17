@@ -16,16 +16,15 @@ export default () => {
 			<Divider margin />
 			<Typography gutterBottom>
 				A middle divider provides a space between the edge of the container and
-				the start of the divider. This keeps the divider visually distinct from
+				the ends of the divider. This keeps the divider visually distinct from
 				any container borders.
 			</Typography>
 			<Divider variant="middle" margin />
 			<Typography gutterBottom>
 				An inset divider is offset from the leading edge of its container so it
-				aligns with the content rather than spanning the full width. In Material
-				UI, this variant is commonly used in lists to align the divider with
-				list text while leaving space for icons, avatars, or other leading
-				elements.
+				aligns with the content rather than spanning the full width. In MUI,
+				this variant is commonly used in lists to align the divider with list
+				text while leaving space for icons, avatars, or other leading elements.
 			</Typography>
 			<Divider variant="inset" margin />
 		</div>

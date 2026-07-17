@@ -557,14 +557,13 @@ function extractMuiComponentPropsViaNamedTypes(
 		const optional = property.isOptional();
 
 		// Get the property type at the location
-		if (!propsTypeAlias) {
+		const location = ownPropsInterface ?? propsTypeAlias;
+		if (!location) {
 			throw new Error(
 				`Missing ownProps and propTypeAlias for ${componentName}`,
 			);
 		}
-		const propertyType = property.getTypeAtLocation(
-			ownPropsInterface ?? propsTypeAlias,
-		);
+		const propertyType = property.getTypeAtLocation(location);
 		const type = getPropType(propertyType);
 
 		const {

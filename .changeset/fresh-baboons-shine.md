@@ -1,0 +1,50 @@
+---
+"@stratakit/icons": patch
+---
+
+Added new icons:
+
+- `axis-lock.svg`
+- `beam.svg`
+- `brace.svg`
+- `column.svg`
+- `cone.svg`
+- `construction-area.svg`
+- `construction-line.svg`
+- `construction-point.svg`
+- `cylinder.svg`
+- `drop-cap.svg`
+- `footing-combined.svg`
+- `footing-isolated.svg`
+- `footing-mat.svg`
+- `footing-pilecap.svg`
+- `grid-lines.svg`
+- `ice.svg`
+- `load-area.svg`
+- `load-case.svg`
+- `load-combination.svg`
+- `load-linear.svg`
+- `load-perimeter.svg`
+- `load-point.svg`
+- `mass-area.svg`
+- `mass-excitation.svg`
+- `mass-linear.svg`
+- `mass-perimeter.svg`
+- `mass.svg`
+- `seismic.svg`
+- `slab-opening.svg`
+- `slab-region.svg`
+- `slab.svg`
+- `snap-grid.svg`
+- `snap-orthogonal.svg`
+- `snap-point.svg`
+- `snowflake.svg`
+- `spring-area.svg`
+- `spring-linear.svg`
+- `spring-point.svg`
+- `support-linear.svg`
+- `support-point.svg`
+- `temperature.svg`
+- `tower-crane.svg`
+- `truck.svg`
+- `wind.svg`

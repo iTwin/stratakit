@@ -94,7 +94,7 @@ The `slotProps` alternative gives you finer grained control. For each element, y
 
 ```jsx
 <FormControl>
-	<InputLabel variant="standard" htmlFor={inputId}>
+	<InputLabel htmlFor={inputId}>
 		Design system:
 	</InputLabel>
 	<NativeSelect

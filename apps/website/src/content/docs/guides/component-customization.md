@@ -64,7 +64,7 @@ import Link from "@mui/material/Link";
 import { Link as RouterLink } from "react-router";
 
 export default () => {
-	return <Link to="/" render={<RouterLink />}>Home</Link>;
+	return <Link render={<RouterLink to="/" />}>Home</Link>;
 };
 ```
 

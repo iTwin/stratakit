@@ -253,6 +253,13 @@ declare module "@mui/material/Dialog" {
 	}
 }
 
+declare module "@mui/material/Divider" {
+	interface DividerOwnProps {
+		/** Add a 1x margin before and after the divider */
+		margin?: boolean;
+	}
+}
+
 declare module "@mui/material/Fab" {
 	interface FabPropsColorOverrides {
 		info: false;

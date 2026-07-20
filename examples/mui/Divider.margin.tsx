@@ -3,14 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
-import AvatarGroupSurplus from "examples/mui/AvatarGroup.surplus.tsx";
+import Divider from "@mui/material/Divider";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
-export default function AvatarGroupExamples() {
+export default () => {
 	return (
-		<>
-			<AvatarGroupDefault />
-			<AvatarGroupSurplus />
-		</>
+		<Stack>
+			<Typography>Item</Typography>
+			<Divider flexItem margin />
+			<Typography>Item</Typography>
+			<Divider flexItem margin />
+			<Typography>Item</Typography>
+		</Stack>
 	);
-}
+};

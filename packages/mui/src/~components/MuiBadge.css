@@ -19,7 +19,7 @@
 		--_MuiBadge-padding: var(--stratakit-space-x2);
 
 		block-size: 1.5rem;
-		column-gap: var(--stratakit-space-x1);
+		column-gap: var(--_MuiBadge-gap);
 		padding-inline-start: var(--_MuiBadge-padding);
 		padding-inline-end: var(--_MuiBadge-padding);
 		position: static;
@@ -30,7 +30,7 @@
 		@apply --typography("body-sm");
 		--_MuiBadge-padding: var(--stratakit-space-x1);
 		block-size: 1.25rem;
-		column-gap: var(--stratakit-space-x05);
+		--_MuiBadge-gap: var(--stratakit-space-x05);
 	}
 
 	/* #region Type: strong */

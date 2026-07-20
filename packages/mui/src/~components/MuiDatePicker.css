@@ -19,7 +19,8 @@
 }
 
 .MuiPickersCalendarHeader-labelContainer {
-	overflow: unset;
+	align-items: stretch;
+	padding-inline-end: var(--stratakit-space-x1);
 }
 
 .MuiDayCalendar-weekContainer {

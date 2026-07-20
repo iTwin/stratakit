@@ -29,10 +29,13 @@ Each component comes with a [**Use cases** section](/components/button#use-cases
 
 ## Changing component output
 
-There are two props that let you change the HTML element used to render a component:
+**StrataKit** lets you change the element used to render a component, via **the `render` prop**. This prop is available across the entire component catalog, in both [StrataKit components](/components/overview/#mui-components) and [MUI components](/components/overview/#mui-components).
 
-1. The `component` prop: This comes from MUI and you must use `render` (2) in place of it.
-2. The `render` prop: This is **StrataKit’s** optimized alternative to `component`. Use this sparingly.
+:::caution[Do not use MUI's `component` prop]
+MUI's primary way of customizing rendered elements is through the [`component`](https://mui.com/material-ui/customization/overriding-component-structure/#the-component-prop) prop. This prop should generally _not_ be used in your application code. **StrataKit** needs exclusive access to the `component` prop in order to customize **MUI** components' behavior, appearance or semantics. Passing the `component` prop from outside would break such customizations.
+
+Use the `render` prop where it's available. It works consistently across both **StrataKit** and **MUI** components. In some rare cases like the [`Box`](https://mui.com/material-ui/react-box/) component where the `render` prop is not available, it is acceptable to use the `component` prop.
+:::
 
 ### Changing a heading level
 

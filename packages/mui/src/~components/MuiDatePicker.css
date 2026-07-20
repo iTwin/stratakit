@@ -18,11 +18,6 @@
 	--_MuiDayCalendar-day-margin: var(--stratakit-space-x1);
 }
 
-.MuiDayCalendar-monthContainer {
-	/* Accounts for 6 rows of weeks */
-	block-size: calc((var(--_MuiDayCalendar-day-size) + var(--_MuiDayCalendar-day-margin) * 2) * 6);
-}
-
 .MuiDayCalendar-weekContainer {
 	margin: 0;
 }

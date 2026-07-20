@@ -41,9 +41,9 @@ Use the `render` prop where it's available. It works consistently across both **
 
 The [**Language and labels**](/guides/structure/#headings) guide sets out the importance of applying the correct heading levels when describing the interface structure. Heading levels are set using the elements `<h1>` to `<h6>`. 
 
-The [**Typography**](/components/typography/#heading) component supports `render` for setting the element and `variant` for setting an accompanying style token. This decoupling of semantics and style lets you set the correct structure while calibrating visual hierarchy.
+The [**Typography**](/components/typography/#heading) component supports `render` for setting the element and `variant` for setting an accompanying style. This decoupling of semantics and style lets you set the correct structure while calibrating visual hierarchy.
 
-In the following example, `<h1>` is the correct element, since it is the main heading for the page. But, since the context requires a diminished font-size, a `headline`-prefixed token is preferred over a larger `display` variant. 
+In the following example, `<h1>` is the correct element, since it is the main heading for the page. But, since the context requires a diminished font-size, a `headline`-prefixed style is preferred over a larger `display` variant. 
 
 ```jsx
 <Typography variant="headline-sm" render={<h1 />}>

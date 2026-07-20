@@ -18,11 +18,6 @@
 	--_MuiDayCalendar-day-margin: var(--stratakit-space-x1);
 }
 
-.MuiPickersCalendarHeader-labelContainer {
-	align-self: stretch;
-	padding-inline-end: var(--stratakit-space-x1);
-}
-
 .MuiDayCalendar-weekContainer {
 	margin: 0;
 }

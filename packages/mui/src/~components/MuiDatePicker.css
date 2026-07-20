@@ -19,7 +19,7 @@
 }
 
 .MuiPickersCalendarHeader-labelContainer {
-	align-items: stretch;
+	align-self: stretch;
 	padding-inline-end: var(--stratakit-space-x1);
 }
 

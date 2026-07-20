@@ -90,5 +90,6 @@ Available packages are documented in [README.md](https://raw.githubusercontent.c
 - Control component visuals through props and avoid style overrides
 - Use tokens when styling is necessary
 - Never hardcode custom values
+- Avoid the `sx` prop of MUI components; prefer using `className` instead
 - Never use internal class names, prefixed with `🥝`
 - Never use internal attributes, prefixed with `data-_sk`

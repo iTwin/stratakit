@@ -92,6 +92,11 @@
 		font-weight: 500;
 		outline: unset;
 
+		&:where(:focus-visible) {
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
+		}
+
 		&::after {
 			content: "";
 			position: absolute;

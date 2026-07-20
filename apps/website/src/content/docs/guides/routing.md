@@ -23,7 +23,9 @@ Follow this guide to make sure routing behavior is predictable and no features a
 
 With JavaScript, you can manipulate [the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) in all sorts of ways. By removing a lot of elements and replacing them with a lot of other elements, you can make it appear the page has been replaced. And nobody needs to click an `<a>` element for that to happen. Click handlers can be attached to any elements.
 
-However, anchors are accessible (focusable) by keyboard. They also identify themselves to users operating screen reader software. Then there are all the other standard behaviors, listed above. Where you are _emulating_ navigation, make it convincing. Provide `<a>` elements with valid `href` attributes or React components that render as such. The [**Link**](/components/link) component renders a standard link. Don't offer `<button>`s, `<div>`s or any other elements for context changes. 
+However, anchors are accessible (focusable) by keyboard. They also identify themselves to users operating screen reader software. Then there are all the other standard behaviors, listed above. Where you are _emulating_ navigation, make it convincing. Provide `<a>` elements with valid `href` attributes or React components that render as such. The [**Link**](/components/link) component renders a standard link. 
+
+Don't offer `<button>`s, `<div>`s or any other elements for context changes. Only use JavaScript to enhance `<a>` behavior. Be careful not to remove or change standard behavior when JavaScript is used to handle interaction.
 
 ## Update the address
 

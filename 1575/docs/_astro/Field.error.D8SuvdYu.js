@@ -1,0 +1,1 @@
+import{j as r}from"./_utils.T8V2I9it.js";import{F as e,b as s,c as o,a,d as i}from"./Field.sUzdY8Ah.js";import{a as t}from"./TextBox.DnaOTCUt.js";const n=()=>r.jsxs(e,{children:[r.jsx(s,{children:"Bio"}),r.jsx(o,{children:"Tell us a little about yourself."}),r.jsx(a,{render:r.jsx(t,{})}),r.jsx(i,{children:"Your bio must be 200 characters or more."})]});export{n as default};

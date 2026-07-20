@@ -17,3 +17,7 @@ links:
 - **Large:** Use in spacious layouts where a more prominent rating is needed.
 
 ::example{src="mui/Rating.sizes"}
+
+### Precision
+
+::example{src="mui/Rating.precision"}

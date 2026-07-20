@@ -15,9 +15,14 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 export default () => {
 	const errorId = React.useId();
 	return (
-		<FormControl render={<fieldset />} role="radiogroup" error>
+		<FormControl
+			render={<fieldset />}
+			role="radiogroup"
+			error
+			aria-describedby={errorId}
+		>
 			<FormLabel render={<legend />}>Gender</FormLabel>
-			<RadioGroup aria-describedby={errorId} name="gender" role={undefined}>
+			<RadioGroup name="gender" role={undefined}>
 				<FormControlLabel value="female" control={<Radio />} label="Female" />
 				<FormControlLabel value="male" control={<Radio />} label="Male" />
 				<FormControlLabel value="other" control={<Radio />} label="Other" />

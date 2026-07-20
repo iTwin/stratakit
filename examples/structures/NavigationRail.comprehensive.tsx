@@ -50,7 +50,7 @@ export default () => {
 							/>
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
-					<Divider className={styles.divider} role="presentation" />
+					<Divider role="presentation" margin />
 					<NavigationRail.Anchor
 						href="#"
 						icon={`${svgDisconnect}#icon-large`}
@@ -70,7 +70,7 @@ export default () => {
 								/>
 							</NavigationRail.ListItem>
 						</NavigationRail.List>
-						<Divider className={styles.divider} role="presentation" />
+						<Divider role="presentation" margin />
 						<AccountButton />
 					</NavigationRail.Footer>
 				</NavigationRail.Content>

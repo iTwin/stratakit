@@ -3,14 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import AvatarGroupDefault from "examples/mui/AvatarGroup.default.tsx";
-import AvatarGroupSurplus from "examples/mui/AvatarGroup.surplus.tsx";
+import Alert from "@mui/material/Alert";
+import AlertTitle from "@mui/material/AlertTitle";
 
-export default function AvatarGroupExamples() {
+export default () => {
 	return (
-		<>
-			<AvatarGroupDefault />
-			<AvatarGroupSurplus />
-		</>
+		<Alert severity="error" role="alert">
+			<AlertTitle>Invalid credit card</AlertTitle>
+			Your bank has declined the charge to your card. Please check the card
+			number or contact your bank.
+		</Alert>
 	);
-}
+};

@@ -13,10 +13,10 @@ import type { BaseProps } from "@stratakit/foundations/secret-internals";
 
 interface MuiDividerProps
 	extends BaseProps<"hr">,
-		Pick<DividerOwnProps, "children"> {}
+		Pick<DividerOwnProps, "children" | "margin"> {}
 
 const MuiDivider = forwardRef<"hr", MuiDividerProps>((props, forwardedRef) => {
-	const { children, ...rest } = props;
+	const { children, margin, ...rest } = props;
 
 	const defaultRender = (() => {
 		if (
@@ -29,7 +29,12 @@ const MuiDivider = forwardRef<"hr", MuiDividerProps>((props, forwardedRef) => {
 	})();
 
 	return (
-		<Role render={defaultRender} {...rest} ref={forwardedRef}>
+		<Role
+			render={defaultRender}
+			data-_sk-margin={margin ? "" : undefined}
+			{...rest}
+			ref={forwardedRef}
+		>
 			{children}
 		</Role>
 	);

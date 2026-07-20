@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.4.1
+
+- [#1619](https://github.com/iTwin/stratakit/pull/1619): Added new icon:
+  - `production-sheet.svg` (matches the `production-drawing.svg` icon from before this release)
+
+  Updated icon:
+  - `production-drawing.svg` (reverted to the original version from before 0.3.1)
+
+- [#1597](https://github.com/iTwin/stratakit/pull/1597): Added new icons:
+  - `add-region.svg`
+  - `annotate-balloon.svg`
+  - `asset-information.svg`
+  - `control-line-add.svg`
+  - `control-line.svg`
+  - `corner.svg`
+  - `define-region-size.svg`
+  - `ditch.svg`
+  - `hatch.svg`
+  - `path-animation-crowd.svg`
+  - `path-animation-single.svg`
+  - `path-animation-traffic.svg`
+  - `quality-custom.svg`
+  - `quality-high.svg`
+  - `quality-low.svg`
+  - `quality-mid.svg`
+  - `rotate-point.svg`
+  - `rule-ditch.svg`
+  - `rule.svg`
+  - `sheet-defined-region.svg`
+  - `vertex.svg`
+
 ## 0.4.0
 
 ### Breaking changes

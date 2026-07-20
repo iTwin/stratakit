@@ -87,7 +87,7 @@
 		font-weight: 500;
 		outline: unset;
 
-		&:where(:focus-visible) {
+		&:where(.Mui-focusVisible) {
 			outline: var(--🥝focus-outline);
 			outline-offset: var(--🥝focus-outline-offset);
 		}

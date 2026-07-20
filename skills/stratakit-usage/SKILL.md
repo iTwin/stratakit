@@ -66,6 +66,10 @@ Available packages are documented in [README.md](https://raw.githubusercontent.c
 - [MUI type augmentation source](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/packages/mui/src/types.ts)
 - Never use `component` prop of MUI components; use `render` prop instead
 
+## `@stratakit/bricks` migration
+
+- Use [migration guide](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx) to replace usage of `@stratakit/bricks`
+
 ## `@stratakit/structures` usage
 
 - Use [alternatives](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx) instead of deprecated components

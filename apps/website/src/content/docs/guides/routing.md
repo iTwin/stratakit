@@ -69,7 +69,7 @@ Each screen should be introduced with an `<h1>`. See [**Structure**](/guides/str
 However, if your screen does not have an `<h1>` (and this cannot presently be resolved), direct focus to another element. The [`<main>` landmark](/guides/structure#landmarks), housing the screen's main content, is an acceptable interim solution. 
 
 ```html
-<main id="main" tabindex="-1">...</main>
+<main id="main" tabindex={-1}>...</main>
 ```
 
 :::
@@ -81,9 +81,9 @@ const location = useLocation();
 
 useEffect(() => {
   const h1 = document.querySelector('h1');
-  const tabIndex = h1?.getAttribute('tabindex');
-  h1?.setAttribute('tabindex', tabIndex ?? '-1');
-  h1?.focus();
+  if !(h1) return;
+  h1.tabIndex = -1;
+  h1.focus();
 }, [location]);
 ```
 
@@ -101,13 +101,13 @@ For the pending state of screens still fetching content, instate either a [**Ske
 
 ### Progress
 
-[**Progress**](/components/progress) is implemented with `role="progressbar"`, which must be labelled, as in [this **Progress** example](https://github.com/iTwin/stratakit/blob/main/examples/mui/CircularProgress.default.tsx). Upon entering the pending/loading state, **Progress** must be focused, hence the application of `tabindex="-1"` (see [**Move focus deliberately**](#move-focus-deliberately)):
+[**Progress**](/components/progress) is implemented with `role="progressbar"`, which must be labelled, as in [this **Progress** example](https://github.com/iTwin/stratakit/blob/main/examples/mui/CircularProgress.default.tsx). Upon entering the pending/loading state, **Progress** must be focused, hence the application of `tabindex={-1}` (see [**Move focus deliberately**](#move-focus-deliberately)):
 
 ```jsx
 const labelId = React.useId();
 return (
   <>
-    <CircularProgress tabindex="-1" aria-labelledby={labelId} />
+    <CircularProgress tabindex={-1} aria-labelledby={labelId} />
     <Typography style={visuallyHidden} id={labelId}>Loading…</Typography>
   </>
 );
@@ -124,7 +124,7 @@ In this case, the text “Loading...” does not need to be visible, but it does
 The [**Skeleton**](/components/skeleton) does not have a `role="progressbar"` element built in. If you choose to use **Skeleton**, attribute it as a progress bar:
 
 ```jsx
-<Skeleton role="progressbar" aria-label="Loading…" tabindex="-1" />
+<Skeleton role="progressbar" aria-label="Loading…" tabindex={-1} />
 ```
 
 If you are using multiple **Skeletons** to construct a representative UI (as in [this complex **Skeleton** example](https://github.com/iTwin/stratakit/blob/main/examples/mui/Skeleton.variants.tsx)), only make one of them a progressbar.
@@ -141,6 +141,6 @@ Here's what needs to happen, in order, for each change of route:
     - Update the address/URL using `pushState` (your [router library](https://reactrouter.com/start/framework/routing) may do this for you).
     - Change the `<title>` value to describe the new screen. Use the pattern `<title>{screen name} - {app name}</title>`.
     - Render the new screen's content.
-    - Focus the main heading introducing the content using the `focus()` method. This should be an `<h1>` and will need `tabindex="-1"`.
+    - Focus the main heading introducing the content using the `focus()` method. This should be an `<h1>` and will need `tabindex={-1}`.
     - Remove `aria-current="true"` from links that no longer correspond to the new screen.
     - Add `aria-current="true"` to any links that correspond to the new screen. 

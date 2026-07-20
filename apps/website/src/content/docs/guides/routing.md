@@ -15,7 +15,7 @@ When it comes to navigation, browsers agree to certain standard behaviors. Here 
 
 None of these behaviors will occur automatically unless you use links ([anchor elements](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/a)) to connect separate documents together.
 
-A [single-page application](https://en.wikipedia.org/wiki/Single-page_application) can have multiple screens, but since these screens all render within a single document, standard navigation behavior is disrupted. Without care, focus becomes unpredictable, back buttons do not work, and addresses no longer take you back to places you want to revisit.
+A [single-page application](https://en.wikipedia.org/wiki/Single-page_application) can have multiple screens, but since these screens all render within a single document, standard navigation behavior is disrupted. Without care, focus becomes unpredictable, back and refresh buttons do not work, and addresses no longer take you to the places you want to revisit.
 
 Follow this guide to make sure routing behavior is predictable and no features are missing.
 

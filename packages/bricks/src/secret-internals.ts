@@ -11,5 +11,3 @@ export {
 	IconButtonPresentation,
 } from "./IconButton.internal.js";
 export { TooltipContext } from "./Tooltip.internal.js";
-
-export type { BaseProps, FocusableProps } from "./~utils.props.js";

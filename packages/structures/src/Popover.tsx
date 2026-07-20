@@ -16,10 +16,7 @@ import {
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
-import type {
-	BaseProps,
-	FocusableProps,
-} from "@stratakit/bricks/secret-internals";
+import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

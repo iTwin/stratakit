@@ -13,7 +13,7 @@ import { forwardRef } from "@stratakit/internal-utils";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps } from "@stratakit/bricks/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils";
 
 // ----------------------------------------------------------------------------
 

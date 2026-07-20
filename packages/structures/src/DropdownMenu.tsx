@@ -38,10 +38,10 @@ import type {
 	MenuStore,
 } from "@ariakit/react/menu";
 import type {
+	AnyString,
 	BaseProps,
 	FocusableProps,
-} from "@stratakit/bricks/secret-internals";
-import type { AnyString } from "@stratakit/internal-utils";
+} from "@stratakit/internal-utils";
 import type { PredefinedSymbol } from "../../bricks/dist/Kbd.internal.js";
 
 // ----------------------------------------------------------------------------

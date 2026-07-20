@@ -47,8 +47,6 @@ Available packages are documented in [README.md](https://raw.githubusercontent.c
 
 - [Available examples](https://api.github.com/repos/iTwin/stratakit/contents/examples/)
 - Examples are embedded using the `::example` directive. E.g. `::example{src="mui/Button.default"}` embeds the example from https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/examples/mui/Button.default.tsx
-- Use `data-src` attribute of `<example-embed>` element to identify the embedded examples
-- Access embedded example source via "View source on GitHub" links
 
 ## API reference
 

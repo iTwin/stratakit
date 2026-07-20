@@ -70,7 +70,7 @@ export default () => {
 
 :::note[Prop compatibility]
 
-In the previous example, the outer **Link** is able to use **RouterLink’s** [`to` prop](https://reactrouter.com/api/components/Link#to). For some rerendered components, it may be necessary to place the prop on the inner (`render`-encapsulated) component.
+When rendering React elements, props must be set on the components they belong to. In the previous example, the [`to`](https://reactrouter.com/api/components/Link#to) prop is set directly on the `RouterLink`.
 
 :::
 

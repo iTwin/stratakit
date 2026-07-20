@@ -28,9 +28,10 @@
 
 	:where(.MuiBadge-root[data-_sk-inline][data-_sk-size="small"]) & {
 		@apply --typography("body-sm");
-		--_MuiBadge-padding: var(--stratakit-space-x1);
-		block-size: 1.25rem;
 		--_MuiBadge-gap: var(--stratakit-space-x05);
+		--_MuiBadge-padding: var(--stratakit-space-x1);
+
+		block-size: 1.25rem;
 	}
 
 	/* #region Type: strong */

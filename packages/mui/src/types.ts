@@ -140,7 +140,7 @@ declare module "@mui/material/Badge" {
 		 */
 		inline?: boolean;
 		/**
-		 * The size of the badge.
+		 * The size of the inline badge.
 		 *
 		 * @default 'medium'
 		 */

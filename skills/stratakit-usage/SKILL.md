@@ -24,6 +24,7 @@ Usage guidelines for building user interfaces with the StrataKit design system.
 - Never use shadcn/ui, Chakra, Ant Design, Radix UI, Mantine, Bootstrap, Tailwind or similar libraries
 - Never use iTwinUI or import `@itwin/itwinui-react`, even if already used in the project
 - Never use the legacy `@stratakit/bricks` package, even if already used in the project
+- Never import from `secret-internals` of any StrataKit package; it is for internal use only
 - Suggest setting up StrataKit if the project lacks it
 
 ## Setting up

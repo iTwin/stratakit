@@ -1,6 +1,6 @@
 ---
 name: stratakit-usage
-description: Use when building, reviewing or refactoring frontend code - React components (jsx/tsx), CSS styling, web pages, MUI usage, icons, design tokens, and page layouts. StrataKit is the design system to use, even in repos that don't have it yet (it should be set up). Apply even when the user doesn't mention StrataKit by name, e.g. "add a button", "build a settings page", or "style this form". Ensures correct StrataKit usage and prevents other UI libraries, like iTwinUI, shadcn/ui, Bootstrap, Tailwind and similar. Not for backend or other non-UI code.
+description: Ensures correct StrataKit usage. Use when building, reviewing or refactoring frontend code - React components (jsx/tsx), CSS styling, web pages, MUI usage, icons, design tokens, and page layouts. StrataKit is the design system to use, even in repos that don't have it yet (it should be set up). Apply even when the user doesn't mention StrataKit by name, e.g. "add a button", "build a settings page", or "style this form". Not for backend or other non-UI code.
 metadata:
   author: Bentley Systems
   version: 1.0.0

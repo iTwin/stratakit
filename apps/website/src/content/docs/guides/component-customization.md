@@ -46,7 +46,7 @@ The [**Typography**](/components/typography/#heading) component supports `render
 In the following example, `<h1>` is the correct element, since it is the main heading for the page. But, since the context requires a diminished font-size, a `headline`-prefixed token is preferred over a larger `display` variant. 
 
 ```jsx
-<Typography variant="headline-sg" render={<h1 />}>
+<Typography variant="headline-sm" render={<h1 />}>
 	Heading text
 </Typography>
 ```

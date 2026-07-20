@@ -141,7 +141,6 @@ function createTheme(args: CreateThemeArgs) {
 			// biome-ignore lint/suspicious/noExplicitAny: MUI expects 25 items in the shadows array
 		] as any,
 		components: {
-			...(datePickerDefaults as object),
 			MuiAppBar: { defaultProps: { component: Role.header } },
 			MuiAccordion: {
 				defaultProps: {
@@ -330,6 +329,18 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
+			MuiDatePicker: {
+				defaultProps: {
+					slots: {
+						openPickerIcon: CalendarIcon,
+					},
+					slotProps: {
+						openPickerButton: {
+							size: "small",
+						},
+					},
+				},
+			},
 			MuiDialog: { defaultProps: { component: Role.div } },
 			MuiDialogContentText: {
 				defaultProps: {
@@ -423,6 +434,11 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiPaper: { defaultProps: { component: Role.div } },
+			MuiPickersInputBase: {
+				defaultProps: {
+					className: "MuiInputBase-root",
+				},
+			},
 			MuiPopover: {
 				defaultProps: {
 					component: Role.div,
@@ -563,6 +579,18 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiTextField: { defaultProps: { component: Role.div } },
+			MuiTimePicker: {
+				defaultProps: {
+					slots: {
+						openPickerIcon: ClockIcon,
+					},
+					slotProps: {
+						openPickerButton: {
+							size: "small",
+						},
+					},
+				},
+			},
 			MuiToggleButton: { defaultProps: { component: MuiToggleButton } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
@@ -623,40 +651,6 @@ function createTheme(args: CreateThemeArgs) {
 		},
 	});
 }
-
-// ----------------------------------------------------------------------------
-
-const datePickerDefaults = {
-	MuiPickersInputBase: {
-		defaultProps: {
-			className: "MuiInputBase-root",
-		},
-	},
-	MuiDatePicker: {
-		defaultProps: {
-			slots: {
-				openPickerIcon: CalendarIcon,
-			},
-			slotProps: {
-				openPickerButton: {
-					size: "small",
-				},
-			},
-		},
-	},
-	MuiTimePicker: {
-		defaultProps: {
-			slots: {
-				openPickerIcon: ClockIcon,
-			},
-			slotProps: {
-				openPickerButton: {
-					size: "small",
-				},
-			},
-		},
-	},
-};
 
 // ----------------------------------------------------------------------------
 

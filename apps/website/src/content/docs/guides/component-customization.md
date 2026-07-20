@@ -55,9 +55,9 @@ In the following example, `<h1>` is the correct element, since it is the main he
 
 The `render` prop is capable of replacing not just HTML elements but React components.
 
-Your application may use the popular [**React Router**](https://reactrouter.com/home) library and its [**Link**](https://reactrouter.com/api/components/Link) component. However, you may wish to render **React Router’s** **Link** using the styling associated with the generic [**Link**](/components/link/) coming from MUI.
+Your application may use the popular [**React Router**](https://reactrouter.com/home) library and its [`Link`](https://reactrouter.com/api/components/Link) component. However, you may wish to render **React Router’s** `Link` using the styling associated with the design system's [**Link**](/components/link/) component.
 
-Import **React Router’s** **Link** as **RouterLink** and apply it using the `render` prop.
+Import **React Router’s** `Link` as an alias (e.g. `RouterLink`) and apply it using the `render` prop.
 
 ```jsx
 import Link from "@mui/material/Link";

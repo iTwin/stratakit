@@ -10,4 +10,7 @@ export {
 	IconButtonContext,
 	IconButtonPresentation,
 } from "./IconButton.internal.js";
+export { predefinedSymbols } from "./Kbd.internal.js";
 export { TooltipContext } from "./Tooltip.internal.js";
+
+export type { PredefinedSymbol } from "./Kbd.internal.js";

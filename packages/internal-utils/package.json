@@ -5,13 +5,34 @@
 	"version": "0.1.0",
 	"license": "MIT",
 	"sideEffects": false,
-	"types": "./dist/index.d.ts",
 	"exports": {
-		".": {
-			"@stratakit/source": "./src/index.ts",
-			"types": "./dist/index.d.ts",
-			"development": "./dist/DEV/index.js",
-			"default": "./dist/index.js"
+		"./common": {
+			"@stratakit/source": "./src/common.ts",
+			"types": "./dist/common.d.ts",
+			"development": "./dist/DEV/common.js",
+			"default": "./dist/common.js"
+		},
+		"./dom": {
+			"@stratakit/source": "./src/dom.ts",
+			"types": "./dist/dom.d.ts",
+			"development": "./dist/DEV/dom.js",
+			"default": "./dist/dom.js"
+		},
+		"./hooks": {
+			"@stratakit/source": "./src/hooks.ts",
+			"types": "./dist/hooks.d.ts",
+			"development": "./dist/DEV/hooks.js",
+			"default": "./dist/hooks.js"
+		},
+		"./react": {
+			"@stratakit/source": "./src/react.ts",
+			"types": "./dist/react.d.ts",
+			"development": "./dist/DEV/react.js",
+			"default": "./dist/react.js"
+		},
+		"./props": {
+			"@stratakit/source": "./src/props.ts",
+			"types": "./dist/props.d.ts"
 		},
 		"./package.json": "./package.json"
 	},

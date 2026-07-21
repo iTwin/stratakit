@@ -114,13 +114,8 @@
 	}
 }
 
-.MuiCircularProgress-track {
-	stroke: CanvasText;
-	opacity: 0.25;
-}
-
-.MuiCircularProgress-circle {
-	stroke: CanvasText;
+.MuiCircularProgress-root {
+	--_MuiCircularProgress-color: CanvasText;
 }
 
 .MuiDialog-paper {
@@ -167,25 +162,7 @@
 }
 
 .MuiLinearProgress-root {
-	--_MuiLinearProgress-track-color: Canvas;
-	--_MuiLinearProgress-fill-color: CanvasText;
-
-	&:where(.MuiLinearProgress-determinate, .MuiLinearProgress-indeterminate) {
-		&::before {
-			background-color: var(--_MuiLinearProgress-fill-color);
-			opacity: 0.25;
-		}
-	}
-}
-
-.MuiLinearProgress-bar {
-	background-color: var(--_MuiLinearProgress-fill-color);
-}
-
-.MuiLinearProgress-bar2 {
-	:where(.MuiLinearProgress-root.MuiLinearProgress-buffer) & {
-		opacity: 0.25;
-	}
+	--_MuiLinearProgress-color: CanvasText;
 }
 
 .MuiListItemIcon-root {

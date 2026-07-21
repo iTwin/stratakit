@@ -5,10 +5,8 @@
 
 .MuiLinearProgress-root {
 	/* #region Variables */
-	--✨color-track--primary: var(--stratakit-color-border-accent-muted);
-	--✨color-track--secondary: var(--stratakit-color-border-neutral-muted);
-	--✨color-fill--primary: var(--stratakit-color-icon-accent-strong);
-	--✨color-fill--secondary: var(--stratakit-color-icon-neutral-base);
+	--✨color--primary: var(--stratakit-color-icon-accent-strong);
+	--✨color--secondary: var(--stratakit-color-icon-neutral-base);
 
 	--_MuiLinearProgress-track-thickness: 1px;
 	--_MuiLinearProgress-fill-thickness: 4px;
@@ -19,13 +17,11 @@
 	border-radius: calc(infinity * 1px);
 
 	&:where(.MuiLinearProgress-colorPrimary) {
-		--_MuiLinearProgress-track-color: var(--✨color-track--primary);
-		--_MuiLinearProgress-fill-color: var(--✨color-fill--primary);
+		--_MuiLinearProgress-color: var(--✨color--primary);
 	}
 
 	&:where(.MuiLinearProgress-colorSecondary) {
-		--_MuiLinearProgress-track-color: var(--✨color-track--secondary);
-		--_MuiLinearProgress-fill-color: var(--✨color-fill--secondary);
+		--_MuiLinearProgress-color: var(--✨color--secondary);
 	}
 
 	&:where(.MuiLinearProgress-determinate, .MuiLinearProgress-indeterminate) {
@@ -37,7 +33,7 @@
 				0.5
 			);
 			inset-inline: calc(var(--_MuiLinearProgress-fill-thickness) * 0.5);
-			background-color: var(--_MuiLinearProgress-track-color);
+			background-color: var(--_MuiLinearProgress-color);
 			border-radius: inherit;
 		}
 	}
@@ -49,7 +45,7 @@
 			inset-inline-end: 0;
 			inset-block: 0;
 			aspect-ratio: 1;
-			background-color: var(--_MuiLinearProgress-fill-color);
+			background-color: var(--_MuiLinearProgress-color);
 			border-radius: inherit;
 		}
 	}
@@ -57,12 +53,11 @@
 
 .MuiLinearProgress-bar {
 	border-radius: inherit;
-	background-color: var(--_MuiLinearProgress-fill-color);
+	background-color: var(--_MuiLinearProgress-color);
 }
 
 .MuiLinearProgress-bar2 {
 	:where(.MuiLinearProgress-root.MuiLinearProgress-buffer) & {
-		background-color: var(--_MuiLinearProgress-track-color);
 		inset-block: calc(
 			(var(--_MuiLinearProgress-fill-thickness) - var(--_MuiLinearProgress-track-thickness)) *
 			0.5

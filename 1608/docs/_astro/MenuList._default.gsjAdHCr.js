@@ -1,1 +1,0 @@
-import{j as e,V as t}from"./_utils.o-Euo4wp.js";import{M as s}from"./MenuItem.BQS_3eUQ.js";const o=()=>e.jsxs(t,{children:[e.jsx(s,{children:"Profile"}),e.jsx(s,{children:"My account"}),e.jsx(s,{children:"Logout"})]});export{o as default};

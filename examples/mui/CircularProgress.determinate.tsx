@@ -8,28 +8,21 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 
+import styles from "./CircularProgress.determinate.module.css";
+
 export default () => {
 	const labelId = React.useId();
 	const progress = 50;
 
 	return (
 		<>
-			<Box sx={{ position: "relative", display: "inline-flex" }}>
+			<Box className={styles.container}>
 				<CircularProgress
 					variant="determinate"
 					value={progress}
 					aria-labelledby={labelId}
 				/>
-				<Typography
-					variant="caption"
-					sx={{
-						inset: 0,
-						position: "absolute",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-					}}
-				>
+				<Typography variant="caption" className={styles.percentage}>
 					{progress}%
 				</Typography>
 			</Box>

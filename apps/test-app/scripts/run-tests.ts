@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { spawn } from "node:child_process";
+import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 const repoDir = fileURLToPath(new URL("../../..", import.meta.url));
@@ -32,12 +33,30 @@ async function execute(command: string, args: string[] = []) {
 }
 
 void (async () => {
+	// Create the test output folder mount point in case it does not exist
+	await mkdir(`${appDir}/test-results`, { recursive: true });
+
+	// On Linux/macOS, pass the host UID/GID as build args so the image's ubuntu
+	// user is remapped to match — files written to bind-mounted directories are
+	// then owned by the correct host user.  process.getuid is undefined on
+	// Windows, where Docker Desktop handles ownership transparently via WSL2.
+	const uidArgs =
+		process.getuid && process.getgid
+			? [
+					"--build-arg",
+					`UID=${process.getuid()}`,
+					"--build-arg",
+					`GID=${process.getgid()}`,
+				]
+			: [];
+
 	await execute("docker", [
 		"build",
 		"-t",
 		imageName,
 		"-f",
 		dockerfilePath,
+		...uidArgs,
 		repoDir, // Build context
 	]);
 
@@ -45,12 +64,12 @@ void (async () => {
 		"run",
 		"--init", // Use init process to handle zombie processes
 		"--rm", // Remove the container after run
-		"-v", // Mount snapshot directory from host to container
+		"-v",
 		`${appDir}/app:${containerAppDir}/app`,
-		"-v", // Mount test-results directory from host to container
+		"-v", // Mount build directory from host to container
+		`${appDir}/build:${containerAppDir}/build`,
+		"-v", // Mount results directory from host to container
 		`${appDir}/test-results:${containerAppDir}/test-results`,
-		"-v", // Mount playwright-report directory from host to container
-		`${appDir}/playwright-report:${containerAppDir}/playwright-report`,
 		"-w", // Set working directory
 		containerAppDir,
 		imageName,

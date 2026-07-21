@@ -9,7 +9,7 @@
 	--✨color--secondary: var(--stratakit-color-icon-neutral-base);
 
 	--_MuiLinearProgress-track-thickness: 1px;
-	--_MuiLinearProgress-fill-thickness: 4px;
+	--_MuiLinearProgress-fill-thickness: 5px;
 	/* #endregion */
 
 	background-color: transparent;

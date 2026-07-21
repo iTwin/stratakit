@@ -5,7 +5,7 @@
 
 .MuiCircularProgress-root {
 	--_MuiCircularProgress-track-thickness: 1px;
-	--_MuiCircularProgress-fill-thickness: 4px;
+	--_MuiCircularProgress-fill-thickness: 5px;
 
 	&:where(.MuiCircularProgress-colorPrimary) {
 		--_MuiCircularProgress-color: var(--stratakit-color-icon-accent-strong);

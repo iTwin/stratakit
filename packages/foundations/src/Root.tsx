@@ -7,14 +7,14 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
+import { identity } from "@stratakit/internal-utils/common";
 import {
-	forwardRef,
 	getOwnerDocument,
 	getWindow,
-	identity,
 	isBrowser,
 	isDocument,
-} from "@stratakit/internal-utils";
+} from "@stratakit/internal-utils/dom";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import css from "./~styles.css.js";
 import {
@@ -26,7 +26,7 @@ import {
 } from "./Root.internal.js";
 import { loadStyles } from "./styles.internal.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 const packageName = "@stratakit/foundations";
 const key = `${packageName}@${__VERSION__}`;

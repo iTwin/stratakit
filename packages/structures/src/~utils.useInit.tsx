@@ -5,7 +5,7 @@
 
 import * as React from "react";
 import { RootContext } from "@stratakit/foundations/secret-internals";
-import { useSafeContext } from "@stratakit/internal-utils";
+import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import css from "./styles.css.js";
 
 const packageName = "@stratakit/structures";

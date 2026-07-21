@@ -7,13 +7,13 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
 import {
-	forwardRef,
 	useEventHandlers,
 	useMergedRefs,
-} from "@stratakit/internal-utils";
+} from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

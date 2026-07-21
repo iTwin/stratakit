@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
-import { forwardRef } from "@stratakit/internal-utils";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type { DividerOwnProps } from "@mui/material/Divider";
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

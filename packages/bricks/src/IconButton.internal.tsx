@@ -5,11 +5,11 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import { forwardRef } from "@stratakit/internal-utils";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { useGhostAlignment } from "./~utils.GhostAligner.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 import type Button from "./Button.js";
 
 // ----------------------------------------------------------------------------

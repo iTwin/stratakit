@@ -7,7 +7,7 @@ import {
 	getOwnerDocument,
 	getWindow,
 	isBrowser,
-} from "@stratakit/internal-utils";
+} from "@stratakit/internal-utils/dom";
 
 /**
  * A Map of WeakMaps containing information for all stylesheets.

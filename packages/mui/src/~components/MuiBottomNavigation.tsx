@@ -3,10 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { forwardRef } from "@stratakit/internal-utils";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

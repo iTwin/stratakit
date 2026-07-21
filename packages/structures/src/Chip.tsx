@@ -6,14 +6,15 @@
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { IconButton } from "@stratakit/bricks";
-import { forwardRef, useSafeContext } from "@stratakit/internal-utils";
+import { useSafeContext } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
 import { combine } from "zustand/middleware";
 import { Dismiss } from "./~utils.icons.js";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 import type { ExtractState } from "zustand";
 
 // ----------------------------------------------------------------------------

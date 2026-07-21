@@ -5,11 +5,11 @@
 
 import { Role } from "@ariakit/react/role";
 import Paper from "@mui/material/Paper";
-import { forwardRef } from "@stratakit/internal-utils";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type { AccordionOwnerState } from "@mui/material/Accordion";
 import type { AccordionSummaryOwnProps } from "@mui/material/AccordionSummary";
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

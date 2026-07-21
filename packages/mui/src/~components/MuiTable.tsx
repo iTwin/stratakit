@@ -6,12 +6,12 @@
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { ThemeProvider } from "@mui/material/styles";
-import { forwardRef } from "@stratakit/internal-utils";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import { SortAscendingIcon, SortDescendingIcon } from "../Icon.js";
 
 import type { Theme } from "@mui/material/styles";
 import type { TableSortLabelOwnerState } from "@mui/material/TableSortLabel";
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

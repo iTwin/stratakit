@@ -11,15 +11,18 @@ import { useStoreState } from "@ariakit/react/store";
 import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import {
-	forwardRef,
 	usePopoverApi,
 	useStableCallback,
-} from "@stratakit/internal-utils";
+} from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { Dismiss } from "./~utils.icons.js";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

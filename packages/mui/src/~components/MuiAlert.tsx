@@ -5,9 +5,10 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import { forwardRef, useSafeContext } from "@stratakit/internal-utils";
+import { useSafeContext } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

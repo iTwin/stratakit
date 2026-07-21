@@ -5,7 +5,8 @@
 
 import * as React from "react";
 import { Icon } from "@stratakit/foundations";
-import { forwardRef, useMergedRefs } from "@stratakit/internal-utils";
+import { useMergedRefs } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import { Dot } from "./~utils.Dot.js";
 import { useInit } from "./~utils.useInit.js";
 import Button from "./Button.js";

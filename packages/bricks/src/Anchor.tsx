@@ -5,12 +5,15 @@
 
 import { Focusable } from "@ariakit/react/focusable";
 import { Role } from "@ariakit/react/role";
-import { forwardRef } from "@stratakit/internal-utils";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import VisuallyHidden from "./VisuallyHidden.js";
 
-import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/internal-utils/props";
 
 interface AnchorRootProps extends FocusableProps<"a"> {
 	/** @default "neutral" */

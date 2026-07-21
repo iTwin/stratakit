@@ -5,13 +5,17 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import { forwardRef, isBrowser } from "@stratakit/internal-utils";
+import { isBrowser } from "@stratakit/internal-utils/dom";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { CaretsUpDown } from "./~utils.icons.js";
 import { useInit } from "./~utils.useInit.js";
 import { useFieldControlType } from "./Field.internal.js";
 
-import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/internal-utils/props";
 
 const supportsHas = isBrowser && CSS?.supports?.("selector(:has(+ *))");
 

@@ -9,19 +9,22 @@ import { Role } from "@ariakit/react/role";
 import { Tooltip, VisuallyHidden } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import {
-	forwardRef,
 	useEventHandlers,
 	useMergedRefs,
 	useSafeContext,
 	useStableCallback,
-} from "@stratakit/internal-utils";
+} from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
 import { combine } from "zustand/middleware";
 import { useWarnOnInteractiveDescendants } from "./~hooks.js";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
+import type {
+	BaseProps,
+	FocusableProps,
+} from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

@@ -7,16 +7,16 @@ import * as React from "react";
 import { useStoreState } from "@ariakit/react/store";
 import * as AkTooltip from "@ariakit/react/tooltip";
 import {
-	forwardRef,
 	useEventHandlers,
 	usePopoverApi,
 	useStableCallback,
-} from "@stratakit/internal-utils";
+} from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 import { TooltipContext } from "./Tooltip.internal.js";
 
-import type { FocusableProps } from "@stratakit/internal-utils";
+import type { FocusableProps } from "@stratakit/internal-utils/props";
 
 interface TooltipProps
 	extends Omit<FocusableProps<"div">, "content">,

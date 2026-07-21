@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { createIconFromPath } from "@stratakit/bricks/secret-internals";
-import { forwardRef } from "@stratakit/internal-utils";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

@@ -3,13 +3,27 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .MuiDivider-root {
-	&:where(:not(.MuiDivider-vertical)[data-_sk-margin]) {
-		margin-block-start: var(--stratakit-space-x1);
-		margin-block-end: var(--stratakit-space-x1);
+	&:where(:not(.MuiDivider-vertical)) {
+		&:where([data-_sk-margin]) {
+			margin-block-start: var(--stratakit-space-x1);
+			margin-block-end: var(--stratakit-space-x1);
+		}
+
+		&:where(.MuiDivider-middle) {
+			margin-inline-start: var(--stratakit-space-x2);
+			margin-inline-end: var(--stratakit-space-x2);
+		}
 	}
 
-	&:where(.MuiDivider-vertical[data-_sk-margin]) {
-		margin-inline-start: var(--stratakit-space-x1);
-		margin-inline-end: var(--stratakit-space-x1);
+	&:where(.MuiDivider-vertical) {
+		&:where([data-_sk-margin]) {
+			margin-inline-start: var(--stratakit-space-x1);
+			margin-inline-end: var(--stratakit-space-x1);
+		}
+
+		&:where(.MuiDivider-middle) {
+			margin-block-start: var(--stratakit-space-x2);
+			margin-block-end: var(--stratakit-space-x2);
+		}
 	}
 }

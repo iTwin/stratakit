@@ -52,7 +52,6 @@ import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
-	ArrowDownIcon,
 	CalendarIcon,
 	CaretsUpDownIcon,
 	ChevronDownIcon,

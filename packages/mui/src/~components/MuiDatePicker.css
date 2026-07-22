@@ -13,6 +13,11 @@
 	}
 }
 
+.MuiPickersCalendarHeader-labelContainer {
+	align-self: stretch;
+	padding-inline-end: var(--stratakit-space-x1);
+}
+
 .MuiDayCalendar-root {
 	--_MuiDayCalendar-day-size: var(--stratakit-size-control-field-height-medium);
 	--_MuiDayCalendar-day-margin: var(--stratakit-space-x1);

@@ -328,6 +328,10 @@ function createTheme(args: CreateThemeArgs) {
 			MuiContainer: { defaultProps: { component: Role.div } },
 			MuiDateCalendar: {
 				defaultProps: {
+					slots: {
+						leftArrowIcon: ChevronLeftIcon,
+						rightArrowIcon: ChevronRightIcon,
+					},
 					dayOfWeekFormatter: (date: Date) =>
 						date
 							.toLocaleDateString(undefined, { weekday: "short" })

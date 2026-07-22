@@ -15,13 +15,13 @@
 	color: var(--_MuiBadge-color);
 
 	:where(.MuiBadge-root[data-_sk-inline]) & {
-		--_MuiBadge-padding: var(--stratakit-space-x3);
+		--_MuiBadge-padding-inline: var(--stratakit-space-x3);
 		--_MuiBadge-block-size: 1.5rem;
 
 		block-size: var(--_MuiBadge-block-size);
 		column-gap: var(--stratakit-space-x1);
-		padding-inline-start: var(--_MuiBadge-padding);
-		padding-inline-end: var(--_MuiBadge-padding);
+		padding-inline-start: var(--_MuiBadge-padding-inline);
+		padding-inline-end: var(--_MuiBadge-padding-inline);
 		position: static;
 		transform: none;
 	}
@@ -29,7 +29,7 @@
 	:where(.MuiBadge-root[data-_sk-inline][data-_sk-size="small"]) & {
 		@apply --typography("body-sm");
 		--_MuiBadge-block-size: 1.25rem;
-		--_MuiBadge-padding: var(--stratakit-space-x2);
+		--_MuiBadge-padding-inline: var(--stratakit-space-x2);
 	}
 
 	/* #region Type: strong */

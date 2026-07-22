@@ -13,5 +13,4 @@ export {
 export { predefinedSymbols } from "./Kbd.internal.js";
 export { TooltipContext } from "./Tooltip.internal.js";
 
-export type { BaseProps, FocusableProps } from "@stratakit/internal-utils";
 export type { PredefinedSymbol } from "./Kbd.internal.js";

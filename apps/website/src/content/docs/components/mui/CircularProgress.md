@@ -11,6 +11,8 @@ links:
 ## StrataKit MUI modifications
 
 - The `enableTrackSlot` prop defaults to true.
+- Restyled using StrataKit's visual language.
+- Includes full `forced-colors` support.
 
 ## Examples
 

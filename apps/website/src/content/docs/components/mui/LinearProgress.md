@@ -11,6 +11,8 @@ links:
 ## StrataKit MUI modifications
 
 - Added an end marker when the `variant` prop is set to `"determinate"` or `"buffer"`.
+- Restyled using StrataKit's visual language.
+- Includes full `forced-colors` support.
 
 ## Examples
 

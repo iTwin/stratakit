@@ -331,6 +331,7 @@ function createTheme(args: CreateThemeArgs) {
 					slots: {
 						leftArrowIcon: ChevronLeftIcon,
 						rightArrowIcon: ChevronRightIcon,
+						switchViewIcon: CaretsUpDownIcon,
 					},
 					slotProps: {
 						previousIconButton: {

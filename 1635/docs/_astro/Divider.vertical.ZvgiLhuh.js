@@ -1,0 +1,1 @@
+import{j as i}from"./_utils.spFY-9FX.js";import{D as r}from"./Divider.DeD-igmR.js";const o=()=>i.jsx("div",{style:{blockSize:"calc(100dvh - 16px * 2)"},children:i.jsx(r,{orientation:"vertical"})});export{o as default};

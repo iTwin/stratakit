@@ -28,7 +28,6 @@
 	inline-size: var(--_MuiDayCalendar-day-size);
 	color: var(--stratakit-color-text-neutral-secondary);
 	margin-inline: var(--_MuiDayCalendar-day-margin);
-	user-select: none;
 }
 
 .MuiPickerDay-root {

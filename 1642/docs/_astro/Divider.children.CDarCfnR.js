@@ -1,0 +1,1 @@
+import{j as r}from"./_utils.DMPaFoXW.js";import{D as e}from"./Divider.DMABkH_u.js";import{T as t}from"./Typography.Cbp1a0G9.js";const o=()=>r.jsx(e,{children:r.jsx(t,{variant:"subtitle-md",render:r.jsx("h3",{}),noWrap:!0,children:"Last unread"})});export{o as default};

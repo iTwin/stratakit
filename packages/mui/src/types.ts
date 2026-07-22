@@ -140,7 +140,9 @@ declare module "@mui/material/Badge" {
 		 */
 		inline?: boolean;
 		/**
-		 * The size of the inline badge.
+		 * The size of the badge.
+		 *
+		 * This prop can only be applied when `inline` is `true`.
 		 *
 		 * @default 'medium'
 		 */

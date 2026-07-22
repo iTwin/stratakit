@@ -326,6 +326,11 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
+			MuiDateCalendar: {
+				defaultProps: {
+					showDaysOutsideCurrentMonth: true,
+				},
+			},
 			MuiDialog: { defaultProps: { component: Role.div } },
 			MuiDialogContentText: {
 				defaultProps: {

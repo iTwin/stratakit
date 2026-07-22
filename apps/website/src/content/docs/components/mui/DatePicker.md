@@ -7,3 +7,7 @@ links:
 ---
 
 ::example{src="mui/DatePicker.default"}
+
+## StrataKit MUI modifications
+
+- `showDaysOutsideCurrentMonth` defaults to `true`.

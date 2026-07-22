@@ -332,6 +332,14 @@ function createTheme(args: CreateThemeArgs) {
 						leftArrowIcon: ChevronLeftIcon,
 						rightArrowIcon: ChevronRightIcon,
 					},
+					slotProps: {
+						previousIconButton: {
+							title: undefined,
+						},
+						nextIconButton: {
+							title: undefined,
+						},
+					},
 					dayOfWeekFormatter: (date: Date) =>
 						date
 							.toLocaleDateString(undefined, { weekday: "short" })

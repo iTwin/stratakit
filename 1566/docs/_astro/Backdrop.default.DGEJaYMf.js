@@ -1,1 +1,0 @@
-import{r as a,j as s,ab as t}from"./_utils.Bf7qWFF6.js";import{B as e}from"./Button.9yQAvkKJ.js";const c="_backdrop_1q6ur_6",p={backdrop:c},l=()=>{const[r,o]=a.useState(!1);return s.jsxs("div",{children:[s.jsx(e,{onClick:()=>o(!0),children:"Show backdrop"}),s.jsx(t,{className:p.backdrop,open:r,onClick:()=>o(!1)})]})};export{l as default};

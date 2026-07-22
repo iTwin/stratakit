@@ -123,7 +123,7 @@ function useMergedRefs<T>(
  * regardless of its dependencies. The "latest" callback is stored in a ref and updated on each render
  * in an Effect. The result is that the callback passed to this hook does not need to be memoized.
  */
-function useUnreactiveCallback<T extends AnyFunction>(callback: T | undefined) {
+function useStableCallback<T extends AnyFunction>(callback: T | undefined) {
 	const latestCallback = useLatestRef(callback);
 
 	return React.useCallback<AnyFunction>(
@@ -250,5 +250,5 @@ export {
 	useMergedRefs,
 	usePopoverApi,
 	useSafeContext,
-	useUnreactiveCallback,
+	useStableCallback,
 };

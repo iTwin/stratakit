@@ -16,9 +16,8 @@ Like the [**Accordion**](/components/accordion), the **Tree** is useful for prog
 | ------------------------------------------------------------ | -------------------------------------------- | ---------------------------------- | 
 | Progressive disclosure of content (several levels of data)   | ✅                                           | ❌                                 | 
 | Progressive disclosure of content (single level of data)     | ❌                                           | ✅                                 | 
-| Hierarchy can branch and isn't necessarily linear            | ✅                                           | ❌                                 | 
-| Expandable content includes arbitrary functionality          | ❌                                           | ✅                                 | 
-| Expandable content includes supplementary actions            | ✅                                           | ❌                                 | 
+| Items includes arbitrary content and functionality           | ❌                                           | ✅                                 | 
+| Items includes supplementary actions                         | ✅                                           | ❌                                 | 
 
 ## Structure
 
@@ -44,7 +43,14 @@ A **Tree** constitutes three key components:
 
 ### Supplementary actions
 
-Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the `actions` prop lets you insert an array of supplementary actions. Each must be a [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction) component.
+Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the `actions` and `inlineActions` props lets you insert an array of supplementary actions. 
+
+| Prop              | Action placement                                   |
+| ----------------- | -------------------------------------------------- |
+| `actions`         | Available in a dropdown menu in the `Tree.Item`    |
+| `inlineActions`   | Available _inline_, outside of the dropdown menu   |
+
+Each action must use a [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction) component. Other components are not permitted.
 
 ```jsx
 actions={[
@@ -62,7 +68,7 @@ actions={[
 
 ### Expansion
 
-Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reveal other `Tree.Item`s. If the `expandable` prop is omitted, the `Tree.Item` is considered a _leaf_. “Child 1” and “Child 2” are both leaves in the following example.
+Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reveal other `Tree.Item`s. If the `expandable` prop is omitted, the `Tree.Item` is considered a _leaf_. “Child 1” and “Child 2” are both _leaves_ in the following example.
 
 ```jsx
 <Tree.Root>
@@ -85,7 +91,7 @@ A button to the left of each item is reserved for expanding and collapsing it. C
 
 :::note[Keyboard behavior]
 
-To support full keyboard interaction, the left and right arrow keys are reserved collapsing and expanding items respectively. The up and down arrows keys enable moving _between_ items.
+To support full keyboard interaction, the left and right arrow keys are reserved for collapsing and expanding items respectively. The up and down arrows keys enable moving _between_ items.
 
 :::
 
@@ -93,47 +99,42 @@ To support full keyboard interaction, the left and right arrow keys are reserved
 
 Item selection is facilitated with [`selected`](/reference/structures/Tree/#Tree.Item.selected) and the [`onSelectedChange`](/reference/structures/Tree/#Tree.Item.onSelectedChange) callback. No specific selection behavior is supported out of the box, since product needs diverge.
 
-If desired, each [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can act independently, as a simple toggle button:
+#### Single selection
 
-::example{src="structures/Tree.selectable" min-width="300px" min-height="150px" vertical-stretch}
+One approach is to make items behave like radio buttons, wherein only one can be selected at a time.
 
-```jsx
-<Tree.Item 
-  label="Parent" 
-  id={id}
-  selected={isSelected} 
-  onSelectedChange={() => isSelected = !isSelected}
-/>
-```
+::example{src="structures/Tree.select-one" min-width="300px" min-height="150px" vertical-stretch}
 
-Alternatively, you can use some state to make items behave more like radio buttons, wherein only one item can be selected at a time:
+#### Cumulative selection
 
-```jsx
-<Tree.Item 
-  label="Parent" 
-  id={id}
-  selected={isSelected} 
-  onSelectedChange={() => {
-    if (selected === item.id) {
-      setSelected(undefined);
-      return;
-    }
-    setSelected(item.id);
-  }}
-/>
-```
+If desired, each [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can act independently, as a simple toggle button. This means they can be selected cumulatively.
+
+In the following example, “Item 1” and “Item 1.2” are selected from the outset. The “Select all” and “Deselect all” buttons cover bulk actions. 
+
+::example{src="structures/Tree.select-many" min-width="300px" min-height="150px" vertical-stretch}
+
+:::note[Disabling bulk actions]
+
+In the previous example, `useEffect` watches the selection object and disables the bulk actions where they're not applicable.
+
+:::
+
+## Examples
+
+See the [Sandbox](/sandbox) (and the [Sandbox source code](https://github.com/iTwin/stratakit/blob/main/apps/test-app/app/sandbox/index.tsx)) for a working example with multiple features.
 
 ## ✅ Do
 
 - Do use **Tree** to let users explore multi-tiered data.
 - Do create expandable items that reveal nested items.
-- Do supply supplementary actions via the `actions` prop.
+- Do supply supplementary actions via the `actions` and `inlineActions` props.
+- Do prioritize actions by adding them via `inlineActions`. 
 - Do implement a selection behavior suited to your users.
 - Do use an `aria-level` value that reflects the level of the item in the hierarchy. 
 
 ## ❌ Don't
 
 - Don't make expandable items reveal items of the same `aria-level`. They must be the parent's level plus `1`.
-- Don't try to place ite `Tree.ItemAction`s inside `Tree.ItemAction`s.
+- Don't try to place `Tree.Item`s inside `Tree.Item`s. Each `Tree.Item` is a sibling under a `Tree.Root` parent.
 - Don't put any components besides [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction) in [`Tree.Item`'s](/reference/structures/Tree/#Tree.Item) `action`.
 - Don't override the keyboard behaviors supplied.

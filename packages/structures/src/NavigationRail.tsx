@@ -13,7 +13,7 @@ import {
 	useEventHandlers,
 	useMergedRefs,
 	useSafeContext,
-	useUnreactiveCallback,
+	useStableCallback,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
@@ -67,7 +67,7 @@ function NavigationRailProvider(props: NavigationRailProviderProps) {
 		createNavigationRailStore({ expanded: expanded ?? defaultExpanded }),
 	);
 
-	const setExpanded = useUnreactiveCallback(setExpandedProp ?? (() => {}));
+	const setExpanded = useStableCallback(setExpandedProp ?? (() => {}));
 
 	React.useEffect(
 		function synchronizeWithProps() {

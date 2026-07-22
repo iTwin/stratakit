@@ -11,7 +11,7 @@ import { Button } from "@stratakit/bricks";
 import {
 	forwardRef,
 	usePopoverApi,
-	useUnreactiveCallback,
+	useStableCallback,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
@@ -78,7 +78,7 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 		const store = AkPopover.usePopoverContext();
 		const popoverElement = useStoreState(store, "popoverElement");
 		const open = useStoreState(store, "open");
-		const setOpen = useUnreactiveCallback(store?.setOpen);
+		const setOpen = useStableCallback(store?.setOpen);
 
 		const popoverProps = usePopoverApi({
 			element: popoverElement,

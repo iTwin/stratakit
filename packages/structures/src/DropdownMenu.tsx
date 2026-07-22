@@ -28,7 +28,7 @@ import {
 	forwardRef,
 	usePopoverApi,
 	useSafeContext,
-	useUnreactiveCallback,
+	useStableCallback,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { Checkmark, ChevronRight } from "./~utils.icons.js";
@@ -109,7 +109,7 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 		const context = useMenuContext();
 		const open = useStoreState(context, "open");
 		const popoverElement = useStoreState(context, "popoverElement");
-		const setOpen = useUnreactiveCallback(context?.setOpen);
+		const setOpen = useStableCallback(context?.setOpen);
 
 		const popoverProps = usePopoverApi({
 			element: popoverElement,

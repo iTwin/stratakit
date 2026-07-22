@@ -8,7 +8,7 @@ import * as AkTab from "@ariakit/react/tab";
 import {
 	forwardRef,
 	isBrowser,
-	useUnreactiveCallback,
+	useStableCallback,
 } from "@stratakit/foundations/secret-internals";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
@@ -123,7 +123,7 @@ function TabsProvider(props: TabsProviderProps) {
 		<AkTab.TabProvider
 			store={store}
 			selectedId={selectedId}
-			setSelectedId={useUnreactiveCallback(
+			setSelectedId={useStableCallback(
 				(newSelectedId: string | null | undefined) => {
 					if (!prefersReducedMotion()) flipAnimateStripe(newSelectedId);
 					setSelectedId?.(newSelectedId);

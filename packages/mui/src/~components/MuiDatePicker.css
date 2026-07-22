@@ -3,6 +3,52 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiYearCalendar-root {
+	--_MuiYearCalendar-fade-size: var(--stratakit-space-x2);
+
+	animation: --_MuiYearCalendar-fade-edges linear both;
+	animation-timeline: scroll(self block);
+	overscroll-behavior-y: contain;
+
+	mask-image: linear-gradient(
+		to bottom,
+		transparent,
+		#000 var(--_MuiYearCalendar-fade-start),
+		#000 calc(100% - var(--_MuiYearCalendar-fade-end)),
+		transparent
+	);
+}
+
+@property --_MuiYearCalendar-fade-start {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 0px;
+}
+
+@property --_MuiYearCalendar-fade-end {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 0px;
+}
+
+@keyframes --_MuiYearCalendar-fade-edges {
+	0% {
+		--_MuiYearCalendar-fade-start: 0px;
+		--_MuiYearCalendar-fade-end: var(--_MuiYearCalendar-fade-size);
+	}
+
+	0.01%,
+	99.99% {
+		--_MuiYearCalendar-fade-start: var(--_MuiYearCalendar-fade-size);
+		--_MuiYearCalendar-fade-end: var(--_MuiYearCalendar-fade-size);
+	}
+
+	100% {
+		--_MuiYearCalendar-fade-start: var(--_MuiYearCalendar-fade-size);
+		--_MuiYearCalendar-fade-end: 0px;
+	}
+}
+
 .MuiYearCalendar-button {
 	text-align: center;
 }

@@ -38,7 +38,7 @@
 		}
 	}
 
-	&:where(.MuiLinearProgress-buffer) {
+	&:where(.MuiLinearProgress-buffer, .MuiLinearProgress-determinate) {
 		&::after {
 			content: "";
 			position: absolute;

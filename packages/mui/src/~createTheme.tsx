@@ -349,7 +349,11 @@ function createTheme(args: CreateThemeArgs) {
 			},
 			MuiFormControl: { defaultProps: { component: Role.div } },
 			MuiFormControlLabel: {
-				defaultProps: { slotProps: { typography: { variant: "body-md" } } },
+				defaultProps: {
+					slotProps: {
+						typography: { variant: "body-md" },
+					},
+				},
 			},
 			MuiFormHelperText: { defaultProps: { component: Role.p } },
 			MuiFormLabel: { defaultProps: { component: Role.label as never } },

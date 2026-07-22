@@ -32,8 +32,6 @@ Added new icons:
 - `mass-perimeter.svg`
 - `mass.svg`
 - `seismic.svg`
-- `slab-opening.svg`
-- `slab-region.svg`
 - `slab.svg`
 - `snap-grid.svg`
 - `snap-orthogonal.svg`

@@ -1,1 +1,0 @@
-import{j as i}from"./index-DkCS71L3.js";import{w as o,ai as n,R as m,E as d}from"./~utils-DUxNgEZa.js";const l=o((a,e)=>{n();const{variant:t="text",size:s="medium",...r}=a;return i.jsx(m.div,{...r,ref:e,className:d("🥝Skeleton",a.className),"data-_sk-variant":t,"data-_sk-size":s,"aria-hidden":!0})});var x=l;export{x as S};

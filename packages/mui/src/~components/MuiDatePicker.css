@@ -16,6 +16,12 @@
 .MuiPickersInputBase-root:is(.🥝MuiInput) {
 	block-size: var(--stratakit-size-control-field-height-medium);
 	padding-inline-start: var(--stratakit-space-x3);
+
+	&:where(.MuiPickersInputBase-inputSizeSmall) {
+		@apply --typography("body-sm");
+		block-size: var(--stratakit-size-control-field-height-small);
+		padding-inline-start: var(--stratakit-space-x2);
+	}
 }
 
 .MuiPickersInputBase-sectionsContainer {

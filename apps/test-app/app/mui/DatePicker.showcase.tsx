@@ -4,12 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import DatePickerDefault from "examples/mui/DatePicker.default.tsx";
+import DatePickerSizes from "examples/mui/DatePicker.sizes.tsx";
 import DatePickerTime from "examples/mui/DatePicker.time.tsx";
 
 export default function DatePickerExamples() {
 	return (
 		<>
 			<DatePickerDefault />
+			<DatePickerSizes />
 			<DatePickerTime />
 		</>
 	);

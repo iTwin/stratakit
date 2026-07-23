@@ -7,3 +7,12 @@ links:
 ---
 
 ::example{src="mui/DatePicker.default"}
+
+## Examples
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/DatePicker.sizes"}

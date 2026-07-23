@@ -490,7 +490,7 @@ function createTheme(args: CreateThemeArgs) {
 					component: Role.span,
 					slotProps: {
 						valueLabel: {
-							className: "MuiTooltip-tooltip",
+							className: "🥝MuiTooltip",
 						},
 					},
 				},
@@ -604,6 +604,9 @@ function createTheme(args: CreateThemeArgs) {
 					placement: "top",
 					describeChild: true,
 					slotProps: {
+						tooltip: {
+							className: "🥝MuiTooltip",
+						},
 						popper: {
 							modifiers: [
 								{

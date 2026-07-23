@@ -3,10 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import { Tree } from "@stratakit/structures";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
 import Stack from "@mui/material/Stack";
+import { Tree } from "@stratakit/structures";
 
 import styles from "./Tree.default.module.css";
 
@@ -26,22 +26,24 @@ export default () => {
 		}));
 	};
 
-	const [allSelected, setAllSelected] = React.useState(false);
-	const [noneSelected, setNoneSelected] = React.useState(false);
-
 	const [selectedItems, setSelectedItems] = React.useState<
 		Record<string, boolean>
 	>({
-		"item1": true,
+		item1: true,
 		"item1.1": false,
 		"item1.2": true,
-		"item2": false,
+		item2: false,
 		"item2.1": false,
 		"item2.2": false,
-		"item3": false,
+		item3: false,
 		"item3.1": false,
 		"item3.2": false,
 	});
+
+	const entries = Object.entries(selectedItems);
+	const selectedCount = entries.filter((item) => item[1] === true).length;
+	const allSelected = selectedCount === entries.length;
+	const noneSelected = selectedCount === 0;
 
 	const toggleSelected = (itemKey: string, itemValue?: boolean) => {
 		setSelectedItems((prev) => ({
@@ -52,29 +54,26 @@ export default () => {
 	};
 
 	const selectAll = () => {
-		Object.keys(selectedItems).forEach(key => {
-			toggleSelected(key, true);			
+		Object.keys(selectedItems).forEach((key) => {
+			toggleSelected(key, true);
 		});
 	};
 
 	const selectNone = () => {
-		Object.keys(selectedItems).forEach(key => {
-			toggleSelected(key, false);			
+		Object.keys(selectedItems).forEach((key) => {
+			toggleSelected(key, false);
 		});
 	};
-
-	React.useEffect(() => {
-		let allSet = Object.keys(selectedItems).every(key => selectedItems[key]);
-		setAllSelected(allSet);
-		let noneSet = Object.keys(selectedItems).every(key => !selectedItems[key]);
-		setNoneSelected(noneSet);
-	}, [selectedItems]);
 
 	return (
 		<Stack spacing={1}>
 			<ButtonGroup fullWidth aria-label="Bulk actions">
-				<Button onClick={() => selectAll()} disabled={allSelected}>Select all</Button>
-				<Button onClick={() => selectNone()} disabled={noneSelected}>Deselect all</Button>
+				<Button onClick={() => selectAll()} disabled={allSelected}>
+					Select all
+				</Button>
+				<Button onClick={() => selectNone()} disabled={noneSelected}>
+					Deselect all
+				</Button>
 			</ButtonGroup>
 			<Tree.Root className={styles.tree}>
 				<Tree.Item

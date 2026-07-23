@@ -378,6 +378,11 @@ function createTheme(args: CreateThemeArgs) {
 			},
 			MuiImageList: { defaultProps: { component: Role.ul } },
 			MuiImageListItem: { defaultProps: { component: Role.li } },
+			MuiInputBase: {
+				defaultProps: {
+					className: "🥝MuiInput",
+				},
+			},
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
 			MuiInputLabel: {
 				defaultProps: {
@@ -423,6 +428,9 @@ function createTheme(args: CreateThemeArgs) {
 			MuiModal: { defaultProps: { component: Role.div, container } },
 			MuiOutlinedInput: {
 				defaultProps: {
+					classes: {
+						root: "🥝MuiInput",
+					},
 					notched: false, // Removes masked border from Select
 				},
 			},
@@ -442,7 +450,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiPaper: { defaultProps: { component: Role.div } },
 			MuiPickersInputBase: {
 				defaultProps: {
-					className: "MuiInputBase-root",
+					className: "🥝MuiInput",
 				},
 			},
 			MuiPopover: {

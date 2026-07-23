@@ -5,7 +5,7 @@
 
 .MuiPickersInputBase-root {
 	block-size: var(--stratakit-size-control-field-height-medium);
-	padding-inline-start: var(--_MuiInput-padding-inline);
+	padding-inline-start: var(--stratakit-space-x3);
 }
 
 .MuiPickersInputBase-sectionsContainer {

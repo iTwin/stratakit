@@ -1,1 +1,0 @@
-import{j as r}from"./_utils.kiQ_w68Z.js";import{D as e}from"./Divider.DJM4I9xX.js";import{T as s}from"./Typography.DgxkMwcW.js";const a=()=>r.jsx(e,{children:r.jsx(s,{variant:"subtitle-md",render:r.jsx("h3",{}),noWrap:!0,children:"New messages"})});export{a as default};

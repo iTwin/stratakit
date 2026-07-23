@@ -10,7 +10,7 @@ export default () => {
 	return (
 		<Divider>
 			<Typography variant="subtitle-md" render={<h3 />} noWrap>
-				Last unread
+				New messages
 			</Typography>
 		</Divider>
 	);

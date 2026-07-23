@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.kiQ_w68Z.js";import{S as r}from"./Stack.Bt-Nh0j5.js";import{T as s}from"./TextField.BCerBYba.js";const l=()=>e.jsxs(r,{spacing:1,direction:"row",useFlexGap:!0,sx:{alignItems:"center",flexWrap:"wrap"},children:[e.jsx(s,{size:"small",label:"Small"}),e.jsx(s,{size:"medium",label:"Medium"})]});export{l as default};

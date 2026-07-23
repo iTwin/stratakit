@@ -4,17 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiInputBase-root {
-	--✨padding-inline--small: var(--stratakit-space-x2);
-	--✨padding-inline--medium: var(--stratakit-space-x3);
-
 	@apply --typography("body-md");
 	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
-	--_MuiInput-padding-inline: var(--✨padding-inline--medium);
+	--_MuiInput-padding-inline: var(--stratakit-space-x3);
 
 	&:where(.MuiInputBase-sizeSmall) {
 		@apply --typography("body-sm");
 		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
-		--_MuiInput-padding-inline: var(--✨padding-inline--small);
+		--_MuiInput-padding-inline: var(--stratakit-space-x2);
 	}
 }
 

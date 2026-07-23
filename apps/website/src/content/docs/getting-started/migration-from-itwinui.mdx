@@ -1,0 +1,111 @@
+---
+title: Migrating from iTwinUI
+description: Learn how to migrate from iTwinUI to StrataKit
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+This guide provides the necessary steps for migrating from [iTwinUI](https://itwinui.bentley.com/) to StrataKit.
+
+:::note
+Migration to StrataKit can be done gradually, since iTwinUI can coexist in the same project by utilizing the [StrataKit theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).
+:::
+
+## Migration steps
+
+<Steps>
+
+1. **Set up StrataKit**
+
+   Follow the [set up StrataKit guide](/getting-started/develop/) to install the necessary dependencies and set up your project.
+
+2. **Enable the StrataKit theme bridge**
+
+   Pass the StrataKit [Root](/components/root) into the `as` prop of the iTwinUI [ThemeProvider](https://itwinui.bentley.com/docs/themeprovider) to render a single DOM element.
+
+   ```diff
+     <ThemeProvider
+       theme={theme}
+    +  as={Root}
+     >
+       {/* … */}
+     </ThemeProvider>
+   ```
+
+   Specify the `Root` props directly on the `ThemeProvider` component.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+      as={Root}
+   +  colorScheme="light"
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+   Finally, activate the `themeBridge` future flag.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+      as={Root}
+      colorScheme="light"
+   +  future={{ themeBridge: true }} // or future={true}
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+3. **Replace `@itwin/itwinui-icons` with `@stratakit/icons`**
+
+   Replace the usage of iTwinUI icons from `@itwin/itwinui-icons` with their StrataKit counterparts. Refer to the [use StrataKit icons](#use-stratakit-icons) section below for the icon mapping.
+
+   ```diff
+   - import { SvgAdd } from '@itwin/itwinui-icons-react';
+   - <SvgAdd />
+
+   + import { Icon } from "@stratakit/mui";
+   + import svgAdd from "@stratakit/icons/add.svg";
+   + <Icon href={svgAdd} />
+   ```
+
+   Once all usage of `@itwin/itwinui-icons` has been replaced, it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @itwin/itwinui-icons
+   ```
+
+4. **Replace usage of `@itwin/itwinui-react`**
+
+   Replace the usage of components from `@itwin/itwinui-react` with their [StrataKit counterparts](/components/overview/).
+
+   Some components are provided by `@mui/material`.
+
+   ```diff
+   - import { Button } from '@itwin/itwinui-react';
+   + import Button from "@mui/material/Button";
+   ```
+
+   Others live in `@stratakit/structures`.
+
+   ```diff
+   - import { Tree } from '@itwin/itwinui-react';
+   + import { Tree } from "@stratakit/structures";
+   ```
+
+   Once all usage of `@itwin/itwinui-react` has been replaced, it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @itwin/itwinui-react
+   ```
+
+</Steps>
+
+## Use StrataKit icons
+
+Replace [iTwinUI icons](https://itwin.github.io/iTwinUI-icons/) with their [StrataKit counterparts](/icons).
+
+| iTwinUI icon | StrataKit icon |
+| ------------ | -------------- |
+|              |                |

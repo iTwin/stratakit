@@ -68,7 +68,7 @@ actions={[
 
 ### Expansion
 
-Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reveal other `Tree.Item`s. If the `expandable` prop is omitted, the `Tree.Item` is considered a _leaf_. “Child 1” and “Child 2” are both _leaves_ in the following example.
+Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reveal other `Tree.Item`s. If the `expanded` prop is omitted, the `Tree.Item` is considered a _leaf_. “Child 1” and “Child 2” are both _leaves_ in the following example.
 
 ```jsx
 <Tree.Root>

@@ -4,6 +4,8 @@
 
 Added new icons:
 
+- `apply-down.svg`
+- `asset-copy.svg`
 - `axis-lock.svg`
 - `beam.svg`
 - `brace.svg`
@@ -31,6 +33,8 @@ Added new icons:
 - `mass-linear.svg`
 - `mass-perimeter.svg`
 - `mass.svg`
+- `project-copy.svg`
+- `reality-capture.svg`
 - `seismic.svg`
 - `slab.svg`
 - `snap-grid.svg`
@@ -43,6 +47,9 @@ Added new icons:
 - `support-linear.svg`
 - `support-point.svg`
 - `temperature.svg`
+- `templates.svg`
+- `templates-copy.svg`
+- `templates-create.svg`
 - `tower-crane.svg`
 - `truck.svg`
 - `wind.svg`

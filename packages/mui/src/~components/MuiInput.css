@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiInputBase-root {
-	@apply --typography("body-md");
 	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
 	--_MuiInput-padding-inline: var(--stratakit-space-x3);
 
@@ -21,6 +20,7 @@
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
+	@apply --typography("body-md");
 	padding: 0;
 	border: 1px solid var(--_MuiInput-border-color);
 	border-radius: 4px;

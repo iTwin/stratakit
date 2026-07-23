@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiPickersInputBase-root {
+.MuiPickersInputBase-root:is(.🥝MuiInput) {
 	block-size: var(--stratakit-size-control-field-height-medium);
 	padding-inline-start: var(--stratakit-space-x3);
 }

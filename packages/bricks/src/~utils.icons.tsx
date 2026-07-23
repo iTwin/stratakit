@@ -5,10 +5,10 @@
 
 import { Role } from "@ariakit/react/role";
 import { Icon } from "@stratakit/foundations";
-import { forwardRef } from "@stratakit/internal-utils";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 
-import type { BaseProps } from "@stratakit/internal-utils";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

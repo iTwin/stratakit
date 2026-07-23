@@ -8,12 +8,12 @@ import { Role } from "@ariakit/react/role";
 import { VisuallyHidden } from "@ariakit/react/visually-hidden";
 import IconButton from "@mui/material/IconButton";
 import { useTheme } from "@mui/material/styles";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import { DismissCircleIcon } from "../Icon.js";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
 import type Chip from "@mui/material/Chip";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

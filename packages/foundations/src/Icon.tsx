@@ -5,16 +5,17 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import { getOwnerDocument } from "@stratakit/internal-utils/dom";
+import { useLatestRef, useSafeContext } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
-import { useLatestRef, useSafeContext } from "./~hooks.js";
-import { forwardRef, getOwnerDocument } from "./~utils.js";
 import {
 	HtmlSanitizerContext,
 	spriteSheetId,
 	useRootNode,
 } from "./Root.internal.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

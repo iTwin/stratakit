@@ -1,1 +1,0 @@
-import{j as e}from"./_utils.Ch1T5Zk2.js";import{F as t}from"./FormControlLabel.CY4iJilt.js";import{C as r}from"./Checkbox.Dpk_4hSi.js";const a=()=>e.jsx(t,{control:e.jsx(r,{indeterminate:!0}),label:"Indeterminate"});export{a as default};

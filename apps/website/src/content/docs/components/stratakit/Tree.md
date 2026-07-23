@@ -16,8 +16,8 @@ Like the [**Accordion**](/components/accordion), the **Tree** is useful for prog
 | ------------------------------------------------------------ | -------------------------------------------- | ---------------------------------- | 
 | Progressive disclosure of content (several levels of data)   | ✅                                           | ❌                                 | 
 | Progressive disclosure of content (single level of data)     | ❌                                           | ✅                                 | 
-| Items includes arbitrary content and functionality           | ❌                                           | ✅                                 | 
-| Items includes supplementary actions                         | ✅                                           | ❌                                 | 
+| Items include arbitrary content and functionality            | ❌                                           | ✅                                 | 
+| Items include associated actions only                        | ✅                                           | ❌                                 | 
 
 ## Structure
 

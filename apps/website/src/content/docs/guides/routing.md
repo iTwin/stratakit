@@ -81,8 +81,8 @@ const location = useLocation();
 
 useEffect(() => {
   const h1 = document.querySelector('h1');
-  if !(h1) return;
-  h1.tabIndex = -1;
+  if (!h1) return;
+  h1.tabIndex ||= -1;
   h1.focus();
 }, [location]);
 ```

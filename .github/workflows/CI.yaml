@@ -126,6 +126,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+        with:
+          lfs: true
 
       - uses: pnpm/action-setup@v6
         with:
@@ -151,6 +153,9 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.60.0-noble
 
     steps:
+      - name: Install git-lfs
+        run: apt-get update && apt-get install -y git-lfs
+
       - uses: actions/checkout@v7
         with:
           lfs: true

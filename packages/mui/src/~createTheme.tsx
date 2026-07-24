@@ -328,7 +328,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiCircularProgress: {
 				defaultProps: {
 					enableTrackSlot: true,
-					thickness: 4,
+					thickness: 5,
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },

@@ -354,6 +354,13 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiFormControl: { defaultProps: { component: Role.div } },
+			MuiFormControlLabel: {
+				defaultProps: {
+					slotProps: {
+						typography: { variant: "body-md" },
+					},
+				},
+			},
 			MuiFormHelperText: { defaultProps: { component: Role.p } },
 			MuiFormLabel: { defaultProps: { component: Role.label as never } },
 			MuiGrid: { defaultProps: { component: Role.div } },
@@ -470,7 +477,7 @@ function createTheme(args: CreateThemeArgs) {
 					component: Role.span,
 					slotProps: {
 						valueLabel: {
-							className: "MuiTooltip-tooltip",
+							className: "🥝MuiTooltip",
 						},
 					},
 				},
@@ -572,6 +579,9 @@ function createTheme(args: CreateThemeArgs) {
 					placement: "top",
 					describeChild: true,
 					slotProps: {
+						tooltip: {
+							className: "🥝MuiTooltip",
+						},
 						popper: {
 							modifiers: [
 								{

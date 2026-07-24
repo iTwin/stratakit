@@ -22,7 +22,7 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 - Added [`type`](#type) prop.
 - Added [`inline`](#inline) prop.
 - Added [`size`](#sizes) prop.
-- The `"default"` color has been removed. The default color is now `"secondary"`.
+- The `"default"` and `"primary"` colors have been removed. The default color is now `"secondary"`.
 
 ## Examples
 

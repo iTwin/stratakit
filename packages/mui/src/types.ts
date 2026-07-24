@@ -223,6 +223,7 @@ declare module "@mui/material/Backdrop" {
 declare module "@mui/material/Badge" {
 	interface BadgePropsColorOverrides {
 		default: false;
+		primary: false;
 	}
 
 	interface BadgeOwnProps {

@@ -152,6 +152,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v7
+        with:
+          lfs: true
 
       - uses: pnpm/action-setup@v6
         with:

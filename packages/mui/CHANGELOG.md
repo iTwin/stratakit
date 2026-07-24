@@ -2,15 +2,13 @@
 
 ## 0.5.2
 
-### Patch Changes
-
 - [#1575](https://github.com/iTwin/stratakit/pull/1575): Added `size` prop to `Badge` when `inline`.
+- [#1575](https://github.com/iTwin/stratakit/pull/1575): Increased default size of `Badge` when `inline`.
 - [#1642](https://github.com/iTwin/stratakit/pull/1642): Removed `role="separator"` from `Divider` when `children` is passed.
-- [#1622](https://github.com/iTwin/stratakit/pull/1622): Change `Divider` middle variant to work in toolbars
+- [#1622](https://github.com/iTwin/stratakit/pull/1622): Changed `Divider` `variant="middle"` styling to work in toolbars.
 - [#1628](https://github.com/iTwin/stratakit/pull/1628): Fixed a bug where `AvatarGroup` would render an empty listitem, causing incorrect mask application.
-- [#1562](https://github.com/iTwin/stratakit/pull/1562): Use StrataKit sorting icons for TableSortLabel
-- [#1635](https://github.com/iTwin/stratakit/pull/1635): Fix bug to allow typography overrides on `FormControlLabel`
-- [#1575](https://github.com/iTwin/stratakit/pull/1575): `Badge` `size` defaults to `"medium"` when `inline`.
+- [#1562](https://github.com/iTwin/stratakit/pull/1562): Updated `TableSortLabel` to use StrataKit icons.
+- [#1635](https://github.com/iTwin/stratakit/pull/1635): Fixed bug to allow typography overrides on `FormControlLabel`
 - Updated dependencies:
   - @stratakit/icons@0.4.2
 

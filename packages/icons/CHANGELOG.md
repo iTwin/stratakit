@@ -2,8 +2,6 @@
 
 ## 0.4.2
 
-### Patch Changes
-
 - [#1630](https://github.com/iTwin/stratakit/pull/1630): Added new icons:
   - `apply-down.svg`
   - `asset-copy.svg`

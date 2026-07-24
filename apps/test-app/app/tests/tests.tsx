@@ -11,7 +11,6 @@ import cx from "classnames";
 import { components } from "~/~meta.ts";
 import { SkipLinkContext } from "~/~navigation.tsx";
 import {
-	isProduction,
 	toKebabCase,
 	useLocalStorage,
 	VariantsListContext,
@@ -57,12 +56,7 @@ export default function Page() {
 
 // ----------------------------------------------------------------------------
 
-const packages = [
-	"bricks",
-	"structures",
-	"foundations",
-	...(!isProduction ? (["private"] as const) : []),
-] as const;
+const packages = ["bricks", "structures", "foundations"] as const;
 
 function SecondaryNavigation({ currentPath }: { currentPath: string }) {
 	const { variants } = React.useContext(VariantsListContext);
@@ -92,7 +86,7 @@ function SecondaryNavigation({ currentPath }: { currentPath: string }) {
 						<NavigationList.Root
 							className={styles.navList}
 							items={componentList.map((componentName) => {
-								const href = `/tests/${toKebabCase(componentName)}`;
+								const href = `/tests/${packageName}/${toKebabCase(componentName)}`;
 								const isActive = currentPath === href;
 
 								// Display variants for the current component

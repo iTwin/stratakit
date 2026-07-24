@@ -1,0 +1,105 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import AxeBuilder from "@axe-core/playwright";
+import { expect, test } from "#playwright";
+
+test("default", async ({ page }) => {
+	await page.goto("/tests/structures/navigation-rail");
+
+	const navigationRail = page.getByRole("navigation");
+	await expect(navigationRail).toBeVisible();
+
+	const activeItem = navigationRail.getByRole("link", {
+		name: "Administration",
+	});
+	await expect(activeItem).toHaveAttribute("aria-current");
+
+	const marketplaceItem = navigationRail.getByRole("link", {
+		name: "Marketplace (opens in new tab)",
+	});
+	await expect(marketplaceItem).toBeVisible();
+});
+
+test.describe("expansion", () => {
+	for (const type of ["uncontrolled", "controlled"] as const) {
+		test(`expansion (${type})`, async ({ page }) => {
+			const params = type === "controlled" ? "?_controlled" : "";
+			await page.goto(`/tests/structures/navigation-rail${params}`);
+
+			let consoleText = "";
+			page.on("console", (msg) => {
+				consoleText += `${msg.text()}\n`;
+			});
+			expect(consoleText).not.toContain("setExpanded");
+
+			const toggleButton = page.getByRole("button", {
+				name: "Expand navigation",
+				exact: true,
+			});
+			await expect(toggleButton).toHaveAttribute("aria-pressed", "false");
+
+			// Expand
+			await toggleButton.click();
+			await expect(toggleButton).toHaveAttribute("aria-pressed", "true");
+			if (type === "controlled")
+				expect(consoleText).toContain("setExpanded: true");
+
+			// Collapse
+			await toggleButton.click();
+			await expect(toggleButton).toHaveAttribute("aria-pressed", "false");
+			if (type === "controlled")
+				expect(consoleText).toContain("setExpanded: false");
+		});
+
+		test(`defaultExpanded (${type})`, async ({ page }) => {
+			let params = "?defaultExpanded";
+			if (type === "controlled") params += "&_controlled";
+			await page.goto(`/tests/structures/navigation-rail${params}`);
+
+			const toggleButton = page.getByRole("button", {
+				name: "Expand navigation",
+				exact: true,
+			});
+			await expect(toggleButton).toHaveAttribute("aria-pressed", "true");
+		});
+	}
+});
+
+test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/structures/navigation-rail?visual");
+		await expect(page.locator("body")).toHaveScreenshot();
+
+		const toggleButton = page.getByRole("button", { name: "Expand" });
+		await toggleButton.click();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
+	test("forced-colors", async ({ page }) => {
+		await page.goto("/tests/structures/navigation-rail?visual");
+		await page.emulateMedia({ forcedColors: "active" });
+		await expect(page.locator("body")).toHaveScreenshot();
+
+		const toggleButton = page.getByRole("button", { name: "Expand" });
+		await toggleButton.click();
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+});
+
+test.describe("@a11y", () => {
+	test("Axe Page Scan", async ({ page }) => {
+		await page.goto("/tests/structures/navigation-rail");
+
+		const axe = new AxeBuilder({ page });
+		let accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
+
+		const toggleButton = page.getByRole("button", { name: "Expand" });
+		await toggleButton.click();
+		accessibilityScan = await axe.analyze();
+		expect(accessibilityScan.violations).toEqual([]);
+	});
+});

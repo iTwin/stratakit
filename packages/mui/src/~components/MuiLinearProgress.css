@@ -4,24 +4,19 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiLinearProgress-root {
-	/* #region Variables */
-	--✨color--primary: var(--stratakit-color-icon-accent-strong);
-	--✨color--secondary: var(--stratakit-color-icon-neutral-base);
-
 	--_MuiLinearProgress-track-thickness: 1px;
 	--_MuiLinearProgress-fill-thickness: 5px;
-	/* #endregion */
 
 	background-color: transparent;
 	block-size: var(--_MuiLinearProgress-fill-thickness);
 	border-radius: calc(infinity * 1px);
 
 	&:where(.MuiLinearProgress-colorPrimary) {
-		--_MuiLinearProgress-color: var(--✨color--primary);
+		--_MuiLinearProgress-color: var(--stratakit-color-icon-accent-base);
 	}
 
 	&:where(.MuiLinearProgress-colorSecondary) {
-		--_MuiLinearProgress-color: var(--✨color--secondary);
+		--_MuiLinearProgress-color: var(--stratakit-color-icon-neutral-base);
 	}
 
 	&:where(.MuiLinearProgress-colorError) {
@@ -48,7 +43,7 @@
 				(var(--_MuiLinearProgress-fill-thickness) - var(--_MuiLinearProgress-track-thickness)) *
 				0.5
 			);
-			inset-inline: calc(var(--_MuiLinearProgress-fill-thickness) * 0.5);
+			inset-inline: 0;
 			background-color: var(--_MuiLinearProgress-color);
 			border-radius: inherit;
 		}
@@ -63,6 +58,7 @@
 			aspect-ratio: 1;
 			background-color: var(--_MuiLinearProgress-color);
 			border-radius: inherit;
+			opacity: 0.2;
 		}
 	}
 }

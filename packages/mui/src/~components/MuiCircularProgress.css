@@ -8,7 +8,7 @@
 	--_MuiCircularProgress-fill-thickness: 5px;
 
 	&:where(.MuiCircularProgress-colorPrimary) {
-		--_MuiCircularProgress-color: var(--stratakit-color-icon-accent-strong);
+		--_MuiCircularProgress-color: var(--stratakit-color-icon-accent-base);
 	}
 
 	&:where(.MuiCircularProgress-colorSecondary) {

@@ -585,6 +585,12 @@ function createTheme(args: CreateThemeArgs) {
 									},
 								},
 								{
+									name: "flip",
+									options: {
+										padding: 2,
+									},
+								},
+								{
 									name: "preventOverflow",
 									options: {
 										padding: 2,

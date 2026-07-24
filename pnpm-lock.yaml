@@ -438,7 +438,7 @@ importers:
         specifier: ^0.4.9
         version: link:../foundations
       "@stratakit/icons":
-        specifier: ^0.4.1
+        specifier: ^0.4.2
         version: link:../icons
       classnames:
         specifier: ^2.5.1
@@ -447,6 +447,9 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0(react@19.2.7)
     devDependencies:
+      "@mui/x-date-pickers":
+        specifier: "catalog:"
+        version: 9.6.0(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(react@19.2.7))(@mui/material@9.0.1(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(react-dom@19.2.7(react@19.2.7))(react@19.2.7))(@mui/system@9.0.1(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(date-fns@4.4.0)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       "@types/react":
         specifier: "catalog:"
         version: 19.2.16

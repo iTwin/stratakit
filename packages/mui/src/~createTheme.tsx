@@ -584,6 +584,12 @@ function createTheme(args: CreateThemeArgs) {
 										offset: [0, 2],
 									},
 								},
+								{
+									name: "preventOverflow",
+									options: {
+										padding: 2,
+									},
+								},
 							],
 						},
 					},

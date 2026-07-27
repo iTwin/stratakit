@@ -68,7 +68,7 @@ actions={[
 
 ### Expansion
 
-Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reveal other `Tree.Item`s. If the `expanded` prop is omitted, the `Tree.Item` is considered a _leaf_. “Child 1” and “Child 2” are both _leaves_ in the following example.
+Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reveal other `Tree.Item`s. If the [`expanded`](/reference/structures/Tree/#Tree.Item.expanded) prop is omitted, the `Tree.Item` is considered a _leaf_. “Child 1” and “Child 2” are both _leaves_ in the following example.
 
 ```jsx
 <Tree.Root>
@@ -87,7 +87,7 @@ Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reve
 </Tree.Root>
 ```
 
-A button to the left of each item is reserved for expanding and collapsing it. Clicking elsewhere on the item will perform [selection](#selection).
+A button to the left of each item is reserved for expanding and collapsing it, handled by [`onExpandedChange`](/reference/structures/Tree/#Tree.Item.onExpandedChange). Clicking elsewhere on the item will perform [selection](#selection).
 
 :::note[Keyboard behavior]
 
@@ -115,7 +115,7 @@ In the following example, “Item 1” and “Item 1.2” are selected from the 
 
 :::note[The `aria-multiselectable` attribute]
 
-Selecting an item applies `aria-selected="true"`. Where it's possible to select multiple items, you must apply `aria-multiselectable="true"` to `Tree.Root`.
+Selecting an item applies `aria-selected="true"`. Where it's possible to select multiple items, you must apply [`aria-multiselectable="true"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-multiselectable) to `Tree.Root`.
 
 ```jsx
 <Tree.Root className={styles.tree} aria-multiselectable="true">

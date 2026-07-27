@@ -403,7 +403,7 @@ declare module "@mui/material/Slider" {
 
 declare module "@mui/material/SvgIcon" {
 	/** @deprecated Use `Icon` from `@stratakit/foundations` instead */
-	// @ts-expect-error -- Default exports cannot be augmented (https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation), but the `@deprecated` above still takes effect.
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
 	export default function SvgIcon(
 		props: SvgIconProps,
 	): React.JSX.Element | null;

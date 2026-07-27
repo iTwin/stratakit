@@ -39,11 +39,11 @@ Use the `render` prop where it's available. It works consistently across both **
 
 ### Changing a heading level
 
-The [**Language and labels**](/guides/structure/#headings) guide sets out the importance of applying the correct heading levels when describing the interface structure. Heading levels are set using the elements `<h1>` to `<h6>`. 
+The [**Language and labels**](/guides/structure/#headings) guide sets out the importance of applying the correct heading levels when describing the interface structure. Heading levels are set using the elements `<h1>` to `<h6>`.
 
 The [**Typography**](/components/typography/#heading) component supports `render` for setting the element and `variant` for setting an accompanying style. This decoupling of semantics and style lets you set the correct structure while calibrating visual hierarchy.
 
-In the following example, `<h1>` is the correct element, since it is the main heading for the page. But, since the context requires a diminished font-size, a `headline`-prefixed style is preferred over a larger `display` variant. 
+In the following example, `<h1>` is the correct element, since it is the main heading for the page. But, since the context requires a diminished font-size, a `headline`-prefixed style is preferred over a larger `display` variant.
 
 ```jsx
 <Typography variant="headline-sm" render={<h1 />}>
@@ -76,7 +76,6 @@ When rendering React elements, props must be set on the components they belong t
 
 Some StrataKit components are also designed specifically to leverage the `render` prop. For example, the [**Toolbar**](/components/toolbar) uses this prop to render individual items as [**IconButtons**](/components/iconbutton).
 
-
 ### `slots` and `slotProps`
 
 Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements through [MUI's `slots` and `slotProps` props](https://mui.com/material-ui/customization/overriding-component-structure/#interior-slots).
@@ -90,18 +89,14 @@ Where needed, change your [**Accordion**](/components/accordion) item’s headin
 	slots={{
 		heading: "h2",
 	}}
->...
-</Accordion>
+>
 ```
 
 The `slotProps` alternative gives you finer grained control. For each element, you can set multiple props, including a `render` prop where applicable. For example, the [**NativeSelect**](/components/select/#native)’s input needs both `name` and `id` set:
 
-
 ```jsx
 <FormControl>
-	<InputLabel htmlFor={inputId}>
-		Design system:
-	</InputLabel>
+	<InputLabel htmlFor={inputId}>Design system:</InputLabel>
 	<NativeSelect
 		defaultValue={2}
 		slotProps={{

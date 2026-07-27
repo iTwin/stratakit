@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { InputAdornment } from "@mui/material";
+import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import { Icon } from "@stratakit/mui";
 
@@ -12,7 +12,7 @@ import svgEmailAt from "@stratakit/icons/email-at.svg";
 export default () => {
 	return (
 		<TextField
-			label="Username:"
+			label="Username"
 			slotProps={{
 				input: {
 					startAdornment: (

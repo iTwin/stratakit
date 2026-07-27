@@ -18,6 +18,7 @@
 @import "./~components/MuiCheckbox.css";
 @import "./~components/MuiChip.css";
 @import "./~components/MuiDialog.css";
+@import "./~components/MuiDivider.css";
 @import "./~components/MuiForm.css";
 @import "./~components/MuiIconButton.css";
 @import "./~components/MuiInput.css";
@@ -25,6 +26,7 @@
 @import "./~components/MuiList.css";
 @import "./~components/MuiMenu.css";
 @import "./~components/MuiPagination.css";
+@import "./~components/MuiRating.css";
 @import "./~components/MuiSelect.css";
 @import "./~components/MuiSlider.css";
 @import "./~components/MuiStepper.css";
@@ -48,8 +50,4 @@
 	&:where(:not(.MuiBackdrop-invisible)) {
 		background-color: oklch(from var(--stratakit-color-bg-elevation-overlay) l c h / 0.8);
 	}
-}
-
-.MuiRating-root {
-	inline-size: fit-content;
 }

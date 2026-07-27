@@ -140,11 +140,27 @@ declare module "@mui/material/Badge" {
 		 */
 		inline?: boolean;
 		/**
+		 * The size of the badge.
+		 *
+		 * This prop can only be applied when `inline` is `true`.
+		 *
+		 * @default 'medium'
+		 */
+		size?: "small" | "medium";
+		/**
 		 * The default color with `@stratakit/mui` is `"secondary"`.
 		 *
 		 * @default 'secondary'
 		 */
 		color?: BadgeProps["color"];
+		/**
+		 * The visual type of the badge styling.
+		 *
+		 * This prop can only be applied when `inline` is `true`.
+		 *
+		 * @default 'strong'
+		 */
+		type?: "outlined" | "muted" | "strong";
 	}
 }
 
@@ -242,6 +258,13 @@ declare module "@mui/material/Dialog" {
 	interface DialogProps extends Pick<CommonProps, "render"> {
 		/** @deprecated Use `render` prop instead. */
 		component?: React.ElementType;
+	}
+}
+
+declare module "@mui/material/Divider" {
+	interface DividerOwnProps {
+		/** Add a 1x margin before and after the divider */
+		margin?: boolean;
 	}
 }
 

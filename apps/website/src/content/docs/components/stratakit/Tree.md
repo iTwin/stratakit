@@ -47,7 +47,7 @@ Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary c
 
 | Prop              | Action placement                                   |
 | ----------------- | -------------------------------------------------- |
-| `actions`         | Available in a dropdown menu in the `Tree.Item`    |
+| `actions`         | Available in a dropdown menu                       |
 | `inlineActions`   | Available _inline_, outside of the dropdown menu   |
 
 Each action must use a [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction) component. Other components are not permitted.

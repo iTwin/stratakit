@@ -48,7 +48,6 @@ export default () => {
 			...prev,
 			[itemKey]: itemValue !== undefined ? itemValue : !prev[itemKey],
 		}));
-		console.log(selectedItems);
 	};
 
 	const selectAll = () => {
@@ -76,7 +75,7 @@ export default () => {
 				<Button onClick={() => selectAll()} disabled={allSelected}>Select all</Button>
 				<Button onClick={() => selectNone()} disabled={noneSelected}>Deselect all</Button>
 			</ButtonGroup>
-			<Tree.Root className={styles.tree}>
+			<Tree.Root className={styles.tree} aria-multiselectable="true">
 				<Tree.Item
 					label="Item 1"
 					aria-level={1}

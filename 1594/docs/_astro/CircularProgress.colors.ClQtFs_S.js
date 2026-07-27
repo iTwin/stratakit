@@ -1,1 +1,0 @@
-import{j as r,P as o}from"./_utils.Dt6A4TVC.js";import{r as a}from"./styles.internal.Cf9SRLEZ.js";import{T as e}from"./Typography.DuYGWSEY.js";const c=()=>{const s=a.useId();return r.jsxs(r.Fragment,{children:[r.jsx(o,{color:"secondary","aria-labelledby":s}),r.jsx(e,{id:s,children:"Analyzing results…"})]})};export{c as default};

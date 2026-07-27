@@ -76,7 +76,9 @@ When rendering React elements, props must be set on the components they belong t
 
 ### `slots` and `slotProps`
 
-Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements by _slot_. Where needed, change your [**Accordion**](/components/accordion) item’s heading via the `heading` slot:
+Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements through [MUI's `slots` and `slotProps` props](https://mui.com/material-ui/customization/overriding-component-structure/#interior-slots).
+
+Where needed, change your [**Accordion**](/components/accordion) item’s heading via the `heading` slot:
 
 ```jsx
 <Accordion

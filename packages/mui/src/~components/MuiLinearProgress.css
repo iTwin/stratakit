@@ -76,9 +76,5 @@
 }
 
 .MuiLinearProgress-dashed {
-	background-color: transparent;
-	background-image: unset;
-	background-size: unset;
-	block-size: unset;
-	inset-block: 1px;
+	display: none; /* We're not using the animated dashed line */
 }

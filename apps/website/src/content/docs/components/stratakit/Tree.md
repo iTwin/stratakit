@@ -97,7 +97,7 @@ To support full keyboard interaction, the left and right arrow keys are reserved
 
 ### Selection 
 
-Item selection is facilitated with [`selected`](/reference/structures/Tree/#Tree.Item.selected) and the [`onSelectedChange`](/reference/structures/Tree/#Tree.Item.onSelectedChange) callback. No specific selection behavior is supported out of the box, since product needs diverge.
+Item selection is facilitated with [`selected`](/reference/structures/Tree/#Tree.Item.selected) and the [`onSelectedChange`](/reference/structures/Tree/#Tree.Item.onSelectedChange) callback. No specific selection behavior is supported out of the box, since different applications have different needs.
 
 #### Single selection
 

@@ -31,7 +31,7 @@ A **Tree** constitutes three key components:
 
 ### Hierarchy
 
-[`Tree.Item`s](/reference/structures/Tree/#Tree.Item) are supplied as children of [`Tree.Root`](/reference/structures/Tree/#Tree.Root). The components themselves are not nestable. Instead, the `aria-level` prop (required) describes the level of the item in the hierarchy. The [`aria-posinset`](/reference/structures/Tree/#Tree.Item.aria-posinset) and [`aria-setsize`](/reference/structures/Tree/#Tree.Item.aria-setsize) props are also required.
+[`Tree.Item`s](/reference/structures/Tree/#Tree.Item) are supplied as children of [`Tree.Root`](/reference/structures/Tree/#Tree.Root). The components themselves are not nestable. Instead, the [`aria-level`](/reference/structures/Tree/#Tree.Item.aria-level) prop (required) describes the level of the item in the hierarchy. The [`aria-posinset`](/reference/structures/Tree/#Tree.Item.aria-posinset) and [`aria-setsize`](/reference/structures/Tree/#Tree.Item.aria-setsize) props are also required.
 
 ```jsx
 <Tree.Root>
@@ -43,7 +43,7 @@ A **Tree** constitutes three key components:
 
 ### Supplementary actions
 
-Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the `actions` and `inlineActions` props lets you insert an array of supplementary actions. 
+Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the [`actions`](/reference/structures/Tree/#Tree.Item.actions) and [`inlineActions`](/reference/structures/Tree/#Tree.Item.inlineActions) props lets you insert an array of supplementary actions. 
 
 | Prop              | Action placement                                            |
 | ----------------- | ----------------------------------------------------------- |
@@ -63,8 +63,8 @@ actions={[
 
 [`Tree.Item`s](/reference/structures/Tree/#Tree.Item) support two _primary_ interactions:
 
-1. Expansion
-2. Selection
+1. [Expansion](#expansion)
+2. [Selection](#selection)
 
 ### Expansion
 

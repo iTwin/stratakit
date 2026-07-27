@@ -11,6 +11,7 @@ import cx from "classnames";
 import { components } from "~/~meta.ts";
 import { SkipLinkContext } from "~/~navigation.tsx";
 import {
+	isProduction,
 	toKebabCase,
 	useLocalStorage,
 	VariantsListContext,
@@ -56,7 +57,12 @@ export default function Page() {
 
 // ----------------------------------------------------------------------------
 
-const packages = ["bricks", "structures", "foundations"] as const;
+const packages = [
+	"bricks",
+	"structures",
+	"foundations",
+	...(!isProduction ? (["private"] as const) : []),
+] as const;
 
 function SecondaryNavigation({ currentPath }: { currentPath: string }) {
 	const { variants } = React.useContext(VariantsListContext);

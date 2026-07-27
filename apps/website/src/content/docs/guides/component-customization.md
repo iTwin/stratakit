@@ -74,6 +74,8 @@ When rendering React elements, props must be set on the components they belong t
 
 :::
 
+Some StrataKit components are also designed specifically to leverage the `render` prop. For example, the [**Toolbar**](/components/toolbar) uses this prop to render individual items as [**IconButtons**](/components/iconbutton).
+
 ### Creating custom icons 
 
 The `render` prop is not only for correcting element semantics or exchanging components. It also enables some customizations.

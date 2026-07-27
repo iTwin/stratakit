@@ -1,0 +1,1 @@
+import{j as i}from"./_utils.CiTS-xym.js";import{D as r}from"./Divider.Dn4VPMtJ.js";const o=()=>i.jsx("div",{style:{blockSize:"calc(100dvh - 16px * 2)"},children:i.jsx(r,{orientation:"vertical"})});export{o as default};

@@ -89,7 +89,7 @@ Some more complex components, constituting subcomponents, support an object synt
 </Accordion>
 ```
 
-The `slotProps` alternative gives you finer grained control. For each element, you can set multiple props, including a `render` prop where applicable. For example, the [**NativeSelect**](/components/nativeselect)’s input needs both `name` and `id` set:
+The `slotProps` alternative gives you finer grained control. For each element, you can set multiple props, including a `render` prop where applicable. For example, the [**NativeSelect**](/components/select/#native)’s input needs both `name` and `id` set:
 
 
 ```jsx

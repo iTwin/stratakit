@@ -74,6 +74,29 @@ When rendering React elements, props must be set on the components they belong t
 
 :::
 
+### Creating custom icons 
+
+The `render` prop is not only for correcting element semantics or exchanging components. It also enables some customizations.
+
+For example, where the [icon library](/icons/#list-of-icons) does not offer the icon you need, you can [supply your own, inline SVG code](/components/icon/#custom).
+
+```jsx
+<Icon
+	render={
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+			<circle
+				cx="8"
+				cy="8"
+				r="7"
+				strokeWidth="2"
+				fill="none"
+				stroke="currentColor"
+			/>
+		</svg>
+	}
+/>
+```
+
 ### `slots` and `slotProps`
 
 Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements through [MUI's `slots` and `slotProps` props](https://mui.com/material-ui/customization/overriding-component-structure/#interior-slots).

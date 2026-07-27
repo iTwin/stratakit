@@ -27,7 +27,7 @@ A **Tree** constitutes three key components:
 
 - [`Tree.Root`](/reference/structures/Tree/#Tree.Root): The container, defining a single **Tree**.
 - [`Tree.Item`](/reference/structures/Tree/#Tree.Item): Items belonging directly to `Tree.Root`.
-- [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction): `Tree.Item` can be actionable when selected. `TreeItem.Action` defines a _supplementary_ action.
+- [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction): A [supplementary action](#supplementary-actions) for the `Tree.Item`.
 
 ### Hierarchy
 

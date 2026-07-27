@@ -265,7 +265,13 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 
 	return (
 		<PortalContext.Provider value={portalContainer}>
-			{props.children}
+			{/*
+			 * Rendered *before* `children` so that its ref is attached before any descendant's
+			 * layout effect runs in the same commit. This allows portals (e.g. MUI `Modal`) that are
+			 * already open on the very first commit to resolve this container instead of falling back
+			 * to `<body>`. The rendered DOM position is unaffected, since this is portaled to the end
+			 * of the root node either way.
+			 */}
 			<PortalContainer
 				colorScheme={props.colorScheme}
 				unstable_accentColor={props.unstable_accentColor}
@@ -273,6 +279,7 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 				ref={setPortalContainer}
 				render={props.portalContainerProp}
 			/>
+			{props.children}
 		</PortalContext.Provider>
 	);
 }

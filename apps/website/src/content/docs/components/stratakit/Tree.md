@@ -125,10 +125,6 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 
 :::
 
-## Examples
-
-See the [Sandbox](/sandbox) (and the [Sandbox source code](https://github.com/iTwin/stratakit/blob/main/apps/test-app/app/sandbox/index.tsx)) for a working example with multiple features.
-
 ## ✅ Do
 
 - Do use **Tree** to let users explore multi-tiered data.

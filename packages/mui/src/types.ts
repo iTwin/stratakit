@@ -402,7 +402,7 @@ declare module "@mui/material/Slider" {
 }
 
 declare module "@mui/material/SvgIcon" {
-	/** @deprecated Use `Icon` from `@stratakit/foundations` instead */
+	/** @deprecated Use `Icon` from `@stratakit/mui` instead. */
 	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
 	export default function SvgIcon(
 		props: SvgIconProps,

@@ -6,7 +6,7 @@ links:
   apiReference: https://mui.com/material-ui/api/linear-progress/
 ---
 
-::example{src="mui/LinearProgress.default"}
+::example{src="mui/LinearProgress.default" min-width="300px"}
 
 ## StrataKit MUI modifications
 
@@ -21,16 +21,16 @@ links:
 - **Primary:** The default. Use when indicating the primary loading state on a page.
 - **Secondary:** Use when indicating a secondary loading state or when multiple loading states are shown at once.
 
-::example{src="mui/LinearProgress.colors"}
+::example{src="mui/LinearProgress.colors" min-width="300px"}
 
 ### Determinate
 
 Set the `variant` prop to `"determinate"` when the completion percentage is known.
 
-::example{src="mui/LinearProgress.determinate"}
+::example{src="mui/LinearProgress.determinate" min-width="300px"}
 
 ### Buffer
 
 Set the `variant` prop to `"buffer"` when progress and buffered work are tracked separately.
 
-::example{src="mui/LinearProgress.buffer"}
+::example{src="mui/LinearProgress.buffer" min-width="300px"}

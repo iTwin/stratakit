@@ -31,7 +31,7 @@ A **Tree** constitutes three key components:
 
 ### Hierarchy
 
-[`Tree.Item`s](/reference/structures/Tree/#Tree.Item) are supplied as children of [`Tree.Root`](/reference/structures/Tree/#Tree.Root). The components themselves are not nestable. Instead, the `aria-level` prop (required) describes the level of the item in the hierarchy. The [`aria-posinset`](/reference/structures/Tree/#Tree.Item.aria-posinset) and [`aria-setsize`](/reference/structures/Tree/#Tree.Item.aria-setsize) props are also required.
+[`Tree.Item`s](/reference/structures/Tree/#Tree.Item) are supplied as children of [`Tree.Root`](/reference/structures/Tree/#Tree.Root). The components themselves are not nestable. Instead, the [`aria-level`](/reference/structures/Tree/#Tree.Item.aria-level) prop (required) describes the level of the item in the hierarchy. The [`aria-posinset`](/reference/structures/Tree/#Tree.Item.aria-posinset) and [`aria-setsize`](/reference/structures/Tree/#Tree.Item.aria-setsize) props are also required.
 
 ```jsx
 <Tree.Root>

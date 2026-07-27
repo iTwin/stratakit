@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Deprecate `SvgIcon` in favor of `Icon`
+Deprecated MUI `SvgIcon` in favor of StrataKit `Icon`.

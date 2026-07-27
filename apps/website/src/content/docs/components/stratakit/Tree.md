@@ -63,8 +63,8 @@ actions={[
 
 [`Tree.Item`s](/reference/structures/Tree/#Tree.Item) support two _primary_ interactions:
 
-1. Expansion
-2. Selection
+1. [Expansion](#expansion)
+2. [Selection](#selection)
 
 ### Expansion
 

@@ -12,7 +12,7 @@
 	border-radius: calc(infinity * 1px);
 
 	&:where(.MuiLinearProgress-colorPrimary) {
-		--_MuiLinearProgress-color: var(--stratakit-color-icon-accent-base);
+		--_MuiLinearProgress-color: var(--stratakit-color-icon-accent-strong);
 	}
 
 	&:where(.MuiLinearProgress-colorSecondary) {

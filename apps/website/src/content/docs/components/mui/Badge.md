@@ -36,6 +36,8 @@ Use `variant="dot"` to display the badge without a count inside.
 
 Set the `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
 
+When `inline` is used, the `color="primary"` option is not valid.
+
 ::example{src="mui/Badge.inline"}
 
 ### Sizes
@@ -50,6 +52,7 @@ The `size` prop can only be set when [`inline`](#inline).
 ### Colors
 
 - **Secondary:** The default.
+- **Primary** Used only with the non-inline badge to avoid confusion with an call to action button.
 - **Info:** Use to call out an object or action as having an important attribute.
 - **Success:** Use to indicate a successful or completed state when it's important to provide positive reinforcement.
 - **Warning:** Use for warnings and time-sensitive issues that require attention and potential action.

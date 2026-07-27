@@ -58,7 +58,6 @@
 			aspect-ratio: 1;
 			background-color: var(--_MuiLinearProgress-color);
 			border-radius: inherit;
-			opacity: 0.2;
 		}
 	}
 }

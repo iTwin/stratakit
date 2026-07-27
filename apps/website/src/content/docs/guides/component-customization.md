@@ -29,7 +29,7 @@ Each component comes with a [**Use cases** section](/components/button#use-cases
 
 ## Changing component output
 
-**StrataKit** lets you change the element used to render a component, via **the `render` prop**. This prop is available across the entire component catalog, in both [StrataKit components](/components/overview/#mui-components) and [MUI components](/components/overview/#mui-components).
+**StrataKit** lets you change the element used to render a component, via **the `render` prop**. This prop is available across the entire component catalog, in both [StrataKit components](/components/overview/#stratakit-components) and [MUI components](/components/overview/#mui-components).
 
 :::caution[Do not use MUI's `component` prop]
 MUI's primary way of customizing rendered elements is through the [`component`](https://mui.com/material-ui/customization/overriding-component-structure/#the-component-prop) prop. This prop should generally _not_ be used in your application code. **StrataKit** needs exclusive access to the `component` prop in order to customize **MUI** components' behavior, appearance or semantics. Passing the `component` prop from outside would break such customizations.

@@ -68,7 +68,8 @@
 
 .MuiLinearProgress-bar2 {
 	:where(.MuiLinearProgress-root.MuiLinearProgress-buffer) & {
-		inset-block: calc(
+		block-size: var(--_MuiLinearProgress-track-thickness);
+		inset-block-start: calc(
 			(var(--_MuiLinearProgress-fill-thickness) - var(--_MuiLinearProgress-track-thickness)) *
 			0.5
 		);

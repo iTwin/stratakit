@@ -91,7 +91,7 @@ A button to the left of each item is reserved for expanding and collapsing it. C
 
 :::note[Keyboard behavior]
 
-To support full keyboard interaction, the left and right arrow keys are reserved for collapsing and expanding items respectively. The up and down arrows keys enable moving _between_ items.
+To support full keyboard interaction, the left and right arrow keys are reserved for collapsing and expanding items respectively. The up and down arrow keys enable moving _between_ items.
 
 :::
 

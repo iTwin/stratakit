@@ -1,1 +1,0 @@
-import{r as t,j as s,S as i}from"./_utils.8oq-S-GI.js";import{T as o}from"./Typography.B_lBMD8_.js";const p=["secondary","primary"],l=()=>{const e=t.useId();return p.map(r=>{const a=`${e}-${r}`;return s.jsxs("div",{children:[s.jsx(i,{"aria-labelledby":a,color:r}),s.jsxs(o,{id:a,children:[r.charAt(0).toUpperCase(),r.slice(1),"…"]})]},r)})};export{l as default};

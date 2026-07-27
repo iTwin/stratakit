@@ -8,16 +8,16 @@ links:
 
 ::example{src="structures/Tree.default" min-width="300px" min-height="150px" vertical-stretch}
 
-The **Tree** component exposes application data as a hierarchy of nested, expandable levels. **Trees** can be explored and organized in different ways. They may offer searching, filtering, and sorting functionality. 
+The **Tree** component exposes application data as a hierarchy of nested, expandable levels. **Trees** can be explored and organized in different ways. They may offer searching, filtering, and sorting functionality.
 
 Like the [**Accordion**](/components/accordion), the **Tree** is useful for progressively disclosing content. Unlike the **Accordion**, this content can be nested to multiple levels of depth.
 
-| Use case                                                     | [Tree](/components/tree)                     | [Accordion](/components/accordion) | 
-| ------------------------------------------------------------ | -------------------------------------------- | ---------------------------------- | 
-| Progressive disclosure of content (several levels of data)   | ✅                                           | ❌                                 | 
-| Progressive disclosure of content (single level of data)     | ❌                                           | ✅                                 | 
-| Items include arbitrary content and functionality            | ❌                                           | ✅                                 | 
-| Items include associated actions only                        | ✅                                           | ❌                                 | 
+| Use case                                                   | [Tree](/components/tree) | [Accordion](/components/accordion) |
+| ---------------------------------------------------------- | ------------------------ | ---------------------------------- |
+| Progressive disclosure of content (several levels of data) | ✅                       | ❌                                 |
+| Progressive disclosure of content (single level of data)   | ❌                       | ✅                                 |
+| Items include arbitrary content and functionality          | ❌                       | ✅                                 |
+| Items include associated actions only                      | ✅                       | ❌                                 |
 
 ## Structure
 
@@ -35,20 +35,20 @@ A **Tree** constitutes three key components:
 
 ```jsx
 <Tree.Root>
-  <Tree.Item label="Parent" aria-level={1} aria-posinset={1} aria-setsize={1} />
-  <Tree.Item label="Child 1" aria-level={2} aria-posinset={1} aria-setsize={2} />
-  <Tree.Item label="Child 2" aria-level={2} aria-posinset={2} aria-setsize={2}  />
+	<Tree.Item label="Parent" aria-level={1} aria-posinset={1} aria-setsize={1} />
+	<Tree.Item label="Child 1" aria-level={2} aria-posinset={1} aria-setsize={2} />
+	<Tree.Item label="Child 2" aria-level={2} aria-posinset={2} aria-setsize={2} />
 </Tree.Root>
 ```
 
 ### Supplementary actions
 
-Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the [`actions`](/reference/structures/Tree/#Tree.Item.actions) and [`inlineActions`](/reference/structures/Tree/#Tree.Item.inlineActions) props lets you insert an array of supplementary actions. 
+Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the [`actions`](/reference/structures/Tree/#Tree.Item.actions) and [`inlineActions`](/reference/structures/Tree/#Tree.Item.inlineActions) props lets you insert an array of supplementary actions.
 
-| Prop              | Action placement                                            |
-| ----------------- | ----------------------------------------------------------- |
-| `actions`         | Available in a dropdown menu                                |
-| `inlineActions`   | Available _inline_, outside and preceding the dropdown menu |
+| Prop            | Action placement                                            |
+| --------------- | ----------------------------------------------------------- |
+| `actions`       | Available in a dropdown menu                                |
+| `inlineActions` | Available _inline_, outside and preceding the dropdown menu |
 
 Each action must use a [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction) component. Other components are not permitted.
 
@@ -72,12 +72,12 @@ Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reve
 
 ```jsx
 <Tree.Root>
-  <Tree.Item 
-    label="Parent" 
-    aria-level={1} 
-    aria-posinset={1} 
-    aria-setsize={1} 
-    expanded={isExpanded} 
+  <Tree.Item
+    label="Parent"
+    aria-level={1}
+    aria-posinset={1}
+    aria-setsize={1}
+    expanded={isExpanded}
     onExpandedChange={() => isExpanded = !isExpanded}
   />
   {isExpanded && (
@@ -95,7 +95,7 @@ To support full keyboard interaction, the left and right arrow keys are reserved
 
 :::
 
-### Selection 
+### Selection
 
 Item selection is facilitated with [`selected`](/reference/structures/Tree/#Tree.Item.selected) and the [`onSelectedChange`](/reference/structures/Tree/#Tree.Item.onSelectedChange) callback. No specific selection behavior is supported out of the box, since different applications have different needs.
 
@@ -119,7 +119,7 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 
 ```jsx
 <Tree.Root className={styles.tree} aria-multiselectable="true">
-  ...
+	...
 </Tree.Root>
 ```
 
@@ -130,9 +130,9 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 - Do use **Tree** to let users explore multi-tiered data.
 - Do create expandable items that reveal nested items.
 - Do supply supplementary actions via the `actions` and `inlineActions` props.
-- Do prioritize actions by adding them via `inlineActions`. 
+- Do prioritize actions by adding them via `inlineActions`.
 - Do implement a selection behavior suited to your users.
-- Do use an `aria-level` value that reflects the level of the item in the hierarchy. 
+- Do use an `aria-level` value that reflects the level of the item in the hierarchy.
 
 ## ❌ Don't
 

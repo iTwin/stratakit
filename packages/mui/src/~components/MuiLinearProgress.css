@@ -40,9 +40,11 @@
 			content: "";
 			position: absolute;
 			block-size: var(--_MuiLinearProgress-track-thickness);
-			inset-block-start: calc(var(--_MuiLinearProgress-fill-thickness) * 0.5);
+			inset-block-start: calc(
+				(var(--_MuiLinearProgress-fill-thickness) - var(--_MuiLinearProgress-track-thickness)) *
+				0.5
+			);
 			inset-inline: 0;
-			translate: 0 -50%;
 			background-color: var(--_MuiLinearProgress-color);
 			border-radius: inherit;
 		}

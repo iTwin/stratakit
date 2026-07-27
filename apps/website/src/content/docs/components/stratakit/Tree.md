@@ -43,7 +43,7 @@ A **Tree** constitutes three key components:
 
 ### Supplementary actions
 
-Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the `actions` and `inlineActions` props lets you insert an array of supplementary actions. 
+Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the [`actions`](/reference/structures/Tree/#Tree.Item.actions) and [`inlineActions`](/reference/structures/Tree/#Tree.Item.inlineActions) props lets you insert an array of supplementary actions. 
 
 | Prop              | Action placement                                            |
 | ----------------- | ----------------------------------------------------------- |

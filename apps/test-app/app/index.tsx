@@ -59,7 +59,9 @@ export default function Index() {
 
 			<ul className={styles.list}>
 				<li>
-					<Anchor href={useHref("/tests/anchor")}>StrataKit components</Anchor>
+					<Anchor href={useHref("/tests/bricks/anchor")}>
+						StrataKit components
+					</Anchor>
 				</li>
 				<li>
 					<Anchor href={useHref("/sandbox")}>Sandbox</Anchor>

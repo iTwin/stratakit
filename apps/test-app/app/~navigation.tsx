@@ -32,7 +32,7 @@ const navItems = [
 			path: "/tests",
 			label: "StrataKit components",
 			icon: `${svgComponents}#icon`,
-			startingPath: "/tests/anchor", // Use first component starting path to avoid landing on empty page
+			startingPath: "/tests/bricks/anchor", // Use first component starting path to avoid landing on empty page
 		},
 		{ path: "/sandbox", label: "Sandbox", icon: `${svgSandbox}#icon` },
 	],

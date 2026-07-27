@@ -45,10 +45,10 @@ A **Tree** constitutes three key components:
 
 Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the `actions` and `inlineActions` props lets you insert an array of supplementary actions. 
 
-| Prop              | Action placement                                   |
-| ----------------- | -------------------------------------------------- |
-| `actions`         | Available in a dropdown menu                       |
-| `inlineActions`   | Available _inline_, outside of the dropdown menu   |
+| Prop              | Action placement                                            |
+| ----------------- | ----------------------------------------------------------- |
+| `actions`         | Available in a dropdown menu                                |
+| `inlineActions`   | Available _inline_, outside and preceding the dropdown menu |
 
 Each action must use a [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction) component. Other components are not permitted.
 
@@ -87,7 +87,7 @@ Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reve
 </Tree.Root>
 ```
 
-A button to the left of each item is reserved for expanding and collapsing it. Clicking elsewhere on the item will perform selection.
+A button to the left of each item is reserved for expanding and collapsing it. Clicking elsewhere on the item will perform [selection](#selection).
 
 :::note[Keyboard behavior]
 
@@ -109,13 +109,19 @@ One approach is to make items behave like radio buttons, wherein only one can be
 
 If desired, each [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can act independently, as a simple toggle button. This means they can be selected cumulatively.
 
-In the following example, “Item 1” and “Item 1.2” are selected from the outset. The “Select all” and “Deselect all” buttons cover bulk actions. 
+In the following example, “Item 1” and “Item 1.2” are selected from the outset. The “Select all” and “Deselect all” buttons cover bulk actions. `useEffect` watches the selection object and disables the bulk actions where they're not applicable.
 
 ::example{src="structures/Tree.select-many" min-width="300px" min-height="150px" vertical-stretch}
 
-:::note[Disabling bulk actions]
+:::note[The `aria-multiselectable` attribute]
 
-In the previous example, `useEffect` watches the selection object and disables the bulk actions where they're not applicable.
+Selecting an item applies `aria-selected="true"`. Where it's possible to select multiple items, you must apply `aria-multiselectable="true"` to `Tree.Root`.
+
+```jsx
+<Tree.Root className={styles.tree} aria-multiselectable="true">
+  ...
+</Tree.Root>
+```
 
 :::
 

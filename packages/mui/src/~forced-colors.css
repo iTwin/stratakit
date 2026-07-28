@@ -324,6 +324,11 @@
 }
 
 @supports (appearance: base-select) {
+	:where(.MuiNativeSelect-select):disabled {
+		color: CanvasText;
+		border-color: GrayText;
+	}
+
 	:where(.MuiNativeSelect-select)::picker(select) {
 		border: 1px solid CanvasText;
 	}

@@ -76,7 +76,7 @@ When rendering React elements, props must be set on the components they belong t
 
 Some StrataKit components are also designed specifically to leverage the `render` prop. For example, the [**Toolbar**](/components/toolbar) uses this prop to render individual items as [**IconButtons**](/components/iconbutton).
 
-### `slots` and `slotProps`
+### Changing MUI slots
 
 Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements through [MUI's `slots` and `slotProps` props](https://mui.com/material-ui/customization/overriding-component-structure/#interior-slots).
 

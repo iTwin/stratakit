@@ -49,41 +49,41 @@
 		margin-inline: -1px;
 		margin-block: 1px;
 	}
-}
 
-:where(.MuiNativeSelect-select) option {
-	min-height: 2rem;
-	padding-inline: var(--stratakit-space-x2);
-	background-color: var(--stratakit-color-bg-elevation-level-1);
-	border-radius: var(--stratakit-space-x1);
-	border: 1px solid #0000;
-	outline-offset: 0;
+	:where(.MuiNativeSelect-select) option {
+		min-height: 2rem;
+		padding-inline: var(--stratakit-space-x2);
+		background-color: var(--stratakit-color-bg-elevation-level-1);
+		border-radius: var(--stratakit-space-x1);
+		border: 1px solid #0000;
+		outline-offset: 0;
 
-	:where(&::checkmark) {
-		content: "";
-		grid-column: checkmark-before;
-		background-color: var(--stratakit-color-icon-accent-strong);
-		width: 1rem;
-		height: 1rem;
-		mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.606 4.191a.5.5 0 0 1 .787.617l-5.5 7a.502.502 0 0 1-.777.012l-2.5-3a.5.5 0 0 1 .768-.64l2.104 2.525 5.118-6.514Z'/%3E%3C/svg%3E");
-		mask-repeat: no-repeat;
-		mask-position: center;
-	}
-
-	@media (any-hover: hover) {
-		&:where(:hover) {
-			background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+		:where(&::checkmark) {
+			content: "";
+			grid-column: checkmark-before;
+			background-color: var(--stratakit-color-icon-accent-strong);
+			width: 1rem;
+			height: 1rem;
+			mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.606 4.191a.5.5 0 0 1 .787.617l-5.5 7a.502.502 0 0 1-.777.012l-2.5-3a.5.5 0 0 1 .768-.64l2.104 2.525 5.118-6.514Z'/%3E%3C/svg%3E");
+			mask-repeat: no-repeat;
+			mask-position: center;
 		}
-	}
-
-	&:where(:checked) {
-		color: var(--stratakit-color-text-accent-strong);
-		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
-		border-color: var(--stratakit-color-border-accent-strong);
 
 		@media (any-hover: hover) {
 			&:where(:hover) {
-				background-color: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+				background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+			}
+		}
+
+		&:where(:checked) {
+			color: var(--stratakit-color-text-accent-strong);
+			background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+			border-color: var(--stratakit-color-border-accent-strong);
+
+			@media (any-hover: hover) {
+				&:where(:hover) {
+					background-color: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+				}
 			}
 		}
 	}

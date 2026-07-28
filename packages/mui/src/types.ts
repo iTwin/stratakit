@@ -551,7 +551,7 @@ declare module "@mui/material/Switch" {
 		error: false;
 	}
 
-	interface SwitchOwnProps {
+	interface SwitchProps {
 		/** @deprecated DO NOT USE. */
 		checkedIcon?: SwitchProps["checkedIcon"];
 

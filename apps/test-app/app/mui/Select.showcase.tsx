@@ -5,6 +5,7 @@
 import SelectDefault from "examples/mui/Select.default.tsx";
 import SelectIcon from "examples/mui/Select.icon.tsx";
 import SelectMultiple from "examples/mui/Select.multiple.tsx";
+import SelectNative from "examples/mui/Select.native.tsx";
 import SelectSizes from "examples/mui/Select.sizes.tsx";
 import { createKnob } from "~/~utils.tsx";
 
@@ -15,6 +16,7 @@ export default function SelectExamples() {
 			<SelectIcon />
 			<SelectMultiple />
 			<SelectSizes />
+			<SelectNative />
 		</>
 	);
 }

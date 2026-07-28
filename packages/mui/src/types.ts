@@ -215,6 +215,24 @@ declare module "@mui/material/CardActionArea" {
 	}
 }
 
+declare module "@mui/material/CircularProgress" {
+	interface CircularProgressPropsColorOverrides {
+		inherit: false;
+		info: false;
+	}
+
+	interface CircularProgressProps {
+		/** @deprecated DO NOT USE. */
+		disableShrink?: CircularProgressProps["disableShrink"];
+
+		/** @deprecated DO NOT USE. */
+		enableTrackSlot?: CircularProgressProps["enableTrackSlot"];
+
+		/** @deprecated DO NOT USE. */
+		thickness?: CircularProgressProps["thickness"];
+	}
+}
+
 declare module "@mui/material/Checkbox" {
 	interface CheckboxPropsColorOverrides {
 		secondary: false;

@@ -60,8 +60,10 @@
 }
 
 .MuiPickersCalendarHeader-labelContainer {
+	@apply --typography("body-md");
 	align-self: stretch;
 	padding-inline-end: var(--stratakit-space-x1);
+	user-select: none;
 }
 
 .MuiDayCalendar-root {

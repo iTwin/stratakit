@@ -1,0 +1,1 @@
+import{j as s}from"./_utils.CG7aGWgU.js";import{S as e}from"./Stack.ALgIt0mN.js";import{L as a}from"./Link.kI7vPcAb.js";const i=["primary","error","info","success","warning"],o=()=>s.jsx(e,{direction:"row",spacing:1,useFlexGap:!0,sx:{flexWrap:"wrap"},children:i.map(r=>s.jsxs(a,{color:r,href:`#${r}`,children:[r.charAt(0).toUpperCase(),r.slice(1)]},r))});export{o as default};

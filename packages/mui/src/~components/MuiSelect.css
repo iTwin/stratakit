@@ -24,32 +24,34 @@
 	inset-inline-end: calc(var(--_MuiInput-padding-inline) - 1px);
 }
 
-/* @supports (appearance: base-select) { */
-.MuiNativeSelect-select {
-	appearance: base-select;
-}
+@supports (appearance: base-select) {
+	.MuiNativeSelect-select {
+		appearance: base-select;
 
-.MuiNativeSelect-select::picker-icon {
-	display: none;
-}
+		:where(&)::picker-icon {
+			display: none;
+		}
+	}
 
-.MuiNativeSelect-select::picker(select) {
-	appearance: base-select;
-	padding: var(--stratakit-space-x1);
-	background-color: var(--stratakit-color-bg-elevation-level-1);
-	color: var(--stratakit-mui-palette-text-primary);
-	border-radius: 8px;
-	border-width: 0;
-	box-shadow: var(--stratakit-shadow-control-dropdown-base);
-	/* 
+	:where(.MuiNativeSelect-select)::picker(select) {
+		appearance: base-select;
+		padding: var(--stratakit-space-x1);
+		background-color: var(--stratakit-color-bg-elevation-level-1);
+		color: var(--stratakit-mui-palette-text-primary);
+		border-radius: 8px;
+		border-width: 0;
+		box-shadow: var(--stratakit-shadow-control-dropdown-base);
+		/* 
 		MUI's outlined input wraps the actual input with another element and the
 		select ends up being 1px smaller that the visual area. Use margins to correct
-		the browsers placement of the picker based on the select element to match the wrapper element */
-	margin-inline: -1px;
-	margin-block: 1px;
+		the browsers placement of the picker based on the select element to match the wrapper element.
+		*/
+		margin-inline: -1px;
+		margin-block: 1px;
+	}
 }
 
-.MuiNativeSelect-select :where(option) {
+:where(.MuiNativeSelect-select) option {
 	min-height: 2rem;
 	padding-inline: var(--stratakit-space-x2);
 	background-color: var(--stratakit-color-bg-elevation-level-1);
@@ -57,7 +59,7 @@
 	border: 1px solid transparent;
 	outline-offset: 0;
 
-	&::checkmark {
+	:where(&)::checkmark {
 		content: "";
 		grid-column: checkmark-before;
 		background-color: var(--stratakit-color-icon-accent-strong);
@@ -86,4 +88,3 @@
 		}
 	}
 }
-/* } */

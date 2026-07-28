@@ -337,6 +337,7 @@
 			border-color: SelectedItemText;
 			color: SelectedItemText;
 		}
+
 		:where(&::checkmark) {
 			background-color: CanvasText;
 		}

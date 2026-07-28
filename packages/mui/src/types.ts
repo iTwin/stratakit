@@ -16,6 +16,7 @@ import type {
 	DefaultComponentProps,
 	OverridableTypeMap,
 } from "@mui/material/OverridableComponent";
+import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
 import type { TabsProps } from "@mui/material/Tabs";
@@ -398,6 +399,14 @@ declare module "@mui/material/Slider" {
 		warning: false;
 		error: false;
 	}
+}
+
+declare module "@mui/material/SvgIcon" {
+	/** @deprecated Use `Icon` from `@stratakit/mui` instead. */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function SvgIcon(
+		props: SvgIconProps,
+	): React.JSX.Element | null;
 }
 
 declare module "@mui/material/Switch" {

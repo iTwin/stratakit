@@ -322,3 +322,23 @@
 		color: SelectedItemText;
 	}
 }
+
+@supports (appearance: base-select) {
+	:where(.MuiNativeSelect-select)::picker(select) {
+		border: 1px solid CanvasText;
+	}
+
+	:where(.MuiNativeSelect-select) option {
+		border-color: Canvas;
+
+		:where(&:checked) {
+			forced-color-adjust: none; /* removing the backplate */
+			background-color: SelectedItem;
+			border-color: SelectedItemText;
+			color: SelectedItemText;
+		}
+		:where(&::checkmark) {
+			background-color: CanvasText;
+		}
+	}
+}

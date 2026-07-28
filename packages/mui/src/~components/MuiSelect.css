@@ -56,10 +56,10 @@
 	padding-inline: var(--stratakit-space-x2);
 	background-color: var(--stratakit-color-bg-elevation-level-1);
 	border-radius: var(--stratakit-space-x1);
-	border: 1px solid transparent;
+	border: 1px solid #0000;
 	outline-offset: 0;
 
-	:where(&)::checkmark {
+	:where(&::checkmark) {
 		content: "";
 		grid-column: checkmark-before;
 		background-color: var(--stratakit-color-icon-accent-strong);

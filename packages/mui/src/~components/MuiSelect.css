@@ -28,7 +28,7 @@
 	.MuiNativeSelect-select {
 		appearance: base-select;
 
-		:where(&)::picker-icon {
+		&::picker-icon {
 			display: none;
 		}
 	}
@@ -55,10 +55,10 @@
 		padding-inline: var(--stratakit-space-x2);
 		background-color: var(--stratakit-color-bg-elevation-level-1);
 		border-radius: var(--stratakit-space-x1);
-		border: 1px solid #0000;
+		border: 1px solid transparent;
 		outline-offset: 0;
 
-		:where(&::checkmark) {
+		&::checkmark {
 			content: "";
 			grid-column: checkmark-before;
 			background-color: var(--stratakit-color-icon-accent-strong);
@@ -75,7 +75,7 @@
 			}
 		}
 
-		&:where(:checked) {
+		&:where(:checked:not(:disabled)) {
 			color: var(--stratakit-color-text-accent-strong);
 			background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 			border-color: var(--stratakit-color-border-accent-strong);
@@ -85,6 +85,12 @@
 					background-color: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
 				}
 			}
+		}
+
+		&:where(:disabled) {
+			background: transparent;
+			color: var(--stratakit-color-text-neutral-disabled);
+			cursor: not-allowed;
 		}
 	}
 }

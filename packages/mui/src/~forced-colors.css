@@ -343,8 +343,12 @@
 			color: SelectedItemText;
 		}
 
-		:where(&::checkmark) {
+		&::checkmark {
 			background-color: CanvasText;
+		}
+
+		&:disabled {
+			color: GrayText;
 		}
 	}
 }

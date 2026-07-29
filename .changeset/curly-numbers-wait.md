@@ -3,4 +3,4 @@
 "@stratakit/mui": patch
 ---
 
-Update portal container rendering to fix an issue with initially open Dialogs incorrectly being aria-hidden
+Updated portal container rendering to prevent initially open `Dialog` incorrectly being `aria-hidden`

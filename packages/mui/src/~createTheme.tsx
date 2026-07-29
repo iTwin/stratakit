@@ -50,6 +50,7 @@ import {
 } from "./~components/MuiTable.js";
 import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
+import { MuiTooltipPopper } from "./~components/MuiTooltip.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	CaretsUpDownIcon,
@@ -577,6 +578,7 @@ function createTheme(args: CreateThemeArgs) {
 							className: "🥝MuiTooltip",
 						},
 						popper: {
+							component: MuiTooltipPopper,
 							modifiers: [
 								{
 									name: "offset",

@@ -54,20 +54,6 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 
 	// The container is passed as a function so that MUI resolves it lazily (inside `Portal`'s layout
 	// effect), by which point the ref is guaranteed to be attached.
-	//
-	// Storing the element in state and passing directly instead would leave the container `undefined` for the first
-	// commit, which permanently breaks any `Modal` that is already open on that commit:
-	//
-	//   1. `Portal` has no container, so it falls back to `document.body`.
-	//   2. `ModalManager.add(modal, document.body)` calls `ariaHiddenSiblings`, which sets
-	//      `aria-hidden="true"` on every child of `<body>` other than the modal itself — including
-	//      our portal container.
-	//   3. The ref attaches, the theme is recreated, and on the next commit the modal moves into
-	//      the portal container. `ariaHiddenSiblings` only runs when a modal is added or removed,
-	//      so nothing re-evaluates it: the container keeps `aria-hidden="true"` for as long as the
-	//      modal is open, and the modal is now *inside* it.
-	//
-	// The modal is then visible on screen but absent from the accessibility tree.
 	const theme = React.useMemo(
 		() => createTheme({ portalContainer: () => portalContainerRef.current }),
 		[],

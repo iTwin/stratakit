@@ -33,6 +33,9 @@ const MuiDivider = forwardRef<"hr", MuiDividerProps>((props, forwardedRef) => {
 			render={defaultRender}
 			data-_sk-margin={margin ? "" : undefined}
 			{...rest}
+			// Remove separator semantics when children is passed, to prevent the content from being suppressed.
+			role={children ? undefined : props.role}
+			aria-orientation={children ? undefined : props["aria-orientation"]}
 			ref={forwardedRef}
 		>
 			{children}

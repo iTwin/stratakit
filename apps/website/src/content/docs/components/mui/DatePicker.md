@@ -12,6 +12,8 @@ links:
 
 ### Sizes
 
+Use `slotProps={{ textField: { size: "small" } }}` to configure the size of the entry point.
+
 - **Small:** Use in compact interfaces where space is limited.
 - **Medium:** Default size, suitable for most use cases.
 

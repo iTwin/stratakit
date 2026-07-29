@@ -2,6 +2,28 @@
 
 This style guide describes conventions and best practices for the StrataKit project.
 
+## Changesets
+
+### Use past tense
+
+**✅ Do**
+
+> Deprecated MUI `SvgIcon` in favor of StrataKit `Icon`.
+
+**❌ Don't**
+
+> Deprecate MUI `SvgIcon` in favor of StrataKit `Icon`.
+
+### Use backticks to highlight code
+
+**✅ Do**
+
+> Deprecated `color` prop on `Chip`.
+
+**❌ Don't**
+
+> Deprecated color prop on Chip.
+
 ## TSX
 
 ### Use `interface` instead `type`

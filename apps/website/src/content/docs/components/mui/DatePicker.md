@@ -12,7 +12,7 @@ links:
 
 ### Sizes
 
-Use `slotProps={{ textField: { size: "small" } }}` to configure the size of the entry point.
+Use [`slotProps.textField`](https://mui.com/x/api/date-pickers/date-picker/#date-picker-prop-slotProps) to set the [`size`](https://mui.com/x/api/date-pickers/pickers-text-field/#pickers-text-field-prop-size) of the DatePicker input.
 
 - **Small:** Use in compact interfaces where space is limited.
 - **Medium:** Default size, suitable for most use cases.

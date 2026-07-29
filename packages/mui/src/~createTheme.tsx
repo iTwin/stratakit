@@ -596,13 +596,13 @@ function createTheme(args: CreateThemeArgs) {
 								{
 									name: "flip",
 									options: {
-										padding: 2,
+										padding: 4,
 									},
 								},
 								{
 									name: "preventOverflow",
 									options: {
-										padding: 2,
+										padding: 4,
 									},
 								},
 							],

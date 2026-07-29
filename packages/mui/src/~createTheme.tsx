@@ -10,6 +10,7 @@ import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
 import {
+	MuiAccordionHeadingSlot,
 	MuiAccordionRootSlot,
 	MuiAccordionSummary,
 } from "./~components/MuiAccordion.js";
@@ -147,6 +148,7 @@ function createTheme(args: CreateThemeArgs) {
 					disableGutters: true,
 					slots: {
 						root: MuiAccordionRootSlot,
+						heading: MuiAccordionHeadingSlot,
 					},
 					slotProps: {
 						region: {

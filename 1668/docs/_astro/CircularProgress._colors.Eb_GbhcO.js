@@ -1,0 +1,1 @@
+import{j as s,Q as t,T as i}from"./_utils.C2VYB8vv.js";import{r as o}from"./styles.internal.Cf9SRLEZ.js";const p=["secondary","primary"],l=()=>{const e=o.useId();return p.map(r=>{const a=`${e}-${r}`;return s.jsxs("div",{children:[s.jsx(t,{"aria-labelledby":a,color:r}),s.jsxs(i,{id:a,children:[r.charAt(0).toUpperCase(),r.slice(1),"…"]})]},r)})};export{l as default};

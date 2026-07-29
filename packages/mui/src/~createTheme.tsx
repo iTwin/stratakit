@@ -10,6 +10,7 @@ import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
 import {
+	MuiAccordionHeadingSlot,
 	MuiAccordionRootSlot,
 	MuiAccordionSummary,
 } from "./~components/MuiAccordion.js";
@@ -70,7 +71,14 @@ import type { ColorSystemOptions } from "@mui/material/styles";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 interface CreateThemeArgs {
-	portalContainer?: HTMLElement | null;
+	/**
+	 * The container to use for all portaled components.
+	 *
+	 * Prefer passing a function, which is lazily resolved by MUI when the portal mounts. Passing the
+	 * element directly requires the theme to be recreated once the element becomes available, which
+	 * leaves a one-commit window where portals fall back to `<body>`.
+	 */
+	portalContainer?: HTMLElement | null | (() => HTMLElement | null);
 }
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
@@ -145,6 +153,7 @@ function createTheme(args: CreateThemeArgs) {
 					disableGutters: true,
 					slots: {
 						root: MuiAccordionRootSlot,
+						heading: MuiAccordionHeadingSlot,
 					},
 					slotProps: {
 						region: {

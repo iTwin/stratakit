@@ -60,6 +60,10 @@ declare module "@mui/material/OverridableComponent" {
 	}
 }
 
+declare module "@mui/material/Accordion" {
+	interface AccordionHeadingSlotPropsOverrides extends TypographyProps {}
+}
+
 declare module "@mui/material/AccordionSummary" {
 	interface AccordionSummaryOwnProps {
 		/**

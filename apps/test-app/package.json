@@ -88,7 +88,7 @@
 			"service": true
 		},
 		"preview": {
-			"command": "pnpx serve build/client -L -p 1800",
+			"command": "vite preview --outDir build/client --port 1800",
 			"dependencies": [
 				"build"
 			],

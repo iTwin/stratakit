@@ -66,7 +66,7 @@ export default defineConfig({
 		},
 	],
 	webServer: {
-		command: "pnpm preview",
+		command: "vite preview --outDir build/client --port 1800",
 		url: "http://localhost:1800",
 		reuseExistingServer: true,
 	},

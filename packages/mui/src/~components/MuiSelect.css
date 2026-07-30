@@ -53,7 +53,7 @@
 	:where(.MuiNativeSelect-select) option {
 		min-height: 2rem;
 		padding-inline: var(--stratakit-space-x2);
-		background-color: var(--stratakit-color-bg-elevation-level-1);
+		background-color: transparent;
 		border-radius: var(--stratakit-space-x1);
 		border: 1px solid transparent;
 		outline-offset: 0;
@@ -70,7 +70,7 @@
 		}
 
 		@media (any-hover: hover) {
-			&:where(:hover) {
+			&:where(:hover:not(:disabled)) {
 				background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 			}
 		}

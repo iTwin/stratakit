@@ -270,13 +270,21 @@ declare module "@mui/material/CardActionArea" {
 }
 
 declare module "@mui/material/Checkbox" {
-	interface CheckboxPropsColorOverrides {
-		secondary: false;
-		default: false;
-		info: false;
-		success: false;
-		warning: false;
-		error: false;
+	interface CheckboxProps {
+		/** @deprecated DO NOT USE. */
+		checkedIcon?: CheckboxProps["checkedIcon"];
+
+		/** @deprecated DO NOT USE. */
+		color?: CheckboxProps["color"];
+
+		/** @deprecated DO NOT USE. */
+		disableRipple?: CheckboxProps["disableRipple"];
+
+		/** @deprecated DO NOT USE. */
+		icon?: CheckboxProps["icon"];
+
+		/** @deprecated DO NOT USE. */
+		indeterminateIcon?: CheckboxProps["indeterminateIcon"];
 	}
 
 	interface CheckboxPropsSizeOverrides {

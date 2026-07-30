@@ -335,7 +335,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
-			MuiDialog: { defaultProps: { component: Role.div } },
+			MuiDialog: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDialog.css instead.
+				},
+			},
 			MuiDialogContentText: {
 				defaultProps: {
 					component: Role.p,
@@ -349,7 +354,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
-			MuiDrawer: { defaultProps: { component: Role.div } },
+			MuiDrawer: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDrawer.css instead.
+				},
+			},
 			MuiFab: {
 				defaultProps: {
 					component: MuiButtonBase,

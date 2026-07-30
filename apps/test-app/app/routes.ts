@@ -20,16 +20,20 @@ function routesForPackage(folder: string, components: string[]) {
 	);
 }
 
-function muiExampleRoutes() {
+function muiComponentRoutes() {
 	const dir = join(import.meta.dirname, "../../../examples/mui");
-	return readdirSync(dir)
-		.filter((f) => f.endsWith(".tsx"))
-		.map((file) => {
-			const name = file.replace(".tsx", "");
-			return route(`/examples/mui/${name}`, "./examples/mui/index.tsx", {
-				id: `examples/mui/${name}`,
-			});
-		});
+	const names = [
+		...new Set(
+			readdirSync(dir)
+				.filter((f) => f.endsWith(".tsx"))
+				.map((f) => f.split(".")[0]), // "Button.variants.tsx" → "Button"
+		),
+	];
+	return names.map((name) =>
+		route(`/examples/mui/${name}`, "./examples/mui/index.tsx", {
+			id: `examples/mui/${name}`,
+		}),
+	);
 }
 
 export default [
@@ -39,7 +43,7 @@ export default [
 	route("icons", "./icons.tsx"),
 	route("mui", "./mui/mui.tsx"),
 
-	...muiExampleRoutes(),
+	...muiComponentRoutes(),
 
 	layout(
 		"./tests/tests.tsx",

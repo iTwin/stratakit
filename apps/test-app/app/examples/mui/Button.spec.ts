@@ -6,22 +6,21 @@
 import { expect, test } from "#playwright";
 
 test.describe("@visual", () => {
-	test("variants", async ({ page }) => {
-		await page.goto("/examples/mui/Button.variants");
+	test("dark", async ({ page }) => {
+		await page.emulateMedia({ colorScheme: "dark" });
+		await page.goto("/examples/mui/Button");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
-	test("icon", async ({ page }) => {
-		await page.goto("/examples/mui/Button.icon");
+	test("light", async ({ page }) => {
+		await page.emulateMedia({ colorScheme: "light" });
+		await page.goto("/examples/mui/Button");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/examples/mui/Button.variants");
+		await page.goto("/examples/mui/Button");
 		await page.emulateMedia({ forcedColors: "active" });
-		await expect(page.locator("body")).toHaveScreenshot();
-
-		await page.goto("/examples/mui/Button.icon");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });

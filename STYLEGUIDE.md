@@ -32,15 +32,15 @@ This style guide describes conventions and best practices for the StrataKit proj
 
 **✅ Do**
 
-> Deprecated `color` prop on `Chip`.
+> Deprecated `color` prop of `Chip`.
 > Set `"primary"` the default `color` for `CircularProgress`
-> Fixed bug with `hidden=true` on `Dialog`
+> Fixed bug with `hidden=true` of `Dialog`
 
 **❌ Don't**
 
-> Deprecated color prop on Chip.
+> Deprecated color prop ofChip.
 > Made `primary` the default color for `<CircularProgress>`
-> Fixed bug with hidden=true on Dialog
+> Fixed bug with hidden=true of Dialog
 
 ## TSX
 

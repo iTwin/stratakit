@@ -14,15 +14,33 @@ This style guide describes conventions and best practices for the StrataKit proj
 
 > Deprecate MUI `SvgIcon` in favor of StrataKit `Icon`.
 
-### Use backticks to highlight code
+### End with a period
+
+**✅ Do**
+
+> Fixed an issue with styles not loding.
+
+**❌ Don't**
+
+> Fixed an issue with styles not loding
+
+### Format Code
+
+- Use backticks to highlight code.
+- Include quotes around string values. Numbers and boolean values are unquoted.
+- Refer to components without the `<` `>` unless you are referencing them in JSX
 
 **✅ Do**
 
 > Deprecated `color` prop on `Chip`.
+> Set `"primary"` the default `color` for `CircularProgress`
+> Fixed bug with `hidden=true` on `Dialog`
 
 **❌ Don't**
 
 > Deprecated color prop on Chip.
+> Made `primary` the default color for `<CircularProgress>`
+> Fixed bug with hidden=true on Dialog
 
 ## TSX
 

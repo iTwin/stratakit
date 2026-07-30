@@ -1,0 +1,1 @@
+import{j as r}from"./index-n5qmRx9m.js";import{A as t,b as o}from"./AvatarGroup.surplus-Nvgv3hLd.js";import"./Avatar-PuECfJHQ.js";import"./NativeSelect-Bepdfc9a.js";import"./Icon-RgsAr3rv.js";import"./warning-4Zvn8gk_.js";import"./dismiss-CrrRS9Oo.js";function x(){return r.jsxs(r.Fragment,{children:[r.jsx(t,{}),r.jsx(o,{})]})}export{x as default};

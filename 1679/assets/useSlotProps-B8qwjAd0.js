@@ -1,0 +1,1 @@
+import{w as i,x as P,y as m}from"./Icon-RgsAr3rv.js";import{ai as S}from"./NativeSelect-Bepdfc9a.js";function x(o){const{elementType:s,externalSlotProps:t,ownerState:e,skipResolvingSlotProps:p=!1,...n}=o,r=p?{}:i(t,e),{props:l,internalRef:a}=P({...n,externalSlotProps:r}),f=S(a,r?.ref,o.additionalProps?.ref);return m(s,{...l,ref:f},e)}export{x as u};

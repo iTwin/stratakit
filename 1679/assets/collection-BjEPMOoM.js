@@ -1,0 +1,1 @@
+import{b as r,C as c}from"./collection-store-0RzG2An6.js";import{t as i,v as l,w as s,aD as m,F as u}from"./NativeSelect-Bepdfc9a.js";import{j as C}from"./index-n5qmRx9m.js";const d="div",f=s(function({store:e,...o}){const n=r();return e=e||n,o=m(o,a=>C.jsx(c,{value:e,children:a}),[e]),u(o)}),p=i(function(e){return l(d,f(e))});export{p as C};

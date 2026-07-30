@@ -1,0 +1,1 @@
+import{j as r}from"./index-n5qmRx9m.js";import{P as t}from"./Paper.default-D69e-Mx_.js";import"./Icon-RgsAr3rv.js";import"./NativeSelect-Bepdfc9a.js";import"./warning-4Zvn8gk_.js";import"./dismiss-CrrRS9Oo.js";function s(){return r.jsx(t,{})}export{s as default};

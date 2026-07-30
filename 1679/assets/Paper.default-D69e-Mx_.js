@@ -1,0 +1,1 @@
+import{j as e}from"./index-n5qmRx9m.js";import{a as t}from"./Icon-RgsAr3rv.js";const r="_paper_1mq3b_6",a={paper:r},o=()=>e.jsx(t,{className:a.paper,elevation:4}),_=Object.freeze(Object.defineProperty({__proto__:null,default:o},Symbol.toStringTag,{value:"Module"}));export{o as P,_};

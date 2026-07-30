@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.CEveJzwd.js";import{I as t}from"./ExamplePreview.i0rxPNoc.js";import{s as a}from"./download.Culo-j_h.js";const e=()=>o.jsx(t,{label:"Download",icon:a});export{e as default};

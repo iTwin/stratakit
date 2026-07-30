@@ -389,6 +389,13 @@ declare module "@mui/material/Chip" {
 	}
 }
 
+declare module "@mui/material/LinearProgress" {
+	interface LinearProgressPropsColorOverrides {
+		inherit: false;
+		info: false;
+	}
+}
+
 declare module "@mui/material/CircularProgress" {
 	interface CircularProgressOwnProps {
 		/**

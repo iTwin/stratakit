@@ -3,6 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { readdirSync } from "node:fs";
+import { join } from "node:path";
+
 import { index, layout, route } from "@react-router/dev/routes";
 import { components } from "./~meta.ts";
 
@@ -17,12 +20,26 @@ function routesForPackage(folder: string, components: string[]) {
 	);
 }
 
+function muiExampleRoutes() {
+	const dir = join(import.meta.dirname, "../../../examples/mui");
+	return readdirSync(dir)
+		.filter((f) => f.endsWith(".tsx"))
+		.map((file) => {
+			const name = file.replace(".tsx", "");
+			return route(`/examples/mui/${name}`, "./examples/mui/index.tsx", {
+				id: `examples/mui/${name}`,
+			});
+		});
+}
+
 export default [
 	index("./index.tsx"),
 	route("sandbox", "./sandbox/index.tsx"),
 	route("tokens", "./tokens.tsx"),
 	route("icons", "./icons.tsx"),
 	route("mui", "./mui/mui.tsx"),
+
+	...muiExampleRoutes(),
 
 	layout(
 		"./tests/tests.tsx",

@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.BhV-bKh6.js";import{T as e}from"./TextField.BxlSv8ad.js";const l=()=>t.jsx(e,{label:"Description",multiline:!0});export{l as default};

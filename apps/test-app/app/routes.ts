@@ -30,7 +30,7 @@ function muiComponentRoutes() {
 		),
 	];
 	return names.map((name) =>
-		route(`/examples/mui/${name}`, "./examples/mui/index.tsx", {
+		route(`/tests/mui/${name}`, "./tests/mui/index.tsx", {
 			id: `examples/mui/${name}`,
 		}),
 	);

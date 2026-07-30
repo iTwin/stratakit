@@ -7,6 +7,7 @@
 		"build": "wireit",
 		"dev": "wireit",
 		"preview": "wireit",
+		"preview:raw": "vite preview --outDir build/client --port 1800",
 		"test": "wireit",
 		"typecheck": "wireit"
 	},
@@ -88,7 +89,7 @@
 			"service": true
 		},
 		"preview": {
-			"command": "pnpx serve build/client -L -p 1800",
+			"command": "pnpm run preview:raw",
 			"dependencies": [
 				"build"
 			],

@@ -481,13 +481,18 @@ declare module "@mui/material/PaginationItem" {
 }
 
 declare module "@mui/material/Radio" {
-	interface RadioPropsColorOverrides {
-		secondary: false;
-		default: false;
-		info: false;
-		success: false;
-		warning: false;
-		error: false;
+	interface RadioProps {
+		/** @deprecated DO NOT USE. */
+		checkedIcon?: RadioProps["checkedIcon"];
+
+		/** @deprecated DO NOT USE. */
+		color?: RadioProps["color"];
+
+		/** @deprecated DO NOT USE. */
+		disableRipple?: RadioProps["disableRipple"];
+
+		/** @deprecated DO NOT USE. */
+		icon?: RadioProps["icon"];
 	}
 
 	interface RadioPropsSizeOverrides {

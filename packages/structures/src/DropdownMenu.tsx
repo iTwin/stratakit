@@ -25,6 +25,7 @@ import {
 } from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
 import {
+	useCloseWatcher,
 	usePopoverApi,
 	useSafeContext,
 	useStableCallback,
@@ -113,6 +114,9 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 
 		const popoverProps = usePopoverApi({
 			element: popoverElement,
+			open,
+		});
+		useCloseWatcher({
 			open,
 			setOpen,
 		});

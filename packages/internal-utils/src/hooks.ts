@@ -181,37 +181,24 @@ function useSafeContext<C>(context: React.Context<C>) {
 
 /**
  * Hook that makes it easy to use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) consistently.
- *
- * Internally, this hook will sync the `open` state with the `element`'s "popover-open" state. It will also create a `CloseWatcher`
- * to automatically handle "light dismiss" behavior when the popover is open.
+ * This hook will sync the `open` state with the `element`'s "popover-open" state.
  *
  * Returns a set of DOM props that should be passed back to the element.
  */
 function usePopoverApi({
 	element,
 	open,
-	setOpen,
 }: {
 	element: HTMLElement | null | undefined;
 	open: boolean | undefined;
-	setOpen: (open: boolean) => void;
 }) {
 	React.useEffect(
 		function syncPopoverWithOpenState() {
 			if (element?.popover && element?.isConnected && open !== undefined) {
 				element?.togglePopover?.(open);
-
-				// https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher
-				if (open && "CloseWatcher" in window) {
-					// @ts-expect-error -- new API, types missing
-					const closeWatcher = new CloseWatcher();
-					closeWatcher.onclose = () => {
-						if (open) setOpen(false);
-					};
-				}
 			}
 		},
-		[open, element, setOpen],
+		[open, element],
 	);
 
 	return React.useMemo(
@@ -222,6 +209,43 @@ function usePopoverApi({
 			}) as const,
 		[],
 	);
+}
+
+// ----------------------------------------------------------------------------
+
+/**
+ * Minimal subset of the [`CloseWatcher`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) types.
+ * Used by `useCloseWatcher` until API types are available in TypeScript.
+ */
+interface CloseWatcher {
+	onclose: () => void;
+	destroy: () => void;
+}
+
+/**
+ * Hook that makes it easy to use the [CloseWatcher API](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) consistently.
+ * This hook will call the `setOpen` argument to automatically handle "light dismiss" behavior when the component is open.
+ */
+function useCloseWatcher({
+	open,
+	setOpen,
+}: {
+	open: boolean | undefined;
+	setOpen: (open: boolean) => void;
+}) {
+	React.useEffect(() => {
+		if (!open) return;
+		if (!("CloseWatcher" in window)) return;
+
+		// @ts-expect-error -- new API, types missing
+		const closeWatcher: CloseWatcher = new CloseWatcher();
+		closeWatcher.onclose = () => {
+			setOpen(false);
+		};
+		return () => {
+			closeWatcher.destroy();
+		};
+	}, [open, setOpen]);
 }
 
 // ----------------------------------------------------------------------------
@@ -243,6 +267,7 @@ function useIsClient() {
 // ----------------------------------------------------------------------------
 
 export {
+	useCloseWatcher,
 	useControlledState,
 	useEventHandlers,
 	useIsClient,

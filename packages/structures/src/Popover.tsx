@@ -9,6 +9,7 @@ import { PortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
 import { Button } from "@stratakit/bricks";
 import {
+	useCloseWatcher,
 	usePopoverApi,
 	useStableCallback,
 } from "@stratakit/internal-utils/hooks";
@@ -82,6 +83,9 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 
 		const popoverProps = usePopoverApi({
 			element: popoverElement,
+			open,
+		});
+		useCloseWatcher({
 			open,
 			setOpen,
 		});

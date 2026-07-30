@@ -11,6 +11,7 @@ import { useStoreState } from "@ariakit/react/store";
 import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import {
+	useCloseWatcher,
 	usePopoverApi,
 	useStableCallback,
 } from "@stratakit/internal-utils/hooks";
@@ -125,6 +126,9 @@ function DialogWrapper(props: DialogWrapperProps) {
 
 	const popoverProps = usePopoverApi({
 		element: wrapper,
+		open,
+	});
+	useCloseWatcher({
 		open,
 		setOpen,
 	});

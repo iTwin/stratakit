@@ -26,9 +26,7 @@ export default () => {
 			>
 				<option value={1}>iTwinUI</option>
 				<option value={2}>StrataKit</option>
-				<option value={3} disabled>
-					Other
-				</option>
+				<option value={3}>Other</option>
 			</NativeSelect>
 		</FormControl>
 	);

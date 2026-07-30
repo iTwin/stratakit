@@ -8,7 +8,7 @@ FROM base AS deps
 # bind-mounted directories are owned by the correct host user.
 ARG UID=1000
 ARG GID=1000
-RUN usermod -u ${UID} ubuntu && groupmod -g ${GID} ubuntu
+RUN usermod -o -u ${UID} ubuntu && groupmod -o -g ${GID} ubuntu
 
 USER ubuntu
 WORKDIR /kiwi

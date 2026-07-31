@@ -12,3 +12,14 @@ links:
 
 - `dayOfWeekFormatter` defaults to a locale-aware 2-character weekday label.
 - `showDaysOutsideCurrentMonth` defaults to `true`.
+
+## Examples
+
+### Sizes
+
+Use [`slotProps.textField`](https://mui.com/x/api/date-pickers/date-picker/#date-picker-prop-slotProps) to set the [`size`](https://mui.com/x/api/date-pickers/pickers-text-field/#pickers-text-field-prop-size) of the DatePicker input.
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/DatePicker.sizes"}

@@ -201,10 +201,10 @@ declare module "@mui/material/Button" {
 		disableElevation?: boolean;
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableRipple?: boolean | undefined;
+		disableFocusRipple?: boolean | undefined;
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableFocusRipple?: boolean | undefined;
+		disableRipple?: boolean | undefined;
 
 		/** @deprecated StrataKit does not support this prop. */
 		disableTouchRipple?: boolean | undefined;

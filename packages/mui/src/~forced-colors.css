@@ -114,6 +114,10 @@
 	}
 }
 
+.MuiCircularProgress-root {
+	--_MuiCircularProgress-color: CanvasText;
+}
+
 .MuiDialog-paper {
 	border: 1px solid;
 }
@@ -158,11 +162,7 @@
 }
 
 .MuiLinearProgress-root {
-	border: 1px solid;
-}
-
-.MuiLinearProgress-bar {
-	background-color: CanvasText;
+	--_MuiLinearProgress-color: CanvasText;
 }
 
 .MuiListItemIcon-root {

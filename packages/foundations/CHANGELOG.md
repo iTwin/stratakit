@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.10
+
+### Patch Changes
+
+- [#1658](https://github.com/iTwin/stratakit/pull/1658): Updated portal container rendering to prevent initially open `Dialog` incorrectly being `aria-hidden`
+
 ## 0.4.9
 
 - [#1516](https://github.com/iTwin/stratakit/pull/1516): Adjusted sizes for `caption-*` typography variants.

@@ -1,0 +1,1 @@
+import{an as s,ao as n,ap as i,cf as u,b5 as c,bU as r,ar as l}from"./~utils-FiXIobiF.js";import{u as D}from"./disclosure-CCnS41ny.js";const f="button",g=i(function({store:a,...e}){const t=u();return a=a||t,c(a,!1),e={"aria-haspopup":r(l(a,"contentElement"),"dialog"),...e},e=D({store:a,...e}),e}),d=s(function(a){return n(f,g(a))});export{d as D,g as u};

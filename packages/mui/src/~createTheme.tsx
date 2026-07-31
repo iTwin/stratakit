@@ -10,6 +10,7 @@ import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
 import {
+	MuiAccordionHeadingSlot,
 	MuiAccordionRootSlot,
 	MuiAccordionSummary,
 } from "./~components/MuiAccordion.js";
@@ -46,12 +47,12 @@ import {
 	MuiTableBody,
 	MuiTableCell,
 	MuiTableHead,
+	MuiTableSortLabelIconSlot,
 } from "./~components/MuiTable.js";
 import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
-	ArrowDownIcon,
 	CaretsUpDownIcon,
 	ChevronDownIcon,
 	ChevronLeftDoubleIcon,
@@ -67,9 +68,17 @@ import {
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
+import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 interface CreateThemeArgs {
-	portalContainer?: HTMLElement | null;
+	/**
+	 * The container to use for all portaled components.
+	 *
+	 * Prefer passing a function, which is lazily resolved by MUI when the portal mounts. Passing the
+	 * element directly requires the theme to be recreated once the element becomes available, which
+	 * leaves a one-commit window where portals fall back to `<body>`.
+	 */
+	portalContainer?: HTMLElement | null | (() => HTMLElement | null);
 }
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
@@ -144,6 +153,7 @@ function createTheme(args: CreateThemeArgs) {
 					disableGutters: true,
 					slots: {
 						root: MuiAccordionRootSlot,
+						heading: MuiAccordionHeadingSlot,
 					},
 					slotProps: {
 						region: {
@@ -165,6 +175,7 @@ function createTheme(args: CreateThemeArgs) {
 					component: MuiAlert,
 					variant: "outlined",
 					severity: "none",
+					role: "group", // Overriding role="alert".
 					iconMapping: {
 						error: <ErrorIcon />,
 						info: <InfoIcon />,
@@ -172,9 +183,6 @@ function createTheme(args: CreateThemeArgs) {
 						warning: <WarningIcon />,
 					},
 					slotProps: {
-						root: {
-							role: "group", // Overriding role="alert".
-						},
 						closeButton: {
 							edge: "end",
 						},
@@ -327,7 +335,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
-			MuiDialog: { defaultProps: { component: Role.div } },
+			MuiDialog: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDialog.css instead.
+				},
+			},
 			MuiDialogContentText: {
 				defaultProps: {
 					component: Role.p,
@@ -341,7 +354,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
-			MuiDrawer: { defaultProps: { component: Role.div } },
+			MuiDrawer: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDrawer.css instead.
+				},
+			},
 			MuiFab: {
 				defaultProps: {
 					component: MuiButtonBase,
@@ -349,6 +367,13 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiFormControl: { defaultProps: { component: Role.div } },
+			MuiFormControlLabel: {
+				defaultProps: {
+					slotProps: {
+						typography: { variant: "body-md" },
+					},
+				},
+			},
 			MuiFormHelperText: { defaultProps: { component: Role.p } },
 			MuiFormLabel: { defaultProps: { component: Role.label as never } },
 			MuiGrid: { defaultProps: { component: Role.div } },
@@ -465,7 +490,7 @@ function createTheme(args: CreateThemeArgs) {
 					component: Role.span,
 					slotProps: {
 						valueLabel: {
-							className: "MuiTooltip-tooltip",
+							className: "🥝MuiTooltip",
 						},
 					},
 				},
@@ -544,8 +569,9 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTableSortLabel: {
 				defaultProps: {
 					component: Role.span,
-					// TODO: This should use sort-ascending and sort-descending icons, but that requires disabling MUI's built-in icon rotation.
-					IconComponent: ArrowDownIcon,
+					slots: {
+						icon: MuiTableSortLabelIconSlot,
+					},
 				},
 			},
 			MuiTablePaginationActions: {
@@ -566,12 +592,27 @@ function createTheme(args: CreateThemeArgs) {
 					placement: "top",
 					describeChild: true,
 					slotProps: {
+						tooltip: {
+							className: "🥝MuiTooltip",
+						},
 						popper: {
 							modifiers: [
 								{
 									name: "offset",
 									options: {
 										offset: [0, 2],
+									},
+								},
+								{
+									name: "flip",
+									options: {
+										padding: 4,
+									},
+								},
+								{
+									name: "preventOverflow",
+									options: {
+										padding: 4,
 									},
 								},
 							],

@@ -16,6 +16,7 @@ import type {
 	DefaultComponentProps,
 	OverridableTypeMap,
 } from "@mui/material/OverridableComponent";
+import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
 import type { TabsProps } from "@mui/material/Tabs";
@@ -57,6 +58,10 @@ declare module "@mui/material/OverridableComponent" {
 				| TypographyOverridableComponentProps<TypeMap>,
 		): React.JSX.Element | null;
 	}
+}
+
+declare module "@mui/material/Accordion" {
+	interface AccordionHeadingSlotPropsOverrides extends TypographyProps {}
 }
 
 declare module "@mui/material/AccordionSummary" {
@@ -140,11 +145,27 @@ declare module "@mui/material/Badge" {
 		 */
 		inline?: boolean;
 		/**
+		 * The size of the badge.
+		 *
+		 * This prop can only be applied when `inline` is `true`.
+		 *
+		 * @default 'medium'
+		 */
+		size?: "small" | "medium";
+		/**
 		 * The default color with `@stratakit/mui` is `"secondary"`.
 		 *
 		 * @default 'secondary'
 		 */
 		color?: BadgeProps["color"];
+		/**
+		 * The visual type of the badge styling.
+		 *
+		 * This prop can only be applied when `inline` is `true`.
+		 *
+		 * @default 'strong'
+		 */
+		type?: "outlined" | "muted" | "strong";
 	}
 }
 
@@ -242,6 +263,13 @@ declare module "@mui/material/Dialog" {
 	interface DialogProps extends Pick<CommonProps, "render"> {
 		/** @deprecated Use `render` prop instead. */
 		component?: React.ElementType;
+	}
+}
+
+declare module "@mui/material/Divider" {
+	interface DividerOwnProps {
+		/** Add a 1x margin before and after the divider */
+		margin?: boolean;
 	}
 }
 
@@ -375,6 +403,14 @@ declare module "@mui/material/Slider" {
 		warning: false;
 		error: false;
 	}
+}
+
+declare module "@mui/material/SvgIcon" {
+	/** @deprecated Use `Icon` from `@stratakit/mui` instead. */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function SvgIcon(
+		props: SvgIconProps,
+	): React.JSX.Element | null;
 }
 
 declare module "@mui/material/Switch" {

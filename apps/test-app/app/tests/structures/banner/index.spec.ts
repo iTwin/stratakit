@@ -7,14 +7,14 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/banner");
+	await page.goto("/tests/banner");
 
 	const banner = page.locator(".my-banner").first();
 	await expect(banner).toBeVisible();
 });
 
 test("dismiss", async ({ page }) => {
-	await page.goto("/tests/structures/banner?dismiss=true");
+	await page.goto("/tests/banner?dismiss=true");
 
 	const banners = page.locator(".my-banner");
 	await expect(banners).toHaveCount(3);
@@ -34,7 +34,7 @@ test("dismiss", async ({ page }) => {
 
 test.describe("appropriately show custom or default icon in convenience API", () => {
 	test("If custom icon is passed, it is shown", async ({ page }) => {
-		await page.goto("/tests/structures/banner?tone=info&icon=true");
+		await page.goto("/tests/banner?tone=info&icon=true");
 		const bannerInfoWithCustomIcon = page.locator(".my-banner");
 
 		await expect(bannerInfoWithCustomIcon).toBeVisible();
@@ -46,7 +46,7 @@ test.describe("appropriately show custom or default icon in convenience API", ()
 	test("When no custom icon but non-neutral tone, default status icon is shown", async ({
 		page,
 	}) => {
-		await page.goto("/tests/structures/banner?tone=info");
+		await page.goto("/tests/banner?tone=info");
 		const bannerInfoWithNoCustomIcon = page.locator(".my-banner");
 
 		await expect(bannerInfoWithNoCustomIcon).toBeVisible();
@@ -58,7 +58,7 @@ test.describe("appropriately show custom or default icon in convenience API", ()
 	test("When no custom icon and neutral tone, no icon is shown", async ({
 		page,
 	}) => {
-		await page.goto("/tests/structures/banner");
+		await page.goto("/tests/banner");
 		const bannerNeutralWithNoCustomIcon = page.locator(".my-banner");
 
 		await expect(bannerNeutralWithNoCustomIcon).toBeVisible();
@@ -70,12 +70,12 @@ test.describe("appropriately show custom or default icon in convenience API", ()
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/banner?visual=true");
+		await page.goto("/tests/banner?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/structures/banner?visual=true");
+		await page.goto("/tests/banner?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -83,7 +83,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/structures/banner");
+		await page.goto("/tests/banner");
 
 		const banner = page.locator(".my-banner").first();
 		await expect(banner).toBeVisible();

@@ -92,7 +92,7 @@ function SecondaryNavigation({ currentPath }: { currentPath: string }) {
 						<NavigationList.Root
 							className={styles.navList}
 							items={componentList.map((componentName) => {
-								const href = `/tests/${packageName}/${toKebabCase(componentName)}`;
+								const href = `/tests/${toKebabCase(componentName)}`;
 								const isActive = currentPath === href;
 
 								// Display variants for the current component

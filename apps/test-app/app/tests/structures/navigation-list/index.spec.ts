@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/navigation-list");
+	await page.goto("/tests/navigation-list");
 
 	const list = page.getByRole("list");
 
@@ -28,7 +28,7 @@ test("default", async ({ page }) => {
 
 test.describe("subgroup", async () => {
 	test("defaultOpen", async ({ page }) => {
-		await page.goto("/tests/structures/navigation-list?subgroup&defaultOpen");
+		await page.goto("/tests/navigation-list?subgroup&defaultOpen");
 
 		const list = page.getByRole("list").first();
 		await expect(list).toMatchAriaSnapshot(`
@@ -48,7 +48,7 @@ test.describe("subgroup", async () => {
 	});
 
 	test("expansion", async ({ page }) => {
-		await page.goto("/tests/structures/navigation-list?subgroup");
+		await page.goto("/tests/navigation-list?subgroup");
 
 		const managementButton = page.getByRole("button", { name: "Management" });
 		await expect(managementButton).toHaveAttribute("aria-expanded", "false");
@@ -70,12 +70,12 @@ test.describe("subgroup", async () => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/navigation-list?visual");
+		await page.goto("/tests/navigation-list?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/structures/navigation-list?visual");
+		await page.goto("/tests/navigation-list?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -89,7 +89,7 @@ test.describe("@a11y", () => {
 
 	for (const params of paramsSet) {
 		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
-			await page.goto(`/tests/structures/navigation-list?${params}`);
+			await page.goto(`/tests/navigation-list?${params}`);
 
 			const axe = new AxeBuilder({ page });
 			const accessibilityScan = await axe.analyze();

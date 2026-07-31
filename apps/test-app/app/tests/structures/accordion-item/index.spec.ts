@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/accordion-item");
+	await page.goto("/tests/accordion-item");
 
 	const button = page.getByTestId("button");
 	const content = page.getByTestId("content");
@@ -27,12 +27,12 @@ test("default", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/accordion-item?visual");
+		await page.goto("/tests/accordion-item?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("hovered closed item", async ({ page }) => {
-		await page.goto("/tests/structures/accordion-item");
+		await page.goto("/tests/accordion-item");
 
 		const item = page.getByRole("button", { name: "Label" });
 		item.hover();
@@ -41,7 +41,7 @@ test.describe("@visual", () => {
 	});
 
 	test("hovered open item", async ({ page }) => {
-		await page.goto("/tests/structures/accordion-item?defaultOpen");
+		await page.goto("/tests/accordion-item?defaultOpen");
 
 		const item = page.getByRole("button", { name: "Label" });
 		item.hover();
@@ -50,7 +50,7 @@ test.describe("@visual", () => {
 	});
 
 	test("focused closed item", async ({ page }) => {
-		await page.goto("/tests/structures/accordion-item");
+		await page.goto("/tests/accordion-item");
 
 		const item = page.getByRole("button", { name: "Label" });
 		item.focus();
@@ -59,7 +59,7 @@ test.describe("@visual", () => {
 	});
 
 	test("focused open item", async ({ page }) => {
-		await page.goto("/tests/structures/accordion-item?defaultOpen");
+		await page.goto("/tests/accordion-item?defaultOpen");
 
 		const item = page.getByRole("button", { name: "Label" });
 		item.focus();
@@ -85,7 +85,7 @@ test.describe("@a11y", () => {
 
 	for (const params of paramsSet) {
 		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
-			await page.goto(`/tests/structures/accordion-item?${params}`);
+			await page.goto(`/tests/accordion-item?${params}`);
 
 			const axe = new AxeBuilder({ page });
 			let accessibilityScan = await axe.analyze();

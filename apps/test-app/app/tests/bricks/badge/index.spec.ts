@@ -7,19 +7,19 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/badge");
+	await page.goto("/tests/badge");
 	const badge = page.getByTestId("badge");
 	await expect(badge).toBeVisible();
 });
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/badge?visual=true");
+		await page.goto("/tests/badge?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/badge?visual=true");
+		await page.goto("/tests/badge?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -27,7 +27,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/badge");
+		await page.goto("/tests/badge");
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

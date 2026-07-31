@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/checkbox");
+	await page.goto("/tests/checkbox");
 
 	const checkbox = page.getByRole("checkbox");
 	const label = page.getByText("Toggle me");
@@ -26,7 +26,7 @@ test("default", async ({ page }) => {
 });
 
 test("checked", async ({ page }) => {
-	await page.goto("/tests/bricks/checkbox?checked=true");
+	await page.goto("/tests/checkbox?checked=true");
 
 	const checkbox = page.getByRole("checkbox");
 	await expect(checkbox).toBeChecked();
@@ -36,7 +36,7 @@ test("checked", async ({ page }) => {
 });
 
 test("indeterminate/mixed", async ({ page }) => {
-	await page.goto("/tests/bricks/checkbox?indeterminate=true");
+	await page.goto("/tests/checkbox?indeterminate=true");
 
 	const checkbox = page.getByRole("checkbox");
 	await expect(checkbox).toHaveAttribute("aria-checked", "mixed");
@@ -49,7 +49,7 @@ test("indeterminate/mixed", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/bricks/checkbox?disabled=true");
+	await page.goto("/tests/checkbox?disabled=true");
 
 	const checkbox = page.getByRole("checkbox", { name: "Toggle me" });
 	await expect(checkbox).toBeDisabled();
@@ -65,74 +65,70 @@ test("disabled", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("unchecked", async ({ page }) => {
-		await page.goto("/tests/bricks/checkbox?visual=true");
+		await page.goto("/tests/checkbox?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("checked", async ({ page }) => {
-		await page.goto("/tests/bricks/checkbox?visual=true&checked=true");
+		await page.goto("/tests/checkbox?visual=true&checked=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("indeterminate/mixed", async ({ page }) => {
-		await page.goto("/tests/bricks/checkbox?visual=true&indeterminate=true");
+		await page.goto("/tests/checkbox?visual=true&indeterminate=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("disabled", async ({ page }) => {
-		await page.goto("/tests/bricks/checkbox?visual=true&disabled=true");
+		await page.goto("/tests/checkbox?visual=true&disabled=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("disabled & checked", async ({ page }) => {
-		await page.goto(
-			"/tests/bricks/checkbox?visual=true&disabled=true&checked=true",
-		);
+		await page.goto("/tests/checkbox?visual=true&disabled=true&checked=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("disabled & indeterminate/mixed", async ({ page }) => {
 		await page.goto(
-			"/tests/bricks/checkbox?visual=true&disabled=true&indeterminate=true",
+			"/tests/checkbox?visual=true&disabled=true&indeterminate=true",
 		);
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors unchecked", async ({ page }) => {
-		await page.goto("/tests/bricks/checkbox?visual=true");
+		await page.goto("/tests/checkbox?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors checked", async ({ page }) => {
-		await page.goto("/tests/bricks/checkbox?visual=true&checked=true");
+		await page.goto("/tests/checkbox?visual=true&checked=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors indeterminate/mixed", async ({ page }) => {
-		await page.goto("/tests/bricks/checkbox?visual=true&indeterminate=true");
+		await page.goto("/tests/checkbox?visual=true&indeterminate=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors disabled", async ({ page }) => {
-		await page.goto("/tests/bricks/checkbox?visual=true&disabled=true");
+		await page.goto("/tests/checkbox?visual=true&disabled=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors disabled & checked", async ({ page }) => {
-		await page.goto(
-			"/tests/bricks/checkbox?visual=true&disabled=true&checked=true",
-		);
+		await page.goto("/tests/checkbox?visual=true&disabled=true&checked=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors disabled & indeterminate/mixed", async ({ page }) => {
 		await page.goto(
-			"/tests/bricks/checkbox?visual=true&disabled=true&indeterminate=true",
+			"/tests/checkbox?visual=true&disabled=true&indeterminate=true",
 		);
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
@@ -141,7 +137,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/checkbox");
+		await page.goto("/tests/checkbox");
 
 		const checkbox = page.getByRole("checkbox");
 		await expect(checkbox).toBeVisible();

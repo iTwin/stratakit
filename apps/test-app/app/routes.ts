@@ -11,7 +11,7 @@ import type { RouteConfig } from "@react-router/dev/routes";
 function routesForPackage(folder: string, components: string[]) {
 	return components.map((component) =>
 		route(
-			`/tests/${folder}/${toKebabCase(component)}`,
+			`/tests/${toKebabCase(component)}`,
 			`./tests/${folder}/${toKebabCase(component)}/index.tsx`,
 		),
 	);

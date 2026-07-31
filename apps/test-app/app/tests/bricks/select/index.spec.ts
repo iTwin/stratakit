@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/select");
+	await page.goto("/tests/select");
 
 	const select = page.getByRole("combobox", { name: "Fruit" });
 	await expect(select).toBeVisible();
@@ -18,14 +18,14 @@ test("default", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/select?visual=true");
+		await page.goto("/tests/select?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
 
 test("@a11y", async ({ page }) => {
-	await page.goto("/tests/bricks/select");
+	await page.goto("/tests/select");
 	const axe = new AxeBuilder({ page });
 	const accessibilityScan = await axe.analyze();
 	expect(accessibilityScan.violations).toEqual([]);

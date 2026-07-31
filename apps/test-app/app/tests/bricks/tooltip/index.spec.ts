@@ -8,7 +8,7 @@ import { expect, test } from "#playwright";
 
 test.describe("default", () => {
 	test.beforeEach(async ({ page }) => {
-		await page.goto("/tests/bricks/tooltip");
+		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
 		const tooltip = page.getByRole("tooltip", { includeHidden: true });
@@ -52,7 +52,7 @@ test.describe("default", () => {
 
 test.describe("hover", () => {
 	test.beforeEach(async ({ page }) => {
-		await page.goto("/tests/bricks/tooltip");
+		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
 		const tooltip = page.getByRole("tooltip", { includeHidden: true });
@@ -85,7 +85,7 @@ test.describe("hover", () => {
 
 test.describe("dismissal", () => {
 	test.beforeEach(async ({ page }) => {
-		await page.goto("/tests/bricks/tooltip");
+		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
 		const tooltip = page.getByRole("tooltip", { includeHidden: true });
@@ -121,7 +121,7 @@ test.describe("@a11y", () => {
 	test("Trigger element should be described by the tooltip", async ({
 		page,
 	}) => {
-		await page.goto("/tests/bricks/tooltip");
+		await page.goto("/tests/tooltip");
 		const button = page.getByRole("button");
 		await expect(button).toHaveAccessibleDescription("This is the tooltip");
 	});
@@ -129,7 +129,7 @@ test.describe("@a11y", () => {
 	test("Tooltip with 'description' type uses aria-describedby", async ({
 		page,
 	}) => {
-		await page.goto("/tests/bricks/tooltip?type=description");
+		await page.goto("/tests/tooltip?type=description");
 
 		const button = page.getByRole("button");
 
@@ -137,7 +137,7 @@ test.describe("@a11y", () => {
 	});
 
 	test("Tooltip with 'label' type uses aria-labelledby", async ({ page }) => {
-		await page.goto("/tests/bricks/tooltip?type=label");
+		await page.goto("/tests/tooltip?type=label");
 
 		const button = page.getByRole("button");
 
@@ -147,7 +147,7 @@ test.describe("@a11y", () => {
 	test("Tooltip with 'none' type renders no ARIA attributes", async ({
 		page,
 	}) => {
-		await page.goto("/tests/bricks/tooltip?type=none");
+		await page.goto("/tests/tooltip?type=none");
 
 		const button = page.getByRole("button");
 
@@ -161,7 +161,7 @@ test.describe("@a11y", () => {
 	});
 
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/tooltip");
+		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
 		const tooltip = page.getByRole("tooltip", { includeHidden: true });
@@ -180,7 +180,7 @@ test.describe("@a11y", () => {
 
 test.describe("@visual", () => {
 	test("tooltip content with a single line", async ({ page }) => {
-		await page.goto("/tests/bricks/tooltip");
+		await page.goto("/tests/tooltip");
 
 		const button = page.getByRole("button");
 		const tooltip = page.getByRole("tooltip", { includeHidden: true });
@@ -196,7 +196,7 @@ test.describe("@visual", () => {
 	test("tooltip content with multiple lines", async ({ page, browserName }) => {
 		test.skip(browserName === "chromium", "This test is flaky in Chromium");
 
-		await page.goto("/tests/bricks/tooltip?multi-line=true");
+		await page.goto("/tests/tooltip?multi-line=true");
 
 		const button = page.getByRole("button");
 		const tooltip = page.getByRole("tooltip", { includeHidden: true });

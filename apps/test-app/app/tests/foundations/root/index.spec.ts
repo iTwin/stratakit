@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/foundations/root", { waitUntil: "domcontentloaded" });
+	await page.goto("/tests/root", { waitUntil: "domcontentloaded" });
 	await expect(page.locator("h1")).toHaveText("Root");
 	await expect(page.locator("body")).toHaveScreenshot("shadow.png");
 
@@ -27,7 +27,7 @@ test("default", async ({ page }) => {
 });
 
 test("conditional rendering", async ({ page }) => {
-	await page.goto("/tests/foundations/root?_conditionalRendering");
+	await page.goto("/tests/root?_conditionalRendering");
 
 	const button = page.getByRole("button", { name: "Toggle Root" });
 	await expect(button).toHaveScreenshot("with-root.png");
@@ -41,7 +41,7 @@ test("synchronizeColorScheme", async ({ page }) => {
 	const meta = page.locator("meta[name='color-scheme']");
 
 	await test.step("false", async () => {
-		await page.goto("/tests/foundations/root?synchronizeColorScheme=false");
+		await page.goto("/tests/root?synchronizeColorScheme=false");
 		const defaultScheme = "dark light"; // conditionally set in root.tsx
 
 		await expect(document).toHaveAttribute("data-color-scheme", defaultScheme);
@@ -54,7 +54,7 @@ test("synchronizeColorScheme", async ({ page }) => {
 
 	await test.step("true", async () => {
 		page.emulateMedia({ colorScheme: "dark" });
-		await page.goto("/tests/foundations/root?synchronizeColorScheme=true");
+		await page.goto("/tests/root?synchronizeColorScheme=true");
 
 		await expect(document).toHaveAttribute("data-color-scheme", "dark");
 		await expect(meta).toHaveAttribute("content", "dark");
@@ -68,7 +68,7 @@ test("synchronizeColorScheme", async ({ page }) => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/foundations/root");
+		await page.goto("/tests/root");
 
 		const button = await page.getByRole("button", { name: "Open popout" });
 		await expect(button).toBeVisible();

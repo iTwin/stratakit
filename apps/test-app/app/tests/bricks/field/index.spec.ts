@@ -20,47 +20,47 @@ test.describe("default", () => {
 	test("wrapping input and label", async ({ page, browserName }) => {
 		test.fixme(browserName === "firefox", "This test is flaky in Firefox");
 
-		await page.goto("/tests/bricks/field?control=input");
+		await page.goto("/tests/field?control=input");
 		await expect(page.getByRole("textbox")).toHaveAccessibleName(
 			"input example",
 		);
 	});
 
 	test("wrapping textarea and label", async ({ page }) => {
-		await page.goto("/tests/bricks/field?control=textarea");
+		await page.goto("/tests/field?control=textarea");
 		await expect(page.getByRole("textbox")).toHaveAccessibleName(
 			"textarea example",
 		);
 	});
 
 	test("wrapping radio and label", async ({ page }) => {
-		await page.goto("/tests/bricks/field?control=radio");
+		await page.goto("/tests/field?control=radio");
 		await expect(page.getByRole("radio")).toHaveAccessibleName("radio example");
 	});
 
 	test("wrapping checkbox and label", async ({ page }) => {
-		await page.goto("/tests/bricks/field?control=checkbox");
+		await page.goto("/tests/field?control=checkbox");
 		await expect(page.getByRole("checkbox")).toHaveAccessibleName(
 			"checkbox example",
 		);
 	});
 
 	test("wrapping switch and label", async ({ page }) => {
-		await page.goto("/tests/bricks/field?control=switch");
+		await page.goto("/tests/field?control=switch");
 		await expect(page.getByRole("switch")).toHaveAccessibleName(
 			"switch example",
 		);
 	});
 
 	test("rendering as a label", async ({ page }) => {
-		await page.goto("/tests/bricks/field?control=checkbox&asLabel");
+		await page.goto("/tests/field?control=checkbox&asLabel");
 		const label = page.locator("label");
 		const checkbox = label.getByRole("checkbox");
 		await expect(checkbox).toBeVisible();
 	});
 
 	test("with explicit id", async ({ page }) => {
-		await page.goto("/tests/bricks/field?customControlId");
+		await page.goto("/tests/field?customControlId");
 		await expect(page.getByRole("textbox")).toHaveAccessibleName("Example");
 	});
 
@@ -68,7 +68,7 @@ test.describe("default", () => {
 	for (const [control, role] of Object.entries(controlsToRole)) {
 		test(`${control} with description`, async ({ page }) => {
 			await page.goto(
-				`/tests/bricks/field?control=${control}&descriptions=${description}`,
+				`/tests/field?control=${control}&descriptions=${description}`,
 			);
 			await expect(page.getByRole(role)).toHaveAccessibleDescription(
 				description,
@@ -78,23 +78,21 @@ test.describe("default", () => {
 
 	test("with multiple descriptions", async ({ page }) => {
 		const descriptions = ["First", "Second"];
-		await page.goto(
-			`/tests/bricks/field?descriptions=${descriptions.join(";")}`,
-		);
+		await page.goto(`/tests/field?descriptions=${descriptions.join(";")}`);
 		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
 			descriptions.join(" "),
 		);
 	});
 
 	test("with custom description ids", async ({ page }) => {
-		await page.goto("/tests/bricks/field?customDescriptionIds");
+		await page.goto("/tests/field?customDescriptionIds");
 		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
 			"Supporting text. More supporting text.",
 		);
 	});
 
 	test("with custom aria-describedby", async ({ page }) => {
-		await page.goto("/tests/bricks/field?customAriaDescribedBy");
+		await page.goto("/tests/field?customAriaDescribedBy");
 		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
 			"Custom description.",
 		);
@@ -102,7 +100,7 @@ test.describe("default", () => {
 
 	test("invalid with error message", async ({ page }) => {
 		const errorMessage = "Something is wrong";
-		await page.goto(`/tests/bricks/field?errorMessages=${errorMessage}`);
+		await page.goto(`/tests/field?errorMessages=${errorMessage}`);
 		const control = page.getByRole("textbox");
 		await expect(control).toHaveAttribute("aria-invalid", "true");
 		await expect(control).toHaveAccessibleDescription(errorMessage);
@@ -111,12 +109,12 @@ test.describe("default", () => {
 
 test.describe("@visual", () => {
 	test("text controls", async ({ page }) => {
-		await page.goto("/tests/bricks/field?visualTextlikeControls");
+		await page.goto("/tests/field?visualTextlikeControls");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("checkable controls", async ({ page }) => {
-		await page.goto("/tests/bricks/field?visualCheckableControls");
+		await page.goto("/tests/field?visualCheckableControls");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
@@ -126,7 +124,7 @@ test.describe("@a11y", () => {
 		const axe = new AxeBuilder({ page });
 
 		for (const [control, role] of Object.entries(controlsToRole)) {
-			await page.goto(`/tests/bricks/field?control=${control}`);
+			await page.goto(`/tests/field?control=${control}`);
 
 			const element = await page.getByRole(role);
 			await expect(element).toBeVisible();

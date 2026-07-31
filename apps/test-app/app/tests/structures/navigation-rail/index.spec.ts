@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/navigation-rail");
+	await page.goto("/tests/navigation-rail");
 
 	const navigationRail = page.getByRole("navigation");
 	await expect(navigationRail).toBeVisible();
@@ -27,7 +27,7 @@ test.describe("expansion", () => {
 	for (const type of ["uncontrolled", "controlled"] as const) {
 		test(`expansion (${type})`, async ({ page }) => {
 			const params = type === "controlled" ? "?_controlled" : "";
-			await page.goto(`/tests/structures/navigation-rail${params}`);
+			await page.goto(`/tests/navigation-rail${params}`);
 
 			let consoleText = "";
 			page.on("console", (msg) => {
@@ -57,7 +57,7 @@ test.describe("expansion", () => {
 		test(`defaultExpanded (${type})`, async ({ page }) => {
 			let params = "?defaultExpanded";
 			if (type === "controlled") params += "&_controlled";
-			await page.goto(`/tests/structures/navigation-rail${params}`);
+			await page.goto(`/tests/navigation-rail${params}`);
 
 			const toggleButton = page.getByRole("button", {
 				name: "Expand navigation",
@@ -70,7 +70,7 @@ test.describe("expansion", () => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/navigation-rail?visual");
+		await page.goto("/tests/navigation-rail?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 
 		const toggleButton = page.getByRole("button", { name: "Expand" });
@@ -79,7 +79,7 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/structures/navigation-rail?visual");
+		await page.goto("/tests/navigation-rail?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 
@@ -91,7 +91,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/structures/navigation-rail");
+		await page.goto("/tests/navigation-rail");
 
 		const axe = new AxeBuilder({ page });
 		let accessibilityScan = await axe.analyze();

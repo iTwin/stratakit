@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/switch");
+	await page.goto("/tests/switch");
 
 	const toggleSwitch = page.getByRole("switch");
 	const label = page.getByText("Toggle me");
@@ -26,7 +26,7 @@ test("default", async ({ page }) => {
 });
 
 test("checked", async ({ page }) => {
-	await page.goto("/tests/bricks/switch?checked=true");
+	await page.goto("/tests/switch?checked=true");
 
 	const toggleSwitch = page.getByRole("switch");
 	await expect(toggleSwitch).toBeChecked();
@@ -36,7 +36,7 @@ test("checked", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/bricks/switch?disabled=true");
+	await page.goto("/tests/switch?disabled=true");
 
 	const toggleSwitch = page.getByRole("switch", { name: "Toggle me" });
 	await expect(toggleSwitch).toBeDisabled();
@@ -52,42 +52,38 @@ test("disabled", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("unchecked", async ({ page }) => {
-		await page.goto("/tests/bricks/switch?visual=true");
+		await page.goto("/tests/switch?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 	test("checked", async ({ page }) => {
-		await page.goto("/tests/bricks/switch?visual=true&checked=true");
+		await page.goto("/tests/switch?visual=true&checked=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 	test("disabled", async ({ page }) => {
-		await page.goto("/tests/bricks/switch?visual=true&disabled=true");
+		await page.goto("/tests/switch?visual=true&disabled=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 	test("disabled & checked", async ({ page }) => {
-		await page.goto(
-			"/tests/bricks/switch?visual=true&disabled=true&checked=true",
-		);
+		await page.goto("/tests/switch?visual=true&disabled=true&checked=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 	test("forced-colors unchecked", async ({ page }) => {
-		await page.goto("/tests/bricks/switch?visual=true");
+		await page.goto("/tests/switch?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 	test("forced-colors checked", async ({ page }) => {
-		await page.goto("/tests/bricks/switch?visual=true&checked=true");
+		await page.goto("/tests/switch?visual=true&checked=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 	test("forced-colors disabled", async ({ page }) => {
-		await page.goto("/tests/bricks/switch?visual=true&disabled=true");
+		await page.goto("/tests/switch?visual=true&disabled=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 	test("forced-colors disabled & checked", async ({ page }) => {
-		await page.goto(
-			"/tests/bricks/switch?visual=true&disabled=true&checked=true",
-		);
+		await page.goto("/tests/switch?visual=true&disabled=true&checked=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -95,7 +91,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/switch");
+		await page.goto("/tests/switch");
 
 		const toggleSwitch = page.getByRole("switch");
 		await expect(toggleSwitch).toBeVisible();

@@ -9,7 +9,7 @@ import { expect, test } from "#playwright";
 import type { Page } from "@playwright/test";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/popover");
+	await page.goto("/tests/popover");
 
 	const button = page.getByRole("button", { name: "Toggle" });
 	const popover = page.getByRole("dialog");
@@ -23,7 +23,7 @@ test("default", async ({ page }) => {
 });
 
 test("controlled", async ({ page }) => {
-	await page.goto("/tests/structures/popover?_controlled");
+	await page.goto("/tests/popover?_controlled");
 
 	const button = page.getByRole("button", { name: "Click me" });
 	const openButton = page.getByRole("button", { name: "Controlled open" });
@@ -47,7 +47,7 @@ test("controlled", async ({ page }) => {
 });
 
 test("hide on interact outside", async ({ page }) => {
-	await page.goto("/tests/structures/popover");
+	await page.goto("/tests/popover");
 
 	const button = page.getByRole("button", { name: "Toggle" });
 	const popover = page.getByRole("dialog");
@@ -71,7 +71,7 @@ test("hide on interact outside", async ({ page }) => {
 });
 
 test("hide on escape", async ({ page }) => {
-	await page.goto("/tests/structures/popover");
+	await page.goto("/tests/popover");
 
 	const button = page.getByRole("button", { name: "Toggle" });
 	const popover = page.getByRole("dialog");
@@ -85,7 +85,7 @@ test("hide on escape", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/popover?visual");
+		await page.goto("/tests/popover?visual");
 
 		const button = page.getByRole("button", { name: "Toggle" });
 		await button.click();
@@ -94,7 +94,7 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/structures/popover?visual");
+		await page.goto("/tests/popover?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 
 		const button = page.getByRole("button", { name: "Toggle" });
@@ -154,7 +154,7 @@ test.describe("@a11y", () => {
 	]);
 	for (const axeScan of axeScans) {
 		test(`Axe Page Scan: ?${axeScan.params}`, async ({ page }) => {
-			await page.goto(`/tests/structures/popover?${axeScan.params}`);
+			await page.goto(`/tests/popover?${axeScan.params}`);
 
 			await axeScan.prepare(page);
 
@@ -165,7 +165,7 @@ test.describe("@a11y", () => {
 	}
 
 	test("focus management", async ({ page }) => {
-		await page.goto("/tests/structures/popover?padded");
+		await page.goto("/tests/popover?padded");
 
 		const button = page.getByRole("button", { name: "Manage access" });
 		const copyLink = page.getByRole("button", { name: "Copy link" });
@@ -183,7 +183,7 @@ test.describe("@a11y", () => {
 	});
 
 	test("accessible name", async ({ page }) => {
-		await page.goto("/tests/structures/popover?padded");
+		await page.goto("/tests/popover?padded");
 
 		const button = page.getByRole("button", { name: "Manage access" });
 		const popover = page.getByRole("dialog");

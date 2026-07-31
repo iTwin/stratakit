@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/icon-button");
+	await page.goto("/tests/icon-button");
 
 	const button = page.getByRole("button");
 	await expect(button).toHaveAccessibleName("Click me");
@@ -15,7 +15,7 @@ test("default", async ({ page }) => {
 });
 
 test("custom icon", async ({ page }) => {
-	await page.goto("/tests/bricks/icon-button?customIcon=true");
+	await page.goto("/tests/icon-button?customIcon=true");
 
 	const button = page.getByRole("button", { name: "Click me" });
 	const icon = button.locator("svg[data-custom-icon]");
@@ -23,7 +23,7 @@ test("custom icon", async ({ page }) => {
 });
 
 test("visually-hidden label", async ({ page }) => {
-	await page.goto("/tests/bricks/icon-button?labelVariant=visually-hidden");
+	await page.goto("/tests/icon-button?labelVariant=visually-hidden");
 
 	const button = page.getByRole("button", { name: "Click me" });
 	const tooltip = page.getByRole("tooltip", { includeHidden: true });
@@ -33,7 +33,7 @@ test("visually-hidden label", async ({ page }) => {
 });
 
 test("dot", async ({ page }) => {
-	await page.goto("/tests/bricks/icon-button?dot=true");
+	await page.goto("/tests/icon-button?dot=true");
 
 	const button = page.getByRole("button", { name: "Notifications" });
 	await expect(button).toHaveAccessibleDescription(
@@ -42,7 +42,7 @@ test("dot", async ({ page }) => {
 });
 
 test("active link", async ({ page }) => {
-	await page.goto("/tests/bricks/icon-button?_activeLink=true");
+	await page.goto("/tests/icon-button?_activeLink=true");
 
 	const link = page.getByRole("link", { name: "Click me" });
 	await expect(link).toHaveAttribute("aria-current", "true");
@@ -51,18 +51,18 @@ test("active link", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/icon-button?visual=true");
+		await page.goto("/tests/icon-button?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("tooltip", async ({ page }) => {
-		await page.goto("/tests/bricks/icon-button?visual=true&tooltip=true");
+		await page.goto("/tests/icon-button?visual=true&tooltip=true");
 		await page.getByRole("button").focus();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/icon-button?visual=true");
+		await page.goto("/tests/icon-button?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -76,7 +76,7 @@ test.describe("@a11y", () => {
 
 	for (const params of paramsSet) {
 		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
-			await page.goto(`/tests/bricks/icon-button?${params}`);
+			await page.goto(`/tests/icon-button?${params}`);
 
 			const axe = new AxeBuilder({ page });
 			const accessibilityScan = await axe.analyze();

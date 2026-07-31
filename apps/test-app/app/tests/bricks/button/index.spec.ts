@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/button");
+	await page.goto("/tests/button");
 
 	const button = page.getByRole("button");
 	await expect(button).toHaveAccessibleName("Hello");
@@ -21,7 +21,7 @@ test("default", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/bricks/button?disabled=true");
+	await page.goto("/tests/button?disabled=true");
 
 	const button = page.getByRole("button");
 	await expect(button).toHaveAccessibleName("Hello");
@@ -40,12 +40,12 @@ test("disabled", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/button?visual=true");
+		await page.goto("/tests/button?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/button?visual=true");
+		await page.goto("/tests/button?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -53,7 +53,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/button");
+		await page.goto("/tests/button");
 
 		const button = page.getByRole("button");
 		await expect(button).toBeVisible();

@@ -2,9 +2,7 @@
 
 ## 0.4.10
 
-### Patch Changes
-
-- [#1658](https://github.com/iTwin/stratakit/pull/1658): Updated portal container rendering to prevent initially open `Dialog` incorrectly being `aria-hidden`
+- [#1658](https://github.com/iTwin/stratakit/pull/1658): Updated the `Root` component to render the portal container before `children`.
 
 ## 0.4.9
 

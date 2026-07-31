@@ -2,9 +2,7 @@
 
 ## 0.5.9
 
-### Patch Changes
-
-- [#1664](https://github.com/iTwin/stratakit/pull/1664): Fix icon size of `NavigationRail.Button` and `NavigationRail.Anchor` components when a React element is passed to the `icon` prop.
+- [#1664](https://github.com/iTwin/stratakit/pull/1664): Fixed icon size of `NavigationRail.Button` and `NavigationRail.Anchor` components when a React element is passed to the `icon` prop.
 - Updated dependencies:
   - @stratakit/foundations@0.4.10
 

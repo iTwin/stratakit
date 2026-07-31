@@ -2,8 +2,6 @@
 
 ## 0.4.3
 
-### Patch Changes
-
 - [#1682](https://github.com/iTwin/stratakit/pull/1682): Added new icons:
   - `arrow-north.svg`
   - `assign.svg`
@@ -19,8 +17,8 @@
   - `list.svg`
   - `sorting.svg`
 
-- [#1674](https://github.com/iTwin/stratakit/pull/1674): Fixed `merge-cells.svg` to use the correct glyph.
-- [#1661](https://github.com/iTwin/stratakit/pull/1661): Added `components.svg`
+- [#1661](https://github.com/iTwin/stratakit/pull/1661): Added new icon: `components.svg`.
+- [#1674](https://github.com/iTwin/stratakit/pull/1674): Updated icon: `merge-cells.svg` (now uses the correct glyph for the regular size).
 
 ## 0.4.2
 

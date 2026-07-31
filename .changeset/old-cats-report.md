@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Styled `DatePicker` to match the Strata visual design language.
+Styled `DatePicker` input to match the Strata visual design language.

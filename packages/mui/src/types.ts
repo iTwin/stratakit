@@ -10,6 +10,7 @@
 import type { RoleProps } from "@ariakit/react/role";
 import type { AlertProps } from "@mui/material/Alert";
 import type { BadgeProps } from "@mui/material/Badge";
+import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
 	CommonProps,
@@ -308,6 +309,12 @@ declare module "@mui/material/FormLabel" {
 		/** @deprecated */
 		component?: never; // `@deprecated` marker is not showing up, so using `never` to prevent usage of this prop.
 	}
+}
+
+declare module "@mui/material/Icon" {
+	/** @deprecated Use an SVG based icon with `Icon` from `@stratakit/mui` */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function Icon(props: IconProps): React.JSX.Element | null;
 }
 
 declare module "@mui/material/IconButton" {

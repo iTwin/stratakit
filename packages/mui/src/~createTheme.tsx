@@ -51,6 +51,7 @@ import {
 } from "./~components/MuiTable.js";
 import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
+import { MuiTooltipPopper } from "./~components/MuiTooltip.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	CaretsUpDownIcon,
@@ -335,7 +336,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
-			MuiDialog: { defaultProps: { component: Role.div } },
+			MuiDialog: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDialog.css instead.
+				},
+			},
 			MuiDialogContentText: {
 				defaultProps: {
 					component: Role.p,
@@ -349,7 +355,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
-			MuiDrawer: { defaultProps: { component: Role.div } },
+			MuiDrawer: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDrawer.css instead.
+				},
+			},
 			MuiFab: {
 				defaultProps: {
 					component: MuiButtonBase,
@@ -586,6 +597,7 @@ function createTheme(args: CreateThemeArgs) {
 							className: "🥝MuiTooltip",
 						},
 						popper: {
+							component: MuiTooltipPopper,
 							modifiers: [
 								{
 									name: "offset",
@@ -596,13 +608,13 @@ function createTheme(args: CreateThemeArgs) {
 								{
 									name: "flip",
 									options: {
-										padding: 2,
+										padding: 4,
 									},
 								},
 								{
 									name: "preventOverflow",
 									options: {
-										padding: 2,
+										padding: 4,
 									},
 								},
 							],

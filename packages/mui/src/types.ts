@@ -482,16 +482,16 @@ declare module "@mui/material/PaginationItem" {
 
 declare module "@mui/material/Radio" {
 	interface RadioProps {
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		checkedIcon?: RadioProps["checkedIcon"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		color?: RadioProps["color"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		disableRipple?: RadioProps["disableRipple"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		icon?: RadioProps["icon"];
 	}
 

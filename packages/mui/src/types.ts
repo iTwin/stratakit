@@ -271,19 +271,19 @@ declare module "@mui/material/CardActionArea" {
 
 declare module "@mui/material/Checkbox" {
 	interface CheckboxProps {
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		checkedIcon?: CheckboxProps["checkedIcon"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		color?: CheckboxProps["color"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		disableRipple?: CheckboxProps["disableRipple"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		icon?: CheckboxProps["icon"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		indeterminateIcon?: CheckboxProps["indeterminateIcon"];
 	}
 

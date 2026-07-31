@@ -42,9 +42,10 @@
 		border-width: 0;
 		box-shadow: var(--stratakit-shadow-control-dropdown-base);
 		/* 
-		MUI's outlined input wraps the actual input with another element and the
-		select ends up being 1px smaller that the visual area. Use margins to correct
-		the browsers placement of the picker based on the select element to match the wrapper element.
+		MUI's `OutlinedInput` wraps the select with another element and the select
+		ends up being 1px smaller that the visual area. The picker uses the select
+		as the anchor and positioning. Use margins to correct the placement to match
+		the wrapper element instead.
 		*/
 		margin-inline: -1px;
 		margin-block: 1px;

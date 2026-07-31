@@ -1,0 +1,12 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+/**
+ * Prevents the viewport from scrolling when a Drawer is open.
+ * This is necessary because the equivalent JS doesn't work when Drawer is rendered in a portal container.
+ */
+:is(html, body):where(:has(.MuiDrawer-root:not(.MuiModal-root.MuiModal-hidden))) {
+	overflow: clip;
+}

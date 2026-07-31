@@ -245,7 +245,7 @@ declare module "@mui/material/Chip" {
 		 */
 		deleteLabel?: string;
 
-		/** @deprecated DO NOT USE */
+		/** @deprecated StrataKit does not support this prop. */
 		color?: never;
 	}
 
@@ -382,7 +382,7 @@ declare module "@mui/material/InputBase" {
 
 declare module "@mui/material/Link" {
 	interface LinkOwnProps {
-		/** @deprecated DO NOT USE */
+		/** @deprecated StrataKit does not support this prop. */
 		underline?: "none" | "hover" | "always";
 	}
 }
@@ -481,13 +481,13 @@ declare module "@mui/material/Tabs" {
 		 */
 		size?: "small" | "medium";
 
-		/** @deprecated DO NOT USE */
+		/** @deprecated StrataKit does not support this prop. */
 		indicatorColor?: TabsProps["indicatorColor"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		allowScrollButtonsMobile?: boolean;
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		scrollButtons?: TabsProps["scrollButtons"];
 	}
 }
@@ -517,7 +517,7 @@ declare module "@mui/material/TextField" {
 
 	export default function TextField(
 		props: {
-			/** @deprecated DO NOT USE */ variant?: TextFieldVariants;
+			/** @deprecated StrataKit does not support this prop. */ variant?: TextFieldVariants;
 		} & Omit<TextFieldProps, "variant">,
 	): React.JSX.Element;
 }

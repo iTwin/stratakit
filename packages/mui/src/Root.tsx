@@ -50,12 +50,13 @@ interface RootProps
 const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const { children, colorScheme, unstable_accentColor, ...rest } = props;
 
-	const [portalContainer, setPortalContainer] =
-		React.useState<HTMLDivElement | null>();
+	const portalContainerRef = React.useRef<HTMLDivElement | null>(null);
 
+	// The container is passed as a function so that MUI resolves it lazily (inside `Portal`'s layout
+	// effect), by which point the ref is guaranteed to be attached.
 	const theme = React.useMemo(
-		() => createTheme({ portalContainer }),
-		[portalContainer],
+		() => createTheme({ portalContainer: () => portalContainerRef.current }),
+		[],
 	);
 	return (
 		<StyledEngineProvider>
@@ -71,7 +72,7 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 					{...rest}
 					colorScheme={colorScheme}
 					unstable_accentColor={unstable_accentColor}
-					portalContainerRef={setPortalContainer}
+					portalContainerRef={portalContainerRef}
 					ref={forwardedRef}
 				>
 					<Styles />

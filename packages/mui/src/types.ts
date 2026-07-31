@@ -838,7 +838,7 @@ declare module "@mui/material/Radio" {
 		color?: RadioProps["color"];
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableRipple?: RadioProps["disableRipple"];
+		disableRipple?: boolean;
 
 		/** @deprecated StrataKit does not support this prop. */
 		disableTouchRipple?: boolean;

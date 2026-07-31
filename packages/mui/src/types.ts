@@ -134,6 +134,23 @@ declare module "@mui/material/Avatar" {
 	}
 }
 
+declare module "@mui/material/Autocomplete" {
+	interface AutocompleteProps<
+		Value,
+		Multiple extends boolean | undefined,
+		DisableClearable extends boolean | undefined,
+		FreeSolo extends boolean | undefined,
+		ChipComponent extends React.ElementType,
+	> {
+		/** @deprecated StrataKit does not support customizing the clear icon*/
+		clearIcon?: React.ReactNode;
+		/** @deprecated StrataKit does not support this prop */
+		forcePopupIcon?: boolean | "auto";
+		/** @deprecated StrataKit does not support customizing the popup icon */
+		popupIcon?: React.ReactNode;
+	}
+}
+
 declare module "@mui/material/AvatarGroup" {
 	interface AvatarGroupPropsVariantOverrides {
 		circular: false;

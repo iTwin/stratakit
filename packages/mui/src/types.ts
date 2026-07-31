@@ -10,6 +10,11 @@
 import type { RoleProps } from "@ariakit/react/role";
 import type { AlertProps } from "@mui/material/Alert";
 import type { BadgeProps } from "@mui/material/Badge";
+import type {
+	ButtonBaseActions,
+	TouchRippleActions,
+	TouchRippleProps,
+} from "@mui/material/ButtonBase";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
@@ -186,7 +191,35 @@ declare module "@mui/material/Button" {
 	}
 
 	interface ButtonOwnProps {
+		/** @deprecated Use the `ref` prop instead. */
+		action?: React.Ref<ButtonBaseActions> | undefined;
+
+		/** @deprecated StrataKit does not support this prop. */
+		centerRipple?: boolean;
+
+		/** @deprecated Use `variant` instead. */
+		disableElevation?: boolean;
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableRipple?: boolean | undefined;
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: boolean | undefined;
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableTouchRipple?: boolean | undefined;
+
+		/** @deprecated StrataKit does not support this prop. */
+		focusRipple?: boolean | undefined;
+
+		/** @deprecated Use the `render` prop instead. */
 		LinkComponent?: never;
+
+		/** @deprecated StrataKit does not support this prop. */
+		TouchRippleProps?: Partial<TouchRippleProps> | undefined;
+
+		/** @deprecated StrataKit does not support this prop. */
+		touchRippleRef?: React.Ref<TouchRippleActions> | undefined;
 
 		/**
 		 * The default variant with `@stratakit/mui` is `"contained"`.

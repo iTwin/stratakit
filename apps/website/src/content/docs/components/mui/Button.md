@@ -25,7 +25,8 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 Modifications to `ButtonBase` (applies to all MUI components that extend `ButtonBase`):
 
 - The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
-- Ripple effect removed.
+- Ripple effect removed. Props related to ripple are deprecated.
+- The `action` prop is not supported. Use `ref` prop instead.
 
 Modifications specific to `Button`:
 

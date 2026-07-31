@@ -594,13 +594,13 @@ declare module "@mui/material/Switch" {
 	}
 
 	interface SwitchProps {
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		checkedIcon?: SwitchProps["checkedIcon"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		disableRipple?: SwitchProps["disableRipple"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		icon?: SwitchProps["icon"];
 	}
 }

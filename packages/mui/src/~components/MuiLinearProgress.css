@@ -1,0 +1,83 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiLinearProgress-root {
+	--_MuiLinearProgress-track-thickness: 1px;
+	--_MuiLinearProgress-fill-thickness: 5px;
+
+	background-color: transparent;
+	block-size: var(--_MuiLinearProgress-fill-thickness);
+	border-radius: calc(infinity * 1px);
+
+	&:where(.MuiLinearProgress-colorPrimary) {
+		--_MuiLinearProgress-color: var(--stratakit-color-icon-accent-strong);
+	}
+
+	&:where(.MuiLinearProgress-colorSecondary) {
+		--_MuiLinearProgress-color: var(--stratakit-color-icon-neutral-base);
+	}
+
+	&:where(.MuiLinearProgress-colorError) {
+		--_MuiLinearProgress-color: var(--stratakit-color-icon-critical-base);
+	}
+
+	&:where(.MuiLinearProgress-colorWarning) {
+		--_MuiLinearProgress-color: var(--stratakit-color-icon-attention-base);
+	}
+
+	&:where(.MuiLinearProgress-colorInfo) {
+		--_MuiLinearProgress-color: var(--stratakit-color-icon-info-base);
+	}
+
+	&:where(.MuiLinearProgress-colorSuccess) {
+		--_MuiLinearProgress-color: var(--stratakit-color-icon-positive-base);
+	}
+
+	&:where(.MuiLinearProgress-determinate, .MuiLinearProgress-indeterminate) {
+		&::before {
+			content: "";
+			position: absolute;
+			block-size: var(--_MuiLinearProgress-track-thickness);
+			inset-block-start: calc(
+				(var(--_MuiLinearProgress-fill-thickness) - var(--_MuiLinearProgress-track-thickness)) *
+				0.5
+			);
+			inset-inline: 0;
+			background-color: var(--_MuiLinearProgress-color);
+			border-radius: inherit;
+		}
+	}
+
+	&:where(.MuiLinearProgress-buffer, .MuiLinearProgress-determinate) {
+		&::after {
+			content: "";
+			position: absolute;
+			inset-inline-end: 0;
+			inset-block: 0;
+			aspect-ratio: 1;
+			background-color: var(--_MuiLinearProgress-color);
+			border-radius: inherit;
+		}
+	}
+}
+
+.MuiLinearProgress-bar {
+	border-radius: inherit;
+	background-color: var(--_MuiLinearProgress-color);
+}
+
+.MuiLinearProgress-bar2 {
+	:where(.MuiLinearProgress-root.MuiLinearProgress-buffer) & {
+		block-size: var(--_MuiLinearProgress-track-thickness);
+		inset-block-start: calc(
+			(var(--_MuiLinearProgress-fill-thickness) - var(--_MuiLinearProgress-track-thickness)) *
+			0.5
+		);
+	}
+}
+
+.MuiLinearProgress-dashed {
+	display: none; /* We're not using the animated dashed line */
+}

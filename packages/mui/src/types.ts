@@ -10,12 +10,14 @@
 import type { RoleProps } from "@ariakit/react/role";
 import type { AlertProps } from "@mui/material/Alert";
 import type { BadgeProps } from "@mui/material/Badge";
+import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
 	CommonProps,
 	DefaultComponentProps,
 	OverridableTypeMap,
 } from "@mui/material/OverridableComponent";
+import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
 import type { TabsProps } from "@mui/material/Tabs";
@@ -57,6 +59,10 @@ declare module "@mui/material/OverridableComponent" {
 				| TypographyOverridableComponentProps<TypeMap>,
 		): React.JSX.Element | null;
 	}
+}
+
+declare module "@mui/material/Accordion" {
+	interface AccordionHeadingSlotPropsOverrides extends TypographyProps {}
 }
 
 declare module "@mui/material/AccordionSummary" {
@@ -254,6 +260,24 @@ declare module "@mui/material/Chip" {
 	}
 }
 
+declare module "@mui/material/CircularProgress" {
+	interface CircularProgressOwnProps {
+		/**
+		 * The default value with `@stratakit/mui` is `true`.
+		 *
+		 * @default true
+		 */
+		enableTrackSlot?: boolean;
+
+		/**
+		 * The default thickness with `@stratakit/mui` is `5`.
+		 *
+		 * @default 5
+		 */
+		thickness?: number;
+	}
+}
+
 declare module "@mui/material/Dialog" {
 	interface DialogProps extends Pick<CommonProps, "render"> {
 		/** @deprecated Use `render` prop instead. */
@@ -303,6 +327,12 @@ declare module "@mui/material/FormLabel" {
 		/** @deprecated */
 		component?: never; // `@deprecated` marker is not showing up, so using `never` to prevent usage of this prop.
 	}
+}
+
+declare module "@mui/material/Icon" {
+	/** @deprecated Use an SVG based icon with `Icon` from `@stratakit/mui` */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function Icon(props: IconProps): React.JSX.Element | null;
 }
 
 declare module "@mui/material/IconButton" {
@@ -398,6 +428,14 @@ declare module "@mui/material/Slider" {
 		warning: false;
 		error: false;
 	}
+}
+
+declare module "@mui/material/SvgIcon" {
+	/** @deprecated Use `Icon` from `@stratakit/mui` instead. */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function SvgIcon(
+		props: SvgIconProps,
+	): React.JSX.Element | null;
 }
 
 declare module "@mui/material/Switch" {

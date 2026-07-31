@@ -13,6 +13,35 @@
 	}
 }
 
+.MuiPickersInputBase-root:is(.🥝MuiInput) {
+	block-size: var(--stratakit-size-control-field-height-medium);
+	padding-inline-start: var(--stratakit-space-x3);
+
+	&:where(.MuiPickersInputBase-inputSizeSmall) {
+		@apply --typography("body-sm");
+		block-size: var(--stratakit-size-control-field-height-small);
+		padding-inline-start: var(--stratakit-space-x2);
+	}
+}
+
+.MuiPickersInputBase-sectionsContainer {
+	padding: 0;
+}
+
+.MuiPickersInputBase-sectionContent {
+	&:where([inputmode="numeric"]) {
+		font-variant-numeric: tabular-nums;
+	}
+
+	&:where(:not([aria-valuenow])) {
+		color: var(--stratakit-color-text-control-placeholder);
+	}
+
+	&:where(:focus, :focus-visible) {
+		outline: none !important; /* Focus outline will be shown around the input picker instead */
+	}
+}
+
 .MuiDayCalendar-root {
 	--_MuiDayCalendar-day-size: var(--stratakit-size-control-field-height-medium);
 	--_MuiDayCalendar-day-margin: var(--stratakit-space-x1);

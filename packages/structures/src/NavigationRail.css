@@ -227,6 +227,12 @@
 	}
 }
 
+.🥝NavigationRailItemActionIcon:is(.🥝Icon) {
+	@layer base {
+		--🥝Icon-size: 1.5rem;
+	}
+}
+
 .🥝NavigationRailItemActionLabel {
 	@layer base {
 		flex: 1;

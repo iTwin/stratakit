@@ -78,21 +78,21 @@ test.describe("default", () => {
 
 	test("with multiple descriptions", async ({ page }) => {
 		const descriptions = ["First", "Second"];
-		await page.goto(`/tests/field?descriptions=${descriptions.join(";")}`);
+		await page.goto(`tests/field?descriptions=${descriptions.join(";")}`);
 		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
 			descriptions.join(" "),
 		);
 	});
 
 	test("with custom description ids", async ({ page }) => {
-		await page.goto("/tests/field?customDescriptionIds");
+		await page.goto("tests/field?customDescriptionIds");
 		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
 			"Supporting text. More supporting text.",
 		);
 	});
 
 	test("with custom aria-describedby", async ({ page }) => {
-		await page.goto("/tests/field?customAriaDescribedBy");
+		await page.goto("tests/field?customAriaDescribedBy");
 		await expect(page.getByRole("textbox")).toHaveAccessibleDescription(
 			"Custom description.",
 		);
@@ -100,7 +100,7 @@ test.describe("default", () => {
 
 	test("invalid with error message", async ({ page }) => {
 		const errorMessage = "Something is wrong";
-		await page.goto(`/tests/field?errorMessages=${errorMessage}`);
+		await page.goto(`tests/field?errorMessages=${errorMessage}`);
 		const control = page.getByRole("textbox");
 		await expect(control).toHaveAttribute("aria-invalid", "true");
 		await expect(control).toHaveAccessibleDescription(errorMessage);

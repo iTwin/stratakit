@@ -1,5 +1,25 @@
 # Changelog
 
+## 0.4.3
+
+- [#1682](https://github.com/iTwin/stratakit/pull/1682): Added new icons:
+  - `arrow-north.svg`
+  - `assign.svg`
+  - `prefab.svg`
+  - `reaction-add.svg`
+  - `slab-opening.svg`
+  - `slab-region.svg`
+  - `slice.svg`
+  - `unassign.svg`
+
+  Updated icons:
+  - `construction-area.svg`
+  - `list.svg`
+  - `sorting.svg`
+
+- [#1661](https://github.com/iTwin/stratakit/pull/1661): Added new icon: `components.svg`.
+- [#1674](https://github.com/iTwin/stratakit/pull/1674): Updated icon: `merge-cells.svg` (now uses the correct glyph for the regular size).
+
 ## 0.4.2
 
 - [#1630](https://github.com/iTwin/stratakit/pull/1630): Added new icons:

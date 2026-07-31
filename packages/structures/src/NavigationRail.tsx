@@ -563,6 +563,7 @@ const NavigationRailItemActionIcon = forwardRef<
 			href={typeof icon === "string" ? icon : undefined}
 			render={React.isValidElement(icon) ? icon : undefined}
 			{...rest}
+			className={cx("🥝NavigationRailItemActionIcon", props.className)}
 			ref={forwardedRef}
 		/>
 	);

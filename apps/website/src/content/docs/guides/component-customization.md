@@ -80,19 +80,13 @@ Some StrataKit components are also designed specifically to leverage the `render
 
 Some more complex components, constituting subcomponents, support an object syntax for changing HTML elements through [MUI's `slots` and `slotProps` props](https://mui.com/material-ui/customization/overriding-component-structure/#interior-slots).
 
-Where needed, change your [**Accordion**](/components/accordion) item’s heading via the `heading` slot:
+Where needed, change your [**Accordion**](/components/accordion) item’s heading by passing the `render` prop via `slotProps.heading`:
 
 ```jsx
-<Accordion
-	variant="outlined"
-	role="listitem"
-	slots={{
-		heading: "h2",
-	}}
->
+<Accordion slotProps={{ heading: { render: <h2 /> } }}>
 ```
 
-The `slotProps` alternative gives you finer grained control. For each element, you can set multiple props, including a `render` prop where applicable. For example, the [**NativeSelect**](/components/select/#native)’s input needs both `name` and `id` set:
+For each element, you can set multiple props. For example, the [**NativeSelect**](/components/select/#native)’s input needs both `name` and `id` set:
 
 ```jsx
 <FormControl>

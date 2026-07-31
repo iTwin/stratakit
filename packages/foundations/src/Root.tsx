@@ -265,7 +265,6 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 
 	return (
 		<PortalContext.Provider value={portalContainer}>
-			{props.children}
 			<PortalContainer
 				colorScheme={props.colorScheme}
 				unstable_accentColor={props.unstable_accentColor}
@@ -273,6 +272,7 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 				ref={setPortalContainer}
 				render={props.portalContainerProp}
 			/>
+			{props.children}
 		</PortalContext.Provider>
 	);
 }

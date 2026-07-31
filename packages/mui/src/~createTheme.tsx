@@ -51,6 +51,7 @@ import {
 } from "./~components/MuiTable.js";
 import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
+import { MuiTooltipPopper } from "./~components/MuiTooltip.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	CalendarIcon,
@@ -73,7 +74,14 @@ import type { ColorSystemOptions } from "@mui/material/styles";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 interface CreateThemeArgs {
-	portalContainer?: HTMLElement | null;
+	/**
+	 * The container to use for all portaled components.
+	 *
+	 * Prefer passing a function, which is lazily resolved by MUI when the portal mounts. Passing the
+	 * element directly requires the theme to be recreated once the element becomes available, which
+	 * leaves a one-commit window where portals fall back to `<body>`.
+	 */
+	portalContainer?: HTMLElement | null | (() => HTMLElement | null);
 }
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
@@ -342,7 +350,12 @@ function createTheme(args: CreateThemeArgs) {
 					},
 				},
 			},
-			MuiDialog: { defaultProps: { component: Role.div } },
+			MuiDialog: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDialog.css instead.
+				},
+			},
 			MuiDialogContentText: {
 				defaultProps: {
 					component: Role.p,
@@ -356,7 +369,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
-			MuiDrawer: { defaultProps: { component: Role.div } },
+			MuiDrawer: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDrawer.css instead.
+				},
+			},
 			MuiFab: {
 				defaultProps: {
 					component: MuiButtonBase,
@@ -618,11 +636,24 @@ function createTheme(args: CreateThemeArgs) {
 							className: "🥝MuiTooltip",
 						},
 						popper: {
+							component: MuiTooltipPopper,
 							modifiers: [
 								{
 									name: "offset",
 									options: {
 										offset: [0, 2],
+									},
+								},
+								{
+									name: "flip",
+									options: {
+										padding: 4,
+									},
+								},
+								{
+									name: "preventOverflow",
+									options: {
+										padding: 4,
 									},
 								},
 							],

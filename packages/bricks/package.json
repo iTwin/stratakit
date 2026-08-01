@@ -183,7 +183,7 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.29",
+		"@ariakit/react": "^0.4.35",
 		"@stratakit/foundations": "^0.4.9",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"

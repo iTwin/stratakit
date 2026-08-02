@@ -57,12 +57,11 @@ export default function Page() {
 
 // ----------------------------------------------------------------------------
 
-const packages = [
-	"bricks",
-	"structures",
-	"foundations",
-	...(!isProduction ? (["private"] as const) : []),
-] as const;
+const packages = ["bricks", "structures", "foundations"] as const;
+
+function isPrivate(packageName: string, component: string) {
+	return isProduction && packageName === "structures" && component === "List";
+}
 
 function SecondaryNavigation({ currentPath }: { currentPath: string }) {
 	const { variants } = React.useContext(VariantsListContext);
@@ -91,38 +90,44 @@ function SecondaryNavigation({ currentPath }: { currentPath: string }) {
 						</Text>
 						<NavigationList.Root
 							className={styles.navList}
-							items={componentList.map((componentName) => {
-								const href = `/tests/${toKebabCase(componentName)}`;
-								const isActive = currentPath === href;
+							items={componentList
+								.filter(
+									(componentName) => !isPrivate(packageName, componentName),
+								)
+								.map((componentName) => {
+									const href = `/tests/${toKebabCase(componentName)}`;
+									const isActive = currentPath === href;
 
-								// Display variants for the current component
-								if (isActive && variants.length > 0) {
+									// Display variants for the current component
+									if (isActive && variants.length > 0) {
+										return (
+											<NavigationList.Subgroup
+												key={componentName}
+												label={componentName}
+												defaultOpen
+												items={variants.map((variant) => (
+													<NavigationList.Anchor
+														key={variant.name}
+														label={variant.name}
+														active={variant.isCurrent}
+														render={
+															<Link to={{ search: variant.url }} replace />
+														}
+													/>
+												))}
+											/>
+										);
+									}
+
 									return (
-										<NavigationList.Subgroup
+										<NavigationList.Anchor
 											key={componentName}
 											label={componentName}
-											defaultOpen
-											items={variants.map((variant) => (
-												<NavigationList.Anchor
-													key={variant.name}
-													label={variant.name}
-													active={variant.isCurrent}
-													render={<Link to={{ search: variant.url }} replace />}
-												/>
-											))}
+											active={isActive}
+											render={<Link to={href} />}
 										/>
 									);
-								}
-
-								return (
-									<NavigationList.Anchor
-										key={componentName}
-										label={componentName}
-										active={isActive}
-										render={<Link to={href} />}
-									/>
-								);
-							})}
+								})}
 						/>
 					</React.Fragment>
 				);

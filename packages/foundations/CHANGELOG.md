@@ -1,5 +1,9 @@
 # Changelog
 
+## 0.4.10
+
+- [#1658](https://github.com/iTwin/stratakit/pull/1658): Updated the `Root` component to render the portal container before `children`.
+
 ## 0.4.9
 
 - [#1516](https://github.com/iTwin/stratakit/pull/1516): Adjusted sizes for `caption-*` typography variants.

@@ -26,8 +26,8 @@ export default [
 
 	layout(
 		"./tests/tests.tsx",
-		Object.entries(components).flatMap(([folder, component]) =>
-			routesForPackage(folder, component),
+		Object.entries(components).flatMap(([folder, components]) =>
+			routesForPackage(folder, components),
 		),
 	),
 ] satisfies RouteConfig;

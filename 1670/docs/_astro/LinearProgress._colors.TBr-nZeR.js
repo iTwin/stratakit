@@ -1,1 +1,0 @@
-import{r as a,j as s,T as n}from"./_utils.D-0Ub7iy.js";import{L as o}from"./LinearProgress.ZTX4LL7y.js";const p=["secondary","primary"],m=()=>{const t=a.useId();return p.map(r=>{const e=`${t}-${r}`;return s.jsxs(a.Fragment,{children:[s.jsx(o,{"aria-labelledby":e,color:r}),s.jsxs(n,{id:e,children:[r.charAt(0).toUpperCase(),r.slice(1),"…"]})]},r)})};export{m as default};

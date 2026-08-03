@@ -1,1 +1,0 @@
-import{r as t,j as r,U as i,T as p}from"./_utils.D-0Ub7iy.js";const c=["secondary","primary"],l=()=>{const e=t.useId();return c.map(s=>{const a=`${e}-${s}`;return r.jsxs("div",{children:[r.jsx(i,{"aria-labelledby":a,color:s}),r.jsxs(p,{id:a,children:[s.charAt(0).toUpperCase(),s.slice(1),"…"]})]},s)})};export{l as default};

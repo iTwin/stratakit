@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/tabs");
+	await page.goto("/tests/tabs");
 
 	const tab1 = page.getByRole("tab", { name: "Tab 1" });
 	const tab2 = page.getByRole("tab", { name: "Tab 2" });
@@ -51,7 +51,7 @@ test("default", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/structures/tabs?disabled=true");
+	await page.goto("/tests/tabs?disabled=true");
 
 	const tab1 = page.getByRole("tab", { name: "Tab 1" });
 	const tab2 = page.getByRole("tab", { name: "Tab 2" });
@@ -86,7 +86,7 @@ test("disabled", async ({ page }) => {
 });
 
 test("defaultSelectedId", async ({ page }) => {
-	await page.goto("/tests/structures/tabs?defaultSelectedId=tab2");
+	await page.goto("/tests/tabs?defaultSelectedId=tab2");
 
 	const tab1 = page.getByRole("tab", { name: "Tab 1" });
 	const tab2 = page.getByRole("tab", { name: "Tab 2" });
@@ -113,12 +113,12 @@ test("defaultSelectedId", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/tabs?visual=true");
+		await page.goto("/tests/tabs?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/structures/tabs?visual=true");
+		await page.goto("/tests/tabs?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -126,7 +126,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/structures/tabs");
+		await page.goto("/tests/tabs");
 
 		const tab1 = page.getByRole("tab", { name: "Tab 1" });
 		await expect(tab1).toBeVisible();

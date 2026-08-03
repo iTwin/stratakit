@@ -8,14 +8,14 @@ import { expect, test } from "#playwright";
 
 test.describe("horizontal", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/toolbar");
+		await page.goto("/tests/toolbar");
 
 		const toolbar = page.getByRole("toolbar");
 		await expect(toolbar).toBeVisible();
 	});
 
 	test("keyboard navigation", async ({ page }) => {
-		await page.goto("/tests/structures/toolbar");
+		await page.goto("/tests/toolbar");
 		const toolbar = page.getByRole("toolbar");
 		const items = toolbar.getByRole("button");
 
@@ -43,7 +43,7 @@ test.describe("horizontal", () => {
 
 test.describe("vertical", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/toolbar?vertical");
+		await page.goto("/tests/toolbar?vertical");
 
 		const toolbar = page.getByRole("toolbar");
 		await expect(toolbar).toHaveAttribute("aria-orientation", "vertical");
@@ -51,7 +51,7 @@ test.describe("vertical", () => {
 	});
 
 	test("keyboard navigation", async ({ page }) => {
-		await page.goto("/tests/structures/toolbar?vertical");
+		await page.goto("/tests/toolbar?vertical");
 		const toolbar = page.getByRole("toolbar");
 		const items = toolbar.getByRole("button");
 
@@ -79,12 +79,12 @@ test.describe("vertical", () => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/toolbar?visual=true");
+		await page.goto("/tests/toolbar?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/structures/toolbar?visual=true");
+		await page.goto("/tests/toolbar?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -98,7 +98,7 @@ test.describe("@a11y", () => {
 
 	for (const params of paramsSet) {
 		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
-			await page.goto(`/tests/structures/toolbar?${params}`);
+			await page.goto(`/tests/toolbar?${params}`);
 			const axe = new AxeBuilder({ page });
 			const accessibilityScan = await axe.analyze();
 			expect(accessibilityScan.violations).toEqual([]);

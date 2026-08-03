@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/dropdown-menu");
+	await page.goto("/tests/dropdown-menu");
 
 	const button = page.getByRole("button", { name: "Actions" });
 	const add = page.getByRole("menuitem", { name: "Add" });
@@ -35,7 +35,7 @@ test("default", async ({ page }) => {
 });
 
 test("default (keyboard)", async ({ page }) => {
-	await page.goto("/tests/structures/dropdown-menu");
+	await page.goto("/tests/dropdown-menu");
 
 	const button = page.getByRole("button", { name: "Actions" });
 	const add = page.getByRole("menuitem", { name: "Add" });
@@ -76,7 +76,7 @@ test("default (keyboard)", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/structures/dropdown-menu?disabled=true");
+	await page.goto("/tests/dropdown-menu?disabled=true");
 
 	const button = page.getByRole("button", { name: "Actions" });
 	const add = page.getByRole("menuitem", { name: "Add" });
@@ -97,7 +97,7 @@ test("disabled", async ({ page }) => {
 });
 
 test("shortcuts", async ({ page }) => {
-	await page.goto("/tests/structures/dropdown-menu");
+	await page.goto("/tests/dropdown-menu");
 
 	const button = page.getByRole("button", { name: "Actions" });
 
@@ -115,7 +115,7 @@ test("shortcuts", async ({ page }) => {
 });
 
 test("dot", async ({ page }) => {
-	await page.goto("/tests/structures/dropdown-menu");
+	await page.goto("/tests/dropdown-menu");
 
 	const button = page.getByRole("button", { name: "Actions" });
 	await button.click();
@@ -126,7 +126,7 @@ test("dot", async ({ page }) => {
 
 test.describe("submenu", () => {
 	test("open on hover", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu?submenu");
+		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
 		const allMenus = page.getByRole("menu", { includeHidden: true });
@@ -152,7 +152,7 @@ test.describe("submenu", () => {
 	});
 
 	test("close on hover away", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu?submenu");
+		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
 		const menu = page.getByRole("menu");
@@ -169,7 +169,7 @@ test.describe("submenu", () => {
 	});
 
 	test("open on click", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu?submenu");
+		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
 		const menu = page.getByRole("menu");
@@ -195,7 +195,7 @@ test.describe("submenu", () => {
 	});
 
 	test("keyboard", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu?submenu");
+		await page.goto("/tests/dropdown-menu?submenu");
 
 		const button = page.getByRole("button", { name: "Actions" });
 		const menu = page.getByRole("menu");
@@ -260,7 +260,7 @@ test.describe("submenu", () => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu?visual");
+		await page.goto("/tests/dropdown-menu?visual");
 
 		const settings = page.getByRole("menuitem", { name: "Settings" });
 		await settings.click();
@@ -269,7 +269,7 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu?visual");
+		await page.goto("/tests/dropdown-menu?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 
 		const settings = page.getByRole("menuitem", { name: "Settings" });
@@ -281,7 +281,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu");
+		await page.goto("/tests/dropdown-menu");
 
 		const button = page.getByRole("button", { name: "Actions" });
 		const more = page.getByRole("menuitem", { name: "More" });
@@ -309,7 +309,7 @@ test.describe("@a11y", () => {
 
 test.describe("DropdownMenu.CheckboxItem", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu?checkbox");
+		await page.goto("/tests/dropdown-menu?checkbox");
 
 		const button = page.getByRole("button", { name: "Settings" });
 		const item1 = page.getByRole("menuitemcheckbox", { name: "Item 1" });
@@ -328,7 +328,7 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 	});
 
 	test("defaultChecked", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu?checkbox&defaultChecked");
+		await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");
 
 		const button = page.getByRole("button", { name: "Settings" });
 		const item3 = page.getByRole("menuitemcheckbox", { name: "Item 3" });
@@ -342,9 +342,7 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 
 	test.describe("@a11y", () => {
 		test("Axe Page Scan", async ({ page }) => {
-			await page.goto(
-				"/tests/structures/dropdown-menu?checkbox&defaultChecked",
-			);
+			await page.goto("/tests/dropdown-menu?checkbox&defaultChecked");
 
 			const button = page.getByRole("button", { name: "Settings" });
 			await button.click();
@@ -364,7 +362,7 @@ test.describe("DropdownMenu.CheckboxItem", () => {
 
 test.describe("DropdownMenu.Group", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/dropdown-menu?group");
+		await page.goto("/tests/dropdown-menu?group");
 
 		const button = page.getByRole("button", { name: "Actions" });
 		const group1 = page.getByRole("group", { name: "Group 1" });
@@ -379,7 +377,7 @@ test.describe("DropdownMenu.Group", () => {
 
 	test.describe("@a11y", () => {
 		test("Axe Page Scan", async ({ page }) => {
-			await page.goto("/tests/structures/dropdown-menu?group");
+			await page.goto("/tests/dropdown-menu?group");
 
 			const button = page.getByRole("button", { name: "Actions" });
 			await button.click();

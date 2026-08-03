@@ -8,18 +8,18 @@ import { expect, test } from "#playwright";
 
 test.describe("@visual", () => {
 	test("chips visual variants", async ({ page }) => {
-		await page.goto("/tests/structures/chip?visual=true");
+		await page.goto("/tests/chip?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("chips dismiss variants", async ({ page }) => {
-		await page.goto("/tests/structures/chip?dismiss=true");
+		await page.goto("/tests/chip?dismiss=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
 
 test("onDismiss prop", async ({ page }) => {
-	await page.goto("/tests/structures/chip?dismiss=true");
+	await page.goto("/tests/chip?dismiss=true");
 
 	const chip = page.locator("[data-dismissed]").first();
 	const dismissButton = chip.getByRole("button", { name: "Dismiss" }).first();
@@ -30,7 +30,7 @@ test("onDismiss prop", async ({ page }) => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/structures/chip");
+		await page.goto("/tests/chip");
 
 		const chipComponent = page.getByText("Chip");
 		await expect(chipComponent).toBeVisible();

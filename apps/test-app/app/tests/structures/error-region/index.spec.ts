@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/error-region");
+	await page.goto("/tests/error-region");
 
 	const errors = page.getByRole("listitem");
 	await expect(errors).toHaveCount(0);
@@ -30,7 +30,7 @@ test("default", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test.beforeEach(async ({ page }) => {
-		await page.goto("/tests/structures/error-region");
+		await page.goto("/tests/error-region");
 
 		const disclosure = page.getByRole("button");
 		await disclosure.click();
@@ -48,7 +48,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/structures/error-region");
+		await page.goto("/tests/error-region");
 
 		const disclosure = page.getByRole("button");
 		await disclosure.click();
@@ -59,7 +59,7 @@ test.describe("@a11y", () => {
 	});
 
 	test("Axe Page Scan: no label", async ({ page }) => {
-		await page.goto("/tests/structures/error-region?items=0");
+		await page.goto("/tests/error-region?items=0");
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

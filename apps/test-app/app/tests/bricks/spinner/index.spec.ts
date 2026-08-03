@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/spinner");
+	await page.goto("/tests/spinner");
 	const spinner = page.getByTestId("spinner");
 	await expect(spinner).toBeVisible();
 	await expect(spinner).toHaveText("Loading…");
@@ -15,12 +15,12 @@ test("default", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/spinner?visual=true");
+		await page.goto("/tests/spinner?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/spinner?visual=true");
+		await page.goto("/tests/spinner?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -28,7 +28,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/spinner");
+		await page.goto("/tests/spinner");
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

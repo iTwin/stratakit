@@ -32,6 +32,7 @@ export const components = {
 		"Dialog",
 		"DropdownMenu",
 		"ErrorRegion",
+		"List",
 		"NavigationList",
 		"NavigationRail",
 		"Popover",
@@ -39,5 +40,4 @@ export const components = {
 		"Toolbar",
 		"Tree",
 	],
-	private: ["List"],
 };

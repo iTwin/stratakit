@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/tree");
+	await page.goto("/tests/tree");
 
 	const tree = page.getByRole("tree");
 	await expect(tree).toBeVisible();
@@ -39,7 +39,7 @@ test("expansion", async ({ page }) => {
 	const child = page.getByRole("treeitem", { name: "Child Item 1" });
 
 	await test.step("expansion is the default action when not selectable", async () => {
-		await page.goto("/tests/structures/tree?_expansion");
+		await page.goto("/tests/tree?_expansion");
 
 		// Initially collapsed
 		await expect(parent).toHaveAttribute("aria-expanded", "false");
@@ -66,7 +66,7 @@ test("expansion", async ({ page }) => {
 	});
 
 	await test.step("expansion is not the default action when selectable", async () => {
-		await page.goto("/tests/structures/tree?_expansion&selectable");
+		await page.goto("/tests/tree?_expansion&selectable");
 
 		// Do not expand when clicking a selectable item
 		await parent.click();
@@ -87,7 +87,7 @@ test("actions", async ({ page, browserName }) => {
 		"This fails here but works in Firefox (manual)",
 	);
 
-	await page.goto("/tests/structures/tree");
+	await page.goto("/tests/tree");
 
 	const item1_1 = page.getByRole("treeitem", { name: "Item 1.1" });
 	const item1_2 = page.getByRole("treeitem", { name: "Item 1.2" });
@@ -105,7 +105,7 @@ test("actions", async ({ page, browserName }) => {
 });
 
 test("actions overflow", async ({ page }) => {
-	await page.goto("/tests/structures/tree?actions&dot");
+	await page.goto("/tests/tree?actions&dot");
 
 	const treeitem = page.getByRole("treeitem");
 	const toolbar = treeitem.getByRole("toolbar");
@@ -138,20 +138,20 @@ test("actions overflow", async ({ page }) => {
 	await expect(menuitem).toHaveAccessibleDescription("Something's going on");
 
 	// Should show at most 2 inline actions
-	await page.goto("/tests/structures/tree?actions&inline=5&menu=0");
+	await page.goto("/tests/tree?actions&inline=5&menu=0");
 	await treeitem.hover();
 	await expect(actions).toHaveCount(2);
 	await expect(more).not.toBeVisible();
 
 	// Should show at most 2 inline actions and a menu.
-	await page.goto("/tests/structures/tree?actions&inline=5&menu=2");
+	await page.goto("/tests/tree?actions&inline=5&menu=2");
 	await treeitem.hover();
 	await expect(actions).toHaveCount(2);
 	await expect(more).toBeVisible();
 });
 
 test("description", async ({ page }) => {
-	await page.goto("/tests/structures/tree?description");
+	await page.goto("/tests/tree?description");
 
 	const item1_1 = page.getByRole("treeitem").filter({
 		has: page.getByText("Item 1.1"),
@@ -160,7 +160,7 @@ test("description", async ({ page }) => {
 });
 
 test("decoration as description", async ({ page }) => {
-	await page.goto("/tests/structures/tree");
+	await page.goto("/tests/tree");
 
 	const item1 = page.getByRole("treeitem").filter({
 		has: page.getByText("Item 1", { exact: true }),
@@ -169,7 +169,7 @@ test("decoration as description", async ({ page }) => {
 });
 
 test("description and decoration as description", async ({ page }) => {
-	await page.goto("/tests/structures/tree?description");
+	await page.goto("/tests/tree?description");
 
 	const item1 = page.getByRole("treeitem").filter({
 		has: page.getByText("Item 1", { exact: true }),
@@ -181,7 +181,7 @@ test("description and decoration as description", async ({ page }) => {
 
 test.describe("keyboard", () => {
 	test("navigation and expansion", async ({ page }) => {
-		await page.goto("/tests/structures/tree");
+		await page.goto("/tests/tree");
 
 		const tree = page.getByRole("tree");
 		const items = tree.getByRole("treeitem");
@@ -241,7 +241,7 @@ test.describe("keyboard", () => {
 	});
 
 	test("selection", async ({ page }) => {
-		await page.goto("/tests/structures/tree");
+		await page.goto("/tests/tree");
 
 		const tree = page.getByRole("tree");
 		const item1 = tree.getByRole("treeitem").filter({
@@ -265,7 +265,7 @@ test.describe("keyboard", () => {
 	test("actions", async ({ page }) => {
 		test.fixme();
 
-		await page.goto("/tests/structures/tree");
+		await page.goto("/tests/tree");
 
 		const item1 = page.getByRole("treeitem", { name: "Item 1", exact: true });
 		const item1_1 = page.getByRole("treeitem", { name: "Item 1.1" });
@@ -298,14 +298,14 @@ test.describe("keyboard", () => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/tree");
+		await page.goto("/tests/tree");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("hovered item", async ({ page }) => {
-		await page.goto("/tests/structures/tree");
+		await page.goto("/tests/tree");
 
 		const item = page.getByRole("treeitem", { name: "Item 1.2" });
 		item.hover();
@@ -314,7 +314,7 @@ test.describe("@visual", () => {
 	});
 
 	test("focused item", async ({ page }) => {
-		await page.goto("/tests/structures/tree");
+		await page.goto("/tests/tree");
 
 		const item = page.getByRole("treeitem", { name: "Item 1.2" });
 		item.focus();
@@ -323,35 +323,35 @@ test.describe("@visual", () => {
 	});
 
 	test("overflow", async ({ page }) => {
-		await page.goto("/tests/structures/tree?overflow");
+		await page.goto("/tests/tree?overflow");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("selected", async ({ page }) => {
-		await page.goto("/tests/structures/tree?selected");
+		await page.goto("/tests/tree?selected");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("description", async ({ page }) => {
-		await page.goto("/tests/structures/tree?description");
+		await page.goto("/tests/tree?description");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("error", async ({ page }) => {
-		await page.goto("/tests/structures/tree?error");
+		await page.goto("/tests/tree?error");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors default", async ({ page }) => {
-		await page.goto("/tests/structures/tree");
+		await page.goto("/tests/tree");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await page.emulateMedia({ forcedColors: "active" });
@@ -359,7 +359,7 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors focused item", async ({ page }) => {
-		await page.goto("/tests/structures/tree");
+		await page.goto("/tests/tree");
 
 		const item = page.getByRole("treeitem", { name: "Item 1.2" });
 		item.focus();
@@ -368,7 +368,7 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors overflow", async ({ page }) => {
-		await page.goto("/tests/structures/tree?overflow");
+		await page.goto("/tests/tree?overflow");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await page.emulateMedia({ forcedColors: "active" });
@@ -376,7 +376,7 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors selected", async ({ page }) => {
-		await page.goto("/tests/structures/tree?selected");
+		await page.goto("/tests/tree?selected");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await page.emulateMedia({ forcedColors: "active" });
@@ -384,7 +384,7 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors description", async ({ page }) => {
-		await page.goto("/tests/structures/tree?description");
+		await page.goto("/tests/tree?description");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await page.emulateMedia({ forcedColors: "active" });
@@ -392,7 +392,7 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors error", async ({ page }) => {
-		await page.goto("/tests/structures/tree?error");
+		await page.goto("/tests/tree?error");
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();
 		await page.emulateMedia({ forcedColors: "active" });
@@ -402,7 +402,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/structures/tree");
+		await page.goto("/tests/tree");
 
 		const tree = page.getByRole("tree");
 		await expect(tree).toBeVisible();

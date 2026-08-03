@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/radio", { waitUntil: "domcontentloaded" });
+	await page.goto("/tests/radio", { waitUntil: "domcontentloaded" });
 
 	const radioA = page.getByRole("radio", { name: "A" });
 	const radioB = page.getByRole("radio", { name: "B" });
@@ -29,7 +29,7 @@ test("default", async ({ page }) => {
 });
 
 test("default value", async ({ page }) => {
-	await page.goto("/tests/bricks/radio?defaultValue=A", {
+	await page.goto("/tests/radio?defaultValue=A", {
 		waitUntil: "domcontentloaded",
 	});
 
@@ -44,7 +44,7 @@ test("default value", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/bricks/radio?disabled=true&defaultValue=B");
+	await page.goto("/tests/radio?disabled=true&defaultValue=B");
 
 	const radioA = page.getByRole("radio", { name: "A" });
 	const radioB = page.getByRole("radio", { name: "B" });
@@ -64,49 +64,45 @@ test("disabled", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("unchecked", async ({ page }) => {
-		await page.goto("/tests/bricks/radio?visual=true");
+		await page.goto("/tests/radio?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("checked", async ({ page }) => {
-		await page.goto("/tests/bricks/radio?visual=true&checked=true");
+		await page.goto("/tests/radio?visual=true&checked=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("disabled", async ({ page }) => {
-		await page.goto("/tests/bricks/radio?visual=true&disabled=true");
+		await page.goto("/tests/radio?visual=true&disabled=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("disabled & checked", async ({ page }) => {
-		await page.goto(
-			"/tests/bricks/radio?visual=true&disabled=true&checked=true",
-		);
+		await page.goto("/tests/radio?visual=true&disabled=true&checked=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors unchecked", async ({ page }) => {
-		await page.goto("/tests/bricks/radio?visual=true");
+		await page.goto("/tests/radio?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors checked", async ({ page }) => {
-		await page.goto("/tests/bricks/radio?visual=true&checked=true");
+		await page.goto("/tests/radio?visual=true&checked=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors disabled", async ({ page }) => {
-		await page.goto("/tests/bricks/radio?visual=true&disabled=true");
+		await page.goto("/tests/radio?visual=true&disabled=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors disabled & checked", async ({ page }) => {
-		await page.goto(
-			"/tests/bricks/radio?visual=true&disabled=true&checked=true",
-		);
+		await page.goto("/tests/radio?visual=true&disabled=true&checked=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -114,7 +110,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/radio");
+		await page.goto("/tests/radio");
 
 		const radioA = page.getByRole("radio", { name: "A" });
 		await expect(radioA).toBeVisible();

@@ -7,12 +7,12 @@ import { expect, test } from "#playwright";
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/text?visual=true");
+		await page.goto("/tests/text?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/text?visual=true");
+		await page.goto("/tests/text?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});

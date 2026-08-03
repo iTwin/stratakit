@@ -8,7 +8,7 @@ import { expect, test } from "#playwright";
 
 for (const type of ["input", "textarea", "composition"] as const) {
 	test(`default ${type}`, async ({ page }) => {
-		await page.goto(`/tests/bricks/text-box?${type}`);
+		await page.goto(`/tests/text-box?${type}`);
 
 		const input = page.getByRole("textbox");
 		const label = page.getByText("Fruit");
@@ -23,7 +23,7 @@ for (const type of ["input", "textarea", "composition"] as const) {
 	});
 
 	test(`disabled ${type}`, async ({ page }) => {
-		await page.goto(`/tests/bricks/text-box?${type}&disabled`);
+		await page.goto(`/tests/text-box?${type}&disabled`);
 
 		const input = page.getByRole("textbox");
 		await expect(input).toHaveAccessibleName("Fruit");
@@ -40,13 +40,13 @@ for (const type of ["input", "textarea", "composition"] as const) {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/text-box?visual");
+		await page.goto("/tests/text-box?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	for (const type of ["input", "composition"] as const) {
 		test(`focus outline ${type}`, async ({ page }) => {
-			await page.goto(`/tests/bricks/text-box?${type}`);
+			await page.goto(`/tests/text-box?${type}`);
 			const input = page.getByRole("textbox");
 			await input.focus();
 			await expect(page.locator("body")).toHaveScreenshot();
@@ -54,7 +54,7 @@ test.describe("@visual", () => {
 	}
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/text-box?visual");
+		await page.goto("/tests/text-box?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -63,7 +63,7 @@ test.describe("@visual", () => {
 test.describe("@a11y", () => {
 	for (const type of ["input", "textarea", "composition"] as const) {
 		test(`Axe Page Scan ${type}`, async ({ page }) => {
-			await page.goto(`/tests/bricks/text-box?${type}`);
+			await page.goto(`/tests/text-box?${type}`);
 
 			const axe = new AxeBuilder({ page });
 			const accessibilityScan = await axe.analyze();

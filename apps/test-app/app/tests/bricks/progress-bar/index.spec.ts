@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/progress-bar");
+	await page.goto("/tests/progress-bar");
 	const progressBar = page.getByRole("progressbar");
 	await expect(progressBar).toBeVisible();
 	await expect(progressBar).toHaveAccessibleName("Loading…");
@@ -15,7 +15,7 @@ test("default", async ({ page }) => {
 
 test.describe("determinate", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/progress-bar?determinate");
+		await page.goto("/tests/progress-bar?determinate");
 		const progressBar = page.getByRole("progressbar");
 		await expect(progressBar).toBeVisible();
 		await expect(progressBar).toHaveAttribute("aria-valuenow", "50");
@@ -23,21 +23,21 @@ test.describe("determinate", () => {
 	});
 
 	test("custom value", async ({ page }) => {
-		await page.goto("/tests/bricks/progress-bar?determinate&value=75");
+		await page.goto("/tests/progress-bar?determinate&value=75");
 		const progressBar = page.getByRole("progressbar");
 		await expect(progressBar).toHaveAttribute("aria-valuenow", "75");
 		await expect(progressBar).toHaveAccessibleName("Loading…");
 	});
 
 	test("value cannot exceed 100", async ({ page }) => {
-		await page.goto("/tests/bricks/progress-bar?determinate&value=200");
+		await page.goto("/tests/progress-bar?determinate&value=200");
 		const progressBar = page.getByRole("progressbar");
 		await expect(progressBar).toHaveAttribute("aria-valuenow", "100");
 		await expect(progressBar).toHaveAccessibleName("Loading…");
 	});
 
 	test("value cannot be less than 0", async ({ page }) => {
-		await page.goto("/tests/bricks/progress-bar?determinate&value=-200");
+		await page.goto("/tests/progress-bar?determinate&value=-200");
 		const progressBar = page.getByRole("progressbar");
 		await expect(progressBar).toHaveAttribute("aria-valuenow", "0");
 		await expect(progressBar).toHaveAccessibleName("Loading…");
@@ -46,12 +46,12 @@ test.describe("determinate", () => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/progress-bar?visual");
+		await page.goto("/tests/progress-bar?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/progress-bar?visual");
+		await page.goto("/tests/progress-bar?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -59,7 +59,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/progress-bar");
+		await page.goto("/tests/progress-bar");
 
 		const axe = new AxeBuilder({ page });
 		const accessibilityScan = await axe.analyze();

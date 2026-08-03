@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/kbd");
+	await page.goto("/tests/kbd");
 	const kbdComponent = page.getByText("Ctrl");
 	expect(await kbdComponent.evaluate((e) => e.localName)).toBe("kbd");
 	await expect(kbdComponent).toBeVisible();
@@ -15,17 +15,17 @@ test("default", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("all variants", async ({ page }) => {
-		await page.goto("/tests/bricks/kbd?visual=true");
+		await page.goto("/tests/kbd?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("all symbols", async ({ page }) => {
-		await page.goto("/tests/bricks/kbd?symbols=true");
+		await page.goto("/tests/kbd?symbols=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/kbd?visual=true");
+		await page.goto("/tests/kbd?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -33,7 +33,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/kbd");
+		await page.goto("/tests/kbd");
 
 		const kbdComponent = page.getByText("Ctrl");
 		await expect(kbdComponent).toBeVisible();

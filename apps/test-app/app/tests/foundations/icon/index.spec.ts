@@ -7,14 +7,14 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/foundations/icon");
+	await page.goto("/tests/icon");
 
 	const icon = page.locator("svg").first();
 	await expect(icon).toHaveAttribute("aria-hidden", "true");
 });
 
 test("alt prop", async ({ page }) => {
-	await page.goto("/tests/foundations/icon?alt=Help me");
+	await page.goto("/tests/icon?alt=Help me");
 
 	const icon = page.getByRole("img");
 	await expect(icon).toHaveAccessibleName("Help me");
@@ -23,29 +23,29 @@ test("alt prop", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/foundations/icon");
+		await page.goto("/tests/icon");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("large", async ({ page }) => {
-		await page.goto("/tests/foundations/icon?size=large");
+		await page.goto("/tests/icon?size=large");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("render prop", async ({ page }) => {
-		await page.goto("/tests/foundations/icon?renderProp=true");
+		await page.goto("/tests/icon?renderProp=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("data uri fallback", async ({ page }) => {
-		await page.goto("/tests/foundations/icon?_fallback");
+		await page.goto("/tests/icon?_fallback");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 });
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/foundations/icon");
+		await page.goto("/tests/icon");
 
 		const icon = page.locator("svg").first();
 		await expect(icon).toBeVisible();

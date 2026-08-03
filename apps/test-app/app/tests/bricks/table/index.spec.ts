@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/table");
+	await page.goto("/tests/table");
 
 	const table = page.getByRole("table");
 	await expect(table).toBeVisible();
@@ -29,19 +29,19 @@ test("default", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/table?visual");
+		await page.goto("/tests/table?visual");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("hovered row", async ({ page }) => {
-		await page.goto("/tests/bricks/table?visual");
+		await page.goto("/tests/table?visual");
 		const row = page.getByRole("row").nth(1);
 		await row.hover();
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/table?visual=true");
+		await page.goto("/tests/table?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -49,7 +49,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/bricks/table");
+		await page.goto("/tests/table");
 
 		const table = page.getByRole("table");
 		await expect(table).toBeVisible();

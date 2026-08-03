@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/bricks/anchor");
+	await page.goto("/tests/anchor");
 
 	const anchor = page.getByRole("link");
 	const article = page.getByRole("article");
@@ -23,7 +23,7 @@ test("default", async ({ page }) => {
 });
 
 test("disabled", async ({ page }) => {
-	await page.goto("/tests/bricks/anchor?disabled=true");
+	await page.goto("/tests/anchor?disabled=true");
 
 	const anchor = page.getByRole("link");
 	const article = page.getByRole("article");
@@ -44,12 +44,12 @@ test("disabled", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/bricks/anchor?visual=true");
+		await page.goto("/tests/anchor?visual=true");
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/bricks/anchor?visual=true");
+		await page.goto("/tests/anchor?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });
 		await expect(page.locator("body")).toHaveScreenshot();
 	});
@@ -63,7 +63,7 @@ test.describe("@a11y", () => {
 	]);
 	for (const params of paramsSet) {
 		test(`Axe Page Scan: ?${params}`, async ({ page }) => {
-			await page.goto(`/tests/bricks/anchor?${params}`);
+			await page.goto(`/tests/anchor?${params}`);
 
 			const anchor = page.getByRole("link").first();
 			await expect(anchor).toBeVisible();
@@ -75,7 +75,7 @@ test.describe("@a11y", () => {
 	}
 
 	test("alt text", async ({ page }) => {
-		await page.goto("/tests/bricks/anchor?external=true");
+		await page.goto("/tests/anchor?external=true");
 
 		const anchor = page.getByRole("link");
 		await expect(anchor).toHaveAccessibleName("External (external)");

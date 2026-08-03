@@ -7,7 +7,7 @@ import AxeBuilder from "@axe-core/playwright";
 import { expect, test } from "#playwright";
 
 test("default", async ({ page }) => {
-	await page.goto("/tests/structures/dialog");
+	await page.goto("/tests/dialog");
 
 	const button = page.getByRole("button", { name: "Open" });
 	const dialog = page.getByRole("dialog");
@@ -20,7 +20,7 @@ test("default", async ({ page }) => {
 });
 
 test("hide on interact outside", async ({ page }) => {
-	await page.goto("/tests/structures/dialog");
+	await page.goto("/tests/dialog");
 
 	const button = page.getByRole("button", { name: "Open" });
 	const dialog = page.getByRole("dialog");
@@ -33,7 +33,7 @@ test("hide on interact outside", async ({ page }) => {
 });
 
 test("hide on escape", async ({ page }) => {
-	await page.goto("/tests/structures/dialog");
+	await page.goto("/tests/dialog");
 
 	const button = page.getByRole("button", { name: "Open" });
 	const dialog = page.getByRole("dialog");
@@ -46,7 +46,7 @@ test("hide on escape", async ({ page }) => {
 });
 
 test("close button", async ({ page }) => {
-	await page.goto("/tests/structures/dialog");
+	await page.goto("/tests/dialog");
 
 	const button = page.getByRole("button", { name: "Open" });
 	const dialog = page.getByRole("dialog");
@@ -60,7 +60,7 @@ test("close button", async ({ page }) => {
 });
 
 test("action button", async ({ page }) => {
-	await page.goto("/tests/structures/dialog");
+	await page.goto("/tests/dialog");
 
 	const button = page.getByRole("button", { name: "Open" });
 	const dialog = page.getByRole("dialog");
@@ -75,7 +75,7 @@ test("action button", async ({ page }) => {
 
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
-		await page.goto("/tests/structures/dialog?visual");
+		await page.goto("/tests/dialog?visual");
 
 		const button = page.getByRole("button", { name: "Open" });
 		await button.click();
@@ -84,7 +84,7 @@ test.describe("@visual", () => {
 	});
 
 	test("without footer", async ({ page }) => {
-		await page.goto("/tests/structures/dialog?closeButton");
+		await page.goto("/tests/dialog?closeButton");
 
 		const button = page.getByRole("button", { name: "Open" });
 		await button.click();
@@ -93,7 +93,7 @@ test.describe("@visual", () => {
 	});
 
 	test("forced-colors", async ({ page }) => {
-		await page.goto("/tests/structures/dialog?visual");
+		await page.goto("/tests/dialog?visual");
 		await page.emulateMedia({ forcedColors: "active" });
 
 		const button = page.getByRole("button", { name: "Open" });
@@ -105,7 +105,7 @@ test.describe("@visual", () => {
 
 test.describe("@a11y", () => {
 	test("Axe Page Scan", async ({ page }) => {
-		await page.goto("/tests/structures/dialog?visual");
+		await page.goto("/tests/dialog?visual");
 
 		const button = page.getByRole("button", { name: "Open" });
 		const dialog = page.getByRole("dialog");
@@ -119,7 +119,7 @@ test.describe("@a11y", () => {
 	});
 
 	test("focus management", async ({ page }) => {
-		await page.goto("/tests/structures/dialog");
+		await page.goto("/tests/dialog");
 
 		const button = page.getByRole("button", { name: "Open" });
 		const dialog = page.getByRole("dialog");
@@ -138,7 +138,7 @@ test.describe("@a11y", () => {
 	});
 
 	test("inert outside dialog", async ({ page }) => {
-		await page.goto("/tests/structures/dialog");
+		await page.goto("/tests/dialog");
 
 		const button = page.getByRole("button", { name: "Open" });
 		const dialog = page.getByRole("dialog");

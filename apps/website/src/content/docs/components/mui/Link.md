@@ -12,6 +12,7 @@ links:
 
 - Restyled using StrataKit's visual language.
 - The `underline` prop is not supported. Links are always underlined.
+- The `"textSecondary"` and `"textDisabled"` colors have been removed.
 
 ## Use cases
 

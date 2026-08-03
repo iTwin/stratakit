@@ -10,5 +10,6 @@ links:
 
 ## StrataKit MUI modifications
 
+- The `disableFocusRipple` and `disableRipple` props are deprecated and should not be used.
 - Only `"primary"` and `"secondary"` colors are supported.
 - The default `color` is now `"primary"`.

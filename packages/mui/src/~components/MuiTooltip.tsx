@@ -5,12 +5,9 @@
 
 import * as React from "react";
 import Popper from "@mui/material/Popper";
-import {
-	forwardRef,
-	identity,
-	useMergedRefs,
-	usePopoverApi,
-} from "@stratakit/foundations/secret-internals";
+import { identity } from "@stratakit/internal-utils/common";
+import { useMergedRefs, usePopoverApi } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 // ----------------------------------------------------------------------------
 

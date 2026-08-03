@@ -222,6 +222,10 @@ interface CloseWatcher {
 	destroy: () => void;
 }
 
+declare const CloseWatcher: {
+	new (): CloseWatcher;
+};
+
 /**
  * Hook that makes it easy to use the [CloseWatcher API](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) consistently.
  * This hook will call the `setOpen` argument to automatically handle "light dismiss" behavior when the component is open.
@@ -237,8 +241,7 @@ function useCloseWatcher({
 		if (!open) return;
 		if (!("CloseWatcher" in window)) return;
 
-		// @ts-expect-error -- new API, types missing
-		const closeWatcher: CloseWatcher = new CloseWatcher();
+		const closeWatcher = new CloseWatcher();
 		closeWatcher.onclose = () => {
 			setOpen(false);
 		};

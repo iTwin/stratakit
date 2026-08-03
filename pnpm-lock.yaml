@@ -435,10 +435,10 @@ importers:
         specifier: ^9.0.0
         version: 9.0.1(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(react@19.2.7))(@types/react@19.2.16)(react-dom@19.2.7(react@19.2.7))(react@19.2.7)
       "@stratakit/foundations":
-        specifier: ^0.4.9
+        specifier: ^0.4.10
         version: link:../foundations
       "@stratakit/icons":
-        specifier: ^0.4.2
+        specifier: ^0.4.3
         version: link:../icons
       classnames:
         specifier: ^2.5.1
@@ -478,7 +478,7 @@ importers:
         specifier: ^0.5.5
         version: link:../bricks
       "@stratakit/foundations":
-        specifier: ^0.4.9
+        specifier: ^0.4.10
         version: link:../foundations
       classnames:
         specifier: ^2.5.1

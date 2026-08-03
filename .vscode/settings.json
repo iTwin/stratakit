@@ -11,7 +11,7 @@
 	"npm.packageManager": "pnpm",
 	"explorer.fileNesting.enabled": true,
 	"explorer.fileNesting.patterns": {
-		"package.json": "package-lock.json, pnpm-lock.yaml, pnpm-workspace.yaml, .npmrc",
+		"package.json": "package-lock.json, pnpm-lock.yaml, pnpm-workspace.yaml",
 		"tsconfig.json": "tsconfig.*.json",
 		"README.md": "*.md",
 		"*.tsx": "${capture}.*",

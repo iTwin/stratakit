@@ -1,0 +1,1 @@
+import{j as o}from"./jsx-runtime-BL3mWa0-.js";import{h as i,R as n,t as m}from"./Button-pi0S6U6Z.js";import{n as d}from"./~utils-DQLtUerr.js";const f=i((a,e)=>{d();const{variant:t="text",size:s="medium",...r}=a;return o.jsx(n.div,{...r,ref:e,className:m("🥝Skeleton",a.className),"data-_sk-variant":t,"data-_sk-size":s,"aria-hidden":!0})});var c=f;export{c as S};

@@ -1,1 +1,0 @@
-import{j as o}from"./index-n5qmRx9m.js";import{f as i,R as m,h as n}from"./NativeSelect-Bepdfc9a.js";import{g as d}from"./~utils-B4BSXaSE.js";const f=i((a,e)=>{d();const{variant:t="text",size:s="medium",...r}=a;return o.jsx(m.div,{...r,ref:e,className:n("🥝Skeleton",a.className),"data-_sk-variant":t,"data-_sk-size":s,"aria-hidden":!0})});var c=f;export{c as S};

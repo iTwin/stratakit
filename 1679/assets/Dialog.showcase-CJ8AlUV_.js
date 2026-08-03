@@ -1,1 +1,0 @@
-import{j as o}from"./index-n5qmRx9m.js";import{D as t}from"./Dialog.default-BfKZXFr4.js";import"./NativeSelect-Bepdfc9a.js";import"./DialogContent-q9ziwJyZ.js";import"./Icon-RgsAr3rv.js";import"./warning-4Zvn8gk_.js";import"./dismiss-CrrRS9Oo.js";function f(){return o.jsx(t,{})}export{f as default};

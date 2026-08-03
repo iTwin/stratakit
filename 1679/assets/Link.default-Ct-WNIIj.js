@@ -1,1 +1,0 @@
-import{j as e}from"./index-n5qmRx9m.js";import{L as t}from"./Link-C0A8m_YO.js";const o=()=>e.jsx(t,{href:"/",children:"Home"}),_=Object.freeze(Object.defineProperty({__proto__:null,default:o},Symbol.toStringTag,{value:"Module"}));export{o as L,_};

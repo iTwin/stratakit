@@ -1,0 +1,1 @@
+import{r as P,k as i,l as m}from"./Popover-vIpt4aes.js";import{L as S}from"./Button-pi0S6U6Z.js";function g(o){const{elementType:s,externalSlotProps:t,ownerState:e,skipResolvingSlotProps:p=!1,...n}=o,r=p?{}:P(t,e),{props:l,internalRef:a}=i({...n,externalSlotProps:r}),f=S(a,r?.ref,o.additionalProps?.ref);return m(s,{...l,ref:f},e)}export{g as u};

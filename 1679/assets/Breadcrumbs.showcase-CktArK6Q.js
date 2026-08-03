@@ -1,1 +1,0 @@
-import{j as r}from"./index-n5qmRx9m.js";import{B as t}from"./Breadcrumbs.default-C0eYTLF2.js";import"./NativeSelect-Bepdfc9a.js";import"./useSlotProps-B8qwjAd0.js";import"./Icon-RgsAr3rv.js";import"./warning-4Zvn8gk_.js";import"./dismiss-CrrRS9Oo.js";import"./Link-C0A8m_YO.js";function f(){return r.jsx(t,{})}export{f as default};

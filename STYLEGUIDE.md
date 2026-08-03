@@ -18,11 +18,11 @@ This style guide describes conventions and best practices for the StrataKit proj
 
 **✅ Do**
 
-> Fixed an issue with styles not loding.
+> Fixed an issue with styles not loading.
 
 **❌ Don't**
 
-> Fixed an issue with styles not loding
+> Fixed an issue with styles not loading
 
 ### Format Code
 

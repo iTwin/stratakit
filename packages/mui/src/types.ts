@@ -624,20 +624,6 @@ declare module "@mui/material/Tab" {
 	}
 }
 
-declare module "@mui/material/Table" {
-	interface TableOwnProps {
-		/** @deprecated StrataKit does not currently support this prop. */
-		padding?: "normal" | "checkbox" | "none" | undefined;
-	}
-}
-
-declare module "@mui/material/TableCell" {
-	interface TableCellProps {
-		/** @deprecated StrataKit does not currently support this prop. */
-		padding?: "normal" | "checkbox" | "none" | undefined;
-	}
-}
-
 declare module "@mui/material/TableSortLabel" {
 	interface TableSortLabelOwnProps {
 		/** @deprecated StrataKit does not currently support this prop. */

@@ -1,0 +1,1 @@
+import{j as i}from"./index-CSTXUKu9.js";import{w as o,ak as n,R as m,G as d}from"./~utils-B8sx3lTh.js";const l=o((a,e)=>{n();const{variant:t="text",size:s="medium",...r}=a;return i.jsx(m.div,{...r,ref:e,className:d("🥝Skeleton",a.className),"data-_sk-variant":t,"data-_sk-size":s,"aria-hidden":!0})});var k=l;export{k as S};

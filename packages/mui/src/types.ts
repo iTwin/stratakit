@@ -10,6 +10,7 @@
 import type { RoleProps } from "@ariakit/react/role";
 import type { AlertProps } from "@mui/material/Alert";
 import type { BadgeProps } from "@mui/material/Badge";
+import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
 	CommonProps,
@@ -58,6 +59,10 @@ declare module "@mui/material/OverridableComponent" {
 				| TypographyOverridableComponentProps<TypeMap>,
 		): React.JSX.Element | null;
 	}
+}
+
+declare module "@mui/material/Accordion" {
+	interface AccordionHeadingSlotPropsOverrides extends TypographyProps {}
 }
 
 declare module "@mui/material/AccordionSummary" {
@@ -258,7 +263,7 @@ declare module "@mui/material/Chip" {
 		 */
 		deleteLabel?: string;
 
-		/** @deprecated DO NOT USE */
+		/** @deprecated StrataKit does not support this prop. */
 		color?: never;
 	}
 
@@ -270,6 +275,24 @@ declare module "@mui/material/Chip" {
 		info: false;
 		success: false;
 		warning: false;
+	}
+}
+
+declare module "@mui/material/CircularProgress" {
+	interface CircularProgressOwnProps {
+		/**
+		 * The default value with `@stratakit/mui` is `true`.
+		 *
+		 * @default true
+		 */
+		enableTrackSlot?: boolean;
+
+		/**
+		 * The default thickness with `@stratakit/mui` is `5`.
+		 *
+		 * @default 5
+		 */
+		thickness?: number;
 	}
 }
 
@@ -324,6 +347,12 @@ declare module "@mui/material/FormLabel" {
 	}
 }
 
+declare module "@mui/material/Icon" {
+	/** @deprecated Use an SVG based icon with `Icon` from `@stratakit/mui` */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function Icon(props: IconProps): React.JSX.Element | null;
+}
+
 declare module "@mui/material/IconButton" {
 	interface IconButtonPropsColorOverrides {
 		default: false;
@@ -371,7 +400,7 @@ declare module "@mui/material/InputBase" {
 
 declare module "@mui/material/Link" {
 	interface LinkOwnProps {
-		/** @deprecated DO NOT USE */
+		/** @deprecated StrataKit does not support this prop. */
 		underline?: "none" | "hover" | "always";
 	}
 }
@@ -470,13 +499,13 @@ declare module "@mui/material/Tabs" {
 		 */
 		size?: "small" | "medium";
 
-		/** @deprecated DO NOT USE */
+		/** @deprecated StrataKit does not support this prop. */
 		indicatorColor?: TabsProps["indicatorColor"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		allowScrollButtonsMobile?: boolean;
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		scrollButtons?: TabsProps["scrollButtons"];
 	}
 }
@@ -506,7 +535,7 @@ declare module "@mui/material/TextField" {
 
 	export default function TextField(
 		props: {
-			/** @deprecated DO NOT USE */ variant?: TextFieldVariants;
+			/** @deprecated StrataKit does not support this prop. */ variant?: TextFieldVariants;
 		} & Omit<TextFieldProps, "variant">,
 	): React.JSX.Element;
 }

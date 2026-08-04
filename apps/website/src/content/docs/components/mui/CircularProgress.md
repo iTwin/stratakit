@@ -12,6 +12,7 @@ links:
 
 - The `color` prop does not support `"inherit"` or `"info"`.
 - The `disableShrink`, `enableTrackSlot`, and `thickness` props are deprecated and should not be used.
+- The `enableTrackSlot` prop defaults to true.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 

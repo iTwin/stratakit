@@ -27,10 +27,6 @@
 		--_MuiLinearProgress-color: var(--stratakit-color-icon-attention-base);
 	}
 
-	&:where(.MuiLinearProgress-colorInfo) {
-		--_MuiLinearProgress-color: var(--stratakit-color-icon-info-base);
-	}
-
 	&:where(.MuiLinearProgress-colorSuccess) {
 		--_MuiLinearProgress-color: var(--stratakit-color-icon-positive-base);
 	}

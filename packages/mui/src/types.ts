@@ -539,6 +539,15 @@ declare module "@mui/material/PaginationItem" {
 	}
 }
 
+declare module "@mui/material/Popover" {
+	interface PopoverProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: number | undefined;
+		/** @deprecated StrataKit does not support this prop. */
+		marginThreshold?: number | null | undefined;
+	}
+}
+
 declare module "@mui/material/Radio" {
 	interface RadioProps extends RadioDeprecatedProps {
 		/** @deprecated StrataKit does not support this prop. */

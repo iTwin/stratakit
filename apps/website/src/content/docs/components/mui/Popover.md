@@ -14,6 +14,8 @@ links:
 - Added fallback mechanism for automatically labelling the `paper` slot using the trigger element (`anchorEl`).
 - `disableScrollLock` is used to prevent scroll locking when the popover is open.
 - The default [`container`](https://mui.com/material-ui/api/popover/#popover-prop-container) is now the [root portal container](/components/root/#portal-container).
+- `elevation` is deprecated.
+- `marginThreshold` is deprecated.
 
 ## ✅ Do
 

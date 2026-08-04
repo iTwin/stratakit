@@ -961,7 +961,7 @@ declare module "@mui/material/Switch" {
 		checkedIcon?: SwitchProps["checkedIcon"];
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableRipple?: SwitchProps["disableRipple"];
+		disableRipple?: boolean | undefined;
 
 		/** @deprecated StrataKit does not support this prop. */
 		icon?: SwitchProps["icon"];

@@ -217,14 +217,10 @@ function usePopoverApi({
  * Minimal subset of the [`CloseWatcher`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) types.
  * Used by `useCloseWatcher` until API types are available in TypeScript.
  */
-interface CloseWatcher {
+declare class CloseWatcher {
 	onclose: () => void;
 	destroy: () => void;
 }
-
-declare const CloseWatcher: {
-	new (): CloseWatcher;
-};
 
 /**
  * Hook that makes it easy to use the [CloseWatcher API](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) consistently.

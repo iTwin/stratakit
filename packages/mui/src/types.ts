@@ -624,6 +624,13 @@ declare module "@mui/material/Tab" {
 	}
 }
 
+declare module "@mui/material/TableCell" {
+	interface TableCellProps {
+		/** @deprecated StrataKit does not support this prop on `TableCell`. Set on `Table` instead. */
+		size?: MuiTableCellProps["size"];
+	}
+}
+
 declare module "@mui/material/TableSortLabel" {
 	interface TableSortLabelOwnProps {
 		/** @deprecated StrataKit does not currently support this prop. */

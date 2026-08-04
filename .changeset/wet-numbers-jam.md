@@ -2,4 +2,7 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `hideSortIcon` and `IconComponent` props on `TableSortLabel`.
+Deprecated props related to `Table`.
+
+- `hideSortIcon` and `IconComponent` props on `TableSortLabel`.
+- `size` prop on `TableCell`.

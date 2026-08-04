@@ -680,6 +680,7 @@ declare module "@mui/material/Link" {
 
 	interface LinkPropsColorOverrides {
 		textSecondary: false;
+		textTertiary: false;
 		textDisabled: false;
 	}
 }

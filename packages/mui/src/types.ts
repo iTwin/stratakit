@@ -64,6 +64,11 @@ declare module "@mui/material/OverridableComponent" {
 
 declare module "@mui/material/Accordion" {
 	interface AccordionHeadingSlotPropsOverrides extends TypographyProps {}
+
+	interface AccordionOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disableGutters?: boolean | undefined;
+	}
 }
 
 declare module "@mui/material/AccordionSummary" {
@@ -78,6 +83,9 @@ declare module "@mui/material/AccordionSummary" {
 		 * @default 'auto'
 		 */
 		markerPlacement?: "auto" | "start" | "end";
+
+		/** @deprecated StrataKit does not support this prop. */
+		expandIcon?: React.ReactNode;
 	}
 }
 

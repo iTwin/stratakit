@@ -1,1 +1,0 @@
-import{j as t}from"./_utils.Cv0N55mX.js";import{A as o}from"./Autocomplete.Bb_xPS6x.js";import{T as r}from"./TextField.DvC5CKdq.js";const l=()=>t.jsx(o,{options:["Badge","Button","Checkbox","Dialog","Divider","Progress","Rating","Select","Switch","TextField"],renderInput:e=>t.jsx(r,{...e,label:"Favorite component"})});export{l as default};

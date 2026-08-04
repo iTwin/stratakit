@@ -7,10 +7,8 @@ import * as React from "react";
 import { useStoreState } from "@ariakit/react/store";
 import * as AkTooltip from "@ariakit/react/tooltip";
 import {
-	useCloseWatcher,
 	useEventHandlers,
 	usePopoverApi,
-	useStableCallback,
 } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
@@ -102,15 +100,10 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 	const store = AkTooltip.useTooltipStore();
 	const open = useStoreState(store, "open");
 	const popoverElement = useStoreState(store, "popoverElement");
-	const setOpen = useStableCallback(store.setOpen);
 
 	const popoverProps = usePopoverApi({
 		element: popoverElement,
 		open,
-	});
-	useCloseWatcher({
-		open,
-		setOpen,
 	});
 
 	return (

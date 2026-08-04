@@ -9,6 +9,7 @@
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { BadgeProps } from "@mui/material/Badge";
+import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
@@ -24,6 +25,7 @@ import type {
 	TextFieldProps,
 	TextFieldVariants,
 } from "@mui/material/TextField";
+import type { ToggleButtonProps } from "@mui/material/ToggleButton";
 import type { TooltipProps } from "@mui/material/Tooltip";
 import type {
 	TypographyProps,
@@ -468,7 +470,6 @@ declare module "@mui/material/Switch" {
 	interface SwitchProps {
 		/** @deprecated StrataKit does not support this prop. */
 		checkedIcon?: SwitchProps["checkedIcon"];
-
 		/** @deprecated StrataKit does not support this prop. */
 		disableRipple?: boolean;
 
@@ -552,6 +553,18 @@ declare module "@mui/material/TextField" {
 
 declare module "@mui/material/ToggleButton" {
 	interface ToggleButtonOwnProps {
+		/** @deprecated `color` is unnecessary. Only `"standard"` is supported and already the default. */
+		color?: ToggleButtonProps["color"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: ToggleButtonProps["disableFocusRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableRipple?: ButtonBaseProps["disableRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		fullWidth?: ToggleButtonProps["fullWidth"];
+
 		LinkComponent?: never;
 
 		/**
@@ -567,6 +580,13 @@ declare module "@mui/material/ToggleButton" {
 		 * @default 'top'
 		 */
 		labelPlacement?: TooltipProps["placement"];
+	}
+}
+
+declare module "@mui/material/ToggleButtonGroup" {
+	interface ToggleButtonGroupProps {
+		/** @deprecated `color` is unnecessary. Only `"standard"` is supported and already the default. */
+		color?: ToggleButtonProps["color"];
 	}
 }
 

@@ -208,6 +208,15 @@ declare module "@mui/material/AvatarGroup" {
 	}
 }
 
+declare module "@mui/material/Backdrop" {
+	interface BackdropOwnProps {
+		/** @deprecated Use `open` for `Backdrop`. */
+		in?: never;
+		/** @deprecated Use `transitionDuration` for `Backdrop`*/
+		timeout?: never;
+	}
+}
+
 declare module "@mui/material/Badge" {
 	interface BadgePropsColorOverrides {
 		default: false;

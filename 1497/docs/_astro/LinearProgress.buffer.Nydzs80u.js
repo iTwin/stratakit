@@ -1,1 +1,0 @@
-import{j as r,T as s}from"./_utils.BYit6D86.js";import{r as a}from"./styles.internal.6hrTgwnp.js";import{L as t}from"./LinearProgress.CdoQ4oBd.js";const l=()=>{const e=a.useId();return r.jsxs(r.Fragment,{children:[r.jsx(t,{variant:"buffer",value:33,valueBuffer:66,"aria-labelledby":e}),r.jsx(s,{id:e,children:"Buffering results…"})]})};export{l as default};

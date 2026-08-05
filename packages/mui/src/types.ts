@@ -132,6 +132,18 @@ declare module "@mui/material/Alert" {
 }
 
 declare module "@mui/material/AppBar" {
+	interface AppBarPropsColorOverrides {
+		inherit: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		error: false;
+		info: false;
+		warning: false;
+		default: false;
+		transparent: false;
+	}
+
 	interface AppBarOwnProps {
 		/** @deprecated StrataKit does not support this prop. */
 		color?: MuiAppBarOwnProps["color"];

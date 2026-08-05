@@ -174,9 +174,56 @@ declare module "@mui/material/Badge" {
 
 declare module "@mui/material/ButtonBase" {
 	interface ButtonBaseOwnProps {
+		/** @deprecated Use `ref` instead. */
+		action?: ButtonBaseOwnProps["action"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		centerRipple?: ButtonBaseOwnProps["centerRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableRipple?: ButtonBaseOwnProps["disableRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableTouchRipple?: ButtonBaseOwnProps["disableTouchRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		focusRipple?: ButtonBaseOwnProps["focusRipple"];
+
 		/** @deprecated Use the `render` prop instead. */
-		LinkComponent?: React.ElementType;
+		LinkComponent?: ButtonBaseOwnProps["LinkComponent"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		TouchRippleProps?: ButtonBaseOwnProps["TouchRippleProps"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		touchRippleRef?: ButtonBaseOwnProps["touchRippleRef"];
 	}
+}
+
+interface ButtonBaseDeprecatedProps {
+	/** @deprecated Use `ref` prop instead. */
+	action?: ButtonBaseProps["action"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	centerRipple?: ButtonBaseProps["centerRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableRipple?: ButtonBaseProps["disableRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableTouchRipple?: ButtonBaseProps["disableTouchRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	focusRipple?: ButtonBaseProps["focusRipple"];
+
+	/** @deprecated Use the `render` prop instead. */
+	LinkComponent?: ButtonBaseProps["LinkComponent"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	TouchRippleProps?: ButtonBaseProps["TouchRippleProps"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	touchRippleRef?: ButtonBaseProps["touchRippleRef"];
 }
 
 declare module "@mui/material/Button" {
@@ -525,7 +572,7 @@ declare module "@mui/material/TextField" {
 }
 
 declare module "@mui/material/ToggleButton" {
-	interface ToggleButtonOwnProps {
+	interface ToggleButtonOwnProps extends ButtonBaseDeprecatedProps {
 		/** @deprecated `color` is unnecessary. Only `"standard"` is supported and already the default. */
 		color?: ToggleButtonProps["color"];
 
@@ -533,11 +580,9 @@ declare module "@mui/material/ToggleButton" {
 		disableFocusRipple?: ToggleButtonProps["disableFocusRipple"];
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableRipple?: ButtonBaseProps["disableRipple"];
-
-		/** @deprecated StrataKit does not support this prop. */
 		fullWidth?: ToggleButtonProps["fullWidth"];
 
+		/** @deprecated Use the `render` prop instead. */
 		LinkComponent?: never;
 
 		/**

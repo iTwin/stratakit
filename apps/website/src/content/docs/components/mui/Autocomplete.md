@@ -17,6 +17,7 @@ links:
 - Added [`role="list"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [`role="listitem"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) semantics to [**Chips**](/components/chip) ("tags") used in [multiple selection](#multiple-values).
 - Tags are now focusable. Input is the first focusable element, followed by tags in the order they were added.
 - The default portal container is now the [root portal container](/components/root/#portal-container).
+- The icons is not customizable. `clearIcon`, `popupIcon` and `forcePopupIcon` are deprecated.
 
 ## Examples
 

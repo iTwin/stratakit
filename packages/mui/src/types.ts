@@ -8,6 +8,7 @@
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
 import type { RoleProps } from "@ariakit/react/role";
+import type { AppBarOwnProps as MuiAppBarOwnProps } from "@mui/material/AppBar";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { ButtonProps } from "@mui/material/Button";
 import type { ButtonBaseProps } from "@mui/material/ButtonBase";
@@ -130,6 +131,21 @@ declare module "@mui/material/Alert" {
 		 * @deprecated Color is determined by severity
 		 */
 		color?: AlertProps["color"];
+	}
+}
+
+declare module "@mui/material/AppBar" {
+	interface AppBarOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: MuiAppBarOwnProps["color"];
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: MuiAppBarOwnProps["elevation"];
+		/** @deprecated StrataKit does not support this prop. */
+		enableColorOnDark?: MuiAppBarOwnProps["enableColorOnDark"];
+		/** @deprecated StrataKit does not support this prop. */
+		square?: MuiAppBarOwnProps["square"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: PaperOwnProps["variant"];
 	}
 }
 

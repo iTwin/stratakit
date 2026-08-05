@@ -212,7 +212,7 @@ declare module "@mui/material/Backdrop" {
 	interface BackdropOwnProps {
 		/** @deprecated Use `open` for `Backdrop`. */
 		in?: never;
-		/** @deprecated Use `transitionDuration` for `Backdrop`*/
+		/** @deprecated Use `transitionDuration` for `Backdrop`. */
 		timeout?: never;
 	}
 }

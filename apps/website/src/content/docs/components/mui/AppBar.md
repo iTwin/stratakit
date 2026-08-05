@@ -7,3 +7,7 @@ links:
 ---
 
 ::example{src="mui/AppBar.default" min-width="450px"}
+
+## StrataKit MUI modifications
+
+- Deprecated `color`, `elevation`, `enableColorOnDark`, `square` and `variant` props

@@ -29,8 +29,6 @@ export default () => {
 			</Button>
 			<Popover
 				open={open}
-				elevation={5}
-				marginThreshold={10}
 				anchorEl={anchorEl}
 				onClose={() => setOpen(false)}
 				anchorOrigin={{

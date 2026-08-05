@@ -13,6 +13,7 @@ links:
 - Removed `role="rowgroup"` semantics from `TableBody`, as it is not necessary and can cause issues with some assistive technologies.
 - Enabled `TableRow`'s [`hover`](https://mui.com/material-ui/api/table-row/#table-row-prop-hover) prop by default, except when used inside `TableHead`.
 - Deprecated `hideSortIcon` and `IconComponent` property of `TableSortLabel`. The icon is not customizable.
+- Deprecated `size` prop of `TableCell`
 
 ## Examples
 

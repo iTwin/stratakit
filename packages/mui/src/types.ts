@@ -516,6 +516,9 @@ declare module "@mui/material/Radio" {
 
 		/** @deprecated StrataKit does not support this prop. */
 		icon?: RadioProps["icon"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		size?: RadioProps["size"];
 	}
 
 	interface RadioPropsColorOverrides {

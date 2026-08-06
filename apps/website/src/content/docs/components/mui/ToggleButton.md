@@ -10,6 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
+- The `action`, `centerRipple`, `color`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `fullWidth`, `LinkComponent`, `TouchRippleProps` and `touchRippleRef` props are deprecated and should not be used.
 - A `label` prop has been added. When specified, it is used as the **ToggleButton's** accessible name and is also shown in a tooltip on hover and focus.
 - A `labelPlacement` prop has been added to control the placement of a tooltip that is shown when the `label` prop is specified.
 - **ToggleButtons** are styled to match the visual appearance of the [**IconButton**](/components/iconbutton) component. Borders are displayed only when the buttons are wrapped in a `ToggleButtonGroup`. [Standalone](#standalone) **ToggleButtons** do not have borders.

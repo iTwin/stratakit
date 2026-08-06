@@ -1143,6 +1143,9 @@ declare module "@mui/material/Typography" {
 		 * @default "inherit"
 		 */
 		variant?: TypographyProps["variant"];
+
+		/** @deprecated	StrataKit does not support this prop. */
+		variantMapping?: TypographyProps["variantMapping"];
 	}
 }
 

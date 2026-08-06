@@ -560,6 +560,15 @@ declare module "@mui/material/Switch" {
 		/** @deprecated StrataKit does not support this prop. */
 		icon?: SwitchProps["icon"];
 	}
+
+	interface SwitchPropsColorOverrides {
+		secondary: false;
+		default: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+	}
 }
 
 declare module "@mui/material/StepButton" {

@@ -583,18 +583,12 @@ declare module "@mui/material/SvgIcon" {
 }
 
 declare module "@mui/material/Switch" {
-	interface SwitchPropsColorOverrides {
-		secondary: false;
-		default: false;
-		info: false;
-		success: false;
-		warning: false;
-		error: false;
-	}
-
 	interface SwitchProps {
 		/** @deprecated StrataKit does not support this prop. */
 		checkedIcon?: SwitchProps["checkedIcon"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		color?: SwitchProps["color"];
 
 		/** @deprecated StrataKit does not support this prop. */
 		disableRipple?: boolean;

@@ -10,6 +10,7 @@
 import type { RoleProps } from "@ariakit/react/role";
 import type { AppBarOwnProps as MuiAppBarOwnProps } from "@mui/material/AppBar";
 import type { BadgeProps } from "@mui/material/Badge";
+import type { BottomNavigationActionOwnProps as MuiBottomNavigationActionOwnProps } from "@mui/material/BottomNavigationAction";
 import type { ButtonProps } from "@mui/material/Button";
 import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
@@ -344,6 +345,8 @@ declare module "@mui/material/ButtonGroup" {
 declare module "@mui/material/BottomNavigationAction" {
 	interface BottomNavigationActionOwnProps {
 		LinkComponent?: never;
+		/** @deprecated Set `showLabels` on `BottomNavigation` instead*/
+		showLabel?: MuiBottomNavigationActionOwnProps["showLabel"];
 	}
 }
 

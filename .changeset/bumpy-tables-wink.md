@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `disableFocusRipple` and `disableRipple` props of `Fab`.
+Deprecated `disableRipple`, `disableFocusRipple`, and `disableTouchRipple` props of `Fab`.

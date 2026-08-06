@@ -1,1 +1,0 @@
-import{j as s}from"./_utils.CRBR983Y.js";import{A as t,a as e,b as r}from"./AccordionSummary.Dt1AKW2p.js";const i=()=>s.jsxs(t,{defaultExpanded:!0,children:[s.jsx(e,{children:"What is StrataKit?"}),s.jsx(r,{children:"StrataKit is Bentley Systems' open source design system and the successor to iTwinUI."})]});export{i as default};

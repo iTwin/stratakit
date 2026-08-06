@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-`Switch` component props `checkedIcon`, `disableRipple`, and `icon` have been deprecated.
+`Switch` component props `checkedIcon`, `color`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, and `icon` have been deprecated.

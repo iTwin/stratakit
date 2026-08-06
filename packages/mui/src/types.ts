@@ -548,10 +548,13 @@ declare module "@mui/material/Fab" {
 		LinkComponent?: never;
 
 		/** @deprecated StrataKit does not support this prop. */
+		disableRipple?: boolean;
+
+		/** @deprecated StrataKit does not support this prop. */
 		disableFocusRipple?: boolean;
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableRipple?: boolean;
+		disableTouchRipple?: boolean;
 
 		/**
 		 * The default color with `@stratakit/mui` is `"primary"`.

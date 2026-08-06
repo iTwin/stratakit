@@ -3,4 +3,4 @@
 "@stratakit/mui": patch
 ---
 
-Updated thumb shadow for `Switch`.
+Updated borders for `Switch`.

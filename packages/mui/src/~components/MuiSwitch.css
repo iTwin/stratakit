@@ -130,7 +130,7 @@
 	--✨bg--default: var(--stratakit-color-bg-control-switch);
 	--✨bg--checked: var(--stratakit-color-bg-accent-base);
 	--✨bg--disabled: var(--stratakit-color-bg-control-switch);
-	--✨border--default: var(--stratakit-color-border-control-switch);
+	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--checked: var(--stratakit-color-border-accent-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 

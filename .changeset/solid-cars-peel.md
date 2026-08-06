@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-`Radio` component props `checkedIcon`, `color`, `disableRipple`, and `icon` have been deprecated.
+`Radio` component props `checkedIcon`, `color`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `icon`, and `size` have been deprecated.

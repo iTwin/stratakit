@@ -9,6 +9,7 @@
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { BadgeProps } from "@mui/material/Badge";
+import type { ButtonProps } from "@mui/material/Button";
 import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
@@ -263,7 +264,14 @@ declare module "@mui/material/Button" {
 		inherit: false;
 	}
 
-	interface ButtonOwnProps {
+	interface ButtonOwnProps extends ButtonBaseDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disableElevation?: ButtonProps["disableElevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: ButtonProps["disableFocusRipple"];
+
+		/** @deprecated Use the `render` prop instead. */
 		LinkComponent?: never;
 
 		/**

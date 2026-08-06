@@ -24,6 +24,7 @@ export default () => {
 		>
 			<BottomNavigationAction
 				label="Recents"
+				showLabel
 				icon={<Icon href={`${svgClock}#icon-large`} size="large" />}
 			/>
 			<BottomNavigationAction

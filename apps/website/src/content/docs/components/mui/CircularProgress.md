@@ -11,7 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - The `color` prop does not support `"inherit"` or `"info"`.
-- The `disableShrink`, `enableTrackSlot`, and `thickness` props are deprecated and should not be used.
+- The `disableShrink`, `enableTrackSlot`, and `thickness` props are not supported.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 

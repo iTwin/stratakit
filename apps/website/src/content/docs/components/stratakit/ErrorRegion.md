@@ -71,7 +71,7 @@ When the user visits the **ErrorRegion**:
 
 - Use **ErrorRegion** to collate and describe [**Tree**](/components/tree) errors.
 - Supply both a `label` and `aria-label` to `ErrorRegion.Root` for summarizing the errors and identifying the **ErrorRegion** respectively.
-- Update the `label` whenever errors (`Eror.Item`s) are added or removed.
+- Update the `label` whenever errors (`Error.Item`s) are added or removed.
 
 ## ❌ Don't
 

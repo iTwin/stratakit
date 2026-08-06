@@ -572,6 +572,15 @@ declare module "@mui/material/TextField" {
 }
 
 declare module "@mui/material/ToggleButton" {
+	interface ToggleButtonPropsColorOverrides {
+		error: false;
+		info: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		warning: false;
+	}
+
 	interface ToggleButtonOwnProps extends ButtonBaseDeprecatedProps {
 		/** @deprecated `color` is unnecessary. Only `"standard"` is supported and already the default. */
 		color?: ToggleButtonProps["color"];
@@ -602,9 +611,18 @@ declare module "@mui/material/ToggleButton" {
 }
 
 declare module "@mui/material/ToggleButtonGroup" {
+	interface ToggleButtonGroupPropsColorOverrides {
+		error: false;
+		info: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		warning: false;
+	}
+
 	interface ToggleButtonGroupProps {
 		/** @deprecated `color` is unnecessary. Only `"standard"` is supported and already the default. */
-		color?: ToggleButtonProps["color"];
+		color?: ToggleButtonGroupProps["color"];
 	}
 }
 

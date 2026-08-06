@@ -21,7 +21,7 @@ These are the main packages of StrataKit:
 - [`@stratakit/icons`](./packages/icons/): A standalone SVG icon library.
 - [`@stratakit/structures`](./packages/structures): Specialized custom-built components.
 
-Additional packages: [`@stratakit/foundations`](./packages/foundations/), [`@stratakit/bricks`](./packages/bricks/).
+Additional packages: [`@stratakit/foundations`](./packages/foundations/), [`@stratakit/bricks`](./packages/bricks/), [`@stratakit/internal-utils`](./packages/internal-utils/).
 
 > [!NOTE]
 > StrataKit packages are currently published as `0.X` versions. StrataKit follows [semantic versioning](https://semver.org/), and breaking changes will only be published in _minor_ version bumps. It is therefore safe to use the `^` syntax to specify version ranges in your `package.json`.

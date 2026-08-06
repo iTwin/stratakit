@@ -343,6 +343,9 @@ importers:
       "@stratakit/foundations":
         specifier: ^0.4.9
         version: link:../foundations
+      "@stratakit/internal-utils":
+        specifier: ^0.1.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -377,6 +380,9 @@ importers:
       "@ariakit/react":
         specifier: ^0.4.35
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      "@stratakit/internal-utils":
+        specifier: ^0.1.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -411,6 +417,31 @@ importers:
 
   packages/icons: {}
 
+  packages/internal-utils:
+    dependencies:
+      react-compiler-runtime:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.2.8)
+    devDependencies:
+      "@types/react":
+        specifier: "catalog:"
+        version: 19.2.18
+      "@types/react-dom":
+        specifier: "catalog:"
+        version: 19.2.4(@types/react@19.2.18)
+      esbuild:
+        specifier: "catalog:"
+        version: 0.28.1
+      react:
+        specifier: "catalog:"
+        version: 19.2.8
+      react-dom:
+        specifier: "catalog:"
+        version: 19.2.8(react@19.2.8)
+      typescript:
+        specifier: "catalog:"
+        version: 6.0.3
+
   packages/mui:
     dependencies:
       "@ariakit/react":
@@ -434,6 +465,9 @@ importers:
       "@stratakit/icons":
         specifier: ^0.4.3
         version: link:../icons
+      "@stratakit/internal-utils":
+        specifier: ^0.1.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -474,6 +508,9 @@ importers:
       "@stratakit/foundations":
         specifier: ^0.4.10
         version: link:../foundations
+      "@stratakit/internal-utils":
+        specifier: ^0.1.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1

@@ -17,6 +17,7 @@ links:
 - The `render` prop is required to be set for all heading variants.
 - The stock MUI heading and subtitle `variant`s all map to `<h2>` elements by default, except for the `"h1"` variant which still maps to `<h1>`. In all these cases, the `render` prop is required.
 - The `"secondary"` color value has been removed. A `"textTertiary"` color value has been added.
+- The `variantMapping` prop has been deprecated.
 
 ## Examples
 

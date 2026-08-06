@@ -518,6 +518,15 @@ declare module "@mui/material/Radio" {
 		icon?: RadioProps["icon"];
 	}
 
+	interface RadioPropsColorOverrides {
+		secondary: false;
+		default: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+	}
+
 	interface RadioPropsSizeOverrides {
 		small: false;
 	}

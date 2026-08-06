@@ -1,1 +1,0 @@
-import{j as s}from"./_utils.0KMax60h.js";import{S as i}from"./Stack.DcDec2IP.js";import{L as t}from"./Link.CQB-oBJw.js";const e=["primary","error","info","success","warning"],p=()=>s.jsx(i,{direction:"row",spacing:1,children:e.map(r=>s.jsxs(t,{color:r,href:`#${r}`,children:[r.charAt(0).toUpperCase(),r.slice(1)]},r))});export{p as default};

@@ -285,6 +285,9 @@ declare module "@mui/material/Checkbox" {
 
 		/** @deprecated StrataKit does not support this prop. */
 		indeterminateIcon?: CheckboxProps["indeterminateIcon"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		size?: CheckboxProps["size"];
 	}
 
 	interface CheckboxPropsSizeOverrides {

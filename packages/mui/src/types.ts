@@ -290,6 +290,15 @@ declare module "@mui/material/Checkbox" {
 		size?: CheckboxProps["size"];
 	}
 
+	interface CheckboxPropsColorOverrides {
+		secondary: false;
+		default: false;
+		info: false;
+		success: false;
+		warning: false;
+		error: false;
+	}
+
 	interface CheckboxPropsSizeOverrides {
 		small: false;
 		large: false;

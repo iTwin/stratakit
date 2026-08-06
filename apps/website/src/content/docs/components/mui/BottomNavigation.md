@@ -13,4 +13,4 @@ links:
 - The _selected_ state of `BottomNavigationAction` has been visually reinforced, and semantically conveyed using the [`aria-current`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-current) attribute.
 - The markup of `BottomNavigationAction` now includes a wrapper element around the icon and label.
 - Includes `forced-colors` support.
-- `showLabel` prop of `BottomNavigationAction` is deprecated. Set `showLabels` on `BottomNavigation` to have it applied consistently to all `BottomNavigationAction`
+- `showLabel` prop of `BottomNavigationAction` is not supported. Set `showLabels` on `BottomNavigation` to have it applied consistently to all `BottomNavigationAction`

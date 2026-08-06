@@ -18,6 +18,7 @@ import type { CheckboxProps } from "@mui/material/Checkbox";
 import type { CssBaselineProps } from "@mui/material/CssBaseline";
 import type { FilledInputProps } from "@mui/material/FilledInput";
 import type { FormControlProps } from "@mui/material/FormControl";
+import type {} from "@mui/material/Grow";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { InputProps } from "@mui/material/Input";
@@ -43,6 +44,7 @@ import type {
 	TypographyProps,
 	TypographyTypeMap,
 } from "@mui/material/Typography";
+import type {} from "@mui/material/Zoom";
 import type * as React from "react";
 
 declare module "@mui/material/OverridableComponent" {
@@ -491,6 +493,13 @@ declare module "@mui/material/CircularProgress" {
 	}
 }
 
+declare module "@mui/material/Collapse" {
+	interface CollapseProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean;
+	}
+}
+
 declare module "@mui/material/CssBaseline" {
 	/** @deprecated StrataKit does not support this component.  Use `Root` from `@stratakit/mui` instead */
 	export default function CssBaseline(
@@ -540,6 +549,13 @@ declare module "@mui/material/Fab" {
 		 * @default 'primary'
 		 */
 		color?: "primary" | "secondary";
+	}
+}
+
+declare module "@mui/material/Fade" {
+	interface FadeProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean | undefined;
 	}
 }
 
@@ -606,6 +622,13 @@ declare module "@mui/material/FormLabel" {
 	interface FormLabelOwnProps {
 		/** @deprecated */
 		component?: never; // `@deprecated` marker is not showing up, so using `never` to prevent usage of this prop.
+	}
+}
+
+declare module "@mui/material/Grow" {
+	interface GrowProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean | undefined;
 	}
 }
 
@@ -1170,5 +1193,12 @@ declare module "@mui/material/Typography" {
 		 * @default "inherit"
 		 */
 		variant?: TypographyProps["variant"];
+	}
+}
+
+declare module "@mui/material/Zoom" {
+	interface ZoomProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean | undefined;
 	}
 }

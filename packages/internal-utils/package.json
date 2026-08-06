@@ -1,0 +1,125 @@
+{
+	"name": "@stratakit/internal-utils",
+	"private": true,
+	"type": "module",
+	"version": "0.1.0",
+	"license": "MIT",
+	"sideEffects": false,
+	"exports": {
+		"./common": {
+			"@stratakit/source": "./src/common.ts",
+			"types": "./dist/common.d.ts",
+			"development": "./dist/DEV/common.js",
+			"default": "./dist/common.js"
+		},
+		"./dom": {
+			"@stratakit/source": "./src/dom.ts",
+			"types": "./dist/dom.d.ts",
+			"development": "./dist/DEV/dom.js",
+			"default": "./dist/dom.js"
+		},
+		"./hooks": {
+			"@stratakit/source": "./src/hooks.ts",
+			"types": "./dist/hooks.d.ts",
+			"development": "./dist/DEV/hooks.js",
+			"default": "./dist/hooks.js"
+		},
+		"./react": {
+			"@stratakit/source": "./src/react.ts",
+			"types": "./dist/react.d.ts",
+			"development": "./dist/DEV/react.js",
+			"default": "./dist/react.js"
+		},
+		"./props": {
+			"@stratakit/source": "./src/props.ts",
+			"types": "./dist/props.d.ts"
+		},
+		"./package.json": "./package.json"
+	},
+	"files": [
+		"dist",
+		"CHANGELOG.md",
+		"LICENSE.md"
+	],
+	"description": "Internal utilities for StrataKit packages",
+	"author": "Bentley Systems",
+	"homepage": "https://github.com/iTwin/stratakit",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iTwin/stratakit.git",
+		"directory": "packages/internal-utils"
+	},
+	"keywords": [
+		"stratakit"
+	],
+	"scripts": {
+		"build": "wireit",
+		"dev": "wireit"
+	},
+	"dependencies": {
+		"react-compiler-runtime": "^1.0.0"
+	},
+	"devDependencies": {
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:",
+		"esbuild": "catalog:",
+		"react": "catalog:",
+		"react-dom": "catalog:",
+		"typescript": "catalog:"
+	},
+	"peerDependencies": {
+		"react": ">=18.0.0",
+		"react-dom": ">=18.0.0"
+	},
+	"wireit": {
+		"build": {
+			"dependencies": [
+				"build:js",
+				"build:DEV",
+				"build:types"
+			]
+		},
+		"build:js": {
+			"command": "node scripts/build.js",
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/**/*.js",
+				"!dist/DEV"
+			]
+		},
+		"build:DEV": {
+			"command": "node scripts/build.js",
+			"files": [
+				"src",
+				"scripts",
+				"../../internal"
+			],
+			"output": [
+				"dist/DEV/**/*.js"
+			],
+			"env": {
+				"NODE_ENV": "development"
+			}
+		},
+		"build:types": {
+			"command": "tsc --outDir dist",
+			"files": [
+				"src"
+			],
+			"output": [
+				"dist/**/*.d.ts"
+			]
+		},
+		"dev": {
+			"command": "tsc --watch --outDir dist",
+			"files": [
+				"src"
+			],
+			"service": true
+		}
+	}
+}

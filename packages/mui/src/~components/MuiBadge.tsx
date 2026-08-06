@@ -4,13 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import {
-	forwardRef,
-	useSafeContext,
-} from "@stratakit/foundations/secret-internals";
+import { useSafeContext } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type Badge from "@mui/material/Badge";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -24,16 +22,18 @@ type BadgeProps = React.ComponentProps<typeof Badge>;
 
 interface MuiBadgeProps
 	extends BaseProps<"span">,
-		Pick<BadgeProps, "type" | "inline"> {}
+		Pick<BadgeProps, "inline" | "size" | "type"> {}
 
 const MuiBadge = forwardRef<"span", MuiBadgeProps>((props, forwardedRef) => {
-	const { type = "strong", inline, ...rest } = props;
+	const { inline, size = "medium", type = "strong", ...rest } = props;
+
 	return (
 		<MuiBadgeContext.Provider value={{ inline }}>
 			<Role.span
 				{...rest}
-				data-_sk-type={inline ? type : undefined}
 				data-_sk-inline={inline ? "" : undefined}
+				data-_sk-size={size === "small" ? "small" : undefined}
+				data-_sk-type={inline ? type : undefined}
 				ref={forwardedRef}
 			/>
 		</MuiBadgeContext.Provider>

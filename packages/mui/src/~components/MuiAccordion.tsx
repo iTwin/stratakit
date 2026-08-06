@@ -5,11 +5,12 @@
 
 import { Role } from "@ariakit/react/role";
 import Paper from "@mui/material/Paper";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import Typography from "@mui/material/Typography";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type { AccordionOwnerState } from "@mui/material/Accordion";
 import type { AccordionSummaryOwnProps } from "@mui/material/AccordionSummary";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -31,6 +32,21 @@ const MuiAccordionRootSlot = forwardRef<"div", MuiAccordionRootSlotProps>(
 	},
 );
 DEV: MuiAccordionRootSlot.displayName = "MuiAccordionRootSlot";
+
+// ----------------------------------------------------------------------------
+
+interface MuiAccordionHeadingSlotProps {
+	ownerState?: AccordionOwnerState;
+}
+
+const MuiAccordionHeadingSlot = forwardRef<"div", MuiAccordionHeadingSlotProps>(
+	(props, forwardedRef) => {
+		const { ownerState: _, ...rest } = props;
+
+		return <Typography render={<h3 />} {...rest} ref={forwardedRef} />;
+	},
+);
+DEV: MuiAccordionHeadingSlot.displayName = "MuiAccordionHeadingSlot";
 
 // ----------------------------------------------------------------------------
 
@@ -56,4 +72,4 @@ DEV: MuiAccordionSummary.displayName = "MuiAccordionSummary";
 
 // ----------------------------------------------------------------------------
 
-export { MuiAccordionRootSlot, MuiAccordionSummary };
+export { MuiAccordionHeadingSlot, MuiAccordionRootSlot, MuiAccordionSummary };

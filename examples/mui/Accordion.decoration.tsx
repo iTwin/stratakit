@@ -16,7 +16,7 @@ export default () => {
 		<Accordion>
 			<AccordionSummary>
 				<Icon href={svgInfo} />
-				<Typography render={<span />}>What is StrataKit?</Typography>
+				<Typography>What is StrataKit?</Typography>
 			</AccordionSummary>
 			<AccordionDetails>
 				StrataKit is Bentley Systems' open source design system and the

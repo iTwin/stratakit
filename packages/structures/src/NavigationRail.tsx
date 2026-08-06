@@ -9,12 +9,12 @@ import { Role } from "@ariakit/react/role";
 import { Tooltip, VisuallyHidden } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
 import {
-	forwardRef,
 	useEventHandlers,
 	useMergedRefs,
 	useSafeContext,
-	useUnreactiveCallback,
-} from "@stratakit/foundations/secret-internals";
+	useStableCallback,
+} from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { createStore, useStore } from "zustand";
 import { combine } from "zustand/middleware";
@@ -24,7 +24,7 @@ import { useInit } from "./~utils.useInit.js";
 import type {
 	BaseProps,
 	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -67,7 +67,7 @@ function NavigationRailProvider(props: NavigationRailProviderProps) {
 		createNavigationRailStore({ expanded: expanded ?? defaultExpanded }),
 	);
 
-	const setExpanded = useUnreactiveCallback(setExpandedProp ?? (() => {}));
+	const setExpanded = useStableCallback(setExpandedProp ?? (() => {}));
 
 	React.useEffect(
 		function synchronizeWithProps() {
@@ -563,6 +563,7 @@ const NavigationRailItemActionIcon = forwardRef<
 			href={typeof icon === "string" ? icon : undefined}
 			render={React.isValidElement(icon) ? icon : undefined}
 			{...rest}
+			className={cx("🥝NavigationRailItemActionIcon", props.className)}
 			ref={forwardedRef}
 		/>
 	);

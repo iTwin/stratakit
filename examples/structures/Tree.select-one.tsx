@@ -18,9 +18,10 @@ export default () => {
 	return (
 		<Tree.Root className={styles.tree}>
 			{flatData.map((item) => {
-				const parentCollapsed =
-					item.parentId && !expandedItems.includes(item.parentId);
-				if (parentCollapsed) return null;
+				const ancestorCollapsed = item.parentIds.some(
+					(parentId) => !expandedItems.includes(parentId),
+				);
+				if (ancestorCollapsed) return null;
 				return (
 					<Tree.Item
 						key={item.id}
@@ -97,30 +98,31 @@ const data = [
 	},
 ] as const satisfies TreeItem[];
 
+const flatData = flattenTree(data);
+
 interface FlatTreeItem extends TreeItem {
 	level: number;
 	posInset: number;
 	setSize: number;
-	parentId?: string;
+	parentIds: string[];
 }
 
-// Flattens the tree data up to two levels.
-const flatData = data.flatMap<FlatTreeItem>((item, index) => {
-	const children = "children" in item ? item.children : [];
-	const flatChildren = children.map<FlatTreeItem>((child, childIndex) => ({
-		...child,
-		level: 2,
-		posInset: childIndex + 1,
-		setSize: children.length,
-		parentId: item.id,
-	}));
-	return [
-		{
-			...item,
-			level: 1,
-			posInset: index + 1,
-			setSize: data.length,
-		},
-		...flatChildren,
-	];
-});
+function flattenTree(
+	items: TreeItem[],
+	level = 1,
+	parentIds: string[] = [],
+): FlatTreeItem[] {
+	return items.flatMap<FlatTreeItem>((item, index) => {
+		const children = "children" in item ? (item.children ?? []) : [];
+		return [
+			{
+				...item,
+				level,
+				posInset: index + 1,
+				setSize: items.length,
+				parentIds,
+			},
+			...flattenTree(children, level + 1, [...parentIds, item.id]),
+		];
+	});
+}

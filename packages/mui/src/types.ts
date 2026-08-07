@@ -15,6 +15,7 @@ import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
 import type { CardProps } from "@mui/material/Card";
 import type { CheckboxProps } from "@mui/material/Checkbox";
+import type { CssBaselineProps } from "@mui/material/CssBaseline";
 import type { FilledInputProps } from "@mui/material/FilledInput";
 import type { FormControlProps } from "@mui/material/FormControl";
 import type { IconProps } from "@mui/material/Icon";
@@ -493,6 +494,13 @@ declare module "@mui/material/CircularProgress" {
 	}
 }
 
+declare module "@mui/material/CssBaseline" {
+	/** @deprecated StrataKit does not support this component.  Use `Root` from `@stratakit/mui` instead */
+	export default function CssBaseline(
+		props: CssBaselineProps,
+	): React.JSX.Element;
+}
+
 declare module "@mui/material/Dialog" {
 	interface DialogProps extends Pick<CommonProps, "render"> {
 		/** @deprecated Use `render` prop instead. */
@@ -795,6 +803,14 @@ interface RadioDeprecatedProps extends ButtonBaseDeprecatedProps {
 
 	/** @deprecated StrataKit does not support this prop. */
 	size?: RadioProps["size"];
+}
+
+declare module "@mui/material/ScopedCssBaseline" {
+	/** @deprecated StrataKit does not support this component.  Use `Root` from `@stratakit/mui` instead */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function ScopedCssBaseline(
+		props: CssBaselineProps,
+	): React.JSX.Element;
 }
 
 declare module "@mui/material/Select" {

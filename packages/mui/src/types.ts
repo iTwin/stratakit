@@ -986,8 +986,15 @@ declare module "@mui/material/TextField" {
 
 	export default function TextField(
 		props: {
-			/** @deprecated StrataKit does not support this prop. */ variant?: TextFieldVariants;
-		} & Omit<TextFieldProps, "variant">,
+			/** @deprecated StrataKit does not support this prop. */
+			variant?: TextFieldVariants;
+
+			/** @deprecated StrataKit does not support this prop. */
+			color?: TextFieldProps["color"];
+
+			/** @deprecated StrataKit does not support this prop. */
+			select?: TextFieldProps["select"];
+		} & Omit<TextFieldProps, "variant" | "color" | "select">,
 	): React.JSX.Element;
 }
 

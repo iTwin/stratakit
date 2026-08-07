@@ -23,6 +23,7 @@ import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { InputProps } from "@mui/material/Input";
 import type { InputBaseProps } from "@mui/material/InputBase";
+import type { MenuProps as MuiMenuProps } from "@mui/material/Menu";
 import type { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import type {
 	CommonProps,
@@ -726,6 +727,15 @@ declare module "@mui/material/Link" {
 declare module "@mui/material/ListItemButton" {
 	interface ListItemButtonOwnProps {
 		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/Menu" {
+	interface MenuProps {
+		/** @deprecated StrataKit does not support this prop. */
+		autoFocus?: MuiMenuProps["autoFocus"];
+		/** @deprecated StrataKit does not support this prop. */
+		disableAutoFocusItem?: MuiMenuProps["disableAutoFocusItem"];
 	}
 }
 

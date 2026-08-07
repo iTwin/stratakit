@@ -16,6 +16,7 @@ links:
 - Includes full `forced-colors` support.
 - `disableScrollLock` is used to prevent scroll locking when the menu is open.
 - The default portal container is now the [root portal container](/components/root/#portal-container).
+- The `autoFocus` and `disableAutoFocusItem` props are not supported.
 
 ## Examples
 

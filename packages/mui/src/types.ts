@@ -29,6 +29,7 @@ import type {
 	DefaultComponentProps,
 	OverridableTypeMap,
 } from "@mui/material/OverridableComponent";
+import type { PaginationProps as MuiPaginationProps } from "@mui/material/Pagination";
 import type { PaperOwnProps } from "@mui/material/Paper";
 import type { SelectProps } from "@mui/material/Select";
 import type {} from "@mui/material/Slide";
@@ -752,6 +753,27 @@ declare module "@mui/material/OutlinedInput" {
 interface OutlinedInputDeprecatedProps extends InputBaseDeprecatedProps {
 	/** @deprecated StrataKit does not support this prop. */
 	notched?: OutlinedInputProps["notched"];
+}
+
+declare module "@mui/material/Pagination" {
+	interface PaginationPropsColorOverrides {
+		primary: false;
+		secondary: false;
+		standard: false;
+	}
+
+	interface PaginationPropsVariantOverrides {
+		text: false;
+	}
+
+	interface PaginationProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: MuiPaginationProps["color"];
+		/** @deprecated StrataKit does not support this prop. */
+		shape?: MuiPaginationProps["shape"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: MuiPaginationProps["variant"];
+	}
 }
 
 declare module "@mui/material/PaginationItem" {

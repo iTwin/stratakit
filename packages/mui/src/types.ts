@@ -1119,19 +1119,33 @@ type TypographyHeadingVariantProps = {
 	render: NonNullable<RoleProps["render"]>;
 };
 
+// These are defined separately so that they only get added to `Typography`,
+// and not to inherited components like `Link`.
+type TypographyColorProps = {
+	color?:
+		| TypographyProps["color"]
+		| "textSecondary"
+		| "textTertiary"
+		| "textDisabled";
+};
+
 type TypographyOverridableComponentProps<TypeMap extends OverridableTypeMap> =
 	TypeMap extends TypographyTypeMap
-		? Omit<
-				DefaultComponentProps<TypeMap>,
-				keyof TypographyHeadingVariantProps
-			> &
-				TypographyHeadingVariantProps
+		?
+				| (Omit<
+						DefaultComponentProps<TypeMap>,
+						keyof TypographyHeadingVariantProps | "color"
+				  > &
+						TypographyHeadingVariantProps &
+						TypographyColorProps)
+				| (Omit<DefaultComponentProps<TypeMap>, "color"> & TypographyColorProps)
 		: never;
 
 declare module "@mui/material/Typography" {
 	interface TypographyPropsColorOverrides {
 		secondary: false;
-		textTertiary: true;
+		textSecondary: false;
+		textDisabled: false;
 	}
 
 	interface TypographyPropsVariantOverrides {

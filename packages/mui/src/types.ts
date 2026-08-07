@@ -677,12 +677,6 @@ declare module "@mui/material/Link" {
 		/** @deprecated StrataKit does not support this prop. */
 		underline?: "none" | "hover" | "always";
 	}
-
-	interface LinkPropsColorOverrides {
-		textSecondary: false;
-		textTertiary: false;
-		textDisabled: false;
-	}
 }
 
 declare module "@mui/material/ListItemButton" {

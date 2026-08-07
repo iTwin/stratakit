@@ -890,6 +890,15 @@ declare module "@mui/material/Tab" {
 	interface TabOwnProps {
 		LinkComponent?: never;
 
+		/** @deprecated StrataKit does not support this prop. */
+		disableRipple?: boolean;
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: boolean;
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableTouchRipple?: boolean;
+
 		/**
 		 * The default icon position with `@stratakit/mui` is `"start"`.
 		 *

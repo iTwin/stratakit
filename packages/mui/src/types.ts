@@ -1125,7 +1125,7 @@ type TypographyColorProps = {
 	color?:
 		| TypographyProps["color"]
 		| "textSecondary"
-		| "textTertiary"
+		| "textTertiary" // New
 		| "textDisabled";
 };
 
@@ -1144,8 +1144,8 @@ type TypographyOverridableComponentProps<TypeMap extends OverridableTypeMap> =
 declare module "@mui/material/Typography" {
 	interface TypographyPropsColorOverrides {
 		secondary: false;
-		textSecondary: false;
-		textDisabled: false;
+		textSecondary: false; // Re-added above via TypographyColorProps.
+		textDisabled: false; // Re-added above via TypographyColorProps.
 	}
 
 	interface TypographyPropsVariantOverrides {

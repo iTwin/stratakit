@@ -11,6 +11,7 @@ import type { RoleProps } from "@ariakit/react/role";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { ButtonProps } from "@mui/material/Button";
 import type { ButtonBaseProps } from "@mui/material/ButtonBase";
+import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
@@ -280,6 +281,23 @@ declare module "@mui/material/Button" {
 		 * @default 'contained'
 		 */
 		variant?: "contained" | "outlined" | "text";
+	}
+}
+
+declare module "@mui/material/ButtonGroup" {
+	interface ButtonGroupPropsColorOverrides {
+		error: false;
+		info: false;
+		inherit: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		warning: false;
+	}
+
+	interface ButtonGroupOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: ButtonGroupProps["color"];
 	}
 }
 

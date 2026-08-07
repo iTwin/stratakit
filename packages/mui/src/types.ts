@@ -740,7 +740,11 @@ declare module "@mui/material/Menu" {
 }
 
 declare module "@mui/material/MenuItem" {
-	interface MenuItemOwnProps {
+	interface MenuItemOwnProps extends ButtonBaseDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		dense?: MenuItemOwnProps["dense"];
+		/** @deprecated StrataKit does not support this prop. */
+		focusVisibleClassName?: string;
 		LinkComponent?: never;
 	}
 }

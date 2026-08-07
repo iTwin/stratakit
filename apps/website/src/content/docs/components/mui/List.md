@@ -13,6 +13,8 @@ links:
 - Spacing and sizing has been adjusted to better align with StrataKit's more compact visual design language.
 - The `subheader` props of `List` is not supported. Use the `ListSubheader` component instead.
 - The `color` prop of `ListSubheader` is not supported.
+- The `action` prop of `ListButtonItem` is not supported by StrataKit.
+- Ripple effect removed from `ListItemButton`. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 
 ## Examples
 

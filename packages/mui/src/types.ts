@@ -735,7 +735,7 @@ declare module "@mui/material/List" {
 }
 
 declare module "@mui/material/ListItemButton" {
-	interface ListItemButtonOwnProps {
+	interface ListItemButtonOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
 	}
 }

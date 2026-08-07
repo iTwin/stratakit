@@ -13,7 +13,7 @@ import Stack from "@mui/material/Stack";
 export default () => {
 	return (
 		<Stack
-			spacing={1}
+			spacing={2}
 			direction="row"
 			useFlexGap
 			sx={{ alignItems: "center", flexWrap: "wrap" }}

@@ -10,7 +10,7 @@ import AvatarInitials from "examples/mui/Avatar.initials.tsx";
 
 export default function AvatarExamples() {
 	return (
-		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
+		<Stack spacing={2} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
 			<AvatarDefault />
 			<AvatarInitials />
 			<AvatarIcon />

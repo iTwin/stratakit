@@ -13,7 +13,7 @@ import { createKnob, isProduction } from "~/~utils.tsx";
 
 export default function ChipExamples() {
 	return (
-		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
+		<Stack spacing={2} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
 			<ChipDefault />
 			<ChipOutlined />
 			<ChipClickable />

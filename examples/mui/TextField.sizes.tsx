@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 export default () => {
 	return (
 		<Stack
-			spacing={1}
+			spacing={2}
 			direction="row"
 			useFlexGap
 			sx={{ alignItems: "center", flexWrap: "wrap" }}

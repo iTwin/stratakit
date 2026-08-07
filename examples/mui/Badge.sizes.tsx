@@ -12,7 +12,7 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 export default () => {
 	return (
 		<Stack
-			spacing={1}
+			spacing={2}
 			direction="row"
 			useFlexGap
 			sx={{ alignItems: "center", flexWrap: "wrap" }}

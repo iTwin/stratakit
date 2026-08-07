@@ -7,7 +7,7 @@ import BottomNavigationDefault from "examples/mui/BottomNavigation.default.tsx";
 
 export default function BottomNavigationExamples() {
 	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<BottomNavigationDefault />
 		</Stack>
 	);

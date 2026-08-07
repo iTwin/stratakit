@@ -216,7 +216,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 				</>
 			}
 		>
-			<Stack spacing={2} sx={{ alignItems: "start" }}>
+			<Stack spacing={4} sx={{ alignItems: "start" }}>
 				<ThemeProvider
 					theme={(outerTheme: Theme): Theme =>
 						deepmerge(outerTheme, {

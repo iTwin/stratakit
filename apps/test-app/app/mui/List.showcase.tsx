@@ -9,7 +9,7 @@ import ListSubheader from "examples/mui/List.subheader.tsx";
 
 export default function ListExamples() {
 	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<ListDefault />
 			<ListAvatar />
 			<ListSubheader />

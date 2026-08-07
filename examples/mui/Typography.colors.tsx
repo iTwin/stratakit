@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
-		<Stack direction="row" spacing={1} useFlexGap sx={{ flexWrap: "wrap" }}>
+		<Stack direction="row" spacing={2} useFlexGap sx={{ flexWrap: "wrap" }}>
 			<Typography color="textPrimary">Text Primary</Typography>
 			<Typography color="textSecondary">Text Secondary</Typography>
 			<Typography color="textTertiary">Text Tertiary</Typography>

@@ -760,9 +760,7 @@ declare module "@mui/material/Radio" {
 declare module "@mui/material/ScopedCssBaseline" {
 	/** @deprecated StrataKit does not support this component.  Use `Root` from `@stratakit/mui` instead */
 	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
-	export default function ScopedCssBaseline(
-		props: CssBaselineProps,
-	): React.JSX.Element;
+	export default function ScopedCssBaseline(): React.JSX.Element;
 }
 
 declare module "@mui/material/Select" {

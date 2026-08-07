@@ -41,6 +41,12 @@ A **Tree** constitutes three key components:
 </Tree.Root>
 ```
 
+:::note[Flattening data]
+
+Because `Tree.Item`s are rendered as a flat list of siblings, it might be helpful to flatten the nested tree data before rendering. The [selection](#selection) examples below do this with a recursive `flattenTree` helper.
+
+:::
+
 ### Supplementary actions
 
 Unlike the [**Accordion**](/components/accordion), items cannot take arbitrary content or functionality. The `Tree.Item` component itself is self-closed. However, the [`actions`](/reference/structures/Tree/#Tree.Item.actions) and [`inlineActions`](/reference/structures/Tree/#Tree.Item.inlineActions) props lets you insert an array of supplementary actions.

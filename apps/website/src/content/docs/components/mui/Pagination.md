@@ -12,3 +12,4 @@ links:
 
 - The `shape` prop now defaults to `"rounded"` instead of `"circular"`.
 - Lightly styled using StrataKit's visual language.
+- The `color`, `shape` and `variant` props of `Pagination` are not supported.

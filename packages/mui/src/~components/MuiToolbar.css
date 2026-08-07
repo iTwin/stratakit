@@ -1,0 +1,12 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.MuiToolbar-gutters {
+	padding-inline: var(--stratakit-space-x4);
+
+	/**  Matches the 'sm' breakpoint MUI theme */
+	@media (min-width: 600px) {
+		padding-inline: var(--stratakit-space-x6);
+	}
+}

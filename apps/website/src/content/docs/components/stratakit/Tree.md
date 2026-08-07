@@ -127,12 +127,12 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 
 ## ✅ Do
 
-- Do use **Tree** to let users explore multi-tiered data.
-- Do create expandable items that reveal nested items.
-- Do supply supplementary actions via the `actions` and `inlineActions` props.
-- Do prioritize actions by adding them via `inlineActions`.
-- Do implement a selection behavior suited to your users.
-- Do use an `aria-level` value that reflects the level of the item in the hierarchy.
+- Use **Tree** to let users explore multi-tiered data.
+- Create expandable items that reveal nested items.
+- Supply supplementary actions via the `actions` and `inlineActions` props.
+- Prioritize actions by adding them via `inlineActions`.
+- Implement a selection behavior suited to your users.
+- Use an `aria-level` value that reflects the level of the item in the hierarchy.
 
 ## ❌ Don't
 

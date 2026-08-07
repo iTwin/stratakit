@@ -25,11 +25,12 @@ import {
 } from "@stratakit/bricks/secret-internals";
 import { Icon } from "@stratakit/foundations";
 import {
-	forwardRef,
+	useCloseWatcher,
 	usePopoverApi,
 	useSafeContext,
-	useUnreactiveCallback,
-} from "@stratakit/foundations/secret-internals";
+	useStableCallback,
+} from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { Checkmark, ChevronRight } from "./~utils.icons.js";
 import * as ListItem from "./~utils.ListItem.js";
@@ -41,11 +42,11 @@ import type {
 	MenuStore,
 } from "@ariakit/react/menu";
 import type { PredefinedSymbol } from "@stratakit/bricks/secret-internals";
+import type { AnyString } from "@stratakit/internal-utils/common";
 import type {
-	AnyString,
 	BaseProps,
 	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -109,10 +110,13 @@ const DropdownMenuContent = forwardRef<"div", DropdownMenuContentProps>(
 		const context = useMenuContext();
 		const open = useStoreState(context, "open");
 		const popoverElement = useStoreState(context, "popoverElement");
-		const setOpen = useUnreactiveCallback(context?.setOpen);
+		const setOpen = useStableCallback(context?.setOpen);
 
 		const popoverProps = usePopoverApi({
 			element: popoverElement,
+			open,
+		});
+		useCloseWatcher({
 			open,
 			setOpen,
 		});

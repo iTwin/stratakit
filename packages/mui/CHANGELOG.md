@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.5.3
+
+- [#1657](https://github.com/iTwin/stratakit/pull/1657): Added `render` prop to `Accordion`'s `slotProps.heading`.
+- [#1658](https://github.com/iTwin/stratakit/pull/1658): Updated portal container rendering to prevent an initially open `Dialog` incorrectly being `aria-hidden`.
+- [#1665](https://github.com/iTwin/stratakit/pull/1665): Updated `Tooltip` component to be placed in the [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer).
+- [#1668](https://github.com/iTwin/stratakit/pull/1668): Fixed an issue where the viewport was still scrollable when a `Dialog` or `Drawer` was open.
+- [#1651](https://github.com/iTwin/stratakit/pull/1651): Fixed a bug with `Tooltip` overflow causing scrollbars.
+- [#1655](https://github.com/iTwin/stratakit/pull/1655): Deprecated MUI `SvgIcon` in favor of StrataKit's `Icon`.
+- [#1676](https://github.com/iTwin/stratakit/pull/1676): Deprecated MUI `Icon` in favor of StrataKit's `Icon`.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.10
+  - @stratakit/icons@0.4.3
+
+## 0.5.2
+
+- [#1575](https://github.com/iTwin/stratakit/pull/1575): Added `size` prop to `Badge` when `inline`.
+- [#1575](https://github.com/iTwin/stratakit/pull/1575): Increased default size of `Badge` when `inline`.
+- [#1642](https://github.com/iTwin/stratakit/pull/1642): Removed `role="separator"` from `Divider` when `children` is passed.
+- [#1622](https://github.com/iTwin/stratakit/pull/1622): Changed `Divider` `variant="middle"` styling to work in toolbars.
+- [#1628](https://github.com/iTwin/stratakit/pull/1628): Fixed a bug where `AvatarGroup` would render an empty listitem, causing incorrect mask application.
+- [#1562](https://github.com/iTwin/stratakit/pull/1562): Updated `TableSortLabel` to use StrataKit icons.
+- [#1635](https://github.com/iTwin/stratakit/pull/1635): Fixed bug to allow typography overrides on `FormControlLabel`
+- Updated dependencies:
+  - @stratakit/icons@0.4.2
+
 ## 0.5.1
 
 - [#1543](https://github.com/iTwin/stratakit/pull/1543): Added a `type` prop to `Badge` which accepts `"outlined"`, `"muted"`, or `"strong"`.

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { useIsClient } from "./~hooks.js";
+import { useIsClient } from "@stratakit/internal-utils/hooks";
 
 // ----------------------------------------------------------------------------
 

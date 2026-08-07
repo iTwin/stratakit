@@ -5,11 +5,11 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 interface ProgressBarProps extends Omit<BaseProps, "aria-labelledby"> {
 	/**

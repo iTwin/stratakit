@@ -6,17 +6,15 @@
 import * as React from "react";
 import { ThemeProvider, useColorScheme } from "@mui/material/styles";
 import { Root as StrataKitRoot } from "@stratakit/foundations";
-import {
-	forwardRef,
-	RootContext,
-	useSafeContext,
-} from "@stratakit/foundations/secret-internals";
+import { RootContext } from "@stratakit/foundations/secret-internals";
+import { useSafeContext } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { createTheme } from "./~createTheme.js";
 import { StyledEngineProvider } from "./Root.internal.js";
 import css from "./styles.css.js";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -50,12 +48,13 @@ interface RootProps
 const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const { children, colorScheme, unstable_accentColor, ...rest } = props;
 
-	const [portalContainer, setPortalContainer] =
-		React.useState<HTMLDivElement | null>();
+	const portalContainerRef = React.useRef<HTMLDivElement | null>(null);
 
+	// The container is passed as a function so that MUI resolves it lazily (inside `Portal`'s layout
+	// effect), by which point the ref is guaranteed to be attached.
 	const theme = React.useMemo(
-		() => createTheme({ portalContainer }),
-		[portalContainer],
+		() => createTheme({ portalContainer: () => portalContainerRef.current }),
+		[],
 	);
 	return (
 		<StyledEngineProvider>
@@ -71,7 +70,7 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 					{...rest}
 					colorScheme={colorScheme}
 					unstable_accentColor={unstable_accentColor}
-					portalContainerRef={setPortalContainer}
+					portalContainerRef={portalContainerRef}
 					ref={forwardedRef}
 				>
 					<Styles />

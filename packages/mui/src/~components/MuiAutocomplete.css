@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiAutocomplete-inputRoot:is(.MuiInputBase-root) {
+.MuiAutocomplete-inputRoot:is(.🥝MuiInput) {
 	--✨button-width: var(--stratakit-size-control-field-height-small);
 	/* Account for 1px border on input. */
 	--_MuiAutocomplete-button-inset: calc(-1px + var(--stratakit-space-x1));

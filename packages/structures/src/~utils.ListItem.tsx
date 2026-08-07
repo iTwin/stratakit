@@ -5,7 +5,7 @@
 
 import { Role } from "@ariakit/react/role";
 import { Text } from "@stratakit/bricks";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 

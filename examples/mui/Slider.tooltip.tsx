@@ -22,7 +22,7 @@ export default () => {
 				Volume
 				<span style={visuallyHidden}> from 0 to 100</span>
 			</FormLabel>
-			<Stack spacing={2} direction="row" sx={{ alignItems: "center", mb: 1 }}>
+			<Stack spacing={2} direction="row" sx={{ alignItems: "center", mb: 2 }}>
 				<Icon href={svgSoundQuiet} />
 				<Slider
 					valueLabelDisplay="auto"

@@ -121,7 +121,7 @@ export default function Page() {
 					<Typography
 						variant="body1"
 						render={<h2 />}
-						sx={{ ml: 1, mb: 2, fontWeight: 500 }}
+						sx={{ ml: 2, mb: 4, fontWeight: 500 }}
 					>
 						MUI components
 					</Typography>

@@ -1045,6 +1045,8 @@ declare module "@mui/material/ToggleButtonGroup" {
 
 declare module "@mui/material/Tooltip" {
 	interface TooltipProps {
+		/** @deprecated StrataKit does not support this prop. */
+		arrow?: TooltipProps["arrow"];
 		/**
 		 * The default value with `@stratakit/mui` is `true`.
 		 * Use `describeChild={false}` if you want to label the child element.
@@ -1052,6 +1054,22 @@ declare module "@mui/material/Tooltip" {
 		 * @default true
 		 */
 		describeChild?: boolean;
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusListener?: TooltipProps["disableFocusListener"];
+		/** @deprecated StrataKit does not support this prop. */
+		disableHoverListener?: TooltipProps["disableHoverListener"];
+		/** @deprecated StrataKit does not support this prop. */
+		disableInteractive?: TooltipProps["disableInteractive"];
+		/** @deprecated StrataKit does not support this prop.  */
+		disableTouchListener?: TooltipProps["disableTouchListener"];
+		/** @deprecated StrataKit does not support this prop. */
+		enterDelay?: TooltipProps["enterDelay"];
+		/** @deprecated StrataKit does not support this prop. */
+		enterNextDelay?: TooltipProps["enterNextDelay"];
+		/** @deprecated StrataKit does not support this prop. */
+		enterTouchDelay?: TooltipProps["enterTouchDelay"];
+		/** @deprecated StrataKit does not support this prop. */
+		followCursor?: TooltipProps["followCursor"];
 	}
 }
 

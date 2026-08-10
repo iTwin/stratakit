@@ -49,6 +49,8 @@ From [React 19](https://react.dev/blog/2024/12/05/react-19#support-for-metadata-
 <title>{screen.title}</title>
 ```
 
+Before React 19, `document.title` either has to be updated manually or via a library like [React Helmet](https://www.npmjs.com/package/react-helmet).
+
 Each time the route—and the associated screen—changes, the `<title>` must be updated with new and descriptive wording using the [prescribed format](/guides/language-and-labels#the-page-title).
 
 ## Move focus deliberately

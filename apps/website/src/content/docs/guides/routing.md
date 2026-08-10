@@ -55,7 +55,7 @@ Each time the route—and the associated screen—changes, the `<title>` must be
 
 ## Move focus deliberately
 
-When a page is loaded, keyboard focus moves to the `<body>` element by default. That is, unless an element with [autofocus](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/autofocus) redirects it. Avoid `autofocus`. It has multiple [accessibility concerns](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/autofocus#accessibility_concerns).
+When a browser loads or refreshes a web document, keyboard focus moves to the `<body>` element by default. That is, unless an element with [autofocus](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/autofocus) redirects it. Avoid `autofocus`. It has multiple [accessibility concerns](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/autofocus#accessibility_concerns).
 
 When a full page load does not occur, and content is simply replaced, browsers generally leave focus “hanging” where the focused element was removed. Where focus is not intentionally moved, screen readers have nothing to announce. It may not be clear to screen reader users that a change of screen has even taken place.
 

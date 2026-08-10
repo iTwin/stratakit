@@ -10,7 +10,7 @@ links:
 
 The **Tree** component exposes application data as a hierarchy of nested, expandable levels. **Trees** can be explored and organized in different ways. They may offer searching, filtering, and sorting functionality.
 
-Like the [**Accordion**](/components/accordion), the **Tree** is useful for progressively disclosing content. Unlike the **Accordion**, this content can be nested to multiple levels of depth.
+Like the [**Accordion**](/components/accordion), the **Tree** is useful for progressively disclosing data. Unlike the **Accordion**, this data cannot be arbitrary content. It must be a hierarchy.
 
 | Use case                                                   | [Tree](/components/tree) | [Accordion](/components/accordion) |
 | ---------------------------------------------------------- | ------------------------ | ---------------------------------- |

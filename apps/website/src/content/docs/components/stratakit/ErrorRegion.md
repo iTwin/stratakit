@@ -8,19 +8,19 @@ links:
 
 ::example{src="structures/ErrorRegion.default" min-height="250px" min-width="450px" vertical-stretch}
 
-During the exploration and operation of a [**Tree**](/components/tree), errors may occasionally be incurred. For example, the application may fail to fetch the data needed to render a subtree.
+During the exploration and operation of a layers panel (typically rendered as a [**Tree**](/components/tree)), errors may occasionally be incurred. For example, the application may fail to fetch the data needed to render a subtree of layers.
 
-The **ErrorRegion** records [**Tree**](/components/tree) errors in one place, to be addressed at the user's convenience. As errors are accumulated, **Tree** operation can continue unhindered.
+The **ErrorRegion** records errors in one place, to be addressed at the user's convenience. As errors are accumulated, operation can continue unhindered.
 
 ## Use cases
 
 The **ErrorRegion** is not a generic component for alerting users to application state. It is intended exclusively for use with the [**Tree**](/components/tree) component. Consult the table below to compare **ErrorRegion** with alternatives.
 
-| Use case                                                              | [ErrorRegion](/components/errorregion)       | [Alert](/components/alert)         | [Accordion](/components/accordion) |
-| --------------------------------------------------------------------- | -------------------------------------------- | ---------------------------------- | ---------------------------------- |
-| Collating [**Tree**](/components/tree) errors                         | ✅                                           | ❌                                  | ❌                                 |
-| Alerting users application state (errors, warnings, success messages) | ❌                                           | ✅                                  | ❌                                 |
-| Collating arbitrary content for future disclosure                     | ❌                                           | ❌                                  | ✅                                 |
+| Use case                                                                 | [ErrorRegion](/components/errorregion)       | [Alert](/components/alert)         | [Accordion](/components/accordion) |
+| ------------------------------------------------------------------------ | -------------------------------------------- | ---------------------------------- | ---------------------------------- |
+| Collating errors                                                         | ✅                                           | ❌                                  | ❌                                |
+| Alerting users of application state (errors, warnings, success messages) | ❌                                           | ✅                                  | ❌                                |
+| Collating arbitrary content for future disclosure                        | ❌                                           | ❌                                  | ✅                                |
 
 
 ## Structure

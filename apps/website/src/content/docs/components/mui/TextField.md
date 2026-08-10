@@ -29,7 +29,7 @@ Modifications specific to `TextField`:
 
 - The `select` prop is not supported.
 - The `color` prop is not supported. Color is applied automatically based on state (e.g., disabled, error).
-- Only the `"outlined"` variant is supported. The `variant` prop is not supported.
+- The `variant` prop is not supported. Only the `"outlined"` variant is supported. 
 - Removed the [floating label](https://mui.com/material-ui/react-text-field/#floating-label) behavior. The label is always displayed above the input.
 
 ## Examples

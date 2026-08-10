@@ -33,7 +33,7 @@ The **ErrorRegion** is not a generic component for alerting users to application
 
 The **ErrorRegion**'s visible label is typically used to itemize the errors, with a value like _“3 issues present”_.
 
-In addition, the outer `role="region"` element itself must be identified to screen reader software. Alongside `label`, apply an [`aria-label`]https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label() with the value _“Hierarchy errors”_ or similar. The region itself is discoverable by screen reader software even when no errors are present and the region is not visible.
+In addition, the outer `role="region"` element itself must be identified to screen reader software. Alongside `label`, apply an [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) with the value _“Hierarchy errors”_ or similar. The region itself is discoverable by screen reader software even when no errors are present and the region is not visible.
 
 :::
 

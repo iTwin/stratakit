@@ -569,7 +569,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
-			MuiStack: { defaultProps: { component: Role.div } },
+			MuiStack: {
+				defaultProps: {
+					component: Role.div,
+					useFlexGap: true,
+				},
+			},
 			MuiStep: { defaultProps: { component: Role.li } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
 			MuiStepper: {

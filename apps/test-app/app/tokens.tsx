@@ -23,10 +23,24 @@ import styles from "./tokens.module.css";
 // ----------------------------------------------------------------------------
 
 const lightColorTokens = parseTokens(rawLightTokens.color);
-const lightShadowTokens = parseTokens(rawLightTokens.shadow);
-
 const darkColorTokens = parseTokens(rawDarkTokens.color);
-const darkShadowTokens = parseTokens(rawDarkTokens.shadow);
+
+const shadowTokens = [
+	"surface-xs",
+	"surface-sm",
+	"surface-md",
+	"surface-lg",
+	"surface-xl",
+	"control-button-base-drop",
+	"control-button-base-inset",
+	"control-dialog-base",
+	"control-dropdown-base",
+	"control-input-base",
+	"control-table-strong",
+	"control-toolbar-base",
+	"control-tooltip-base",
+	"brand-logo-base",
+];
 
 const typographyVariants = [
 	"display-lg",
@@ -63,8 +77,6 @@ export default function Page() {
 
 	const colorTokens =
 		colorScheme === "dark" ? darkColorTokens : lightColorTokens;
-	const shadowTokens =
-		colorScheme === "dark" ? darkShadowTokens : lightShadowTokens;
 
 	return (
 		<Container
@@ -122,7 +134,7 @@ export default function Page() {
 				</AccordionItem.Header>
 
 				<AccordionItem.Content className={styles.accordionItemContent}>
-					<Tokens tokens={[...shadowTokens.keys()]} kind="shadow" />
+					<Tokens tokens={shadowTokens} kind="shadow" />
 				</AccordionItem.Content>
 			</AccordionItem.Root>
 

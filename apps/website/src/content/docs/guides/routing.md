@@ -129,7 +129,7 @@ The [**Skeleton**](/components/skeleton) does not have a `role="progressbar"` el
 <Skeleton role="progressbar" aria-label="Loading…" tabindex={-1} />
 ```
 
-If you are using multiple **Skeletons** to construct a representative UI (form [the different skeleton variants showcased here](https://github.com/iTwin/stratakit/blob/main/examples/mui/Skeleton.variants.tsx)), only make one of them a progressbar.
+If you are using multiple **Skeletons** to construct a representative UI (from [the different skeleton variants showcased here](https://github.com/iTwin/stratakit/blob/main/examples/mui/Skeleton.variants.tsx)), only make one of them a progressbar.
 
 ## Steps to take
 

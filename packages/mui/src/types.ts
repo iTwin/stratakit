@@ -519,17 +519,14 @@ declare module "@mui/material/Fab" {
 		inherit: false;
 	}
 
-	interface FabOwnProps {
+	interface FabOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableRipple?: boolean;
+		disableRipple?: FabOwnProps["disableRipple"];
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableFocusRipple?: boolean;
-
-		/** @deprecated StrataKit does not support this prop. */
-		disableTouchRipple?: boolean;
+		disableFocusRipple?: FabOwnProps["disableFocusRipple"];
 
 		/**
 		 * The default color with `@stratakit/mui` is `"primary"`.

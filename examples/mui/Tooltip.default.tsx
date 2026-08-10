@@ -4,14 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Button from "@mui/material/Button";
-import CssBaseline from "@mui/material/CssBaseline";
-import ScopedCssBaseline from "@mui/material/ScopedCssBaseline";
 import Tooltip from "@mui/material/Tooltip";
 
 export default () => {
 	return (
-		<CssBaseline>
-			<ScopedCssBaseline />
-		</CssBaseline>
+		<Tooltip title="Save is disabled until you finish reading the documentation">
+			<Button disabled>Save</Button>
+		</Tooltip>
 	);
 };

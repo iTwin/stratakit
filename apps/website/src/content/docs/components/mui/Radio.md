@@ -22,7 +22,7 @@ Make sure the **Radio** is suitable for your use case. There may be other, more 
 ## StrataKit MUI modifications
 
 - The `checkedIcon`, `disableRipple`, `icon`, and `size` props are not supported.
-- The `color` prop is deprecated. Color is applied automatically based on state (e.g., checked, disabled, error).
+- The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled, error).
 - The radio implementation and styling differ from the default `svg` approach and use custom pseudo-elements.
 - The interactive hit area extends beyond the visual bounds of the radio. The additional hit area does not consume layout space, so be mindful when placing the radio next to adjacent elements or container boundaries.
 - Includes full `forced-colors` support.

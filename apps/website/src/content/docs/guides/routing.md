@@ -19,11 +19,19 @@ A [single-page application](https://en.wikipedia.org/wiki/Single-page_applicatio
 
 Follow this guide to make sure routing behavior is predictable and no features are missing.
 
+## Construct good URLs
+
+It's good practice to reserve specific URL parts for specific purposes. 
+
+- **path**: The path portion of the URL should point to a screen in your application. Examples: `/help`, `/settings/display`.
+- **query string**: Query parameters pertain to versions, modes, or states of the screen. Examples: `&page=4`, `&sort=latest`.
+- **hash**: The hash references a page fragment; a subsection of the page. Useful for “deep” linking. Examples: `#main`, `#contruct-good-urls`.
+
 ## Use links
 
 With JavaScript, you can manipulate [the DOM](https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model) in all sorts of ways. By removing a lot of elements and replacing them with a lot of other elements, you can make it appear the page has been replaced. And nobody needs to click an `<a>` element for that to happen. Click handlers can be attached to any elements.
 
-However, anchors are accessible (focusable) by keyboard. They also identify themselves to users operating screen reader software. Then there are all the other standard behaviors, listed above. 
+However, anchors are accessible (focusable) by keyboard. They also identify themselves to users operating screen reader software. Then there are all the other standard behaviors, listed in the introduction to this guide. 
 
 Provide `<a>` elements with valid `href` attributes or React components that render as such. The [**Link**](/components/link) component renders a standard anchor Don't offer `<button>`s, `<div>`s or any other elements for context changes. Use JavaScript only to _enhance_ `<a>` behavior. Be careful not to remove or change standard behavior when JavaScript is used to handle navigation.
 

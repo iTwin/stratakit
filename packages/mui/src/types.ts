@@ -143,7 +143,7 @@ declare module "@mui/material/Autocomplete" {
 		FreeSolo extends boolean | undefined,
 		ChipComponent extends React.ElementType,
 	> {
-		/** @deprecated StrataKit does not support customizing the clear icon*/
+		/** @deprecated StrataKit does not support this prop. */
 		clearIcon?: React.ReactNode;
 		/** @deprecated StrataKit does not support this prop */
 		forcePopupIcon?: boolean | "auto";

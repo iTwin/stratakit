@@ -147,7 +147,7 @@ declare module "@mui/material/Autocomplete" {
 		clearIcon?: React.ReactNode;
 		/** @deprecated StrataKit does not support this prop. */
 		forcePopupIcon?: boolean | "auto";
-		/** @deprecated StrataKit does not support customizing the popup icon */
+		/** @deprecated StrataKit does not support this prop. */
 		popupIcon?: React.ReactNode;
 	}
 }

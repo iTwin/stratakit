@@ -482,6 +482,13 @@ declare module "@mui/material/Dialog" {
 	}
 }
 
+declare module "@mui/material/DialogContent" {
+	interface DialogContentProps {
+		/** @deprecated StrataKit does not support this prop. */
+		dividers?: DialogContentProps["dividers"];
+	}
+}
+
 declare module "@mui/material/Divider" {
 	interface DividerOwnProps {
 		/** Add a 1x margin before and after the divider */

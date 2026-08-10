@@ -267,13 +267,13 @@ declare module "@mui/material/CircularProgress" {
 	}
 
 	interface CircularProgressProps {
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		disableShrink?: CircularProgressProps["disableShrink"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		enableTrackSlot?: CircularProgressProps["enableTrackSlot"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		thickness?: CircularProgressProps["thickness"];
 	}
 }

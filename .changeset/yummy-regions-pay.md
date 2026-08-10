@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-`CircularProgress` props `disableShrink`, `enableTrackSlot`, and `thickness` have been deprecated.
+Deprecated `disableShrink`, `enableTrackSlot` and `thickness` props of `CircularProgress`.

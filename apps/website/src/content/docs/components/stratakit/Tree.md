@@ -145,4 +145,3 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 - Don't make expandable items reveal items of the same `aria-level`. They must be the parent's level plus `1`.
 - Don't try to place `Tree.Item`s inside `Tree.Item`s. Each `Tree.Item` is a sibling under a `Tree.Root` parent.
 - Don't put any components besides [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction) in [`Tree.Item`'s](/reference/structures/Tree/#Tree.Item) `action`.
-- Don't remove the keyboard expansion and selection behaviors supplied.

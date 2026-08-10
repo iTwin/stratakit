@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `disableRipple`, `disableFocusRipple`, and `disableTouchRipple` props of `Tab`.
+Deprecated `action`, `centerRipple`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `Tab`.

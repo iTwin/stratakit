@@ -13,3 +13,4 @@ links:
 - Restyled using StrataKit's visual language.
 - The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) is now the [root portal container](/components/root/#portal-container).
 - The `PaperComponent` prop is not supported.
+- The `dividers` prop of `DialogContent` is not supported.

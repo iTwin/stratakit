@@ -1199,6 +1199,6 @@ declare module "@mui/material/Typography" {
 declare module "@mui/material/Zoom" {
 	interface ZoomProps {
 		/** @deprecated StrataKit does not support this prop. */
-		disablePrefersReducedMotion?: boolean | undefined;
+		disablePrefersReducedMotion?: boolean;
 	}
 }

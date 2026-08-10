@@ -603,7 +603,7 @@ declare module "@mui/material/FormLabel" {
 declare module "@mui/material/Grow" {
 	interface GrowProps {
 		/** @deprecated StrataKit does not support this prop. */
-		disablePrefersReducedMotion?: boolean | undefined;
+		disablePrefersReducedMotion?: boolean;
 	}
 }
 

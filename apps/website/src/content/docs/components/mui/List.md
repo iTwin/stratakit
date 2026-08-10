@@ -12,6 +12,7 @@ links:
 
 - Spacing and sizing has been adjusted to better align with StrataKit's more compact visual design language.
 - The `subheader` props of `List` is not supported. Use the `ListSubheader` component instead.
+- The `color` prop of `ListSubheader` is not supported.
 
 ## Examples
 

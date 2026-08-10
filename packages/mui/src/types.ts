@@ -530,7 +530,7 @@ declare module "@mui/material/Fab" {
 declare module "@mui/material/Fade" {
 	interface FadeProps {
 		/** @deprecated StrataKit does not support this prop. */
-		disablePrefersReducedMotion?: boolean | undefined;
+		disablePrefersReducedMotion?: boolean;
 	}
 }
 

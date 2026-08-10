@@ -27,7 +27,7 @@ A **Tree** constitutes three key components:
 
 - [`Tree.Root`](/reference/structures/Tree/#Tree.Root): The container, defining a single **Tree**.
 - [`Tree.Item`](/reference/structures/Tree/#Tree.Item): Items belonging directly to `Tree.Root`.
-- [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction): `Tree.Item` can be actionable when selected. `TreeItem.Action` defines a _supplementary_ action.
+- [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction): A [supplementary action](#supplementary-actions) for the `Tree.Item`.
 
 ### Hierarchy
 
@@ -40,6 +40,12 @@ A **Tree** constitutes three key components:
 	<Tree.Item label="Child 2" aria-level={2} aria-posinset={2} aria-setsize={2} />
 </Tree.Root>
 ```
+
+:::note[Flattening data]
+
+Because `Tree.Item`s are rendered as a flat list of siblings, it might be helpful to flatten the nested tree data before rendering. The [selection](#selection) examples below do this with a recursive `flattenTree` helper.
+
+:::
 
 ### Supplementary actions
 
@@ -109,7 +115,7 @@ One approach is to make items behave like radio buttons, wherein only one can be
 
 If desired, each [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can act independently, as a simple toggle button. This means they can be selected cumulatively.
 
-In the following example, “Item 1” and “Item 1.2” are selected from the outset. The “Select all” and “Deselect all” buttons cover bulk actions. These are disabled when not applicable.
+In the following example, “Item 1.1” and “Item 3” are selected from the outset.
 
 ::example{src="structures/Tree.select-many" min-width="300px" min-height="150px" vertical-stretch}
 
@@ -127,12 +133,12 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 
 ## ✅ Do
 
-- Do use **Tree** to let users explore multi-tiered data.
-- Do create expandable items that reveal nested items.
-- Do supply supplementary actions via the `actions` and `inlineActions` props.
-- Do prioritize actions by adding them via `inlineActions`.
-- Do implement a selection behavior suited to your users.
-- Do use an `aria-level` value that reflects the level of the item in the hierarchy.
+- Use **Tree** to let users explore multi-tiered data.
+- Create expandable items that reveal nested items.
+- Supply supplementary actions via the `actions` and `inlineActions` props.
+- Prioritize actions by adding them via `inlineActions`.
+- Implement a selection behavior suited to your users.
+- Use an `aria-level` value that reflects the level of the item in the hierarchy.
 
 ## ❌ Don't
 

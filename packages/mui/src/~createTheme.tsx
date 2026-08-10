@@ -262,7 +262,12 @@ function createTheme(args: CreateThemeArgs) {
 					slotProps: { badge: { component: MuiBadgeBadge } },
 				},
 			},
-			MuiBottomNavigation: { defaultProps: { component: Role.div } },
+			MuiBottomNavigation: {
+				defaultProps: {
+					component: Role.div,
+					showLabels: true,
+				},
+			},
 			MuiBottomNavigationAction: {
 				defaultProps: {
 					component: MuiBottomNavigationAction,

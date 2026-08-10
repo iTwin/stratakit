@@ -16,7 +16,6 @@ export default () => {
 	const [value, setValue] = React.useState(0);
 	return (
 		<BottomNavigation
-			showLabels
 			value={value}
 			onChange={(_, newValue) => {
 				setValue(newValue);

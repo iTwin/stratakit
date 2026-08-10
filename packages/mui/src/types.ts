@@ -826,7 +826,7 @@ declare module "@mui/material/StepButton" {
 }
 
 declare module "@mui/material/Tab" {
-	interface TabOwnProps {
+	interface TabOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
 
 		/** @deprecated StrataKit does not support this prop. */

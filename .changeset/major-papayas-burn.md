@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-`TextField` component props `color` and `select` have been deprecated.
+Deprecated `color` and `select` props of `TextField`.

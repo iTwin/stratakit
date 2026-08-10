@@ -12,6 +12,7 @@ import type { BadgeProps } from "@mui/material/Badge";
 import type { ButtonProps } from "@mui/material/Button";
 import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
+import type { FormControlProps } from "@mui/material/FormControl";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
@@ -448,6 +449,28 @@ declare module "@mui/material/Fab" {
 		 * @default 'primary'
 		 */
 		color?: "primary" | "secondary";
+	}
+}
+
+declare module "@mui/material/FormControl" {
+	interface FormControlPropsColorOverrides {
+		error: false;
+		info: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		warning: false;
+	}
+
+	interface FormControlOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: FormControlProps["color"];
+		/** @deprecated StrataKit does not support this prop. */
+		focused?: FormControlProps["focused"];
+		/** @deprecated StrataKit does not support this prop. */
+		hiddenLabel?: FormControlProps["hiddenLabel"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: FormControlProps["variant"];
 	}
 }
 

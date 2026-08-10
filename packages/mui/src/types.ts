@@ -342,7 +342,7 @@ declare module "@mui/material/ButtonGroup" {
 declare module "@mui/material/BottomNavigationAction" {
 	interface BottomNavigationActionOwnProps {
 		LinkComponent?: never;
-		/** @deprecated Set `showLabels` on `BottomNavigation` instead*/
+		/** @deprecated Set `showLabels` on `BottomNavigation` instead. */
 		showLabel?: MuiBottomNavigationActionOwnProps["showLabel"];
 	}
 }

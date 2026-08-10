@@ -24,6 +24,7 @@ import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { InputProps } from "@mui/material/Input";
 import type { InputBaseProps } from "@mui/material/InputBase";
+import type { ListSubheaderOwnProps as MuiListSubheaderOwnProps } from "@mui/material/ListSubheader";
 import type { MenuProps as MuiMenuProps } from "@mui/material/Menu";
 import type { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import type {
@@ -766,6 +767,13 @@ declare module "@mui/material/List" {
 declare module "@mui/material/ListItemButton" {
 	interface ListItemButtonOwnProps {
 		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/ListSubheader" {
+	interface ListSubheaderOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: MuiListSubheaderOwnProps["color"];
 	}
 }
 

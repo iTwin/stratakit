@@ -22,6 +22,7 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 
 ## StrataKit MUI modifications
 
+- The `disableFocusRipple` prop is not supported.
 - The `"default"`, `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
 - The `size` options (`"small"`, `"medium"`, `"large"`) have all been decreased in height.
 - A `label` prop has been added. When specified, it is used as the **IconButton's** accessible name and is also shown in a tooltip on hover and focus. This is the recommended way to set the accessible name and tooltip.

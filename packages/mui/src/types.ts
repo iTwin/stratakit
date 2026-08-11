@@ -534,7 +534,7 @@ declare module "@mui/material/IconButton" {
 		inherit: false;
 	}
 
-	interface IconButtonOwnProps {
+	interface IconButtonOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
 
 		/**
@@ -543,6 +543,9 @@ declare module "@mui/material/IconButton" {
 		 * @default 'secondary'
 		 */
 		color?: IconButtonProps["color"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: IconButtonProps["disableFocusRipple"];
 
 		/**
 		 * The accessible name of the button, which is also shown as a tooltip on hover/focus.

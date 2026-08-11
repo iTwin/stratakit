@@ -302,6 +302,7 @@ function PanelLoading() {
 				{levels.map((level, i) => {
 					return (
 						<SkeletonTreeItem
+							// biome-ignore lint/suspicious/noArrayIndexKey: The index is likely to remain stable.
 							key={`${i}-${level}`}
 							style={{ "--level": level } as React.CSSProperties}
 						/>

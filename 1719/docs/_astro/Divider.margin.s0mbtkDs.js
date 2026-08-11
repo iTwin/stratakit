@@ -1,1 +1,0 @@
-import{j as r,T as e}from"./_utils.CIrYVY2T.js";import{S as i}from"./Stack.B830MHEJ.js";import{D as t}from"./Divider.oC9uEiEN.js";const x=()=>r.jsxs(i,{children:[r.jsx(e,{children:"Item"}),r.jsx(t,{flexItem:!0,margin:!0}),r.jsx(e,{children:"Item"}),r.jsx(t,{flexItem:!0,margin:!0}),r.jsx(e,{children:"Item"})]});export{x as default};

@@ -21,6 +21,15 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 
 ## StrataKit MUI modifications
 
+Modifications to `NativeSelect`:
+
+- The `color` and `disableInjectingGlobalStyles` props are not supported via `InputBase`.
+- The `disableUnderline` prop is not supported via `Input`. Changed the default value to `true`.
+- The `variant` prop is not supported.
+- Restyled using StrataKit's visual language.
+
+Modifications to `Select`:
+
 - Restyled using StrataKit's visual language.
 - The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.

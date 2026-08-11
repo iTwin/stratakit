@@ -1,0 +1,195 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+html:where([data-color-scheme="light"]),
+:host(:where([data-color-scheme="light"])),
+.🥝Root:where([data-_sk-color-scheme="light"]) {
+	--stratakit-shadow-surface-xs:
+		0px 1px 0px 0px --primitive("color.black.4"),
+		0px 0px 0px 1px --primitive("color.black.8"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.4");
+
+	--stratakit-shadow-surface-sm:
+		0px 1px 0px 0px --primitive("color.black.4"),
+		0px 0px 0px 1px --primitive("color.black.8"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.4"),
+		0px 3px 3px -1.5px --primitive("color.black.4");
+
+	--stratakit-shadow-surface-md:
+		0px 1px 0px 0px --primitive("color.black.4"),
+		0px 0px 0px 1px --primitive("color.black.8"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.4"),
+		0px 3px 3px -1.5px --primitive("color.black.4"),
+		0px 6px 6px -3px --primitive("color.black.4");
+
+	--stratakit-shadow-surface-lg:
+		0px 1px 0px 0px --primitive("color.black.4"),
+		0px 0px 0px 1px --primitive("color.black.8"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.4"),
+		0px 3px 3px -1.5px --primitive("color.black.4"),
+		0px 6px 6px -3px --primitive("color.black.4"),
+		0px 12px 12px -6px --primitive("color.black.4");
+
+	--stratakit-shadow-surface-xl:
+		0px 1px 0px 0px --primitive("color.black.4"),
+		0px 0px 0px 1px --primitive("color.black.8"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.4"),
+		0px 3px 3px -1.5px --primitive("color.black.4"),
+		0px 6px 6px -3px --primitive("color.black.4"),
+		0px 12px 12px -6px --primitive("color.black.4"),
+		0px 24px 24px -12px --primitive("color.black.4");
+
+	--stratakit-shadow-control-button-base-drop:
+		0px 1px 1px -0.5px --primitive("color.black.4"), 0px 3px 3px -1.5px --primitive("color.black.4");
+
+	--stratakit-shadow-control-button-base-inset: inset 0px -1px 0px 0px --primitive("color.black.8");
+
+	--stratakit-shadow-control-dialog-base:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.12"),
+		inset 0px 0px 0px 1px --primitive("color.white.2"),
+		0px 1px 1px -0.5px --primitive("color.black.8"),
+		0px 3px 3px -1.5px --primitive("color.black.8"),
+		0px 6px 6px -3px --primitive("color.black.8"),
+		0px 12px 12px -6px --primitive("color.black.8"),
+		0px 24px 24px -12px --primitive("color.black.8");
+
+	--stratakit-shadow-control-dropdown-base:
+		0px 1px 0px 0px --primitive("color.black.4"),
+		0px 0px 0px 1px --primitive("color.black.12"),
+		inset 0px 0px 0px 1px --primitive("color.white.2"),
+		0px 1px 1px -0.5px --primitive("color.black.4"),
+		0px 3px 3px -1.5px --primitive("color.black.4"),
+		0px 6px 6px -3px --primitive("color.black.4"),
+		0px 12px 12px -6px --primitive("color.black.4"),
+		0px 24px 24px -12px --primitive("color.black.4");
+
+	--stratakit-shadow-control-input-base:
+		inset 0px 1px 2px 0px --primitive("color.black.4"),
+		inset 0px 2px 4px 0px --primitive("color.black.4");
+
+	--stratakit-shadow-control-table-strong: 0px -1px 0px 0px --primitive("color.aurora.500");
+
+	--stratakit-shadow-control-toolbar-base:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.24"),
+		inset 0px 0px 0px 1px --primitive("color.white.80"),
+		0px 1px 1px -0.5px --primitive("color.black.8"),
+		0px 3px 3px -1.5px --primitive("color.black.8"),
+		0px 6px 6px -3px --primitive("color.black.8"),
+		0px 12px 12px -6px --primitive("color.black.8"),
+		0px 24px 24px -12px --primitive("color.black.8");
+
+	--stratakit-shadow-control-tooltip-base:
+		inset 0px 0px 0px 1px --primitive("color.black.96"),
+		0px 1px 1px -0.5px --primitive("color.black.4"),
+		0px 3px 3px -1.5px --primitive("color.black.4"),
+		0px 6px 6px -3px --primitive("color.black.4"),
+		0px 12px 12px -6px --primitive("color.black.4");
+
+	--stratakit-shadow-brand-logo-base:
+		0px 2px 4px 0px --primitive("color.black.4"), 0px 1px 2px 0px --primitive("color.black.24");
+}
+
+html:where([data-color-scheme="dark"]),
+:host(:where([data-color-scheme="dark"])),
+.🥝Root:where([data-_sk-color-scheme="dark"]) {
+	--stratakit-shadow-surface-xs:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.16"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.16");
+
+	--stratakit-shadow-surface-sm:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.16"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.16"),
+		0px 3px 3px -1.5px --primitive("color.black.16");
+
+	--stratakit-shadow-surface-md:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.16"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.16"),
+		0px 3px 3px -1.5px --primitive("color.black.16"),
+		0px 6px 6px -3px --primitive("color.black.16");
+
+	--stratakit-shadow-surface-lg:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.16"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.16"),
+		0px 3px 3px -1.5px --primitive("color.black.16"),
+		0px 6px 6px -3px --primitive("color.black.16"),
+		0px 12px 12px -6px --primitive("color.black.16");
+
+	--stratakit-shadow-surface-xl:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.16"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.16"),
+		0px 3px 3px -1.5px --primitive("color.black.16"),
+		0px 6px 6px -3px --primitive("color.black.16"),
+		0px 12px 12px -6px --primitive("color.black.16"),
+		0px 24px 24px -12px --primitive("color.black.16");
+
+	--stratakit-shadow-control-button-base-drop:
+		0px 1px 1px -0.5px --primitive("color.black.16"),
+		0px 3px 3px -1.5px --primitive("color.black.16");
+
+	--stratakit-shadow-control-button-base-inset: inset 0px -1px 0px 0px --primitive("color.black.8");
+
+	--stratakit-shadow-control-dialog-base:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.80"),
+		inset 0px 0px 0px 1px --primitive("color.white.12"),
+		0px 1px 1px -0.5px --primitive("color.black.16"),
+		0px 3px 3px -1.5px --primitive("color.black.16"),
+		0px 6px 6px -3px --primitive("color.black.16"),
+		0px 12px 12px -6px --primitive("color.black.16"),
+		0px 24px 24px -12px --primitive("color.black.16");
+
+	--stratakit-shadow-control-dropdown-base:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.48"),
+		inset 0px 0px 0px 1px --primitive("color.white.12"),
+		0px 1px 1px -0.5px --primitive("color.black.12"),
+		0px 3px 3px -1.5px --primitive("color.black.12"),
+		0px 6px 6px -3px --primitive("color.black.12"),
+		0px 12px 12px -6px --primitive("color.black.12"),
+		0px 24px 24px -12px --primitive("color.black.12");
+
+	--stratakit-shadow-control-input-base:
+		inset 0px 1px 2px 0px --primitive("color.black.16"),
+		inset 0px 2px 4px 0px --primitive("color.black.16");
+
+	--stratakit-shadow-control-table-strong: 0px -1px 0px 0px --primitive("color.aurora.0");
+
+	--stratakit-shadow-control-toolbar-base:
+		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.80"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		0px 1px 1px -0.5px --primitive("color.black.16"),
+		0px 3px 3px -1.5px --primitive("color.black.16"),
+		0px 6px 6px -3px --primitive("color.black.16"),
+		0px 12px 12px -6px --primitive("color.black.16"),
+		0px 24px 24px -12px --primitive("color.black.16");
+
+	--stratakit-shadow-control-tooltip-base:
+		inset 0px 0px 0px 1px --primitive("color.black.80"),
+		0px 1px 1px -0.5px --primitive("color.black.16"),
+		0px 3px 3px -1.5px --primitive("color.black.16"),
+		0px 6px 6px -3px --primitive("color.black.16"),
+		0px 12px 12px -6px --primitive("color.black.16");
+
+	--stratakit-shadow-brand-logo-base:
+		0px 0.5px 0px 0px --primitive("color.black.56"), 0px 1px 2px 0px --primitive("color.black.40");
+}

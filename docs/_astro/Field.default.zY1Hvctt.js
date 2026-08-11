@@ -1,1 +1,0 @@
-import{j as e}from"./_utils.DaK-RLP6.js";import{F as r,b as o,a as s}from"./Field.C6CLIGFK.js";import{T as t}from"./TextBox.CLP8100p.js";const d=()=>e.jsxs(r,{children:[e.jsx(o,{children:"Name"}),e.jsx(s,{render:e.jsx(t,{})})]});export{d as default};

@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Tooltip from "@mui/material/Tooltip";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
 import type { IconButtonOwnProps } from "@mui/material/IconButton";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

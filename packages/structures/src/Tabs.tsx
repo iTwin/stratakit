@@ -5,18 +5,16 @@
 
 import { useStoreState } from "@ariakit/react/store";
 import * as AkTab from "@ariakit/react/tab";
-import {
-	forwardRef,
-	isBrowser,
-	useUnreactiveCallback,
-} from "@stratakit/foundations/secret-internals";
+import { isBrowser } from "@stratakit/internal-utils/dom";
+import { useStableCallback } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { useInit } from "./~utils.useInit.js";
 
 import type {
 	BaseProps,
 	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -123,7 +121,7 @@ function TabsProvider(props: TabsProviderProps) {
 		<AkTab.TabProvider
 			store={store}
 			selectedId={selectedId}
-			setSelectedId={useUnreactiveCallback(
+			setSelectedId={useStableCallback(
 				(newSelectedId: string | null | undefined) => {
 					if (!prefersReducedMotion()) flipAnimateStripe(newSelectedId);
 					setSelectedId?.(newSelectedId);

@@ -115,7 +115,6 @@ export function themeTransform() {
 				const declarations = [];
 
 				const colorTokens = parseTokens(themes.get(theme)?.color);
-				const shadowTokens = parseTokens(themes.get(theme)?.shadow);
 
 				for (let [name, { $value }] of colorTokens.entries()) {
 					// Tokens that should be skipped are marked using "🫥" (by convention).
@@ -144,20 +143,6 @@ export function themeTransform() {
 
 					declarations.push(
 						cssCustomProperty(name, $value, { prefix: "stratakit-color" }),
-					);
-				}
-
-				for (let [name, { $value }] of shadowTokens.entries()) {
-					$value = $value.join(", ");
-
-					if (isFallback)
-						$value = $value.replaceAll("--primitive", "--primitive-fallback");
-
-					// Pass shadow values through the `_raw` function for inlining.
-					$value = cssFunction("_raw", $value);
-
-					declarations.push(
-						cssCustomProperty(name, $value, { prefix: "stratakit-shadow" }),
 					);
 				}
 

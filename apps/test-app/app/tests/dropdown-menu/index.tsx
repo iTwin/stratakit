@@ -67,11 +67,17 @@ function VisualTest() {
 						label="Decorations"
 						items={[
 							<DropdownMenu.Item
+								key="filter"
 								label="Filter"
 								unstable_dot="Some filters applied"
 							/>,
-							<DropdownMenu.Item shortcuts="Command+X" label="Clear" />,
 							<DropdownMenu.Item
+								key="clear"
+								shortcuts="Command+X"
+								label="Clear"
+							/>,
+							<DropdownMenu.Item
+								key="settings"
 								label="Settings"
 								submenu={
 									<DropdownMenu.Submenu>

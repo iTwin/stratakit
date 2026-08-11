@@ -24,8 +24,8 @@ export default () => {
 function SectionItem(props: { label: string }) {
 	return (
 		<li>
+			<ListSubheader>{props.label}</ListSubheader>
 			<ul>
-				<ListSubheader>{props.label}</ListSubheader>
 				<ListItem>
 					<ListItemText primary="Item 0" />
 				</ListItem>

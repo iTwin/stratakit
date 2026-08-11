@@ -434,7 +434,7 @@ function createTheme(args: CreateThemeArgs) {
 					},
 				},
 			},
-			MuiListSubheader: { defaultProps: { component: Role.li } },
+			MuiListSubheader: { defaultProps: { component: Role.div } },
 			MuiMenu: {
 				defaultProps: {
 					component: Role.div,

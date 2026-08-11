@@ -726,6 +726,13 @@ declare module "@mui/material/Link" {
 	}
 }
 
+declare module "@mui/material/List" {
+	interface ListOwnProps {
+		/** @deprecated StrataKit does not support this prop.  Use `ListSubheader` component instead. */
+		subheader?: ListOwnProps["subheader"];
+	}
+}
+
 declare module "@mui/material/ListItemButton" {
 	interface ListItemButtonOwnProps {
 		LinkComponent?: never;

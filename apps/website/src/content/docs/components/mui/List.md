@@ -11,6 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - Spacing and sizing has been adjusted to better align with StrataKit's more compact visual design language.
+- The `subheader` props of `List` is not supported. Use the `ListSubheader` component instead.
 
 ## Examples
 

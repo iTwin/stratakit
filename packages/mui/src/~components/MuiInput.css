@@ -15,7 +15,7 @@
 }
 
 .🥝MuiInput {
-	--✨border--default: var(--stratakit-color-border-control-textbox);
+	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);

@@ -33,7 +33,7 @@ With JavaScript, you can manipulate [the DOM](https://developer.mozilla.org/en-U
 
 However, anchors are accessible (focusable) by keyboard. They also identify themselves to users operating screen reader software. Then there are all the other standard behaviors, listed in the introduction to this guide. 
 
-Provide `<a>` elements with valid `href` attributes or React components that render as such. The [**Link**](/components/link) component renders a standard anchor Don't offer `<button>`s, `<div>`s or any other elements for context changes. Use JavaScript only to _enhance_ `<a>` behavior. Be careful not to remove or change standard behavior when JavaScript is used to handle navigation.
+Provide `<a>` elements with valid `href` attributes or React components that render as such. The [**Link**](/components/link) component renders a standard anchor. Don't offer `<button>`s, `<div>`s or any other elements for context changes. Use JavaScript only to _enhance_ `<a>` behavior. Be careful not to remove or change standard behavior when JavaScript is used to handle navigation.
 
 ## Update the address
 

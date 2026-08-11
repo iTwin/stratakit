@@ -290,7 +290,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiButtonGroup: {
 				defaultProps: {
 					component: Role.div,
-					color: "secondary",
+					color: "secondary" as never,
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},

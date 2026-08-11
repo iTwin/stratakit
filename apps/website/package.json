@@ -33,6 +33,7 @@
 			"dependencies": [
 				"../../packages/mui:build",
 				"../../packages/icons:build",
+				"../../packages/internal-utils:build",
 				"../../packages/foundations:build",
 				"../../packages/bricks:build",
 				"../../packages/structures:build"

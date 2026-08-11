@@ -57,6 +57,7 @@
 		"build": {
 			"command": "react-router build",
 			"dependencies": [
+				"../../packages/internal-utils:build",
 				"../../packages/foundations:build",
 				"../../packages/bricks:build",
 				"../../packages/structures:build",
@@ -80,6 +81,7 @@
 			"command": "react-router dev",
 			"dependencies": [
 				"../../packages/icons:build",
+				"../../packages/internal-utils:dev",
 				"../../packages/foundations:dev",
 				"../../packages/bricks:dev",
 				"../../packages/structures:dev",

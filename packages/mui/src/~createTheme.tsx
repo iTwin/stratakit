@@ -409,6 +409,11 @@ function createTheme(args: CreateThemeArgs) {
 					className: "🥝MuiInput",
 				},
 			},
+			MuiInput: {
+				defaultProps: {
+					disableUnderline: true,
+				},
+			},
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
 			MuiInputLabel: {
 				defaultProps: {

@@ -32,6 +32,7 @@ import type {
 import type { PaperOwnProps } from "@mui/material/Paper";
 import type { RadioProps } from "@mui/material/Radio";
 import type { SelectProps } from "@mui/material/Select";
+import type {} from "@mui/material/Slide";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { SwitchProps } from "@mui/material/Switch";
 import type { TabProps } from "@mui/material/Tab";
@@ -870,6 +871,13 @@ declare module "@mui/material/Select" {
 		> &
 			OutlinedInputDeprecatedProps,
 	): React.JSX.Element;
+}
+
+declare module "@mui/material/Slide" {
+	interface SlideProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean;
+	}
 }
 
 declare module "@mui/material/Slider" {

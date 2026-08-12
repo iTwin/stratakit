@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `fullScreen` and `PaperComponent` props of `Dialog`
+Deprecated `PaperComponent` prop of `Dialog`

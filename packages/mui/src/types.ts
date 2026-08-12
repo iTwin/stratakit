@@ -285,6 +285,16 @@ declare module "@mui/material/Dialog" {
 	}
 }
 
+declare module "@mui/material/Drawer" {
+	interface DrawerProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: number;
+
+		/** @deprecated StrataKit does not support this prop. */
+		hideBackdrop?: boolean;
+	}
+}
+
 declare module "@mui/material/Divider" {
 	interface DividerOwnProps {
 		/** Add a 1x margin before and after the divider */

@@ -10,6 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
+- The `elevation` and `hideBackdrop` props are not supported.
 - The default portal container is now the [root portal container](/components/root/#portal-container).
 
 ## Examples

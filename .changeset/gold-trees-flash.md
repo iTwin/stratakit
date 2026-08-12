@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `StepIcon`. Use `icon` prop of `StepLabel` instead.
+Deprecated `StepIcon`. StrataKit does not support custom icons in `Stepper`.

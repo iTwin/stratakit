@@ -964,7 +964,7 @@ declare module "@mui/material/StepButton" {
 }
 
 declare module "@mui/material/StepIcon" {
-	/** @deprecated StrataKit does not support this component. Use the `icon` prop of `StepLabel`. */
+	/** @deprecated StrataKit does not support this component. */
 	export default function StepIcon(props: StepIconProps): React.JSX.Element;
 }
 

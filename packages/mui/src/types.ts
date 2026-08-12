@@ -36,6 +36,7 @@ import type { PaperOwnProps } from "@mui/material/Paper";
 import type { RadioProps } from "@mui/material/Radio";
 import type { SelectProps } from "@mui/material/Select";
 import type {} from "@mui/material/Slide";
+import type { StepIconProps } from "@mui/material/StepIcon";
 import type {} from "@mui/material/Stepper";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { SwitchProps } from "@mui/material/Switch";
@@ -1024,6 +1025,11 @@ declare module "@mui/material/StepButton" {
 		icon?: StepButtonOwnProps["icon"];
 		LinkComponent?: never;
 	}
+}
+
+declare module "@mui/material/StepIcon" {
+	/** @deprecated StrataKit does not support this component. Use the `icon` prop of `StepLabel`. */
+	export default function StepIcon(props: StepIconProps): React.JSX.Element;
 }
 
 declare module "@mui/material/Stepper" {

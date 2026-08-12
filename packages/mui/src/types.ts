@@ -478,8 +478,6 @@ declare module "@mui/material/Dialog" {
 		/** @deprecated Use `render` prop instead. */
 		component?: React.ElementType;
 		/** @deprecated StrataKit does not support this prop. */
-		fullScreen?: DialogProps["fullScreen"];
-		/** @deprecated StrataKit does not support this prop. */
 		PaperComponent?: DialogProps["PaperComponent"];
 	}
 }

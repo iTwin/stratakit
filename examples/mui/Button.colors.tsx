@@ -8,7 +8,7 @@ import Stack from "@mui/material/Stack";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
+		<Stack spacing={1} direction="row" sx={{ flexWrap: "wrap" }}>
 			<Button color="primary">Primary</Button>
 			<Button color="secondary">Secondary</Button>
 			<Button color="error">Error</Button>

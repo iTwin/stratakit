@@ -24,10 +24,12 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ## StrataKit MUI modifications
 
+- The `elevation`, `raised` and `square` props are not supported.
 - `Card` is rendered as an [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article) element by default. This programmatically indicates the bounds of the **Card’s** contents.
+- `CardHeader`'s `disableTypography` prop is not supported.
 - `CardHeader`'s `title` is rendered as an `<h2>` by default.
 - `CardActionArea` has been redesigned to no longer wrap the entire card content. Instead, it should be used in the **Card's** title.
-- `Card` defaults to `variant="outlined"`.
+- `Card` defaults to `variant="outlined"`. The `variant` prop is not supported.
 
 ## Examples
 

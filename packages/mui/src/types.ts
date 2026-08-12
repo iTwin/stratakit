@@ -1019,7 +1019,9 @@ interface SwitchDeprecatedProps extends IconButtonDeprecatedProps {
 }
 
 declare module "@mui/material/StepButton" {
-	interface StepButtonOwnProps {
+	interface StepButtonOwnProps extends ButtonBaseDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		icon?: StepButtonOwnProps["icon"];
 		LinkComponent?: never;
 	}
 }

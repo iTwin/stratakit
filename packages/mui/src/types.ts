@@ -30,6 +30,7 @@ import type {
 } from "@mui/material/OverridableComponent";
 import type { PaperOwnProps } from "@mui/material/Paper";
 import type { SelectProps } from "@mui/material/Select";
+import type {} from "@mui/material/Slide";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
@@ -822,6 +823,13 @@ declare module "@mui/material/Select" {
 		> &
 			OutlinedInputDeprecatedProps,
 	): React.JSX.Element;
+}
+
+declare module "@mui/material/Slide" {
+	interface SlideProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean;
+	}
 }
 
 declare module "@mui/material/Slider" {

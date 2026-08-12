@@ -3,10 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-// This file is used to define custom types for MUI components to work with the StrataKit customizations.
-// See: https://mui.com/material-ui/customization/theming/#typescript
-// See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
-
 import type { RoleProps } from "@ariakit/react/role";
 import type { AppBarOwnProps as MuiAppBarOwnProps } from "@mui/material/AppBar";
 import type { BadgeProps } from "@mui/material/Badge";
@@ -36,16 +32,16 @@ import type { SwitchProps } from "@mui/material/Switch";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
 import type { TabsProps } from "@mui/material/Tabs";
-import type {
-	TextFieldProps,
-	TextFieldVariants,
-} from "@mui/material/TextField";
+import type { TextFieldProps } from "@mui/material/TextField";
 import type { ToggleButtonProps } from "@mui/material/ToggleButton";
 import type { TooltipProps } from "@mui/material/Tooltip";
 import type {
 	TypographyProps,
 	TypographyTypeMap,
 } from "@mui/material/Typography";
+// This file is used to define custom types for MUI components to work with the StrataKit customizations.
+// See: https://mui.com/material-ui/customization/theming/#typescript
+// See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 import type * as React from "react";
 
 declare module "@mui/material/OverridableComponent" {
@@ -577,6 +573,14 @@ declare module "@mui/material/FormControl" {
 	}
 }
 
+interface FormControlDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	color?: FormControlProps["color"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	variant?: FormControlProps["variant"];
+}
+
 declare module "@mui/material/FormLabel" {
 	interface FormLabelPropsColorOverrides {
 		secondary: false;
@@ -985,13 +989,7 @@ declare module "@mui/material/TextField" {
 	}
 
 	export default function TextField(
-		props: {
-			/** @deprecated StrataKit does not support this prop. */
-			variant?: TextFieldVariants;
-
-			/** @deprecated StrataKit does not support this prop. */
-			color?: TextFieldProps["color"];
-
+		props: FormControlDeprecatedProps & {
 			/** @deprecated StrataKit does not support this prop. */
 			select?: TextFieldProps["select"];
 		} & Omit<TextFieldProps, "variant" | "color" | "select">,

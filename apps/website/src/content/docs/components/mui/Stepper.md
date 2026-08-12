@@ -12,7 +12,7 @@ links:
 
 - Lightly styled using StrataKit's visual language.
 - The `connector` prop of `Stepper` is not supported.
-- The `StepIcon` has been fully replaced with new icons and a custom CSS implementation. Do not use `StepIcon` directly, instead use the `icon` prop of `StepLabel`.
+- The `StepIcon` has been fully replaced with new icons and a custom CSS implementation and is not supported. StrataKit does not support custom icons in `Stepper`.
 - Reduced the hit target size of `StepButton`.
 - Ripple effect removed from `StepButton`. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - The `action` prop of `StepButton` is not supported.

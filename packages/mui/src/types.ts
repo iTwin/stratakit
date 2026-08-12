@@ -35,6 +35,7 @@ import type { PaperOwnProps } from "@mui/material/Paper";
 import type { RadioProps } from "@mui/material/Radio";
 import type { SelectProps } from "@mui/material/Select";
 import type {} from "@mui/material/Slide";
+import type {} from "@mui/material/Stepper";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { SwitchProps } from "@mui/material/Switch";
 import type { TabProps } from "@mui/material/Tab";
@@ -994,6 +995,13 @@ interface SwitchDeprecatedProps extends IconButtonDeprecatedProps {
 declare module "@mui/material/StepButton" {
 	interface StepButtonOwnProps {
 		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/Stepper" {
+	interface StepperOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		connector?: StepperOwnProps["connector"];
 	}
 }
 

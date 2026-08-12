@@ -12,6 +12,7 @@ import type { BadgeProps } from "@mui/material/Badge";
 import type { ButtonProps } from "@mui/material/Button";
 import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
+import type { CardProps } from "@mui/material/Card";
 import type { FormControlProps } from "@mui/material/FormControl";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
@@ -22,6 +23,7 @@ import type {
 	DefaultComponentProps,
 	OverridableTypeMap,
 } from "@mui/material/OverridableComponent";
+import type { PaperOwnProps } from "@mui/material/Paper";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
@@ -312,18 +314,35 @@ declare module "@mui/material/BottomNavigationAction" {
 
 declare module "@mui/material/Card" {
 	interface CardOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: PaperOwnProps["elevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		raised?: CardProps["raised"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		square?: PaperOwnProps["square"];
+
 		/**
 		 * The default variant with `@stratakit/mui` is `"outlined"`.
 		 *
 		 * @default 'outlined'
+		 * @deprecated StrataKit does not support this prop.
 		 */
-		variant?: "outlined" | "elevation";
+		variant?: PaperOwnProps["variant"];
 	}
 }
 
 declare module "@mui/material/CardActionArea" {
-	interface CardActionAreaOwnProps {
+	interface CardActionAreaOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/CardHeader" {
+	interface CardHeaderOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disableTypography?: CardHeaderOwnProps["disableTypography"];
 	}
 }
 

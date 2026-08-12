@@ -33,6 +33,7 @@ import type { PaginationProps as MuiPaginationProps } from "@mui/material/Pagina
 import type { PaperOwnProps } from "@mui/material/Paper";
 import type { SelectProps } from "@mui/material/Select";
 import type {} from "@mui/material/Slide";
+import type {} from "@mui/material/Stepper";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
@@ -933,6 +934,13 @@ declare module "@mui/material/Switch" {
 declare module "@mui/material/StepButton" {
 	interface StepButtonOwnProps {
 		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/Stepper" {
+	interface StepperOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		connector?: StepperOwnProps["connector"];
 	}
 }
 

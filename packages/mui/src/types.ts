@@ -1047,7 +1047,7 @@ declare module "@mui/material/Stack" {
 	interface StackOwnProps {
 		/**
 		 *
-		 * The default value with `@mui/stratakit` is `true`.
+		 * The default value with `@stratakit/mui` is `true`.
 		 *
 		 * @default true
 		 */

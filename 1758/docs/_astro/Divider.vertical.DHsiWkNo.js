@@ -1,0 +1,1 @@
+import{j as i}from"./_utils.Bly_xul6.js";import{D as r}from"./Divider.1OkQ1mVi.js";const e="_divider_etlms_6",t={divider:e},o=()=>i.jsx(r,{className:t.divider,orientation:"vertical"});export{o as default};

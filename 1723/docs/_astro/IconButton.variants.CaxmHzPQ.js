@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.wD1DDGq8.js";import{I as t}from"./ExamplePreview.D2bytg6w.js";import{s as a}from"./placeholder.CnFBdHAX.js";const n=()=>o.jsxs("div",{className:"flex",children:[o.jsx(t,{variant:"solid",label:"Solid",icon:a}),o.jsx(t,{variant:"outline",label:"Outline",icon:a}),o.jsx(t,{variant:"ghost",label:"Ghost",icon:a})]});export{n as default};

@@ -1,0 +1,1 @@
+import{j as s}from"./_utils.CC_hEAIn.js";import{S as e}from"./Spinner.B8Ui8nta.js";const a=()=>s.jsxs("div",{className:"flex",children:[s.jsx(e,{size:"small"}),s.jsx(e,{size:"medium"}),s.jsx(e,{size:"large"}),s.jsx(e,{size:"xlarge"})]});export{a as default};

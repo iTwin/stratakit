@@ -241,7 +241,7 @@ aside.starlight-aside {
 		border-inline-end: 1px solid var(--stratakit-color-border-neutral-base);
 
 		&::after {
-			border-block-start-color: var(--stratakit-color-border-neutral-faded);
+			border-block-start-color: var(--stratakit-color-border-neutral-inverse);
 		}
 	}
 }
@@ -273,7 +273,7 @@ starlight-menu-button button {
 
 .sl-heading-wrapper:has(:target) {
 	:target {
-		outline: 2px solid var(--stratakit-color-border-neutral-faded);
+		outline: 2px solid var(--stratakit-color-border-neutral-inverse);
 		outline-offset: 4px;
 	}
 

@@ -1,1 +1,0 @@
-import{j as t}from"./_utils.B-ZxB9HJ.js";import{B as e}from"./ExamplePreview.Bp4T-Pt2.js";const s=()=>t.jsxs("div",{className:"flex",children:[t.jsx(e,{tone:"accent",children:"Accent"}),t.jsx(e,{tone:"neutral",children:"Neutral"})]});export{s as default};

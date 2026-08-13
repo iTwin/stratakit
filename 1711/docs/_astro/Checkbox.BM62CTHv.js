@@ -1,0 +1,1 @@
+import{f as a,j as o,d as r}from"./_utils.rnTVTW5q.js";import{C as t}from"./DjvJNLSl.X_ZWIZZ_.js";import{u as c}from"./ExamplePreview.i9nt-uFq.js";import{u as m}from"./Label.Du_xrF9B.js";const f=a((e,s)=>(c(),m("checkable"),o.jsx(t,{accessibleWhenDisabled:!0,...e,className:r("🥝Checkbox",e.className),ref:s})));var b=f;export{b as C};

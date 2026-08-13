@@ -10,6 +10,7 @@
 import type { RoleProps } from "@ariakit/react/role";
 import type { AlertProps } from "@mui/material/Alert";
 import type { BadgeProps } from "@mui/material/Badge";
+import type { DrawerProps } from "@mui/material/Drawer";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
@@ -288,7 +289,17 @@ declare module "@mui/material/Dialog" {
 declare module "@mui/material/Drawer" {
 	interface DrawerProps {
 		/** @deprecated StrataKit does not support this prop. */
-		elevation?: number;
+		elevation?: DrawerProps["elevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		hideBackdrop?: boolean;
+	}
+}
+
+declare module "@mui/material/SwipeableDrawer" {
+	interface SwipeableDrawerProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: DrawerProps["elevation"];
 
 		/** @deprecated StrataKit does not support this prop. */
 		hideBackdrop?: boolean;

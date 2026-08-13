@@ -551,7 +551,10 @@ declare module "@mui/material/FormControl" {
 interface FormControlDeprecatedProps {
 	/** @deprecated StrataKit does not support this prop. */
 	color?: FormControlProps["color"];
-
+	/** @deprecated StrataKit does not support this prop. */
+	focused?: FormControlProps["focused"];
+	/** @deprecated StrataKit does not support this prop. */
+	hiddenLabel?: FormControlProps["hiddenLabel"];
 	/** @deprecated StrataKit does not support this prop. */
 	variant?: FormControlProps["variant"];
 }
@@ -931,7 +934,7 @@ declare module "@mui/material/TextField" {
 		props: FormControlDeprecatedProps & {
 			/** @deprecated StrataKit does not support this prop. */
 			select?: TextFieldProps["select"];
-		} & Omit<TextFieldProps, "variant" | "color" | "select">,
+		} & Omit<TextFieldProps, "select" | keyof FormControlDeprecatedProps>,
 	): React.JSX.Element;
 }
 

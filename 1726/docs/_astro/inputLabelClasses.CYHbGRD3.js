@@ -1,1 +1,0 @@
-import{F as t,E as s}from"./_utils.DMFxQWQO.js";function i(e){return t("MuiInputLabel",e)}const l=s("MuiInputLabel",["root","focused","disabled","error","required","asterisk","formControl","sizeSmall","shrink","animated","standard","filled","outlined"]);export{i as g,l as i};

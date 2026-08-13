@@ -1,1 +1,0 @@
-import{aN as s,aO as i,aP as n,cj as u,be as c,bY as l,ay as r}from"./~utils-Cum6aPBX.js";import{u as D}from"./disclosure-BjFlMrlq.js";const g="button",f=n(function({store:a,...e}){const t=u();return a=a||t,c(a,!1),e={"aria-haspopup":l(r(a,"contentElement"),"dialog"),...e},e=D({store:a,...e}),e}),d=s(function(a){return i(g,f(a))});export{d as D,f as u};

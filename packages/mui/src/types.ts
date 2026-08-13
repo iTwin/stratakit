@@ -875,6 +875,9 @@ declare module "@mui/material/Radio" {
 		disableRipple?: boolean;
 
 		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: boolean;
+
+		/** @deprecated StrataKit does not support this prop. */
 		disableTouchRipple?: boolean;
 
 		/** @deprecated StrataKit does not support this prop. */
@@ -882,15 +885,6 @@ declare module "@mui/material/Radio" {
 
 		/** @deprecated StrataKit does not support this prop. */
 		size?: RadioProps["size"];
-	}
-
-	interface RadioPropsColorOverrides {
-		secondary: false;
-		default: false;
-		info: false;
-		success: false;
-		warning: false;
-		error: false;
 	}
 
 	interface RadioPropsColorOverrides {

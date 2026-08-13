@@ -1,0 +1,1 @@
+import{j as r,T as e}from"./_utils.DyBox5Fe.js";import{S as i}from"./Stack.B5fbIZX1.js";import{D as t}from"./Divider.cADAbPTg.js";const x=()=>r.jsxs(i,{children:[r.jsx(e,{children:"Item"}),r.jsx(t,{flexItem:!0,margin:!0}),r.jsx(e,{children:"Item"}),r.jsx(t,{flexItem:!0,margin:!0}),r.jsx(e,{children:"Item"})]});export{x as default};

@@ -3,6 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+// This file is used to define custom types for MUI components to work with the StrataKit customizations.
+// See: https://mui.com/material-ui/customization/theming/#typescript
+// See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
+
 import type { RoleProps } from "@ariakit/react/role";
 import type { AppBarOwnProps as MuiAppBarOwnProps } from "@mui/material/AppBar";
 import type { BadgeProps } from "@mui/material/Badge";
@@ -39,9 +43,6 @@ import type {
 	TypographyProps,
 	TypographyTypeMap,
 } from "@mui/material/Typography";
-// This file is used to define custom types for MUI components to work with the StrataKit customizations.
-// See: https://mui.com/material-ui/customization/theming/#typescript
-// See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 import type * as React from "react";
 
 declare module "@mui/material/OverridableComponent" {

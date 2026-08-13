@@ -1,1 +1,0 @@
-import{j as r,I as s}from"./_utils.I92agJjP.js";import{A as t}from"./Avatar.DsK28l_y.js";import{s as a}from"./user.BB6vju0F.js";const m=()=>r.jsx(t,{initials:"WW",alt:"Willow Winters",image:r.jsx(s,{href:a})});export{m as default};

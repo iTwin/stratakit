@@ -504,6 +504,7 @@ declare module "@mui/material/Fab" {
 declare module "@mui/material/FilledInput" {
 	interface FilledInputProps extends FilledInputDeprecatedProps {}
 
+	/** @deprecated StrataKit does not support this component. */
 	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
 	export default function FilledInput(
 		props: Omit<FilledInputProps, keyof FilledInputDeprecatedProps> &

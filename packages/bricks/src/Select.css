@@ -65,7 +65,7 @@
 	/* #endregion */
 
 	/* #region Variant: outline */
-	--✨bg--outline-default: var(--stratakit-color-bg-control-select);
+	--✨bg--outline-default: transparent;
 	--✨bg--outline-hover: color-mix(
 		in oklch,
 		var(--✨bg--outline-default) 100%,
@@ -76,7 +76,7 @@
 		var(--✨bg--outline-default) 100%,
 		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%)
 	);
-	--✨bg--outline-disabled: var(--stratakit-color-bg-control-select);
+	--✨bg--outline-disabled: transparent;
 
 	--✨border--outline-default: var(--stratakit-color-border-neutral-base);
 	--✨border--outline-hover: color-mix(

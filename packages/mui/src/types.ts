@@ -1114,7 +1114,7 @@ declare module "@mui/material/Tooltip" {
 		 *
 		 * @default true
 		 */
-		describeChild?: boolean;
+		describeChild?: TooltipProps["describeChild"];
 		/** @deprecated StrataKit does not support this prop. */
 		disableFocusListener?: TooltipProps["disableFocusListener"];
 		/** @deprecated StrataKit does not support this prop. */

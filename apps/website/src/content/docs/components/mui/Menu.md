@@ -18,7 +18,7 @@ links:
 - The default portal container is now the [root portal container](/components/root/#portal-container).
 - The `autoFocus` and `disableAutoFocusItem` props are not supported.
 - The `action`, `dense`, and `focusVisibleClassname` props of `MenuItem` are not supported.
-- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `MenutItem` are not supported.
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps`, and `touchRippleRef` props of `MenutItem` are not supported.
 
 ## Examples
 

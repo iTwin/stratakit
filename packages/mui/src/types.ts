@@ -14,11 +14,13 @@ import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
 import type { CardProps } from "@mui/material/Card";
 import type { CheckboxProps } from "@mui/material/Checkbox";
+import type { FilledInputProps } from "@mui/material/FilledInput";
 import type { FormControlProps } from "@mui/material/FormControl";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type { InputProps } from "@mui/material/Input";
 import type { InputBaseProps } from "@mui/material/InputBase";
+import type { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import type {
 	CommonProps,
 	DefaultComponentProps,
@@ -26,6 +28,7 @@ import type {
 } from "@mui/material/OverridableComponent";
 import type { PaperOwnProps } from "@mui/material/Paper";
 import type { RadioProps } from "@mui/material/Radio";
+import type { SelectProps } from "@mui/material/Select";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { SwitchProps } from "@mui/material/Switch";
 import type { TabProps } from "@mui/material/Tab";
@@ -498,6 +501,23 @@ declare module "@mui/material/Fab" {
 	}
 }
 
+declare module "@mui/material/FilledInput" {
+	interface FilledInputProps extends FilledInputDeprecatedProps {}
+
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function FilledInput(
+		props: Omit<FilledInputProps, keyof FilledInputDeprecatedProps> &
+			FilledInputDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface FilledInputDeprecatedProps extends InputBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	disableUnderline?: FilledInputProps["disableUnderline"];
+	/** @deprecated StrataKit does not support this prop. */
+	notched?: FilledInputProps["notched"];
+}
+
 declare module "@mui/material/FormControl" {
 	interface FormControlPropsColorOverrides {
 		error: false;
@@ -662,6 +682,21 @@ declare module "@mui/material/NativeSelect" {
 	): React.JSX.Element;
 }
 
+declare module "@mui/material/OutlinedInput" {
+	interface OutlinedInputProps extends OutlinedInputDeprecatedProps {}
+
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function OutlinedInput(
+		props: Omit<OutlinedInputProps, keyof OutlinedInputDeprecatedProps> &
+			OutlinedInputDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface OutlinedInputDeprecatedProps extends InputBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	notched?: OutlinedInputProps["notched"];
+}
+
 declare module "@mui/material/PaginationItem" {
 	interface PaginationItemOwnProps {
 		LinkComponent?: never;
@@ -731,6 +766,27 @@ interface RadioDeprecatedProps extends ButtonBaseDeprecatedProps {
 
 	/** @deprecated StrataKit does not support this prop. */
 	size?: RadioProps["size"];
+}
+
+declare module "@mui/material/Select" {
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function Select(
+		props: {
+			/** @deprecated StrataKit does not support this prop. */
+			IconComponent?: SelectProps["IconComponent"];
+			/** @deprecated StrataKit does not support this prop. */
+			variant?: SelectProps["variant"];
+			/** @deprecated StrataKit does not support this prop. */
+			disableUnderline?: SelectProps["disableUnderline"];
+		} & Omit<
+			SelectProps,
+			| "IconComponent"
+			| "variant"
+			| "disableUnderline"
+			| keyof OutlinedInputDeprecatedProps
+		> &
+			OutlinedInputDeprecatedProps,
+	): React.JSX.Element;
 }
 
 declare module "@mui/material/Slider" {

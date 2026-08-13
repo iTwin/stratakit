@@ -30,6 +30,7 @@ Modifications to `NativeSelect`:
 
 Modifications to `Select`:
 
+- The `disableUnderline`, `IconComponent`, `notched` and `variant` props are not supported.
 - Restyled using StrataKit's visual language.
 - The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.

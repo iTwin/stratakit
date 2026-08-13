@@ -1,1 +1,0 @@
-import{j as e}from"./_utils._vaI8-vr.js";import{B as s}from"./Banner.Cf8theoI.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

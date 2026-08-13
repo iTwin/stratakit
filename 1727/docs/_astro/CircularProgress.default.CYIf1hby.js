@@ -1,1 +1,0 @@
-import{j as r,Q as a,T as e}from"./_utils._vaI8-vr.js";import{r as t}from"./styles.internal.Cf9SRLEZ.js";const i=()=>{const s=t.useId();return r.jsxs(r.Fragment,{children:[r.jsx(a,{"aria-labelledby":s}),r.jsx(e,{id:s,children:"Analyzing results…"})]})};export{i as default};

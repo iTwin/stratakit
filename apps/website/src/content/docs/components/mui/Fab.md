@@ -10,6 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
-- The `disableRipple`, `disableFocusRipple` and `disableTouchRipple` props are not supported.
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
+- The `action` prop is not supported.
 - Only `"primary"` and `"secondary"` colors are supported.
 - The default `color` is now `"primary"`.

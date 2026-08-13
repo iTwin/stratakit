@@ -808,8 +808,24 @@ declare module "@mui/material/Pagination" {
 }
 
 declare module "@mui/material/PaginationItem" {
-	interface PaginationItemOwnProps {
+	interface PaginationItemPropsColorOverrides {
+		primary: false;
+		secondary: false;
+		standard: false;
+	}
+
+	interface PaginationItemPropsVariantOverrides {
+		text: false;
+	}
+
+	interface PaginationItemOwnProps extends ButtonBaseDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: PaginationItemOwnProps["color"];
 		LinkComponent?: never;
+		/** @deprecated StrataKit does not support this prop. */
+		shape?: PaginationItemOwnProps["shape"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: PaginationItemOwnProps["variant"];
 	}
 }
 

@@ -19,6 +19,7 @@ import type { CheckboxProps } from "@mui/material/Checkbox";
 import type { CssBaselineProps } from "@mui/material/CssBaseline";
 import type { FilledInputProps } from "@mui/material/FilledInput";
 import type { FormControlProps } from "@mui/material/FormControl";
+import type { FormLabelProps } from "@mui/material/FormLabel";
 import type {} from "@mui/material/Grow";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
@@ -656,9 +657,20 @@ declare module "@mui/material/FormLabel" {
 	}
 
 	interface FormLabelOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: FormLabelOwnProps["color"];
 		/** @deprecated */
 		component?: never; // `@deprecated` marker is not showing up, so using `never` to prevent usage of this prop.
 	}
+
+	// Need to also declare the deprecation for color here to get the strike through in VS Code
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function FormLabel(
+		props: {
+			/** @deprecated StrataKit does not support this prop. */
+			color?: FormLabelOwnProps["color"];
+		} & Omit<FormLabelProps, "color">,
+	): React.JSX.Element;
 }
 
 declare module "@mui/material/Grow" {

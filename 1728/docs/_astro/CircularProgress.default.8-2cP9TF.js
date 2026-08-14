@@ -1,0 +1,1 @@
+import{r as a,j as r,U as e,T as l}from"./_utils.cB3ReHw9.js";const o=()=>{const s=a.useId();return r.jsxs(r.Fragment,{children:[r.jsx(e,{"aria-labelledby":s}),r.jsx(l,{id:s,children:"Analyzing results…"})]})};export{o as default};

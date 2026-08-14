@@ -352,6 +352,9 @@ function createTheme(args: CreateThemeArgs) {
 						switchViewIcon: CaretsUpDownIcon,
 					},
 					slotProps: {
+						day: {
+							nativeButton: true,
+						},
 						previousIconButton: {
 							title: undefined,
 						},

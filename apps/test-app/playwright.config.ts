@@ -67,7 +67,7 @@ export default defineConfig({
 		},
 	],
 	webServer: {
-		command: "pnpm preview",
+		command: "pnpm run preview:raw",
 		url: "http://localhost:1800",
 		reuseExistingServer: true,
 	},

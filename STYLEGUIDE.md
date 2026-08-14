@@ -10,7 +10,7 @@ Although they are very similar, use `interface` for consistency and [better dete
 
 ### forwardRef
 
-Use the `forwardRef` utility from [packages/foundations](./packages/foundations/src/~utils.tsx) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.
+Use the `forwardRef` utility from [packages/internal-utils](./packages/internal-utils/src/react.ts) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.
 
 ## CSS
 

@@ -6,11 +6,11 @@
 import { Role } from "@ariakit/react/role";
 import Paper from "@mui/material/Paper";
 import Typography from "@mui/material/Typography";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type { AccordionOwnerState } from "@mui/material/Accordion";
 import type { AccordionSummaryOwnProps } from "@mui/material/AccordionSummary";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

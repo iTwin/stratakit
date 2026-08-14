@@ -44,7 +44,7 @@ function VisualTest({ tooltip: showTooltip = false }) {
 	return (
 		<div style={{ display: "grid", gap: 4 }}>
 			{variants.map((variant) => (
-				<div style={{ display: "flex", gap: 4 }}>
+				<div key={variant} style={{ display: "flex", gap: 4 }}>
 					<IconButton
 						variant={variant}
 						label="Click me"

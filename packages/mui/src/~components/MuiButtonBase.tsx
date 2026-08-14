@@ -5,13 +5,11 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import {
-	forwardRef,
-	useMergedRefs,
-} from "@stratakit/foundations/secret-internals";
+import { useMergedRefs } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type { ButtonOwnProps } from "@mui/material/Button";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

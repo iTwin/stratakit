@@ -4,20 +4,18 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { isBrowser, supportsPopover } from "./~utils.js";
+import { isBrowser } from "./dom.js";
 
-import type { AnyFunction } from "./~utils.js";
+// ----------------------------------------------------------------------------
 
-/**
- * SSR-safe wrapper over `React.useLayoutEffect`.
- *
- * @see https://fb.me/react-uselayouteffect-ssr
- *
- * @private
- */
-export const useLayoutEffect = isBrowser
-	? React.useLayoutEffect
-	: React.useEffect;
+const supportsPopover = isBrowser && "popover" in HTMLElement.prototype;
+
+// ----------------------------------------------------------------------------
+
+// biome-ignore lint/suspicious/noExplicitAny: allow any type of function
+type AnyFunction = (...args: any) => any;
+
+// ----------------------------------------------------------------------------
 
 /**
  * Wrapper over `useState` that always gives preference to the
@@ -34,10 +32,8 @@ export const useLayoutEffect = isBrowser
  *   props.onChange
  * );
  * ```
- *
- * @private
  */
-export function useControlledState<T>(
+function useControlledState<T>(
 	initialValue: T,
 	controlledState: T | undefined,
 	setControlledState?: React.Dispatch<React.SetStateAction<T>>,
@@ -63,6 +59,8 @@ export function useControlledState<T>(
 	return [state, setState] as const;
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Hook that keeps track of the latest value in a ref.
  * This is useful for referencing unmemoized values inside Effects.
@@ -70,10 +68,8 @@ export function useControlledState<T>(
  * ```tsx
  * const valueRef = useLatestRef(props.value);
  * ```
- *
- * @private
  */
-export function useLatestRef<T>(value: T) {
+function useLatestRef<T>(value: T) {
 	const valueRef = React.useRef<T>(value);
 
 	React.useInsertionEffect(() => {
@@ -82,6 +78,8 @@ export function useLatestRef<T>(value: T) {
 
 	return valueRef;
 }
+
+// ----------------------------------------------------------------------------
 
 /**
  * Returns a memoized callback ref that merges the provided refs.
@@ -97,10 +95,8 @@ export function useLatestRef<T>(value: T) {
  * const internalRef = useRef(null);
  * return <div ref={useMergedRefs(internalRef, forwardedRef)} />;
  * ```
- *
- * @private
  */
-export function useMergedRefs<T>(
+function useMergedRefs<T>(
 	...refs: ReadonlyArray<React.Ref<T> | React.LegacyRef<T> | undefined | null>
 ) {
 	// biome-ignore lint/correctness/useExhaustiveDependencies: we are spreading the refs instead of referencing the array
@@ -118,18 +114,16 @@ export function useMergedRefs<T>(
 	);
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Hook that "memoizes" a function by skipping reactivity, similar to `React.useEffectEvent`.
  *
  * The memoization technique used by this hook ensures that only the "latest" callback is ever called,
  * regardless of its dependencies. The "latest" callback is stored in a ref and updated on each render
  * in an Effect. The result is that the callback passed to this hook does not need to be memoized.
- *
- * @private
  */
-export function useUnreactiveCallback<T extends AnyFunction>(
-	callback: T | undefined,
-) {
+function useStableCallback<T extends AnyFunction>(callback: T | undefined) {
 	const latestCallback = useLatestRef(callback);
 
 	return React.useCallback<AnyFunction>(
@@ -137,6 +131,8 @@ export function useUnreactiveCallback<T extends AnyFunction>(
 		[latestCallback],
 	) as T;
 }
+
+// ----------------------------------------------------------------------------
 
 /**
  * Hook that accepts a list of event handlers and returns a single memoized (unreactive)
@@ -146,10 +142,8 @@ export function useUnreactiveCallback<T extends AnyFunction>(
  * ```tsx
  * <button onClick={useEventHandlers(props.onClick, ownOnClick)}>
  * ```
- *
- * @private
  */
-export function useEventHandlers<E extends React.SyntheticEvent>(
+function useEventHandlers<E extends React.SyntheticEvent>(
 	...handlers: Array<((event: E) => void) | undefined>
 ) {
 	const latestHandlers = useLatestRef(handlers);
@@ -165,15 +159,15 @@ export function useEventHandlers<E extends React.SyntheticEvent>(
 	);
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Wrapper hook around `useContext` to ensure that the Context is provided.
  * The component calling this hook will throw an error if the Context is not found.
  *
  * The Context's `displayName` will be used for a more useful error message.
- *
- * @private
  */
-export function useSafeContext<C>(context: React.Context<C>) {
+function useSafeContext<C>(context: React.Context<C>) {
 	const value = React.useContext(context);
 
 	if (value === undefined) {
@@ -183,41 +177,28 @@ export function useSafeContext<C>(context: React.Context<C>) {
 	return value;
 }
 
+// ----------------------------------------------------------------------------
+
 /**
  * Hook that makes it easy to use the [Popover API](https://developer.mozilla.org/en-US/docs/Web/API/Popover_API) consistently.
- *
- * Internally, this hook will sync the `open` state with the `element`'s "popover-open" state. It will also create a `CloseWatcher`
- * to automatically handle "light dismiss" behavior when the popover is open.
+ * This hook will sync the `open` state with the `element`'s "popover-open" state.
  *
  * Returns a set of DOM props that should be passed back to the element.
- *
- * @private
  */
-export function usePopoverApi({
+function usePopoverApi({
 	element,
 	open,
-	setOpen,
 }: {
 	element: HTMLElement | null | undefined;
 	open: boolean | undefined;
-	setOpen: (open: boolean) => void;
 }) {
 	React.useEffect(
 		function syncPopoverWithOpenState() {
 			if (element?.popover && element?.isConnected && open !== undefined) {
 				element?.togglePopover?.(open);
-
-				// https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher
-				if (open && "CloseWatcher" in window) {
-					// @ts-expect-error -- new API, types missing
-					const closeWatcher = new CloseWatcher();
-					closeWatcher.onclose = () => {
-						if (open) setOpen(false);
-					};
-				}
 			}
 		},
-		[open, element, setOpen],
+		[open, element],
 	);
 
 	return React.useMemo(
@@ -230,18 +211,68 @@ export function usePopoverApi({
 	);
 }
 
+// ----------------------------------------------------------------------------
+
+/**
+ * Minimal subset of the [`CloseWatcher`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) types.
+ * Used by `useCloseWatcher` until API types are available in TypeScript.
+ */
+declare class CloseWatcher {
+	onclose: () => void;
+	destroy: () => void;
+}
+
+/**
+ * Hook that makes it easy to use the [CloseWatcher API](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) consistently.
+ * This hook will call the `setOpen` argument to automatically handle "light dismiss" behavior when the component is open.
+ */
+function useCloseWatcher({
+	open,
+	setOpen,
+}: {
+	open: boolean | undefined;
+	setOpen: (open: boolean) => void;
+}) {
+	React.useEffect(() => {
+		if (!open) return;
+		if (!("CloseWatcher" in window)) return;
+
+		const closeWatcher = new CloseWatcher();
+		closeWatcher.onclose = () => {
+			setOpen(false);
+		};
+		return () => {
+			closeWatcher.destroy();
+		};
+	}, [open, setOpen]);
+}
+
+// ----------------------------------------------------------------------------
+
 /**
  * Hook that returns true for the first "full" client render.
  * Useful to guard against using client APIs during SSR.
  *
  * Note: This will return `false` during hydration.
- *
- * @private
  */
-export function useIsClient() {
+function useIsClient() {
 	return React.useSyncExternalStore(
 		React.useCallback(() => () => {}, []),
 		() => true,
 		() => false,
 	);
 }
+
+// ----------------------------------------------------------------------------
+
+export {
+	useCloseWatcher,
+	useControlledState,
+	useEventHandlers,
+	useIsClient,
+	useLatestRef,
+	useMergedRefs,
+	usePopoverApi,
+	useSafeContext,
+	useStableCallback,
+};

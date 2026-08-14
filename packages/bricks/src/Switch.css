@@ -12,6 +12,13 @@
 
 	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset;
 
+	--✨thumb-shadow--default:
+		var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
+		var(--stratakit-shadow-control-button-base-drop);
+	--✨thumb-shadow--checked:
+		var(--stratakit-shadow-control-button-base-inset),
+		var(--stratakit-shadow-control-button-base-drop);
+
 	--✨glow--border-hover: var(--stratakit-color-glow-hue)
 		var(--stratakit-color-border-glow-base-hover-\%);
 	--✨glow--border-press: var(--stratakit-color-glow-hue)
@@ -99,9 +106,7 @@
 			inline-size: var(--✨thumb-size);
 			margin: calc(0.125rem - 1px) /* sizing-2 - 1px to account for border */;
 			background-color: var(--🥝Switch-thumb-color);
-			box-shadow:
-				var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
-				var(--stratakit-shadow-control-button-base-drop);
+			box-shadow: var(--✨thumb-shadow--default);
 			border-radius: var(--🥝Switch-thumb-radius, var(--✨radius));
 			transform-origin: left;
 			transform: var(--🥝Switch-thumb-transform);
@@ -131,6 +136,10 @@
 				&:where(:hover) {
 					--🌀Switch-state: var(--🌀Switch-state--checked-hover);
 				}
+			}
+
+			&::after {
+				box-shadow: var(--✨thumb-shadow--checked);
 			}
 		}
 

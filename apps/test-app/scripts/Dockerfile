@@ -1,8 +1,6 @@
-FROM mcr.microsoft.com/playwright:v1.62.1-noble AS base
+FROM mcr.microsoft.com/playwright:v1.62.1-noble
 RUN --mount=type=cache,target=/root/.npm \
     npm install -g pnpm@11.18.0
-
-FROM base AS deps
 
 # Remap the existing ubuntu user to the Linux host UID/GID so that files written
 # to bind-mounted directories are owned by the correct host user. Calling script
@@ -14,6 +12,20 @@ RUN if [ "$LINUX_HOST" = "true" ]; then usermod -o -u ${UID} ubuntu && groupmod 
 
 USER ubuntu
 WORKDIR /kiwi
-FROM deps AS build
-COPY --chown=ubuntu:ubuntu . .
-RUN pnpm install --frozen-lockfile
+
+# Copy dependency manifests first so the install layer is only invalidated
+# when the lockfile, package.json files, or patches change — not on source changes.
+COPY --chown=ubuntu:ubuntu --parents \
+    packages/*/package.json \
+    apps/*/package.json \
+    internal/package.json \
+    examples/package.json \
+    pnpm-workspace.yaml pnpm-lock.yaml package.json \
+    ./
+COPY --chown=ubuntu:ubuntu patches/ patches/
+RUN --mount=type=cache,uid=${UID},gid=${GID},target=/home/ubuntu/.local/share/pnpm/store \
+    pnpm install --frozen-lockfile
+
+# Copy other files in that the tests need that don't affect pnpm install.  The
+# build directory for the server is mounted so it does not need to be copied.    
+COPY --chown=ubuntu:ubuntu apps/test-app/playwright.config.ts apps/test-app/

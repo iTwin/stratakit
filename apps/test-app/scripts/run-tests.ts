@@ -73,6 +73,8 @@ void (async () => {
 		`${appDir}/build:${containerAppDir}/build`,
 		"-v", // Mount results directory from host to container
 		`${appDir}/test-results:${containerAppDir}/test-results`,
+		"-v", // Mount build directory from host to container
+		`${appDir}/build:${containerAppDir}/build`,
 		"-w", // Set working directory
 		containerAppDir,
 		imageName,

@@ -780,6 +780,15 @@ interface InputBaseDeprecatedProps {
 	disableInjectingGlobalStyles?: InputBaseProps["disableInjectingGlobalStyles"];
 }
 
+declare module "@mui/material/InputLabel" {
+	interface InputLabelOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		shrink?: InputLabelOwnProps["shrink"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: InputLabelOwnProps["variant"];
+	}
+}
+
 declare module "@mui/material/Link" {
 	interface LinkOwnProps {
 		/** @deprecated StrataKit does not support this prop. */

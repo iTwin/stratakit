@@ -699,6 +699,13 @@ declare module "@mui/material/Input" {
 	): React.JSX.Element;
 }
 
+declare module "@mui/material/InputAdornment" {
+	interface InputAdornmentOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: InputAdornmentOwnProps["variant"];
+	}
+}
+
 interface InputDeprecatedProps extends InputBaseDeprecatedProps {
 	/** @deprecated StrataKit does not support this prop. */
 	disableUnderline?: InputProps["disableUnderline"];

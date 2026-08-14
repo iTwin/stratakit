@@ -36,13 +36,16 @@ void (async () => {
 	// Create the test output folder mount point in case it does not exist
 	await mkdir(`${appDir}/test-results`, { recursive: true });
 
-	// On Linux/macOS, pass the host UID/GID as build args so the image's ubuntu
-	// user is remapped to match — files written to bind-mounted directories are
-	// then owned by the correct host user.  process.getuid is undefined on
-	// Windows, where Docker Desktop handles ownership transparently via WSL2.
+	// On Linux, pass the host UID/GID as build args so the image's ubuntu user
+	// is remapped to match — files written to bind-mounted directories are then
+	// owned by the correct host user. On macOS, Docker Desktop handles ownership
+	// transparently via its Linux VM. process.getuid is undefined on Windows.
+	const isLinux = process.platform === "linux";
 	const uidArgs =
-		process.getuid && process.getgid
+		isLinux && process.getuid && process.getgid
 			? [
+					"--build-arg",
+					"LINUX_HOST=true",
 					"--build-arg",
 					`UID=${process.getuid()}`,
 					"--build-arg",

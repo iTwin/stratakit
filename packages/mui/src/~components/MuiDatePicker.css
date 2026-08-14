@@ -123,6 +123,11 @@
 			font-weight: 500;
 			outline: unset;
 
+			&:where(.Mui-focusVisible) {
+				outline: var(--🥝focus-outline);
+				outline-offset: var(--🥝focus-outline-offset);
+			}
+
 			&::after {
 				content: "";
 				position: absolute;
@@ -162,11 +167,6 @@
 				--_MuiPickerDay-border-color: var(--✨border--selected-hover);
 			}
 		}
-	}
-
-	&:where(.Mui-focusVisible) {
-		outline: var(--🥝focus-outline);
-		outline-offset: var(--🥝focus-outline-offset);
 	}
 
 	&:where(.Mui-disabled) {

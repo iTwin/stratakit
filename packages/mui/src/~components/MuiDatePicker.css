@@ -17,7 +17,6 @@
 	@apply --typography("body-md");
 	align-self: stretch;
 	padding-inline-end: var(--stratakit-space-x1);
-	user-select: none;
 }
 
 .MuiPickersInputBase-root:is(.🥝MuiInput) {
@@ -42,7 +41,6 @@
 
 	&:where(:not([aria-valuenow])) {
 		color: var(--stratakit-color-text-control-placeholder);
-		user-select: all;
 	}
 
 	&:where(:focus, :focus-visible) {

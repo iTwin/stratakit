@@ -45,6 +45,7 @@ import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { SwitchProps } from "@mui/material/Switch";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
+import type { TabScrollButtonProps } from "@mui/material/TabScrollButton";
 import type { TabsProps } from "@mui/material/Tabs";
 import type { TextFieldProps } from "@mui/material/TextField";
 import type { ToggleButtonProps } from "@mui/material/ToggleButton";
@@ -1115,6 +1116,13 @@ declare module "@mui/material/Tab" {
 		 */
 		iconPosition?: TabProps["iconPosition"];
 	}
+}
+
+declare module "@mui/material/TabScrollButton" {
+	/** @deprecated StrataKit does not support this component. */
+	export default function TabScrollButton(
+		props: TabScrollButtonProps,
+	): React.JSX.Element;
 }
 
 declare module "@mui/material/TableCell" {

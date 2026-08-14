@@ -610,6 +610,17 @@ interface FormControlDeprecatedProps {
 	variant?: FormControlProps["variant"];
 }
 
+declare module "@mui/material/FormHelperText" {
+	interface FormHelperTextPropsVariantOverrides {
+		standard: false;
+		filled: false;
+	}
+	interface FormHelperTextOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: FormHelperTextOwnProps["variant"];
+	}
+}
+
 declare module "@mui/material/FormLabel" {
 	interface FormLabelPropsColorOverrides {
 		secondary: false;

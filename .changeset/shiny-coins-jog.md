@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `disableElevation` and `disableFocusRipple` props of `Button` component.
+Deprecated `action`, `centerRipple`, `disableElevation`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `Button` component.

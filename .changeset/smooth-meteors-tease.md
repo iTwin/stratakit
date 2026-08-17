@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `color`, `disableFocusRipple` and `fullWidth` props of `ToggleButton` component.
+Deprecated `action`, `centerRipple`, `color`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `fullWidth`, `TouchRippleProps` and `touchRippleRef` props of `ToggleButton` component.

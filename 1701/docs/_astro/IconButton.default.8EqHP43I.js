@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.DAq4-VST.js";import{I as t}from"./ExamplePreview.BA83qffh.js";import{s as a}from"./download.C1i5zd6W.js";const e=()=>o.jsx(t,{label:"Download",icon:a});export{e as default};

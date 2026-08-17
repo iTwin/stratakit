@@ -406,7 +406,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiImageListItem: { defaultProps: { component: Role.li } },
 			MuiInputBase: {
 				defaultProps: {
-					className: "🥝MuiInput",
+					classes: { root: "🥝MuiInput" },
 				},
 			},
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
@@ -596,10 +596,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTablePagination: {
 				defaultProps: {
 					component: withRenderProp(Role, "td"),
-					slotProps: {
-						root: { colSpan: 999 },
-						select: { classes: { root: "🥝MuiInput" } },
-					},
+					slotProps: { root: { colSpan: 999 } },
 				},
 			},
 			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },

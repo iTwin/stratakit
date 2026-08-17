@@ -786,6 +786,7 @@ declare module "@mui/material/PaginationItem" {
 
 	interface PaginationItemPropsVariantOverrides {
 		text: false;
+		outlined: false;
 	}
 
 	interface PaginationItemOwnProps extends ButtonBaseDeprecatedProps {

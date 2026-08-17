@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `IconComponent`, `variant` and `disableUnderline` props of `Select`.
+Deprecated `color`, `disableInjectingGlobalStyles`, `disableUnderline`, `IconComponent`, `notched` and `variant` props of `Select`.

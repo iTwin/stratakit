@@ -1,0 +1,1 @@
+import{j as r,T as e}from"./_utils.VWepDJef.js";import{D as s}from"./Divider.RZ0fq4Cf.js";const a=()=>r.jsx(s,{children:r.jsx(e,{variant:"subtitle-md",render:r.jsx("h3",{}),noWrap:!0,children:"New messages"})});export{a as default};

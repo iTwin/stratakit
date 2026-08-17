@@ -25,7 +25,7 @@ export function ScreenShotWrapper({
 	}
 
 	return (
-		<div data-testId={ScreenShotWrapper.TestId} className={styles.shrinkWrap}>
+		<div data-testid={ScreenShotWrapper.TestId} className={styles.shrinkWrap}>
 			{children}
 		</div>
 	);

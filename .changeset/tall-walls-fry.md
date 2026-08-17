@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `notched` prop of `OutlinedInput`.
+Deprecated `color`, `disableInjectingGlobalStyles` and `notched` props of `OutlinedInput`.

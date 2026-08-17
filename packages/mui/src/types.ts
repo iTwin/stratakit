@@ -764,6 +764,7 @@ declare module "@mui/material/Pagination" {
 
 	interface PaginationPropsVariantOverrides {
 		text: false;
+		outlined: false;
 	}
 
 	interface PaginationProps {

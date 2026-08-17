@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.DyBox5Fe.js";import{I as t}from"./ExamplePreview.CvyxTwo_.js";import{s as a}from"./download.DWiLuERP.js";const e=()=>o.jsx(t,{label:"Download",icon:a});export{e as default};

@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.Bc_tTs1t.js";import{F as r}from"./FormControlLabel.Cg_fvUNI.js";import{C as t}from"./Checkbox.Dt96n3rG.js";const m=()=>o.jsx(r,{control:o.jsx(t,{}),label:"Don't show again"});export{m as default};

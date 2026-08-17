@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.nWwPS3Av.js";import{I as t}from"./ExamplePreview.0JQmoRNb.js";import{s as a}from"./download.CtrPiLgj.js";const e=()=>o.jsx(t,{label:"Download",icon:a});export{e as default};

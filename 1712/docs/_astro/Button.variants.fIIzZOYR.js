@@ -1,1 +1,0 @@
-import{j as t}from"./_utils.DhqyD0im.js";import{B as s}from"./ExamplePreview.C2Lay82m.js";const a=()=>t.jsxs("div",{className:"flex",children:[t.jsx(s,{variant:"solid",children:"Solid"}),t.jsx(s,{variant:"outline",children:"Outline"}),t.jsx(s,{variant:"ghost",children:"Ghost"})]});export{a as default};

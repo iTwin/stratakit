@@ -596,7 +596,10 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTablePagination: {
 				defaultProps: {
 					component: withRenderProp(Role, "td"),
-					slotProps: { root: { colSpan: 999 } },
+					slotProps: {
+						root: { colSpan: 999 },
+						select: { classes: { root: "🥝MuiInput" } },
+					},
 				},
 			},
 			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },

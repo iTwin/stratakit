@@ -93,6 +93,8 @@ export default function App() {
 				// Use the `@stratakit/foundations` Root when testing the Root itself.
 				// Use `@stratakit/mui` for everything else.
 				const Root = isRootTest ? StrataKitRoot : StrataKitMuiRoot;
+				const isMuiTest = location.pathname.startsWith("/tests/mui");
+				const includeNavigationRail = !isMuiTest;
 
 				return (
 					<Root
@@ -103,7 +105,11 @@ export default function App() {
 						synchronizeColorScheme={false}
 						style={{ display: "contents" }}
 					>
-						<AppNavigationRail mainContent={<Outlet />} />
+						{includeNavigationRail ? (
+							<AppNavigationRail mainContent={<Outlet />} />
+						) : (
+							<Outlet />
+						)}
 					</Root>
 				);
 			})()}

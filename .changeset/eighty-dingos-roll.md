@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `variant` prop of `NativeSelect`.
+Deprecated `color`, `disableUnderline`, `disableInjectingGlobalStyles` and `variant` props of `NativeSelect`.

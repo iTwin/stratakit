@@ -12,9 +12,9 @@ links:
 
 Modifications to `ToggleButton`:
 
-- Ripple effect removed. The `centerRipple`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
-- The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
 - The `action`, `color` and `fullWidth` props are not supported.
+- The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
+- Ripple effect removed. The `centerRipple`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - A `label` prop has been added. When specified, it is used as the **ToggleButton's** accessible name and is also shown in a tooltip on hover and focus.
 - A `labelPlacement` prop has been added to control the placement of a tooltip that is shown when the `label` prop is specified.
 - **ToggleButtons** are styled to match the visual appearance of the [**IconButton**](/components/iconbutton) component. Borders are displayed only when the buttons are wrapped in a `ToggleButtonGroup`. [Standalone](#standalone) **ToggleButtons** do not have borders.

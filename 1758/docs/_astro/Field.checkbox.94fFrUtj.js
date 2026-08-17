@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.Ccaw1ZoO.js";import{C as r}from"./Checkbox.slGwVvwF.js";import{F as o,a as s,b as t}from"./Field.BGyvzjo1.js";const x=()=>e.jsxs(o,{children:[e.jsx(s,{render:e.jsx(r,{})}),e.jsx(t,{children:"Enable experimental features"})]});export{x as default};

@@ -6,6 +6,7 @@
 import { test } from "#playwright";
 import { generateVisualTests } from "~/generateVisualTests.ts";
 
-test.describe("@visual", () => {
-	generateVisualTests("/tests/mui/Button/Visual");
-});
+test.describe
+	.only("@visual", () => {
+		generateVisualTests("/tests/mui/Badge/Visual");
+	});

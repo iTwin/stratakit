@@ -9,3 +9,4 @@ Every change to StrataKit is documented in the `CHANGELOG.md` files of the indiv
 - [`@stratakit/foundations` changelog](https://github.com/iTwin/stratakit/blob/main/packages/foundations/CHANGELOG.md)
 - [`@stratakit/bricks` changelog](https://github.com/iTwin/stratakit/blob/main/packages/bricks/CHANGELOG.md)
 - [`@stratakit/structures` changelog](https://github.com/iTwin/stratakit/blob/main/packages/structures/CHANGELOG.md)
+- [`@stratakit/internal-utils` changelog](https://github.com/iTwin/stratakit/blob/main/packages/internal-utils/CHANGELOG.md)

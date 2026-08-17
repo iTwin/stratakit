@@ -17,6 +17,11 @@ test("default", async ({ page }) => {
 });
 
 test.describe("@visual", () => {
+	test("default", async ({ page }) => {
+		await page.goto("/tests/select?visual=true");
+		await expect(page.locator("body")).toHaveScreenshot();
+	});
+
 	test("forced-colors", async ({ page }) => {
 		await page.goto("/tests/select?visual=true");
 		await page.emulateMedia({ forcedColors: "active" });

@@ -3,13 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import {
-	createIconFromPath,
-	forwardRef,
-} from "@stratakit/foundations/secret-internals";
+import { createIconFromPath } from "@stratakit/bricks/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

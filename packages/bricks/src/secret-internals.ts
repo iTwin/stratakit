@@ -5,7 +5,7 @@
 
 export { Dot } from "./~utils.Dot.js";
 export { GhostAligner } from "./~utils.GhostAligner.js";
-export { DisclosureArrow } from "./~utils.icons.js";
+export { createIconFromPath, DisclosureArrow } from "./~utils.icons.js";
 export {
 	IconButtonContext,
 	IconButtonPresentation,

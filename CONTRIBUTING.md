@@ -71,6 +71,7 @@ Packages:
 - [`@stratakit/foundations`](./packages/foundations/): Foundational pieces of StrataKit.
 - [`@stratakit/bricks`](./packages/bricks/): Small, modular components that can be assembled to create larger, more functional experiences.
 - [`@stratakit/structures`](./packages/structures): Medium-sized component structures built on top of `@stratakit/bricks`.
+- [`@stratakit/internal-utils`](./packages/internal-utils/): Internal utility functions and types for StrataKit.
 
 Apps:
 

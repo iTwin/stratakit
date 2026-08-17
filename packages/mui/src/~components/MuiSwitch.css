@@ -45,6 +45,9 @@
 		var(--stratakit-shadow-control-button-base-inset),
 		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
 		var(--stratakit-shadow-control-button-base-drop);
+	--✨shadow--checked:
+		var(--stratakit-shadow-control-button-base-inset),
+		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--disabled: none;
 	--✨translate-distance--full: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);
 	--✨translate-distance--half: calc(var(--✨translate-distance--full) * 0.5);
@@ -80,6 +83,7 @@
 	&:where(.Mui-checked) {
 		inset: unset;
 		transform: var(--_MuiSwitch-thumb-position-on);
+		--_MuiSwitch-thumb-box-shadow: var(--✨shadow--checked);
 	}
 
 	&:where(:has(.MuiSwitch-input:active):not(.Mui-disabled)) {
@@ -126,7 +130,7 @@
 	--✨bg--default: var(--stratakit-color-bg-control-switch);
 	--✨bg--checked: var(--stratakit-color-bg-accent-base);
 	--✨bg--disabled: var(--stratakit-color-bg-control-switch);
-	--✨border--default: var(--stratakit-color-border-control-switch);
+	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--checked: var(--stratakit-color-border-accent-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 

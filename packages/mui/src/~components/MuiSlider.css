@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiSlider-root {
-	--✨color-rail-bg--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-bg--default: var(--stratakit-color-bg-mono-muted);
 	--✨color-rail-bg--disabled: var(--stratakit-color-bg-control-switch);
-	--✨color-rail-border--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-border--default: var(--stratakit-color-bg-mono-muted);
 	--✨color-rail-border--disabled: var(--stratakit-color-border-neutral-disabled);
 	--✨color-track-bg--default: var(--stratakit-color-bg-accent-base);
 	--✨color-track-bg--disabled: var(--stratakit-color-border-neutral-disabled);

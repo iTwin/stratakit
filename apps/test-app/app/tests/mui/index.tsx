@@ -13,7 +13,7 @@ import errorSvg from "@stratakit/icons/error.svg";
 import styles from "./index.module.css";
 
 // Eagerly load all story files so they're available synchronously.
-const storyModules = import.meta.glob("./*.story.tsx", {
+const storyModules = import.meta.glob("./*.spec.stories.tsx", {
 	eager: true,
 }) as Record<string, Record<string, React.ComponentType>>;
 
@@ -31,9 +31,9 @@ export default function GalleryPage() {
 	// Find the matching story module: ../tests/mui/{component}.story.tsx
 	const moduleKey = Object.keys(storyModules).find((key) => {
 		const segments = key.split("/");
-		const file = segments.at(-1); // e.g. "Button.story.tsx"
+		const file = segments.at(-1); // e.g. "Button.spec.stories.tsx"
 
-		return file === `${component}.story.tsx`;
+		return file === `${component}.spec.stories.tsx`;
 	});
 
 	if (!moduleKey) {
@@ -42,7 +42,7 @@ export default function GalleryPage() {
 				message={
 					<>
 						Missing story file for <code>{component}</code>. Check that{" "}
-						<code>tests/mui/{component}.story.tsx</code> exists.
+						<code>tests/mui/{component}.spec.stories.tsx</code> exists.
 					</>
 				}
 			/>

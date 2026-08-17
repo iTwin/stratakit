@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.DAq4-VST.js";import{I as t}from"./ExamplePreview.BA83qffh.js";import{s as i}from"./notifications.BT-crZVx.js";const r=()=>o.jsx(t,{label:"Notifications",dot:"You have unread notifications",icon:i});export{r as default};

@@ -19,7 +19,7 @@ links:
 - Ripple effect removed from `Tab`. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
-- StrataKit does not support use of `TabScrollButton`.
+- StrataKit does not support use of `TabScrollButton`. The scroll buttons are handled automatically when `variant="scrollable"`
 
 ## Examples
 

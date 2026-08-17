@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `disableUnderline` prop of `Input` and changed the default value to `true`.
+Deprecated `color`, `disableUnderline` and `disableInjectingGlobalStyles` props of `Input`.

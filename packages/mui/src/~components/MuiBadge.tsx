@@ -45,16 +45,6 @@ DEV: MuiBadge.displayName = "MuiBadge";
 
 const MuiBadgeBadge = forwardRef<"span", BaseProps>((props, forwardedRef) => {
 	const { inline } = useSafeContext(MuiBadgeContext);
-
-	if (
-		inline &&
-		(props.className ?? "").split(/\s+/).includes("MuiBadge-colorPrimary")
-	) {
-		throw new Error(
-			'inline cannot be used with color="primary" for Badge component',
-		);
-	}
-
 	return (
 		<Role.span
 			{...props}

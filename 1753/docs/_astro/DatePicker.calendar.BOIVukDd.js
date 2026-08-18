@@ -1,0 +1,1 @@
+import{j as a}from"./_utils.Lr26ps_m.js";import{L as r,A as t}from"./useReduceAnimations.CqinnDhk.js";import{D as e}from"./DateCalendar.AZOKgJRM.js";const d=()=>a.jsx(r,{dateAdapter:t,children:a.jsx(e,{})});export{d as default};

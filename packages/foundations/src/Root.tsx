@@ -91,11 +91,6 @@ interface RootProps extends BaseProps {
 	portalContainer?: React.ReactElement;
 
 	/**
-	 * Allows wrapping every portal boundary.
-	 */
-	unstable_wrapPortal?: (portal: React.ReactNode) => React.ReactNode;
-
-	/**
 	 * The root node to which this `Root` component is attached.
 	 *
 	 * This needs to be set when the `Root` is rendered within shadow DOM or a popout window.
@@ -126,13 +121,12 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 		synchronizeColorScheme = true,
 		unstable_htmlSanitizer = identity,
 		portalContainer: portalContainerProp,
-		unstable_wrapPortal,
 		...rest
 	} = props;
 
 	return (
 		<RootInternal {...rest} ref={forwardedRef}>
-			<RootProvider wrapPortal={unstable_wrapPortal}>
+			<RootProvider>
 				<Styles />
 				<Fonts />
 				<InlineSpriteSheet />
@@ -160,18 +154,13 @@ DEV: Root.displayName = "Root";
 
 interface RootProviderProps {
 	children?: React.ReactNode;
-	wrapPortal?: RootProps["unstable_wrapPortal"];
 }
 
 const RootProvider = (props: RootProviderProps) => {
-	const { wrapPortal } = props;
-
 	const rootNode = useRootNode();
 
 	return (
-		<RootContext.Provider
-			value={{ versions, rootNode, loadStyles, wrapPortal }}
-		>
+		<RootContext.Provider value={{ versions, rootNode, loadStyles }}>
 			{props.children}
 		</RootContext.Provider>
 	);

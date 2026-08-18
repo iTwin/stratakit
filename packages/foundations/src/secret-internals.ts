@@ -3,4 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-export { PortalContext, PortalProvider, RootContext } from "./Root.internal.js";
+export {
+	PortalContext,
+	PortalProvider,
+	PortalWrapperContext,
+	RootContext,
+} from "./Root.internal.js";

@@ -6,7 +6,10 @@
 import * as React from "react";
 import { ThemeProvider, useColorScheme } from "@mui/material/styles";
 import { Root as StrataKitRoot } from "@stratakit/foundations";
-import { RootContext } from "@stratakit/foundations/secret-internals";
+import {
+	PortalWrapperContext,
+	RootContext,
+} from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
@@ -95,19 +98,20 @@ const RootInner = forwardRef<"div", RootInnerProps>((props, forwardedRef) => {
 		props;
 
 	return (
-		<StrataKitRoot
-			{...rest}
-			className={cx("🥝MuiRoot", props.className)}
-			portalContainer={<div className="🥝MuiRoot" />}
-			colorScheme={colorScheme}
-			unstable_accentColor={unstable_accentColor}
-			rootNode={rootNode}
-			synchronizeColorScheme
-			unstable_wrapPortal={wrapPortal}
-			ref={forwardedRef}
-		>
-			{children}
-		</StrataKitRoot>
+		<PortalWrapperContext.Provider value={wrapPortal}>
+			<StrataKitRoot
+				{...rest}
+				className={cx("🥝MuiRoot", props.className)}
+				portalContainer={<div className="🥝MuiRoot" />}
+				colorScheme={colorScheme}
+				unstable_accentColor={unstable_accentColor}
+				rootNode={rootNode}
+				synchronizeColorScheme
+				ref={forwardedRef}
+			>
+				{children}
+			</StrataKitRoot>
+		</PortalWrapperContext.Provider>
 	);
 });
 DEV: RootInner.displayName = "RootInner";

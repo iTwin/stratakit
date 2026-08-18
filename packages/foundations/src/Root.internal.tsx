@@ -63,39 +63,38 @@ export const PortalWrapperContext = React.createContext<
 // ----------------------------------------------------------------------------
 
 export const PortalContext = React.createContext<
-	(() => HTMLElement | null) | undefined
+	| {
+			container: HTMLElement | null;
+			getContainer?: () => HTMLElement | null;
+	  }
+	| undefined
 >(undefined);
 
 // ----------------------------------------------------------------------------
 
 interface PortalProviderProps {
 	children?: React.ReactNode;
+	container: HTMLElement | null;
 	/**
-	 * Needs to be a function as a workaround for https://github.com/mui/material-ui/issues/48882
-	 *
-	 * Function is lazily resolved by MUI when the portal mounts. Passing the
+	 * Function that is lazily resolved by MUI when the portal mounts. Passing the
 	 * element directly requires the theme to be recreated once the element becomes available, which
 	 * leaves a one-commit window where portals fall back to `<body>`.
 	 *
-	 * The Ariakit `PortalContext` value is resolved by calling the provided
-	 * function whenever its reference changes.
+	 * Needed to workaround https://github.com/mui/material-ui/issues/48882
 	 */
-	container: () => HTMLElement | null;
+	getContainer?: () => HTMLElement | null;
 }
 
 /**
  * Provides the element that will contain the portal.
  */
 export function PortalProvider(props: PortalProviderProps) {
-	const { children, container: getContainer } = props;
+	const { children, container, getContainer } = props;
 
 	const wrapPortal = React.useContext(PortalWrapperContext);
 
-	const container = React.useMemo(() => {
-		return getContainer();
-	}, [getContainer]);
 	return (
-		<PortalContext.Provider value={getContainer}>
+		<PortalContext.Provider value={{ container, getContainer }}>
 			<AkPortalContext.Provider value={container}>
 				{wrapPortal ? wrapPortal(children) : children}
 			</AkPortalContext.Provider>

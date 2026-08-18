@@ -13,6 +13,7 @@ import { GhostAligner } from "@stratakit/bricks/secret-internals";
 import { PortalProvider } from "@stratakit/foundations/secret-internals";
 import {
 	useCloseWatcher,
+	useMergedRefs,
 	usePopoverApi,
 	useStableCallback,
 } from "@stratakit/internal-utils/hooks";
@@ -79,9 +80,13 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 
 	const { backdrop = true, unmountOnHide = true, ...rest } = props;
 
+	const containerRef = React.useRef<HTMLDivElement | null>(null);
+	const ref = useMergedRefs(containerRef, forwardedRef);
+
+	const getContainer = React.useCallback(() => containerRef.current, []);
+
 	const store = AkDialog.useDialogStore();
 	const contentElement = useStoreState(store, "contentElement");
-	const container = React.useCallback(() => contentElement, [contentElement]);
 
 	const mounted = useStoreState(store, (state) => {
 		if (!unmountOnHide) return true;
@@ -98,11 +103,14 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 					{...rest}
 					backdrop={backdrop === true ? <DialogBackdrop /> : backdrop}
 					className={cx("🥝Dialog", props.className)}
-					ref={forwardedRef}
+					ref={ref}
 				>
 					{/* Avoids rendering a visually hidden dismiss button for screen readers. */}
 					<AkDialog.DialogDismiss hidden />
-					<PortalProvider container={container}>
+					<PortalProvider
+						container={contentElement}
+						getContainer={getContainer}
+					>
 						{props.children}
 					</PortalProvider>
 				</AkDialog.Dialog>

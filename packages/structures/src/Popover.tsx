@@ -91,12 +91,6 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 		});
 
 		const contentElement = useStoreState(store, "contentElement");
-		useStoreState(store, "contentElement");
-
-		const container = React.useCallback(
-			() => contentElement ?? null,
-			[contentElement],
-		);
 
 		const triggerId = useStoreState(
 			store,
@@ -115,7 +109,9 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 				className={cx("🥝Popover", props.className)}
 				ref={forwardedRef}
 			>
-				<PortalProvider container={container}>{children}</PortalProvider>
+				<PortalProvider container={contentElement ?? null}>
+					{children}
+				</PortalProvider>
 			</AkPopover.Popover>
 		);
 	},

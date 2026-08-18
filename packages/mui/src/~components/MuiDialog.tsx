@@ -20,15 +20,10 @@ const MuiDialogPaper = forwardRef<"div", BaseProps<"div">>(
 			null,
 		);
 
-		// Re-create the callback whenever the ref changes, while still
-		// returning the latest `containerRef.current`.
-		// biome-ignore lint/correctness/useExhaustiveDependencies: intentional for https://github.com/mui/material-ui/issues/48882
-		const getContainer = React.useCallback(
-			() => containerRef.current,
-			[container],
-		);
+		const getContainer = React.useCallback(() => containerRef.current, []);
+
 		return (
-			<PortalProvider container={getContainer}>
+			<PortalProvider container={container} getContainer={getContainer}>
 				<Role {...props} ref={forwardedRef}>
 					{props.children}
 					{/* Render in a container to avoid `aria-hidden` focus warning. */}

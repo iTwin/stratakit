@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { Stack } from "@mui/material";
+import { Stack, type StackProps } from "@mui/material";
 
 import type React from "react";
 
@@ -56,12 +56,27 @@ export function propCombinations<T extends CombinationInput>(options: T) {
 type PropCombinationInput<P> = { [K in keyof P]?: ReadonlyArray<P[K]> };
 type VaryPropsProps<P extends object> = {
 	component: React.ComponentType<P>;
+	/** Props values that are applied to every component instance before any of the prop variations */
 	staticProps?: Partial<P>;
-	layout?: React.ReactElement<{ children?: React.ReactNode }>;
+	/**
+	 * The array of prop variations or an object map that defines how to generate all the variations
+	 *
+	 * @example ```tsx
+	 * [{color:"primary", value:1}, {color:"primary", value:2}, {color:"secondary", value:1}]
+	 * ```
+	 *
+	 * @example ```tsx
+	 * {color:["primary", "secondary"], value:[1,2]}
+	 * ```
+	 */
 	variations:
 		| PropCombinationInput<NoInfer<P>>
 		| ReadonlyArray<Partial<NoInfer<P>>>;
 };
+
+/**
+ * Creates an array of components by varying prop values.
+ */
 export function VaryProps<P extends object>({
 	component: Component,
 	staticProps,
@@ -75,4 +90,23 @@ export function VaryProps<P extends object>({
 	));
 
 	return children;
+}
+
+/**
+ * Creates an horizontal stack of components by varying prop values.
+ */
+export function VaryPropsStack<P extends object>({
+	spacing = 1,
+	...rest
+}: VaryPropsProps<P> & Pick<StackProps, "spacing">) {
+	return (
+		<Stack
+			direction="row"
+			sx={{ flexWrap: "wrap" }}
+			spacing={spacing}
+			useFlexGap
+		>
+			<VaryProps {...rest} />
+		</Stack>
+	);
 }

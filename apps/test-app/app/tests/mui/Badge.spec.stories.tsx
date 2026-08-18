@@ -9,7 +9,7 @@ import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import { Icon } from "@stratakit/mui";
 import { ScreenShotWrapper } from "~/ScreenShotWrapper.tsx";
-import { VaryProps, varyProp } from "~/VaryProps.tsx";
+import { VaryPropsStack, varyProp } from "~/VaryProps.tsx";
 import ExampleColors from "../.././../../../examples/mui/Badge.colors.tsx";
 import ExampleSizes from "../.././../../../examples/mui/Badge.sizes.tsx";
 import ExampleTypes from "../.././../../../examples/mui/Badge.type.tsx";
@@ -70,20 +70,21 @@ export function Visual() {
 				<ExampleSizes />
 				<ExampleColors />
 				<ExampleTypes />
-				<Stack direction="row" spacing={2}>
-					<VaryProps
-						component={IconButtonWithBadge}
-						variations={varyProp({
-							prop: "size",
-							values: ["large", "regular"] as const,
-							withExisting: propVariants,
-							order: "new-existing",
-						})}
-					/>
-				</Stack>
-				<Stack direction="row" spacing={2}>
-					<VaryProps component={ButtonWithBadge} variations={propVariants} />
-				</Stack>
+				<VaryPropsStack
+					spacing={2}
+					component={IconButtonWithBadge}
+					variations={varyProp({
+						prop: "size",
+						values: ["large", "regular"] as const,
+						withExisting: propVariants,
+						order: "new-existing",
+					})}
+				/>
+				<VaryPropsStack
+					spacing={2}
+					component={ButtonWithBadge}
+					variations={propVariants}
+				/>
 			</Stack>
 		</ScreenShotWrapper>
 	);

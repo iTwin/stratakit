@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.Bz4_fjQc.js";import{T as t}from"./TextField.D7LbG3cc.js";const o=()=>e.jsx(t,{label:"Name"});export{o as default};

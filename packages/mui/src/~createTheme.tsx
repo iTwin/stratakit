@@ -351,17 +351,7 @@ function createTheme(args: CreateThemeArgs) {
 						rightArrowIcon: ChevronRightIcon,
 						switchViewIcon: CaretsUpDownIcon,
 					},
-					slotProps: {
-						day: {
-							nativeButton: true,
-						},
-						previousIconButton: {
-							title: undefined,
-						},
-						nextIconButton: {
-							title: undefined,
-						},
-					},
+					slotProps: { day: { nativeButton: true } },
 					dayOfWeekFormatter: (date: Date) =>
 						date
 							.toLocaleDateString(undefined, { weekday: "short" })

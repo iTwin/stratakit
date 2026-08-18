@@ -75,7 +75,7 @@ Use the `type` prop to adjust the visual prominence of an [`inline`](#inline) **
 
 - Use **Badge** for indicating state or status.
 - Include a concise and descriptive label.
-- Use an `icon` to communicate a status [`color`](#color) in a color-independent fashion.
+- Use an `icon` to communicate a status [`color`](#colors) in a color-independent fashion.
 
 ## 🚫 Don't
 

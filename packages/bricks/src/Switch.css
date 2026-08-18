@@ -10,10 +10,14 @@
 	--✨checked-translateX: 75%;
 	--✨pressed-scaleX: 1.75;
 
-	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-neutral-base) inset;
+	--✨thumb-border-color: light-dark(
+		var(--stratakit-color-border-neutral-base),
+		--primitive("color.white.8")
+	);
 
 	--✨thumb-shadow--default:
-		var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
+		var(--stratakit-shadow-control-button-base-inset),
+		0px 0px 0px 1px var(--✨thumb-border-color) inset,
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨thumb-shadow--checked:
 		var(--stratakit-shadow-control-button-base-inset),

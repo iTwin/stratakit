@@ -10,7 +10,7 @@
 	--✨checked-translateX: 75%;
 	--✨pressed-scaleX: 1.75;
 
-	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-neutral-base) inset;
 
 	--✨thumb-shadow--default:
 		var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),

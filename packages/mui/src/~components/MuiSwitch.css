@@ -43,7 +43,7 @@
 	--✨radius: 50%;
 	--✨shadow--default:
 		var(--stratakit-shadow-control-button-base-inset),
-		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
+		0px 0px 0px 1px var(--stratakit-color-border-neutral-base) inset,
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--checked:
 		var(--stratakit-shadow-control-button-base-inset),

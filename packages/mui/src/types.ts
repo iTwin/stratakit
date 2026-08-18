@@ -598,6 +598,8 @@ declare module "@mui/material/FormControl" {
 		/** @deprecated StrataKit does not support this prop. */
 		hiddenLabel?: FormControlProps["hiddenLabel"];
 		/** @deprecated StrataKit does not support this prop. */
+		margin?: FormControlProps["margin"];
+		/** @deprecated StrataKit does not support this prop. */
 		variant?: FormControlProps["variant"];
 	}
 }
@@ -609,6 +611,10 @@ interface FormControlDeprecatedProps {
 	focused?: FormControlProps["focused"];
 	/** @deprecated StrataKit does not support this prop. */
 	hiddenLabel?: FormControlProps["hiddenLabel"];
+	/**
+	 * FormControlDeprecatedProos
+	 *  @deprecated StrataKit does not support this prop. */
+	margin?: FormControlProps["margin"];
 	/** @deprecated StrataKit does not support this prop. */
 	variant?: FormControlProps["variant"];
 }
@@ -619,6 +625,8 @@ declare module "@mui/material/FormHelperText" {
 		filled: false;
 	}
 	interface FormHelperTextOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		margin?: FormHelperTextOwnProps["margin"];
 		/** @deprecated StrataKit does not support this prop. */
 		variant?: FormHelperTextOwnProps["variant"];
 	}
@@ -738,7 +746,8 @@ declare module "@mui/material/InputBase" {
 	interface InputBaseProps {
 		/** @deprecated StrataKit does not support this prop. */
 		color?: InputBaseProps["color"];
-
+		/** @deprecated StrataKit does not support this prop. */
+		margin?: InputProps["margin"];
 		/** @deprecated StrataKit does not support this prop. */
 		disableInjectingGlobalStyles?: InputBaseProps["disableInjectingGlobalStyles"];
 	}
@@ -747,13 +756,16 @@ declare module "@mui/material/InputBase" {
 interface InputBaseDeprecatedProps {
 	/** @deprecated StrataKit does not support this prop. */
 	color?: InputBaseProps["color"];
-
+	/** @deprecated StrataKit does not support this prop. */
+	margin?: InputBaseProps["margin"];
 	/** @deprecated StrataKit does not support this prop. */
 	disableInjectingGlobalStyles?: InputBaseProps["disableInjectingGlobalStyles"];
 }
 
 declare module "@mui/material/InputLabel" {
 	interface InputLabelOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		margin?: InputLabelOwnProps["margin"];
 		/** @deprecated StrataKit does not support this prop. */
 		shrink?: InputLabelOwnProps["shrink"];
 		/** @deprecated StrataKit does not support this prop. */

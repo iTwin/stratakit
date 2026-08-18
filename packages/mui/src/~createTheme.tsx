@@ -347,7 +347,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiDatePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: CalendarIcon,
+						openPickerIcon: withExcludedProps(CalendarIcon, ["ownerState"]),
 					},
 					slotProps: {
 						openPickerButton: {
@@ -622,7 +622,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: ClockIcon,
+						openPickerIcon: withExcludedProps(ClockIcon, ["ownerState"]),
 					},
 					slotProps: {
 						openPickerButton: {
@@ -717,6 +717,22 @@ function withRenderProp(
 ) {
 	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
 		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
+	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** HOC that "excludes" certain props from being passed to the specified Component. */
+function withExcludedProps<Element, Props extends object>(
+	Component: React.ComponentType<Props & React.RefAttributes<Element>>,
+	excludedProps: readonly string[],
+) {
+	return React.forwardRef<Element, Props>((props, forwardedRef) => {
+		const filteredProps = Object.fromEntries(
+			Object.entries(props).filter(([key]) => !excludedProps.includes(key)),
+		) as Props;
+
+		return <Component {...filteredProps} ref={forwardedRef} />;
 	});
 }
 

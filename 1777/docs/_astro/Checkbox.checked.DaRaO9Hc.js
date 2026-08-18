@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.Bs9iix2s.js";import{F as o}from"./FormControlLabel.BcbrUEXF.js";import{C as r}from"./Checkbox.UUl1vnmM.js";const s=()=>e.jsx(o,{control:e.jsx(r,{defaultChecked:!0}),label:"Default checked"});export{s as default};

@@ -20,6 +20,7 @@ import type {
 } from "@mui/material/OverridableComponent";
 import type { RadioProps } from "@mui/material/Radio";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
+import type { SwitchProps } from "@mui/material/Switch";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
 import type { TabsProps } from "@mui/material/Tabs";
@@ -438,6 +439,11 @@ declare module "@mui/material/Icon" {
 	export default function Icon(props: IconProps): React.JSX.Element | null;
 }
 
+interface IconButtonDeprecatedProps extends ButtonBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	disableFocusRipple?: IconButtonProps["disableFocusRipple"];
+}
+
 declare module "@mui/material/IconButton" {
 	interface IconButtonPropsColorOverrides {
 		default: false;
@@ -583,7 +589,7 @@ declare module "@mui/material/SvgIcon" {
 }
 
 declare module "@mui/material/Switch" {
-	interface SwitchProps {
+	interface SwitchProps extends SwitchDeprecatedProps {
 		/** @deprecated StrataKit does not support this prop. */
 		checkedIcon?: SwitchProps["checkedIcon"];
 
@@ -591,13 +597,7 @@ declare module "@mui/material/Switch" {
 		color?: SwitchProps["color"];
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableRipple?: boolean;
-
-		/** @deprecated StrataKit does not support this prop. */
-		disableFocusRipple?: boolean;
-
-		/** @deprecated StrataKit does not support this prop. */
-		disableTouchRipple?: boolean;
+		disableFocusRipple?: IconButtonProps["disableFocusRipple"];
 
 		/** @deprecated StrataKit does not support this prop. */
 		icon?: SwitchProps["icon"];
@@ -611,6 +611,25 @@ declare module "@mui/material/Switch" {
 		warning: false;
 		error: false;
 	}
+
+	export default function Switch(
+		props: Omit<SwitchProps, keyof SwitchDeprecatedProps> &
+			SwitchDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface SwitchDeprecatedProps extends IconButtonDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	checkedIcon?: SwitchProps["checkedIcon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	color?: SwitchProps["color"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableFocusRipple?: IconButtonProps["disableFocusRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	icon?: SwitchProps["icon"];
 }
 
 declare module "@mui/material/StepButton" {

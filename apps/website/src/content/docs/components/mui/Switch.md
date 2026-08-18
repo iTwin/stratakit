@@ -22,7 +22,8 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 ## StrataKit MUI modifications
 
 - The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled).
-- The `checkedIcon`, `disableRipple`, and `icon` props are not supported.
+- The `action`, `checkedIcon`, `icon`, and `LinkComponent` props are not supported.
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 

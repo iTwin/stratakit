@@ -1,1 +1,0 @@
-import{j as i}from"./_utils.Dbokgua2.js";import{D as r}from"./Divider.B94Dc-gN.js";const o=()=>i.jsx("div",{style:{blockSize:"calc(100dvh - 16px * 2)"},children:i.jsx(r,{orientation:"vertical"})});export{o as default};

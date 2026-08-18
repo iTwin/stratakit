@@ -1,1 +1,0 @@
-import{aO as s,bj as n,aP as u,aQ as i,cn as c,bf as l,b$ as r,aA as D}from"./~utils-DSRA-NlI.js";import{u as f}from"./disclosure-BIFDfXTd.js";const g="button",m=i(function({store:a,...e}){const o=c();return a=a||o,l(a,!1),e={"aria-haspopup":r(D(a,"contentElement"),"dialog"),...e},e=f({store:a,...e}),e}),d=s(function(a){const e=m(n(a));return u(g,e)});export{d as D,m as u};

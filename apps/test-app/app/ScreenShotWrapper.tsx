@@ -14,6 +14,9 @@ interface ScreenShotWrapperProps extends React.PropsWithChildren {
 	addSpacing?: boolean;
 }
 
+/**
+ * Shrink wraps children in a div with a know `data-testid`.
+ */
 export function ScreenShotWrapper({
 	children,
 	addSpacing,

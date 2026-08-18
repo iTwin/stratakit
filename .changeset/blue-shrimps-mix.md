@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-`IconButton` now treats `title` and `label` as equivalent props. Both set the accessible name and tooltip. Use either prop as they're interchangeable.
+`IconButton` now automatically maps the `title` prop to `label` for better compatibility with external components that use the native `title` attribute. The recommended approach is still to use the `label` prop.

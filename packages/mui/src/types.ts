@@ -46,6 +46,7 @@ import type { TabScrollButtonProps } from "@mui/material/TabScrollButton";
 import type { TabsProps } from "@mui/material/Tabs";
 import type { TextFieldProps } from "@mui/material/TextField";
 import type { ToggleButtonProps } from "@mui/material/ToggleButton";
+import type { ToolbarProps } from "@mui/material/Toolbar";
 import type { TooltipProps } from "@mui/material/Tooltip";
 import type {
 	TypographyProps,
@@ -1203,6 +1204,14 @@ declare module "@mui/material/ToggleButtonGroup" {
 		/** @deprecated `color` is unnecessary. Only `"standard"` is supported and already the default. */
 		color?: ToggleButtonGroupProps["color"];
 	}
+}
+
+declare module "@mui/material/Toolbar" {
+	/** @deprecated StrataKit does not support this component. */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function Toolbar(
+		props: ToolbarProps,
+	): React.JSX.Element | null;
 }
 
 declare module "@mui/material/Tooltip" {

@@ -13,7 +13,7 @@ links:
 - Added [`role="dialog"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) to the [`paper`](https://mui.com/material-ui/api/popover/#Popover-css-MuiPopover-paper) slot.
 - Added fallback mechanism for automatically labelling the `paper` slot using the trigger element (`anchorEl`).
 - `disableScrollLock` is used to prevent scroll locking when the popover is open.
-- The default [`container`](https://mui.com/material-ui/api/popover/#popover-prop-container) is now the [root portal container](/components/root/#portal-container).
+- The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [`portalContainer`](https://stratakit.bentley.com/docs/components/root/#portal-container).
 
 ## ✅ Do
 

@@ -11,7 +11,6 @@ links:
 ## StrataKit MUI modifications
 
 - `dayOfWeekFormatter` defaults to a locale-aware 2-character weekday label.
-- `showDaysOutsideCurrentMonth` defaults to `true`.
 
 ## Examples
 

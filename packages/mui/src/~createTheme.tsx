@@ -358,7 +358,6 @@ function createTheme(args: CreateThemeArgs) {
 						date
 							.toLocaleDateString(undefined, { weekday: "short" })
 							.slice(0, 2),
-					showDaysOutsideCurrentMonth: true,
 				},
 			},
 			MuiDatePicker: {

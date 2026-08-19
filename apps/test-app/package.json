@@ -9,6 +9,7 @@
 		"preview": "wireit",
 		"preview:raw": "vite preview",
 		"test": "wireit",
+		"test-report": "pnpm exec playwright show-report test-results/report",
 		"typecheck": "wireit"
 	},
 	"imports": {

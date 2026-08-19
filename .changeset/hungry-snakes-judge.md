@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Deprecated `checkedIcon`, `color`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `icon`, `indeterminateIcon`, and `size` props of `Checkbox`.
+Deprecated `action`, `centerRipple`, `checkedIcon`, `color`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `icon`, `indeterminateIcon`, `LinkComponent`, `size`, `TouchRippleProps`, and `touchRippleRef` props of `Checkbox`.

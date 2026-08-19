@@ -11,6 +11,7 @@ import type { RoleProps } from "@ariakit/react/role";
 import type { AlertProps } from "@mui/material/Alert";
 import type { BadgeProps } from "@mui/material/Badge";
 import type { ButtonBaseProps } from "@mui/material/ButtonBase";
+import type { CheckboxProps } from "@mui/material/Checkbox";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
 import type {
@@ -270,7 +271,7 @@ declare module "@mui/material/CardActionArea" {
 }
 
 declare module "@mui/material/Checkbox" {
-	interface CheckboxProps {
+	interface CheckboxProps extends CheckboxDeprecatedProps {
 		/** @deprecated StrataKit does not support this prop. */
 		checkedIcon?: CheckboxProps["checkedIcon"];
 
@@ -309,6 +310,37 @@ declare module "@mui/material/Checkbox" {
 		small: false;
 		large: false;
 	}
+
+	export default function Checkbox(
+		props: Omit<CheckboxProps, keyof CheckboxDeprecatedProps> &
+			CheckboxDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface CheckboxDeprecatedProps extends ButtonBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	checkedIcon?: CheckboxProps["checkedIcon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	color?: CheckboxProps["color"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableRipple?: CheckboxProps["disableRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableFocusRipple?: boolean;
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableTouchRipple?: boolean;
+
+	/** @deprecated StrataKit does not support this prop. */
+	icon?: CheckboxProps["icon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	indeterminateIcon?: CheckboxProps["indeterminateIcon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	size?: CheckboxProps["size"];
 }
 
 declare module "@mui/material/Chip" {

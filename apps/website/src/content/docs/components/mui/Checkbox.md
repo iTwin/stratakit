@@ -21,8 +21,9 @@ Make sure the **Checkbox** is suitable for your use case. There may be other, mo
 
 ## StrataKit MUI modifications
 
-- The `checkedIcon`, `disableRipple`, `icon`, `indeterminateIcon`, and `size` props are not supported.
+- The `action`, `checkedIcon`, `icon`, `indeterminateIcon`, `LinkComponent`, and `size` props are not supported.
 - The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled, error).
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - The checkbox implementation and styling differ from the default `svg` approach and use custom pseudo-elements.
 - The interactive hit area extends beyond the visual bounds of the checkbox. The additional hit area does not consume layout space, so be mindful when placing the checkbox next to adjacent elements or container boundaries.
 - Includes full `forced-colors` support.

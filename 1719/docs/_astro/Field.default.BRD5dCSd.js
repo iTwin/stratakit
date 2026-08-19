@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.CAhOMt_U.js";import{F as r,b as o,a as s}from"./Field.BaCtaFus.js";import{T as t}from"./TextBox.lexrWBur.js";const d=()=>e.jsxs(r,{children:[e.jsx(o,{children:"Name"}),e.jsx(s,{render:e.jsx(t,{})})]});export{d as default};

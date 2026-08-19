@@ -18,7 +18,7 @@ interface MuiIconButtonProps
 
 const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 	(props, forwardedRef) => {
-		const { label, labelPlacement, ...rest } = props;
+		const { title, label = title, labelPlacement, ...rest } = props;
 
 		if (label) {
 			return (

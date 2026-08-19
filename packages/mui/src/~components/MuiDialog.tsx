@@ -23,13 +23,14 @@ const MuiDialogPaper = forwardRef<"div", BaseProps<"div">>(
 		const getContainer = React.useCallback(() => containerRef.current, []);
 
 		return (
-			<PortalProvider container={container} getContainer={getContainer}>
-				<Role {...props} ref={forwardedRef}>
+			<Role {...props} ref={forwardedRef}>
+				{/* Render before portalled elements to attach the ref before `getContainer` is called. */}
+				{/* Render in a container to avoid `aria-hidden` focus warning. */}
+				<div ref={useMergedRefs(containerRef, setContainer)} />
+				<PortalProvider container={container} getContainer={getContainer}>
 					{props.children}
-					{/* Render in a container to avoid `aria-hidden` focus warning. */}
-					<div ref={useMergedRefs(containerRef, setContainer)} />
-				</Role>
-			</PortalProvider>
+				</PortalProvider>
+			</Role>
 		);
 	},
 );

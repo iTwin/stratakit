@@ -45,6 +45,7 @@
 		--variant-containedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-outlinedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-textColor: var(--stratakit-color-text-neutral-primary);
+		--variant-outlinedBorder: var(--stratakit-color-border-neutral-base);
 		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-base);
 
 		@media (any-hover: hover) {
@@ -60,8 +61,15 @@
 	}
 
 	&:where(.MuiButton-colorPrimary) {
-		--variant-outlinedColor: var(--stratakit-color-text-accent-strong);
 		--variant-textColor: var(--stratakit-color-text-accent-strong);
+		--variant-outlinedColor: var(--stratakit-color-text-accent-strong);
+		--variant-outlinedBorder: var(--stratakit-color-border-accent-base);
+	}
+
+	&:where(.MuiButton-colorError) {
+		--variant-textColor: var(--stratakit-color-text-critical-base);
+		--variant-outlinedColor: var(--stratakit-color-text-critical-base);
+		--variant-outlinedBorder: var(--stratakit-color-border-critical-base);
 	}
 
 	&:where(.MuiButton-contained) {
@@ -82,18 +90,12 @@
 	}
 
 	&:where(.MuiButton-outlined, .MuiButton-text) {
-		--variant-outlinedBorder: var(--stratakit-color-border-neutral-base);
-
 		&:where(.MuiButton-colorPrimary) {
 			--_MuiButton-icon-color: var(--stratakit-color-icon-accent-strong);
-			--variant-outlinedBorder: var(--stratakit-color-border-accent-base);
 		}
 
 		&:where(.MuiButton-colorError) {
 			--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
-			--variant-textColor: var(--stratakit-color-text-critical-base);
-			--variant-outlinedColor: var(--stratakit-color-text-critical-base);
-			--variant-outlinedBorder: var(--stratakit-color-border-critical-base);
 		}
 	}
 

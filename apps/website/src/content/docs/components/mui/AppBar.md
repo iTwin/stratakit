@@ -7,3 +7,7 @@ links:
 ---
 
 ::example{src="mui/AppBar.default" min-width="450px"}
+
+## StrataKit MUI modifications
+
+- Use a styled `div` instead of MUI's `Toolbar` to avoid confusion with the [`Toolbar` from `@stratakit/structures`](https://stratakit.bentley.com/docs/components/toolbar/).

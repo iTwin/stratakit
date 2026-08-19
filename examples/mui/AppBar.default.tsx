@@ -6,16 +6,16 @@
 import AppBar from "@mui/material/AppBar";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
-import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
 
 import svgMenu from "@stratakit/icons/menu.svg";
+import styles from "./AppBar.default.module.css";
 
 export default () => {
 	return (
 		<AppBar position="static">
-			<Toolbar>
+			<div className={styles.flexContainer}>
 				<IconButton size="large" edge="start" aria-label="menu">
 					<Icon href={`${svgMenu}#icon-large`} size="large" />
 				</IconButton>
@@ -23,7 +23,7 @@ export default () => {
 					News
 				</Typography>
 				<Button variant="text">Login</Button>
-			</Toolbar>
+			</div>
 		</AppBar>
 	);
 };

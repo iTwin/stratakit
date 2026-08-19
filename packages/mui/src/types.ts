@@ -513,15 +513,6 @@ declare module "@mui/material/Radio" {
 		color?: RadioProps["color"];
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableRipple?: boolean;
-
-		/** @deprecated StrataKit does not support this prop. */
-		disableFocusRipple?: boolean;
-
-		/** @deprecated StrataKit does not support this prop. */
-		disableTouchRipple?: boolean;
-
-		/** @deprecated StrataKit does not support this prop. */
 		icon?: RadioProps["icon"];
 
 		/** @deprecated StrataKit does not support this prop. */
@@ -554,13 +545,7 @@ interface RadioDeprecatedProps extends ButtonBaseDeprecatedProps {
 	color?: RadioProps["color"];
 
 	/** @deprecated StrataKit does not support this prop. */
-	disableRipple?: boolean;
-
-	/** @deprecated StrataKit does not support this prop. */
-	disableFocusRipple?: boolean;
-
-	/** @deprecated StrataKit does not support this prop. */
-	disableTouchRipple?: boolean;
+	disableFocusRipple?: RadioProps["disableFocusRipple"];
 
 	/** @deprecated StrataKit does not support this prop. */
 	icon?: RadioProps["icon"];

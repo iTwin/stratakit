@@ -145,11 +145,12 @@ Here's what needs to happen, in order, for each change of route:
 
 1. The user must click a link to a screen within the application. This can be a standard `<a>` element, with an `href`, or any React component that renders as such.
 2. If the new route's data takes time to load:
-    - Replace the previous screen's main content with a [**Progress**](/components/progress) or [**Skeleton**](/components/skeleton).
+    - Replace the previous screen's main content with a [**LinearProgress**](/components/linearprogress), [**CircularProgress**](/components/circularprogress), or [**Skeleton**](/components/skeleton).
     - Focus the (labelled) `role="progressbar"` element.
 3. When the new content is available:
     - Update the address/URL using `pushState` (your [router library](https://reactrouter.com/start/framework/routing) may do this for you).
-    - Change the `<title>` value to describe the new screen. Use the pattern `<title>{screen name} - {app name}</title>`.
+    - Change the `<title>` value to describe the new screen. Use the pattern `<title>{screen name} - {app name}</title>`. 
+    - Supplement this `title` change by populating an [ARIA live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) with the `title` text. This will announce the title as it would be in a standard page load.
     - Render the new screen's content.
     - Focus the main heading introducing the content using the `focus()` method. This should be an `<h1>` and will need `tabindex={-1}`.
     - Remove `aria-current="true"` from links that no longer correspond to the new screen.

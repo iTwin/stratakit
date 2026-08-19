@@ -362,6 +362,7 @@
 
 	:where(.MuiNativeSelect-select) option {
 		border-color: Canvas;
+		--_checkmark-color: CanvasText;
 
 		&:checked {
 			forced-color-adjust: none; /* removing the backplate */
@@ -370,12 +371,9 @@
 			color: SelectedItemText;
 		}
 
-		&::checkmark {
-			background-color: CanvasText;
-		}
-
 		&:disabled {
 			color: GrayText;
+			--_checkmark-color: GrayText;
 		}
 	}
 }

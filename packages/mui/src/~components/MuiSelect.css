@@ -53,6 +53,7 @@
 
 	:where(.MuiNativeSelect-select) option {
 		--✨svg-checked: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M11.606 4.191a.5.5 0 0 1 .787.617l-5.5 7a.502.502 0 0 1-.777.012l-2.5-3a.5.5 0 0 1 .768-.64l2.104 2.525 5.118-6.514Z'/%3E%3C/svg%3E");
+		--_checkmark-color: var(--stratakit-color-icon-accent-strong);
 		min-height: 2rem;
 		padding-inline: var(--stratakit-space-x2);
 		background-color: transparent;
@@ -66,7 +67,7 @@
 		&::checkmark {
 			content: "";
 			grid-column: checkmark-before;
-			background-color: var(--stratakit-color-icon-accent-strong);
+			background-color: var(--_checkmark-color);
 			width: 1rem;
 			height: 1rem;
 			mask-image: var(--✨svg-checked);
@@ -96,6 +97,7 @@
 			background: transparent;
 			color: var(--stratakit-color-text-neutral-disabled);
 			cursor: not-allowed;
+			--_checkmark-color: var(--stratakit-color-icon-neutral-disabled);
 		}
 	}
 }

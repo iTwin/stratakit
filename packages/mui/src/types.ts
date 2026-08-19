@@ -23,6 +23,7 @@ import type { FormLabelProps } from "@mui/material/FormLabel";
 import type {} from "@mui/material/Grow";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
+import type {} from "@mui/material/InitColorSchemeScript";
 import type { InputProps } from "@mui/material/Input";
 import type { InputBaseProps } from "@mui/material/InputBase";
 import type { ListSubheaderOwnProps as MuiListSubheaderOwnProps } from "@mui/material/ListSubheader";
@@ -526,6 +527,13 @@ declare module "@mui/material/CssBaseline" {
 	/** @deprecated StrataKit does not support this component.  Use `Root` from `@stratakit/mui` instead */
 	export default function CssBaseline(
 		props: CssBaselineProps,
+	): React.JSX.Element;
+}
+
+declare module "@mui/material/InitColorSchemeScript" {
+	/** @deprecated StrataKit does not support this component. */
+	export default function InitColorSchemeScript(
+		props: Record<string, unknown>,
 	): React.JSX.Element;
 }
 

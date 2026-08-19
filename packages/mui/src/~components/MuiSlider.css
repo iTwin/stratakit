@@ -120,7 +120,7 @@
 	block-size: var(--_MuiSlider-thumb-size);
 	inline-size: var(--_MuiSlider-thumb-size);
 	background-color: var(--stratakit-color-bg-neutral-inverse);
-	border: 1px solid var(--stratakit-color-border-shadow-base);
+	border: 1px solid var(--stratakit-color-border-neutral-base);
 	box-shadow: none;
 	cursor: grab;
 

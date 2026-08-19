@@ -50,7 +50,7 @@
 		var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
 		var(--stratakit-shadow-control-button-base-drop);
 
-	--✨border--solid-default: var(--stratakit-color-border-shadow-base);
+	--✨border--solid-default: var(--stratakit-color-border-neutral-base);
 	--✨border--solid-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-default) 100%,

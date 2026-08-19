@@ -171,3 +171,9 @@
 		--_MuiPickerDay-today-dot-background-color: var(--✨dot--disabled);
 	}
 }
+
+.MuiPickersCalendarHeader-switchViewIcon {
+	@media (prefers-reduced-motion: no-preference) {
+		transition: transform 150ms ease-in-out;
+	}
+}

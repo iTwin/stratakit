@@ -91,7 +91,6 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 		});
 
 		const contentElement = useStoreState(store, "contentElement");
-
 		const triggerId = useStoreState(
 			store,
 			(state) => state?.disclosureElement?.id,

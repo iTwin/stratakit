@@ -152,11 +152,7 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 });
 DEV: Root.displayName = "Root";
 
-interface RootProviderProps {
-	children?: React.ReactNode;
-}
-
-const RootProvider = (props: RootProviderProps) => {
+const RootProvider = (props: React.PropsWithChildren) => {
 	const rootNode = useRootNode();
 
 	return (
@@ -261,12 +257,11 @@ function SynchronizeAccentColor({
 
 interface RootPortalProviderProps
 	extends Pick<RootProps, "colorScheme" | "unstable_accentColor" | "density"> {
+	children?: React.ReactNode;
 	portalContainerProp?: RootProps["portalContainer"];
 }
 
-function RootPortalProvider(
-	props: React.PropsWithChildren<RootPortalProviderProps>,
-) {
+function RootPortalProvider(props: RootPortalProviderProps) {
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const [container, setContainer] = React.useState<HTMLElement | null>(null);
 

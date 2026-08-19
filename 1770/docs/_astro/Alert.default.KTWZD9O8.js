@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.C6VclL-A.js";import{A as i}from"./Alert.DalXtyVg.js";import{A as r}from"./AlertTitle.mXuMImGT.js";const s=()=>t.jsxs(i,{severity:"info",children:[t.jsx(r,{children:"Connect billing required"}),"An organization administrator must connect a billing account if you want to continue using this feature."]});export{s as default};

@@ -19,6 +19,7 @@ import type {
 	DefaultComponentProps,
 	OverridableTypeMap,
 } from "@mui/material/OverridableComponent";
+import type { RadioProps } from "@mui/material/Radio";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
@@ -504,7 +505,7 @@ declare module "@mui/material/PaginationItem" {
 }
 
 declare module "@mui/material/Radio" {
-	interface RadioProps {
+	interface RadioProps extends RadioDeprecatedProps {
 		/** @deprecated StrataKit does not support this prop. */
 		checkedIcon?: RadioProps["checkedIcon"];
 
@@ -539,6 +540,33 @@ declare module "@mui/material/Radio" {
 	interface RadioPropsSizeOverrides {
 		small: false;
 	}
+
+	export default function Radio(
+		props: Omit<RadioProps, keyof RadioDeprecatedProps> & RadioDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface RadioDeprecatedProps extends ButtonBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	checkedIcon?: RadioProps["checkedIcon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	color?: RadioProps["color"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableRipple?: boolean;
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableFocusRipple?: boolean;
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableTouchRipple?: boolean;
+
+	/** @deprecated StrataKit does not support this prop. */
+	icon?: RadioProps["icon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	size?: RadioProps["size"];
 }
 
 declare module "@mui/material/Slider" {

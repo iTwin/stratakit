@@ -636,9 +636,7 @@ interface FormControlDeprecatedProps {
 	focused?: FormControlProps["focused"];
 	/** @deprecated StrataKit does not support this prop. */
 	hiddenLabel?: FormControlProps["hiddenLabel"];
-	/**
-	 * FormControlDeprecatedProos
-	 *  @deprecated StrataKit does not support this prop. */
+	/** @deprecated StrataKit does not support this prop. */
 	margin?: FormControlProps["margin"];
 	/** @deprecated StrataKit does not support this prop. */
 	variant?: FormControlProps["variant"];

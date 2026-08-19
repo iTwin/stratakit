@@ -104,6 +104,8 @@ function createTheme(args: CreateThemeArgs) {
 				(shade) => [shade, `var(--stratakit-mui-palette-grey-${shade})`],
 			),
 		),
+
+		tonalOffset: 0.05,
 	} satisfies ColorSystemOptions["palette"];
 
 	return createMuiTheme({
@@ -406,7 +408,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiImageListItem: { defaultProps: { component: Role.li } },
 			MuiInputBase: {
 				defaultProps: {
-					className: "🥝MuiInput",
+					classes: { root: "🥝MuiInput" },
 				},
 			},
 			MuiInputAdornment: { defaultProps: { component: Role.div } },

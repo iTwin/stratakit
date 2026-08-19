@@ -13,7 +13,7 @@
 	--✨bg--error: var(--stratakit-color-bg-neutral-base);
 	--✨bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨border--default: var(--stratakit-color-border-shadow-base);
+	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--checked: var(--stratakit-color-border-shadow-strong);
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);

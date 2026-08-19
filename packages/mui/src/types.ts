@@ -777,7 +777,7 @@ declare module "@mui/material/InputBase" {
 		/** @deprecated StrataKit does not support this prop. */
 		color?: InputBaseProps["color"];
 		/** @deprecated StrataKit does not support this prop. */
-		margin?: InputProps["margin"];
+		margin?: InputBaseProps["margin"];
 		/** @deprecated StrataKit does not support this prop. */
 		disableInjectingGlobalStyles?: InputBaseProps["disableInjectingGlobalStyles"];
 	}

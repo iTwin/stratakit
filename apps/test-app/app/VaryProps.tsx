@@ -96,12 +96,13 @@ export function VaryProps<P extends object>({
  * Creates an horizontal stack of components by varying prop values.
  */
 export function VaryPropsStack<P extends object>({
+	direction = "row",
 	spacing = 1,
 	...rest
-}: VaryPropsProps<P> & Pick<StackProps, "spacing">) {
+}: VaryPropsProps<P> & Pick<StackProps, "spacing" | "direction">) {
 	return (
 		<Stack
-			direction="row"
+			direction={direction}
 			sx={{ flexWrap: "wrap" }}
 			spacing={spacing}
 			useFlexGap

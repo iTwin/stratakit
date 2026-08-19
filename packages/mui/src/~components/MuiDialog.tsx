@@ -5,8 +5,11 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import { PortalProvider } from "@stratakit/foundations/secret-internals";
-import { useMergedRefs } from "@stratakit/internal-utils/hooks";
+import {
+	PortalProvider,
+	RootContext,
+} from "@stratakit/foundations/secret-internals";
+import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type { BaseProps } from "@stratakit/internal-utils/props";
@@ -15,21 +18,27 @@ import type { BaseProps } from "@stratakit/internal-utils/props";
 
 const MuiDialogPaper = forwardRef<"div", BaseProps<"div">>(
 	(props, forwardedRef) => {
-		const containerRef = React.useRef<HTMLDivElement | null>(null);
+		const { rootNode } = useSafeContext(RootContext);
+
+		const containerId = React.useId();
+
 		const [container, setContainer] = React.useState<HTMLDivElement | null>(
 			null,
 		);
 
-		const getContainer = React.useCallback(() => containerRef.current, []);
+		const getContainer = React.useCallback(() => {
+			// Lookup using element id; `getContainer` is called (from layout effect) before the ref is attached.
+			const containerEl = rootNode?.getElementById(containerId);
+			return containerEl ?? null;
+		}, [rootNode, containerId]);
 
 		return (
 			<Role {...props} ref={forwardedRef}>
-				{/* Render before portalled elements to attach the ref before `getContainer` is called. */}
-				{/* Render in a container to avoid `aria-hidden` focus warning. */}
-				<div ref={useMergedRefs(containerRef, setContainer)} />
 				<PortalProvider container={container} getContainer={getContainer}>
 					{props.children}
 				</PortalProvider>
+				{/* Render portalled elements in a container to avoid `aria-hidden` focus warning. */}
+				<div id={containerId} ref={setContainer} />
 			</Role>
 		);
 	},

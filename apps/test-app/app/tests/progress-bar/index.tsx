@@ -126,6 +126,13 @@ function AnimatedTest() {
 		};
 	}, [progressInterval]);
 
+	const onStopClick = React.useCallback(() => {
+		if (progressInterval) {
+			clearInterval(progressInterval);
+		}
+		setProgressInterval(null);
+	}, [progressInterval]);
+
 	const onStartClick = React.useCallback(() => {
 		const newInterval = setInterval(() => {
 			setValue((prev) => {
@@ -142,14 +149,7 @@ function AnimatedTest() {
 		}, 500);
 
 		setProgressInterval(newInterval);
-	}, []);
-
-	const onStopClick = React.useCallback(() => {
-		if (progressInterval) {
-			clearInterval(progressInterval);
-		}
-		setProgressInterval(null);
-	}, [progressInterval]);
+	}, [onStopClick]);
 
 	const onResetClick = React.useCallback(() => {
 		onStopClick();

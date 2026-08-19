@@ -4,28 +4,29 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 
-type CircularProgressProps = React.ComponentProps<typeof CircularProgress>;
-const colors = [
-	"secondary",
-	"primary",
-] as const satisfies CircularProgressProps["color"][];
+import styles from "./CircularProgress.determinate.module.css";
 
 export default () => {
-	const exampleId = React.useId();
+	const labelId = React.useId();
+	const progress = 50;
 
-	return colors.map((color) => {
-		const labelId = `${exampleId}-${color}`;
-		return (
-			<div key={color}>
-				<CircularProgress aria-labelledby={labelId} color={color} />
-				<Typography id={labelId}>
-					{color.charAt(0).toUpperCase()}
-					{color.slice(1)}…
+	return (
+		<>
+			<Box className={styles.container}>
+				<CircularProgress
+					variant="determinate"
+					value={progress}
+					aria-labelledby={labelId}
+				/>
+				<Typography variant="caption" className={styles.percentage}>
+					{progress}%
 				</Typography>
-			</div>
-		);
-	});
+			</Box>
+			<Typography id={labelId}>Uploading…</Typography>
+		</>
+	);
 };

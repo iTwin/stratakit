@@ -8,16 +8,16 @@ import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
 import { ThemeProvider } from "@mui/material/styles";
 import {
-	forwardRef,
 	useEventHandlers,
 	useMergedRefs,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import { MuiChip, MuiChipDeleteIcon } from "./MuiChip.js";
 import { MuiInputLabelContext } from "./MuiInputLabel.js";
 
 import type Autocomplete from "@mui/material/Autocomplete";
 import type { Theme } from "@mui/material/styles";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -49,12 +49,19 @@ const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 				components: {
 					...outerTheme.components,
 					MuiTextField: {
+						...outerTheme.components?.MuiTextField,
 						defaultProps: {
+							...outerTheme.components?.MuiTextField?.defaultProps,
 							slotProps: {
+								...outerTheme.components?.MuiTextField?.defaultProps?.slotProps,
 								input: {
+									...outerTheme.components?.MuiTextField?.defaultProps
+										?.slotProps?.input,
 									component: MuiAutocompleteTextFieldInput,
 								},
 								htmlInput: {
+									...outerTheme.components?.MuiTextField?.defaultProps
+										?.slotProps?.htmlInput,
 									slot: "input", // Assign input element to the slot named "input"
 								},
 							},

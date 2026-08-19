@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiSlider-root {
-	--✨color-rail-bg--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-bg--default: var(--stratakit-color-bg-mono-muted);
 	--✨color-rail-bg--disabled: var(--stratakit-color-bg-control-switch);
-	--✨color-rail-border--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-border--default: var(--stratakit-color-bg-mono-muted);
 	--✨color-rail-border--disabled: var(--stratakit-color-border-neutral-disabled);
 	--✨color-track-bg--default: var(--stratakit-color-bg-accent-base);
 	--✨color-track-bg--disabled: var(--stratakit-color-border-neutral-disabled);
@@ -120,7 +120,7 @@
 	block-size: var(--_MuiSlider-thumb-size);
 	inline-size: var(--_MuiSlider-thumb-size);
 	background-color: var(--stratakit-color-bg-neutral-inverse);
-	border: 1px solid var(--stratakit-color-border-shadow-base);
+	border: 1px solid var(--stratakit-color-border-neutral-base);
 	box-shadow: none;
 	cursor: grab;
 

@@ -71,7 +71,7 @@ export function definePage(
 						};
 					})
 			);
-		}, [otherVariants, searchParams]);
+		}, [searchParams]);
 
 		for (const [variantName, Variant] of Object.entries(otherVariants ?? {})) {
 			if (variantName in searchParams) {

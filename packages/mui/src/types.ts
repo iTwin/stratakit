@@ -260,6 +260,24 @@ declare module "@mui/material/Chip" {
 	}
 }
 
+declare module "@mui/material/CircularProgress" {
+	interface CircularProgressOwnProps {
+		/**
+		 * The default value with `@stratakit/mui` is `true`.
+		 *
+		 * @default true
+		 */
+		enableTrackSlot?: boolean;
+
+		/**
+		 * The default thickness with `@stratakit/mui` is `5`.
+		 *
+		 * @default 5
+		 */
+		thickness?: number;
+	}
+}
+
 declare module "@mui/material/Dialog" {
 	interface DialogProps extends Pick<CommonProps, "render"> {
 		/** @deprecated Use `render` prop instead. */

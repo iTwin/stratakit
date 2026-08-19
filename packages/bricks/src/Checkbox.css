@@ -21,7 +21,7 @@
 	--✨bg--invalid-hover: color-mix(in oklch, var(--✨bg--invalid) 100%, var(--✨glow--bg-hover));
 	--✨bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨border--default: var(--stratakit-color-border-shadow-base);
+	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--hover: color-mix(
 		in oklch,
 		var(--✨border--default) 100%,

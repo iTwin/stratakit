@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.5.3
+
+- [#1657](https://github.com/iTwin/stratakit/pull/1657): Added `render` prop to `Accordion`'s `slotProps.heading`.
+- [#1658](https://github.com/iTwin/stratakit/pull/1658): Updated portal container rendering to prevent an initially open `Dialog` incorrectly being `aria-hidden`.
+- [#1665](https://github.com/iTwin/stratakit/pull/1665): Updated `Tooltip` component to be placed in the [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer).
+- [#1668](https://github.com/iTwin/stratakit/pull/1668): Fixed an issue where the viewport was still scrollable when a `Dialog` or `Drawer` was open.
+- [#1651](https://github.com/iTwin/stratakit/pull/1651): Fixed a bug with `Tooltip` overflow causing scrollbars.
+- [#1655](https://github.com/iTwin/stratakit/pull/1655): Deprecated MUI `SvgIcon` in favor of StrataKit's `Icon`.
+- [#1676](https://github.com/iTwin/stratakit/pull/1676): Deprecated MUI `Icon` in favor of StrataKit's `Icon`.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.10
+  - @stratakit/icons@0.4.3
+
 ## 0.5.2
 
 - [#1575](https://github.com/iTwin/stratakit/pull/1575): Added `size` prop to `Badge` when `inline`.

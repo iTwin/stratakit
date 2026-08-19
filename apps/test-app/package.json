@@ -7,6 +7,7 @@
 		"build": "wireit",
 		"dev": "wireit",
 		"preview": "wireit",
+		"preview:raw": "vite preview",
 		"test": "wireit",
 		"typecheck": "wireit"
 	},
@@ -14,7 +15,7 @@
 		"#playwright": "./playwright.config.ts"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.29",
+		"@ariakit/react": "^0.4.35",
 		"@emotion/react": "^11.14.0",
 		"@emotion/styled": "^11.14.1",
 		"@mui/material": "catalog:",
@@ -26,20 +27,20 @@
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*",
 		"@stratakit/structures": "workspace:*",
-		"@tanstack/react-query": "^5.97.0",
+		"@tanstack/react-query": "^5.101.4",
 		"classnames": "^2.5.1",
 		"date-fns": "^4.4.0",
 		"examples": "workspace:*",
-		"immer": "^11.1.8",
-		"isbot": "^5.1.40",
+		"immer": "^11.1.15",
+		"isbot": "^5.2.1",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"react-resizable-panels": "^3.0.6",
-		"react-router": "^7.18.1",
+		"react-router": "^7.18.2",
 		"zustand": "^5.0.14"
 	},
 	"devDependencies": {
-		"@axe-core/playwright": "^4.11.3",
+		"@axe-core/playwright": "^4.12.1",
 		"@playwright/test": "catalog:",
 		"@react-router/dev": "^7.18.1",
 		"@types/node": "catalog:",
@@ -48,15 +49,16 @@
 		"esbuild": "catalog:",
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
-		"vite": "^7.3.2",
+		"vite": "^7.3.5",
 		"vite-plugin-babel": "^1.7.3",
-		"vite-plugin-devtools-json": "^1.0.0",
+		"vite-plugin-devtools-json": "^1.1.0",
 		"vite-tsconfig-paths": "^6.1.1"
 	},
 	"wireit": {
 		"build": {
 			"command": "react-router build",
 			"dependencies": [
+				"../../packages/internal-utils:build",
 				"../../packages/foundations:build",
 				"../../packages/bricks:build",
 				"../../packages/structures:build",
@@ -80,6 +82,7 @@
 			"command": "react-router dev",
 			"dependencies": [
 				"../../packages/icons:build",
+				"../../packages/internal-utils:dev",
 				"../../packages/foundations:dev",
 				"../../packages/bricks:dev",
 				"../../packages/structures:dev",
@@ -88,7 +91,7 @@
 			"service": true
 		},
 		"preview": {
-			"command": "pnpx serve build/client -L -p 1800",
+			"command": "pnpm run preview:raw",
 			"dependencies": [
 				"build"
 			],

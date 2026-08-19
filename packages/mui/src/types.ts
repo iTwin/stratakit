@@ -325,13 +325,7 @@ interface CheckboxDeprecatedProps extends ButtonBaseDeprecatedProps {
 	color?: CheckboxProps["color"];
 
 	/** @deprecated StrataKit does not support this prop. */
-	disableRipple?: CheckboxProps["disableRipple"];
-
-	/** @deprecated StrataKit does not support this prop. */
-	disableFocusRipple?: boolean;
-
-	/** @deprecated StrataKit does not support this prop. */
-	disableTouchRipple?: boolean;
+	disableFocusRipple?: CheckboxProps["disableFocusRipple"];
 
 	/** @deprecated StrataKit does not support this prop. */
 	icon?: CheckboxProps["icon"];

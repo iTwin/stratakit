@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.Cti7U86j.js";import{D as s,a as e,b as r,c as n}from"./DropdownMenu.gL03SfxC.js";const d=()=>o.jsxs(s,{children:[o.jsx(e,{children:"Actions"}),o.jsxs(r,{children:[o.jsx(n,{shortcuts:"Command+N",label:"New"}),o.jsx(n,{shortcuts:"Command+O",label:"Open"}),o.jsx(n,{shortcuts:"Command+S",label:"Save"})]})]});export{d as default};

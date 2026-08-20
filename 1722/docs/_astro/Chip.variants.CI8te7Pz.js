@@ -1,0 +1,1 @@
+import{j as a}from"./_utils.huavISK2.js";import{C as i}from"./Chip.Dsk7OBA0.js";const l=()=>a.jsxs("div",{className:"flex",children:[a.jsx(i,{variant:"solid",label:"Solid"}),a.jsx(i,{variant:"outline",label:"Outline"})]});export{l as default};

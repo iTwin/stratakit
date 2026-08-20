@@ -75,13 +75,14 @@
 	&:where(.MuiButton-contained) {
 		box-shadow: var(--stratakit-shadow-control-button-base-drop);
 
-		&:where(.MuiButton-colorSecondary:not(.Mui-disabled)) {
+		&:where(.MuiButton-colorSecondary) {
 			border: 1px solid;
 			border-color: var(--stratakit-color-border-neutral-base);
 		}
 
 		&:where(.Mui-disabled) {
 			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+			border-color: transparent;
 		}
 
 		&:where(.MuiButton-colorPrimary, .MuiButton-colorError) {

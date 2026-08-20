@@ -1,1 +1,0 @@
-import{j as o,I as t}from"./_utils.Ze_iN7Fg.js";import{s as r}from"./add.Btd7BW7n.js";import{B as s}from"./Button.D9GBGIKh.js";const m=()=>o.jsx(s,{endIcon:o.jsx(t,{href:r}),children:"Create new"});export{m as default};

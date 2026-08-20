@@ -15,7 +15,7 @@ import styles from "./AppBar.default.module.css";
 export default () => {
 	return (
 		<AppBar position="static">
-			<div className={styles.flexContainer}>
+			<div className={styles.appBarContent}>
 				<IconButton size="large" edge="start" aria-label="menu">
 					<Icon href={`${svgMenu}#icon-large`} size="large" />
 				</IconButton>

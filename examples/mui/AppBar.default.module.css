@@ -2,8 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-/** Duplicates the behavior of MUI's Toolbar component */
-.flexContainer {
+.appBarContent {
 	position: relative;
 	display: flex;
 	align-items: center;

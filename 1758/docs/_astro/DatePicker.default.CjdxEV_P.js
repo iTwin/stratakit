@@ -1,0 +1,1 @@
+import{j as t}from"./_utils.NjHdNal_.js";import{L as e,A as r}from"./useReduceAnimations.a4_cFFM0.js";import{D as a}from"./DatePicker.DaoR27Bu.js";const d=()=>t.jsx(e,{dateAdapter:r,children:t.jsx(a,{label:"Date",format:"yyyy/MM/dd",slotProps:{textField:{helperText:"YYYY/MM/DD"}}})});export{d as default};

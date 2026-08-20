@@ -10,4 +10,4 @@ links:
 
 ## StrataKit MUI modifications
 
-- Use a styled `div` instead of MUI's `Toolbar` to avoid confusion with the [`Toolbar` from `@stratakit/structures`](https://stratakit.bentley.com/docs/components/toolbar/).
+- The use of MUI's `Toolbar` has been replaced with a styled `<div>` to avoid confusion with the [StrataKit `Toolbar`](/components/toolbar/).

@@ -1,1 +1,0 @@
-import{r as e,j as r,T as a}from"./_utils.vTA4zSf6.js";import{L as o}from"./LinearProgress.CukqNLBM.js";const n=()=>{const s=e.useId();return r.jsxs(r.Fragment,{children:[r.jsx(o,{color:"secondary","aria-labelledby":s}),r.jsx(a,{id:s,children:"Analyzing results…"})]})};export{n as default};

@@ -1,0 +1,1 @@
+import{r as a,j as r}from"./_utils.CbGeKkWK.js";import{P as e}from"./Progress.C-8nE-iv.js";import{T as t}from"./Text.Bw1AsMk8.js";const i=()=>{const s=a.useId();return r.jsxs(r.Fragment,{children:[r.jsx(e,{"aria-labelledby":s}),r.jsx(t,{variant:"body-sm",id:s,children:"Analyzing results…"})]})};export{i as default};

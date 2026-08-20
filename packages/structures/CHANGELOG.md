@@ -2,8 +2,6 @@
 
 ## 0.5.10
 
-### Patch Changes
-
 - [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
 - [#1497](https://github.com/iTwin/stratakit/pull/1497): Increased border color contrast across various components.
 - Updated dependencies:

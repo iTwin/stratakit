@@ -2,11 +2,11 @@
 
 ## 0.5.0
 
-### Minor Changes
+### Breaking changes
 
 - [#1565](https://github.com/iTwin/stratakit/pull/1565): Moved internal utilities from `@stratakit/foundations/secret-internals` subpath to `@stratakit/internal-utils` package.
 
-### Patch Changes
+### Non-breaking changes
 
 - [#1497](https://github.com/iTwin/stratakit/pull/1497): Updated values for the following tokens:
 

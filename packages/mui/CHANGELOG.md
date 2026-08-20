@@ -2,20 +2,12 @@
 
 ## 0.5.4
 
-### Patch Changes
-
-- [#1777](https://github.com/iTwin/stratakit/pull/1777): `IconButton` now automatically maps the `title` prop to `label` for better compatibility with external components that use the native `title` attribute. The recommended approach is still to use the `label` prop.
-- [#1773](https://github.com/iTwin/stratakit/pull/1773): Adjusted fallback palette values.
-- [#1707](https://github.com/iTwin/stratakit/pull/1707): Updated borders for `Switch`.
-- [#1783](https://github.com/iTwin/stratakit/pull/1783): Updated `Tooltip` to use `fixed` positioning strategy.
 - [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
-- [#1710](https://github.com/iTwin/stratakit/pull/1710): Updated borders for `ToggleButtonGroup`.
 - [#1744](https://github.com/iTwin/stratakit/pull/1744): Updated structure for `ListSubheader`. It now renders as a `div` by default and should be placed outside of the `ul` that it is labeling.
-- [#1497](https://github.com/iTwin/stratakit/pull/1497): Increased border color contrast across various components.
-- [#1608](https://github.com/iTwin/stratakit/pull/1608): Styled `DatePicker` input to match the Strata visual design language.
-- [#1719](https://github.com/iTwin/stratakit/pull/1719): Updated borders for `Button`.
+- [#1770](https://github.com/iTwin/stratakit/pull/1770): Updated `DatePicker` to show two weekdays characters instead of one.
+- [#1777](https://github.com/iTwin/stratakit/pull/1777): Updated `IconButton` to automatically map the `title` prop to `label` for better compatibility with external components that use the native `title` attribute. The recommended approach is still to use the `label` prop.
+- [#1783](https://github.com/iTwin/stratakit/pull/1783): Updated `Tooltip` to use `fixed` positioning strategy.
 - [#1497](https://github.com/iTwin/stratakit/pull/1497): Updated values for the following tokens:
-
   - `--stratakit-color-border-neutral-base`
   - `--stratakit-color-border-neutral-muted`
   - `--stratakit-color-border-neutral-faded`
@@ -24,15 +16,19 @@
   - `--stratakit-color-border-page-depth`
   - `--stratakit-color-bg-elevation-level-1`
   - `--stratakit-color-bg-elevation-level-2`
-
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Increased border color contrast across various components.
+- [#1707](https://github.com/iTwin/stratakit/pull/1707): Updated borders for `Switch`.
 - [#1709](https://github.com/iTwin/stratakit/pull/1709): Updated borders for `TextField` and other inputs.
-- [#1770](https://github.com/iTwin/stratakit/pull/1770): Improved styling of `DatePicker` to further match the Strata visual design language.
-- [#1586](https://github.com/iTwin/stratakit/pull/1586): Styled `DatePicker` to match the Strata visual design language.
+- [#1719](https://github.com/iTwin/stratakit/pull/1719): Updated borders for `Button`.
+- [#1710](https://github.com/iTwin/stratakit/pull/1710): Updated borders for `ToggleButtonGroup`.
 - [#1774](https://github.com/iTwin/stratakit/pull/1774): Updated borders for `Checkbox`, `Radio`, `Slider`, and `Switch`.
+- [#1773](https://github.com/iTwin/stratakit/pull/1773): Adjusted fallback palette values.
+- [#1586](https://github.com/iTwin/stratakit/pull/1586): Styled `DatePicker` to match the Strata visual design language.
+- [#1608](https://github.com/iTwin/stratakit/pull/1608): Styled `DatePicker` input to match the Strata visual design language.
+- [#1770](https://github.com/iTwin/stratakit/pull/1770): Styled `DatePicker` to further improve the Strata visual design language.
 - [#1594](https://github.com/iTwin/stratakit/pull/1594): Styled `LinearProgress` to match the Strata visual design language.
 - [#1594](https://github.com/iTwin/stratakit/pull/1594): Styled `CircularProgress` to match the Strata visual design language.
 - [#1765](https://github.com/iTwin/stratakit/pull/1765): Fixed theme merging in `Autocomplete`.
-- [#1770](https://github.com/iTwin/stratakit/pull/1770): `DatePicker` weekdays now show two characters instead of one.
 - Updated dependencies:
   - @stratakit/foundations@0.5.0
 

@@ -285,9 +285,6 @@ declare module "@mui/material/Checkbox" {
 		disableFocusRipple?: boolean;
 
 		/** @deprecated StrataKit does not support this prop. */
-		disableTouchRipple?: boolean;
-
-		/** @deprecated StrataKit does not support this prop. */
 		icon?: CheckboxProps["icon"];
 
 		/** @deprecated StrataKit does not support this prop. */

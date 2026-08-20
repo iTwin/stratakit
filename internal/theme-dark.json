@@ -702,7 +702,7 @@
 			"page": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.white.32}"
+					"$value": "{p-color.white.36}"
 				},
 				"depth": {
 					"$type": "color",

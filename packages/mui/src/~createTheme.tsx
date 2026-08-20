@@ -346,6 +346,24 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
+			MuiDateCalendar: {
+				defaultProps: {
+					slots: {
+						leftArrowIcon: ChevronLeftIcon,
+						rightArrowIcon: ChevronRightIcon,
+						switchViewIcon: ChevronDownIcon,
+					},
+					slotProps: {
+						previousIconButton: { size: "small" },
+						nextIconButton: { size: "small" },
+						day: { nativeButton: true },
+					},
+					dayOfWeekFormatter: (date: Date) =>
+						date
+							.toLocaleDateString(undefined, { weekday: "short" })
+							.slice(0, 2),
+				},
+			},
 			MuiDatePicker: {
 				defaultProps: {
 					slots: {

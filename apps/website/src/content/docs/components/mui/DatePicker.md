@@ -8,6 +8,10 @@ links:
 
 ::example{src="mui/DatePicker.default"}
 
+## StrataKit MUI modifications
+
+- `dayOfWeekFormatter` defaults to a locale-aware 2-character weekday label.
+
 ## Examples
 
 ### Sizes

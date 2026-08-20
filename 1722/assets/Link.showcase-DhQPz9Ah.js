@@ -1,1 +1,0 @@
-import{j as r}from"./index-CwcbyBX9.js";import{L as t}from"./Link-BzxMD67n.js";import"./~utils-B9wmCCAu.js";import"./Icon-DkvONBX8.js";import"./warning-BMo6oscH.js";import"./dismiss-CdA8vQnp.js";const e=()=>r.jsx(t,{href:"/",children:"Home"});function a(){return r.jsxs(r.Fragment,{children:[r.jsx(e,{}),!1]})}export{a as default};

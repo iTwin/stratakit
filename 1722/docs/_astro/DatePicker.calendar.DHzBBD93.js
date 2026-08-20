@@ -1,1 +1,0 @@
-import{j as a}from"./_utils.huavISK2.js";import{L as r,A as t}from"./useReduceAnimations.58GAcFk6.js";import{D as e}from"./DateCalendar.BmChR_gB.js";const d=()=>a.jsx(r,{dateAdapter:t,children:a.jsx(e,{})});export{d as default};

@@ -1,1 +1,0 @@
-import{r as e,j as t}from"./_utils.huavISK2.js";import{L as s}from"./Label.B6m7AIMo.js";import{T as a}from"./TextBox.BGo9NNX7.js";const x=()=>{const r=e.useId();return t.jsxs(t.Fragment,{children:[t.jsx(s,{htmlFor:r,children:"Name "}),t.jsx(a,{id:r})]})};export{x as default};

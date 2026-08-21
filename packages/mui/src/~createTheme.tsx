@@ -454,7 +454,7 @@ function createTheme(args: CreateThemeArgs) {
 					},
 				},
 			},
-			MuiListSubheader: { defaultProps: { component: Role.li } },
+			MuiListSubheader: { defaultProps: { component: Role.div } },
 			MuiMenu: {
 				defaultProps: {
 					component: Role.div,
@@ -663,6 +663,7 @@ function createTheme(args: CreateThemeArgs) {
 						},
 						popper: {
 							component: MuiTooltipPopper,
+							popperOptions: { strategy: "fixed" },
 							modifiers: [
 								{
 									name: "offset",

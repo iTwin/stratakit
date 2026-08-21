@@ -23,9 +23,8 @@
 - [#1710](https://github.com/iTwin/stratakit/pull/1710): Updated borders for `ToggleButtonGroup`.
 - [#1774](https://github.com/iTwin/stratakit/pull/1774): Updated borders for `Checkbox`, `Radio`, `Slider`, and `Switch`.
 - [#1773](https://github.com/iTwin/stratakit/pull/1773): Adjusted fallback palette values.
-- [#1586](https://github.com/iTwin/stratakit/pull/1586): Styled `DatePicker` to match the Strata visual design language.
+- [#1586](https://github.com/iTwin/stratakit/pull/1586), [#1770](https://github.com/iTwin/stratakit/pull/1770): Styled `DatePicker` to match the Strata visual design language.
 - [#1608](https://github.com/iTwin/stratakit/pull/1608): Styled `DatePicker` input to match the Strata visual design language.
-- [#1770](https://github.com/iTwin/stratakit/pull/1770): Styled `DatePicker` to further improve the Strata visual design language.
 - [#1594](https://github.com/iTwin/stratakit/pull/1594): Styled `LinearProgress` to match the Strata visual design language.
 - [#1594](https://github.com/iTwin/stratakit/pull/1594): Styled `CircularProgress` to match the Strata visual design language.
 - [#1765](https://github.com/iTwin/stratakit/pull/1765): Fixed theme merging in `Autocomplete`.

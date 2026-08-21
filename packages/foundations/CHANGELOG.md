@@ -8,6 +8,7 @@
 
 ### Non-breaking changes
 
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
 - [#1497](https://github.com/iTwin/stratakit/pull/1497): Updated values for the following tokens:
 
   - `--stratakit-color-border-neutral-base`

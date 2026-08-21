@@ -4,7 +4,7 @@
 
 ### Breaking changes
 
-- [#1565](https://github.com/iTwin/stratakit/pull/1565): Moved internal utilities from `@stratakit/foundations/secret-internals` subpath to `@stratakit/internal-utils` package.
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Removed internal APIs from `@stratakit/foundations/secret-internals`, moving them into the `@stratakit/internal-utils` package.
 
 ### Non-breaking changes
 

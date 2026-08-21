@@ -16,8 +16,6 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.35",
-		"@emotion/react": "^11.14.0",
-		"@emotion/styled": "^11.14.1",
 		"@mui/material": "catalog:",
 		"@mui/utils": "catalog:",
 		"@mui/x-date-pickers": "catalog:",

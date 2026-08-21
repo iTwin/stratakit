@@ -62,18 +62,7 @@ export const PortalWrapperContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
-export const PortalContext = React.createContext<
-	| {
-			container: HTMLElement | null;
-			unstable_getContainer?: () => HTMLElement | null;
-	  }
-	| undefined
->(undefined);
-
-// ----------------------------------------------------------------------------
-
-interface PortalProviderProps {
-	children?: React.ReactNode;
+interface PortalContextValue {
 	container: HTMLElement | null;
 	/**
 	 * Function that is lazily resolved by MUI when the portal mounts. Passing the
@@ -85,10 +74,18 @@ interface PortalProviderProps {
 	unstable_getContainer?: () => HTMLElement | null;
 }
 
+export const PortalContext = React.createContext<
+	PortalContextValue | undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
 /**
  * Provides the element that will contain the portal.
  */
-export function PortalProvider(props: PortalProviderProps) {
+export function PortalProvider(
+	props: React.PropsWithChildren<PortalContextValue>,
+) {
 	const { children, container, unstable_getContainer } = props;
 
 	const wrapPortal = React.useContext(PortalWrapperContext);

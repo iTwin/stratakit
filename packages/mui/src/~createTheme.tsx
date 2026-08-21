@@ -663,6 +663,7 @@ function createTheme(args: CreateThemeArgs) {
 						},
 						popper: {
 							component: MuiTooltipPopper,
+							popperOptions: { strategy: "fixed" },
 							modifiers: [
 								{
 									name: "offset",

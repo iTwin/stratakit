@@ -1,0 +1,1 @@
+import{j as o}from"./_utils.Mox5DSsq.js";import{I as t}from"./ExamplePreview.soNAWPuv.js";import{s as a}from"./download.86xcD_si.js";const e=()=>o.jsx(t,{label:"Download",icon:a});export{e as default};

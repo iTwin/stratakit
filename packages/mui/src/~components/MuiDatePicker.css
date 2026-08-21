@@ -3,6 +3,52 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiYearCalendar-root {
+	--_MuiYearCalendar-fade-size: var(--stratakit-space-x2);
+
+	animation: --_MuiYearCalendar-fade-edges linear both;
+	animation-timeline: scroll(self block);
+	overscroll-behavior-y: contain;
+
+	mask-image: linear-gradient(
+		to bottom,
+		transparent,
+		#000 var(--_MuiYearCalendar-fade-start),
+		#000 calc(100% - var(--_MuiYearCalendar-fade-end)),
+		transparent
+	);
+}
+
+@property --_MuiYearCalendar-fade-start {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 0px;
+}
+
+@property --_MuiYearCalendar-fade-end {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 0px;
+}
+
+@keyframes --_MuiYearCalendar-fade-edges {
+	0% {
+		--_MuiYearCalendar-fade-start: 0px;
+		--_MuiYearCalendar-fade-end: var(--_MuiYearCalendar-fade-size);
+	}
+
+	0.01%,
+	99.99% {
+		--_MuiYearCalendar-fade-start: var(--_MuiYearCalendar-fade-size);
+		--_MuiYearCalendar-fade-end: var(--_MuiYearCalendar-fade-size);
+	}
+
+	100% {
+		--_MuiYearCalendar-fade-start: var(--_MuiYearCalendar-fade-size);
+		--_MuiYearCalendar-fade-end: 0px;
+	}
+}
+
 .MuiYearCalendar-button {
 	text-align: center;
 }
@@ -65,7 +111,7 @@
 	margin-inline: var(--_MuiDayCalendar-day-margin);
 }
 
-.MuiPickerDay-root {
+:is(.MuiPickerDay-root, .MuiYearCalendar-button) {
 	/* #region Variables */
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨bg--selected: var(--stratakit-color-bg-accent-base);
@@ -99,10 +145,8 @@
 	--✨dot--disabled: var(--stratakit-color-icon-neutral-disabled);
 	/* #endregion */
 
-	aspect-ratio: 1;
 	background-color: var(--_MuiPickerDay-background-color, transparent);
 	block-size: var(--_MuiDayCalendar-day-size);
-	inline-size: var(--_MuiDayCalendar-day-size);
 	border: 1px solid var(--_MuiPickerDay-border-color, transparent);
 	border-radius: 4px;
 	color: var(--_MuiPickerDay-color, var(--✨color--default));
@@ -116,39 +160,44 @@
 		}
 	}
 
-	&:where(.MuiPickerDay-today) {
-		--_MuiPickerDay-border-color: var(--✨border--today);
-		font-weight: 500;
-		outline: unset;
+	&:where(.MuiPickerDay-root) {
+		aspect-ratio: 1;
+		inline-size: var(--_MuiDayCalendar-day-size);
 
-		&:where(.Mui-focusVisible) {
-			outline: var(--🥝focus-outline);
-			outline-offset: var(--🥝focus-outline-offset);
-		}
+		&:where(.MuiPickerDay-today) {
+			--_MuiPickerDay-border-color: var(--✨border--today);
+			font-weight: 500;
+			outline: unset;
 
-		&::after {
-			content: "";
-			position: absolute;
-			inset-block-end: var(--stratakit-space-x05);
-			aspect-ratio: 1;
-			background-color: var(--_MuiPickerDay-today-dot-background-color, var(--✨dot--default));
-			block-size: var(--stratakit-space-x1);
-			inline-size: var(--stratakit-space-x1);
-			border-radius: calc(infinity * 1px);
-			transition: background-color 150ms ease-out;
-		}
+			&:where(.Mui-focusVisible) {
+				outline: var(--🥝focus-outline);
+				outline-offset: var(--🥝focus-outline-offset);
+			}
 
-		@media (any-hover: hover) {
-			&:where(:not(.Mui-disabled):hover) {
-				--_MuiPickerDay-border-color: var(--✨border--today-hover);
-				--_MuiPickerDay-today-dot-background-color: var(--✨dot--hover);
+			&::after {
+				content: "";
+				position: absolute;
+				inset-block-end: var(--stratakit-space-x05);
+				aspect-ratio: 1;
+				background-color: var(--_MuiPickerDay-today-dot-background-color, var(--✨dot--default));
+				block-size: var(--stratakit-space-x1);
+				inline-size: var(--stratakit-space-x1);
+				border-radius: calc(infinity * 1px);
+				transition: background-color 150ms ease-out;
+			}
+
+			@media (any-hover: hover) {
+				&:where(:not(.Mui-disabled):hover) {
+					--_MuiPickerDay-border-color: var(--✨border--today-hover);
+					--_MuiPickerDay-today-dot-background-color: var(--✨dot--hover);
+				}
 			}
 		}
-	}
 
-	&:where(.MuiPickerDay-dayOutsideMonth:not(.Mui-selected)) {
-		--_MuiPickerDay-color: var(--✨color--outside);
-		--_MuiPickerDay-today-dot-background-color: var(--✨dot--outside);
+		&:where(.MuiPickerDay-dayOutsideMonth:not(.Mui-selected)) {
+			--_MuiPickerDay-color: var(--✨color--outside);
+			--_MuiPickerDay-today-dot-background-color: var(--✨dot--outside);
+		}
 	}
 
 	&:where(.Mui-selected) {

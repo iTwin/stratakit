@@ -29,7 +29,7 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 - The [`describeChild`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-describeChild) prop defaults to `true`.
 - Change default placement from `"bottom"` to `"top"`.
 - Includes full `forced-colors` support.
-- The default portal container is now the [root portal container](/components/root/#portal-container).
+- The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [`portalContainer`](https://stratakit.bentley.com/docs/components/root/#portal-container).
 
 ## Examples
 

@@ -60,18 +60,18 @@ const MuiPopoverPaperSlot = forwardRef<"div", MuiPopoverPaperSlotProps>(
 		const getContainer = React.useCallback(() => containerRef.current, []);
 
 		return (
-			<PortalProvider
-				container={container}
-				unstable_getContainer={getContainer}
+			<PopoverPaper
+				{...props}
+				ref={useMergedRefs(forwardedRef, useFallbackLabel(props))}
 			>
-				<PopoverPaper
-					{...props}
-					ref={useMergedRefs(forwardedRef, useFallbackLabel(props))}
+				<PortalProvider
+					container={container}
+					unstable_getContainer={getContainer}
 				>
 					{props.children}
-					<div ref={useMergedRefs(containerRef, setContainer)} />
-				</PopoverPaper>
-			</PortalProvider>
+				</PortalProvider>
+				<div ref={useMergedRefs(containerRef, setContainer)} />
+			</PopoverPaper>
 		);
 	},
 );

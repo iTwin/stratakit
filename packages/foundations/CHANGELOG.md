@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.5.0
+
+### Minor Changes
+
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Moved internal utilities from `@stratakit/foundations/secret-internals` subpath to `@stratakit/internal-utils` package.
+
+### Patch Changes
+
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Updated values for the following tokens:
+
+  - `--stratakit-color-border-neutral-base`
+  - `--stratakit-color-border-neutral-muted`
+  - `--stratakit-color-border-neutral-faded`
+  - `--stratakit-color-border-neutral-disabled`
+  - `--stratakit-color-border-page-base`
+  - `--stratakit-color-border-page-depth`
+  - `--stratakit-color-bg-elevation-level-1`
+  - `--stratakit-color-bg-elevation-level-2`
+
 ## 0.4.10
 
 - [#1658](https://github.com/iTwin/stratakit/pull/1658): Updated the `Root` component to render the portal container before `children`.

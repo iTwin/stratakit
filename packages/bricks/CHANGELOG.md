@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.5.6
+
+### Patch Changes
+
+- [#1759](https://github.com/iTwin/stratakit/pull/1759): Updated colors for `Badge` component.
+- [#1670](https://github.com/iTwin/stratakit/pull/1670): Removed [`CloseWatcher`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) responsible for device-specific close actions from the `Tooltip` component.
+- [#1707](https://github.com/iTwin/stratakit/pull/1707): Updated borders for `Switch`.
+- [#1774](https://github.com/iTwin/stratakit/pull/1774): Updated borders for `Checkbox`, `Kbd`, `Radio`, `Select`, and `Switch`.
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Increased border color contrast across various components.
+- [#1760](https://github.com/iTwin/stratakit/pull/1760): Updated background for `Select` component.
+- Updated dependencies:
+  - @stratakit/foundations@0.5.0
+
 ## 0.5.5
 
 - [#1487](https://github.com/iTwin/stratakit/pull/1487): Marked all components from `@stratakit/bricks` as deprecated. Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#use-mui-components) for details on how to migrate to `@mui/material`.

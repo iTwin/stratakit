@@ -1,1 +1,0 @@
-import{j as e}from"./_utils.uk-i7Cz-.js";import{S as s}from"./Stack.BZWEJtKt.js";import{B as r}from"./Button.Cy1Rzsf4.js";const m=()=>e.jsxs(s,{spacing:1,direction:"row",sx:{alignItems:"center",flexWrap:"wrap"},children:[e.jsx(r,{size:"small",children:"Small"}),e.jsx(r,{size:"medium",children:"Medium"}),e.jsx(r,{size:"large",children:"Large"})]});export{m as default};

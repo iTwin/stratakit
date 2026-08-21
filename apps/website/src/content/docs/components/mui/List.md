@@ -11,6 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - Spacing and sizing has been adjusted to better align with StrataKit's more compact visual design language.
+- The `ListSubheader` component renders as a `<div>` element by default.
 
 ## Examples
 

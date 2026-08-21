@@ -1,0 +1,1 @@
+import{j as t,Y as e}from"./_utils.C3CeR21l.js";import{B as i}from"./Button.kJxzfaVq.js";const a=()=>t.jsx(e,{title:"Save is disabled until you finish reading the documentation",children:t.jsx(i,{disabled:!0,children:"Save"})});export{a as default};

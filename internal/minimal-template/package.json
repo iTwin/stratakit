@@ -9,8 +9,6 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@emotion/react": "^11.14.0",
-		"@emotion/styled": "^11.14.1",
 		"@mui/material": "^9.0.0",
 		"@stratakit/icons": "latest",
 		"@stratakit/mui": "latest",
@@ -23,7 +21,7 @@
 		"@types/react-dom": "^19.2.3",
 		"@vitejs/plugin-react": "^5.1.1",
 		"babel-plugin-react-compiler": "^1.0.0",
-		"typescript": "~6.0.3",
+		"typescript": "~7.0.2",
 		"vite": "^7.3.1"
 	}
 }

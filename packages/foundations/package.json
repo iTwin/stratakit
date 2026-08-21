@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/foundations",
 	"type": "module",
-	"version": "0.4.10",
+	"version": "0.5.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -52,7 +52,8 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.29",
+		"@ariakit/react": "^0.4.35",
+		"@stratakit/internal-utils": "^0.1.0",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"
 	},
@@ -83,7 +84,8 @@
 			"dependencies": [
 				"build:js",
 				"build:DEV",
-				"build:types"
+				"build:types",
+				"../internal-utils:build"
 			]
 		},
 		"build:js": {
@@ -123,6 +125,9 @@
 			],
 			"output": [
 				"dist/**/*.d.ts"
+			],
+			"dependencies": [
+				"../internal-utils:build:types"
 			]
 		},
 		"dev": {

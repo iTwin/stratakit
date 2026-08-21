@@ -13,6 +13,12 @@
 	}
 }
 
+.MuiPickersCalendarHeader-labelContainer {
+	@apply --typography("body-md");
+	align-self: stretch;
+	padding-inline-end: var(--stratakit-space-x1);
+}
+
 .MuiPickersInputBase-root:is(.🥝MuiInput) {
 	block-size: var(--stratakit-size-control-field-height-medium);
 	padding-inline-start: var(--stratakit-space-x3);
@@ -140,7 +146,7 @@
 		}
 	}
 
-	&:where(.MuiPickerDay-dayOutsideMonth) {
+	&:where(.MuiPickerDay-dayOutsideMonth:not(.Mui-selected)) {
 		--_MuiPickerDay-color: var(--✨color--outside);
 		--_MuiPickerDay-today-dot-background-color: var(--✨dot--outside);
 	}
@@ -163,5 +169,11 @@
 	&:where(.Mui-disabled) {
 		--_MuiPickerDay-color: var(--✨color--disabled);
 		--_MuiPickerDay-today-dot-background-color: var(--✨dot--disabled);
+	}
+}
+
+.MuiPickersCalendarHeader-switchViewIcon {
+	@media (prefers-reduced-motion: no-preference) {
+		transition: transform 150ms ease-in-out;
 	}
 }

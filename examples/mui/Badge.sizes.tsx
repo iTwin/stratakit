@@ -14,7 +14,6 @@ export default () => {
 		<Stack
 			spacing={1}
 			direction="row"
-			useFlexGap
 			sx={{ alignItems: "center", flexWrap: "wrap" }}
 		>
 			<Badge

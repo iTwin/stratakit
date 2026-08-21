@@ -565,16 +565,6 @@ declare module "@mui/material/Drawer" {
 	}
 }
 
-declare module "@mui/material/SwipeableDrawer" {
-	interface SwipeableDrawerProps {
-		/** @deprecated StrataKit does not support this prop. */
-		elevation?: DrawerProps["elevation"];
-
-		/** @deprecated StrataKit does not support this prop. */
-		hideBackdrop?: boolean;
-	}
-}
-
 declare module "@mui/material/Divider" {
 	interface DividerOwnProps {
 		/** Add a 1x margin before and after the divider */
@@ -1082,6 +1072,16 @@ declare module "@mui/material/SvgIcon" {
 	export default function SvgIcon(
 		props: SvgIconProps,
 	): React.JSX.Element | null;
+}
+
+declare module "@mui/material/SwipeableDrawer" {
+	interface SwipeableDrawerProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: DrawerProps["elevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		hideBackdrop?: boolean;
+	}
 }
 
 declare module "@mui/material/Switch" {

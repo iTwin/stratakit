@@ -13,9 +13,9 @@ import type { Theme } from "@mui/material/styles";
 // ----------------------------------------------------------------------------
 
 function PortalTheme(props: React.PropsWithChildren) {
-	const { container: containerEl, getContainer } =
+	const { container: containerEl, unstable_getContainer } =
 		useSafeContext(PortalContext);
-	const container = getContainer ?? containerEl;
+	const container = unstable_getContainer ?? containerEl;
 	const theme = React.useCallback(
 		(outerTheme: Theme): Theme => {
 			return {

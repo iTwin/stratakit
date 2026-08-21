@@ -34,7 +34,10 @@ const MuiDialogPaper = forwardRef<"div", BaseProps<"div">>(
 
 		return (
 			<Role {...props} ref={forwardedRef}>
-				<PortalProvider container={container} getContainer={getContainer}>
+				<PortalProvider
+					container={container}
+					unstable_getContainer={getContainer}
+				>
 					{props.children}
 				</PortalProvider>
 				{/* Render portalled elements in a container to avoid `aria-hidden` focus warning. */}

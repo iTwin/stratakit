@@ -268,7 +268,7 @@ function RootPortalProvider(props: RootPortalProviderProps) {
 	const getContainer = React.useCallback(() => containerRef.current, []);
 
 	return (
-		<PortalProvider container={container} getContainer={getContainer}>
+		<PortalProvider container={container} unstable_getContainer={getContainer}>
 			<PortalContainer
 				colorScheme={props.colorScheme}
 				unstable_accentColor={props.unstable_accentColor}

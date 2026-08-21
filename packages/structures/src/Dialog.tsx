@@ -112,7 +112,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 					<AkDialog.DialogDismiss hidden ref={dismissRef} />
 					<PortalProvider
 						container={contentElement}
-						getContainer={getContainer}
+						unstable_getContainer={getContainer}
 					>
 						{props.children}
 					</PortalProvider>

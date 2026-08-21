@@ -65,7 +65,7 @@ export const PortalWrapperContext = React.createContext<
 export const PortalContext = React.createContext<
 	| {
 			container: HTMLElement | null;
-			getContainer?: () => HTMLElement | null;
+			unstable_getContainer?: () => HTMLElement | null;
 	  }
 	| undefined
 >(undefined);
@@ -82,19 +82,19 @@ interface PortalProviderProps {
 	 *
 	 * Needed to workaround https://github.com/mui/material-ui/issues/48882
 	 */
-	getContainer?: () => HTMLElement | null;
+	unstable_getContainer?: () => HTMLElement | null;
 }
 
 /**
  * Provides the element that will contain the portal.
  */
 export function PortalProvider(props: PortalProviderProps) {
-	const { children, container, getContainer } = props;
+	const { children, container, unstable_getContainer } = props;
 
 	const wrapPortal = React.useContext(PortalWrapperContext);
 
 	return (
-		<PortalContext.Provider value={{ container, getContainer }}>
+		<PortalContext.Provider value={{ container, unstable_getContainer }}>
 			<AkPortalContext.Provider value={container}>
 				{wrapPortal ? wrapPortal(children) : children}
 			</AkPortalContext.Provider>

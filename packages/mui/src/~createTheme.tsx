@@ -262,7 +262,12 @@ function createTheme(args: CreateThemeArgs) {
 					slotProps: { badge: { component: MuiBadgeBadge } },
 				},
 			},
-			MuiBottomNavigation: { defaultProps: { component: Role.div } },
+			MuiBottomNavigation: {
+				defaultProps: {
+					component: Role.div,
+					showLabels: true,
+				},
+			},
 			MuiBottomNavigationAction: {
 				defaultProps: {
 					component: MuiBottomNavigationAction,
@@ -290,7 +295,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiButtonGroup: {
 				defaultProps: {
 					component: Role.div,
-					color: "secondary",
+					color: "secondary" as never,
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
@@ -429,6 +434,11 @@ function createTheme(args: CreateThemeArgs) {
 					classes: { root: "🥝MuiInput" },
 				},
 			},
+			MuiInput: {
+				defaultProps: {
+					disableUnderline: true,
+				},
+			},
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
 			MuiInputLabel: {
 				defaultProps: {
@@ -559,7 +569,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
-			MuiStack: { defaultProps: { component: Role.div } },
+			MuiStack: {
+				defaultProps: {
+					component: Role.div,
+					useFlexGap: true,
+				},
+			},
 			MuiStep: { defaultProps: { component: Role.li } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
 			MuiStepper: {

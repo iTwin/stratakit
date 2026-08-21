@@ -38,7 +38,6 @@ export default () => {
 									key={variant}
 									spacing={2}
 									direction="row"
-									useFlexGap
 									sx={{ flexWrap: "wrap" }}
 								>
 									{colors.map((color) => {

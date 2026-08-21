@@ -1043,6 +1043,18 @@ declare module "@mui/material/Slider" {
 	}
 }
 
+declare module "@mui/material/Stack" {
+	interface StackOwnProps {
+		/**
+		 *
+		 * The default value with `@stratakit/mui` is `true`.
+		 *
+		 * @default true
+		 */
+		useFlexGap?: StackOwnProps["useFlexGap"];
+	}
+}
+
 declare module "@mui/material/SvgIcon" {
 	/** @deprecated Use `Icon` from `@stratakit/mui` instead. */
 	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.

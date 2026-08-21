@@ -11,7 +11,6 @@ export default () => {
 		<Stack
 			spacing={2}
 			direction="row"
-			useFlexGap
 			sx={{ alignItems: "center", flexWrap: "wrap" }}
 		>
 			<Chip size="small" label="Small" />

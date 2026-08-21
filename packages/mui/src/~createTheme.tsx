@@ -104,6 +104,8 @@ function createTheme(args: CreateThemeArgs) {
 				(shade) => [shade, `var(--stratakit-mui-palette-grey-${shade})`],
 			),
 		),
+
+		tonalOffset: 0.05,
 	} satisfies ColorSystemOptions["palette"];
 
 	return createMuiTheme({
@@ -344,10 +346,28 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
+			MuiDateCalendar: {
+				defaultProps: {
+					slots: {
+						leftArrowIcon: ChevronLeftIcon,
+						rightArrowIcon: ChevronRightIcon,
+						switchViewIcon: ChevronDownIcon,
+					},
+					slotProps: {
+						previousIconButton: { size: "small" },
+						nextIconButton: { size: "small" },
+						day: { nativeButton: true },
+					},
+					dayOfWeekFormatter: (date: Date) =>
+						date
+							.toLocaleDateString(undefined, { weekday: "short" })
+							.slice(0, 2),
+				},
+			},
 			MuiDatePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: CalendarIcon,
+						openPickerIcon: withExcludedProps(CalendarIcon, ["ownerState"]),
 					},
 					slotProps: {
 						openPickerButton: {
@@ -406,7 +426,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiImageListItem: { defaultProps: { component: Role.li } },
 			MuiInputBase: {
 				defaultProps: {
-					className: "🥝MuiInput",
+					classes: { root: "🥝MuiInput" },
 				},
 			},
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
@@ -622,7 +642,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: ClockIcon,
+						openPickerIcon: withExcludedProps(ClockIcon, ["ownerState"]),
 					},
 					slotProps: {
 						openPickerButton: {
@@ -717,6 +737,22 @@ function withRenderProp(
 ) {
 	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
 		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
+	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** HOC that "excludes" certain props from being passed to the specified Component. */
+function withExcludedProps<Element, Props extends object>(
+	Component: React.ComponentType<Props & React.RefAttributes<Element>>,
+	excludedProps: readonly string[],
+) {
+	return React.forwardRef<Element, Props>((props, forwardedRef) => {
+		const filteredProps = Object.fromEntries(
+			Object.entries(props).filter(([key]) => !excludedProps.includes(key)),
+		) as Props;
+
+		return <Component {...filteredProps} ref={forwardedRef} />;
 	});
 }
 

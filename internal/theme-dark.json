@@ -184,7 +184,7 @@
 				},
 				"level-1": {
 					"$type": "color",
-					"$value": "{p-color.gray.850}"
+					"$value": "{p-color.gray.900}"
 				},
 				"overlay": {
 					"$type": "color",
@@ -192,7 +192,7 @@
 				},
 				"level-2": {
 					"$type": "color",
-					"$value": "{p-color.gray.825}"
+					"$value": "{p-color.gray.900}"
 				}
 			},
 			"neutral": {
@@ -674,11 +674,11 @@
 			"neutral": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.gray.700}"
+					"$value": "{p-color.gray.500}"
 				},
 				"muted": {
 					"$type": "color",
-					"$value": "{p-color.gray.825}"
+					"$value": "{p-color.gray.700}"
 				},
 				"faded": {
 					"$type": "color",
@@ -690,7 +690,7 @@
 				},
 				"disabled": {
 					"$type": "color",
-					"$value": "{p-color.gray.600}"
+					"$value": "{p-color.gray.800}"
 				}
 			},
 			"elevation": {
@@ -702,11 +702,11 @@
 			"page": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.white.8}"
+					"$value": "{p-color.white.36}"
 				},
 				"depth": {
 					"$type": "color",
-					"$value": "{p-color.white.8}"
+					"$value": "{p-color.white.24}"
 				}
 			},
 			"control": {

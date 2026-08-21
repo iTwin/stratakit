@@ -49,12 +49,19 @@ const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
 				components: {
 					...outerTheme.components,
 					MuiTextField: {
+						...outerTheme.components?.MuiTextField,
 						defaultProps: {
+							...outerTheme.components?.MuiTextField?.defaultProps,
 							slotProps: {
+								...outerTheme.components?.MuiTextField?.defaultProps?.slotProps,
 								input: {
+									...outerTheme.components?.MuiTextField?.defaultProps
+										?.slotProps?.input,
 									component: MuiAutocompleteTextFieldInput,
 								},
 								htmlInput: {
+									...outerTheme.components?.MuiTextField?.defaultProps
+										?.slotProps?.htmlInput,
 									slot: "input", // Assign input element to the slot named "input"
 								},
 							},

@@ -3,17 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiInputBase-root {
-	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
-	--_MuiInput-padding-inline: var(--stratakit-space-x3);
-
-	&:where(.MuiInputBase-sizeSmall) {
-		@apply --typography("body-sm");
-		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
-		--_MuiInput-padding-inline: var(--stratakit-space-x2);
-	}
-}
-
 .🥝MuiInput {
 	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
@@ -58,6 +47,17 @@
 
 	:where(fieldset) {
 		display: none;
+	}
+}
+
+.MuiInputBase-root {
+	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
+	--_MuiInput-padding-inline: var(--stratakit-space-x3);
+
+	&:where(.MuiInputBase-sizeSmall) {
+		@apply --typography("body-sm");
+		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
+		--_MuiInput-padding-inline: var(--stratakit-space-x2);
 	}
 }
 

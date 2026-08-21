@@ -38,6 +38,7 @@ import {
 } from "./~components/MuiChip.js";
 import { MuiDialogPaper } from "./~components/MuiDialog.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
+import { MuiDrawerPaper } from "./~components/MuiDrawer.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiMenuListSlot } from "./~components/MuiMenu.js";
@@ -372,6 +373,11 @@ function createTheme() {
 				defaultProps: {
 					component: Role.div,
 					disableScrollLock: true, // Handled in MuiDrawer.css instead.
+					slotProps: {
+						paper: {
+							component: MuiDrawerPaper,
+						},
+					},
 				},
 			},
 			MuiFab: {

@@ -3,14 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import DrawerComprehensive_ from "examples/mui/Drawer._comprehensive.tsx";
-import DrawerDefault from "examples/mui/Drawer.default.tsx";
+.list {
+	min-inline-size: 250px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
 
-export default function DrawerExamples() {
-	return (
-		<>
-			<DrawerDefault />
-			<DrawerComprehensive_ />
-		</>
-	);
+.accountItem {
+	margin-top: auto;
 }

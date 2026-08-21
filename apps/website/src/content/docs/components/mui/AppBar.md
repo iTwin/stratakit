@@ -7,3 +7,8 @@ links:
 ---
 
 ::example{src="mui/AppBar.default" min-width="450px"}
+
+## StrataKit MUI modifications
+
+- Deprecated `color`, `elevation`, `enableColorOnDark`, `square` and `variant` props
+- The use of MUI's `Toolbar` has been replaced with a styled `<div>` to avoid confusion with the [StrataKit `Toolbar`](/components/toolbar/).

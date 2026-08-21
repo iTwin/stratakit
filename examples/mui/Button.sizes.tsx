@@ -11,7 +11,6 @@ export default () => {
 		<Stack
 			spacing={1}
 			direction="row"
-			useFlexGap
 			sx={{ alignItems: "center", flexWrap: "wrap" }}
 		>
 			<Button size="small">Small</Button>

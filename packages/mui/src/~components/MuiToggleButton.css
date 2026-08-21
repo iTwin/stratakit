@@ -3,6 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiToggleButtonGroup-root {
+	isolation: isolate;
+}
+
 .MuiToggleButton-root {
 	--✨bg--selected: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--✨bg--selected-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
@@ -19,6 +23,18 @@
 	/* Rendered in a ToggleButtonGroup. */
 	&:where(.MuiToggleButtonGroup-grouped) {
 		border-radius: revert-layer; /* Let MUI handle border-radius. */
+		border-color: var(--stratakit-color-border-neutral-base);
+
+		/* Reduce double borders. */
+		&:where(:not(.MuiToggleButtonGroup-firstButton)) {
+			:where(.MuiToggleButtonGroup-root.MuiToggleButtonGroup-horizontal) & {
+				border-inline-start-color: transparent;
+			}
+
+			:where(.MuiToggleButtonGroup-root.MuiToggleButtonGroup-vertical) & {
+				border-block-start-color: transparent;
+			}
+		}
 	}
 
 	&:where(.Mui-selected) {
@@ -29,6 +45,8 @@
 		border-color: var(--_MuiToggleButton-border--selected);
 		color: var(--stratakit-color-text-accent-strong);
 		--🥝Icon-color: var(--stratakit-color-icon-accent-strong);
+
+		z-index: 1; /* Selected buttons should appear on top. */
 
 		@media (any-hover: hover) {
 			&:where(:hover) {

@@ -1,1 +1,0 @@
-import{aP as s,bk as n,aQ as u,aR as i,co as c,bg as l,c0 as r,aB as D}from"./~utils-CIfkCGnI.js";import{u as g}from"./disclosure-CCEbAoAR.js";const f="button",m=i(function({store:a,...e}){const t=c();return a=a||t,l(a,!1),e={"aria-haspopup":r(D(a,"contentElement"),"dialog"),...e},e=g({store:a,...e}),e}),d=s(function(a){const e=m(n(a));return u(f,e)});export{d as D,m as u};

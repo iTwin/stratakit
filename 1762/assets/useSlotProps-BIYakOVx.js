@@ -1,0 +1,1 @@
+import{A as P,B as i,F as m}from"./Icon-J0Df8zUl.js";import{a7 as S}from"./~utils-Dxk-vnMl.js";function g(o){const{elementType:s,externalSlotProps:t,ownerState:e,skipResolvingSlotProps:p=!1,...n}=o,r=p?{}:P(t,e),{props:l,internalRef:a}=i({...n,externalSlotProps:r}),f=S(a,r?.ref,o.additionalProps?.ref);return m(s,{...l,ref:f},e)}export{g as u};

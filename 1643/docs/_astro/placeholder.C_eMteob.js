@@ -1,0 +1,1 @@
+const e="/1643/docs/_astro/placeholder.DKNetxeO.svg";export{e as s};

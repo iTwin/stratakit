@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.BpYNHelx.js";import{F as o}from"./FormControlLabel.wUd-J_Wy.js";import{C as r}from"./Checkbox.jIFMPgik.js";const s=()=>e.jsx(o,{control:e.jsx(r,{defaultChecked:!0}),label:"Default checked"});export{s as default};

@@ -1,0 +1,1 @@
+import{j as o}from"./_utils.BpYNHelx.js";import{I as t}from"./ExamplePreview.Bc2ZaTAd.js";import{s as i}from"./notifications.B_RW6-wp.js";const r=()=>o.jsx(t,{label:"Notifications",dot:"You have unread notifications",icon:i});export{r as default};

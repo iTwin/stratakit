@@ -140,7 +140,7 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 - Implement a selection behavior suited to your users.
 - Use an `aria-level` value that reflects the level of the item in the hierarchy.
 
-## ❌ Don't
+## 🚫 Don't
 
 - Don't make expandable items reveal items of the same `aria-level`. They must be the parent's level plus `1`.
 - Don't try to place `Tree.Item`s inside `Tree.Item`s. Each `Tree.Item` is a sibling under a `Tree.Root` parent.

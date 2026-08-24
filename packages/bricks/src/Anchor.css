@@ -5,16 +5,6 @@
 .🥝Anchor {
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
 	--✨color--accent: var(--stratakit-color-text-accent-strong);
-	--✨color--accent-hover: color-mix(
-		in oklch,
-		var(--✨color--accent) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-hover-\%)
-	);
-	--✨color--accent-pressed: color-mix(
-		in oklch,
-		var(--✨color--accent) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
-	);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	@layer base {
@@ -42,9 +32,7 @@
 
 	@layer modifiers {
 		&:where([data-_sk-tone="accent"]) {
-			--🥝Anchor-color: var(--🌀Anchor-state--default, var(--✨color--accent))
-				var(--🌀Anchor-state--hover, var(--✨color--accent-hover))
-				var(--🌀Anchor-state--pressed, var(--✨color--accent-pressed));
+			--🥝Anchor-color: var(--✨color--accent);
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 		}
 	}

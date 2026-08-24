@@ -1,6 +1,6 @@
 ---
 title: ErrorRegion
-description: Error regions collate errors generated during the operation of a **Tree**.
+description: Error regions collate errors generated from an interactive dataset.
 status: unstable
 links:
   apiReference: /reference/structures/ErrorRegion

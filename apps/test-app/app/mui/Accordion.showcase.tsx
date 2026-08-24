@@ -16,7 +16,7 @@ import { createKnob, isProduction } from "~/~utils.tsx";
 
 export default function AccordionExamples() {
 	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<div>
 				<AccordionDefault />
 			</div>

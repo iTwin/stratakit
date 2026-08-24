@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝Kbd {
-	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-neutral-base) inset;
 
 	@layer base {
 		@apply --typography("body-sm");

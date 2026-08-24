@@ -10,7 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
-- Grouped buttons default to `color="secondary"`.
+- The `color` prop is not supported. Set `color` on the individual buttons instead.
 
 ## Examples
 

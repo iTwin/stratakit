@@ -108,6 +108,7 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 				className={cx("🥝Popover", props.className)}
 				ref={forwardedRef}
 			>
+				{/* Not setting unstable_getContainer; contentElement is defined when children are first rendered. */}
 				<PortalProvider container={contentElement ?? null}>
 					{children}
 				</PortalProvider>

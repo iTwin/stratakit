@@ -639,9 +639,7 @@
 				"disabled": {
 					"$type": "color",
 					"$value": "{p-color.gray.200}"
-				}
-			},
-			"control": {
+				},
 				"placeholder": {
 					"$type": "color",
 					"$value": "{p-color.gray.400}"

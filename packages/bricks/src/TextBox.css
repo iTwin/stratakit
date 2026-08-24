@@ -20,7 +20,7 @@
 	--✨border--invalid: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨color--placeholder: var(--stratakit-color-text-neutral-secondary);
+	--✨color--placeholder: var(--stratakit-color-text-neutral-placeholder);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 	--✨height: 1.5rem;
 	--✨padding-inline: var(--stratakit-space-x2);

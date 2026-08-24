@@ -93,7 +93,7 @@ Any [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can be expanded to reve
 </Tree.Root>
 ```
 
-A button to the left of each item is reserved for expanding and collapsing it, handled by [`onExpandedChange`](/reference/structures/Tree/#Tree.Item.onExpandedChange). Clicking elsewhere on the item will perform [selection](#selection).
+A button to the left of each item is reserved for expanding and collapsing it, where nested items are included. This is handled by [`onExpandedChange`](/reference/structures/Tree/#Tree.Item.onExpandedChange).
 
 :::note[Keyboard behavior]
 

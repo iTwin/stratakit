@@ -1,0 +1,1 @@
+import{g as s,i as e}from"./~utils-Bw44b9_h.js";function a(t){return s("MuiListItemIcon",t)}const n=e("MuiListItemIcon",["root","alignItemsFlexStart"]);function l(t){return s("MuiListItemText",t)}const o=e("MuiListItemText",["root","multiline","dense","inset","primary","secondary"]);export{o as a,l as b,a as g,n as l};

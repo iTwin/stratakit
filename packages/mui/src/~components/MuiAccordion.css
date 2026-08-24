@@ -8,8 +8,8 @@
 
 	--_MuiAccordion-border-radius-top: 0;
 	--_MuiAccordion-border-radius-bottom: 0;
-	--_MuiAccordion-padding: var(--stratakit-space-x3);
-	--_MuiAccordion-column-gap: var(--stratakit-space-x3);
+	--_MuiAccordion-padding: var(--stratakit-space-300);
+	--_MuiAccordion-column-gap: var(--stratakit-space-300);
 
 	background-color: transparent;
 	border-color: var(--stratakit-color-border-neutral-muted);
@@ -98,10 +98,10 @@
 
 .MuiAccordionSummary-content {
 	align-items: center;
-	column-gap: var(--stratakit-space-x2);
+	column-gap: var(--stratakit-space-200);
 	font-weight: 500;
-	margin-block-start: var(--stratakit-space-x1);
-	margin-block-end: var(--stratakit-space-x1);
+	margin-block-start: var(--stratakit-space-100);
+	margin-block-end: var(--stratakit-space-100);
 }
 
 .MuiAccordionSummary-expandIconWrapper {

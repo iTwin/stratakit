@@ -10,7 +10,7 @@
 		align-items: center;
 		position: relative;
 
-		--🥝Chip-padding-inline: var(--stratakit-space-x2);
+		--🥝Chip-padding-inline: var(--stratakit-space-200);
 		padding-inline-start: var(--🥝Chip-padding-inline);
 		padding-inline-end: var(--🥝Chip-padding-inline);
 

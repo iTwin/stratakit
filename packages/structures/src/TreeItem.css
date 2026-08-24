@@ -39,8 +39,8 @@
 }
 
 .🥝TreeItemNode:is(.🥝ListItem) {
-	--✨first-level-indent: var(--stratakit-space-x2);
-	--✨subsequent-level-indent: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
+	--✨first-level-indent: var(--stratakit-space-200);
+	--✨subsequent-level-indent: calc(var(--stratakit-space-100) + var(--stratakit-space-50));
 
 	@layer base {
 		position: relative;
@@ -104,7 +104,7 @@
 		align-self: stretch;
 		position: sticky;
 		inset-inline-end: 0;
-		padding-inline-end: var(--stratakit-space-x1);
+		padding-inline-end: var(--stratakit-space-100);
 		background-color: var(--stratakit-color-bg-page-base);
 		display: inline-flex;
 		/** If actions are made visible (by a parent), the actions container should also become visible. */
@@ -155,7 +155,7 @@
 	@layer base {
 		display: flex;
 		align-items: center;
-		gap: var(--stratakit-space-x1);
+		gap: var(--stratakit-space-100);
 	}
 }
 

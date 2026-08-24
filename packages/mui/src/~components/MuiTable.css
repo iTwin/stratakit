@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 :where(.MuiTable-root) caption {
-	padding-block-start: var(--stratakit-space-x4);
-	padding-block-end: var(--stratakit-space-x4);
-	padding-inline-start: var(--stratakit-space-x4);
-	padding-inline-end: var(--stratakit-space-x3);
+	padding-block-start: var(--stratakit-space-400);
+	padding-block-end: var(--stratakit-space-400);
+	padding-inline-start: var(--stratakit-space-400);
+	padding-inline-end: var(--stratakit-space-300);
 
 	caption-side: top;
 }
@@ -45,15 +45,15 @@
 .MuiTableCell-root {
 	&:where(.MuiTableCell-sizeMedium) {
 		block-size: 3rem;
-		padding-block-start: var(--stratakit-space-x2);
-		padding-block-end: var(--stratakit-space-x2);
-		padding-inline-start: var(--stratakit-space-x4);
-		padding-inline-end: var(--stratakit-space-x3);
+		padding-block-start: var(--stratakit-space-200);
+		padding-block-end: var(--stratakit-space-200);
+		padding-inline-start: var(--stratakit-space-400);
+		padding-inline-end: var(--stratakit-space-300);
 	}
 
 	&:where(.MuiTableCell-paddingCheckbox) {
-		padding-inline-start: var(--stratakit-space-x4);
-		padding-inline-end: var(--stratakit-space-x4);
+		padding-inline-start: var(--stratakit-space-400);
+		padding-inline-end: var(--stratakit-space-400);
 		text-align: center;
 	}
 }
@@ -89,7 +89,7 @@
 
 .MuiTableSortLabel-icon {
 	transform: none; /* MUI uses single icon and changes transform, but Stratakit uses two icons so don't transform */
-	margin-inline-end: var(--stratakit-space-x1);
+	margin-inline-end: var(--stratakit-space-100);
 	opacity: 0; /* MUI sets opacity:0 to hide the icon when it isn't active and then overrides it with 1 when it should be shown */
 
 	:where(.MuiTableSortLabel-root.Mui-active) & {

@@ -22,12 +22,12 @@
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨height: 1.5rem;
-	--✨gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
-	--✨padding-inline-start: var(--stratakit-space-x2);
+	--✨gap: calc(var(--stratakit-space-100) + var(--stratakit-space-50));
+	--✨padding-inline-start: var(--stratakit-space-200);
 	--✨padding-inline-end: calc(
 		var(--✨gap) +
-		var(--stratakit-space-x4) /* Arrow size */ +
-		var(--stratakit-space-x1) /* Arrow padding */
+		var(--stratakit-space-400) /* Arrow size */ +
+		var(--stratakit-space-100) /* Arrow padding */
 	);
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝Select-border-color) inset;
@@ -208,7 +208,7 @@
 .🥝SelectArrow {
 	@layer base {
 		justify-self: end;
-		margin-inline-end: var(--stratakit-space-x1);
+		margin-inline-end: var(--stratakit-space-100);
 		pointer-events: none;
 		z-index: 1; /* should be above the button */
 

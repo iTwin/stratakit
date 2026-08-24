@@ -7,7 +7,7 @@
 	font-weight: 500;
 	text-decoration-color: currentColor;
 	text-decoration-line: underline;
-	text-underline-offset: var(--stratakit-space-x05);
+	text-underline-offset: var(--stratakit-space-50);
 	transition: text-underline-offset 150ms ease-out;
 
 	&:where(a:not(:any-link)) {
@@ -15,6 +15,6 @@
 	}
 
 	&:where(:hover, :focus-visible) {
-		text-underline-offset: var(--stratakit-space-x1);
+		text-underline-offset: var(--stratakit-space-100);
 	}
 }

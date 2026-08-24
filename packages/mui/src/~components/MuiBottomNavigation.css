@@ -33,8 +33,8 @@
 			z-index: -1;
 
 			position: absolute;
-			inset-block: calc(-1 * var(--stratakit-space-x1));
-			inset-inline: calc(-1 * var(--stratakit-space-x2));
+			inset-block: calc(-1 * var(--stratakit-space-100));
+			inset-inline: calc(-1 * var(--stratakit-space-200));
 
 			background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 			border: 1px solid var(--stratakit-color-border-accent-strong);

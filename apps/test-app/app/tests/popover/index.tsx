@@ -124,7 +124,7 @@ function PaddedTest() {
 					<div
 						style={{
 							display: "flex",
-							gap: "var(--stratakit-space-x2)",
+							gap: "var(--stratakit-space-200)",
 						}}
 					>
 						<TextBox.Input style={{ flex: 1 }} placeholder="Add users" />
@@ -133,7 +133,7 @@ function PaddedTest() {
 				</>
 			}
 			style={{
-				padding: "var(--stratakit-space-x3)",
+				padding: "var(--stratakit-space-300)",
 				display: "flex",
 				flexDirection: "column",
 				gap: 8,

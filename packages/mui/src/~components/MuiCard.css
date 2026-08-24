@@ -58,7 +58,7 @@
 	}
 
 	:where(.MuiCardHeader-root) + & {
-		padding-block-start: var(--stratakit-space-x2);
+		padding-block-start: var(--stratakit-space-200);
 	}
 }
 
@@ -72,5 +72,5 @@
 }
 
 .MuiCardActions-root {
-	padding: var(--stratakit-space-x4);
+	padding: var(--stratakit-space-400);
 }

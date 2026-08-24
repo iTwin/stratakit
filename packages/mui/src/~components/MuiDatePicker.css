@@ -16,17 +16,17 @@
 .MuiPickersCalendarHeader-labelContainer {
 	@apply --typography("body-md");
 	align-self: stretch;
-	padding-inline-end: var(--stratakit-space-x1);
+	padding-inline-end: var(--stratakit-space-100);
 }
 
 .MuiPickersInputBase-root:is(.🥝MuiInput) {
 	block-size: var(--stratakit-size-control-field-height-medium);
-	padding-inline-start: var(--stratakit-space-x3);
+	padding-inline-start: var(--stratakit-space-300);
 
 	&:where(.MuiPickersInputBase-inputSizeSmall) {
 		@apply --typography("body-sm");
 		block-size: var(--stratakit-size-control-field-height-small);
-		padding-inline-start: var(--stratakit-space-x2);
+		padding-inline-start: var(--stratakit-space-200);
 	}
 }
 
@@ -50,7 +50,7 @@
 
 .MuiDayCalendar-root {
 	--_MuiDayCalendar-day-size: var(--stratakit-size-control-field-height-medium);
-	--_MuiDayCalendar-day-margin: var(--stratakit-space-x1);
+	--_MuiDayCalendar-day-margin: var(--stratakit-space-100);
 }
 
 .MuiDayCalendar-weekContainer {
@@ -129,11 +129,11 @@
 		&::after {
 			content: "";
 			position: absolute;
-			inset-block-end: var(--stratakit-space-x05);
+			inset-block-end: var(--stratakit-space-50);
 			aspect-ratio: 1;
 			background-color: var(--_MuiPickerDay-today-dot-background-color, var(--✨dot--default));
-			block-size: var(--stratakit-space-x1);
-			inline-size: var(--stratakit-space-x1);
+			block-size: var(--stratakit-space-100);
+			inline-size: var(--stratakit-space-100);
 			border-radius: calc(infinity * 1px);
 			transition: background-color 150ms ease-out;
 		}

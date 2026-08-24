@@ -20,6 +20,7 @@ import css from "./~styles.css.js";
 import {
 	HtmlSanitizerContext,
 	PortalProvider,
+	PortalProviderContext,
 	RootContext,
 	RootNodeContext,
 	spriteSheetId,
@@ -98,6 +99,11 @@ interface RootProps extends BaseProps {
 	 * @default document
 	 */
 	rootNode?: Document | ShadowRoot;
+
+	/**
+	 * Allows to customize the portal provider.
+	 */
+	unstable_portalProvider?: React.ReactElement;
 }
 
 /**
@@ -168,7 +174,11 @@ interface RootInternalProps
 	extends BaseProps,
 		Pick<
 			RootProps,
-			"colorScheme" | "unstable_accentColor" | "density" | "rootNode"
+			| "colorScheme"
+			| "unstable_accentColor"
+			| "density"
+			| "rootNode"
+			| "unstable_portalProvider"
 		> {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
@@ -179,6 +189,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 			unstable_accentColor,
 			density,
 			rootNode = isBrowser ? document : undefined,
+			unstable_portalProvider,
 			...rest
 		} = props;
 
@@ -192,7 +203,9 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				ref={forwardedRef}
 			>
 				<RootNodeContext.Provider value={rootNode}>
-					{children}
+					<PortalProviderContext.Provider value={unstable_portalProvider}>
+						{children}
+					</PortalProviderContext.Provider>
 				</RootNodeContext.Provider>
 			</Role>
 		);

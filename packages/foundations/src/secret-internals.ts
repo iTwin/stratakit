@@ -6,6 +6,5 @@
 export {
 	PortalContext,
 	PortalProvider,
-	PortalWrapperContext,
 	RootContext,
 } from "./Root.internal.js";

@@ -12,7 +12,6 @@ import {
 import { Root as StrataKitRoot } from "@stratakit/foundations";
 import {
 	PortalContext,
-	PortalWrapperContext,
 	RootContext,
 } from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
@@ -96,20 +95,19 @@ const RootInner = forwardRef<"div", RootInnerProps>((props, forwardedRef) => {
 		props;
 
 	return (
-		<PortalWrapperContext.Provider value={wrapPortal}>
-			<StrataKitRoot
-				{...rest}
-				className={cx("🥝MuiRoot", props.className)}
-				portalContainer={<div className="🥝MuiRoot" />}
-				colorScheme={colorScheme}
-				unstable_accentColor={unstable_accentColor}
-				rootNode={rootNode}
-				synchronizeColorScheme
-				ref={forwardedRef}
-			>
-				{children}
-			</StrataKitRoot>
-		</PortalWrapperContext.Provider>
+		<StrataKitRoot
+			{...rest}
+			className={cx("🥝MuiRoot", props.className)}
+			portalContainer={<div className="🥝MuiRoot" />}
+			colorScheme={colorScheme}
+			unstable_accentColor={unstable_accentColor}
+			unstable_portalProvider={<PortalThemeProvider />}
+			rootNode={rootNode}
+			synchronizeColorScheme
+			ref={forwardedRef}
+		>
+			{children}
+		</StrataKitRoot>
 	);
 });
 DEV: RootInner.displayName = "RootInner";
@@ -142,12 +140,6 @@ function Styles() {
 	}, [rootNode, loadStyles]);
 
 	return null;
-}
-
-// ----------------------------------------------------------------------------
-
-function wrapPortal(portal: React.ReactNode) {
-	return <PortalThemeProvider>{portal}</PortalThemeProvider>;
 }
 
 // ----------------------------------------------------------------------------

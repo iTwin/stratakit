@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
+import { Role } from "@ariakit/react/role";
 import { useIsClient } from "@stratakit/internal-utils/hooks";
 
 // ----------------------------------------------------------------------------
@@ -56,12 +57,6 @@ export const HtmlSanitizerContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
-export const PortalWrapperContext = React.createContext<
-	((portal: React.ReactNode) => React.ReactNode) | undefined
->(undefined);
-
-// ----------------------------------------------------------------------------
-
 interface PortalContextValue {
 	container: HTMLElement | null;
 	/**
@@ -80,6 +75,12 @@ export const PortalContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
+export const PortalProviderContext = React.createContext<
+	React.ReactElement | undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
 /**
  * Provides the element that will contain the portal.
  */
@@ -88,12 +89,12 @@ export function PortalProvider(
 ) {
 	const { children, container, unstable_getContainer } = props;
 
-	const wrapPortal = React.useContext(PortalWrapperContext);
+	const portalProvider = React.useContext(PortalProviderContext);
 
 	return (
 		<PortalContext.Provider value={{ container, unstable_getContainer }}>
 			<AkPortalContext.Provider value={container}>
-				{wrapPortal ? wrapPortal(children) : children}
+				<Role render={portalProvider ?? <React.Fragment />}>{children}</Role>
 			</AkPortalContext.Provider>
 		</PortalContext.Provider>
 	);

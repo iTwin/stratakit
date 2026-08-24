@@ -10,10 +10,14 @@ import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
-import { PortalProvider } from "@stratakit/foundations/secret-internals";
+import {
+	PortalProvider,
+	RootContext,
+} from "@stratakit/foundations/secret-internals";
 import {
 	useCloseWatcher,
 	usePopoverApi,
+	useSafeContext,
 	useStableCallback,
 } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
@@ -77,15 +81,22 @@ interface DialogRootProps
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	useInit();
 
-	const { backdrop = true, unmountOnHide = true, ...rest } = props;
+	const { rootNode } = useSafeContext(RootContext);
 
-	const dismissRef = React.useRef<HTMLButtonElement | null>(null);
+	const defaultId = React.useId();
+
+	const {
+		backdrop = true,
+		unmountOnHide = true,
+		id = defaultId,
+		...rest
+	} = props;
 
 	const getContainer = React.useCallback(() => {
-		const parent = dismissRef.current?.parentElement;
-		if (!parent?.classList.contains("🥝Dialog")) return null;
-		return parent;
-	}, []);
+		// Lookup using element id; `getContainer` is called (from layout effect) before the ref is attached.
+		const containerEl = rootNode?.getElementById(id);
+		return containerEl ?? null;
+	}, [rootNode, id]);
 
 	const store = AkDialog.useDialogStore();
 	const contentElement = useStoreState(store, "contentElement");
@@ -100,6 +111,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 		<AkDialog.DialogProvider store={store}>
 			<DialogWrapper open={props.open}>
 				<AkDialog.Dialog
+					id={id}
 					unmountOnHide={unmountOnHide}
 					portal={false} // Portaling will be done by DialogWrapper
 					{...rest}
@@ -108,8 +120,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 					ref={forwardedRef}
 				>
 					{/* Avoids rendering a visually hidden dismiss button for screen readers. */}
-					{/* Attach the ref before `getContainer` is called. */}
-					<AkDialog.DialogDismiss hidden ref={dismissRef} />
+					<AkDialog.DialogDismiss hidden />
 					<PortalProvider
 						container={contentElement}
 						unstable_getContainer={getContainer}

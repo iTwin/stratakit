@@ -20,7 +20,8 @@ The **Divider** comes in two forms: _semantic_ and _presentational_. By default,
 
 ## StrataKit MUI modifications
 
-- Renders a semantic [`<hr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hr) by default, switching to a `<div>` when it has children, is [vertical](#orientation), or is [presentational](#presentational-dividers).
+- Renders a semantic [`<hr>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/hr) by default, switching to a `<div>` when it has [children](#children), is [vertical](#orientation), or is [presentational](#presentational-dividers).
+- Added [`margin`](#margin) prop.
 
 ## Examples
 
@@ -61,6 +62,12 @@ The `margin` prop can be set to include some space before and after the **Divide
 The variant can control how much of the container the **Divider** spans. The default is `"fullWidth"`.
 
 ::example{src="mui/Divider.variant"}
+
+### Children
+
+When the `children` prop is passed, the **Divider** will render as a generic `<div>` (without [`separator`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/separator_role) semantics). It is recommended to supplement the **Divider** with alternative semantics, such as a heading.
+
+::example{src="mui/Divider.children" min-width="300px"}
 
 ## ✅ Do
 

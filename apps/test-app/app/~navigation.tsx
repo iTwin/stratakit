@@ -11,10 +11,10 @@ import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures
 import { SettingsDialog } from "./~settings.tsx";
 import { isProduction, useIsWideScreen, useLocalStorage } from "./~utils.tsx";
 
+import svgComponents from "@stratakit/icons/components.svg";
 import svgDocumentation from "@stratakit/icons/documentation.svg";
 import svgSettings from "@stratakit/icons/settings.svg";
 import styles from "./~navigation.module.css";
-import svgComponents from "./assets/components.svg";
 import svgIcons from "./assets/icons.svg";
 import svgMui from "./assets/mui.svg";
 import svgSandbox from "./assets/sandbox.svg";
@@ -101,7 +101,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 				<NavigationRail.Content>
 					{navItems.length > 0 &&
 						navItems.map((group, groupIndex) => (
-							<React.Fragment key={groupIndex}>
+							<React.Fragment key={group.map((item) => item.path).join(",")}>
 								<NavigationRail.List>
 									{group.map((item) => {
 										const isActive = location.pathname.startsWith(item.path);

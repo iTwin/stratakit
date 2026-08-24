@@ -6,7 +6,6 @@
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
@@ -14,9 +13,7 @@ export default () => {
 			<div>
 				<Accordion>
 					<AccordionSummary markerPlacement="start">
-						<Typography render={<span />}>
-							Marker placement <code>start</code>
-						</Typography>
+						Marker placement <code>start</code>
 					</AccordionSummary>
 					<AccordionDetails>
 						<code>start</code> aligns the marker with the inline-start edge:
@@ -28,9 +25,7 @@ export default () => {
 			<div>
 				<Accordion>
 					<AccordionSummary markerPlacement="end">
-						<Typography render={<span />}>
-							Marker placement <code>end</code>
-						</Typography>
+						Marker placement <code>end</code>
 					</AccordionSummary>
 					<AccordionDetails>
 						<code>end</code> aligns the marker with the inline-end edge: right

@@ -1,5 +1,78 @@
 # Changelog
 
+## 0.4.3
+
+- [#1682](https://github.com/iTwin/stratakit/pull/1682): Added new icons:
+  - `arrow-north.svg`
+  - `assign.svg`
+  - `prefab.svg`
+  - `reaction-add.svg`
+  - `slab-opening.svg`
+  - `slab-region.svg`
+  - `slice.svg`
+  - `unassign.svg`
+
+  Updated icons:
+  - `construction-area.svg`
+  - `list.svg`
+  - `sorting.svg`
+
+- [#1661](https://github.com/iTwin/stratakit/pull/1661): Added new icon: `components.svg`.
+- [#1674](https://github.com/iTwin/stratakit/pull/1674): Updated icon: `merge-cells.svg` (now uses the correct glyph for the regular size).
+
+## 0.4.2
+
+- [#1630](https://github.com/iTwin/stratakit/pull/1630): Added new icons:
+  - `apply-down.svg`
+  - `asset-copy.svg`
+  - `axis-lock.svg`
+  - `beam.svg`
+  - `brace.svg`
+  - `column.svg`
+  - `cone.svg`
+  - `construction-area.svg`
+  - `construction-line.svg`
+  - `construction-point.svg`
+  - `cylinder.svg`
+  - `drop-cap.svg`
+  - `footing-combined.svg`
+  - `footing-isolated.svg`
+  - `footing-mat.svg`
+  - `footing-pilecap.svg`
+  - `grid-lines.svg`
+  - `ice.svg`
+  - `load-area.svg`
+  - `load-case.svg`
+  - `load-combination.svg`
+  - `load-linear.svg`
+  - `load-perimeter.svg`
+  - `load-point.svg`
+  - `mass-area.svg`
+  - `mass-excitation.svg`
+  - `mass-linear.svg`
+  - `mass-perimeter.svg`
+  - `mass.svg`
+  - `project-copy.svg`
+  - `reality-capture.svg`
+  - `seismic.svg`
+  - `slab.svg`
+  - `snap-grid.svg`
+  - `snap-orthogonal.svg`
+  - `snap-point.svg`
+  - `snowflake.svg`
+  - `spring-area.svg`
+  - `spring-linear.svg`
+  - `spring-point.svg`
+  - `support-linear.svg`
+  - `support-point.svg`
+  - `temperature.svg`
+  - `templates.svg`
+  - `templates-copy.svg`
+  - `templates-create.svg`
+  - `tower-crane.svg`
+  - `truck.svg`
+  - `wind.svg`
+
 ## 0.4.1
 
 - [#1619](https://github.com/iTwin/stratakit/pull/1619): Added new icon:

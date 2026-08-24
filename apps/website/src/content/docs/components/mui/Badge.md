@@ -21,7 +21,8 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 
 - Added [`type`](#type) prop.
 - Added [`inline`](#inline) prop.
-- The `"default"` color has been removed. The default color is now `"secondary"`.
+- Added [`size`](#sizes) prop.
+- The `"default"` and `"primary"` colors have been removed. The default color is now `"secondary"`.
 
 ## Examples
 
@@ -36,6 +37,15 @@ Use `variant="dot"` to display the badge without a count inside.
 Set the `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
 
 ::example{src="mui/Badge.inline"}
+
+### Sizes
+
+The `size` prop can only be set when [`inline`](#inline).
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Badge.sizes"}
 
 ### Colors
 
@@ -65,7 +75,7 @@ Use the `type` prop to adjust the visual prominence of an [`inline`](#inline) **
 
 - Use **Badge** for indicating state or status.
 - Include a concise and descriptive label.
-- Use an [`icon`](#icons) to communicate a status `color` in a color-independent fashion.
+- Use an `icon` to communicate a status [`color`](#colors) in a color-independent fashion.
 
 ## 🚫 Don't
 

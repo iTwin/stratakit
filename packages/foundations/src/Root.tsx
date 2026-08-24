@@ -7,16 +7,16 @@ import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { PortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
-import cx from "classnames";
-import css from "./~styles.css.js";
+import { identity } from "@stratakit/internal-utils/common";
 import {
-	forwardRef,
 	getOwnerDocument,
 	getWindow,
-	identity,
 	isBrowser,
 	isDocument,
-} from "./~utils.js";
+} from "@stratakit/internal-utils/dom";
+import { forwardRef } from "@stratakit/internal-utils/react";
+import cx from "classnames";
+import css from "./~styles.css.js";
 import {
 	HtmlSanitizerContext,
 	RootContext,
@@ -26,7 +26,7 @@ import {
 } from "./Root.internal.js";
 import { loadStyles } from "./styles.internal.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 const packageName = "@stratakit/foundations";
 const key = `${packageName}@${__VERSION__}`;
@@ -265,7 +265,6 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 
 	return (
 		<PortalContext.Provider value={portalContainer}>
-			{props.children}
 			<PortalContainer
 				colorScheme={props.colorScheme}
 				unstable_accentColor={props.unstable_accentColor}
@@ -273,6 +272,7 @@ function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
 				ref={setPortalContainer}
 				render={props.portalContainerProp}
 			/>
+			{props.children}
 		</PortalContext.Provider>
 	);
 }

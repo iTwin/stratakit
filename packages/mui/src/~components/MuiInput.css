@@ -3,25 +3,20 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiInputBase-root {
-	--✨border--default: var(--stratakit-color-border-control-textbox);
+.🥝MuiInput {
+	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
-	--✨padding-inline--small: var(--stratakit-space-x2);
-	--✨padding-inline--medium: var(--stratakit-space-x3);
-
+	@apply --typography("body-md");
 	padding: 0;
 	border: 1px solid var(--_MuiInput-border-color);
 	border-radius: 4px;
 	background-color: var(--stratakit-color-bg-control-textbox);
 	transition: border-color 150ms ease-out;
 
-	@apply --typography("body-md");
-	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
 	--_MuiInput-border-color: var(--✨border--default);
-	--_MuiInput-padding-inline: var(--✨padding-inline--medium);
 
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled)):hover {
@@ -31,12 +26,6 @@
 				var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 			);
 		}
-	}
-
-	&:where(.MuiInputBase-sizeSmall) {
-		@apply --typography("body-sm");
-		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
-		--_MuiInput-padding-inline: var(--✨padding-inline--small);
 	}
 
 	&:where(:focus-within) {
@@ -58,6 +47,17 @@
 
 	:where(fieldset) {
 		display: none;
+	}
+}
+
+.MuiInputBase-root {
+	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
+	--_MuiInput-padding-inline: var(--stratakit-space-x3);
+
+	&:where(.MuiInputBase-sizeSmall) {
+		@apply --typography("body-sm");
+		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
+		--_MuiInput-padding-inline: var(--stratakit-space-x2);
 	}
 }
 

@@ -3,15 +3,18 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import Stack from "@mui/material/Stack";
-import LinearProgressColors_ from "examples/mui/LinearProgress._colors.tsx";
+import LinearProgressBuffer from "examples/mui/LinearProgress.buffer.tsx";
+import LinearProgressColors from "examples/mui/LinearProgress.colors.tsx";
 import LinearProgressDefault from "examples/mui/LinearProgress.default.tsx";
-import { isProduction } from "~/~utils.tsx";
+import LinearProgressDeterminate from "examples/mui/LinearProgress.determinate.tsx";
 
 export default function LinearProgressExamples() {
 	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<LinearProgressDefault />
-			{!isProduction && <LinearProgressColors_ />}
+			<LinearProgressColors />
+			<LinearProgressDeterminate />
+			<LinearProgressBuffer />
 		</Stack>
 	);
 }

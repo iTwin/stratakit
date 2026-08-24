@@ -3,6 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+/**
+ * Prevents the viewport from scrolling when a Dialog is open.
+ * This is necessary because the equivalent JS doesn't work when Dialog is rendered in a portal container.
+ */
+:is(html, body):where(:has(.MuiDialog-root:not(.MuiModal-root.MuiModal-hidden))) {
+	overflow: clip;
+}
+
 .MuiDialog-paper {
 	--✨min-inset: var(--stratakit-space-x4);
 

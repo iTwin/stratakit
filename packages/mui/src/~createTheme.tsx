@@ -10,6 +10,7 @@ import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
 import cx from "classnames";
 import {
+	MuiAccordionHeadingSlot,
 	MuiAccordionRootSlot,
 	MuiAccordionSummary,
 } from "./~components/MuiAccordion.js";
@@ -50,14 +51,17 @@ import {
 } from "./~components/MuiTable.js";
 import { MuiTab, MuiTabs } from "./~components/MuiTabs.js";
 import { MuiToggleButton } from "./~components/MuiToggleButton.js";
+import { MuiTooltipPopper } from "./~components/MuiTooltip.js";
 import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
+	CalendarIcon,
 	CaretsUpDownIcon,
 	ChevronDownIcon,
 	ChevronLeftDoubleIcon,
 	ChevronLeftIcon,
 	ChevronRightDoubleIcon,
 	ChevronRightIcon,
+	ClockIcon,
 	DismissIcon,
 	ErrorIcon,
 	InfoIcon,
@@ -70,7 +74,14 @@ import type { ColorSystemOptions } from "@mui/material/styles";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 interface CreateThemeArgs {
-	portalContainer?: HTMLElement | null;
+	/**
+	 * The container to use for all portaled components.
+	 *
+	 * Prefer passing a function, which is lazily resolved by MUI when the portal mounts. Passing the
+	 * element directly requires the theme to be recreated once the element becomes available, which
+	 * leaves a one-commit window where portals fall back to `<body>`.
+	 */
+	portalContainer?: HTMLElement | null | (() => HTMLElement | null);
 }
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
@@ -93,9 +104,12 @@ function createTheme(args: CreateThemeArgs) {
 				(shade) => [shade, `var(--stratakit-mui-palette-grey-${shade})`],
 			),
 		),
+
+		tonalOffset: 0.05,
 	} satisfies ColorSystemOptions["palette"];
 
 	return createMuiTheme({
+		spacing: 4,
 		cssVariables: {
 			nativeColor: true,
 			colorSchemeSelector: "[data-color-scheme='%s']",
@@ -145,6 +159,7 @@ function createTheme(args: CreateThemeArgs) {
 					disableGutters: true,
 					slots: {
 						root: MuiAccordionRootSlot,
+						heading: MuiAccordionHeadingSlot,
 					},
 					slotProps: {
 						region: {
@@ -248,7 +263,12 @@ function createTheme(args: CreateThemeArgs) {
 					slotProps: { badge: { component: MuiBadgeBadge } },
 				},
 			},
-			MuiBottomNavigation: { defaultProps: { component: Role.div } },
+			MuiBottomNavigation: {
+				defaultProps: {
+					component: Role.div,
+					showLabels: true,
+				},
+			},
 			MuiBottomNavigationAction: {
 				defaultProps: {
 					component: MuiBottomNavigationAction,
@@ -276,7 +296,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiButtonGroup: {
 				defaultProps: {
 					component: Role.div,
-					color: "secondary",
+					color: "secondary" as never,
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
@@ -325,8 +345,49 @@ function createTheme(args: CreateThemeArgs) {
 					},
 				},
 			},
+			MuiCircularProgress: {
+				defaultProps: {
+					enableTrackSlot: true,
+					thickness: 5,
+				},
+			},
 			MuiContainer: { defaultProps: { component: Role.div } },
-			MuiDialog: { defaultProps: { component: Role.div } },
+			MuiDateCalendar: {
+				defaultProps: {
+					slots: {
+						leftArrowIcon: ChevronLeftIcon,
+						rightArrowIcon: ChevronRightIcon,
+						switchViewIcon: ChevronDownIcon,
+					},
+					slotProps: {
+						previousIconButton: { size: "small" },
+						nextIconButton: { size: "small" },
+						day: { nativeButton: true },
+					},
+					dayOfWeekFormatter: (date: Date) =>
+						date
+							.toLocaleDateString(undefined, { weekday: "short" })
+							.slice(0, 2),
+				},
+			},
+			MuiDatePicker: {
+				defaultProps: {
+					slots: {
+						openPickerIcon: withExcludedProps(CalendarIcon, ["ownerState"]),
+					},
+					slotProps: {
+						openPickerButton: {
+							size: "small",
+						},
+					},
+				},
+			},
+			MuiDialog: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDialog.css instead.
+				},
+			},
 			MuiDialogContentText: {
 				defaultProps: {
 					component: Role.p,
@@ -340,7 +401,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiDivider: { defaultProps: { component: MuiDivider } },
-			MuiDrawer: { defaultProps: { component: Role.div } },
+			MuiDrawer: {
+				defaultProps: {
+					component: Role.div,
+					disableScrollLock: true, // Handled in MuiDrawer.css instead.
+				},
+			},
 			MuiFab: {
 				defaultProps: {
 					component: MuiButtonBase,
@@ -348,6 +414,13 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiFormControl: { defaultProps: { component: Role.div } },
+			MuiFormControlLabel: {
+				defaultProps: {
+					slotProps: {
+						typography: { variant: "body-md" },
+					},
+				},
+			},
 			MuiFormHelperText: { defaultProps: { component: Role.p } },
 			MuiFormLabel: { defaultProps: { component: Role.label as never } },
 			MuiGrid: { defaultProps: { component: Role.div } },
@@ -357,6 +430,16 @@ function createTheme(args: CreateThemeArgs) {
 			},
 			MuiImageList: { defaultProps: { component: Role.ul } },
 			MuiImageListItem: { defaultProps: { component: Role.li } },
+			MuiInputBase: {
+				defaultProps: {
+					classes: { root: "🥝MuiInput" },
+				},
+			},
+			MuiInput: {
+				defaultProps: {
+					disableUnderline: true,
+				},
+			},
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
 			MuiInputLabel: {
 				defaultProps: {
@@ -382,7 +465,7 @@ function createTheme(args: CreateThemeArgs) {
 					},
 				},
 			},
-			MuiListSubheader: { defaultProps: { component: Role.li } },
+			MuiListSubheader: { defaultProps: { component: Role.div } },
 			MuiMenu: {
 				defaultProps: {
 					component: Role.div,
@@ -402,6 +485,9 @@ function createTheme(args: CreateThemeArgs) {
 			MuiModal: { defaultProps: { component: Role.div, container } },
 			MuiOutlinedInput: {
 				defaultProps: {
+					classes: {
+						root: "🥝MuiInput",
+					},
 					notched: false, // Removes masked border from Select
 				},
 			},
@@ -419,6 +505,11 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiPaper: { defaultProps: { component: Role.div } },
+			MuiPickersInputBase: {
+				defaultProps: {
+					className: "🥝MuiInput",
+				},
+			},
 			MuiPopover: {
 				defaultProps: {
 					component: Role.div,
@@ -464,7 +555,7 @@ function createTheme(args: CreateThemeArgs) {
 					component: Role.span,
 					slotProps: {
 						valueLabel: {
-							className: "MuiTooltip-tooltip",
+							className: "🥝MuiTooltip",
 						},
 					},
 				},
@@ -479,7 +570,12 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
-			MuiStack: { defaultProps: { component: Role.div } },
+			MuiStack: {
+				defaultProps: {
+					component: Role.div,
+					useFlexGap: true,
+				},
+			},
 			MuiStep: { defaultProps: { component: Role.li } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
 			MuiStepper: {
@@ -559,6 +655,18 @@ function createTheme(args: CreateThemeArgs) {
 				},
 			},
 			MuiTextField: { defaultProps: { component: Role.div } },
+			MuiTimePicker: {
+				defaultProps: {
+					slots: {
+						openPickerIcon: withExcludedProps(ClockIcon, ["ownerState"]),
+					},
+					slotProps: {
+						openPickerButton: {
+							size: "small",
+						},
+					},
+				},
+			},
 			MuiToggleButton: { defaultProps: { component: MuiToggleButton } },
 			MuiToolbar: { defaultProps: { component: Role.div } },
 			MuiTooltip: {
@@ -566,12 +674,29 @@ function createTheme(args: CreateThemeArgs) {
 					placement: "top",
 					describeChild: true,
 					slotProps: {
+						tooltip: {
+							className: "🥝MuiTooltip",
+						},
 						popper: {
+							component: MuiTooltipPopper,
+							popperOptions: { strategy: "fixed" },
 							modifiers: [
 								{
 									name: "offset",
 									options: {
 										offset: [0, 2],
+									},
+								},
+								{
+									name: "flip",
+									options: {
+										padding: 4,
+									},
+								},
+								{
+									name: "preventOverflow",
+									options: {
+										padding: 4,
 									},
 								},
 							],
@@ -629,6 +754,22 @@ function withRenderProp(
 ) {
 	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
 		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
+	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** HOC that "excludes" certain props from being passed to the specified Component. */
+function withExcludedProps<Element, Props extends object>(
+	Component: React.ComponentType<Props & React.RefAttributes<Element>>,
+	excludedProps: readonly string[],
+) {
+	return React.forwardRef<Element, Props>((props, forwardedRef) => {
+		const filteredProps = Object.fromEntries(
+			Object.entries(props).filter(([key]) => !excludedProps.includes(key)),
+		) as Props;
+
+		return <Component {...filteredProps} ref={forwardedRef} />;
 	});
 }
 

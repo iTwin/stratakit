@@ -1,5 +1,61 @@
 # Changelog
 
+## 0.5.4
+
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
+- [#1744](https://github.com/iTwin/stratakit/pull/1744): Updated structure for `ListSubheader`. It now renders as a `div` by default and should be placed outside of the `ul` that it is labeling.
+- [#1770](https://github.com/iTwin/stratakit/pull/1770): Updated `DatePicker` to show two weekdays characters instead of one.
+- [#1777](https://github.com/iTwin/stratakit/pull/1777): Updated `IconButton` to automatically map the `title` prop to `label` for better compatibility with external components that use the native `title` attribute. The recommended approach is still to use the `label` prop.
+- [#1783](https://github.com/iTwin/stratakit/pull/1783): Updated `Tooltip` to use `fixed` positioning strategy.
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Updated values for the following tokens:
+  - `--stratakit-color-border-neutral-base`
+  - `--stratakit-color-border-neutral-muted`
+  - `--stratakit-color-border-neutral-faded`
+  - `--stratakit-color-border-neutral-disabled`
+  - `--stratakit-color-border-page-base`
+  - `--stratakit-color-border-page-depth`
+  - `--stratakit-color-bg-elevation-level-1`
+  - `--stratakit-color-bg-elevation-level-2`
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Increased border color contrast across various components.
+- [#1707](https://github.com/iTwin/stratakit/pull/1707): Updated borders for `Switch`.
+- [#1709](https://github.com/iTwin/stratakit/pull/1709): Updated borders for `TextField` and other inputs.
+- [#1719](https://github.com/iTwin/stratakit/pull/1719): Updated borders for `Button`.
+- [#1710](https://github.com/iTwin/stratakit/pull/1710): Updated borders for `ToggleButtonGroup`.
+- [#1774](https://github.com/iTwin/stratakit/pull/1774): Updated borders for `Checkbox`, `Radio`, `Slider`, and `Switch`.
+- [#1773](https://github.com/iTwin/stratakit/pull/1773): Adjusted fallback palette values.
+- [#1586](https://github.com/iTwin/stratakit/pull/1586), [#1770](https://github.com/iTwin/stratakit/pull/1770): Styled `DatePicker` to match the Strata visual design language.
+- [#1608](https://github.com/iTwin/stratakit/pull/1608): Styled `DatePicker` input to match the Strata visual design language.
+- [#1594](https://github.com/iTwin/stratakit/pull/1594): Styled `LinearProgress` to match the Strata visual design language.
+- [#1594](https://github.com/iTwin/stratakit/pull/1594): Styled `CircularProgress` to match the Strata visual design language.
+- [#1765](https://github.com/iTwin/stratakit/pull/1765): Fixed theme merging in `Autocomplete`.
+- Updated dependencies:
+  - @stratakit/foundations@0.5.0
+
+## 0.5.3
+
+- [#1657](https://github.com/iTwin/stratakit/pull/1657): Added `render` prop to `Accordion`'s `slotProps.heading`.
+- [#1658](https://github.com/iTwin/stratakit/pull/1658): Updated portal container rendering to prevent an initially open `Dialog` incorrectly being `aria-hidden`.
+- [#1665](https://github.com/iTwin/stratakit/pull/1665): Updated `Tooltip` component to be placed in the [top layer](https://developer.mozilla.org/en-US/docs/Glossary/Top_layer).
+- [#1668](https://github.com/iTwin/stratakit/pull/1668): Fixed an issue where the viewport was still scrollable when a `Dialog` or `Drawer` was open.
+- [#1651](https://github.com/iTwin/stratakit/pull/1651): Fixed a bug with `Tooltip` overflow causing scrollbars.
+- [#1655](https://github.com/iTwin/stratakit/pull/1655): Deprecated MUI `SvgIcon` in favor of StrataKit's `Icon`.
+- [#1676](https://github.com/iTwin/stratakit/pull/1676): Deprecated MUI `Icon` in favor of StrataKit's `Icon`.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.10
+  - @stratakit/icons@0.4.3
+
+## 0.5.2
+
+- [#1575](https://github.com/iTwin/stratakit/pull/1575): Added `size` prop to `Badge` when `inline`.
+- [#1575](https://github.com/iTwin/stratakit/pull/1575): Increased default size of `Badge` when `inline`.
+- [#1642](https://github.com/iTwin/stratakit/pull/1642): Removed `role="separator"` from `Divider` when `children` is passed.
+- [#1622](https://github.com/iTwin/stratakit/pull/1622): Changed `Divider` `variant="middle"` styling to work in toolbars.
+- [#1628](https://github.com/iTwin/stratakit/pull/1628): Fixed a bug where `AvatarGroup` would render an empty listitem, causing incorrect mask application.
+- [#1562](https://github.com/iTwin/stratakit/pull/1562): Updated `TableSortLabel` to use StrataKit icons.
+- [#1635](https://github.com/iTwin/stratakit/pull/1635): Fixed bug to allow typography overrides on `FormControlLabel`
+- Updated dependencies:
+  - @stratakit/icons@0.4.2
+
 ## 0.5.1
 
 - [#1543](https://github.com/iTwin/stratakit/pull/1543): Added a `type` prop to `Badge` which accepts `"outlined"`, `"muted"`, or `"strong"`.

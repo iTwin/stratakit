@@ -1,0 +1,1 @@
+import{j as o}from"./_utils.BpYNHelx.js";import{I as t}from"./ExamplePreview.Bc2ZaTAd.js";import{s as a}from"./download.B21qZfdf.js";const e=()=>o.jsx(t,{label:"Download",icon:a});export{e as default};

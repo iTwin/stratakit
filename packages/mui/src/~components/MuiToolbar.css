@@ -1,0 +1,16 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+/* Update Toolbar gutters except for those used in TablePagination.
+   TablePagination uses custom padding values.  Write the rule here to not apply
+   in that case instead. That avoids having to copy the custom styling for
+   TablePagination into our CSS. */
+:where(:not(.MuiTablePagination-root)) > .MuiToolbar-gutters {
+	padding-inline: var(--stratakit-space-x4);
+
+	/**  Matches the 'sm' breakpoint MUI theme */
+	@media (min-width: 600px) {
+		padding-inline: var(--stratakit-space-x6);
+	}
+}

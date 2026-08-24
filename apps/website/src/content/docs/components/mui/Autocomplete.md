@@ -17,6 +17,7 @@ links:
 - Added [`role="list"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [`role="listitem"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) semantics to [**Chips**](/components/chip) ("tags") used in [multiple selection](#multiple-values).
 - Tags are now focusable. Input is the first focusable element, followed by tags in the order they were added.
 - The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [`portalContainer`](https://stratakit.bentley.com/docs/components/root/#portal-container).
+- The icons are not customizable. `clearIcon`, `popupIcon` and `forcePopupIcon` are not supported.
 
 ## Examples
 

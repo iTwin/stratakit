@@ -16,13 +16,9 @@
 	--stratakit-mui-palette-text-icon: var(--stratakit-color-icon-neutral-primary);
 
 	--stratakit-mui-palette-primary-main: var(--stratakit-color-bg-accent-base);
-	--stratakit-mui-palette-primary-dark: var(--stratakit-color-bg-accent-faded);
-	--stratakit-mui-palette-primary-light: var(--stratakit-color-bg-accent-muted);
 	--stratakit-mui-palette-primary-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
 	--stratakit-mui-palette-secondary-main: var(--stratakit-color-bg-mono-base);
-	--stratakit-mui-palette-secondary-dark: var(--stratakit-color-bg-mono-faded);
-	--stratakit-mui-palette-secondary-light: var(--stratakit-color-bg-mono-muted);
 	--stratakit-mui-palette-secondary-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
 	--stratakit-mui-palette-action-active: var(--stratakit-color-icon-neutral-primary);
@@ -33,23 +29,15 @@
 	);
 
 	--stratakit-mui-palette-error-main: var(--stratakit-color-bg-critical-base);
-	--stratakit-mui-palette-error-dark: var(--stratakit-color-bg-critical-faded);
-	--stratakit-mui-palette-error-light: var(--stratakit-color-bg-critical-muted);
 	--stratakit-mui-palette-error-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
 	--stratakit-mui-palette-warning-main: var(--stratakit-color-bg-attention-base);
-	--stratakit-mui-palette-warning-dark: var(--stratakit-color-bg-attention-faded);
-	--stratakit-mui-palette-warning-light: var(--stratakit-color-bg-attention-muted);
 	--stratakit-mui-palette-warning-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
 	--stratakit-mui-palette-success-main: var(--stratakit-color-bg-positive-base);
-	--stratakit-mui-palette-success-dark: var(--stratakit-color-bg-positive-faded);
-	--stratakit-mui-palette-success-light: var(--stratakit-color-bg-positive-muted);
 	--stratakit-mui-palette-success-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
 	--stratakit-mui-palette-info-main: var(--stratakit-color-bg-info-base);
-	--stratakit-mui-palette-info-dark: var(--stratakit-color-bg-info-faded);
-	--stratakit-mui-palette-info-light: var(--stratakit-color-bg-info-muted);
 	--stratakit-mui-palette-info-contrastText: var(--stratakit-color-text-neutral-emphasis);
 
 	--stratakit-mui-palette-grey-50: --primitive("color.gray.50");

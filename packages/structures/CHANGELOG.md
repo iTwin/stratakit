@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.10
+
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Increased border color contrast across various components.
+- Updated dependencies:
+  - @stratakit/bricks@0.5.6
+  - @stratakit/foundations@0.5.0
+
 ## 0.5.9
 
 - [#1664](https://github.com/iTwin/stratakit/pull/1664): Fixed icon size of `NavigationRail.Button` and `NavigationRail.Anchor` components when a React element is passed to the `icon` prop.

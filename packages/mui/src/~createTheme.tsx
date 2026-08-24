@@ -93,9 +93,12 @@ function createTheme() {
 				(shade) => [shade, `var(--stratakit-mui-palette-grey-${shade})`],
 			),
 		),
+
+		tonalOffset: 0.05,
 	} satisfies ColorSystemOptions["palette"];
 
 	return createMuiTheme({
+		spacing: 4,
 		cssVariables: {
 			nativeColor: true,
 			colorSchemeSelector: "[data-color-scheme='%s']",
@@ -249,7 +252,12 @@ function createTheme() {
 					slotProps: { badge: { component: MuiBadgeBadge } },
 				},
 			},
-			MuiBottomNavigation: { defaultProps: { component: Role.div } },
+			MuiBottomNavigation: {
+				defaultProps: {
+					component: Role.div,
+					showLabels: true,
+				},
+			},
 			MuiBottomNavigationAction: {
 				defaultProps: {
 					component: MuiBottomNavigationAction,
@@ -277,7 +285,7 @@ function createTheme() {
 			MuiButtonGroup: {
 				defaultProps: {
 					component: Role.div,
-					color: "secondary",
+					color: "secondary" as never,
 					disableRipple: true, // ButtonGroup overrides Button's disableRipple so we need to set it here as well
 				},
 			},
@@ -333,10 +341,28 @@ function createTheme() {
 				},
 			},
 			MuiContainer: { defaultProps: { component: Role.div } },
+			MuiDateCalendar: {
+				defaultProps: {
+					slots: {
+						leftArrowIcon: ChevronLeftIcon,
+						rightArrowIcon: ChevronRightIcon,
+						switchViewIcon: ChevronDownIcon,
+					},
+					slotProps: {
+						previousIconButton: { size: "small" },
+						nextIconButton: { size: "small" },
+						day: { nativeButton: true },
+					},
+					dayOfWeekFormatter: (date: Date) =>
+						date
+							.toLocaleDateString(undefined, { weekday: "short" })
+							.slice(0, 2),
+				},
+			},
 			MuiDatePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: CalendarIcon,
+						openPickerIcon: withExcludedProps(CalendarIcon, ["ownerState"]),
 					},
 					slotProps: {
 						openPickerButton: {
@@ -405,7 +431,12 @@ function createTheme() {
 			MuiImageListItem: { defaultProps: { component: Role.li } },
 			MuiInputBase: {
 				defaultProps: {
-					className: "🥝MuiInput",
+					classes: { root: "🥝MuiInput" },
+				},
+			},
+			MuiInput: {
+				defaultProps: {
+					disableUnderline: true,
 				},
 			},
 			MuiInputAdornment: { defaultProps: { component: Role.div } },
@@ -433,7 +464,7 @@ function createTheme() {
 					},
 				},
 			},
-			MuiListSubheader: { defaultProps: { component: Role.li } },
+			MuiListSubheader: { defaultProps: { component: Role.div } },
 			MuiMenu: {
 				defaultProps: {
 					component: Role.div,
@@ -531,7 +562,12 @@ function createTheme() {
 				},
 			},
 			MuiSnackbarContent: { defaultProps: { component: Role.div } },
-			MuiStack: { defaultProps: { component: Role.div } },
+			MuiStack: {
+				defaultProps: {
+					component: Role.div,
+					useFlexGap: true,
+				},
+			},
 			MuiStep: { defaultProps: { component: Role.li } },
 			MuiSwitch: { defaultProps: { component: Role.span } },
 			MuiStepper: {
@@ -614,7 +650,7 @@ function createTheme() {
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: ClockIcon,
+						openPickerIcon: withExcludedProps(ClockIcon, ["ownerState"]),
 					},
 					slotProps: {
 						openPickerButton: {
@@ -635,6 +671,7 @@ function createTheme() {
 						},
 						popper: {
 							component: MuiTooltipPopper,
+							popperOptions: { strategy: "fixed" },
 							modifiers: [
 								{
 									name: "offset",
@@ -709,6 +746,22 @@ function withRenderProp(
 ) {
 	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
 		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
+	});
+}
+
+// ----------------------------------------------------------------------------
+
+/** HOC that "excludes" certain props from being passed to the specified Component. */
+function withExcludedProps<Element, Props extends object>(
+	Component: React.ComponentType<Props & React.RefAttributes<Element>>,
+	excludedProps: readonly string[],
+) {
+	return React.forwardRef<Element, Props>((props, forwardedRef) => {
+		const filteredProps = Object.fromEntries(
+			Object.entries(props).filter(([key]) => !excludedProps.includes(key)),
+		) as Props;
+
+		return <Component {...filteredProps} ref={forwardedRef} />;
 	});
 }
 

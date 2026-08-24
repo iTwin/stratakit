@@ -10,7 +10,7 @@ import Stack from "@mui/material/Stack";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="column" sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} direction="column" sx={{ alignSelf: "stretch" }}>
 			<div>
 				<Accordion variant="elevation">
 					<AccordionSummary>

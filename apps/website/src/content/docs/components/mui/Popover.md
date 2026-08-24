@@ -15,6 +15,7 @@ links:
 - `disableScrollLock` is used to prevent scroll locking when the popover is open.
 - The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [`portalContainer`](https://stratakit.bentley.com/docs/components/root/#portal-container).
 - Nested elements are now portaled into the container specified by the portal boundary.
+- The `elevation` and `marginThreshold` props are not supported.
 
 ## ✅ Do
 

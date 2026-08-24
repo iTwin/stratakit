@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 
 export default () => {
 	return (
-		<Stack spacing={1}>
+		<Stack spacing={2}>
 			<Autocomplete
 				size="small"
 				options={["Mouse", "Worm"]}

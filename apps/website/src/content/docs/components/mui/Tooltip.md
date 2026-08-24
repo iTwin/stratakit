@@ -30,6 +30,7 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 - Change default placement from `"bottom"` to `"top"`.
 - Includes full `forced-colors` support.
 - The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [`portalContainer`](https://stratakit.bentley.com/docs/components/root/#portal-container).
+- The `arrow`, `disableFocusListener`, `disableHoverListener`, `disableInteractive`, `disableTouchListener`, `enterDelay`, `enterNextDelay`, `enterTouchDelay` and `followCursor` props are not supported.
 
 ## Examples
 

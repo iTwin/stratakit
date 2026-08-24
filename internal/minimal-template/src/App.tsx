@@ -6,7 +6,7 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default function App() {
 	return (
-		<Container maxWidth="md" sx={{ padding: 2 }}>
+		<Container maxWidth="md" sx={{ padding: 4 }}>
 			<Button startIcon={<Icon href={svgPlaceholder} />}>Hello</Button>
 		</Container>
 	);

@@ -1,1 +1,0 @@
-import{j as o}from"./_utils.DLVCLxGJ.js";import{I as t}from"./ExamplePreview.DJlT1EGu.js";import{s as i}from"./notifications.B_RW6-wp.js";const r=()=>o.jsx(t,{label:"Notifications",dot:"You have unread notifications",icon:i});export{r as default};

@@ -1,1 +1,0 @@
-import{j as s}from"./_utils.DAQqdgM9.js";import{C as i}from"./Chip.BK4WO8PR.js";const a=()=>s.jsxs("div",{className:"flex",children:[s.jsx(i,{onDismiss:()=>{},label:"sort:updated-desc"}),s.jsx(i,{onDismiss:()=>{},label:"is:pr"}),s.jsx(i,{onDismiss:()=>{},label:"is:open"})]});export{a as default};

@@ -41,7 +41,7 @@ In addition, the outer `role="region"` element itself must be identified to scre
 
 The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item) and `Error.Item`s can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
 
-### Within the tree
+### Within the Tree
 
 When an error occurs:
 

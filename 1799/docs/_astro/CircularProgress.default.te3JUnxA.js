@@ -1,0 +1,1 @@
+import{r as a,j as r,V as e,T as l}from"./_utils.Lmr_0oKS.js";const o=()=>{const s=a.useId();return r.jsxs(r.Fragment,{children:[r.jsx(e,{"aria-labelledby":s}),r.jsx(l,{id:s,children:"Analyzing results…"})]})};export{o as default};

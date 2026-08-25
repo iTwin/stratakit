@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 .main {
 	padding: var(--stratakit-space-800);
-	font-size: var(--stratakit-font-size-14);
+	font-size: var(--stratakit-font-size-body-md);
 	max-inline-size: min(1200px, 100%);
 	margin-inline: auto;
 }

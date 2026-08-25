@@ -41,7 +41,7 @@
 		flex-direction: column;
 
 		border: 1px solid var(--stratakit-color-border-attention-base);
-		border-radius: 8px;
+		border-radius: var(--stratakit-radius-md);
 		background-color: var(--stratakit-color-bg-elevation-base);
 		box-shadow: var(--stratakit-shadow-surface-sm);
 
@@ -58,7 +58,7 @@
 }
 
 .🥝ErrorRegionHeader {
-	--✨container-border-radius: 8px;
+	--✨container-border-radius: var(--stratakit-radius-md);
 	--✨container-border-width: 1px;
 	--✨border-radius: calc(var(--✨container-border-radius) - var(--✨container-border-width));
 

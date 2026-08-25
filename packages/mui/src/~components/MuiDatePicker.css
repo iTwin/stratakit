@@ -104,7 +104,7 @@
 	block-size: var(--_MuiDayCalendar-day-size);
 	inline-size: var(--_MuiDayCalendar-day-size);
 	border: 1px solid var(--_MuiPickerDay-border-color, transparent);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiPickerDay-color, var(--✨color--default));
 	margin: var(--_MuiDayCalendar-day-margin);
 	transition: all 150ms ease-out;
@@ -134,7 +134,7 @@
 			background-color: var(--_MuiPickerDay-today-dot-background-color, var(--✨dot--default));
 			block-size: var(--stratakit-space-100);
 			inline-size: var(--stratakit-space-100);
-			border-radius: calc(infinity * 1px);
+			border-radius: var(--stratakit-radius-round);
 			transition: background-color 150ms ease-out;
 		}
 

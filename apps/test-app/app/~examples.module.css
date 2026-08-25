@@ -40,7 +40,7 @@
 	border: 1px solid var(--stratakit-color-border-neutral-muted);
 
 	padding: calc(var(--stratakit-size-control-field-height-small) / 2 + var(--stratakit-space-300));
-	border-radius: 8px;
+	border-radius: var(--stratakit-radius-md);
 
 	:where(.exampleContainer[data-highlight]) &::before {
 		content: "";
@@ -66,7 +66,7 @@
 	inline-size: 24px;
 
 	color: var(--stratakit-color-icon-neutral-base);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	cursor: ew-resize;
 
 	&:where(
@@ -92,7 +92,7 @@
 	translate: 0 -50%; /* center vertically on top edge */
 
 	background-color: var(--stratakit-color-bg-page-base);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	border: 1px solid var(--stratakit-color-border-neutral-muted);
 }
 

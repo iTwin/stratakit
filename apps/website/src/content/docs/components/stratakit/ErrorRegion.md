@@ -66,6 +66,14 @@ When the user visits the **ErrorRegion**:
    - To the **ErrorRegion**'s toggle button, secreting the list of `Error.Item`s
    - To the `Tree.Item` whose `error` was just corrected
 
+## Examples
+
+### Tree errors
+
+Collocate errors raised from a `Tree` component in an **ErrorRegion**. In the example below, the behavior described in [within the Tree](#within-the-tree) and [within the ErrorRegion](#within-the-errorregion) is demonstrated.
+
+::example{src="structures/ErrorRegion.tree" min-height="250px" min-width="450px" vertical-stretch}
+
 ## ✅ Do
 
 - Use **ErrorRegion** to collate and describe [**Tree**](/components/tree) errors.

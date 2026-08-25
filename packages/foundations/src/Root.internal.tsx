@@ -4,8 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
-import { Role } from "@ariakit/react/role";
 import { useIsClient } from "@stratakit/internal-utils/hooks";
 
 // ----------------------------------------------------------------------------
@@ -28,6 +26,9 @@ interface RootContextValue {
 		rootNode: Document | ShadowRoot,
 		options: { css: string; key: string },
 	) => { cleanup: () => void };
+
+	/** Element to customize the portal provider. */
+	portalProvider?: React.ReactElement | undefined;
 }
 
 // ----------------------------------------------------------------------------
@@ -57,48 +58,19 @@ export const HtmlSanitizerContext = React.createContext<
 
 // ----------------------------------------------------------------------------
 
-interface PortalContextValue {
-	container: HTMLElement | null;
-	/**
-	 * Function that is lazily resolved by MUI when the portal mounts. Passing the
-	 * element directly requires the theme to be recreated once the element becomes available, which
-	 * leaves a one-commit window where portals fall back to `<body>`.
-	 *
-	 * Needed to workaround https://github.com/mui/material-ui/issues/48882
-	 */
-	unstable_getContainer?: () => HTMLElement | null;
-}
-
 export const PortalContext = React.createContext<
-	PortalContextValue | undefined
+	| {
+			container: HTMLElement | null;
+			/**
+			 * Function that is lazily resolved by MUI when the portal mounts. Passing the
+			 * element directly requires the theme to be recreated once the element becomes available, which
+			 * leaves a one-commit window where portals fall back to `<body>`.
+			 *
+			 * Needed to workaround https://github.com/mui/material-ui/issues/48882
+			 */
+			unstable_getContainer?: () => HTMLElement | null;
+	  }
+	| undefined
 >(undefined);
-
-// ----------------------------------------------------------------------------
-
-export const PortalProviderContext = React.createContext<
-	React.ReactElement | undefined
->(undefined);
-
-// ----------------------------------------------------------------------------
-
-/**
- * Provides the element that will contain the portal.
- */
-export function PortalProvider(
-	props: React.PropsWithChildren<PortalContextValue>,
-) {
-	const { children, container, unstable_getContainer } = props;
-
-	const portalProvider = React.useContext(PortalProviderContext);
-
-	return (
-		<PortalContext.Provider value={{ container, unstable_getContainer }}>
-			<AkPortalContext.Provider value={container}>
-				<Role render={portalProvider ?? <React.Fragment />}>{children}</Role>
-			</AkPortalContext.Provider>
-		</PortalContext.Provider>
-	);
-}
-DEV: PortalProvider.displayName = "PortalProvider";
 
 // ----------------------------------------------------------------------------

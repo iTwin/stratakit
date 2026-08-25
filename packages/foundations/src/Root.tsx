@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
+import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { identity } from "@stratakit/internal-utils/common";
 import {
@@ -13,14 +14,13 @@ import {
 	isBrowser,
 	isDocument,
 } from "@stratakit/internal-utils/dom";
-import { useMergedRefs } from "@stratakit/internal-utils/hooks";
+import { useMergedRefs, useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import css from "./~styles.css.js";
 import {
 	HtmlSanitizerContext,
-	PortalProvider,
-	PortalProviderContext,
+	PortalContext,
 	RootContext,
 	RootNodeContext,
 	spriteSheetId,
@@ -126,13 +126,14 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 		children,
 		synchronizeColorScheme = true,
 		unstable_htmlSanitizer = identity,
+		unstable_portalProvider,
 		portalContainer: portalContainerProp,
 		...rest
 	} = props;
 
 	return (
 		<RootInternal {...rest} ref={forwardedRef}>
-			<RootProvider>
+			<RootProvider portalProvider={unstable_portalProvider}>
 				<Styles />
 				<Fonts />
 				<InlineSpriteSheet />
@@ -158,11 +159,23 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 });
 DEV: Root.displayName = "Root";
 
-const RootProvider = (props: React.PropsWithChildren) => {
+interface RootProviderProps {
+	children?: React.ReactNode;
+	portalProvider?: RootProps["unstable_portalProvider"];
+}
+
+const RootProvider = (props: RootProviderProps) => {
 	const rootNode = useRootNode();
 
 	return (
-		<RootContext.Provider value={{ versions, rootNode, loadStyles }}>
+		<RootContext.Provider
+			value={{
+				versions,
+				rootNode,
+				loadStyles,
+				portalProvider: props.portalProvider,
+			}}
+		>
 			{props.children}
 		</RootContext.Provider>
 	);
@@ -174,11 +187,7 @@ interface RootInternalProps
 	extends BaseProps,
 		Pick<
 			RootProps,
-			| "colorScheme"
-			| "unstable_accentColor"
-			| "density"
-			| "rootNode"
-			| "unstable_portalProvider"
+			"colorScheme" | "unstable_accentColor" | "density" | "rootNode"
 		> {}
 
 const RootInternal = forwardRef<"div", RootInternalProps>(
@@ -189,7 +198,6 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 			unstable_accentColor,
 			density,
 			rootNode = isBrowser ? document : undefined,
-			unstable_portalProvider,
 			...rest
 		} = props;
 
@@ -203,9 +211,7 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 				ref={forwardedRef}
 			>
 				<RootNodeContext.Provider value={rootNode}>
-					<PortalProviderContext.Provider value={unstable_portalProvider}>
-						{children}
-					</PortalProviderContext.Provider>
+					{children}
 				</RootNodeContext.Provider>
 			</Role>
 		);
@@ -275,22 +281,30 @@ interface RootPortalProviderProps
 }
 
 function RootPortalProvider(props: RootPortalProviderProps) {
+	const { portalProvider } = useSafeContext(RootContext);
+
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const [container, setContainer] = React.useState<HTMLElement | null>(null);
 
 	const getContainer = React.useCallback(() => containerRef.current, []);
 
 	return (
-		<PortalProvider container={container} unstable_getContainer={getContainer}>
-			<PortalContainer
-				colorScheme={props.colorScheme}
-				unstable_accentColor={props.unstable_accentColor}
-				density={props.density}
-				ref={useMergedRefs(containerRef, setContainer)}
-				render={props.portalContainerProp}
-			/>
-			{props.children}
-		</PortalProvider>
+		<PortalContext.Provider
+			value={{ container, unstable_getContainer: getContainer }}
+		>
+			<AkPortalContext.Provider value={container}>
+				<Role render={portalProvider ?? <React.Fragment />}>
+					<PortalContainer
+						colorScheme={props.colorScheme}
+						unstable_accentColor={props.unstable_accentColor}
+						density={props.density}
+						ref={useMergedRefs(containerRef, setContainer)}
+						render={props.portalContainerProp}
+					/>
+					{props.children}
+				</Role>
+			</AkPortalContext.Provider>
+		</PortalContext.Provider>
 	);
 }
 

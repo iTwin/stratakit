@@ -10,10 +10,7 @@ import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
-import {
-	PortalProvider,
-	RootContext,
-} from "@stratakit/foundations/secret-internals";
+import { RootContext } from "@stratakit/foundations/secret-internals";
 import {
 	useCloseWatcher,
 	usePopoverApi,
@@ -22,6 +19,7 @@ import {
 } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
+import { PortalProvider } from "./~PortalProvider.js";
 import { Dismiss } from "./~utils.icons.js";
 import { useInit } from "./~utils.useInit.js";
 

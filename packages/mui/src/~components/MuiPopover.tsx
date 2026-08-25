@@ -5,9 +5,9 @@
 
 import * as React from "react";
 import { PopoverPaper } from "@mui/material/Popover";
-import { PortalProvider } from "@stratakit/foundations/secret-internals";
 import { useMergedRefs } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
+import { PortalProvider } from "../Root.internal.js";
 
 import type { PopoverOwnerState } from "@mui/material/Popover";
 import type { BaseProps } from "@stratakit/internal-utils/props";

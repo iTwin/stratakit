@@ -7,7 +7,6 @@ import * as React from "react";
 import * as AkPopover from "@ariakit/react/popover";
 import { useStoreState } from "@ariakit/react/store";
 import { Button } from "@stratakit/bricks";
-import { PortalProvider } from "@stratakit/foundations/secret-internals";
 import {
 	useCloseWatcher,
 	usePopoverApi,
@@ -15,6 +14,7 @@ import {
 } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
+import { PortalProvider } from "./~PortalProvider.js";
 import { useInit } from "./~utils.useInit.js";
 
 import type {

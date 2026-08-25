@@ -40,7 +40,7 @@
 	}
 
 	&:where(:not([aria-valuenow])) {
-		color: var(--stratakit-color-text-control-placeholder);
+		color: var(--stratakit-color-text-neutral-placeholder);
 	}
 
 	&:where(:focus, :focus-visible) {

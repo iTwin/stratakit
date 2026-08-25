@@ -111,7 +111,7 @@
 
 		&:where(.MuiBadge-colorSecondary) {
 			--_MuiBadge-color: var(--stratakit-color-text-mono-base);
-			--_MuiBadge-border-color: var(--stratakit-color-border-neutral-faded);
+			--_MuiBadge-border-color: var(--stratakit-color-border-mono-base);
 		}
 
 		&:where(.MuiBadge-colorSuccess) {

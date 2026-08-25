@@ -85,7 +85,7 @@
 	@media (any-hover: hover) {
 		&:where(:hover:not(.Mui-disabled)) {
 			background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-			--_MuiAccordion-expand-icon-color: var(--stratakit-color-icon-neutral-hover);
+			--_MuiAccordion-expand-icon-color: var(--stratakit-color-icon-neutral-primary);
 		}
 	}
 

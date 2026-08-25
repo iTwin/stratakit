@@ -71,7 +71,7 @@
 
 	&:where(input, textarea) {
 		&::placeholder {
-			color: var(--stratakit-color-text-neutral-secondary);
+			color: var(--stratakit-color-text-neutral-placeholder);
 			opacity: 1;
 			user-select: none;
 		}

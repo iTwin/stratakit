@@ -35,19 +35,19 @@
 	background-image:
 		repeating-linear-gradient(
 			45deg,
-			var(--stratakit-color-bg-neutral-base) 25%,
+			var(--stratakit-color-bg-mono-base) 25%,
 			transparent 25%,
 			transparent 75%,
-			var(--stratakit-color-bg-neutral-base) 75%,
-			var(--stratakit-color-bg-neutral-base)
+			var(--stratakit-color-bg-mono-base) 75%,
+			var(--stratakit-color-bg-mono-base)
 		),
 		repeating-linear-gradient(
 			45deg,
-			var(--stratakit-color-bg-neutral-base) 25%,
-			var(--stratakit-color-bg-neutral-faded) 25%,
-			var(--stratakit-color-bg-neutral-faded) 75%,
-			var(--stratakit-color-bg-neutral-base) 75%,
-			var(--stratakit-color-bg-neutral-base)
+			var(--stratakit-color-bg-mono-base) 25%,
+			var(--stratakit-color-bg-mono-muted) 25%,
+			var(--stratakit-color-bg-mono-muted) 75%,
+			var(--stratakit-color-bg-mono-base) 75%,
+			var(--stratakit-color-bg-mono-base)
 		);
 	forced-color-adjust: none;
 

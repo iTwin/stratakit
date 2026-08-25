@@ -18,7 +18,7 @@
 
 .🥝Select {
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨color--placeholder: var(--stratakit-color-text-neutral-tertiary);
+	--✨color--placeholder: var(--stratakit-color-text-neutral-placeholder);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨height: 1.5rem;

@@ -15,12 +15,12 @@ export default function IconButtonExamples() {
 			<IconButtonDefault />
 			<IconButtonSizes />
 			{!isProduction && (
-				<Stack spacing={1} direction="row" sx={{ flexWrap: "wrap" }}>
+				<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
 					<IconButtonColors_ />
 				</Stack>
 			)}
 			{!isProduction && (
-				<Stack spacing={1} direction="row" sx={{ flexWrap: "wrap" }}>
+				<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
 					<IconButtonPlacements_ />
 				</Stack>
 			)}

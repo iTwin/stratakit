@@ -17,7 +17,7 @@ const colors = [
 
 export default () => {
 	return (
-		<Stack direction="row" spacing={1} sx={{ flexWrap: "wrap" }}>
+		<Stack direction="row" spacing={2} sx={{ flexWrap: "wrap" }}>
 			{colors.map((color) => (
 				<Link key={color} color={color} href={`#${color}`}>
 					{color.charAt(0).toUpperCase()}

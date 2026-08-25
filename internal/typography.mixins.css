@@ -8,22 +8,22 @@
 		font-family: if(style(--variant: "mono-sm"): var(--stratakit-font-family-mono));
 
 		font-size: if(
-			style(--variant: "display-lg"): var(--stratakit-font-size-64);
-			style(--variant: "display-md"): var(--stratakit-font-size-48);
-			style(--variant: "display-sm"): var(--stratakit-font-size-32);
-			style(--variant: "headline-lg"): var(--stratakit-font-size-24);
-			style(--variant: "headline-md"): var(--stratakit-font-size-20);
-			style(--variant: "headline-sm"): var(--stratakit-font-size-18);
-			style(--variant: "body-lg"): var(--stratakit-font-size-16);
-			style(--variant: "body-md"): var(--stratakit-font-size-14);
-			style(--variant: "body-sm"): var(--stratakit-font-size-12);
-			style(--variant: "subtitle-lg"): var(--stratakit-font-size-16);
-			style(--variant: "subtitle-md"): var(--stratakit-font-size-14);
-			style(--variant: "subtitle-sm"): var(--stratakit-font-size-12);
-			style(--variant: "caption-lg"): var(--stratakit-font-size-12);
-			style(--variant: "caption-md"): var(--stratakit-font-size-11);
-			style(--variant: "caption-sm"): var(--stratakit-font-size-10);
-			style(--variant: "mono-sm"): var(--stratakit-font-size-12);
+			style(--variant: "display-lg"): var(--stratakit-font-size-display-lg);
+			style(--variant: "display-md"): var(--stratakit-font-size-display-md);
+			style(--variant: "display-sm"): var(--stratakit-font-size-display-sm);
+			style(--variant: "headline-lg"): var(--stratakit-font-size-headline-lg);
+			style(--variant: "headline-md"): var(--stratakit-font-size-headline-md);
+			style(--variant: "headline-sm"): var(--stratakit-font-size-headline-sm);
+			style(--variant: "body-lg"): var(--stratakit-font-size-body-lg);
+			style(--variant: "body-md"): var(--stratakit-font-size-body-md);
+			style(--variant: "body-sm"): var(--stratakit-font-size-body-sm);
+			style(--variant: "subtitle-lg"): var(--stratakit-font-size-subtitle-lg);
+			style(--variant: "subtitle-md"): var(--stratakit-font-size-subtitle-md);
+			style(--variant: "subtitle-sm"): var(--stratakit-font-size-subtitle-sm);
+			style(--variant: "caption-lg"): var(--stratakit-font-size-caption-lg);
+			style(--variant: "caption-md"): var(--stratakit-font-size-caption-md);
+			style(--variant: "caption-sm"): var(--stratakit-font-size-caption-sm);
+			style(--variant: "mono-sm"): var(--stratakit-font-size-mono-sm);
 		);
 
 		line-height: if(

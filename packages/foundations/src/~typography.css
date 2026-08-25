@@ -8,7 +8,27 @@
 	--stratakit-font-family-mono:
 		"Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas, monospace;
 
-	@apply --typography-tokens;
+	--stratakit-font-size-display-lg: 4rem; /* 64 */
+	--stratakit-font-size-display-md: 3rem; /* 48 */
+	--stratakit-font-size-display-sm: 2rem; /* 32 */
+
+	--stratakit-font-size-headline-lg: 1.5rem; /* 24 */
+	--stratakit-font-size-headline-md: 1.25rem; /* 20 */
+	--stratakit-font-size-headline-sm: 1.125rem; /* 18 */
+
+	--stratakit-font-size-body-lg: 1rem; /* 16 */
+	--stratakit-font-size-body-md: 0.875rem; /* 14 */
+	--stratakit-font-size-body-sm: 0.75rem; /* 12 */
+
+	--stratakit-font-size-subtitle-lg: 1rem; /* 16 */
+	--stratakit-font-size-subtitle-md: 0.875rem; /* 14 */
+	--stratakit-font-size-subtitle-sm: 0.75rem; /* 12 */
+
+	--stratakit-font-size-caption-lg: 0.75rem; /* 12 */
+	--stratakit-font-size-caption-md: 0.6875rem; /* 11 */
+	--stratakit-font-size-caption-sm: 0.625rem; /* 10 */
+
+	--stratakit-font-size-mono-sm: 0.75rem; /* 12 */
 }
 
 .🥝Root:where([data-_sk-density="dense"]) {

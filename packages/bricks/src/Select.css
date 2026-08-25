@@ -22,7 +22,7 @@
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨height: 1.5rem;
-	--✨gap: calc(var(--stratakit-space-100) + var(--stratakit-space-50));
+	--✨gap: var(--stratakit-space-150);
 	--✨padding-inline-start: var(--stratakit-space-200);
 	--✨padding-inline-end: calc(
 		var(--✨gap) +

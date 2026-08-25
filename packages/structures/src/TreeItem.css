@@ -40,7 +40,7 @@
 
 .🥝TreeItemNode:is(.🥝ListItem) {
 	--✨first-level-indent: var(--stratakit-space-200);
-	--✨subsequent-level-indent: calc(var(--stratakit-space-100) + var(--stratakit-space-50));
+	--✨subsequent-level-indent: var(--stratakit-space-150);
 
 	@layer base {
 		position: relative;

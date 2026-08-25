@@ -43,7 +43,7 @@
 	border: 1px solid var(--_MuiMenuItem-border-color, transparent);
 	border-radius: 4px;
 	color: var(--_MuiMenuItem-color);
-	column-gap: calc(var(--stratakit-space-100) + var(--stratakit-space-50));
+	column-gap: var(--stratakit-space-150);
 	min-block-size: var(--_MuiMenuItem-height);
 	padding-block: 0;
 	padding-inline-start: var(--✨padding);

@@ -16,18 +16,17 @@ The **ErrorRegion** records errors in one place, to be addressed at the user's c
 
 The **ErrorRegion** is not a generic component for alerting users to application state. It collates errors accumulated from an interactive dataset, such as a layers panel rendered using a [**Tree**](/components/tree). Consult the table below to compare **ErrorRegion** with alternatives.
 
-| Use case                                                                 | [ErrorRegion](/components/errorregion)       | [Alert](/components/alert)         | [Accordion](/components/accordion) |
-| ------------------------------------------------------------------------ | -------------------------------------------- | ---------------------------------- | ---------------------------------- |
-| Collating errors                                                         | ✅                                           | ❌                                  | ❌                                |
-| Alerting users of application state (errors, warnings, success messages) | ❌                                           | ✅                                  | ❌                                |
-| Collating arbitrary content for future disclosure                        | ❌                                           | ❌                                  | ✅                                |
-
+| Use case                                                                 | [ErrorRegion](/components/errorregion) | [Alert](/components/alert) | [Accordion](/components/accordion) |
+| ------------------------------------------------------------------------ | -------------------------------------- | -------------------------- | ---------------------------------- |
+| Collating errors                                                         | ✅                                     | ❌                         | ❌                                 |
+| Alerting users of application state (errors, warnings, success messages) | ❌                                     | ✅                         | ❌                                 |
+| Collating arbitrary content for future disclosure                        | ❌                                     | ❌                         | ✅                                 |
 
 ## Structure
 
 - **[`ErrorRegion.Root`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root)**: The component itself takes [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role), making it discoverable in screen reader software. When there are errors present, the **ErrorRegion** renders a toggle `<button>`, using [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded), with the region's [`label`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root.label).
-    - **[`ErrorRegion.Item`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item)**: `ErrorRegion.Root`'s [`items`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop takes a mapped array of `Error.Items`, each representing a discrete error and together rendered as a list. `ErrorItem`'s [`message`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.message) prop can take any JSX.
-        - **[`actions`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.actions)**: The `ErrorRegion`'s `actions` prop places functionality at the foot of the `ErrorRegion.Item`. Use `actions` to include functionality that addresses the error.
+  - **[`ErrorRegion.Item`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item)**: `ErrorRegion.Root`'s [`items`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop takes a mapped array of `Error.Items`, each representing a discrete error and together rendered as a list. `ErrorItem`'s [`message`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.message) prop can take any JSX.
+    - **[`actions`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.actions)**: The `ErrorRegion`'s `actions` prop places functionality at the foot of the `ErrorRegion.Item`. Use `actions` to include functionality that addresses the error.
 
 :::caution[The region label]
 
@@ -48,7 +47,7 @@ When an error occurs:
 1. Apply [`error`](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item.error) to the `Tree.Item` in question.
 2. Update the `ErrorRegion.Root`'s `label` to reflect the change. For example, if there was already one error present in the tree, use a label like _“2 errors found”_. This updated label will be announced in screen reader software.
 3. Repopulate `ErrorRegion.Root`'s `items` to include the new `ErrorItem`.
-4. **Recommended**: Append an [action](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item.actions) to `actions` for addressing the error within the `Tree.Item` itself. 
+4. **Recommended**: Append an [action](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item.actions) to `actions` for addressing the error within the `Tree.Item` itself.
 
 :::caution[Focus management]
 

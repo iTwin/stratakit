@@ -109,6 +109,7 @@ function createTheme(args: CreateThemeArgs) {
 	} satisfies ColorSystemOptions["palette"];
 
 	return createMuiTheme({
+		spacing: 4,
 		cssVariables: {
 			nativeColor: true,
 			colorSchemeSelector: "[data-color-scheme='%s']",

@@ -11,7 +11,7 @@ import { isProduction } from "~/~utils.tsx";
 
 export default function AlertExamples() {
 	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<AlertDefault />
 			<AlertClose />
 			{!isProduction && <AlertPermutations_ />}

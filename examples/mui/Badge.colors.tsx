@@ -14,7 +14,7 @@ import svgWarning from "@stratakit/icons/status-warning.svg";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="row" sx={{ flexWrap: "wrap" }}>
+		<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
 			<Badge
 				badgeContent={
 					<>

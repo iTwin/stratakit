@@ -3,6 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+:where(.MuiTable-root) caption {
+	padding-block-start: var(--stratakit-space-x4);
+	padding-block-end: var(--stratakit-space-x4);
+	padding-inline-start: var(--stratakit-space-x4);
+	padding-inline-end: var(--stratakit-space-x3);
+
+	caption-side: top;
+}
+
 .MuiTableRow-root {
 	--✨row-bg--default: transparent;
 	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);

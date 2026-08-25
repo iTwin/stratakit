@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
-		<Stack spacing={1}>
+		<Stack spacing={2}>
 			<Typography variant="display-lg" render={<div />}>
 				display-lg
 			</Typography>

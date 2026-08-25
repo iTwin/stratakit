@@ -9,7 +9,7 @@ import Switch from "@mui/material/Switch";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="row" sx={{ flexWrap: "wrap" }}>
+		<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
 			<FormControlLabel control={<Switch size="small" />} label="Small" />
 			<FormControlLabel control={<Switch size="medium" />} label="Medium" />
 		</Stack>

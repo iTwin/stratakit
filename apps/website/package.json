@@ -54,14 +54,14 @@
 		}
 	},
 	"dependencies": {
-		"@astrojs/starlight": "^0.40.0",
+		"@astrojs/starlight": "^0.41.9",
 		"@mui/material": "catalog:",
 		"@stratakit/bricks": "workspace:*",
 		"@stratakit/foundations": "workspace:*",
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*",
 		"@stratakit/structures": "workspace:*",
-		"astro": "^6.4.8",
+		"astro": "^7.2.6",
 		"examples": "workspace:*",
 		"react": "catalog:",
 		"react-dom": "catalog:",

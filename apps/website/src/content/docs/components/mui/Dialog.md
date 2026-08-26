@@ -11,7 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - Restyled using StrataKit's visual language.
-- The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [`portalContainer`](https://stratakit.bentley.com/docs/components/root/#portal-container).
+- The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
 - Nested elements are now portaled into the container specified by the portal provider.
 - The `PaperComponent` prop is not supported.
 - The `dividers` prop of `DialogContent` is not supported.

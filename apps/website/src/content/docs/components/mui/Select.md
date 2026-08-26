@@ -35,7 +35,7 @@ Modifications to `Select`:
 - The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.
 - The `color` prop is not supported.
-- The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [`portalContainer`](https://stratakit.bentley.com/docs/components/root/#portal-container).
+- The default [`container`](https://mui.com/material-ui/api/popover/#popover-prop-container) of the [`MenuProps`](https://mui.com/material-ui/api/select/#select-prop-MenuProps) now resolves from StrataKit's portal context, [root portal container](/components/root/#portal-container).
 
 ## Examples
 

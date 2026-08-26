@@ -1,0 +1,1 @@
+import{j as r,I as s}from"./_utils.DTLTsP1C.js";import{s as t}from"./user.D3BC1lCW.js";import{L as a}from"./Link.DqYMOZoc.js";import{A as o}from"./Avatar.CyNt54mu.js";const e="_link_g2exl_6",i={link:e},f=()=>r.jsxs(a,{className:i.link,href:"#profile",children:[r.jsx(o,{children:r.jsx(s,{href:t})}),"Kit Stratan"]});export{f as default};

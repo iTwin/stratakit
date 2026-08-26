@@ -14,7 +14,7 @@ links:
 - Added fallback mechanism for automatically labelling the `paper` slot using the trigger element (`anchorEl`).
 - `disableScrollLock` is used to prevent scroll locking when the popover is open.
 - The default [`container`](https://mui.com/material-ui/api/popover/#popover-prop-container) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
-- Nested elements are now portaled into the container specified by the portal provider.
+- Nested popup elements now use the **Popover** as the portal container.
 - The `elevation` and `marginThreshold` props are not supported.
 
 ## ✅ Do

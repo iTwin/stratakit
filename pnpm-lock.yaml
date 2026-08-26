@@ -194,6 +194,9 @@ importers:
 
   apps/website:
     dependencies:
+      "@astrojs/markdown-remark":
+        specifier: ^7.2.4
+        version: 7.2.4(supports-color@7.2.0)
       "@astrojs/starlight":
         specifier: ^0.41.9
         version: 0.41.9(@astrojs/markdown-remark@7.2.4(supports-color@7.2.0))(astro@7.2.6(@astrojs/markdown-remark@7.2.4(supports-color@7.2.0))(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.3)(@types/node@22.19.19)(tsx@4.23.1))(supports-color@7.2.0)(typescript@7.0.2)
@@ -6693,7 +6696,7 @@ snapshots:
       "@types/hast": 3.0.5
       "@types/mdast": 4.0.4
       js-yaml: 4.3.1
-      picomatch: 4.0.4
+      picomatch: 4.0.7
       retext-smartypants: 6.2.0
       shiki: 4.4.1
       smol-toml: 1.6.1

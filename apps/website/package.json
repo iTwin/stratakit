@@ -54,6 +54,7 @@
 		}
 	},
 	"dependencies": {
+		"@astrojs/markdown-remark": "^7.2.4",
 		"@astrojs/starlight": "^0.41.9",
 		"@mui/material": "catalog:",
 		"@stratakit/bricks": "workspace:*",

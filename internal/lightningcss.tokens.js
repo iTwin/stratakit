@@ -3,6 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { dropNullValues } from "./lightningcss.ast.js";
+
 import Color from "colorjs.io";
 import primitives from "./primitives.json" with { type: "json" };
 import darkTheme from "./theme-dark.json" with { type: "json" };
@@ -284,10 +286,12 @@ export function staticVariablesTransform() {
 		},
 		Variable({ name }) {
 			if (name.ident.startsWith("--✨")) {
-				return [
-					...(savedValues.get(lastNonNestedSelector)?.[name.ident] ?? []),
+				return dropNullValues([
+					...structuredClone(
+						savedValues.get(lastNonNestedSelector)?.[name.ident] ?? [],
+					),
 					{ type: "token", value: { type: "white-space", value: " " } },
-				];
+				]);
 			}
 		},
 	};

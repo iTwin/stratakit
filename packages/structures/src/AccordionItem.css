@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝AccordionItem {
-	--🥝AccordionItem-gap: var(--stratakit-space-x3);
-	--🥝AccordionItem-padding: var(--stratakit-space-x3);
+	--🥝AccordionItem-gap: var(--stratakit-space-300);
+	--🥝AccordionItem-padding: var(--stratakit-space-300);
 
 	@layer base {
 		contain: paint;
@@ -111,8 +111,8 @@
 	@layer base {
 		grid-column: header-content;
 		cursor: pointer;
-		border-radius: var(--stratakit-space-x3);
-		--🥝focus-outline-offset: calc(var(--stratakit-space-x1) * -1);
+		border-radius: var(--stratakit-space-300);
+		--🥝focus-outline-offset: calc(var(--stratakit-space-100) * -1);
 
 		&::after {
 			content: "";
@@ -151,7 +151,7 @@
 		margin-inline-end: var(--🥝AccordionItem-gap);
 		display: flex;
 		align-items: center;
-		gap: var(--stratakit-space-x1);
+		gap: var(--stratakit-space-100);
 
 		:where(.🥝AccordionItemHeading, .🥝AccordionItemButton) ~ & {
 			grid-column: decoration-after;

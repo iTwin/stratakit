@@ -17,6 +17,7 @@ import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
 import type { CardProps } from "@mui/material/Card";
 import type { CheckboxProps } from "@mui/material/Checkbox";
 import type { CssBaselineProps } from "@mui/material/CssBaseline";
+import type { DrawerProps } from "@mui/material/Drawer";
 import type { FilledInputProps } from "@mui/material/FilledInput";
 import type { FormControlProps } from "@mui/material/FormControl";
 import type { FormLabelProps } from "@mui/material/FormLabel";
@@ -500,20 +501,20 @@ declare module "@mui/material/LinearProgress" {
 }
 
 declare module "@mui/material/CircularProgress" {
-	interface CircularProgressOwnProps {
-		/**
-		 * The default value with `@stratakit/mui` is `true`.
-		 *
-		 * @default true
-		 */
-		enableTrackSlot?: boolean;
+	interface CircularProgressPropsColorOverrides {
+		inherit: false;
+		info: false;
+	}
 
-		/**
-		 * The default thickness with `@stratakit/mui` is `5`.
-		 *
-		 * @default 5
-		 */
-		thickness?: number;
+	interface CircularProgressProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disableShrink?: CircularProgressProps["disableShrink"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		enableTrackSlot?: CircularProgressProps["enableTrackSlot"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		thickness?: CircularProgressProps["thickness"];
 	}
 }
 
@@ -551,6 +552,16 @@ declare module "@mui/material/DialogContent" {
 	interface DialogContentProps {
 		/** @deprecated StrataKit does not support this prop. */
 		dividers?: DialogContentProps["dividers"];
+	}
+}
+
+declare module "@mui/material/Drawer" {
+	interface DrawerProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: DrawerProps["elevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		hideBackdrop?: boolean;
 	}
 }
 
@@ -1061,6 +1072,16 @@ declare module "@mui/material/SvgIcon" {
 	export default function SvgIcon(
 		props: SvgIconProps,
 	): React.JSX.Element | null;
+}
+
+declare module "@mui/material/SwipeableDrawer" {
+	interface SwipeableDrawerProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: DrawerProps["elevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		hideBackdrop?: boolean;
+	}
 }
 
 declare module "@mui/material/Switch" {

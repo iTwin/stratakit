@@ -6,5 +6,5 @@
 .link {
 	display: flex;
 	align-items: center;
-	gap: var(--stratakit-space-x2);
+	gap: var(--stratakit-space-200);
 }

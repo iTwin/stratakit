@@ -5,12 +5,12 @@
 
 .🥝TabList {
 	@layer base {
-		--🥝Tab-active-stripe-gap: var(--stratakit-space-x2);
-		--🥝Tab-active-stripe-size: var(--stratakit-space-x05);
-		--🥝Tab-padding-inline: var(--stratakit-space-x1);
+		--🥝Tab-active-stripe-gap: var(--stratakit-space-200);
+		--🥝Tab-active-stripe-size: var(--stratakit-space-50);
+		--🥝Tab-padding-inline: var(--stratakit-space-100);
 
 		display: flex;
-		gap: var(--stratakit-space-x2);
+		gap: var(--stratakit-space-200);
 		position: relative;
 
 		@supports (position-anchor: --foo) {
@@ -45,7 +45,7 @@
 
 .🥝Tab {
 	--✨height: 1.25rem;
-	--✨gap: var(--stratakit-space-x1);
+	--✨gap: var(--stratakit-space-100);
 
 	--✨bg--default: transparent;
 	--✨bg--hover-neutral: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
@@ -160,7 +160,7 @@
 
 .🥝TabPanel {
 	@layer base {
-		--🥝focus-outline-offset: calc(var(--stratakit-space-x05) * -1);
+		--🥝focus-outline-offset: calc(var(--stratakit-space-50) * -1);
 
 		/* Prevents stacking when multiple panels are mounted (during animation) */
 		&:not([data-open]) {

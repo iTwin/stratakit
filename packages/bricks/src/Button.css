@@ -4,10 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝Button {
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨gap: var(--stratakit-space-x1);
+	--✨gap: var(--stratakit-space-100);
 	--✨height: 1.5rem;
-	--✨padding-inline: var(--stratakit-space-x3);
-	--✨padding-block: var(--stratakit-space-x1);
+	--✨padding-inline: var(--stratakit-space-300);
+	--✨padding-block: var(--stratakit-space-100);
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝Button-border-color) inset;
 
@@ -86,29 +86,8 @@
 	--✨bg--outline-accent-pressed: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--✨bg--outline-accent-disabled: transparent;
 
-	--✨color--outline-accent-default: var(--stratakit-color-text-accent-strong);
-	--✨color--outline-accent-hover: color-mix(
-		in oklch,
-		var(--✨color--outline-accent-default) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-hover-\%)
-	);
-	--✨color--outline-accent-pressed: color-mix(
-		in oklch,
-		var(--✨color--outline-accent-default) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
-	);
-
-	--✨icon--outline-accent-default: var(--stratakit-color-icon-accent-strong);
-	--✨icon--outline-accent-hover: color-mix(
-		in oklch,
-		var(--✨icon--outline-accent-default) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
-	);
-	--✨icon--outline-accent-pressed: color-mix(
-		in oklch,
-		var(--✨icon--outline-accent-default) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-pressed-\%)
-	);
+	--✨color--outline-accent: var(--stratakit-color-text-accent-strong);
+	--✨icon--outline-accent: var(--stratakit-color-icon-accent-strong);
 
 	--✨border--outline-accent-default: var(--stratakit-color-border-accent-base);
 	--✨border--outline-accent-hover: color-mix(
@@ -135,28 +114,8 @@
 	--✨bg--ghost-accent-pressed: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--✨bg--ghost-accent-disabled: transparent;
 
-	--✨color--ghost-accent-default: var(--stratakit-color-text-accent-strong);
-	--✨color--ghost-accent-hover: color-mix(
-		in oklch,
-		var(--✨color--ghost-accent-default) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-hover-\%)
-	);
-	--✨color--ghost-accent-pressed: color-mix(
-		in oklch,
-		var(--✨color--ghost-accent-default) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-text-glow-strong-pressed-\%)
-	);
-	--✨icon--ghost-accent-default: var(--stratakit-color-icon-accent-strong);
-	--✨icon--ghost-accent-hover: color-mix(
-		in oklch,
-		var(--✨icon--ghost-accent-default) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-hover-\%)
-	);
-	--✨icon--ghost-accent-pressed: color-mix(
-		in oklch,
-		var(--✨icon--ghost-accent-default) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-icon-glow-strong-pressed-\%)
-	);
+	--✨color--ghost-accent: var(--stratakit-color-text-accent-strong);
+	--✨icon--ghost-accent: var(--stratakit-color-icon-accent-strong);
 	/* #endregion */
 
 	@layer base {
@@ -267,12 +226,8 @@
 					var(--🌀Button-state--pressed, var(--✨border--outline-accent-pressed))
 					var(--🌀Button-state--active, var(--✨border--active))
 					var(--🌀Button-state--disabled, var(--✨border--outline-accent-disabled));
-				--🥝Button-color: var(--🌀Button-state--default, var(--✨color--outline-accent-default))
-					var(--🌀Button-state--hover, var(--✨color--outline-accent-hover))
-					var(--🌀Button-state--pressed, var(--✨color--outline-accent-pressed));
-				--🥝Icon-color: var(--🌀Button-state--default, var(--✨icon--outline-accent-default))
-					var(--🌀Button-state--hover, var(--✨icon--outline-accent-hover))
-					var(--🌀Button-state--pressed, var(--✨icon--outline-accent-pressed));
+				--🥝Button-color: var(--✨color--outline-accent);
+				--🥝Icon-color: var(--✨icon--outline-accent);
 			}
 		}
 
@@ -299,12 +254,8 @@
 					var(--🌀Button-state--pressed, var(--✨bg--ghost-accent-pressed))
 					var(--🌀Button-state--active, var(--✨bg--active))
 					var(--🌀Button-state--disabled, var(--✨bg--ghost-accent-disabled));
-				--🥝Button-color: var(--🌀Button-state--default, var(--✨color--ghost-accent-default))
-					var(--🌀Button-state--hover, var(--✨color--ghost-accent-hover))
-					var(--🌀Button-state--pressed, var(--✨color--ghost-accent-pressed));
-				--🥝Icon-color: var(--🌀Button-state--default, var(--✨icon--ghost-accent-default))
-					var(--🌀Button-state--hover, var(--✨icon--ghost-accent-hover))
-					var(--🌀Button-state--pressed, var(--✨icon--ghost-accent-pressed));
+				--🥝Button-color: var(--✨color--ghost-accent);
+				--🥝Icon-color: var(--✨icon--ghost-accent);
 			}
 		}
 	}

@@ -100,7 +100,7 @@
 		&::before {
 			position: absolute;
 			inline-size: var(--✨width);
-			block-size: var(--stratakit-space-x6);
+			block-size: var(--stratakit-space-600);
 			margin: -1px; /* account for border */
 		}
 

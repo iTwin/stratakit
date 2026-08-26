@@ -8,7 +8,7 @@
 }
 
 .MuiMenu-list {
-	padding: var(--stratakit-space-x1);
+	padding: var(--stratakit-space-100);
 
 	&:where([role="menu"]) {
 		min-inline-size: min(95vi, 164px);
@@ -31,7 +31,7 @@
 	--✨color-text--selected: var(--stratakit-color-text-accent-strong);
 	--✨color-text--disabled: var(--stratakit-color-text-neutral-disabled);
 
-	--✨padding: var(--stratakit-space-x2);
+	--✨padding: var(--stratakit-space-200);
 	--✨size--small: var(--stratakit-size-control-listitem-height-small);
 	--✨size--medium: 2rem;
 
@@ -43,7 +43,7 @@
 	border: 1px solid var(--_MuiMenuItem-border-color, transparent);
 	border-radius: 4px;
 	color: var(--_MuiMenuItem-color);
-	column-gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
+	column-gap: var(--stratakit-space-150);
 	min-block-size: var(--_MuiMenuItem-height);
 	padding-block: 0;
 	padding-inline-start: var(--✨padding);

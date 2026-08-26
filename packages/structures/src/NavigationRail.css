@@ -4,13 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝NavigationRail {
-	--✨size--collapsed: calc(1.5rem + 4 * var(--stratakit-space-x2));
+	--✨size--collapsed: calc(1.5rem + 4 * var(--stratakit-space-200));
 	--✨size--expanded: 256px;
 
 	@layer base {
 		display: inline-flex;
 		flex-direction: column;
-		gap: var(--stratakit-space-x1);
+		gap: var(--stratakit-space-100);
 
 		block-size: 100%;
 		min-inline-size: var(--✨size--collapsed);
@@ -19,7 +19,7 @@
 		background-color: var(--stratakit-color-bg-page-depth);
 		border-inline-end: 1px solid var(--stratakit-color-border-neutral-muted);
 
-		--🥝Divider-cross-axis-margin: var(--stratakit-space-x1);
+		--🥝Divider-cross-axis-margin: var(--stratakit-space-100);
 	}
 
 	@layer modifiers {
@@ -37,10 +37,10 @@
 		display: flex;
 		align-items: center;
 
-		padding-block-start: var(--stratakit-space-x2);
-		padding-block-end: var(--stratakit-space-x2);
-		padding-inline-start: var(--stratakit-space-x4);
-		padding-inline-end: var(--stratakit-space-x4);
+		padding-block-start: var(--stratakit-space-200);
+		padding-block-end: var(--stratakit-space-200);
+		padding-inline-start: var(--stratakit-space-400);
+		padding-inline-end: var(--stratakit-space-400);
 		min-block-size: var(--✨header-height);
 	}
 }
@@ -97,10 +97,10 @@
 
 .🥝NavigationRailContent {
 	@layer base {
-		padding-block-start: var(--stratakit-space-x1);
-		padding-block-end: var(--stratakit-space-x1);
-		padding-inline-start: var(--stratakit-space-x2);
-		padding-inline-end: var(--stratakit-space-x2);
+		padding-block-start: var(--stratakit-space-100);
+		padding-block-end: var(--stratakit-space-100);
+		padding-inline-start: var(--stratakit-space-200);
+		padding-inline-end: var(--stratakit-space-200);
 
 		flex: 999;
 		overflow: auto;
@@ -124,7 +124,7 @@
 }
 
 .🥝NavigationRailItemAction {
-	--✨height: calc(1.5rem + 2 * var(--stratakit-space-x2));
+	--✨height: calc(1.5rem + 2 * var(--stratakit-space-200));
 
 	--✨bg--default: transparent;
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
@@ -156,12 +156,12 @@
 
 		display: inline-flex;
 		align-items: center;
-		gap: var(--stratakit-space-x3);
+		gap: var(--stratakit-space-300);
 
 		border-radius: 4px;
 		inline-size: stretch;
 		min-block-size: var(--✨height);
-		padding: var(--stratakit-space-x2);
+		padding: var(--stratakit-space-200);
 		border: 1px solid;
 
 		background-color: var(--🌀NavigationRailItemAction-state--default, var(--✨bg--default))

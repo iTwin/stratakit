@@ -11,7 +11,7 @@ links:
 ## StrataKit MUI modifications
 
 - The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
-- Nested elements are now portaled into the container specified by the portal provider.
+- Nested popup elements now use the **Drawer** as the portal container.
 
 ## Examples
 

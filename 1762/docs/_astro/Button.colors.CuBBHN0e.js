@@ -1,0 +1,1 @@
+import{j as r}from"./_utils.BG7yCmjp.js";import{S as s}from"./Stack.BxwRBTSG.js";import{B as o}from"./Button.C69K60l3.js";const e=()=>r.jsxs(s,{spacing:2,direction:"row",sx:{flexWrap:"wrap"},children:[r.jsx(o,{color:"primary",children:"Primary"}),r.jsx(o,{color:"secondary",children:"Secondary"}),r.jsx(o,{color:"error",children:"Error"})]});export{e as default};

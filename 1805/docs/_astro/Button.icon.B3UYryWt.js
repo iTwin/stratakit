@@ -1,0 +1,1 @@
+import{j as t,I as o}from"./_utils.De_XqXih.js";import{B as r}from"./ExamplePreview.LP1atoQR.js";import{s}from"./arrow-right.DGFuQbBM.js";const i=()=>t.jsxs(r,{onClick:()=>{},children:["Create new",t.jsx(o,{href:s})]});export{i as default};

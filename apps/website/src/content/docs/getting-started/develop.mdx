@@ -3,13 +3,14 @@ title: Develop with StrataKit
 description: Learn how to set up StrataKit in your React project.
 sidebar:
   label: Developing
+  order: 1
 ---
 
 import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
 
 ## Quick start
 
-This guide is for **application** developers. If you're building a package on top of StrataKit, you can usually skip most of these steps, since the host application will already have StrataKit set up for you. See [Building packages](#building-packages) for more information.
+This guide is for **application** developers. If you're building a package on top of StrataKit, you can usually skip most of these steps, since the host application will already have StrataKit set up for you. See [Building packages](/getting-started/build-packages) for more information.
 
 Open the [minimal starter template on StackBlitz](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template?file=src%2FApp.tsx) to see a working example and to understand the steps listed below.
 
@@ -142,24 +143,6 @@ To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.
 ```
 
 Build tools such as [Vite](https://vite.dev/guide/assets.html#importing-asset-as-url) can handle `url()` references and automatically copy these files into your output directory with hashed file names. These files can then be safely served with [HTTP caching](https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/#how_to_cache_static_resources_using_http_caching) without blocking upgrades to newer versions of the fonts.
-
-## Building packages
-
-This section is for **package** developers. If you're building a package on top of StrataKit, correctly declare dependencies in your [`package.json`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json).
-
-Ensure that each of these packages are installed only once in the host application by declaring them as [`peerDependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies):
-
-- `@stratakit/mui`
-- `@mui/material`
-- `react`
-- `react-dom`
-- `@stratakit/foundations` _(optional)_. List only if you are using the StrataKit CSS variables in your code.
-
-If you use any of the following packages, declare them as regular [`dependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#dependencies):
-
-- `@stratakit/icons`
-- `@stratakit/bricks`
-- `@stratakit/structures`
 
 ## Agent skill
 

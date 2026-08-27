@@ -1,0 +1,26 @@
+---
+title: Build packages with StrataKit
+description: Learn how to build packages with StrataKit
+sidebar:
+  label: Building packages
+---
+
+import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
+
+## Quick start
+
+This guide is for **package** developers. If you're building a package on top of StrataKit, correctly declare dependencies in your [`package.json`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json).
+
+Ensure that each of these packages are installed only once in the host application by declaring them as [`peerDependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies):
+
+- `@stratakit/mui`
+- `@mui/material`
+- `react`
+- `react-dom`
+- `@stratakit/foundations` _(optional)_. List only if you are using the StrataKit CSS variables in your code.
+
+If you use any of the following packages, declare them as regular [`dependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#dependencies):
+
+- `@stratakit/icons`
+- `@stratakit/bricks`
+- `@stratakit/structures`

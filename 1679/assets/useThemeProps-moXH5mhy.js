@@ -1,0 +1,1 @@
+import{bc as a,a9 as m}from"./Button-Dywmmpb8.js";import{g as p}from"./getThemeProps-7SJqS0ug.js";const f=a();function i({props:t,name:r,defaultTheme:o,themeId:s}){let e=m(o);return s&&(e=e[s]||e),p({theme:e,name:r,props:t})}export{f as s,i as u};

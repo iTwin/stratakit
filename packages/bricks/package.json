@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/bricks",
 	"type": "module",
-	"version": "0.5.5",
+	"version": "0.6.0-rc.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -183,8 +183,8 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.29",
-		"@stratakit/foundations": "^0.4.9",
+		"@ariakit/react": "^0.4.35",
+		"@stratakit/internal-utils": "^0.2.0-rc.0",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"
 	},
@@ -198,8 +198,9 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"react": ">=18.0.0",
-		"react-dom": ">=18.0.0"
+		"@stratakit/foundations": "^1.0.0-rc.0",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
 	},
 	"wireit": {
 		"build": {
@@ -207,6 +208,7 @@
 				"build:js",
 				"build:DEV",
 				"build:types",
+				"../internal-utils:build",
 				"../foundations:build"
 			]
 		},
@@ -245,6 +247,7 @@
 				"dist/**/*.d.ts"
 			],
 			"dependencies": [
+				"../internal-utils:build:types",
 				"../foundations:build:types"
 			]
 		},

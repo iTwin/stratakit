@@ -25,6 +25,7 @@ export default () => {
 			>
 				{tabs.map((_, index) => (
 					<Tab
+						// biome-ignore lint/suspicious/noArrayIndexKey: For demonstration purposes.
 						key={index}
 						label={`Item ${index + 1}`}
 						id={`${baseId}-tab${index}`}

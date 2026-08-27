@@ -8,28 +8,56 @@
 // See: https://www.typescriptlang.org/docs/handbook/declaration-merging.html#module-augmentation
 
 import type { RoleProps } from "@ariakit/react/role";
-import type { AlertProps } from "@mui/material/Alert";
+import type { AppBarOwnProps as MuiAppBarOwnProps } from "@mui/material/AppBar";
 import type { BadgeProps } from "@mui/material/Badge";
+import type { BottomNavigationActionOwnProps as MuiBottomNavigationActionOwnProps } from "@mui/material/BottomNavigationAction";
+import type { ButtonProps } from "@mui/material/Button";
+import type { ButtonBaseProps } from "@mui/material/ButtonBase";
+import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
+import type { CardProps } from "@mui/material/Card";
+import type { CheckboxProps } from "@mui/material/Checkbox";
+import type { CssBaselineProps } from "@mui/material/CssBaseline";
+import type { DrawerProps } from "@mui/material/Drawer";
+import type { FilledInputProps } from "@mui/material/FilledInput";
+import type { FormControlProps } from "@mui/material/FormControl";
+import type { FormLabelProps } from "@mui/material/FormLabel";
+import type {} from "@mui/material/Grow";
 import type { IconProps } from "@mui/material/Icon";
 import type { IconButtonProps } from "@mui/material/IconButton";
+import type {} from "@mui/material/InitColorSchemeScript";
+import type { InputProps } from "@mui/material/Input";
+import type { InputBaseProps } from "@mui/material/InputBase";
+import type { ListSubheaderOwnProps as MuiListSubheaderOwnProps } from "@mui/material/ListSubheader";
+import type { MenuProps as MuiMenuProps } from "@mui/material/Menu";
+import type { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import type {
 	CommonProps,
 	DefaultComponentProps,
 	OverridableTypeMap,
 } from "@mui/material/OverridableComponent";
+import type { PaginationProps as MuiPaginationProps } from "@mui/material/Pagination";
+import type { PaperOwnProps } from "@mui/material/Paper";
+import type { RadioProps } from "@mui/material/Radio";
+import type { SelectProps } from "@mui/material/Select";
+import type {} from "@mui/material/Slide";
+import type { StepIconProps } from "@mui/material/StepIcon";
+import type {} from "@mui/material/StepLabel";
+import type {} from "@mui/material/Stepper";
 import type { SvgIconProps } from "@mui/material/SvgIcon";
+import type { SwitchProps } from "@mui/material/Switch";
 import type { TabProps } from "@mui/material/Tab";
 import type { TableCellProps as MuiTableCellProps } from "@mui/material/TableCell";
+import type { TabScrollButtonProps } from "@mui/material/TabScrollButton";
 import type { TabsProps } from "@mui/material/Tabs";
-import type {
-	TextFieldProps,
-	TextFieldVariants,
-} from "@mui/material/TextField";
+import type { TextFieldProps } from "@mui/material/TextField";
+import type { ToggleButtonProps } from "@mui/material/ToggleButton";
+import type { ToolbarProps } from "@mui/material/Toolbar";
 import type { TooltipProps } from "@mui/material/Tooltip";
 import type {
 	TypographyProps,
 	TypographyTypeMap,
 } from "@mui/material/Typography";
+import type {} from "@mui/material/Zoom";
 import type * as React from "react";
 
 declare module "@mui/material/OverridableComponent" {
@@ -63,6 +91,11 @@ declare module "@mui/material/OverridableComponent" {
 
 declare module "@mui/material/Accordion" {
 	interface AccordionHeadingSlotPropsOverrides extends TypographyProps {}
+
+	interface AccordionOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disableGutters?: boolean | undefined;
+	}
 }
 
 declare module "@mui/material/AccordionSummary" {
@@ -77,6 +110,9 @@ declare module "@mui/material/AccordionSummary" {
 		 * @default 'auto'
 		 */
 		markerPlacement?: "auto" | "start" | "end";
+
+		/** @deprecated StrataKit does not support this prop. */
+		expandIcon?: React.ReactNode;
 	}
 }
 
@@ -89,7 +125,7 @@ declare module "@mui/material/Alert" {
 		none: true;
 	}
 
-	interface AlertOwnProps {
+	interface AlertProps {
 		/**
 		 * The default variant with `@stratakit/mui` is `"outlined"`.
 		 *
@@ -103,6 +139,38 @@ declare module "@mui/material/Alert" {
 		 * @default 'none'
 		 */
 		severity?: AlertProps["severity"];
+
+		/**
+		 * @deprecated Color is determined by severity
+		 */
+		color?: AlertProps["color"];
+	}
+}
+
+declare module "@mui/material/AppBar" {
+	interface AppBarPropsColorOverrides {
+		inherit: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		error: false;
+		info: false;
+		warning: false;
+		default: false;
+		transparent: false;
+	}
+
+	interface AppBarOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: MuiAppBarOwnProps["color"];
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: MuiAppBarOwnProps["elevation"];
+		/** @deprecated StrataKit does not support this prop. */
+		enableColorOnDark?: MuiAppBarOwnProps["enableColorOnDark"];
+		/** @deprecated StrataKit does not support this prop. */
+		square?: MuiAppBarOwnProps["square"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: PaperOwnProps["variant"];
 	}
 }
 
@@ -119,6 +187,23 @@ declare module "@mui/material/Avatar" {
 	}
 }
 
+declare module "@mui/material/Autocomplete" {
+	interface AutocompleteProps<
+		Value,
+		Multiple extends boolean | undefined,
+		DisableClearable extends boolean | undefined,
+		FreeSolo extends boolean | undefined,
+		ChipComponent extends React.ElementType,
+	> {
+		/** @deprecated StrataKit does not support this prop. */
+		clearIcon?: React.ReactNode;
+		/** @deprecated StrataKit does not support this prop. */
+		forcePopupIcon?: boolean | "auto";
+		/** @deprecated StrataKit does not support this prop. */
+		popupIcon?: React.ReactNode;
+	}
+}
+
 declare module "@mui/material/AvatarGroup" {
 	interface AvatarGroupPropsVariantOverrides {
 		circular: false;
@@ -132,9 +217,19 @@ declare module "@mui/material/AvatarGroup" {
 	}
 }
 
+declare module "@mui/material/Backdrop" {
+	interface BackdropOwnProps {
+		/** @deprecated Use `open` for `Backdrop`. */
+		in?: never;
+		/** @deprecated Use `transitionDuration` for `Backdrop`. */
+		timeout?: never;
+	}
+}
+
 declare module "@mui/material/Badge" {
 	interface BadgePropsColorOverrides {
 		default: false;
+		primary: false;
 	}
 
 	interface BadgeOwnProps {
@@ -172,9 +267,56 @@ declare module "@mui/material/Badge" {
 
 declare module "@mui/material/ButtonBase" {
 	interface ButtonBaseOwnProps {
+		/** @deprecated Use `ref` instead. */
+		action?: ButtonBaseOwnProps["action"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		centerRipple?: ButtonBaseOwnProps["centerRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableRipple?: ButtonBaseOwnProps["disableRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableTouchRipple?: ButtonBaseOwnProps["disableTouchRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		focusRipple?: ButtonBaseOwnProps["focusRipple"];
+
 		/** @deprecated Use the `render` prop instead. */
-		LinkComponent?: React.ElementType;
+		LinkComponent?: ButtonBaseOwnProps["LinkComponent"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		TouchRippleProps?: ButtonBaseOwnProps["TouchRippleProps"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		touchRippleRef?: ButtonBaseOwnProps["touchRippleRef"];
 	}
+}
+
+interface ButtonBaseDeprecatedProps {
+	/** @deprecated Use `ref` prop instead. */
+	action?: ButtonBaseProps["action"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	centerRipple?: ButtonBaseProps["centerRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableRipple?: ButtonBaseProps["disableRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableTouchRipple?: ButtonBaseProps["disableTouchRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	focusRipple?: ButtonBaseProps["focusRipple"];
+
+	/** @deprecated Use the `render` prop instead. */
+	LinkComponent?: ButtonBaseProps["LinkComponent"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	TouchRippleProps?: ButtonBaseProps["TouchRippleProps"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	touchRippleRef?: ButtonBaseProps["touchRippleRef"];
 }
 
 declare module "@mui/material/Button" {
@@ -185,7 +327,14 @@ declare module "@mui/material/Button" {
 		inherit: false;
 	}
 
-	interface ButtonOwnProps {
+	interface ButtonOwnProps extends ButtonBaseDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disableElevation?: ButtonProps["disableElevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: ButtonProps["disableFocusRipple"];
+
+		/** @deprecated Use the `render` prop instead. */
 		LinkComponent?: never;
 
 		/**
@@ -197,30 +346,89 @@ declare module "@mui/material/Button" {
 	}
 }
 
+declare module "@mui/material/ButtonGroup" {
+	interface ButtonGroupPropsColorOverrides {
+		error: false;
+		info: false;
+		inherit: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		warning: false;
+	}
+
+	interface ButtonGroupOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: ButtonGroupProps["color"];
+	}
+}
+
 declare module "@mui/material/BottomNavigationAction" {
 	interface BottomNavigationActionOwnProps {
 		LinkComponent?: never;
+		/** @deprecated Set `showLabels` on `BottomNavigation` instead. */
+		showLabel?: MuiBottomNavigationActionOwnProps["showLabel"];
 	}
 }
 
 declare module "@mui/material/Card" {
 	interface CardOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: PaperOwnProps["elevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		raised?: CardProps["raised"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		square?: PaperOwnProps["square"];
+
 		/**
 		 * The default variant with `@stratakit/mui` is `"outlined"`.
 		 *
 		 * @default 'outlined'
+		 * @deprecated StrataKit does not support this prop.
 		 */
-		variant?: "outlined" | "elevation";
+		variant?: PaperOwnProps["variant"];
 	}
 }
 
 declare module "@mui/material/CardActionArea" {
-	interface CardActionAreaOwnProps {
+	interface CardActionAreaOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
 	}
 }
 
+declare module "@mui/material/CardHeader" {
+	interface CardHeaderOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disableTypography?: CardHeaderOwnProps["disableTypography"];
+	}
+}
+
 declare module "@mui/material/Checkbox" {
+	interface CheckboxProps extends CheckboxDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		checkedIcon?: CheckboxProps["checkedIcon"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		color?: CheckboxProps["color"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableRipple?: CheckboxProps["disableRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: boolean;
+
+		/** @deprecated StrataKit does not support this prop. */
+		icon?: CheckboxProps["icon"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		indeterminateIcon?: CheckboxProps["indeterminateIcon"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		size?: CheckboxProps["size"];
+	}
+
 	interface CheckboxPropsColorOverrides {
 		secondary: false;
 		default: false;
@@ -234,6 +442,31 @@ declare module "@mui/material/Checkbox" {
 		small: false;
 		large: false;
 	}
+
+	export default function Checkbox(
+		props: Omit<CheckboxProps, keyof CheckboxDeprecatedProps> &
+			CheckboxDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface CheckboxDeprecatedProps extends ButtonBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	checkedIcon?: CheckboxProps["checkedIcon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	color?: CheckboxProps["color"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableFocusRipple?: CheckboxProps["disableFocusRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	icon?: CheckboxProps["icon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	indeterminateIcon?: CheckboxProps["indeterminateIcon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	size?: CheckboxProps["size"];
 }
 
 declare module "@mui/material/Chip" {
@@ -245,7 +478,7 @@ declare module "@mui/material/Chip" {
 		 */
 		deleteLabel?: string;
 
-		/** @deprecated DO NOT USE */
+		/** @deprecated StrataKit does not support this prop. */
 		color?: never;
 	}
 
@@ -260,10 +493,75 @@ declare module "@mui/material/Chip" {
 	}
 }
 
+declare module "@mui/material/LinearProgress" {
+	interface LinearProgressPropsColorOverrides {
+		inherit: false;
+		info: false;
+	}
+}
+
+declare module "@mui/material/CircularProgress" {
+	interface CircularProgressPropsColorOverrides {
+		inherit: false;
+		info: false;
+	}
+
+	interface CircularProgressProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disableShrink?: CircularProgressProps["disableShrink"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		enableTrackSlot?: CircularProgressProps["enableTrackSlot"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		thickness?: CircularProgressProps["thickness"];
+	}
+}
+
+declare module "@mui/material/Collapse" {
+	interface CollapseProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean;
+	}
+}
+
+declare module "@mui/material/CssBaseline" {
+	/** @deprecated StrataKit does not support this component.  Use `Root` from `@stratakit/mui` instead */
+	export default function CssBaseline(
+		props: CssBaselineProps,
+	): React.JSX.Element;
+}
+
+declare module "@mui/material/InitColorSchemeScript" {
+	/** @deprecated StrataKit does not support this component. */
+	export default function InitColorSchemeScript(
+		props: Record<string, unknown>,
+	): React.JSX.Element;
+}
+
 declare module "@mui/material/Dialog" {
 	interface DialogProps extends Pick<CommonProps, "render"> {
 		/** @deprecated Use `render` prop instead. */
 		component?: React.ElementType;
+		/** @deprecated StrataKit does not support this prop. */
+		PaperComponent?: DialogProps["PaperComponent"];
+	}
+}
+
+declare module "@mui/material/DialogContent" {
+	interface DialogContentProps {
+		/** @deprecated StrataKit does not support this prop. */
+		dividers?: DialogContentProps["dividers"];
+	}
+}
+
+declare module "@mui/material/Drawer" {
+	interface DrawerProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: DrawerProps["elevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		hideBackdrop?: boolean;
 	}
 }
 
@@ -284,8 +582,14 @@ declare module "@mui/material/Fab" {
 		inherit: false;
 	}
 
-	interface FabOwnProps {
+	interface FabOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableRipple?: FabOwnProps["disableRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: FabOwnProps["disableFocusRipple"];
 
 		/**
 		 * The default color with `@stratakit/mui` is `"primary"`.
@@ -293,6 +597,81 @@ declare module "@mui/material/Fab" {
 		 * @default 'primary'
 		 */
 		color?: "primary" | "secondary";
+	}
+}
+
+declare module "@mui/material/Fade" {
+	interface FadeProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean;
+	}
+}
+
+declare module "@mui/material/FilledInput" {
+	interface FilledInputProps extends FilledInputDeprecatedProps {}
+
+	/** @deprecated StrataKit does not support this component. */
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function FilledInput(
+		props: Omit<FilledInputProps, keyof FilledInputDeprecatedProps> &
+			FilledInputDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface FilledInputDeprecatedProps extends InputBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	disableUnderline?: FilledInputProps["disableUnderline"];
+	/** @deprecated StrataKit does not support this prop. */
+	notched?: FilledInputProps["notched"];
+}
+
+declare module "@mui/material/FormControl" {
+	interface FormControlPropsColorOverrides {
+		error: false;
+		info: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		warning: false;
+	}
+
+	interface FormControlOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: FormControlProps["color"];
+		/** @deprecated StrataKit does not support this prop. */
+		focused?: FormControlProps["focused"];
+		/** @deprecated StrataKit does not support this prop. */
+		hiddenLabel?: FormControlProps["hiddenLabel"];
+		/** @deprecated StrataKit does not support this prop. */
+		margin?: FormControlProps["margin"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: FormControlProps["variant"];
+	}
+}
+
+interface FormControlDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	color?: FormControlProps["color"];
+	/** @deprecated StrataKit does not support this prop. */
+	focused?: FormControlProps["focused"];
+	/** @deprecated StrataKit does not support this prop. */
+	hiddenLabel?: FormControlProps["hiddenLabel"];
+	/** @deprecated StrataKit does not support this prop. */
+	margin?: FormControlProps["margin"];
+	/** @deprecated StrataKit does not support this prop. */
+	variant?: FormControlProps["variant"];
+}
+
+declare module "@mui/material/FormHelperText" {
+	interface FormHelperTextPropsVariantOverrides {
+		standard: false;
+		filled: false;
+	}
+	interface FormHelperTextOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		margin?: FormHelperTextOwnProps["margin"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: FormHelperTextOwnProps["variant"];
 	}
 }
 
@@ -306,8 +685,26 @@ declare module "@mui/material/FormLabel" {
 	}
 
 	interface FormLabelOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: FormLabelOwnProps["color"];
 		/** @deprecated */
 		component?: never; // `@deprecated` marker is not showing up, so using `never` to prevent usage of this prop.
+	}
+
+	// Need to also declare the deprecation for color here to get the strike through in VS Code
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function FormLabel(
+		props: {
+			/** @deprecated StrataKit does not support this prop. */
+			color?: FormLabelOwnProps["color"];
+		} & Omit<FormLabelProps, "color">,
+	): React.JSX.Element;
+}
+
+declare module "@mui/material/Grow" {
+	interface GrowProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean;
 	}
 }
 
@@ -315,6 +712,11 @@ declare module "@mui/material/Icon" {
 	/** @deprecated Use an SVG based icon with `Icon` from `@stratakit/mui` */
 	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
 	export default function Icon(props: IconProps): React.JSX.Element | null;
+}
+
+interface IconButtonDeprecatedProps extends ButtonBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	disableFocusRipple?: IconButtonProps["disableFocusRipple"];
 }
 
 declare module "@mui/material/IconButton" {
@@ -326,7 +728,7 @@ declare module "@mui/material/IconButton" {
 		inherit: false;
 	}
 
-	interface IconButtonOwnProps {
+	interface IconButtonOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
 
 		/**
@@ -335,6 +737,9 @@ declare module "@mui/material/IconButton" {
 		 * @default 'secondary'
 		 */
 		color?: IconButtonProps["color"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: IconButtonProps["disableFocusRipple"];
 
 		/**
 		 * The accessible name of the button, which is also shown as a tooltip on hover/focus.
@@ -352,42 +757,224 @@ declare module "@mui/material/IconButton" {
 	}
 }
 
+declare module "@mui/material/Input" {
+	interface InputProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disableUnderline?: InputProps["disableUnderline"];
+	}
+
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function Input(
+		props: Omit<InputProps, keyof InputDeprecatedProps> & InputDeprecatedProps,
+	): React.JSX.Element;
+}
+
+declare module "@mui/material/InputAdornment" {
+	interface InputAdornmentOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: InputAdornmentOwnProps["variant"];
+	}
+}
+
+interface InputDeprecatedProps extends InputBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	disableUnderline?: InputProps["disableUnderline"];
+}
+
 declare module "@mui/material/InputBase" {
 	interface InputBasePropsColorOverrides {
+		primary: false;
 		secondary: false;
 		info: false;
 		success: false;
 		warning: false;
 		error: false;
 	}
+
+	interface InputBaseProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: InputBaseProps["color"];
+		/** @deprecated StrataKit does not support this prop. */
+		margin?: InputBaseProps["margin"];
+		/** @deprecated StrataKit does not support this prop. */
+		disableInjectingGlobalStyles?: InputBaseProps["disableInjectingGlobalStyles"];
+	}
+}
+
+interface InputBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	color?: InputBaseProps["color"];
+	/** @deprecated StrataKit does not support this prop. */
+	margin?: InputBaseProps["margin"];
+	/** @deprecated StrataKit does not support this prop. */
+	disableInjectingGlobalStyles?: InputBaseProps["disableInjectingGlobalStyles"];
+}
+
+declare module "@mui/material/InputLabel" {
+	interface InputLabelOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		margin?: InputLabelOwnProps["margin"];
+		/** @deprecated StrataKit does not support this prop. */
+		shrink?: InputLabelOwnProps["shrink"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: InputLabelOwnProps["variant"];
+	}
 }
 
 declare module "@mui/material/Link" {
 	interface LinkOwnProps {
-		/** @deprecated DO NOT USE */
+		/** @deprecated StrataKit does not support this prop. */
 		underline?: "none" | "hover" | "always";
 	}
 }
 
+declare module "@mui/material/List" {
+	interface ListOwnProps {
+		/** @deprecated StrataKit does not support this prop.  Use `ListSubheader` component instead. */
+		subheader?: ListOwnProps["subheader"];
+	}
+}
+
 declare module "@mui/material/ListItemButton" {
-	interface ListItemButtonOwnProps {
+	interface ListItemButtonOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
+	}
+}
+
+declare module "@mui/material/ListSubheader" {
+	interface ListSubheaderOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: MuiListSubheaderOwnProps["color"];
+	}
+}
+
+declare module "@mui/material/Menu" {
+	interface MenuProps {
+		/** @deprecated StrataKit does not support this prop. */
+		autoFocus?: MuiMenuProps["autoFocus"];
+		/** @deprecated StrataKit does not support this prop. */
+		disableAutoFocusItem?: MuiMenuProps["disableAutoFocusItem"];
 	}
 }
 
 declare module "@mui/material/MenuItem" {
-	interface MenuItemOwnProps {
+	interface MenuItemOwnProps extends ButtonBaseDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		dense?: MenuItemOwnProps["dense"];
+		/** @deprecated StrataKit does not support this prop. */
+		focusVisibleClassName?: string;
 		LinkComponent?: never;
+	}
+}
+declare module "@mui/material/NativeSelect" {
+	interface NativeSelectProps {
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: NativeSelectProps["variant"];
+	}
+
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function NativeSelect(
+		props: {
+			/** @deprecated StrataKit does not support this prop. */
+			variant?: NativeSelectProps["variant"];
+		} & Omit<NativeSelectProps, "variant" | keyof InputDeprecatedProps> &
+			InputDeprecatedProps,
+	): React.JSX.Element;
+}
+
+declare module "@mui/material/OutlinedInput" {
+	interface OutlinedInputProps extends OutlinedInputDeprecatedProps {}
+
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function OutlinedInput(
+		props: Omit<OutlinedInputProps, keyof OutlinedInputDeprecatedProps> &
+			OutlinedInputDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface OutlinedInputDeprecatedProps extends InputBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	notched?: OutlinedInputProps["notched"];
+}
+
+declare module "@mui/material/Pagination" {
+	interface PaginationPropsColorOverrides {
+		primary: false;
+		secondary: false;
+		standard: false;
+	}
+
+	interface PaginationPropsVariantOverrides {
+		text: false;
+		outlined: false;
+	}
+
+	interface PaginationProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: MuiPaginationProps["color"];
+		/** @deprecated StrataKit does not support this prop. */
+		shape?: MuiPaginationProps["shape"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: MuiPaginationProps["variant"];
 	}
 }
 
 declare module "@mui/material/PaginationItem" {
-	interface PaginationItemOwnProps {
+	interface PaginationItemPropsColorOverrides {
+		primary: false;
+		secondary: false;
+		standard: false;
+	}
+
+	interface PaginationItemPropsVariantOverrides {
+		text: false;
+		outlined: false;
+	}
+
+	interface PaginationItemOwnProps extends ButtonBaseDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		color?: PaginationItemOwnProps["color"];
 		LinkComponent?: never;
+		/** @deprecated StrataKit does not support this prop. */
+		shape?: PaginationItemOwnProps["shape"];
+		/** @deprecated StrataKit does not support this prop. */
+		variant?: PaginationItemOwnProps["variant"];
+	}
+}
+
+declare module "@mui/material/Popover" {
+	interface PopoverProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: number | undefined;
+		/** @deprecated StrataKit does not support this prop. */
+		marginThreshold?: number | null | undefined;
 	}
 }
 
 declare module "@mui/material/Radio" {
+	interface RadioProps extends RadioDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		checkedIcon?: RadioProps["checkedIcon"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		color?: RadioProps["color"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableRipple?: boolean;
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: boolean;
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableTouchRipple?: boolean;
+
+		/** @deprecated StrataKit does not support this prop. */
+		icon?: RadioProps["icon"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		size?: RadioProps["size"];
+	}
+
 	interface RadioPropsColorOverrides {
 		secondary: false;
 		default: false;
@@ -399,6 +986,61 @@ declare module "@mui/material/Radio" {
 
 	interface RadioPropsSizeOverrides {
 		small: false;
+	}
+
+	export default function Radio(
+		props: Omit<RadioProps, keyof RadioDeprecatedProps> & RadioDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface RadioDeprecatedProps extends ButtonBaseDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	checkedIcon?: RadioProps["checkedIcon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	color?: RadioProps["color"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableFocusRipple?: RadioProps["disableFocusRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	icon?: RadioProps["icon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	size?: RadioProps["size"];
+}
+
+declare module "@mui/material/ScopedCssBaseline" {
+	/** @deprecated StrataKit does not support this component.  Use `Root` from `@stratakit/mui` instead */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function ScopedCssBaseline(): React.JSX.Element;
+}
+
+declare module "@mui/material/Select" {
+	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
+	export default function Select(
+		props: {
+			/** @deprecated StrataKit does not support this prop. */
+			IconComponent?: SelectProps["IconComponent"];
+			/** @deprecated StrataKit does not support this prop. */
+			variant?: SelectProps["variant"];
+			/** @deprecated StrataKit does not support this prop. */
+			disableUnderline?: SelectProps["disableUnderline"];
+		} & Omit<
+			SelectProps,
+			| "IconComponent"
+			| "variant"
+			| "disableUnderline"
+			| keyof OutlinedInputDeprecatedProps
+		> &
+			OutlinedInputDeprecatedProps,
+	): React.JSX.Element;
+}
+
+declare module "@mui/material/Slide" {
+	interface SlideProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean;
 	}
 }
 
@@ -412,6 +1054,18 @@ declare module "@mui/material/Slider" {
 	}
 }
 
+declare module "@mui/material/Stack" {
+	interface StackOwnProps {
+		/**
+		 *
+		 * The default value with `@stratakit/mui` is `true`.
+		 *
+		 * @default true
+		 */
+		useFlexGap?: StackOwnProps["useFlexGap"];
+	}
+}
+
 declare module "@mui/material/SvgIcon" {
 	/** @deprecated Use `Icon` from `@stratakit/mui` instead. */
 	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
@@ -420,7 +1074,31 @@ declare module "@mui/material/SvgIcon" {
 	): React.JSX.Element | null;
 }
 
+declare module "@mui/material/SwipeableDrawer" {
+	interface SwipeableDrawerProps {
+		/** @deprecated StrataKit does not support this prop. */
+		elevation?: DrawerProps["elevation"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		hideBackdrop?: boolean;
+	}
+}
+
 declare module "@mui/material/Switch" {
+	interface SwitchProps extends SwitchDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		checkedIcon?: SwitchProps["checkedIcon"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		color?: SwitchProps["color"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: IconButtonProps["disableFocusRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		icon?: SwitchProps["icon"];
+	}
+
 	interface SwitchPropsColorOverrides {
 		secondary: false;
 		default: false;
@@ -429,17 +1107,60 @@ declare module "@mui/material/Switch" {
 		warning: false;
 		error: false;
 	}
+
+	export default function Switch(
+		props: Omit<SwitchProps, keyof SwitchDeprecatedProps> &
+			SwitchDeprecatedProps,
+	): React.JSX.Element;
+}
+
+interface SwitchDeprecatedProps extends IconButtonDeprecatedProps {
+	/** @deprecated StrataKit does not support this prop. */
+	checkedIcon?: SwitchProps["checkedIcon"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	color?: SwitchProps["color"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	disableFocusRipple?: IconButtonProps["disableFocusRipple"];
+
+	/** @deprecated StrataKit does not support this prop. */
+	icon?: SwitchProps["icon"];
 }
 
 declare module "@mui/material/StepButton" {
-	interface StepButtonOwnProps {
+	interface StepButtonOwnProps extends ButtonBaseDeprecatedProps {
+		/** @deprecated StrataKit does not support this prop. */
+		icon?: StepButtonOwnProps["icon"];
 		LinkComponent?: never;
 	}
 }
 
+declare module "@mui/material/StepIcon" {
+	/** @deprecated StrataKit does not support this component. */
+	export default function StepIcon(props: StepIconProps): React.JSX.Element;
+}
+
+declare module "@mui/material/StepLabel" {
+	interface StepLabelProps {
+		/** @deprecated StrataKit does not support this prop. */
+		icon?: StepLabelProps["icon"];
+	}
+}
+
+declare module "@mui/material/Stepper" {
+	interface StepperOwnProps {
+		/** @deprecated StrataKit does not support this prop. */
+		connector?: StepperOwnProps["connector"];
+	}
+}
+
 declare module "@mui/material/Tab" {
-	interface TabOwnProps {
+	interface TabOwnProps extends ButtonBaseDeprecatedProps {
 		LinkComponent?: never;
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: TabProps["disableFocusRipple"];
 
 		/**
 		 * The default icon position with `@stratakit/mui` is `"start"`.
@@ -447,6 +1168,34 @@ declare module "@mui/material/Tab" {
 		 * @default 'start'
 		 */
 		iconPosition?: TabProps["iconPosition"];
+	}
+}
+
+declare module "@mui/material/TabScrollButton" {
+	/** @deprecated StrataKit does not support this component. */
+	export default function TabScrollButton(
+		props: TabScrollButtonProps,
+	): React.JSX.Element;
+}
+
+declare module "@mui/material/TableCell" {
+	interface TableCellProps {
+		/** @deprecated StrataKit does not support this prop on `TableCell`. Set on `Table` instead. */
+		size?: MuiTableCellProps["size"];
+	}
+}
+
+declare module "@mui/material/TableSortLabel" {
+	interface TableSortLabelOwnProps {
+		/** @deprecated StrataKit does not currently support this prop. */
+		hideSortIcon?: boolean | undefined;
+
+		/** @deprecated StrataKit does not currently support this prop. */
+		IconComponent?:
+			| React.JSXElementConstructor<{
+					className: string;
+			  }>
+			| undefined;
 	}
 }
 
@@ -463,13 +1212,13 @@ declare module "@mui/material/Tabs" {
 		 */
 		size?: "small" | "medium";
 
-		/** @deprecated DO NOT USE */
+		/** @deprecated StrataKit does not support this prop. */
 		indicatorColor?: TabsProps["indicatorColor"];
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		allowScrollButtonsMobile?: boolean;
 
-		/** @deprecated DO NOT USE. */
+		/** @deprecated StrataKit does not support this prop. */
 		scrollButtons?: TabsProps["scrollButtons"];
 	}
 }
@@ -498,14 +1247,34 @@ declare module "@mui/material/TextField" {
 	}
 
 	export default function TextField(
-		props: {
-			/** @deprecated DO NOT USE */ variant?: TextFieldVariants;
-		} & Omit<TextFieldProps, "variant">,
+		props: FormControlDeprecatedProps & {
+			/** @deprecated StrataKit does not support this prop. */
+			select?: TextFieldProps["select"];
+		} & Omit<TextFieldProps, "select" | keyof FormControlDeprecatedProps>,
 	): React.JSX.Element;
 }
 
 declare module "@mui/material/ToggleButton" {
-	interface ToggleButtonOwnProps {
+	interface ToggleButtonPropsColorOverrides {
+		error: false;
+		info: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		warning: false;
+	}
+
+	interface ToggleButtonOwnProps extends ButtonBaseDeprecatedProps {
+		/** @deprecated `color` is unnecessary. Only `"standard"` is supported and already the default. */
+		color?: ToggleButtonProps["color"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusRipple?: ToggleButtonProps["disableFocusRipple"];
+
+		/** @deprecated StrataKit does not support this prop. */
+		fullWidth?: ToggleButtonProps["fullWidth"];
+
+		/** @deprecated Use the `render` prop instead. */
 		LinkComponent?: never;
 
 		/**
@@ -524,15 +1293,57 @@ declare module "@mui/material/ToggleButton" {
 	}
 }
 
+declare module "@mui/material/Toolbar" {
+	/** @deprecated StrataKit does not support this component. */
+	// @ts-expect-error -- Default exports cannot be augmented, but the `@deprecated` above still takes effect.
+	export default function Toolbar(
+		props: ToolbarProps,
+	): React.JSX.Element | null;
+}
+
+declare module "@mui/material/ToggleButtonGroup" {
+	interface ToggleButtonGroupPropsColorOverrides {
+		error: false;
+		info: false;
+		primary: false;
+		secondary: false;
+		success: false;
+		warning: false;
+	}
+
+	interface ToggleButtonGroupProps {
+		/** @deprecated `color` is unnecessary. Only `"standard"` is supported and already the default. */
+		color?: ToggleButtonGroupProps["color"];
+	}
+}
+
 declare module "@mui/material/Tooltip" {
 	interface TooltipProps {
+		/** @deprecated StrataKit does not support this prop. */
+		arrow?: TooltipProps["arrow"];
 		/**
 		 * The default value with `@stratakit/mui` is `true`.
 		 * Use `describeChild={false}` if you want to label the child element.
 		 *
 		 * @default true
 		 */
-		describeChild?: boolean;
+		describeChild?: TooltipProps["describeChild"];
+		/** @deprecated StrataKit does not support this prop. */
+		disableFocusListener?: TooltipProps["disableFocusListener"];
+		/** @deprecated StrataKit does not support this prop. */
+		disableHoverListener?: TooltipProps["disableHoverListener"];
+		/** @deprecated StrataKit does not support this prop. */
+		disableInteractive?: TooltipProps["disableInteractive"];
+		/** @deprecated StrataKit does not support this prop.  */
+		disableTouchListener?: TooltipProps["disableTouchListener"];
+		/** @deprecated StrataKit does not support this prop. */
+		enterDelay?: TooltipProps["enterDelay"];
+		/** @deprecated StrataKit does not support this prop. */
+		enterNextDelay?: TooltipProps["enterNextDelay"];
+		/** @deprecated StrataKit does not support this prop. */
+		enterTouchDelay?: TooltipProps["enterTouchDelay"];
+		/** @deprecated StrataKit does not support this prop. */
+		followCursor?: TooltipProps["followCursor"];
 	}
 }
 
@@ -573,19 +1384,33 @@ type TypographyHeadingVariantProps = {
 	render: NonNullable<RoleProps["render"]>;
 };
 
+// These are defined separately so that they only get added to `Typography`,
+// and not to inherited components like `Link`.
+type TypographyColorProps = {
+	color?:
+		| TypographyProps["color"]
+		| "textSecondary"
+		| "textTertiary" // New
+		| "textDisabled";
+};
+
 type TypographyOverridableComponentProps<TypeMap extends OverridableTypeMap> =
 	TypeMap extends TypographyTypeMap
-		? Omit<
-				DefaultComponentProps<TypeMap>,
-				keyof TypographyHeadingVariantProps
-			> &
-				TypographyHeadingVariantProps
+		?
+				| (Omit<
+						DefaultComponentProps<TypeMap>,
+						keyof TypographyHeadingVariantProps | "color"
+				  > &
+						TypographyHeadingVariantProps &
+						TypographyColorProps)
+				| (Omit<DefaultComponentProps<TypeMap>, "color"> & TypographyColorProps)
 		: never;
 
 declare module "@mui/material/Typography" {
 	interface TypographyPropsColorOverrides {
 		secondary: false;
-		textTertiary: true;
+		textSecondary: false; // Re-added above via TypographyColorProps.
+		textDisabled: false; // Re-added above via TypographyColorProps.
 	}
 
 	interface TypographyPropsVariantOverrides {
@@ -616,5 +1441,15 @@ declare module "@mui/material/Typography" {
 		 * @default "inherit"
 		 */
 		variant?: TypographyProps["variant"];
+
+		/** @deprecated	StrataKit does not support this prop. */
+		variantMapping?: TypographyProps["variantMapping"];
+	}
+}
+
+declare module "@mui/material/Zoom" {
+	interface ZoomProps {
+		/** @deprecated StrataKit does not support this prop. */
+		disablePrefersReducedMotion?: boolean;
 	}
 }

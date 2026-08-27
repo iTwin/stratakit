@@ -18,16 +18,16 @@
 
 .🥝Select {
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨color--placeholder: var(--stratakit-color-text-neutral-tertiary);
+	--✨color--placeholder: var(--stratakit-color-text-neutral-placeholder);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨height: 1.5rem;
-	--✨gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
-	--✨padding-inline-start: var(--stratakit-space-x2);
+	--✨gap: var(--stratakit-space-150);
+	--✨padding-inline-start: var(--stratakit-space-200);
 	--✨padding-inline-end: calc(
 		var(--✨gap) +
-		var(--stratakit-space-x4) /* Arrow size */ +
-		var(--stratakit-space-x1) /* Arrow padding */
+		var(--stratakit-space-400) /* Arrow size */ +
+		var(--stratakit-space-100) /* Arrow padding */
 	);
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝Select-border-color) inset;
@@ -50,7 +50,7 @@
 		var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
 		var(--stratakit-shadow-control-button-base-drop);
 
-	--✨border--solid-default: var(--stratakit-color-border-shadow-base);
+	--✨border--solid-default: var(--stratakit-color-border-neutral-base);
 	--✨border--solid-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-default) 100%,
@@ -65,7 +65,7 @@
 	/* #endregion */
 
 	/* #region Variant: outline */
-	--✨bg--outline-default: var(--stratakit-color-bg-control-select);
+	--✨bg--outline-default: transparent;
 	--✨bg--outline-hover: color-mix(
 		in oklch,
 		var(--✨bg--outline-default) 100%,
@@ -76,7 +76,7 @@
 		var(--✨bg--outline-default) 100%,
 		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%)
 	);
-	--✨bg--outline-disabled: var(--stratakit-color-bg-control-select);
+	--✨bg--outline-disabled: transparent;
 
 	--✨border--outline-default: var(--stratakit-color-border-neutral-base);
 	--✨border--outline-hover: color-mix(
@@ -108,8 +108,8 @@
 
 		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
 		text-overflow: ellipsis;
-		font-size: var(--stratakit-font-size-12);
-		border-radius: 4px;
+		font-size: var(--stratakit-font-size-body-sm);
+		border-radius: var(--stratakit-radius-sm);
 		background-color: var(--🥝Select-background-color);
 		box-shadow: var(--✨shadow-border);
 		color: var(--✨color--default);
@@ -208,7 +208,7 @@
 .🥝SelectArrow {
 	@layer base {
 		justify-self: end;
-		margin-inline-end: var(--stratakit-space-x1);
+		margin-inline-end: var(--stratakit-space-100);
 		pointer-events: none;
 		z-index: 1; /* should be above the button */
 

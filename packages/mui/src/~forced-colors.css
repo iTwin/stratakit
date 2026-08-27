@@ -114,6 +114,10 @@
 	}
 }
 
+.MuiCircularProgress-root {
+	--_MuiCircularProgress-color: CanvasText;
+}
+
 .MuiDialog-paper {
 	border: 1px solid;
 }
@@ -151,18 +155,14 @@
 	}
 }
 
-.MuiInputBase-root {
+.🥝MuiInput {
 	&:where(.Mui-disabled) {
 		border-color: GrayText;
 	}
 }
 
 .MuiLinearProgress-root {
-	border: 1px solid;
-}
-
-.MuiLinearProgress-bar {
-	background-color: CanvasText;
+	--_MuiLinearProgress-color: CanvasText;
 }
 
 .MuiListItemIcon-root {
@@ -197,6 +197,33 @@
 		color: SelectedItemText;
 		forced-color-adjust: none; /* removing the backplate */
 	}
+}
+
+:is(.MuiPickerDay-root, .MuiYearCalendar-button) {
+	background-color: ButtonFace;
+	border-color: ButtonBorder;
+	color: ButtonText;
+
+	&:where(.MuiPickerDay-today) {
+		&::after {
+			background-color: Highlight;
+		}
+	}
+
+	&:where(.Mui-selected) {
+		background-color: SelectedItem;
+		color: SelectedItemText;
+		forced-color-adjust: none; /* removing the backplate */
+	}
+
+	&:where(.Mui-disabled) {
+		border-color: GrayText;
+		color: GrayText;
+	}
+}
+
+.MuiPickerPopper-paper {
+	border: 1px solid;
 }
 
 .MuiPopover-paper {

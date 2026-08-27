@@ -13,7 +13,7 @@ import { visuallyHidden } from "@mui/utils";
 
 export default () => {
 	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<SmallSlider />
 			<MediumSlider />
 		</Stack>
@@ -28,7 +28,7 @@ const SmallSlider = () => {
 				Small size
 				<span style={visuallyHidden}> from 0 to 100 inches</span>
 			</FormLabel>
-			<Stack spacing={1} direction="row" sx={{ alignItems: "center", mb: 1 }}>
+			<Stack spacing={2} direction="row" sx={{ alignItems: "center", mb: 2 }}>
 				<Typography aria-hidden="true">0″</Typography>
 				<Slider defaultValue={50} slotProps={{ input: { id } }} size="small" />
 				<Typography aria-hidden="true">100″</Typography>
@@ -45,7 +45,7 @@ const MediumSlider = () => {
 				Medium size
 				<span style={visuallyHidden}> from 0 to 100 feet</span>
 			</FormLabel>
-			<Stack spacing={1} direction="row" sx={{ alignItems: "center", mb: 1 }}>
+			<Stack spacing={2} direction="row" sx={{ alignItems: "center", mb: 2 }}>
 				<Typography aria-hidden="true" sx={{ textWrap: "nowrap" }}>
 					0 ft
 				</Typography>

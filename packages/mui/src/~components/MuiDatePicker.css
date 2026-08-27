@@ -12,3 +12,168 @@
 		content: none;
 	}
 }
+
+.MuiPickersCalendarHeader-labelContainer {
+	@apply --typography("body-md");
+	align-self: stretch;
+	padding-inline-end: var(--stratakit-space-100);
+}
+
+.MuiPickersInputBase-root:is(.🥝MuiInput) {
+	block-size: var(--stratakit-size-control-field-height-medium);
+	padding-inline-start: var(--stratakit-space-300);
+
+	&:where(.MuiPickersInputBase-inputSizeSmall) {
+		@apply --typography("body-sm");
+		block-size: var(--stratakit-size-control-field-height-small);
+		padding-inline-start: var(--stratakit-space-200);
+	}
+}
+
+.MuiPickersInputBase-sectionsContainer {
+	padding: 0;
+}
+
+.MuiPickersInputBase-sectionContent {
+	&:where([inputmode="numeric"]) {
+		font-variant-numeric: tabular-nums;
+	}
+
+	&:where(:not([aria-valuenow])) {
+		color: var(--stratakit-color-text-neutral-placeholder);
+	}
+
+	&:where(:focus, :focus-visible) {
+		outline: none !important; /* Focus outline will be shown around the input picker instead */
+	}
+}
+
+.MuiDayCalendar-root {
+	--_MuiDayCalendar-day-size: var(--stratakit-size-control-field-height-medium);
+	--_MuiDayCalendar-day-margin: var(--stratakit-space-100);
+}
+
+.MuiDayCalendar-weekContainer {
+	margin: 0;
+}
+
+.MuiDayCalendar-weekDayLabel {
+	aspect-ratio: 1;
+	block-size: var(--_MuiDayCalendar-day-size);
+	inline-size: var(--_MuiDayCalendar-day-size);
+	color: var(--stratakit-color-text-neutral-secondary);
+	margin-inline: var(--_MuiDayCalendar-day-margin);
+}
+
+.MuiPickerDay-root {
+	/* #region Variables */
+	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨bg--selected: var(--stratakit-color-bg-accent-base);
+	--✨bg--selected-hover: color-mix(
+		in oklch,
+		var(--✨bg--selected) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
+	);
+
+	--✨border--today: var(--stratakit-color-border-neutral-base);
+	--✨border--today-hover: color-mix(
+		in oklch,
+		var(--✨border--today) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+	);
+	--✨border--selected: var(--stratakit-color-border-accent-base);
+	--✨border--selected-hover: color-mix(
+		in oklch,
+		var(--✨border--selected) 100%,
+		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
+	);
+
+	--✨color--default: var(--stratakit-color-text-neutral-primary);
+	--✨color--selected: var(--stratakit-color-text-neutral-emphasis);
+	--✨color--outside: var(--stratakit-color-text-neutral-disabled);
+	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
+
+	--✨dot--default: var(--stratakit-color-icon-neutral-base);
+	--✨dot--hover: var(--stratakit-color-icon-neutral-primary);
+	--✨dot--outside: var(--stratakit-color-icon-neutral-disabled);
+	--✨dot--disabled: var(--stratakit-color-icon-neutral-disabled);
+	/* #endregion */
+
+	aspect-ratio: 1;
+	background-color: var(--_MuiPickerDay-background-color, transparent);
+	block-size: var(--_MuiDayCalendar-day-size);
+	inline-size: var(--_MuiDayCalendar-day-size);
+	border: 1px solid var(--_MuiPickerDay-border-color, transparent);
+	border-radius: var(--stratakit-radius-sm);
+	color: var(--_MuiPickerDay-color, var(--✨color--default));
+	margin: var(--_MuiDayCalendar-day-margin);
+	transition: all 150ms ease-out;
+	transition-property: background-color, border-color, color;
+
+	@media (any-hover: hover) {
+		&:where(:not(.Mui-disabled):hover) {
+			--_MuiPickerDay-background-color: var(--✨bg--hover);
+		}
+	}
+
+	&:where(.MuiPickerDay-today) {
+		--_MuiPickerDay-border-color: var(--✨border--today);
+		font-weight: 500;
+		outline: unset;
+
+		&:where(.Mui-focusVisible) {
+			outline: var(--🥝focus-outline);
+			outline-offset: var(--🥝focus-outline-offset);
+		}
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset-block-end: var(--stratakit-space-50);
+			aspect-ratio: 1;
+			background-color: var(--_MuiPickerDay-today-dot-background-color, var(--✨dot--default));
+			block-size: var(--stratakit-space-100);
+			inline-size: var(--stratakit-space-100);
+			border-radius: var(--stratakit-radius-round);
+			transition: background-color 150ms ease-out;
+		}
+
+		@media (any-hover: hover) {
+			&:where(:not(.Mui-disabled):hover) {
+				--_MuiPickerDay-border-color: var(--✨border--today-hover);
+				--_MuiPickerDay-today-dot-background-color: var(--✨dot--hover);
+			}
+		}
+	}
+
+	&:where(.MuiPickerDay-dayOutsideMonth:not(.Mui-selected)) {
+		--_MuiPickerDay-color: var(--✨color--outside);
+		--_MuiPickerDay-today-dot-background-color: var(--✨dot--outside);
+	}
+
+	&:where(.Mui-selected) {
+		--_MuiPickerDay-background-color: var(--✨bg--selected);
+		--_MuiPickerDay-border-color: var(--✨border--selected);
+		--_MuiPickerDay-color: var(--✨color--selected);
+
+		font-weight: 600;
+
+		@media (any-hover: hover) {
+			&:where(:not(.Mui-disabled):hover) {
+				--_MuiPickerDay-background-color: var(--✨bg--selected-hover);
+				--_MuiPickerDay-border-color: var(--✨border--selected-hover);
+			}
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		--_MuiPickerDay-color: var(--✨color--disabled);
+		--_MuiPickerDay-today-dot-background-color: var(--✨dot--disabled);
+	}
+}
+
+.MuiPickersCalendarHeader-switchViewIcon {
+	@media (prefers-reduced-motion: no-preference) {
+		transition: transform 150ms ease-in-out;
+	}
+}

@@ -12,11 +12,11 @@ links:
 
 Make sure the **Skeleton** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                                                | [Progress](/components/progress) | [Skeleton](/components/skeleton) |
-| ----------------------------------------------------------------------- | -------------------------------- | -------------------------------- |
-| Showing a loading (or other) process where the progress is determinable | ✅                               | ❌                               |
-| Showing an indeterminable loading progress                              | ✅                               | ✅                               |
-| Showing a process other than loading, such as a calculation             | ✅                               | ❌                               |
+| Use case                                                                | [CircularProgress](/components/circularprogress) & [LinearProgress](/components/linearprogress) | [Skeleton](/components/skeleton) |
+| ----------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------- | -------------------------------- |
+| Showing a loading (or other) process where the progress is determinable | ✅                                                                                              | ❌                               |
+| Showing an indeterminable loading progress                              | ✅                                                                                              | ✅                               |
+| Showing a process other than loading, such as a calculation             | ✅                                                                                              | ❌                               |
 
 ### Variants
 
@@ -42,4 +42,4 @@ Accurately representing the shape and structure of a loading interface is a case
 ## 🚫 Don't
 
 - Don't use **Skeleton** where the size and shape of the content and functionality being loaded is not known.
-- Don't use **Skeleton** to indicate the progress of any process except loading. For indicating the progress of calculations and other processes within a loaded interface, use [**Progress**](/components/progress).
+- Don't use **Skeleton** to indicate the progress of any process except loading. For indicating the progress of calculations and other processes within a loaded interface, use [**CircularProgress**](/components/circularprogress) or [**LinearProgress**](/components/linearprogress).

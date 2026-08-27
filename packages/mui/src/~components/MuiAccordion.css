@@ -4,12 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiAccordion-root {
-	--✨radius: 8px;
+	--✨radius: var(--stratakit-radius-md);
 
 	--_MuiAccordion-border-radius-top: 0;
 	--_MuiAccordion-border-radius-bottom: 0;
-	--_MuiAccordion-padding: var(--stratakit-space-x3);
-	--_MuiAccordion-column-gap: var(--stratakit-space-x3);
+	--_MuiAccordion-padding: var(--stratakit-space-300);
+	--_MuiAccordion-column-gap: var(--stratakit-space-300);
 
 	background-color: transparent;
 	border-color: var(--stratakit-color-border-neutral-muted);
@@ -85,7 +85,7 @@
 	@media (any-hover: hover) {
 		&:where(:hover:not(.Mui-disabled)) {
 			background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-			--_MuiAccordion-expand-icon-color: var(--stratakit-color-icon-neutral-hover);
+			--_MuiAccordion-expand-icon-color: var(--stratakit-color-icon-neutral-primary);
 		}
 	}
 
@@ -98,10 +98,10 @@
 
 .MuiAccordionSummary-content {
 	align-items: center;
-	column-gap: var(--stratakit-space-x2);
+	column-gap: var(--stratakit-space-200);
 	font-weight: 500;
-	margin-block-start: var(--stratakit-space-x1);
-	margin-block-end: var(--stratakit-space-x1);
+	margin-block-start: var(--stratakit-space-100);
+	margin-block-end: var(--stratakit-space-100);
 }
 
 .MuiAccordionSummary-expandIconWrapper {

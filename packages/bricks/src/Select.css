@@ -18,16 +18,16 @@
 
 .🥝Select {
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨color--placeholder: var(--stratakit-color-text-neutral-tertiary);
+	--✨color--placeholder: var(--stratakit-color-text-neutral-placeholder);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	--✨height: 1.5rem;
-	--✨gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
-	--✨padding-inline-start: var(--stratakit-space-x2);
+	--✨gap: var(--stratakit-space-150);
+	--✨padding-inline-start: var(--stratakit-space-200);
 	--✨padding-inline-end: calc(
 		var(--✨gap) +
-		var(--stratakit-space-x4) /* Arrow size */ +
-		var(--stratakit-space-x1) /* Arrow padding */
+		var(--stratakit-space-400) /* Arrow size */ +
+		var(--stratakit-space-100) /* Arrow padding */
 	);
 
 	--✨shadow-border: 0px 0px 0px 1px var(--🥝Select-border-color) inset;
@@ -108,8 +108,8 @@
 
 		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
 		text-overflow: ellipsis;
-		font-size: var(--stratakit-font-size-12);
-		border-radius: 4px;
+		font-size: var(--stratakit-font-size-body-sm);
+		border-radius: var(--stratakit-radius-sm);
 		background-color: var(--🥝Select-background-color);
 		box-shadow: var(--✨shadow-border);
 		color: var(--✨color--default);
@@ -208,7 +208,7 @@
 .🥝SelectArrow {
 	@layer base {
 		justify-self: end;
-		margin-inline-end: var(--stratakit-space-x1);
+		margin-inline-end: var(--stratakit-space-100);
 		pointer-events: none;
 		z-index: 1; /* should be above the button */
 

@@ -199,7 +199,7 @@
 	}
 }
 
-.MuiPickerDay-root {
+:is(.MuiPickerDay-root, .MuiYearCalendar-button) {
 	background-color: ButtonFace;
 	border-color: ButtonBorder;
 	color: ButtonText;

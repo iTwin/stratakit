@@ -26,6 +26,9 @@ interface RootContextValue {
 		rootNode: Document | ShadowRoot,
 		options: { css: string; key: string },
 	) => { cleanup: () => void };
+
+	/** Element to customize the portal provider. */
+	portalProvider?: React.ReactElement | undefined;
 }
 
 // ----------------------------------------------------------------------------
@@ -52,3 +55,5 @@ export const spriteSheetId = "🥝-inline-sprites";
 export const HtmlSanitizerContext = React.createContext<
 	((html: string) => string) | undefined
 >(undefined);
+
+// ----------------------------------------------------------------------------

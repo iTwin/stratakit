@@ -40,7 +40,7 @@ export default () => {
 	return (
 		<TableContainer render={<Paper />}>
 			<Table className={styles.table}>
-				<caption className={styles.caption}>Dessert nutrition</caption>
+				<caption>Dessert nutrition</caption>
 				<TableHead>
 					<TableRow>
 						<TableCell>Dessert (100g serving)</TableCell>

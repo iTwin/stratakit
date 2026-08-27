@@ -13,7 +13,7 @@ import DividerVertical from "examples/mui/Divider.vertical.tsx";
 export default function DividerExamples() {
 	return (
 		<>
-			<Stack sx={{ alignSelf: "stretch" }} spacing={1}>
+			<Stack sx={{ alignSelf: "stretch" }} spacing={2}>
 				<DividerDefault />
 				<DividerChildren />
 			</Stack>

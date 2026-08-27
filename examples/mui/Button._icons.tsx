@@ -11,7 +11,7 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="row" useFlexGap sx={{ flexWrap: "wrap" }}>
+		<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
 			<Button startIcon={<Icon href={svgPlaceholder} />}>Start icon</Button>
 			<Button endIcon={<Icon href={svgPlaceholder} />}>End icon</Button>
 			<Button

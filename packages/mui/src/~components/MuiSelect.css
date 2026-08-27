@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 :is(.MuiSelect-select, .MuiNativeSelect-select):is(.MuiInputBase-input) {
-	--✨gap: var(--stratakit-space-x2);
+	--✨gap: var(--stratakit-space-200);
 	--✨icon-size: 1rem;
 
 	display: flex;

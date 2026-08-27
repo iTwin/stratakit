@@ -16,7 +16,7 @@
 	--✨size-thumb--medium: 1rem;
 	--✨size-track--small: 0.125rem;
 	--✨size-track--medium: 0.25rem;
-	--✨size-track--active-increase: var(--stratakit-space-x1);
+	--✨size-track--active-increase: var(--stratakit-space-100);
 
 	padding: 0;
 	--_MuiSlider-rail-background-color: var(--✨color-rail-bg--default);
@@ -164,7 +164,7 @@
 }
 
 .MuiSlider-markLabel {
-	--✨gap: calc(var(--_MuiSlider-thumb-size) + var(--stratakit-space-x1));
+	--✨gap: calc(var(--_MuiSlider-thumb-size) + var(--stratakit-space-100));
 
 	@apply --typography("caption-md");
 	color: var(--stratakit-color-text-neutral-tertiary);
@@ -194,7 +194,7 @@
 }
 
 .MuiSlider-valueLabel {
-	--✨gap: var(--stratakit-space-x1);
+	--✨gap: var(--stratakit-space-100);
 
 	font-variant-numeric: tabular-nums;
 	user-select: none; /* Disabled because tooltip is inside the thumb which intercepts all pointer events */

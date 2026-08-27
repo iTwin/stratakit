@@ -12,7 +12,7 @@
 	@apply --typography("body-md");
 	padding: 0;
 	border: 1px solid var(--_MuiInput-border-color);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	background-color: var(--stratakit-color-bg-control-textbox);
 	transition: border-color 150ms ease-out;
 
@@ -52,12 +52,12 @@
 
 .MuiInputBase-root {
 	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
-	--_MuiInput-padding-inline: var(--stratakit-space-x3);
+	--_MuiInput-padding-inline: var(--stratakit-space-300);
 
 	&:where(.MuiInputBase-sizeSmall) {
 		@apply --typography("body-sm");
 		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
-		--_MuiInput-padding-inline: var(--stratakit-space-x2);
+		--_MuiInput-padding-inline: var(--stratakit-space-200);
 	}
 }
 
@@ -71,7 +71,7 @@
 
 	&:where(input, textarea) {
 		&::placeholder {
-			color: var(--stratakit-color-text-neutral-secondary);
+			color: var(--stratakit-color-text-neutral-placeholder);
 			opacity: 1;
 			user-select: none;
 		}
@@ -101,12 +101,12 @@
 
 .MuiInputAdornment-root {
 	&:where(.MuiInputAdornment-positionStart) {
-		margin-inline-start: var(--stratakit-space-x2);
-		margin-inline-end: var(--stratakit-space-x1);
+		margin-inline-start: var(--stratakit-space-200);
+		margin-inline-end: var(--stratakit-space-100);
 	}
 
 	&:where(.MuiInputAdornment-positionEnd) {
-		margin-inline-start: var(--stratakit-space-x1);
-		margin-inline-end: var(--stratakit-space-x2);
+		margin-inline-start: var(--stratakit-space-100);
+		margin-inline-end: var(--stratakit-space-200);
 	}
 }

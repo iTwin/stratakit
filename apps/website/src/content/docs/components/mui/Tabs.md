@@ -15,8 +15,11 @@ links:
 - `<Tabs>` does not support `textColor="inherit"`.
 - `<Tabs>` does not support `allowScrollButtonsMobile` or `scrollButtons`. Scroll buttons are automatically shown for mouse users and hidden for touch users.
 - `<Tab>` default value for `iconPosition` is now `"start"`.
+- The `action` prop of `Tab` is not supported.
+- Ripple effect removed from `Tab`. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
+- StrataKit does not support use of `TabScrollButton`. The scroll buttons are handled automatically when `variant="scrollable"`.
 
 ## Examples
 

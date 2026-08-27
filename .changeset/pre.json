@@ -1,0 +1,16 @@
+{
+	"mode": "pre",
+	"tag": "rc",
+	"initialVersions": {
+		"@stratakit/website": "0.0.1",
+		"examples": "0.0.1",
+		"internal": "0.0.1",
+		"@stratakit/bricks": "0.5.6",
+		"@stratakit/foundations": "0.5.0",
+		"@stratakit/icons": "0.4.3",
+		"@stratakit/internal-utils": "0.1.0",
+		"@stratakit/mui": "0.5.4",
+		"@stratakit/structures": "0.5.10"
+	},
+	"changesets": []
+}

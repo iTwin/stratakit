@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.0-rc.0
+
+### Minor Changes
+
+- [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.
+- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Short term the packages will continue to work with `^18.0.0`, but it is recommended to upgrade to React v19 to ensure future compatibility.
+
+### Patch Changes
+
+- [#1795](https://github.com/iTwin/stratakit/pull/1795): Updated colors for `Button` and `Anchor`.
+- [#1797](https://github.com/iTwin/stratakit/pull/1797): Updated placeholder text styling across various components.
+- [#1805](https://github.com/iTwin/stratakit/pull/1805): Updated `border-radius` of `Skeleton`.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.0-rc.0
+  - @stratakit/internal-utils@0.2.0-rc.0
+
 ## 0.5.6
 
 - [#1670](https://github.com/iTwin/stratakit/pull/1670): Removed [`CloseWatcher`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) responsible for device-specific close actions from the `Tooltip`.

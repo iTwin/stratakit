@@ -2,7 +2,7 @@
 
 ## 1.0.0-rc.0
 
-### Major Changes
+### Breaking changes
 
 - [#1798](https://github.com/iTwin/stratakit/pull/1798): Renamed all space tokens.
 
@@ -101,7 +101,7 @@
   | `--stratakit-font-size-48` | `--stratakit-font-size-display-md`                                                                           |
   | `--stratakit-font-size-64` | `--stratakit-font-size-display-lg`                                                                           |
 
-### Patch Changes
+### Non-breaking changes
 
 - [#1803](https://github.com/iTwin/stratakit/pull/1803): Added `line-height` tokens corresponding to each semantic `font-size` token:
 

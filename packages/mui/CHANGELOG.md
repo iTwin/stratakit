@@ -2,7 +2,7 @@
 
 ## 1.0.0-rc.0
 
-### Major Changes
+### Breaking changes
 
 - [#1753](https://github.com/iTwin/stratakit/pull/1753): Deprecated `FilledInput` component.
 - [#1729](https://github.com/iTwin/stratakit/pull/1729): Deprecated `action`, `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `ListItemButton`
@@ -174,7 +174,7 @@
 - [#1650](https://github.com/iTwin/stratakit/pull/1650): The `color` prop of `Badge` no longer supports the `"primary"` value.
 - [#1706](https://github.com/iTwin/stratakit/pull/1706): Deprecated `disableShrink`, `enableTrackSlot` and `thickness` props of `CircularProgress`.
 
-### Patch Changes
+### PNon-breaking changes
 
 - [#1803](https://github.com/iTwin/stratakit/pull/1803): Added `line-height` tokens corresponding to each semantic `font-size` token:
 

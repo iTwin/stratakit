@@ -57,7 +57,7 @@
 		padding-block-start: var(--✨padding-block);
 		padding-block-end: var(--✨padding-block);
 
-		font-size: var(--stratakit-font-size-12);
+		font-size: var(--stratakit-font-size-body-sm);
 		line-height: 1.2;
 		text-decoration: none;
 		cursor: pointer;

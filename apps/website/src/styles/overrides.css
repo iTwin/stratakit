@@ -199,7 +199,7 @@ aside.starlight-aside {
 	border-radius: var(--stratakit-radius-md);
 
 	.starlight-aside__title {
-		font-size: var(--stratakit-font-size-14);
+		font-size: var(--stratakit-font-size-body-md);
 		font-weight: 500;
 		color: unset;
 	}

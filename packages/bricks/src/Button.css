@@ -123,7 +123,7 @@
 		line-height: 1.2;
 		user-select: none;
 		cursor: pointer;
-		font-size: var(--stratakit-font-size-12);
+		font-size: var(--stratakit-font-size-body-sm);
 		font-weight: 500;
 		border: none;
 		position: relative;

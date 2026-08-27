@@ -47,7 +47,7 @@
 	padding-inline: var(--stratakit-space-300);
 	justify-content: space-between;
 
-	font-size: var(--stratakit-font-size-12);
+	font-size: var(--stratakit-font-size-body-sm);
 }
 
 .panelTitleWrapper {
@@ -74,7 +74,7 @@
 }
 
 .subheaderTitle {
-	font-size: var(--stratakit-font-size-12);
+	font-size: var(--stratakit-font-size-body-sm);
 	font-weight: 600;
 }
 

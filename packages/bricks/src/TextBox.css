@@ -30,7 +30,7 @@
 
 	@layer base {
 		cursor: var(--🥝TextBox-cursor);
-		font-size: var(--stratakit-font-size-12);
+		font-size: var(--stratakit-font-size-body-sm);
 		min-inline-size: 0;
 
 		min-block-size: var(--✨height);

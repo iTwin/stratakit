@@ -20,7 +20,6 @@ import cx from "classnames";
 import css from "./~styles.css.js";
 import {
 	HtmlSanitizerContext,
-	PortalContext,
 	RootContext,
 	RootNodeContext,
 	spriteSheetId,
@@ -119,7 +118,7 @@ interface RootProps extends BaseProps {
  * </Root>
  * ```
  */
-export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
+const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	throwIfNotSingleton();
 
 	const {
@@ -271,6 +270,23 @@ function SynchronizeAccentColor({
 
 	return null;
 }
+
+// ----------------------------------------------------------------------------
+
+const PortalContext = React.createContext<
+	| {
+			container: HTMLElement | null;
+			/**
+			 * Function that is lazily resolved by MUI when the portal mounts. Passing the
+			 * element directly requires the theme to be recreated once the element becomes available, which
+			 * leaves a one-commit window where portals fall back to `<body>`.
+			 *
+			 * Needed to workaround https://github.com/mui/material-ui/issues/48882
+			 */
+			unstable_getContainer?: () => HTMLElement | null;
+	  }
+	| undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 
@@ -495,3 +511,7 @@ function isShadow(node?: Node): node is ShadowRoot {
 			!!(node as ShadowRoot)?.host)
 	);
 }
+
+// ----------------------------------------------------------------------------
+
+export { PortalContext, Root };

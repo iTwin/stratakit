@@ -9,11 +9,8 @@ import {
 	ThemeProvider,
 	useColorScheme,
 } from "@mui/material/styles";
-import { Root as StrataKitRoot } from "@stratakit/foundations";
-import {
-	PortalContext,
-	RootContext,
-} from "@stratakit/foundations/secret-internals";
+import { PortalContext, Root as StrataKitRoot } from "@stratakit/foundations";
+import { RootContext } from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";

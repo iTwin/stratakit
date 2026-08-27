@@ -6,10 +6,8 @@
 import * as React from "react";
 import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
-import {
-	PortalContext,
-	RootContext,
-} from "@stratakit/foundations/secret-internals";
+import { PortalContext } from "@stratakit/foundations";
+import { RootContext } from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 
 // ----------------------------------------------------------------------------

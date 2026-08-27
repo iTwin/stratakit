@@ -8,10 +8,8 @@ import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import {
-	PortalContext,
-	RootContext,
-} from "@stratakit/foundations/secret-internals";
+import { PortalContext } from "@stratakit/foundations";
+import { RootContext } from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 
 import type { StylisElement } from "@emotion/cache";

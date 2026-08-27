@@ -1,0 +1,1 @@
+import{F as e,R as t}from"./jsx-runtime-BkI_Ul-C.js";var n=t(e(),1);function r(e){let t=n.useRef({});return n.useEffect(()=>{t.current=e}),t.current}export{r as t};

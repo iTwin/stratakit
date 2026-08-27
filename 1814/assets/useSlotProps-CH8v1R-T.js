@@ -1,0 +1,1 @@
+import{A as e,D as t,k as n}from"./Backdrop-Cu8pDSQG.js";import{t as r}from"./useForkRef-D-LntsTd.js";function i(i){let{elementType:a,externalSlotProps:o,ownerState:s,skipResolvingSlotProps:c=!1,...l}=i,u=c?{}:n(o,s),{props:d,internalRef:f}=t({...l,externalSlotProps:u}),p=r(f,u?.ref,i.additionalProps?.ref);return e(a,{...d,ref:p},s)}export{i as t};

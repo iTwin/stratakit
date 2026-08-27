@@ -1,0 +1,1 @@
+import{F as e,R as t}from"./jsx-runtime-BkI_Ul-C.js";import{t as n}from"./useForkRef-D-LntsTd.js";var r=t(e(),1),i=typeof window<`u`?r.useLayoutEffect:r.useEffect;function a(e){let t=r.useRef(e);return i(()=>{t.current=e}),r.useRef((...e)=>(0,t.current)(...e)).current}var o=n;export{a as n,i as r,o as t};

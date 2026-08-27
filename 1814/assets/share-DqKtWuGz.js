@@ -1,0 +1,1 @@
+import{L as e}from"./jsx-runtime-BkI_Ul-C.js";var t=e({default:()=>n}),n=`/1814/assets/copy-CbsQWmf4.svg`,r=e({default:()=>i}),i=`/1814/assets/share-DnMo8q4A.svg`;export{t as i,r as n,n as r,i as t};

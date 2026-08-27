@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-BkI_Ul-C.js";import{T as t}from"./Backdrop-Cu8pDSQG.js";var n={paper:`_paper_1mq3b_6`},r=e(),i=()=>(0,r.jsx)(t,{className:n.paper,elevation:4});function a(){return(0,r.jsx)(i,{})}export{a as default};

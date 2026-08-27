@@ -12,7 +12,6 @@ import {
 } from "vite";
 import babel from "vite-plugin-babel";
 import devtoolsJson from "vite-plugin-devtools-json";
-import tsconfigPaths from "vite-tsconfig-paths";
 import {
 	createVisitor,
 	customAtRules,
@@ -61,7 +60,6 @@ export default defineConfig({
 				plugins: [["babel-plugin-react-compiler", {}]],
 			},
 		}),
-		tsconfigPaths(),
 		bundleCssPlugin(),
 		devtoolsJson(),
 	],
@@ -81,6 +79,7 @@ export default defineConfig({
 		port: 1800, // prod server port
 	},
 	resolve: {
+		tsconfigPaths: true,
 		conditions: [customConditions, defaultClientConditions].flat(),
 	},
 	ssr: {

@@ -1,14 +1,9 @@
 # Changelog
 
-## 1.0.0-rc.0
-
-### Minor Changes
+## 0.6.0-rc.0
 
 - [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.
 - [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Short term the packages will continue to work with `^18.0.0`, but it is recommended to upgrade to React v19 to ensure future compatibility.
-
-### Patch Changes
-
 - Updated dependencies:
   - @stratakit/foundations@1.0.0-rc.0
   - @stratakit/bricks@0.6.0-rc.0

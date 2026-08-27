@@ -4,10 +4,6 @@
 
 ### Major Changes
 
-- [#1810](https://github.com/iTwin/stratakit/pull/1810): **Placeholder to force 1.0 release** - edit the changelog to remove this and move all of the _Minor changes_ up to the _Major changes_ section.
-
-### Minor Changes
-
 - [#1798](https://github.com/iTwin/stratakit/pull/1798): Renamed all space tokens.
 
   | Old name                | New name                     |

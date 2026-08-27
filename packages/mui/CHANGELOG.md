@@ -4,10 +4,6 @@
 
 ### Major Changes
 
-- [#1810](https://github.com/iTwin/stratakit/pull/1810): **Placeholder to force 1.0 release** - edit the changelog to remove this and move all of the _Minor changes_ up to the _Major changes_ section.
-
-### Minor Changes
-
 - [#1753](https://github.com/iTwin/stratakit/pull/1753): Deprecated `FilledInput` component.
 - [#1729](https://github.com/iTwin/stratakit/pull/1729): Deprecated `action`, `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `ListItemButton`
 - [#1716](https://github.com/iTwin/stratakit/pull/1716): Deprecated `variantMapping` prop of `Typography`.

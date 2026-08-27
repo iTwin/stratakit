@@ -20,13 +20,13 @@
 	--✨border--invalid: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨color--placeholder: var(--stratakit-color-text-neutral-secondary);
+	--✨color--placeholder: var(--stratakit-color-text-neutral-placeholder);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 	--✨height: 1.5rem;
-	--✨padding-inline: var(--stratakit-space-x2);
+	--✨padding-inline: var(--stratakit-space-200);
 	/* Dynamically adjust the padding to avoid issues with baseline alignment */
-	--✨padding-block: max(0px, (var(--✨height) - var(--stratakit-space-x05) - 1lh) / 2);
-	--✨gap: var(--stratakit-space-x1);
+	--✨padding-block: max(0px, (var(--✨height) - var(--stratakit-space-50) - 1lh) / 2);
+	--✨gap: var(--stratakit-space-100);
 
 	@layer base {
 		cursor: var(--🥝TextBox-cursor);

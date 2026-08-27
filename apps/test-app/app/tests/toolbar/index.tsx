@@ -122,7 +122,7 @@ function VisualTest() {
 		<div
 			style={{
 				display: "flex",
-				gap: "var(--stratakit-space-x2)",
+				gap: "var(--stratakit-space-200)",
 				flexDirection: "column",
 				alignItems: "flex-start",
 			}}

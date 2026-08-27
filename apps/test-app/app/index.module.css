@@ -3,14 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .main {
-	padding: var(--stratakit-space-x8);
+	padding: var(--stratakit-space-800);
 	font-size: var(--stratakit-font-size-14);
 	max-inline-size: min(1200px, 100%);
 	margin-inline: auto;
 }
 
 .list {
-	padding-block: var(--stratakit-space-x2);
+	padding-block: var(--stratakit-space-200);
 	list-style-type: "";
 }
 
@@ -18,10 +18,10 @@
 	border-block-end: 1px solid var(--stratakit-color-border-neutral-base);
 
 	> * {
-		margin-block-end: var(--stratakit-space-x2);
+		margin-block-end: var(--stratakit-space-200);
 	}
 }
 
 .h2 {
-	margin-block-start: var(--stratakit-space-x4);
+	margin-block-start: var(--stratakit-space-400);
 }

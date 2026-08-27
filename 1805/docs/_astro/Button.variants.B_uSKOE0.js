@@ -1,1 +1,0 @@
-import{j as t}from"./_utils.Bf_bEmHT.js";import{S as n}from"./Stack.Cn7w2cyl.js";import{B as r}from"./Button.7CU12y7N.js";const o=()=>t.jsxs(n,{spacing:2,direction:"row",sx:{flexWrap:"wrap"},children:[t.jsx(r,{variant:"contained",children:"Contained"}),t.jsx(r,{variant:"outlined",children:"Outlined"}),t.jsx(r,{variant:"text",children:"Text"})]});export{o as default};

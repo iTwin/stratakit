@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import * as AkPopover from "@ariakit/react/popover";
-import { PortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
 import { Button } from "@stratakit/bricks";
 import {
@@ -15,6 +14,7 @@ import {
 } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
+import { PortalProvider } from "./~PortalProvider.js";
 import { useInit } from "./~utils.useInit.js";
 
 import type {
@@ -108,9 +108,10 @@ const PopoverRoot = forwardRef<"div", PopoverRootProps>(
 				className={cx("🥝Popover", props.className)}
 				ref={forwardedRef}
 			>
-				<PortalContext.Provider value={contentElement ?? null}>
+				{/* Not setting unstable_getContainer; contentElement is defined when children are first rendered. */}
+				<PortalProvider container={contentElement ?? null}>
 					{children}
-				</PortalContext.Provider>
+				</PortalProvider>
 			</AkPopover.Popover>
 		);
 	},

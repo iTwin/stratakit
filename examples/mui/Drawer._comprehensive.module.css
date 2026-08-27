@@ -3,8 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import DialogDefault from "examples/mui/Dialog.default.tsx";
+.list {
+	min-inline-size: 250px;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
 
-export default function DialogExamples() {
-	return <DialogDefault />;
+.accountItem {
+	margin-block-start: auto;
 }

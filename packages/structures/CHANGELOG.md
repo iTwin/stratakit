@@ -11,7 +11,7 @@
 
 - Updated dependencies:
   - @stratakit/foundations@1.0.0-rc.0
-  - @stratakit/bricks@1.0.0-rc.0
+  - @stratakit/bricks@0.6.0-rc.0
   - @stratakit/internal-utils@0.2.0-rc.0
 
 ## 0.5.10

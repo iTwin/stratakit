@@ -497,7 +497,7 @@ importers:
         specifier: ^0.4.35
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/bricks":
-        specifier: ^1.0.0-rc.0
+        specifier: ^0.6.0-rc.0
         version: link:../bricks
       "@stratakit/foundations":
         specifier: ^1.0.0-rc.0

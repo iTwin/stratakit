@@ -1,0 +1,1 @@
+import{j as r}from"./_utils.B1FMWM65.js";import{A as e}from"./Alert.DW8_YmMh.js";import{A as t}from"./AlertTitle.BEok7UxC.js";const l=()=>r.jsxs(e,{severity:"error",role:"alert",children:[r.jsx(t,{children:"Invalid credit card"}),"Your bank has declined the charge to your card. Please check the card number or contact your bank."]});export{l as default};

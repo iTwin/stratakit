@@ -10,7 +10,7 @@
 	aspect-ratio: 1;
 	color: var(--stratakit-color-text-neutral-emphasis);
 	container-type: inline-size;
-	font-size: var(--stratakit-font-size-12);
+	font-size: var(--stratakit-font-size-caption-md);
 	font-weight: 600;
 
 	&:where(:not([data-_sk-surplus])) {

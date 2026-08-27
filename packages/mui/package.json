@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/mui",
 	"type": "module",
-	"version": "0.5.4",
+	"version": "1.0.0-rc.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -53,9 +53,8 @@
 		"@emotion/cache": "^11.14.0",
 		"@emotion/react": "^11.14.0",
 		"@emotion/styled": "^11.14.1",
-		"@stratakit/foundations": "^0.5.0",
 		"@stratakit/icons": "^0.4.3",
-		"@stratakit/internal-utils": "^0.1.0",
+		"@stratakit/internal-utils": "^0.2.0-rc.0",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"
 	},
@@ -70,8 +69,9 @@
 	},
 	"peerDependencies": {
 		"@mui/material": "^9.0.0",
-		"react": ">=18.0.0",
-		"react-dom": ">=18.0.0"
+		"@stratakit/foundations": "^1.0.0-rc.0",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
 	},
 	"wireit": {
 		"build": {

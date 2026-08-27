@@ -6,7 +6,7 @@
 .MuiIconButton-root {
 	--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-base);
 
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiIconButton-icon-color);
 	min-block-size: var(--_MuiIconButton-size);
 	min-inline-size: var(--_MuiIconButton-size);

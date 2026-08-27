@@ -111,7 +111,7 @@
 	@layer base {
 		grid-column: header-content;
 		cursor: pointer;
-		border-radius: var(--stratakit-space-300);
+		border-radius: var(--stratakit-radius-lg);
 		--🥝focus-outline-offset: calc(var(--stratakit-space-100) * -1);
 
 		&::after {

@@ -123,7 +123,7 @@
 		line-height: 1.2;
 		user-select: none;
 		cursor: pointer;
-		font-size: var(--stratakit-font-size-12);
+		font-size: var(--stratakit-font-size-body-sm);
 		font-weight: 500;
 		border: none;
 		position: relative;
@@ -135,7 +135,7 @@
 		gap: var(--✨gap);
 
 		min-block-size: var(--✨height);
-		border-radius: 4px;
+		border-radius: var(--stratakit-radius-sm);
 		padding-inline-start: var(--🥝Button-padding-inline, var(--✨padding-inline));
 		padding-inline-end: var(--🥝Button-padding-inline, var(--✨padding-inline));
 		padding-block-start: var(--✨padding-block);

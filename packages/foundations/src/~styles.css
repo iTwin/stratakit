@@ -9,6 +9,7 @@
 
 @import "./~space.css" layer(stratakit.foundations);
 @import "./~size.css" layer(stratakit.foundations);
+@import "./~radius.css" layer(stratakit.foundations);
 @import "./~theme.css" layer(stratakit.foundations);
 @import "./~shadow.css" layer(stratakit.foundations);
 @import "./~typography.css" layer(stratakit.foundations);

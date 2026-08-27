@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .🥝ErrorRegion {
-	--✨padding: var(--stratakit-space-x1);
+	--✨padding: var(--stratakit-space-100);
 
 	@layer base {
 		@apply --typography("body-sm");
@@ -41,7 +41,7 @@
 		flex-direction: column;
 
 		border: 1px solid var(--stratakit-color-border-attention-base);
-		border-radius: 8px;
+		border-radius: var(--stratakit-radius-md);
 		background-color: var(--stratakit-color-bg-elevation-base);
 		box-shadow: var(--stratakit-shadow-surface-sm);
 
@@ -58,15 +58,15 @@
 }
 
 .🥝ErrorRegionHeader {
-	--✨container-border-radius: 8px;
+	--✨container-border-radius: var(--stratakit-radius-md);
 	--✨container-border-width: 1px;
 	--✨border-radius: calc(var(--✨container-border-radius) - var(--✨container-border-width));
 
 	@layer base {
 		flex-wrap: wrap;
 		min-block-size: 2rem;
-		padding-inline-start: var(--stratakit-space-x2);
-		padding-inline-end: var(--stratakit-space-x1);
+		padding-inline-start: var(--stratakit-space-200);
+		padding-inline-end: var(--stratakit-space-100);
 		font-weight: 400;
 		border-start-start-radius: var(--✨border-radius);
 		border-start-end-radius: var(--✨border-radius);
@@ -147,11 +147,11 @@
 }
 
 .🥝ErrorRegionItem {
-	--✨container-padding: var(--stratakit-space-x2);
+	--✨container-padding: var(--stratakit-space-200);
 	--✨icon-size: 1rem;
-	--✨gap: var(--stratakit-space-x1);
+	--✨gap: var(--stratakit-space-100);
 	--✨padding-inline-start: calc(var(--✨container-padding) + var(--✨icon-size) + var(--✨gap));
-	--✨padding-block: calc(var(--stratakit-space-x1) + var(--stratakit-space-x2));
+	--✨padding-block: calc(var(--stratakit-space-100) + var(--stratakit-space-200));
 
 	@layer base {
 		display: flex;
@@ -160,7 +160,7 @@
 		padding-block-start: var(--✨padding-block);
 		padding-block-end: var(--✨padding-block);
 		padding-inline-start: var(--✨padding-inline-start);
-		padding-inline-end: var(--stratakit-space-x1);
+		padding-inline-end: var(--stratakit-space-100);
 
 		&:where(:not(:nth-child(1 of &))) {
 			border-block-start: 1px solid var(--stratakit-color-border-page-base);
@@ -170,6 +170,6 @@
 
 .🥝ErrorRegionItemActions {
 	@layer base {
-		margin-block-start: var(--stratakit-space-x2);
+		margin-block-start: var(--stratakit-space-200);
 	}
 }

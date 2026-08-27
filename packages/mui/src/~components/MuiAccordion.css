@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiAccordion-root {
-	--✨radius: 8px;
+	--✨radius: var(--stratakit-radius-md);
 
 	--_MuiAccordion-border-radius-top: 0;
 	--_MuiAccordion-border-radius-bottom: 0;

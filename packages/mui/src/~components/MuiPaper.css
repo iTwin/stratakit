@@ -7,7 +7,7 @@
 	--Paper-overlay: unset !important; /* Remove background-image overlay that MUI adds in dark mode */
 
 	&:where(.MuiPaper-rounded) {
-		border-radius: 8px;
+		border-radius: var(--stratakit-radius-md);
 	}
 
 	&:where(.MuiPaper-elevation1) {

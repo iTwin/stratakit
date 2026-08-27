@@ -11,7 +11,8 @@ links:
 ## StrataKit MUI modifications
 
 - The `elevation` and `hideBackdrop` props are not supported.
-- The default portal container is now the [root portal container](/components/root/#portal-container).
+- The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
+- Nested popup elements now use the **Drawer** as the portal container.
 
 ## Examples
 

@@ -23,7 +23,7 @@
 		gap: var(--stratakit-space-100);
 
 		border: var(--✨border-width) solid var(--✨border);
-		border-radius: 4px;
+		border-radius: var(--stratakit-radius-sm);
 		padding-block: calc(var(--stratakit-space-100) - var(--✨border-width));
 		padding-inline: calc(var(--stratakit-space-200) - var(--✨border-width));
 		min-block-size: 1rem;

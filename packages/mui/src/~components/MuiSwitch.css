@@ -13,7 +13,7 @@
 	inline-size: auto;
 	outline-offset: var(--🥝focus-outline-offset);
 	padding: 0;
-	border-radius: calc(infinity * 1px);
+	border-radius: var(--stratakit-radius-round);
 	--_MuiSwitch-padding: var(--✨padding);
 
 	&:where(.MuiSwitch-sizeSmall) {

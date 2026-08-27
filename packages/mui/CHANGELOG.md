@@ -16,6 +16,50 @@
 - [#1732](https://github.com/iTwin/stratakit/pull/1732): Deprecated `color`, `focused`, `hiddenLabel` and `variant` props of `FormControl`.
 - [#1743](https://github.com/iTwin/stratakit/pull/1743): Deprecated `color`, `disableUnderline`, `disableInjectingGlobalStyles` and `variant` props of `NativeSelect`.
 - [#1702](https://github.com/iTwin/stratakit/pull/1702): Deprecated `elevation` and `marginThreshold` props of `Popover` component.
+- [#1726](https://github.com/iTwin/stratakit/pull/1726): Deprecated `autoFocus` and `disableAutoFocusItem` props of `Menu`.
+- [#1723](https://github.com/iTwin/stratakit/pull/1723): Deprecated `action`, `centerRipple`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `Tab`.
+- [#1711](https://github.com/iTwin/stratakit/pull/1711): Deprecated inherited `in` and `timeout` props on `Backdrop` in favor of `open` and `transitionDuration` to avoid confusion.
+- [#1742](https://github.com/iTwin/stratakit/pull/1742): Deprecated `subheader` prop of `List`.
+- [#1735](https://github.com/iTwin/stratakit/pull/1735): Deprecated `color` prop of `ListSubheader`.
+- [#1678](https://github.com/iTwin/stratakit/pull/1678): Deprecated `action`, `centerRipple`, `checkedIcon`, `color`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `icon`, `LinkComponent`, `size`, `TouchRippleProps`, and `touchRippleRef` props of `Radio`.
+- [#1747](https://github.com/iTwin/stratakit/pull/1747): Deprecated `StepIcon`. StrataKit does not support custom icons in `Stepper`.
+- [#1685](https://github.com/iTwin/stratakit/pull/1685): Deprecated `color` prop of `Alert`.
+- [#1728](https://github.com/iTwin/stratakit/pull/1728): Deprecated `action`, `centerRipple`, `disableRipple`, `disableTouchRipple`, `dense`, `focusRipple`, `focusVisibleClassName`, `TouchRippleProps` and `touchRippleRef` props of `MenuItem`.
+- [#1766](https://github.com/iTwin/stratakit/pull/1766): Deprecated `color` prop of `FormLabel`.
+- [#1714](https://github.com/iTwin/stratakit/pull/1714): Deprecated `disablePrefersReduceMotion` prop of `Collapse`, `Fade`, `Grow`, `Slide` and `Zoom`.
+- [#1724](https://github.com/iTwin/stratakit/pull/1724): Deprecated `CssBaseline` and `ScopedCssBaseline` components.
+- [#1612](https://github.com/iTwin/stratakit/pull/1612): Deprecated `action`, `centerRipple`, `checkedIcon`, `color`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `icon`, `LinkComponent`, `TouchRippleProps`, and `touchRippleRef` props of `Switch`.
+- [#1749](https://github.com/iTwin/stratakit/pull/1749): Deprecated `elevation` and `hideBackdrop` props of `SwipeableDrawer` component.
+- [#1747](https://github.com/iTwin/stratakit/pull/1747): Deprecated `icon` prop of `StepLabel`.
+- [#1780](https://github.com/iTwin/stratakit/pull/1780): Deprecated `Toolbar` to avoid confusion with `Toolbar` from `@stratakit/structures`. This is replaced by a styled `div` in `AppBar`.
+- [#1745](https://github.com/iTwin/stratakit/pull/1745): Deprecated `disableTypography` prop of `CardHeader`.
+- [#1763](https://github.com/iTwin/stratakit/pull/1763): Deprecated `variant` prop of `FormHelperText`.
+- [#1715](https://github.com/iTwin/stratakit/pull/1715): Deprecated `showLabel` prop of `BottomNavigationAction`.
+- [#1779](https://github.com/iTwin/stratakit/pull/1779): Deprecated `InitColorSchemeScript`.
+- [#1764](https://github.com/iTwin/stratakit/pull/1764): Deprecated `variant` prop of `InputAdornment`.
+- [#1699](https://github.com/iTwin/stratakit/pull/1699): Deprecated the `disableGutters` prop of `Accordion` and the `expandIcon` prop of `AccordionSummary`.
+- [#1748](https://github.com/iTwin/stratakit/pull/1748): Deprecated `connector` prop of `Stepper`.
+- [#1712](https://github.com/iTwin/stratakit/pull/1712): Deprecated `action`, `centerRipple`, `disableElevation`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `Button` component.
+- [#1753](https://github.com/iTwin/stratakit/pull/1753): Deprecated `color`, `disableInjectingGlobalStyles`, `disableUnderline`, `IconComponent`, `notched` and `variant` props of `Select`.
+- [#1743](https://github.com/iTwin/stratakit/pull/1743): Deprecated `color`, `disableUnderline` and `disableInjectingGlobalStyles` props of `Input`.
+- [#1757](https://github.com/iTwin/stratakit/pull/1757): Deprecated `color`, `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `shape`, `TouchRippleProps`, `touchRippleRef`, and `variant` props of `PaginationItem`.
+- [#1701](https://github.com/iTwin/stratakit/pull/1701): Deprecated `action`, `centerRipple`, `color`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `fullWidth`, `TouchRippleProps` and `touchRippleRef` props of `ToggleButton` component.
+- [#1722](https://github.com/iTwin/stratakit/pull/1722): Deprecated `arrow`, `disableFocusListener`, `disableHoverListener`, `disableInteractive`, `disableTouchListener`, `enterDelay`, `enterNextDelay`, `enterTouchDelay` and `followCursor` props of `Tooltip`.
+- [#1741](https://github.com/iTwin/stratakit/pull/1741): Deprecated `action`, `centerRipple`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `IconButton`.
+- [#1743](https://github.com/iTwin/stratakit/pull/1743): Deprecated `color` and `disableInjectingGlobalStyles` props of `InputBase`.
+- [#1753](https://github.com/iTwin/stratakit/pull/1753): Deprecated `color`, `disableInjectingGlobalStyles` and `notched` props of `OutlinedInput`.
+- [#1767](https://github.com/iTwin/stratakit/pull/1767): Deprecated `color`, `shrink`, and `variant` prop of `InputLabel`.
+- [#1776](https://github.com/iTwin/stratakit/pull/1776): Deprecated `margin` prop from `FilledInput`, `FormControl`, `FormHelperText`, `InputBase`, `InputLabel`, `OutlinedInput` and `TextField`. Use CSS grid, CSS flexbox, `Grid` , or `Stack` to handle spacing between form controls.
+- [#1701](https://github.com/iTwin/stratakit/pull/1701): Deprecated `action`, `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `ButtonBase` component (applies to `Button` and other MUI components that extend `ButtonBase`).
+- [#1749](https://github.com/iTwin/stratakit/pull/1749): Deprecated `elevation` and `hideBackdrop` props of `Drawer` component.
+- [#1704](https://github.com/iTwin/stratakit/pull/1704): Deprecated props related to `Table`.
+
+  - `hideSortIcon` and `IconComponent` props on `TableSortLabel`.
+  - `size` prop on `TableCell`.
+
+- [#1701](https://github.com/iTwin/stratakit/pull/1701): Deprecated `color` prop of `ToggleButtonGroup` component.
+- [#1706](https://github.com/iTwin/stratakit/pull/1706): Deprecated `disableShrink`, `enableTrackSlot` and `thickness` props of `CircularProgress`.
+- [#1650](https://github.com/iTwin/stratakit/pull/1650): The `color` prop of `Badge` no longer supports the `"primary"` value.
 - [#1798](https://github.com/iTwin/stratakit/pull/1798): Renamed all space tokens.
 
   | Old name                | New name                     |
@@ -34,40 +78,14 @@
   | `--stratakit-space-x10` | `--stratakit-space-1000`     |
 
 - [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.
-- [#1726](https://github.com/iTwin/stratakit/pull/1726): Deprecated `autoFocus` and `disableAutoFocusItem` props of `Menu`.
 - [#1793](https://github.com/iTwin/stratakit/pull/1793): Changed default `caption-side` for `Table`.
-- [#1723](https://github.com/iTwin/stratakit/pull/1723): Deprecated `action`, `centerRipple`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `Tab`.
-- [#1711](https://github.com/iTwin/stratakit/pull/1711): Deprecated inherited `in` and `timeout` props on `Backdrop` in favor of `open` and `transitionDuration` to avoid confusion.
 - [#1797](https://github.com/iTwin/stratakit/pull/1797): Renamed `--stratakit-color-text-control-placeholder` to `--stratakit-color-text-neutral-placeholder`.
-- [#1742](https://github.com/iTwin/stratakit/pull/1742): Deprecated `subheader` prop of `List`.
-- [#1735](https://github.com/iTwin/stratakit/pull/1735): Deprecated `color` prop of `ListSubheader`.
 - [#1718](https://github.com/iTwin/stratakit/pull/1718): Changed [MUI's spacing unit](https://mui.com/material-ui/customization/spacing/) to match StrataKit's. This will impact any spacing values provided to the `Stack` or `Grid` components, as well as any values passed to the `sx` prop. Double any existing values to maintain the same computed distance.
-- [#1678](https://github.com/iTwin/stratakit/pull/1678): Deprecated `action`, `centerRipple`, `checkedIcon`, `color`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `icon`, `LinkComponent`, `size`, `TouchRippleProps`, and `touchRippleRef` props of `Radio`.
-- [#1724](https://github.com/iTwin/stratakit/pull/1724): Deprecated `CssBaseline` and `ScopedCssBaseline` components.
 - [#1743](https://github.com/iTwin/stratakit/pull/1743): Changed the default `disableUnderline` prop value of `Input` to `true`.
-- [#1747](https://github.com/iTwin/stratakit/pull/1747): Deprecated `StepIcon`. StrataKit does not support custom icons in `Stepper`.
-- [#1685](https://github.com/iTwin/stratakit/pull/1685): Deprecated `color` prop of `Alert`.
-- [#1728](https://github.com/iTwin/stratakit/pull/1728): Deprecated `action`, `centerRipple`, `disableRipple`, `disableTouchRipple`, `dense`, `focusRipple`, `focusVisibleClassName`, `TouchRippleProps` and `touchRippleRef` props of `MenuItem`.
-- [#1766](https://github.com/iTwin/stratakit/pull/1766): Deprecated `color` prop of `FormLabel`.
-- [#1714](https://github.com/iTwin/stratakit/pull/1714): Deprecated `disablePrefersReduceMotion` prop of `Collapse`, `Fade`, `Grow`, `Slide` and `Zoom`.
 - [#1734](https://github.com/iTwin/stratakit/pull/1734): Changed default value of `useFlexGap` prop of `Stack` to be true.
-- [#1677](https://github.com/iTwin/stratakit/pull/1677): Deprecated `action`, `centerRipple`, `checkedIcon`, `color`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `icon`, `indeterminateIcon`, `LinkComponent`, `size`, `TouchRippleProps`, and `touchRippleRef` props of `Checkbox`.
-- [#1725](https://github.com/iTwin/stratakit/pull/1725): Deprecated `color`, `shape` and `variant` props of `Pagination`
-- [#1727](https://github.com/iTwin/stratakit/pull/1727): Deprecated `color` and `select` props of `TextField`.
-- [#1720](https://github.com/iTwin/stratakit/pull/1720): Deprecated `color` prop of `ButtonGroup` component.
-- [#1745](https://github.com/iTwin/stratakit/pull/1745): Deprecated `elevation`, `raised`, `square` and `variant` props of `Card`.
-- [#1738](https://github.com/iTwin/stratakit/pull/1738): Deprecated `dividers` prop of `DialogContent`.
-- [#1745](https://github.com/iTwin/stratakit/pull/1745): Deprecated `action`, `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `CardActionArea` component.
-- [#1695](https://github.com/iTwin/stratakit/pull/1695): Removed the following values from the `color` prop of `Link`: `"textSecondary"`, `"textTertiary"`, and `"textDisabled"`.
-- [#1612](https://github.com/iTwin/stratakit/pull/1612): Deprecated `action`, `centerRipple`, `checkedIcon`, `color`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `icon`, `LinkComponent`, `TouchRippleProps`, and `touchRippleRef` props of `Switch`.
-- [#1749](https://github.com/iTwin/stratakit/pull/1749): Deprecated `elevation` and `hideBackdrop` props of `SwipeableDrawer` component.
-- [#1747](https://github.com/iTwin/stratakit/pull/1747): Deprecated `icon` prop of `StepLabel`.
 - [#1762](https://github.com/iTwin/stratakit/pull/1762): Updated `Dialog`, `Popover` and `Drawer` to introduce a portal provider. All nested elements will be portaled to the portal container specified by the portal provider.
-- [#1780](https://github.com/iTwin/stratakit/pull/1780): Deprecated `Toolbar` to avoid confusion with `Toolbar` from `@stratakit/structures`. This is replaced by a styled `div` in `AppBar`.
-- [#1745](https://github.com/iTwin/stratakit/pull/1745): Deprecated `disableTypography` prop of `CardHeader`.
-- [#1763](https://github.com/iTwin/stratakit/pull/1763): Deprecated `variant` prop of `FormHelperText`.
-- [#1715](https://github.com/iTwin/stratakit/pull/1715): Deprecated `showLabel` prop of `BottomNavigationAction`.
 - [#1733](https://github.com/iTwin/stratakit/pull/1733): The `showLabels` prop of `BottomNavigation` now defaults to `true`.
+- [#1695](https://github.com/iTwin/stratakit/pull/1695): Removed the following values from the `color` prop of `Link`: `"textSecondary"`, `"textTertiary"`, and `"textDisabled"`.
 - [#1758](https://github.com/iTwin/stratakit/pull/1758): Removed tokens:
 
   - `--stratakit-color-bg-neutral-muted`
@@ -126,25 +144,10 @@
   - `--stratakit-color-border-control-select`
   - `--stratakit-color-border-control-navrail-item`
 
-- [#1779](https://github.com/iTwin/stratakit/pull/1779): Deprecated `InitColorSchemeScript`.
-- [#1764](https://github.com/iTwin/stratakit/pull/1764): Deprecated `variant` prop of `InputAdornment`.
-- [#1699](https://github.com/iTwin/stratakit/pull/1699): Deprecated the `disableGutters` prop of `Accordion` and the `expandIcon` prop of `AccordionSummary`
 - [#1706](https://github.com/iTwin/stratakit/pull/1706): Removed the following values from the `color` prop of `CircularProgress`: `"info"`, and `"inherit"`.
-- [#1748](https://github.com/iTwin/stratakit/pull/1748): Deprecated `connector` prop of `Stepper`.
-- [#1712](https://github.com/iTwin/stratakit/pull/1712): Deprecated `action`, `centerRipple`, `disableElevation`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `Button` component.
+
 - [#1762](https://github.com/iTwin/stratakit/pull/1762): Updated `Modal`, `Popover`, `Popper` and all components that extend them to resolve the portal container from the portal context. This ensures that nested dialogs result in a nested DOM structure.
-- [#1753](https://github.com/iTwin/stratakit/pull/1753): Deprecated `color`, `disableInjectingGlobalStyles`, `disableUnderline`, `IconComponent`, `notched` and `variant` props of `Select`.
-- [#1743](https://github.com/iTwin/stratakit/pull/1743): Deprecated `color`, `disableUnderline` and `disableInjectingGlobalStyles` props of `Input`.
-- [#1757](https://github.com/iTwin/stratakit/pull/1757): Deprecated `color`, `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `shape`, `TouchRippleProps`, `touchRippleRef`, and `variant` props of `PaginationItem`.
-- [#1701](https://github.com/iTwin/stratakit/pull/1701): Deprecated `action`, `centerRipple`, `color`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `fullWidth`, `TouchRippleProps` and `touchRippleRef` props of `ToggleButton` component.
-- [#1722](https://github.com/iTwin/stratakit/pull/1722): Deprecated `arrow`, `disableFocusListener`, `disableHoverListener`, `disableInteractive`, `disableTouchListener`, `enterDelay`, `enterNextDelay`, `enterTouchDelay` and `followCursor` props of `Tooltip`.
-- [#1741](https://github.com/iTwin/stratakit/pull/1741): Deprecated `action`, `centerRipple`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `IconButton`.
 - [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Short term the packages will continue to work with `^18.0.0`, but it is recommended to upgrade to React v19 to ensure future compatibility.
-- [#1743](https://github.com/iTwin/stratakit/pull/1743): Deprecated `color` and `disableInjectingGlobalStyles` props of `InputBase`.
-- [#1753](https://github.com/iTwin/stratakit/pull/1753): Deprecated `color`, `disableInjectingGlobalStyles` and `notched` props of `OutlinedInput`.
-- [#1767](https://github.com/iTwin/stratakit/pull/1767): Deprecated `color`, `shrink`, and `variant` prop of `InputLabel`.
-- [#1776](https://github.com/iTwin/stratakit/pull/1776): Deprecated `margin` prop from `FilledInput`, `FormControl`, `FormHelperText`, `InputBase`, `InputLabel`, `OutlinedInput` and `TextField`. Use CSS grid, CSS flexbox, `Grid` , or `Stack` to handle spacing between form controls.
-- [#1701](https://github.com/iTwin/stratakit/pull/1701): Deprecated `action`, `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props of `ButtonBase` component (applies to `Button` and other MUI components that extend `ButtonBase`).
 - [#1801](https://github.com/iTwin/stratakit/pull/1801): Reworked `font-size` tokens to use semantic naming.
 
   | Old token                  | New token                                                                                                    |
@@ -164,18 +167,10 @@
   | `--stratakit-font-size-48` | `--stratakit-font-size-display-md`                                                                           |
   | `--stratakit-font-size-64` | `--stratakit-font-size-display-lg`                                                                           |
 
-- [#1749](https://github.com/iTwin/stratakit/pull/1749): Deprecated `elevation` and `hideBackdrop` props of `Drawer` component.
-- [#1704](https://github.com/iTwin/stratakit/pull/1704): Deprecated props related to `Table`.
+### Non-breaking changes
 
-  - `hideSortIcon` and `IconComponent` props on `TableSortLabel`.
-  - `size` prop on `TableCell`.
-
-- [#1701](https://github.com/iTwin/stratakit/pull/1701): Deprecated `color` prop of `ToggleButtonGroup` component.
-- [#1650](https://github.com/iTwin/stratakit/pull/1650): The `color` prop of `Badge` no longer supports the `"primary"` value.
-- [#1706](https://github.com/iTwin/stratakit/pull/1706): Deprecated `disableShrink`, `enableTrackSlot` and `thickness` props of `CircularProgress`.
-
-### PNon-breaking changes
-
+- [#1794](https://github.com/iTwin/stratakit/pull/1794): Updated border color for `Badge`.
+- [#1797](https://github.com/iTwin/stratakit/pull/1797): Updated placeholder text styling across various components.
 - [#1803](https://github.com/iTwin/stratakit/pull/1803): Added `line-height` tokens corresponding to each semantic `font-size` token:
 
   - `--stratakit-line-height-display-lg`
@@ -195,7 +190,6 @@
   - `--stratakit-line-height-caption-sm`
   - `--stratakit-line-height-mono-sm`
 
-- [#1797](https://github.com/iTwin/stratakit/pull/1797): Updated placeholder text styling across various components.
 - [#1705](https://github.com/iTwin/stratakit/pull/1705): Removed the following values from the `color` prop of `LinearProgress`: `"info"`, and `"inherit"`.
 - [#1805](https://github.com/iTwin/stratakit/pull/1805): Added `border-radius` tokens:
 
@@ -204,7 +198,6 @@
   - `--stratakit-radius-lg`
   - `--stratakit-radius-round`
 
-- [#1794](https://github.com/iTwin/stratakit/pull/1794): Updated border color for `Badge`.
 - Updated dependencies:
   - @stratakit/foundations@1.0.0-rc.0
   - @stratakit/internal-utils@0.2.0-rc.0

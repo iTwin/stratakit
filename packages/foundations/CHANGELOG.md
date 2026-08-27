@@ -22,7 +22,27 @@
   | `--stratakit-space-x10` | `--stratakit-space-1000`     |
 
 - [#1797](https://github.com/iTwin/stratakit/pull/1797): Renamed `--stratakit-color-text-control-placeholder` to `--stratakit-color-text-neutral-placeholder`.
+- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Short term the packages will continue to work with `^18.0.0`, but it is recommended to upgrade to React v19 to ensure future compatibility.
 - [#1762](https://github.com/iTwin/stratakit/pull/1762): Added `PortalContext` to allow accessing the portal container via the `React.useContext` hook. The API is low level and intended for advanced use cases only.
+- [#1801](https://github.com/iTwin/stratakit/pull/1801): Reworked `font-size` tokens to use semantic naming.
+
+  | Old token                  | New token                                                                                                    |
+  | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
+  | `--stratakit-font-size-8`  | -                                                                                                            |
+  | `--stratakit-font-size-10` | `--stratakit-font-size-caption-sm`                                                                           |
+  | `--stratakit-font-size-11` | `--stratakit-font-size-caption-md`                                                                           |
+  | `--stratakit-font-size-12` | `--stratakit-font-size-body-sm` or `--stratakit-font-size-subtitle-sm` or `--stratakit-font-size-caption-lg` |
+  | `--stratakit-font-size-14` | `--stratakit-font-size-body-md` or `--stratakit-font-size-subtitle-md`                                       |
+  | `--stratakit-font-size-16` | `--stratakit-font-size-body-lg` or `--stratakit-font-size-subtitle-lg`                                       |
+  | `--stratakit-font-size-18` | `--stratakit-font-size-headline-sm`                                                                          |
+  | `--stratakit-font-size-20` | `--stratakit-font-size-headline-md`                                                                          |
+  | `--stratakit-font-size-24` | `--stratakit-font-size-headline-lg`                                                                          |
+  | `--stratakit-font-size-28` | -                                                                                                            |
+  | `--stratakit-font-size-32` | `--stratakit-font-size-display-sm`                                                                           |
+  | `--stratakit-font-size-40` | -                                                                                                            |
+  | `--stratakit-font-size-48` | `--stratakit-font-size-display-md`                                                                           |
+  | `--stratakit-font-size-64` | `--stratakit-font-size-display-lg`                                                                           |
+
 - [#1758](https://github.com/iTwin/stratakit/pull/1758): Removed tokens:
 
   - `--stratakit-color-bg-neutral-muted`
@@ -80,26 +100,6 @@
   - `--stratakit-color-border-control-textbox`
   - `--stratakit-color-border-control-select`
   - `--stratakit-color-border-control-navrail-item`
-
-- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Short term the packages will continue to work with `^18.0.0`, but it is recommended to upgrade to React v19 to ensure future compatibility.
-- [#1801](https://github.com/iTwin/stratakit/pull/1801): Reworked `font-size` tokens to use semantic naming.
-
-  | Old token                  | New token                                                                                                    |
-  | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
-  | `--stratakit-font-size-8`  | -                                                                                                            |
-  | `--stratakit-font-size-10` | `--stratakit-font-size-caption-sm`                                                                           |
-  | `--stratakit-font-size-11` | `--stratakit-font-size-caption-md`                                                                           |
-  | `--stratakit-font-size-12` | `--stratakit-font-size-body-sm` or `--stratakit-font-size-subtitle-sm` or `--stratakit-font-size-caption-lg` |
-  | `--stratakit-font-size-14` | `--stratakit-font-size-body-md` or `--stratakit-font-size-subtitle-md`                                       |
-  | `--stratakit-font-size-16` | `--stratakit-font-size-body-lg` or `--stratakit-font-size-subtitle-lg`                                       |
-  | `--stratakit-font-size-18` | `--stratakit-font-size-headline-sm`                                                                          |
-  | `--stratakit-font-size-20` | `--stratakit-font-size-headline-md`                                                                          |
-  | `--stratakit-font-size-24` | `--stratakit-font-size-headline-lg`                                                                          |
-  | `--stratakit-font-size-28` | -                                                                                                            |
-  | `--stratakit-font-size-32` | `--stratakit-font-size-display-sm`                                                                           |
-  | `--stratakit-font-size-40` | -                                                                                                            |
-  | `--stratakit-font-size-48` | `--stratakit-font-size-display-md`                                                                           |
-  | `--stratakit-font-size-64` | `--stratakit-font-size-display-lg`                                                                           |
 
 ### Non-breaking changes
 

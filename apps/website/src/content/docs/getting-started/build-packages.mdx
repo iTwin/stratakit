@@ -5,22 +5,184 @@ sidebar:
   label: Building packages
 ---
 
-import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
+import { Steps } from "@astrojs/starlight/components";
 
 ## Quick start
 
-This guide is for **package** developers. If you're building a package on top of StrataKit, correctly declare dependencies in your [`package.json`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json).
+This guide is for **package** developers. If you're building an application, see [Developing applications](/getting-started/develop) instead.
 
-Ensure that each of these packages are installed only once in the host application by declaring them as [`peerDependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies):
+Follow the steps listed below to build a package on top of StrataKit.
+
+<Steps>
+
+1. **Install the StrataKit packages**
+
+   Install [shared packages](#shared-packages) as [peer dependencies](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies):
+
+   ```console
+   npm add @stratakit/mui --save-peer
+   ```
+
+   :::note
+   `@mui/material`, `react` and `react-dom` should also be installed as peer dependencies.
+   :::
+
+2. **Set up TypeScript types**
+
+   StrataKit augments some MUI component types. Add `@stratakit/mui/types.d.ts` to the existing [`types`](https://www.typescriptlang.org/tsconfig/#types) field in your **tsconfig** file:
+
+   ```json title="tsconfig.json"
+   {
+   	"compilerOptions": {
+   		"types": ["@stratakit/mui/types.d.ts"]
+   	}
+   }
+   ```
+
+   If your **tsconfig** file does not already have a `types` field, you can alternatively add `@stratakit/mui/types.d.ts` using a [triple-slash directive](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html) in any declaration file.
+
+3. **Use icons** (optional)
+
+   To use StrataKit icons, install the `@stratakit/icons` package:
+
+   ```console
+   npm add @stratakit/icons
+   ```
+
+   :::caution
+   Do not use any icons from `@mui/icons-material` as they are not compatible with StrataKit.
+   :::
+
+   Import the `.svg` files from `@stratakit/icons` and pass them to the `<Icon>` component from `@stratakit/mui`:
+
+   ```tsx
+   import { Icon } from "@stratakit/mui";
+   import svgSettings from "@stratakit/icons/settings.svg";
+
+   <Icon href={svgSettings} />;
+   ```
+
+   :::note
+   This requires the host application to be configured to serve StrataKit icons as external SVG files. See [Bundler configuration](/getting-started/develop/#bundler-configuration).
+   :::
+
+4. **Use foundations** (optional)
+
+   If you are using StrataKit CSS variables or other foundations in your package, install the `@stratakit/foundations` [shared package](#shared-packages) to explicitly control the package version:
+
+   ```console
+   npm add @stratakit/foundations --save-peer
+   ```
+
+5. **Use structures** (optional)
+
+   To use StrataKit structures in your package, install the `@stratakit/structures` package:
+
+   ```console
+   npm add @stratakit/structures
+   ```
+
+</Steps>
+
+## Shared packages
+
+Packages that are expected to be installed at most once in the host application are called **shared packages**. The installed instances of shared packages are used across all other packages in the project.
+
+Shared packages of StrataKit include:
 
 - `@stratakit/mui`
+- `@stratakit/foundations`
+
+Other shared packages include:
+
 - `@mui/material`
 - `react`
 - `react-dom`
-- `@stratakit/foundations` _(optional)_. List only if you are using the StrataKit CSS variables in your code.
 
-If you use any of the following packages, declare them as regular [`dependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#dependencies):
+Packages should install shared packages as [`peerDependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies) and ensure that the implementation supports the specified range.
 
-- `@stratakit/icons`
-- `@stratakit/bricks`
-- `@stratakit/structures`
+Applications should install shared packages as regular [`dependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#dependencies).
+
+:::caution
+Version range of shared packages should be carefully managed to ensure compatibility across all packages in the project.
+:::
+
+## Package versioning
+
+Follow [semantic versioning](https://semver.org/) when releasing new versions of your package.
+
+### Transitive peer dependencies
+
+[Shared packages](#shared-packages) introduce additional challenges when managing dependencies, especially when dealing with transitive peer dependencies. Package developers should consider the full dependency graph.
+
+For example, since `@stratakit/foundations` is a peer dependency of `@stratakit/structures`, a version bump of `@stratakit/structures` can transitively require a newer `@stratakit/foundations` in the host application - even when the change looks internal from your package's perspective.
+
+### Updating peer dependencies
+
+To use a newer feature non-conditionally in your package, you may need to update the version of a peer dependency.
+
+StrataKit packages consider version bumps of peer dependencies as a non-breaking change if the host application can upgrade to a newer version without disruption.
+
+<details>
+<summary>**Non-breaking** changes</summary>
+
+These widen the accepted range or bump the minimum version of a range to a newer minor or patch version:
+
+```diff
+ {
+ 	"peerDependencies": {
+-  		"@stratakit/foundations": "^1.0.0"
++  		"@stratakit/foundations": "^1.0.0 || ^2.0.0"
+	 }
+ }
+```
+
+```diff
+ {
+ 	"peerDependencies": {
+-  		"@stratakit/foundations": "^1.0.0"
++  		"@stratakit/foundations": "^1.1.0"
+	 }
+ }
+```
+
+</details>
+
+<details>
+<summary>**Breaking** changes</summary>
+
+These narrow the accepted range or require a new major version:
+
+```diff
+ {
+ 	"peerDependencies": {
+-  		"@stratakit/foundations": "^1.0.0"
++  		"@stratakit/foundations": "1.1.0"
+	 }
+ }
+```
+
+```diff
+ {
+ 	"peerDependencies": {
+-  		"@stratakit/foundations": "^1.0.0"
++  		"@stratakit/foundations": "^2.0.0"
+	 }
+ }
+```
+
+</details>
+
+## Agent skill
+
+See [Agent skill](/getting-started/develop/#agent-skill).
+
+## Migrating from iTwinUI
+
+Consider releasing a new major version of your package when adding support for StrataKit. Otherwise, you may introduce breaking changes for users who are still using iTwinUI without setting up StrataKit.
+
+See [Migrating from iTwinUI](/getting-started/develop/#migrating-from-itwinui) for more information.
+
+## Migrating from legacy StrataKit
+
+See [Migrating from legacy StrataKit](/getting-started/develop/#migrating-from-legacy-stratakit).

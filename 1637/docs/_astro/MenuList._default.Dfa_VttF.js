@@ -1,1 +1,0 @@
-import{j as e,Z as t}from"./_utils.DFdRPw-D.js";import{M as s}from"./MenuItem.ClPHfaQr.js";const o=()=>e.jsxs(t,{children:[e.jsx(s,{children:"Profile"}),e.jsx(s,{children:"My account"}),e.jsx(s,{children:"Logout"})]});export{o as default};

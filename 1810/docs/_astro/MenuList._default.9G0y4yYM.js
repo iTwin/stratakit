@@ -1,1 +1,0 @@
-import{j as e,Z as t}from"./_utils.kBX_LTue.js";import{M as s}from"./MenuItem.D9ohATdq.js";const o=()=>e.jsxs(t,{children:[e.jsx(s,{children:"Profile"}),e.jsx(s,{children:"My account"}),e.jsx(s,{children:"Logout"})]});export{o as default};

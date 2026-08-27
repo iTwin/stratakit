@@ -1,1 +1,0 @@
-import{_ as e,b as t,v as n}from"./Root.internal.ffWabTlG.js";var r=`div`,i=`a.button.details.dialog.div.form.h1.h2.h3.h4.h5.h6.header.img.input.label.li.nav.ol.p.section.select.span.summary.textarea.ul.svg`.split(`.`);n(function(e){return e});var a=t(function(t){return e(r,t)});Object.assign(a,i.reduce((n,r)=>(n[r]=t(function(t){return e(r,t)}),n),{}));export{a as t};

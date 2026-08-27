@@ -5,7 +5,3 @@
 .shrinkWrap {
 	width: fit-content;
 }
-
-.section + .section {
-	margin-block-start: 8px;
-}

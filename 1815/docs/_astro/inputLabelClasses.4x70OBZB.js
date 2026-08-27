@@ -1,0 +1,1 @@
+import{H as t,G as s}from"./_utils.R2jKuo4R.js";function i(e){return t("MuiInputLabel",e)}const l=s("MuiInputLabel",["root","focused","disabled","error","required","asterisk","formControl","sizeSmall","shrink","animated","standard","filled","outlined"]);export{i as g,l as i};

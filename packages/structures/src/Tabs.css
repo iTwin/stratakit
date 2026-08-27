@@ -61,7 +61,7 @@
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
 	@layer base {
-		font-size: var(--stratakit-font-size-12);
+		font-size: var(--stratakit-font-size-body-sm);
 		color: var(--🥝Tab-color);
 		background-color: var(--🥝Tab-background-color);
 		border: none;

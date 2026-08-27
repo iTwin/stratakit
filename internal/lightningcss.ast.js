@@ -14,6 +14,8 @@
  * Only a visitor that stores a node and re-emits it later makes that round
  * trip.
  *
+ * @see https://github.com/parcel-bundler/lightningcss/issues/1065
+ *
  * @template T
  * @param {T} node
  * @returns {T} the same node, mutated

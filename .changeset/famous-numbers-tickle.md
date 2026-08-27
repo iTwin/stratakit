@@ -4,4 +4,4 @@
 "@stratakit/mui": minor
 ---
 
-Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`.
+Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.

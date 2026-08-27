@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝Kbd {
-	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset;
+	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-neutral-base) inset;
 
 	@layer base {
 		@apply --typography("body-sm");
@@ -13,19 +13,19 @@
 		color: var(--stratakit-color-text-neutral-secondary);
 
 		display: inline-flex;
-		column-gap: var(--stratakit-space-x1);
+		column-gap: var(--stratakit-space-100);
 		align-items: center;
 		justify-content: center;
 		flex-shrink: 0;
-		min-block-size: var(--stratakit-space-x4);
+		min-block-size: var(--stratakit-space-400);
 	}
 
 	@layer modifiers {
 		&:where([data-_sk-variant="solid"], [data-_sk-variant="muted"]) {
-			border-radius: 4px;
+			border-radius: var(--stratakit-radius-sm);
 			background-color: var(--stratakit-color-bg-neutral-base);
-			padding-inline-start: var(--stratakit-space-x1);
-			padding-inline-end: var(--stratakit-space-x1);
+			padding-inline-start: var(--stratakit-space-100);
+			padding-inline-end: var(--stratakit-space-100);
 		}
 
 		&:where([data-_sk-variant="solid"]) {

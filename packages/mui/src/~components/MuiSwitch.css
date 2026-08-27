@@ -6,14 +6,14 @@
 .MuiSwitch-root {
 	--✨size--small: 1.25rem;
 	--✨size--medium: 1.5rem;
-	--✨padding: var(--stratakit-space-x05);
+	--✨padding: var(--stratakit-space-50);
 
 	align-items: center;
 	block-size: auto;
 	inline-size: auto;
 	outline-offset: var(--🥝focus-outline-offset);
 	padding: 0;
-	border-radius: calc(infinity * 1px);
+	border-radius: var(--stratakit-radius-round);
 	--_MuiSwitch-padding: var(--✨padding);
 
 	&:where(.MuiSwitch-sizeSmall) {
@@ -41,14 +41,20 @@
 	--✨bg--disabled: var(--stratakit-color-icon-neutral-disabled);
 	--✨pressed-scaleX: 2;
 	--✨radius: 50%;
+
+	--✨thumb-border-color: light-dark(
+		var(--stratakit-color-border-neutral-base),
+		--primitive("color.white.8")
+	);
 	--✨shadow--default:
 		var(--stratakit-shadow-control-button-base-inset),
-		0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset,
+		0px 0px 0px 1px var(--✨thumb-border-color) inset,
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--checked:
 		var(--stratakit-shadow-control-button-base-inset),
 		var(--stratakit-shadow-control-button-base-drop);
 	--✨shadow--disabled: none;
+
 	--✨translate-distance--full: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);
 	--✨translate-distance--half: calc(var(--✨translate-distance--full) * 0.5);
 

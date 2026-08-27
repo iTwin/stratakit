@@ -12,7 +12,7 @@
 }
 
 .MuiDialog-paper {
-	--✨min-inset: var(--stratakit-space-x4);
+	--✨min-inset: var(--stratakit-space-400);
 
 	min-block-size: min(calc(100% - var(--✨min-inset)), 100px);
 	min-inline-size: min(calc(100% - var(--✨min-inset)), 100%, 296px);
@@ -27,9 +27,9 @@
 	border-end-start-radius: inherit;
 
 	&:where(.MuiDialogActions-spacing) {
-		padding-block-start: var(--stratakit-space-x4);
-		padding-block-end: var(--stratakit-space-x4);
-		padding-inline-start: var(--stratakit-space-x5);
-		padding-inline-end: var(--stratakit-space-x5);
+		padding-block-start: var(--stratakit-space-400);
+		padding-block-end: var(--stratakit-space-400);
+		padding-inline-start: var(--stratakit-space-500);
+		padding-inline-end: var(--stratakit-space-500);
 	}
 }

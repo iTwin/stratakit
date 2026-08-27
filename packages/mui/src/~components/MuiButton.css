@@ -22,22 +22,22 @@
 	&:where(.MuiButton-sizeSmall) {
 		@apply --typography("body-sm");
 		--_MuiButton-height: var(--stratakit-size-control-field-height-small);
-		--_MuiButton-padding-block: var(--stratakit-space-x05);
-		--_MuiButton-padding-inline: var(--stratakit-space-x2);
+		--_MuiButton-padding-block: var(--stratakit-space-50);
+		--_MuiButton-padding-inline: var(--stratakit-space-200);
 	}
 
 	&:where(.MuiButton-sizeMedium) {
 		@apply --typography("body-md");
 		--_MuiButton-height: var(--stratakit-size-control-field-height-medium);
-		--_MuiButton-padding-block: var(--stratakit-space-x1);
-		--_MuiButton-padding-inline: var(--stratakit-space-x3);
+		--_MuiButton-padding-block: var(--stratakit-space-100);
+		--_MuiButton-padding-inline: var(--stratakit-space-300);
 	}
 
 	&:where(.MuiButton-sizeLarge) {
 		@apply --typography("body-lg");
 		--_MuiButton-height: var(--stratakit-size-control-field-height-large);
-		--_MuiButton-padding-block: var(--stratakit-space-x2);
-		--_MuiButton-padding-inline: var(--stratakit-space-x4);
+		--_MuiButton-padding-block: var(--stratakit-space-100);
+		--_MuiButton-padding-inline: var(--stratakit-space-400);
 	}
 
 	&:where(.MuiButton-colorSecondary) {
@@ -45,6 +45,7 @@
 		--variant-containedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-outlinedColor: var(--stratakit-color-text-neutral-primary);
 		--variant-textColor: var(--stratakit-color-text-neutral-primary);
+		--variant-outlinedBorder: var(--stratakit-color-border-neutral-base);
 		--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-base);
 
 		@media (any-hover: hover) {
@@ -60,13 +61,28 @@
 	}
 
 	&:where(.MuiButton-colorPrimary) {
-		--variant-outlinedColor: var(--stratakit-color-text-accent-strong);
 		--variant-textColor: var(--stratakit-color-text-accent-strong);
+		--variant-outlinedColor: var(--stratakit-color-text-accent-strong);
+		--variant-outlinedBorder: var(--stratakit-color-border-accent-base);
+	}
+
+	&:where(.MuiButton-colorError) {
+		--variant-textColor: var(--stratakit-color-text-critical-base);
+		--variant-outlinedColor: var(--stratakit-color-text-critical-base);
+		--variant-outlinedBorder: var(--stratakit-color-border-critical-base);
 	}
 
 	&:where(.MuiButton-contained) {
+		box-shadow: var(--stratakit-shadow-control-button-base-drop);
+
+		&:where(.MuiButton-colorSecondary) {
+			border: 1px solid;
+			border-color: var(--stratakit-color-border-neutral-base);
+		}
+
 		&:where(.Mui-disabled) {
 			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+			border-color: transparent;
 		}
 
 		&:where(.MuiButton-colorPrimary, .MuiButton-colorError) {
@@ -77,14 +93,10 @@
 	&:where(.MuiButton-outlined, .MuiButton-text) {
 		&:where(.MuiButton-colorPrimary) {
 			--_MuiButton-icon-color: var(--stratakit-color-icon-accent-strong);
-			--variant-outlinedBorder: var(--stratakit-color-border-accent-base);
 		}
 
 		&:where(.MuiButton-colorError) {
 			--_MuiButton-icon-color: var(--stratakit-color-icon-critical-base);
-			--variant-textColor: var(--stratakit-color-text-critical-base);
-			--variant-outlinedColor: var(--stratakit-color-text-critical-base);
-			--variant-outlinedBorder: var(--stratakit-color-border-critical-base);
 		}
 	}
 

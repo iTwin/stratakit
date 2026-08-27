@@ -11,14 +11,14 @@
 		justify-content: center;
 		flex-shrink: 0;
 		white-space: nowrap;
-		border-radius: 9999px;
+		border-radius: var(--stratakit-radius-round);
 		box-shadow: 0px 0px 0px 1px var(--🥝Badge-border-color) inset;
 		background-color: var(--🥝Badge-background-color);
 		color: var(--🥝Badge-text-color);
 		font-weight: 500;
 		block-size: 1.25rem;
-		padding-inline-start: var(--stratakit-space-x1);
-		padding-inline-end: var(--stratakit-space-x1);
+		padding-inline-start: var(--stratakit-space-100);
+		padding-inline-end: var(--stratakit-space-100);
 	}
 
 	@layer modifiers {
@@ -130,8 +130,8 @@
 
 .🥝BadgeLabel {
 	@layer base {
-		margin-inline-start: var(--stratakit-space-x1);
-		margin-inline-end: var(--stratakit-space-x1);
+		margin-inline-start: var(--stratakit-space-100);
+		margin-inline-end: var(--stratakit-space-100);
 	}
 }
 

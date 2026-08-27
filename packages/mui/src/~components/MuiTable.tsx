@@ -70,13 +70,13 @@ DEV: MuiTableCell.displayName = "MuiTableCell";
 
 // ----------------------------------------------------------------------------
 
-interface MuiTableSortLcableIconSlotProps extends BaseProps<"svg"> {
+interface MuiTableSortLabelIconSlotProps extends BaseProps<"svg"> {
 	ownerState?: TableSortLabelOwnerState;
 	as?: React.ElementType;
 }
 const MuiTableSortLabelIconSlot = forwardRef<
 	"svg",
-	MuiTableSortLcableIconSlotProps
+	MuiTableSortLabelIconSlotProps
 >((props, forwardRef) => {
 	const { ownerState, as: _, ...rest } = props;
 	switch (ownerState?.direction) {

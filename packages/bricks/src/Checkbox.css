@@ -21,7 +21,7 @@
 	--✨bg--invalid-hover: color-mix(in oklch, var(--✨bg--invalid) 100%, var(--✨glow--bg-hover));
 	--✨bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨border--default: var(--stratakit-color-border-shadow-base);
+	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--hover: color-mix(
 		in oklch,
 		var(--✨border--default) 100%,
@@ -38,7 +38,7 @@
 
 	@layer base {
 		--🥝Checkbox-color-svg: var(--stratakit-color-icon-neutral-emphasis);
-		--🥝Checkbox-border-radius: 4px;
+		--🥝Checkbox-border-radius: var(--stratakit-radius-sm);
 
 		--🥝Checkbox-unchecked-svg: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
 		--🥝Checkbox-checkmark-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.73 5.47a.75.75 0 0 1 0 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34l3.87-3.87a.75.75 0 0 1 1.06 0Z"/></svg>');
@@ -91,7 +91,7 @@
 
 		/* This pseudo-element increases tap target size to 24x24 */
 		&::before {
-			inset: calc((var(--✨size) - var(--stratakit-space-x6)) / 2);
+			inset: calc((var(--✨size) - var(--stratakit-space-600)) / 2);
 		}
 
 		/* This pseudo-element adds the actual checkmark SVG via --🥝Checkbox-mask-image */

@@ -5,7 +5,7 @@
 .MuiRating-root {
 	--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-base);
 	inline-size: fit-content;
-	border-radius: var(--stratakit-mui-shape-borderRadius);
+	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiRating-icon-color);
 
 	&:where(:has(.MuiRating-icon.MuiRating-iconHover)) {
@@ -44,7 +44,7 @@
 
 .MuiRating-label {
 	&:where(.MuiRating-labelEmptyValueActive) {
-		border-radius: var(--stratakit-mui-shape-borderRadius);
+		border-radius: var(--stratakit-radius-sm);
 		outline: var(--🥝focus-outline);
 		outline-offset: var(--🥝focus-outline-offset);
 	}

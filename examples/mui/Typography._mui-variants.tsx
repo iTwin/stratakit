@@ -8,7 +8,7 @@ import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
-		<Stack spacing={1}>
+		<Stack spacing={2}>
 			<Typography variant="body1">Body1</Typography>
 			<Typography variant="body2">Body2</Typography>
 			<Typography variant="button">Button</Typography>

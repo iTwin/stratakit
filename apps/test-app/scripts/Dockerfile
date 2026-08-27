@@ -22,7 +22,6 @@ COPY --chown=ubuntu:ubuntu --parents \
     examples/package.json \
     pnpm-workspace.yaml pnpm-lock.yaml package.json \
     ./
-COPY --chown=ubuntu:ubuntu patches/ patches/
 RUN --mount=type=cache,uid=${UID},gid=${GID},target=/home/ubuntu/.local/share/pnpm/store \
     pnpm install --frozen-lockfile
 

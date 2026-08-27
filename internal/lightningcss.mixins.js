@@ -3,6 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { dropNullValues } from "./lightningcss.ast.js";
+
 /** @import * as lightningcss from "lightningcss" */
 
 /** Enables parsing for `@mixin` and `@result` rules. */
@@ -148,7 +150,7 @@ function processApplyInvocation(
 	const parameterNames = new Set(mixin.parameterNames);
 
 	return mixin.rules
-		.map((childRule) => resolveRule(structuredClone(childRule)))
+		.map((childRule) => resolveRule(dropNullValues(structuredClone(childRule))))
 		.filter(Boolean);
 
 	/** Resolves one cloned rule for this `@apply` call, including any nested rules. */

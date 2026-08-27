@@ -1,5 +1,157 @@
 # Changelog
 
+## 1.0.0-rc.0
+
+### Breaking changes
+
+- [#1798](https://github.com/iTwin/stratakit/pull/1798): Renamed all space tokens.
+
+  | Old name                | New name                     |
+  | ----------------------- | ---------------------------- |
+  | `--stratakit-space-x05` | `--stratakit-space-50`       |
+  | `--stratakit-space-x1`  | `--stratakit-space-100`      |
+  | -                       | `--stratakit-space-150` (🆕) |
+  | `--stratakit-space-x2`  | `--stratakit-space-200`      |
+  | `--stratakit-space-x3`  | `--stratakit-space-300`      |
+  | `--stratakit-space-x4`  | `--stratakit-space-400`      |
+  | `--stratakit-space-x5`  | `--stratakit-space-500`      |
+  | `--stratakit-space-x6`  | `--stratakit-space-600`      |
+  | `--stratakit-space-x7`  | `--stratakit-space-700`      |
+  | `--stratakit-space-x8`  | `--stratakit-space-800`      |
+  | `--stratakit-space-x9`  | `--stratakit-space-900`      |
+  | `--stratakit-space-x10` | `--stratakit-space-1000`     |
+
+- [#1797](https://github.com/iTwin/stratakit/pull/1797): Renamed `--stratakit-color-text-control-placeholder` to `--stratakit-color-text-neutral-placeholder`.
+- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Short term the packages will continue to work with `^18.0.0`, but it is recommended to upgrade to React v19 to ensure future compatibility.
+- [#1762](https://github.com/iTwin/stratakit/pull/1762): Added `PortalContext` to allow accessing the portal container via the `React.useContext` hook. The API is low level and intended for advanced use cases only.
+- [#1801](https://github.com/iTwin/stratakit/pull/1801): Reworked `font-size` tokens to use semantic naming.
+
+  | Old token                  | New token                                                                                                    |
+  | -------------------------- | ------------------------------------------------------------------------------------------------------------ |
+  | `--stratakit-font-size-8`  | -                                                                                                            |
+  | `--stratakit-font-size-10` | `--stratakit-font-size-caption-sm`                                                                           |
+  | `--stratakit-font-size-11` | `--stratakit-font-size-caption-md`                                                                           |
+  | `--stratakit-font-size-12` | `--stratakit-font-size-body-sm` or `--stratakit-font-size-subtitle-sm` or `--stratakit-font-size-caption-lg` |
+  | `--stratakit-font-size-14` | `--stratakit-font-size-body-md` or `--stratakit-font-size-subtitle-md`                                       |
+  | `--stratakit-font-size-16` | `--stratakit-font-size-body-lg` or `--stratakit-font-size-subtitle-lg`                                       |
+  | `--stratakit-font-size-18` | `--stratakit-font-size-headline-sm`                                                                          |
+  | `--stratakit-font-size-20` | `--stratakit-font-size-headline-md`                                                                          |
+  | `--stratakit-font-size-24` | `--stratakit-font-size-headline-lg`                                                                          |
+  | `--stratakit-font-size-28` | -                                                                                                            |
+  | `--stratakit-font-size-32` | `--stratakit-font-size-display-sm`                                                                           |
+  | `--stratakit-font-size-40` | -                                                                                                            |
+  | `--stratakit-font-size-48` | `--stratakit-font-size-display-md`                                                                           |
+  | `--stratakit-font-size-64` | `--stratakit-font-size-display-lg`                                                                           |
+
+- [#1758](https://github.com/iTwin/stratakit/pull/1758): Removed tokens:
+
+  - `--stratakit-color-bg-neutral-muted`
+  - `--stratakit-color-bg-neutral-faded`
+
+  - `--stratakit-color-bg-accent-faded`
+  - `--stratakit-color-bg-accent-transparent`
+  - `--stratakit-color-bg-positive-faded`
+  - `--stratakit-color-bg-info-faded`
+  - `--stratakit-color-bg-attention-faded`
+  - `--stratakit-color-bg-critical-faded`
+
+  - `--stratakit-color-bg-control-slider-track`
+  - `--stratakit-color-bg-control-select`
+  - `--stratakit-color-bg-control-scrollbar-canvas`
+
+  - `--stratakit-color-text-neutral-faded`
+  - `--stratakit-color-text-accent-faded`
+  - `--stratakit-color-text-positive-faded`
+  - `--stratakit-color-text-info-faded`
+  - `--stratakit-color-text-attention-faded`
+  - `--stratakit-color-text-critical-faded`
+
+  - `--stratakit-color-text-glow-base-hover-%`
+  - `--stratakit-color-text-glow-base-pressed-%`
+  - `--stratakit-color-text-glow-strong-hover-%`
+  - `--stratakit-color-text-glow-strong-pressed-%`
+
+  - `--stratakit-color-icon-neutral-tertiary`
+  - `--stratakit-color-icon-neutral-muted`
+  - `--stratakit-color-icon-neutral-faded`
+  - `--stratakit-color-icon-accent-faded`
+  - `--stratakit-color-icon-positive-faded`
+  - `--stratakit-color-icon-info-faded`
+  - `--stratakit-color-icon-attention-faded`
+  - `--stratakit-color-icon-critical-faded`
+
+  - `--stratakit-color-icon-glow-base-hover-%`
+  - `--stratakit-color-icon-glow-base-pressed-%`
+  - `--stratakit-color-icon-glow-strong-hover-%`
+  - `--stratakit-color-icon-glow-strong-pressed-%`
+
+  - `--stratakit-color-border-page-depth`
+  - `--stratakit-color-border-neutral-faded`
+  - `--stratakit-color-border-accent-faded`
+  - `--stratakit-color-border-positive-faded`
+  - `--stratakit-color-border-info-faded`
+  - `--stratakit-color-border-attention-faded`
+  - `--stratakit-color-border-critical-faded`
+
+  - `--stratakit-color-border-control-scrollbar-canvas`
+  - `--stratakit-color-border-control-switch`
+  - `--stratakit-color-border-control-checkbox`
+  - `--stratakit-color-border-control-radio`
+  - `--stratakit-color-border-control-textbox`
+  - `--stratakit-color-border-control-select`
+  - `--stratakit-color-border-control-navrail-item`
+
+### Non-breaking changes
+
+- [#1803](https://github.com/iTwin/stratakit/pull/1803): Added `line-height` tokens corresponding to each semantic `font-size` token:
+
+  - `--stratakit-line-height-display-lg`
+  - `--stratakit-line-height-display-md`
+  - `--stratakit-line-height-display-sm`
+  - `--stratakit-line-height-headline-lg`
+  - `--stratakit-line-height-headline-md`
+  - `--stratakit-line-height-headline-sm`
+  - `--stratakit-line-height-body-lg`
+  - `--stratakit-line-height-body-md`
+  - `--stratakit-line-height-body-sm`
+  - `--stratakit-line-height-subtitle-lg`
+  - `--stratakit-line-height-subtitle-md`
+  - `--stratakit-line-height-subtitle-sm`
+  - `--stratakit-line-height-caption-lg`
+  - `--stratakit-line-height-caption-md`
+  - `--stratakit-line-height-caption-sm`
+  - `--stratakit-line-height-mono-sm`
+
+- [#1805](https://github.com/iTwin/stratakit/pull/1805): Added `border-radius` tokens:
+
+  - `--stratakit-radius-sm`
+  - `--stratakit-radius-md`
+  - `--stratakit-radius-lg`
+  - `--stratakit-radius-round`
+
+- Updated dependencies:
+  - @stratakit/internal-utils@0.2.0-rc.0
+
+## 0.5.0
+
+### Breaking changes
+
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Removed internal APIs from `@stratakit/foundations/secret-internals`, moving them into the `@stratakit/internal-utils` package.
+
+### Non-breaking changes
+
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Updated values for the following tokens:
+
+  - `--stratakit-color-border-neutral-base`
+  - `--stratakit-color-border-neutral-muted`
+  - `--stratakit-color-border-neutral-faded`
+  - `--stratakit-color-border-neutral-disabled`
+  - `--stratakit-color-border-page-base`
+  - `--stratakit-color-border-page-depth`
+  - `--stratakit-color-bg-elevation-level-1`
+  - `--stratakit-color-bg-elevation-level-2`
+
 ## 0.4.10
 
 - [#1658](https://github.com/iTwin/stratakit/pull/1658): Updated the `Root` component to render the portal container before `children`.

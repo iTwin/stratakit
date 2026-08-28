@@ -19,7 +19,7 @@ body:
   - type: textarea
     attributes:
       label: Steps to reproduce
-      description: Detailed steps to reproduce the behavior
+      description: Detailed steps to reproduce the behavior.
       placeholder: |
         1. …
         2. …
@@ -29,7 +29,7 @@ body:
   - type: textarea
     attributes:
       label: Expected behavior
-      description: A clear description of what you expected to happen
+      description: A clear description of what you expected to happen.
     validations:
       required: true
   - type: input
@@ -47,10 +47,10 @@ body:
         Please provide version information and environment details.
         This helps us reproduce the issue.
       placeholder: |
-        - @stratakit/mui 0.2.1
+        - @stratakit/mui 1.0.0
         - @mui/material 9.0.0
-        - react 19.2.0
-        - Browsers: Chrome 147, Safari 26.2
+        - react 18.0.0
+        - Browsers: Chrome 154, Safari 27
     validations:
       required: false
   - type: textarea

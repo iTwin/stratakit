@@ -67,14 +67,12 @@ void (async () => {
 		"run",
 		"--init", // Use init process to handle zombie processes
 		"--rm", // Remove the container after run
-		"-v",
+		"-v", // Mount the .spec files
 		`${appDir}/app:${containerAppDir}/app`,
-		"-v", // Mount build directory from host to container
+		"-v", // Mount build directory with website code
 		`${appDir}/build:${containerAppDir}/build`,
-		"-v", // Mount results directory from host to container
+		"-v", // Mount results directory
 		`${appDir}/test-results:${containerAppDir}/test-results`,
-		"-v", // Mount build directory from host to container
-		`${appDir}/build:${containerAppDir}/build`,
 		"-w", // Set working directory
 		containerAppDir,
 		imageName,

@@ -1,0 +1,1 @@
+import{j as e}from"./_utils.CXlgCbcg.js";import{B as s}from"./Banner.BREjTEQ2.js";const r=()=>e.jsx(s,{label:"Update complete",message:"Your settings have been saved successfully."});export{r as default};

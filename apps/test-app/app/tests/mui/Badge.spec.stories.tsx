@@ -71,7 +71,7 @@ export function Visual() {
 				<ExampleColors />
 				<ExampleTypes />
 				<VaryPropsStack
-					spacing={2}
+					spacing={4}
 					component={IconButtonWithBadge}
 					variations={varyProp({
 						prop: "size",
@@ -81,7 +81,7 @@ export function Visual() {
 					})}
 				/>
 				<VaryPropsStack
-					spacing={2}
+					spacing={4}
 					component={ButtonWithBadge}
 					variations={propVariants}
 				/>

@@ -12,7 +12,7 @@ export function Visual() {
 		"An organization administrator must connect a billing account if you want to continue using this feature.";
 	return (
 		<ScreenShotWrapper>
-			<Alert onClose={() => {}} sx={{ mb: 1 }}>
+			<Alert onClose={() => {}} sx={{ mb: 2 }}>
 				<AlertTitle>Default Alert with Title</AlertTitle>
 				{content}
 			</Alert>

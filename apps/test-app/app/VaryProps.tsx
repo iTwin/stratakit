@@ -86,6 +86,7 @@ export function VaryProps<P extends object>({
 		? variations
 		: propCombinations(variations as CombinationInput);
 	const children = combinations.map((propValues, index) => (
+		// biome-ignore lint/suspicious/noArrayIndexKey: This is a generic with no good way to generate a unique key.  Also used only for testing where we don't expect the array to change
 		<Component key={index} {...staticProps} {...propValues} />
 	));
 
@@ -97,7 +98,7 @@ export function VaryProps<P extends object>({
  */
 export function VaryPropsStack<P extends object>({
 	direction = "row",
-	spacing = 1,
+	spacing = 2,
 	...rest
 }: VaryPropsProps<P> & Pick<StackProps, "spacing" | "direction">) {
 	return (

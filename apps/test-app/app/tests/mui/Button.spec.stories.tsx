@@ -12,7 +12,7 @@ import { ScreenShotWrapper } from "~/ScreenShotWrapper.tsx";
 export function Visual() {
 	return (
 		<ScreenShotWrapper>
-			<Stack spacing={2}>
+			<Stack spacing={4}>
 				<ExampleIcons />
 				<ExamplePermutations />
 				<ExampleSizes />

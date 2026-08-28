@@ -6,7 +6,8 @@
 import { test } from "#playwright";
 import { generateVisualTests } from "~/generateVisualTests.ts";
 
-test.describe
-	.only("@visual", () => {
-		generateVisualTests("/tests/mui/Badge/Visual");
-	});
+test.describe("@visual", () => {
+	for (const args of generateVisualTests("/tests/mui/Badge/Visual")) {
+		test(...args);
+	}
+});

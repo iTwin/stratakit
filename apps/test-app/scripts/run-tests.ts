@@ -36,6 +36,10 @@ void (async () => {
 	// Create the test output folder mount point in case it does not exist
 	await mkdir(`${appDir}/test-results`, { recursive: true });
 
+	// Patches folder may not exist currently but want to keep working and
+	// applying those patches if it ever is needed.
+	await mkdir(`${repoDir}/patches`, { recursive: true });
+
 	// On Linux, pass the host UID/GID as build args so the image's ubuntu user
 	// is remapped to match — files written to bind-mounted directories are then
 	// owned by the correct host user. On macOS, Docker Desktop handles ownership

@@ -20,6 +20,7 @@ COPY --chown=ubuntu:ubuntu --parents \
     apps/*/package.json \
     internal/package.json \
     examples/package.json \
+    patches \
     pnpm-workspace.yaml pnpm-lock.yaml package.json \
     ./
 RUN --mount=type=cache,uid=${UID},gid=${GID},target=/home/ubuntu/.local/share/pnpm/store \

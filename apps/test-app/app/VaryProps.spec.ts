@@ -15,7 +15,7 @@ test.only("propCombinations varies later props  while keeping the earlier consta
 		{ a: true, b: 1, c: "primary" },
 		{ a: true, b: 1, c: "secondary" },
 		{ a: true, b: 2, c: "primary" },
-		{ a: true, b: 2, caches: "secondary" },
+		{ a: true, b: 2, c: "secondary" },
 		{ a: false, b: 1, c: "primary" },
 		{ a: false, b: 1, c: "secondary" },
 		{ a: false, b: 2, c: "primary" },

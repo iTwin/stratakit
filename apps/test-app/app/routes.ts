@@ -8,6 +8,15 @@ import { components } from "./~meta.ts";
 
 import type { RouteConfig } from "@react-router/dev/routes";
 
+function routesForPackage(folder: string, components: string[]) {
+	return components.map((component) =>
+		route(
+			`/tests/${toKebabCase(component)}`,
+			`./tests/${folder}/${toKebabCase(component)}/index.tsx`,
+		),
+	);
+}
+
 export default [
 	index("./index.tsx"),
 	route("sandbox", "./sandbox/index.tsx"),
@@ -17,16 +26,8 @@ export default [
 
 	layout(
 		"./tests/tests.tsx",
-		[
-			...components.foundations,
-			...components.bricks,
-			...components.structures,
-			...components.private,
-		].map((component) =>
-			route(
-				`/tests/${toKebabCase(component)}`,
-				`./tests/${toKebabCase(component)}/index.tsx`,
-			),
+		Object.entries(components).flatMap(([folder, components]) =>
+			routesForPackage(folder, components),
 		),
 	),
 ] satisfies RouteConfig;

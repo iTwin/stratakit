@@ -49,7 +49,7 @@
 	);
 	--✨border--solid-neutral-disabled: transparent;
 
-	--✨border--solid-accent-default: var(--stratakit-color-border-shadow-strong);
+	--✨border--solid-accent-default: var(--stratakit-color-border-glow-strong-default);
 	--✨border--solid-accent-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-accent-default) 100%,

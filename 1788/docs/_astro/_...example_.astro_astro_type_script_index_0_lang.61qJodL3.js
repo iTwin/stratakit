@@ -1,0 +1,1 @@
+import{a}from"./ExamplePreview.D6W8SR05.js";import{c as r,r as m}from"./_utils.5z7VlPo4.js";customElements.define("example-preview",class extends HTMLElement{connectedCallback(){const e=this.getAttribute("example-name"),t=this.getAttribute("package-name");!e||!t||r.createRoot(this).render(m.createElement(a,{exampleName:e,packageName:t,withRoot:!0}))}});

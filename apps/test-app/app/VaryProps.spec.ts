@@ -5,7 +5,7 @@
 import { expect, test } from "#playwright";
 import { propCombinations } from "./VaryProps.tsx";
 
-test.only("propCombinations varies later props  while keeping the earlier constant", () => {
+test("propCombinations varies later props  while keeping the earlier constant", () => {
 	const combinations = propCombinations({
 		a: [true, false],
 		b: [1, 2],

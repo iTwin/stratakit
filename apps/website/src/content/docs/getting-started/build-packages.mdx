@@ -9,15 +9,15 @@ import { Steps } from "@astrojs/starlight/components";
 
 ## Quick start
 
-This guide is for **package** developers. If you're building an application, see [Developing applications](/getting-started/develop) instead.
+This guide is for **package** developers. It supplements the general [Development guide](/getting-started/develop) with package-specific instructions.
 
 Follow the steps listed below to build a package on top of StrataKit.
 
 <Steps>
 
-1. **Install the StrataKit packages**
+1. **Install shared packages**
 
-   Install [shared packages](#shared-packages) as [peer dependencies](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies):
+   Install [shared packages](#shared-packages) as [peer dependencies](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies) instead of regular dependencies:
 
    ```console
    npm add @stratakit/mui --save-peer
@@ -29,17 +29,7 @@ Follow the steps listed below to build a package on top of StrataKit.
 
 2. **Set up TypeScript types**
 
-   StrataKit augments some MUI component types. Add `@stratakit/mui/types.d.ts` to the existing [`types`](https://www.typescriptlang.org/tsconfig/#types) field in your **tsconfig** file:
-
-   ```json title="tsconfig.json"
-   {
-   	"compilerOptions": {
-   		"types": ["@stratakit/mui/types.d.ts"]
-   	}
-   }
-   ```
-
-   If your **tsconfig** file does not already have a `types` field, you can alternatively add `@stratakit/mui/types.d.ts` using a [triple-slash directive](https://www.typescriptlang.org/docs/handbook/triple-slash-directives.html) in any declaration file.
+   Add `@stratakit/mui/types.d.ts` to your **tsconfig** file as described in the [development guide](/getting-started/develop/#quick-start).
 
 3. **Use icons** (optional)
 
@@ -49,21 +39,10 @@ Follow the steps listed below to build a package on top of StrataKit.
    npm add @stratakit/icons
    ```
 
-   :::caution
-   Do not use any icons from `@mui/icons-material` as they are not compatible with StrataKit.
-   :::
-
-   Import the `.svg` files from `@stratakit/icons` and pass them to the `<Icon>` component from `@stratakit/mui`:
-
-   ```tsx
-   import { Icon } from "@stratakit/mui";
-   import svgSettings from "@stratakit/icons/settings.svg";
-
-   <Icon href={svgSettings} />;
-   ```
+   Use StrataKit icons as described in the [development guide](/getting-started/develop/#quick-start).
 
    :::note
-   This requires the host application to be configured to serve StrataKit icons as external SVG files. See [Bundler configuration](/getting-started/develop/#bundler-configuration).
+   Packages don't configure the bundler themselves - the host application is responsible for [serving StrataKit icons as external SVG files](/getting-started/develop/#bundler-configuration).
    :::
 
 4. **Use foundations** (optional)
@@ -173,16 +152,8 @@ These narrow the accepted range or require a new major version:
 
 </details>
 
-## Agent skill
-
-See [Agent skill](/getting-started/develop/#agent-skill).
-
 ## Migrating from iTwinUI
 
 Consider releasing a new major version of your package when adding support for StrataKit. Otherwise, you may introduce breaking changes for users who are still using iTwinUI without setting up StrataKit.
 
 See [Migrating from iTwinUI](/getting-started/develop/#migrating-from-itwinui) for more information.
-
-## Migrating from legacy StrataKit
-
-See [Migrating from legacy StrataKit](/getting-started/develop/#migrating-from-legacy-stratakit).

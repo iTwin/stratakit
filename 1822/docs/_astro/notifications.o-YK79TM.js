@@ -1,0 +1,1 @@
+var e=`/1822/docs/_astro/notifications.DrPjL4ho.svg`;export{e as t};

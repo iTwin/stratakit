@@ -1,0 +1,1 @@
+import{A as P,D as i,k as m}from"./Backdrop-CIhleWlv.js";import{t as S}from"./useForkRef-D2MFJYL5.js";function u(o){const{elementType:t,externalSlotProps:s,ownerState:e,skipResolvingSlotProps:n=!1,...p}=o,r=n?{}:m(s,e),{props:l,internalRef:a}=i({...p,externalSlotProps:r}),f=S(a,r?.ref,o.additionalProps?.ref);return P(t,{...l,ref:f},e)}export{u as t};

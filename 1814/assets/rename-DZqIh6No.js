@@ -1,0 +1,1 @@
+import{$ as a}from"./jsx-runtime-CvPTumEY.js";var t=a({default:()=>e}),e="/1814/assets/folder-CfHLzW9y.svg",l=a({default:()=>s}),s="/1814/assets/inbox-BooYiirn.svg",f=a({default:()=>r}),r="/1814/assets/rename-BvvUZl9x.svg";export{e as a,l as i,f as n,t as o,s as r,r as t};

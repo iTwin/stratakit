@@ -1,0 +1,1 @@
+import{g as r}from"./DefaultPropsProvider-DZ2m2oiU.js";function p(n){const{theme:o,name:e,props:t}=n;return!o||!o.components||!o.components[e]||!o.components[e].defaultProps?t:r(o.components[e].defaultProps,t)}export{p as t};

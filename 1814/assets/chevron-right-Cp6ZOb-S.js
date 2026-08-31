@@ -1,0 +1,1 @@
+import{$ as r}from"./jsx-runtime-CvPTumEY.js";var s=r({default:()=>e}),e="/1814/assets/chevron-left-BbSGwDxv.svg",v=r({default:()=>t}),t="/1814/assets/chevron-right-ia40WXiF.svg";export{s as i,v as n,e as r,t};

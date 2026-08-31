@@ -1,1 +1,0 @@
-import{b as e,y as t}from"./DefaultPropsProvider-Xm3r8pJu.js";function n(t){return e(`MuiDivider`,t)}var r=t(`MuiDivider`,[`root`,`absolute`,`fullWidth`,`inset`,`middle`,`flexItem`,`vertical`,`withChildren`,`textAlignRight`,`textAlignLeft`,`wrapper`,`wrapperVertical`]);export{n,r as t};

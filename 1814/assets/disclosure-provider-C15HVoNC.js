@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-BkI_Ul-C.js";import{at as t,ut as n}from"./~utils-Dkz4vtGO.js";var r=e();function i(e={}){return(0,r.jsx)(n,{value:t(e),children:e.children})}export{i as t};

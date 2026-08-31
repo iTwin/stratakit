@@ -1,0 +1,1 @@
+import{b as i,y as t}from"./DefaultPropsProvider-DZ2m2oiU.js";function l(e){return i("MuiDivider",e)}var a=t("MuiDivider",["root","absolute","fullWidth","inset","middle","flexItem","vertical","withChildren","textAlignRight","textAlignLeft","wrapper","wrapperVertical"]);export{l as n,a as t};

@@ -1,1 +1,0 @@
-import{L as e}from"./jsx-runtime-BkI_Ul-C.js";var t=e({default:()=>n}),n=`/1814/assets/chat-VL0rLimQ.svg`;export{t as n,n as t};

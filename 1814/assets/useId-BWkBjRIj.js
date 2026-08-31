@@ -1,0 +1,1 @@
+import{Z as n,et as c}from"./jsx-runtime-CvPTumEY.js";var a=c(n(),1),u=0;function f(t){const[e,s]=a.useState(t),o=t||e;return a.useEffect(()=>{e==null&&(u+=1,s(`mui-${u}`))},[e]),o}var r={...a}.useId;function d(t){if(r!==void 0){const e=r();return t??e}return f(t)}var I=d;export{d as n,I as t};

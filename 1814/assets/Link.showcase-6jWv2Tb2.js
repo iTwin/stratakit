@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-BkI_Ul-C.js";import"./Stack-CQr7oTIi.js";import{t}from"./Link-BKdhdpI5.js";var n=e(),r=()=>(0,n.jsx)(t,{href:`/`,children:`Home`});function i(){return(0,n.jsxs)(n.Fragment,{children:[(0,n.jsx)(r,{}),!1]})}export{i as default};

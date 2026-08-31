@@ -1,0 +1,1 @@
+import{Z as r,et as n}from"./jsx-runtime-CvPTumEY.js";import{C as o,L as s}from"./DefaultPropsProvider-DZ2m2oiU.js";var m=n(r(),1);function a(e){return Object.keys(e).length===0}function u(e=null){const t=m.useContext(s);return!t||a(t)?e:t}var c=o();function f(e=c){return u(e)}export{u as n,f as t};

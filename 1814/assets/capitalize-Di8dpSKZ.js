@@ -1,1 +1,0 @@
-import{O as e}from"./DefaultPropsProvider-Xm3r8pJu.js";var t=e;export{t};

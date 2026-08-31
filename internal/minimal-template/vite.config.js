@@ -9,6 +9,7 @@ export default defineConfig({
 	plugins: [
 		react({
 			babel: {
+				include: /\.[jt]sx?$/,
 				plugins: [["babel-plugin-react-compiler"]],
 			},
 		}),

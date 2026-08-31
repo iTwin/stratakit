@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{P as t}from"./_utils.D3oDBYJD.js";var n=`/1823/docs/_astro/layers.C_Rs9pWi.svg`,r=e(),i=()=>(0,r.jsx)(t,{href:n,alt:`Layers`});export{i as default};

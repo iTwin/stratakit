@@ -1,0 +1,1 @@
+import{b as e,y as t}from"./DefaultPropsProvider.BFMl2K7d.js";function n(t){return e(`MuiInputLabel`,t)}var r=t(`MuiInputLabel`,[`root`,`focused`,`disabled`,`error`,`required`,`asterisk`,`formControl`,`sizeSmall`,`shrink`,`animated`,`standard`,`filled`,`outlined`]);export{r as n,n as t};

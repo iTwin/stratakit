@@ -40,7 +40,7 @@
 			color: var(--stratakit-color-text-neutral-primary);
 			border-radius: var(--stratakit-radius-md);
 			border-width: 0;
-			box-shadow: var(--stratakit-shadow-control-dropdown-base);
+			box-shadow: var(--stratakit-shadow-surface-lg);
 			/* 
 		MUI's `OutlinedInput` wraps the select with another element and the select
 		ends up being 1px smaller that the visual area. The picker uses the select

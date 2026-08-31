@@ -4,6 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 .popover {
-	padding: var(--stratakit-space-x4);
+	padding: var(--stratakit-space-400);
 	max-inline-size: 20rem;
 }

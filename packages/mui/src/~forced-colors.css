@@ -364,7 +364,7 @@
 
 	.MuiNativeSelect-select option {
 		border-color: Canvas;
-		--_checkmark-color: currentColor;
+		--_NativeSelect-checkmark-color: currentColor;
 
 		&:where(:checked:not(:disabled)) {
 			forced-color-adjust: none; /* removing the backplate */

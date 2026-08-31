@@ -7,10 +7,6 @@ html:where([data-color-scheme="light"]),
 .🥝Root:where([data-_sk-color-scheme="light"]) {
 	@apply --theme("light");
 	color-scheme: light;
-
-	/* TODO: Replace with tokens from Figma when available */
-	--stratakit-color-border-shadow-base: var(--stratakit-color-border-neutral-base);
-	--stratakit-color-border-shadow-strong: --primitive("color.black.12");
 }
 
 html:where([data-color-scheme="dark"]),
@@ -18,10 +14,6 @@ html:where([data-color-scheme="dark"]),
 .🥝Root:where([data-_sk-color-scheme="dark"]) {
 	@apply --theme("dark");
 	color-scheme: dark;
-
-	/* TODO: Replace with tokens from Figma when available */
-	--stratakit-color-border-shadow-base: --primitive("color.white.8");
-	--stratakit-color-border-shadow-strong: --primitive("color.white.16");
 }
 
 html:where([data-_sk-accent-color="cobalt"]),

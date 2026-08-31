@@ -9,7 +9,7 @@
 		grid-template-columns: [start] auto [content] minmax(0, 1fr) [end] auto;
 		background-color: var(--🥝Banner-color-background);
 		border: 1px solid var(--🥝Banner-color-border);
-		border-radius: 8px;
+		border-radius: var(--stratakit-radius-md);
 		padding: var(--stratakit-space-300);
 		align-items: center;
 		inline-size: 100%;

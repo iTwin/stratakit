@@ -30,7 +30,7 @@
 		var(--stratakit-space-100) /* Arrow padding */
 	);
 
-	--✨shadow-border: 0px 0px 0px 1px var(--🥝Select-border-color) inset;
+	--✨border-width: 1px;
 
 	/* #region Variant: solid */
 	--✨bg--solid-default: var(--stratakit-color-bg-neutral-base);
@@ -46,9 +46,7 @@
 	);
 	--✨bg--solid-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨shadow--solid:
-		var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
-		var(--stratakit-shadow-control-button-base-drop);
+	--✨shadow--solid: var(--stratakit-shadow-control-button-base-drop);
 
 	--✨border--solid-default: var(--stratakit-color-border-neutral-base);
 	--✨border--solid-hover: color-mix(
@@ -108,10 +106,9 @@
 
 		min-inline-size: calc(var(--✨padding-inline-start) + 1ch + var(--✨padding-inline-end));
 		text-overflow: ellipsis;
-		font-size: var(--stratakit-font-size-12);
-		border-radius: 4px;
+		font-size: var(--stratakit-font-size-body-sm);
+		border-radius: var(--stratakit-radius-sm);
 		background-color: var(--🥝Select-background-color);
-		box-shadow: var(--✨shadow-border);
 		color: var(--✨color--default);
 		transition: background-color 150ms ease-out;
 
@@ -119,6 +116,7 @@
 			min-block-size: var(--✨height);
 			padding-inline-start: var(--✨padding-inline-start);
 			padding-inline-end: var(--✨padding-inline-end);
+			border: var(--✨border-width) solid var(--🥝Select-border-color);
 
 			-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 			--🥝Icon-color: var(--🌀Select-state--default, var(--stratakit-color-icon-neutral-base))
@@ -147,8 +145,8 @@
 				var(--🌀Select-state--pressed, var(--✨border--solid-pressed))
 				var(--🌀Select-state--disabled, var(--✨border--solid-disabled));
 			box-shadow: var(--🌀Select-state--default, var(--✨shadow--solid))
-				var(--🌀Select-state--hover, var(--✨shadow--solid))
-				var(--🌀Select-state--pressed, var(--✨shadow-border)) var(--🌀Select-state--disabled, none);
+				var(--🌀Select-state--hover, var(--✨shadow--solid)) var(--🌀Select-state--pressed, none)
+				var(--🌀Select-state--disabled, none);
 		}
 
 		&:where([data-_sk-variant="outline"]) {

@@ -77,7 +77,7 @@
 	/* #region Structural */
 	@apply --typography("body-md");
 	background-color: var(--_MuiTab-background-color);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiTab-color);
 	gap: var(--stratakit-space-100);
 	max-inline-size: var(--_MuiTab-max-width);
@@ -194,7 +194,7 @@
 
 	background-color: var(--_MuiTab-scroll-button-background-color, transparent);
 	block-size: var(--_MuiTab-scroll-button-size);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	opacity: 1;
 	transition: background-color 150ms ease-out;
 

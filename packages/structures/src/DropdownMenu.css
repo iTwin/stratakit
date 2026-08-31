@@ -14,7 +14,7 @@
 		flex-direction: column;
 
 		min-inline-size: min(95vi, 164px);
-		border-radius: 8px /* radius(in progress)/medium */;
+		border-radius: var(--stratakit-radius-md);
 		padding: var(--✨padding);
 		box-shadow: var(--stratakit-shadow-control-dropdown-base);
 	}
@@ -30,7 +30,7 @@
 
 .🥝DropdownMenuItem:is(.🥝ListItem) {
 	@layer base {
-		border-radius: 4px;
+		border-radius: var(--stratakit-radius-sm);
 	}
 
 	@layer states {

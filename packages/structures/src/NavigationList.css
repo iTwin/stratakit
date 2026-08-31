@@ -17,7 +17,7 @@
 				inset-inline-start: var(--stratakit-space-400);
 				inset-block: 0;
 				border-inline-start: 1px solid var(--stratakit-color-border-page-base);
-				border-radius: 4px;
+				border-radius: var(--stratakit-radius-sm);
 			}
 		}
 	}
@@ -51,13 +51,13 @@
 
 		inline-size: stretch;
 		min-block-size: var(--✨height--default);
-		border-radius: 4px;
+		border-radius: var(--stratakit-radius-sm);
 		padding-inline-start: var(--✨padding-inline);
 		padding-inline-end: var(--✨padding-inline);
 		padding-block-start: var(--✨padding-block);
 		padding-block-end: var(--✨padding-block);
 
-		font-size: var(--stratakit-font-size-12);
+		font-size: var(--stratakit-font-size-body-sm);
 		line-height: 1.2;
 		text-decoration: none;
 		cursor: pointer;

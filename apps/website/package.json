@@ -66,7 +66,7 @@
 		"examples": "workspace:*",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"sharp": "^0.34.5"
+		"sharp": "^0.35.0"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.12.1",
@@ -76,6 +76,7 @@
 		"@types/react-dom": "catalog:",
 		"@types/xml2js": "^0.4.14",
 		"axe-core": "^4.12.1",
+		"esbuild": "catalog:",
 		"github-slugger": "^2.0.0",
 		"remark-directive": "^4.0.0",
 		"ts-morph": "^27.0.2",

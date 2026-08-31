@@ -6,7 +6,7 @@
 	--✨width: 2rem;
 	--✨thumb-size: 1rem;
 
-	--✨radius: 9999px;
+	--✨radius: var(--stratakit-radius-round);
 	--✨checked-translateX: 75%;
 	--✨pressed-scaleX: 1.75;
 

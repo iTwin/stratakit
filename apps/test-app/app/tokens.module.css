@@ -26,7 +26,7 @@
 
 	inline-size: var(--_swatch-size);
 	block-size: var(--_swatch-size);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	position: relative;
 	background-position:
 		0 0,

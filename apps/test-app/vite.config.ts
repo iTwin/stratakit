@@ -54,7 +54,7 @@ export default defineConfig({
 	plugins: [
 		reactRouter(),
 		babel({
-			filter: /\.[jt]sx?$/,
+			include: /\.[jt]sx?$/,
 			babelConfig: {
 				presets: ["@babel/preset-typescript"],
 				plugins: [["babel-plugin-react-compiler", {}]],
@@ -70,6 +70,7 @@ export default defineConfig({
 		},
 		// assetsDir must not start with "/".
 		assetsDir: basename ? `${basename.replace(/^\//, "")}/assets` : "assets",
+		minify: "esbuild",
 	},
 	server: {
 		port: 1800, // dev server port

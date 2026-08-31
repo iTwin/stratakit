@@ -91,6 +91,7 @@ const components = {
 	Table: processExamples(() => import("./Table.showcase.tsx")),
 	Tabs: processExamples(() => import("./Tabs.showcase.tsx")),
 	TextField: processExamples(() => import("./TextField.showcase.tsx")),
+	TimePicker: processExamples(() => import("./TimePicker.showcase.tsx")),
 	ToggleButton: processExamples(() => import("./ToggleButton.showcase.tsx")),
 	Tooltip: processExamples(() => import("./Tooltip.showcase.tsx")),
 	Typography: processExamples(() => import("./Typography.showcase.tsx")),

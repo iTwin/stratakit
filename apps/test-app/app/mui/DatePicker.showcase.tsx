@@ -36,4 +36,11 @@ export const knobs = {
 			},
 		},
 	}),
+	disableAllDaysDateCalendar: createKnob({
+		props: {
+			MuiDateCalendar: {
+				shouldDisableDate: () => true,
+			},
+		},
+	}),
 };

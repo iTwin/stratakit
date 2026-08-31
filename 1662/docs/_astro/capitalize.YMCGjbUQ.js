@@ -1,0 +1,1 @@
+import{O as e}from"./DefaultPropsProvider.BFMl2K7d.js";var t=e;export{t};

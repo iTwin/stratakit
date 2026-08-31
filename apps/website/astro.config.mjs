@@ -108,6 +108,7 @@ export default defineConfig({
 	devToolbar: { enabled: false },
 	vite: {
 		build: {
+			cssMinify: "esbuild",
 			assetsInlineLimit: (filePath) => {
 				if (filePath.endsWith(".svg")) return false;
 				return undefined;

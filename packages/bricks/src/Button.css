@@ -8,8 +8,7 @@
 	--✨height: 1.5rem;
 	--✨padding-inline: var(--stratakit-space-300);
 	--✨padding-block: var(--stratakit-space-100);
-
-	--✨shadow-border: 0px 0px 0px 1px var(--🥝Button-border-color) inset;
+	--✨border-width: 1px;
 
 	--✨glow--bg-hover: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%);
 	--✨glow--bg-press: var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-pressed-\%);
@@ -32,11 +31,9 @@
 	);
 	--✨bg--solid-disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨shadow--solid:
-		var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
-		var(--stratakit-shadow-control-button-base-drop);
+	--✨shadow--solid: var(--stratakit-shadow-control-button-base-drop);
 
-	--✨border--solid-neutral-default: var(--stratakit-color-border-shadow-base);
+	--✨border--solid-neutral-default: var(--stratakit-color-border-neutral-base);
 	--✨border--solid-neutral-hover: color-mix(
 		in oklch,
 		var(--✨border--solid-neutral-default) 100%,
@@ -136,15 +133,21 @@
 
 		min-block-size: var(--✨height);
 		border-radius: var(--stratakit-radius-sm);
-		padding-inline-start: var(--🥝Button-padding-inline, var(--✨padding-inline));
-		padding-inline-end: var(--🥝Button-padding-inline, var(--✨padding-inline));
-		padding-block-start: var(--✨padding-block);
-		padding-block-end: var(--✨padding-block);
+		padding-inline-start: var(
+			--🥝Button-padding-inline,
+			calc(var(--✨padding-inline) - var(--✨border-width))
+		);
+		padding-inline-end: var(
+			--🥝Button-padding-inline,
+			calc(var(--✨padding-inline) - var(--✨border-width))
+		);
+		padding-block-start: calc(var(--✨padding-block) - var(--✨border-width));
+		padding-block-end: calc(var(--✨padding-block) - var(--✨border-width));
 		--🥝GhostAligner-inline-offset: var(--✨padding-inline);
 		--🥝GhostAligner-block-offset: var(--✨padding-block);
 
 		background-color: var(--🥝Button-background-color);
-		box-shadow: var(--✨shadow-border);
+		border: var(--✨border-width) solid var(--🥝Button-border-color);
 		color: var(--🥝Button-color, var(--✨color--default));
 		transition: background-color 150ms ease-out;
 		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
@@ -162,9 +165,8 @@
 				var(--🌀Button-state--active, var(--✨bg--active))
 				var(--🌀Button-state--disabled, var(--✨bg--solid-disabled));
 			box-shadow: var(--🌀Button-state--default, var(--✨shadow--solid))
-				var(--🌀Button-state--hover, var(--✨shadow--solid))
-				var(--🌀Button-state--pressed, var(--✨shadow-border))
-				var(--🌀Button-state--active, var(--✨shadow-border)) var(--🌀Button-state--disabled, none);
+				var(--🌀Button-state--hover, var(--✨shadow--solid)) var(--🌀Button-state--pressed, none)
+				var(--🌀Button-state--active, none) var(--🌀Button-state--disabled, none);
 
 			&:where([data-_sk-tone="neutral"]) {
 				--🥝Button-bg--solid-default: var(--✨bg--solid-neutral-default);

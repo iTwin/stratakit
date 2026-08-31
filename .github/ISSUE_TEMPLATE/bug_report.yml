@@ -40,6 +40,19 @@ body:
         Fork [this StackBlitz template](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template?file=src%2FApp.tsx) and reproduce the issue.
     validations:
       required: true
+  - type: dropdown
+    attributes:
+      label: Affected package
+      description: Which package is affected by this bug?
+      multiple: true
+      options:
+        - "@stratakit/bricks"
+        - "@stratakit/foundations"
+        - "@stratakit/icons"
+        - "@stratakit/mui"
+        - "@stratakit/structures"
+    validations:
+      required: true
   - type: textarea
     attributes:
       label: Environment and versions

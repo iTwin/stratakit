@@ -1,1 +1,0 @@
-import{j as a}from"./_utils.C2w1a9Ev.js";import{B as e}from"./Badge.rlYs0X9H.js";const s=()=>a.jsxs("div",{className:"flex",children:[a.jsx(e,{variant:"solid",label:"Solid"}),a.jsx(e,{variant:"muted",label:"Muted"}),a.jsx(e,{variant:"outline",label:"Outline"})]});export{s as default};

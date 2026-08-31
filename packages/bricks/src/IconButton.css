@@ -4,10 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝IconButton:is(.🥝Button) {
 	--✨padding-inline: var(--stratakit-space-100);
+	--✨border-width: 1px;
 
 	@layer base {
 		aspect-ratio: 1;
-		--🥝Button-padding-inline: var(--✨padding-inline);
+		--🥝Button-padding-inline: calc(var(--✨padding-inline) - var(--✨border-width));
 		--🥝GhostAligner-inline-offset: var(--✨padding-inline);
 	}
 }

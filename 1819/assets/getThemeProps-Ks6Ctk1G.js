@@ -1,1 +1,0 @@
-import{a_ as r}from"./~utils-DYgzD2-E.js";function p(t){const{theme:o,name:e,props:n}=t;return!o||!o.components||!o.components[e]||!o.components[e].defaultProps?n:r(o.components[e].defaultProps,n)}export{p as g};

@@ -3,11 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import DatePickerTime from "examples/mui/DatePicker.time.tsx";
+import TimePickerDefault from "examples/mui/TimePicker.default.tsx";
 import { createKnob } from "~/~utils.tsx";
 
-export default function DatePickerExamples() {
-	return <DatePickerTime />;
+export default function TimePickerExamples() {
+	return <TimePickerDefault />;
 }
 
 export const knobs = {

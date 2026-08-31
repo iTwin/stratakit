@@ -351,29 +351,34 @@
 }
 
 @supports (appearance: base-select) {
-	:where(.MuiNativeSelect-select):disabled {
-		color: CanvasText;
-		border-color: GrayText;
+	.MuiNativeSelect-select {
+		&:where(:disabled) {
+			color: CanvasText;
+			border-color: GrayText;
+		}
+
+		&::picker(select) {
+			border: 1px solid CanvasText;
+		}
 	}
 
-	:where(.MuiNativeSelect-select)::picker(select) {
-		border: 1px solid CanvasText;
-	}
-
-	:where(.MuiNativeSelect-select) option {
+	.MuiNativeSelect-select option {
 		border-color: Canvas;
-		--_checkmark-color: CanvasText;
+		--_checkmark-color: currentColor;
 
-		&:checked {
+		&:where(:checked:not(:disabled)) {
 			forced-color-adjust: none; /* removing the backplate */
 			background-color: SelectedItem;
 			border-color: SelectedItemText;
 			color: SelectedItemText;
 		}
 
-		&:disabled {
+		&:where(:disabled) {
 			color: GrayText;
-			--_checkmark-color: GrayText;
+		}
+
+		&::checkmark {
+			forced-color-adjust: none; /* removing the backplate */
 		}
 	}
 }

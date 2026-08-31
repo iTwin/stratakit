@@ -29,7 +29,7 @@
 		}
 
 		&:where([data-_sk-variant="solid"]) {
-			box-shadow: var(--✨shadow-border), var(--stratakit-shadow-control-button-base-drop);
+			box-shadow: var(--✨shadow-border), var(--stratakit-shadow-surface-sm);
 		}
 
 		&:where([data-_sk-variant="ghost"]) {

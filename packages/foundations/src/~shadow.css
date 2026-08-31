@@ -14,8 +14,8 @@ html:where([data-color-scheme="light"]),
 
 	--stratakit-shadow-surface-sm:
 		0px 1px 0px 0px --primitive("color.black.4"),
-		0px 0px 0px 1px --primitive("color.black.8"),
-		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		/* 0px 0px 0px 1px --primitive("color.black.8"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"), */
 		0px 1px 1px -0.5px --primitive("color.black.4"),
 		0px 3px 3px -1.5px --primitive("color.black.4");
 
@@ -109,8 +109,8 @@ html:where([data-color-scheme="dark"]),
 
 	--stratakit-shadow-surface-sm:
 		0px 1px 0px 0px --primitive("color.black.8"),
-		0px 0px 0px 1px --primitive("color.black.16"),
-		inset 0px 0px 0px 1px --primitive("color.white.8"),
+		/* 0px 0px 0px 1px --primitive("color.black.16"),
+		inset 0px 0px 0px 1px --primitive("color.white.8"), */
 		0px 1px 1px -0.5px --primitive("color.black.16"),
 		0px 3px 3px -1.5px --primitive("color.black.16");
 

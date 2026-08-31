@@ -18,10 +18,10 @@
 	--✨thumb-shadow--default:
 		inset 0px -1px 0px 0px --primitive("color.black.8"), /* bevel */
 		inset 0px 0px 0px 1px var(--✨thumb-border-color), /* border */
-		var(--stratakit-shadow-control-button-base-drop);
+		var(--stratakit-shadow-surface-sm);
 	--✨thumb-shadow--checked:
 		inset 0px -1px 0px 0px --primitive("color.black.8"), /* bevel */
-		var(--stratakit-shadow-control-button-base-drop);
+		var(--stratakit-shadow-surface-sm);
 
 	--✨glow--border-hover: var(--stratakit-color-glow-hue)
 		var(--stratakit-color-border-glow-base-hover-\%);

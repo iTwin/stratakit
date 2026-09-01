@@ -27,6 +27,9 @@
 	/* Dynamically adjust the padding to avoid issues with baseline alignment */
 	--✨padding-block: max(0px, (var(--✨height) - var(--stratakit-space-50) - 1lh) / 2);
 	--✨gap: var(--stratakit-space-100);
+	--✨shadow:
+		inset 0px 1px 2px 0px light-dark(--primitive("color.black.4"), --primitive("color.black.16")),
+		inset 0px 2px 4px 0px light-dark(--primitive("color.black.4"), --primitive("color.black.16"));
 
 	@layer base {
 		cursor: var(--🥝TextBox-cursor);
@@ -51,12 +54,8 @@
 		--🥝TextBox-border-color: var(--🌀TextBox-state--default, var(--✨border--default))
 			var(--🌀TextBox-state--hover, var(--✨border--hover))
 			var(--🌀TextBox-state--disabled, var(--✨border--disabled));
-		--🥝TextBox-box-shadow: var(
-				--🌀TextBox-state--default,
-				var(--stratakit-shadow-control-input-base)
-			)
-			var(--🌀TextBox-state--hover, var(--stratakit-shadow-control-input-base))
-			var(--🌀TextBox-state--disabled, none);
+		--🥝TextBox-box-shadow: var(--🌀TextBox-state--default, var(--✨shadow))
+			var(--🌀TextBox-state--hover, var(--✨shadow)) var(--🌀TextBox-state--disabled, none);
 
 		/* Styles specific to wrapper ("root") */
 		&:where(:not(input, textarea)) {

@@ -5,16 +5,17 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import { getOwnerDocument } from "@stratakit/internal-utils/dom";
+import { useLatestRef, useSafeContext } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
-import { useLatestRef, useSafeContext } from "./~hooks.js";
-import { forwardRef, getOwnerDocument, parseDOM } from "./~utils.js";
 import {
 	HtmlSanitizerContext,
 	spriteSheetId,
 	useRootNode,
 } from "./Root.internal.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -114,6 +115,18 @@ DEV: Icon.displayName = "Icon";
 function toIconHref(hrefBase: string) {
 	if (!hrefBase.includes("#")) return `${hrefBase}${DEFAULT_ICON_HASH}`;
 	return hrefBase;
+}
+
+// ----------------------------------------------------------------------------
+
+/** "Parses" a string of HTML into a DocumentFragment. */
+function parseDOM(
+	htmlString: string,
+	{ ownerDocument }: { ownerDocument: Document },
+) {
+	const template = ownerDocument.createElement("template");
+	template.innerHTML = htmlString;
+	return template.content;
 }
 
 // ----------------------------------------------------------------------------

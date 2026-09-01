@@ -15,17 +15,17 @@
 		hyphens: auto;
 
 		background-color: var(--✨bg);
-		box-shadow: var(--stratakit-shadow-control-tooltip-base);
+		box-shadow: var(--stratakit-shadow-surface-lg);
 		color: var(--✨color);
 
 		display: flex;
 		justify-content: center;
-		gap: var(--stratakit-space-x1);
+		gap: var(--stratakit-space-100);
 
 		border: var(--✨border-width) solid var(--✨border);
-		border-radius: 4px;
-		padding-block: calc(var(--stratakit-space-x1) - var(--✨border-width));
-		padding-inline: calc(var(--stratakit-space-x2) - var(--✨border-width));
+		border-radius: var(--stratakit-radius-sm);
+		padding-block: calc(var(--stratakit-space-100) - var(--✨border-width));
+		padding-inline: calc(var(--stratakit-space-200) - var(--✨border-width));
 		min-block-size: 1rem;
 		max-inline-size: 12.25rem;
 	}

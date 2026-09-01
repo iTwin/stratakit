@@ -5,12 +5,8 @@
 
 import * as React from "react";
 import Popper from "@mui/material/Popper";
-import {
-	forwardRef,
-	identity,
-	useMergedRefs,
-	usePopoverApi,
-} from "@stratakit/foundations/secret-internals";
+import { useMergedRefs, usePopoverApi } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 // ----------------------------------------------------------------------------
 
@@ -26,7 +22,6 @@ const MuiTooltipPopper = forwardRef<"div", MuiTooltipPopperProps>(
 		const popoverProps = usePopoverApi({
 			element: popoverElement,
 			open: props.open,
-			setOpen: identity,
 		});
 
 		return (

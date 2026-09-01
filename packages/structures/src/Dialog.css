@@ -14,8 +14,8 @@
 }
 
 .🥝Dialog {
-	--✨padding-block: var(--stratakit-space-x4);
-	--✨padding-inline: var(--stratakit-space-x5);
+	--✨padding-block: var(--stratakit-space-400);
+	--✨padding-inline: var(--stratakit-space-500);
 
 	@layer base {
 		position: relative;
@@ -27,9 +27,9 @@
 		max-block-size: calc(100% - 64px);
 		max-inline-size: calc(100% - 64px);
 
-		border-radius: 12px; /* radius/large */
+		border-radius: var(--stratakit-radius-lg);
 		background-color: var(--stratakit-color-bg-elevation-base);
-		box-shadow: var(--stratakit-shadow-control-dialog-base);
+		box-shadow: var(--stratakit-shadow-surface-xl);
 
 		/* Prevents footer from overlapping the box-shadow */
 		padding: 1px;
@@ -52,8 +52,8 @@
 }
 
 .🥝DialogHeader {
-	--✨padding-block: var(--stratakit-space-x4);
-	--✨padding-inline: var(--stratakit-space-x5);
+	--✨padding-block: var(--stratakit-space-400);
+	--✨padding-inline: var(--stratakit-space-500);
 
 	@layer base {
 		padding-block-start: var(--✨padding-block);
@@ -73,7 +73,7 @@
 }
 
 .🥝DialogContent {
-	--✨padding: var(--stratakit-space-x5);
+	--✨padding: var(--stratakit-space-500);
 
 	@layer base {
 		@apply --typography("body-sm");
@@ -94,8 +94,8 @@
 }
 
 .🥝DialogFooter {
-	--✨padding: var(--stratakit-space-x5);
-	--✨border-radius: 12px; /* radius/large */
+	--✨padding: var(--stratakit-space-500);
+	--✨border-radius: var(--stratakit-radius-lg);
 
 	@layer base {
 		border-block-start: 1px solid var(--stratakit-color-border-page-base);
@@ -116,7 +116,7 @@
 .🥝DialogActionList {
 	@layer base {
 		display: flex;
-		gap: var(--stratakit-space-x3);
+		gap: var(--stratakit-space-300);
 
 		margin-inline-start: auto;
 	}

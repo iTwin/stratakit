@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.6.0-rc.0
+
+- [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.
+- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Short term the packages will continue to work with `^18.0.0`, but it is recommended to upgrade to React v19 to ensure future compatibility.
+- [#1795](https://github.com/iTwin/stratakit/pull/1795): Updated colors for `Button` and `Anchor`.
+- [#1797](https://github.com/iTwin/stratakit/pull/1797): Updated placeholder text styling across various components.
+- [#1805](https://github.com/iTwin/stratakit/pull/1805): Updated `border-radius` of `Skeleton`.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.0-rc.0
+  - @stratakit/internal-utils@0.2.0-rc.0
+
+## 0.5.6
+
+- [#1670](https://github.com/iTwin/stratakit/pull/1670): Removed [`CloseWatcher`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) responsible for device-specific close actions from the `Tooltip`.
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Increased border color contrast across various components.
+- [#1707](https://github.com/iTwin/stratakit/pull/1707): Updated borders for `Switch`.
+- [#1759](https://github.com/iTwin/stratakit/pull/1759): Updated colors for `Badge`.
+- [#1760](https://github.com/iTwin/stratakit/pull/1760): Updated background for `Select`.
+- [#1774](https://github.com/iTwin/stratakit/pull/1774): Updated borders for `Checkbox`, `Kbd`, `Radio`, `Select`, and `Switch`.
+- Updated dependencies:
+  - @stratakit/foundations@0.5.0
+
 ## 0.5.5
 
 - [#1487](https://github.com/iTwin/stratakit/pull/1487): Marked all components from `@stratakit/bricks` as deprecated. Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#use-mui-components) for details on how to migrate to `@mui/material`.

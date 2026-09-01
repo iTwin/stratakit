@@ -13,7 +13,6 @@ import {
 	primitivesTransform,
 	staticVariablesTransform,
 	themeTransform,
-	typographyTokensTransform,
 } from "./lightningcss.tokens.js";
 
 const require = createRequire(import.meta.url);
@@ -32,7 +31,6 @@ export function createVisitor() {
 		accentsTransform(),
 		primitivesTransform(),
 		themeTransform(),
-		typographyTokensTransform(),
 		staticVariablesTransform(),
 	]);
 }

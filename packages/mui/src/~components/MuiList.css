@@ -5,8 +5,8 @@
 
 .MuiList-root {
 	&:where(.MuiList-padding) {
-		padding-block-start: var(--stratakit-space-x1);
-		padding-block-end: var(--stratakit-space-x1);
+		padding-block-start: var(--stratakit-space-100);
+		padding-block-end: var(--stratakit-space-100);
 	}
 }
 
@@ -22,11 +22,11 @@
 	border-block: 1px solid transparent;
 	margin-block-end: -1px; /* prevent double border */
 
-	padding-block-start: var(--stratakit-space-x1);
-	padding-block-end: var(--stratakit-space-x1);
-	padding-inline-start: var(--stratakit-space-x3);
-	padding-inline-end: var(--stratakit-space-x3);
-	gap: var(--stratakit-space-x2);
+	padding-block-start: var(--stratakit-space-100);
+	padding-block-end: var(--stratakit-space-100);
+	padding-inline-start: var(--stratakit-space-300);
+	padding-inline-end: var(--stratakit-space-300);
+	gap: var(--stratakit-space-200);
 
 	:where(.MuiList-root.MuiList-dense) & {
 		min-block-size: var(--stratakit-size-control-listitem-height-small);
@@ -36,7 +36,7 @@
 	&:where(:has(~ .MuiListItem-secondaryAction)) {
 		padding-inline-end: calc(
 			var(--stratakit-size-control-field-height-medium) +
-			var(--stratakit-space-x3)
+			var(--stratakit-space-300)
 		);
 	}
 
@@ -54,9 +54,9 @@
 
 .MuiListItemText-root {
 	margin: 0;
-	gap: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-100);
 }
 
 .MuiListItem-secondaryAction {
-	inset-inline-end: var(--stratakit-space-x3);
+	inset-inline-end: var(--stratakit-space-300);
 }

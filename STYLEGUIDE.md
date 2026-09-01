@@ -101,40 +101,38 @@ Wrap any rules relating to hover with the [`any-hover` media query](https://deve
 
 ## Changesets
 
-### Use past tense
+### Grammar
+
+- Begin with a past tense verb.
+- Use proper grammar and end with a period.
 
 **✅ Do**
 
-> Deprecated MUI `SvgIcon` in favor of StrataKit `Icon`.
+> Deprecated the `color` prop of `Chip`.
 
 **❌ Don't**
 
-> Deprecate MUI `SvgIcon` in favor of StrataKit `Icon`.
-
-### End with a period
-
-**✅ Do**
-
-> Fixed an issue with styles not loading.
-
-**❌ Don't**
-
-> Fixed an issue with styles not loading
+> Deprecate `color` prop of `Chip`
 
 ### Format Code
 
 - Use backticks to highlight code.
 - Include quotes around string values. Numbers and boolean values are unquoted.
-- Refer to components without the `<` `>` unless you are referencing them in JSX
+- Refer to React components without the `<` `>` unless you are referencing them in JSX syntax.
+- Refer to HTML elements wth `<` `>`.
 
 **✅ Do**
 
-> Deprecated `color` prop of `Chip`.
+> Updated `List` to render as `<ul>`.
+
 > Set `"primary"` the default `color` for `CircularProgress`.
+
 > Fixed bug with `hidden={true}` of `Dialog`.
 
 **❌ Don't**
 
-> Deprecated color prop of Chip.
+> Updated `<List>` to render as `ul`
+
 > Made `primary` the default color for `<CircularProgress>`.
+
 > Fixed bug with hidden=true of Dialog.

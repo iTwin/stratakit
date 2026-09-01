@@ -757,12 +757,11 @@ function withExcludedProps<Element, Props extends object>(
 	excludedProps: readonly string[],
 ) {
 	return React.forwardRef<Element, Props>((props, forwardedRef) => {
-		const filteredProps = {} as Record<string, unknown>;
-		for (const key in props) {
-			if (!excludedProps.includes(key)) {
-				filteredProps[key] = (props as Record<string, unknown>)[key];
-			}
+		const filteredProps = { ...props };
+		for (const key of excludedProps) {
+			delete filteredProps[key as keyof React.PropsWithoutRef<Props>];
 		}
+
 		return <Component {...(filteredProps as Props)} ref={forwardedRef} />;
 	});
 }

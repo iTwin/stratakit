@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{n as t,t as n}from"./FormControl.CFbAA4gw.js";import{t as r}from"./Rating.DB-8oQAT.js";var i=e(),a=()=>(0,i.jsxs)(n,{render:(0,i.jsx)(`fieldset`,{}),role:`radiogroup`,children:[(0,i.jsx)(t,{render:(0,i.jsx)(`legend`,{}),children:`Product rating`}),(0,i.jsx)(r,{name:`product-rating`,defaultValue:2})]});export{a as default};

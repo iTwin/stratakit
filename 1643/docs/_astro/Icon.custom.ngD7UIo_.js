@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{I as t}from"./_utils.DmDLrno_.js";var n=e(),r=()=>(0,n.jsx)(t,{render:(0,n.jsx)(`svg`,{xmlns:`http://www.w3.org/2000/svg`,viewBox:`0 0 16 16`,children:(0,n.jsx)(`circle`,{cx:`8`,cy:`8`,r:`7`,strokeWidth:`2`,fill:`none`,stroke:`currentColor`})})});export{r as default};

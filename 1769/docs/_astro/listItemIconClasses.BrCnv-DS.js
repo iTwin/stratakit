@@ -1,0 +1,1 @@
+import{b as e,y as t}from"./DefaultPropsProvider.BFMl2K7d.js";function n(t){return e(`MuiListItemIcon`,t)}var r=t(`MuiListItemIcon`,[`root`,`alignItemsFlexStart`]);export{r as n,n as t};

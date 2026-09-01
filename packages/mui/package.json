@@ -68,7 +68,7 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@mui/material": "^9.0.0",
+		"@mui/material": "^9.4.0",
 		"@stratakit/foundations": "^1.0.0-rc.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"

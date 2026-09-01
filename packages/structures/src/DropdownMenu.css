@@ -16,7 +16,9 @@
 		min-inline-size: min(95vi, 164px);
 		border-radius: var(--stratakit-radius-md);
 		padding: var(--✨padding);
+
 		box-shadow: var(--stratakit-shadow-surface-lg);
+		border: 1px solid var(--stratakit-color-border-page-base);
 	}
 }
 

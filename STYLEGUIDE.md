@@ -2,46 +2,6 @@
 
 This style guide describes conventions and best practices for the StrataKit project.
 
-## Changesets
-
-### Use past tense
-
-**✅ Do**
-
-> Deprecated MUI `SvgIcon` in favor of StrataKit `Icon`.
-
-**❌ Don't**
-
-> Deprecate MUI `SvgIcon` in favor of StrataKit `Icon`.
-
-### End with a period
-
-**✅ Do**
-
-> Fixed an issue with styles not loading.
-
-**❌ Don't**
-
-> Fixed an issue with styles not loading
-
-### Format Code
-
-- Use backticks to highlight code.
-- Include quotes around string values. Numbers and boolean values are unquoted.
-- Refer to components without the `<` `>` unless you are referencing them in JSX
-
-**✅ Do**
-
-> Deprecated `color` prop of `Chip`.
-> Set `"primary"` the default `color` for `CircularProgress`.
-> Fixed bug with `hidden={true}` of `Dialog`.
-
-**❌ Don't**
-
-> Deprecated color prop of Chip.
-> Made `primary` the default color for `<CircularProgress>`.
-> Fixed bug with hidden=true of Dialog.
-
 ## TSX
 
 ### Use `interface` instead `type`
@@ -138,3 +98,43 @@ Wrap any rules relating to hover with the [`any-hover` media query](https://deve
 	}
 }
 ```
+
+## Changesets
+
+### Use past tense
+
+**✅ Do**
+
+> Deprecated MUI `SvgIcon` in favor of StrataKit `Icon`.
+
+**❌ Don't**
+
+> Deprecate MUI `SvgIcon` in favor of StrataKit `Icon`.
+
+### End with a period
+
+**✅ Do**
+
+> Fixed an issue with styles not loading.
+
+**❌ Don't**
+
+> Fixed an issue with styles not loading
+
+### Format Code
+
+- Use backticks to highlight code.
+- Include quotes around string values. Numbers and boolean values are unquoted.
+- Refer to components without the `<` `>` unless you are referencing them in JSX
+
+**✅ Do**
+
+> Deprecated `color` prop of `Chip`.
+> Set `"primary"` the default `color` for `CircularProgress`.
+> Fixed bug with `hidden={true}` of `Dialog`.
+
+**❌ Don't**
+
+> Deprecated color prop of Chip.
+> Made `primary` the default color for `<CircularProgress>`.
+> Fixed bug with hidden=true of Dialog.

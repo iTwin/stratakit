@@ -2,7 +2,7 @@
 
 ## 1.0.0-rc.1
 
-### Minor Changes
+### Breaking changes
 
 - [#1817](https://github.com/iTwin/stratakit/pull/1817): Removed tokens:
 

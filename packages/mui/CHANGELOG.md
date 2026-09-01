@@ -2,7 +2,7 @@
 
 ## 1.0.0-rc.1
 
-### Minor Changes
+### Breaking changes
 
 - [#1825](https://github.com/iTwin/stratakit/pull/1825): Updated the supported version range of `@mui/material` to `^9.4.0`.
 - [#1817](https://github.com/iTwin/stratakit/pull/1817): Removed tokens:
@@ -21,7 +21,7 @@
   - `--stratakit-shadow-control-tooltip-base`
   - `--stratakit-shadow-control-toolbar-base`
 
-### Patch Changes
+### Non-breaking changes
 
 - [#1815](https://github.com/iTwin/stratakit/pull/1815): Updated borders for `Button` and `Checkbox`.
 - [#1820](https://github.com/iTwin/stratakit/pull/1820): Updated shadow styling across various components (`Button`, `Dialog`, `Menu`, `Switch`, `Tooltip`, etc).

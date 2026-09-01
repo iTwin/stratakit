@@ -1,12 +1,10 @@
 # Changelog
 
-## 1.0.0-rc.1
-
-### Patch Changes
+## 0.6.0-rc.1
 
 - [#1820](https://github.com/iTwin/stratakit/pull/1820): Updated shadow styling across various components (`Dialog`, `DropdownMenu`, `Popover`, `Toolbar`).
 - Updated dependencies:
-  - @stratakit/bricks@1.0.0-rc.1
+  - @stratakit/bricks@0.6.0-rc.1
   - @stratakit/foundations@1.0.0-rc.1
 
 ## 0.6.0-rc.0

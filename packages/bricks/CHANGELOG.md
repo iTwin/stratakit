@@ -1,8 +1,6 @@
 # Changelog
 
-## 1.0.0-rc.1
-
-### Patch Changes
+## 0.6.0-rc.1
 
 - [#1815](https://github.com/iTwin/stratakit/pull/1815): Updated borders for `Button` and `Checkbox`.
 - [#1788](https://github.com/iTwin/stratakit/pull/1788): Increased border contrast in `Button` and `IconButton`.

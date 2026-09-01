@@ -1,0 +1,1 @@
+import{n as e}from"./jsx-runtime.Cltr0gcK.js";e();function t(e){return e?.props?.ref||null}export{t};

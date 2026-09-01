@@ -1,0 +1,1 @@
+var e=`/1669/docs/_astro/download.C2jICFLG.svg`;export{e as t};

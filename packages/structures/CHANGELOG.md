@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0-rc.1
+
+- [#1820](https://github.com/iTwin/stratakit/pull/1820): Updated shadow styling across various components (`Dialog`, `DropdownMenu`, `Popover`, `Toolbar`).
+- Updated dependencies:
+  - @stratakit/bricks@0.6.0-rc.1
+  - @stratakit/foundations@1.0.0-rc.1
+
 ## 0.6.0-rc.0
 
 - [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.

@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{I as t,h as n}from"./_utils.PBPOJV_M.js";import{t as r}from"./placeholder.Dto7CZw6.js";var i=e(),a=[`primary`,`secondary`,`error`],o=()=>a.map(e=>(0,i.jsx)(n,{color:e,label:`${e.charAt(0).toUpperCase()}${e.slice(1)}`,children:(0,i.jsx)(t,{href:r})},e));export{o as default};

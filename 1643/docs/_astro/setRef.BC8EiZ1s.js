@@ -1,0 +1,1 @@
+function e(e,t){typeof e==`function`?e(t):e&&(e.current=t)}export{e as t};

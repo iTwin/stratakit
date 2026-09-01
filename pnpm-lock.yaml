@@ -338,7 +338,7 @@ importers:
         specifier: ^0.4.35
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
-        specifier: ^1.0.0-rc.0
+        specifier: ^1.0.0-rc.1
         version: link:../foundations
       "@stratakit/internal-utils":
         specifier: ^0.2.0-rc.0
@@ -457,7 +457,7 @@ importers:
         specifier: ^9.4.0
         version: 9.4.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
-        specifier: ^1.0.0-rc.0
+        specifier: ^1.0.0-rc.1
         version: link:../foundations
       "@stratakit/icons":
         specifier: ^0.4.3
@@ -500,10 +500,10 @@ importers:
         specifier: ^0.4.35
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/bricks":
-        specifier: ^0.6.0-rc.0
+        specifier: ^0.6.0-rc.1
         version: link:../bricks
       "@stratakit/foundations":
-        specifier: ^1.0.0-rc.0
+        specifier: ^1.0.0-rc.1
         version: link:../foundations
       "@stratakit/internal-utils":
         specifier: ^0.2.0-rc.0

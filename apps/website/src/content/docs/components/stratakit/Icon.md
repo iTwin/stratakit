@@ -43,7 +43,7 @@ By default, the **Icon** component inherits the ancestor's color. Use the [`colo
 
 ::example{src="mui/Icon.color"}
 
-### Custom SVG
+### Custom
 
 The `href` prop can point to any valid `<symbol>` or `<svg>` that has an `id`. This is the recommended way to use custom icons.
 
@@ -53,9 +53,9 @@ The `href` prop can point to any valid `<symbol>` or `<svg>` that has an `id`. T
 If your SVG file is missing an `id`, it is recommended to set `id="icon"` on the root `<svg>` element in the file. The `Icon` component will append a `#icon` hash to any `href` that is missing a hash.
 :::
 
-### Inline SVG
+### Inline
 
-Alternatively, the `render` prop can be used to display an inlined SVG, as in the example below. This can be useful when you need to target the individual elements inside the SVG (e.g. for styling or animation purposes).
+The `render` prop can be used to display an inlined SVG, as in the example below. This can be useful when you need to target the individual elements inside the SVG (e.g. for styling or animation purposes).
 
 ::example{src="mui/Icon.custom"}
 

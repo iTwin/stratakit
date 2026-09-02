@@ -15,7 +15,7 @@
 	hyphens: auto;
 
 	background-color: var(--stratakit-color-bg-elevation-emphasis);
-	box-shadow: var(--stratakit-shadow-control-tooltip-base);
+	box-shadow: var(--stratakit-shadow-surface-lg);
 	color: var(--stratakit-color-text-neutral-emphasis);
 
 	border: var(--✨border-width) solid transparent;

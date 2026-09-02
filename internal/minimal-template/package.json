@@ -9,7 +9,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
-		"@mui/material": "^9.0.0",
+		"@mui/material": "^9.4.0",
 		"@stratakit/foundations": "latest",
 		"@stratakit/icons": "latest",
 		"@stratakit/mui": "latest",

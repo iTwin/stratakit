@@ -28,6 +28,23 @@ await esbuild.build({
 	define: {
 		__VERSION__: `"${meta.version}"`,
 	},
-	dropLabels: !isDev ? ["DEV"] : [],
-	plugins: !isDev ? [reactCompilerPlugin()] : [],
+	...(!isDev && { dropLabels: ["DEV"] }),
 });
+
+// For production builds, run esbuild again with React Compiler.
+if (!isDev) {
+	await esbuild.build({
+		entryPoints: await fg("dist/**/*.js", {
+			onlyFiles: true,
+			ignore: ["dist/DEV"],
+		}),
+		entryNames: "[dir]/[name]",
+		outdir: "dist",
+		bundle: false,
+		format: "esm",
+		jsx: "automatic",
+		target: "es2021",
+		plugins: [reactCompilerPlugin()],
+		allowOverwrite: true,
+	});
+}

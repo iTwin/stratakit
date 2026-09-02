@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type Badge from "@mui/material/Badge";
@@ -35,7 +36,7 @@ DEV: MuiBadge.displayName = "MuiBadge";
 // ----------------------------------------------------------------------------
 
 const MuiBadgeBadge = forwardRef<"span", BaseProps>((props, forwardedRef) => {
-	const { size, type } = React.useContext(MuiBadgeContext) ?? {};
+	const { size, type } = useSafeContext(MuiBadgeContext);
 	const inline = props.className?.includes("MuiBadge-inline");
 
 	return (

@@ -550,7 +550,7 @@
 			"elevation": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.black.64}"
+					"$value": "{p-color.white.48}"
 				}
 			},
 			"page": {

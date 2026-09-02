@@ -28,11 +28,11 @@
 }
 
 .MuiBadge-badge {
-	:where(.MuiBadge-root[data-_sk-inline]) & {
+	&:where(.MuiBadge-inline) {
 		border: 1px solid;
 	}
 
-	:where(.MuiBadge-root:not([data-_sk-inline])) & {
+	&:where(:not(.MuiBadge-inline)) {
 		forced-color-adjust: none;
 		background-color: Highlight;
 		color: HighlightText;

@@ -232,18 +232,15 @@ declare module "@mui/material/Badge" {
 		primary: false;
 	}
 
+	interface BadgePropsVariantOverrides {
+		inline: true;
+	}
+
 	interface BadgeOwnProps {
-		/**
-		 * When `true`, the badge is rendered in normal document flow,
-		 * instead of being positioned relative to its child based on `anchorOrigin` and `overlap` props.
-		 *
-		 * @default false
-		 */
-		inline?: boolean;
 		/**
 		 * The size of the badge.
 		 *
-		 * This prop can only be applied when `inline` is `true`.
+		 * This prop can only be applied when `variant` is `"inline"`.
 		 *
 		 * @default 'medium'
 		 */
@@ -257,7 +254,7 @@ declare module "@mui/material/Badge" {
 		/**
 		 * The visual type of the badge styling.
 		 *
-		 * This prop can only be applied when `inline` is `true`.
+		 * This prop can only be applied when `variant` is `"inline"`.
 		 *
 		 * @default 'strong'
 		 */

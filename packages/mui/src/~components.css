@@ -44,6 +44,7 @@
 .MuiAppBar-root {
 	background-color: var(--stratakit-color-bg-page-base);
 	box-shadow: none;
+	border: none;
 	border-block-end: 1px solid;
 	border-color: var(--stratakit-color-border-page-base);
 	color: var(--stratakit-color-text-neutral-primary);

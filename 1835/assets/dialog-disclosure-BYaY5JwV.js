@@ -1,1 +1,0 @@
-import{at as s,bd as u,au as n,av as i,ck as c,b9 as l,bX as r,ax as D}from"./~utils-BUnmvkCJ.js";import{u as f}from"./disclosure-BF7HIgYA.js";const g="button",m=i(function({store:a,...t}){const o=c();return a=a||o,l(a,!1),t={"aria-haspopup":r(D(a,"contentElement"),"dialog"),...t},t=f({store:a,...t}),t}),x=s(function(a){const t=m(u(a));return n(g,t)});export{x as D,m as u};

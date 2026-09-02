@@ -19,10 +19,6 @@
 	}
 }
 
-.MuiAutocomplete-paper {
-	border: 1px solid;
-}
-
 .MuiAvatar-root {
 	border: 1px solid;
 }
@@ -118,10 +114,6 @@
 	--_MuiCircularProgress-color: CanvasText;
 }
 
-.MuiDialog-paper {
-	border: 1px solid;
-}
-
 .MuiDrawer-paper {
 	:where(.MuiDrawer-anchorTop) > & {
 		border-block-end: 1px solid;
@@ -186,10 +178,6 @@
 	}
 }
 
-.MuiMenu-paper {
-	border: 1px solid CanvasText;
-}
-
 .MuiPaginationItem-root {
 	&:where(.Mui-selected:not(.Mui-disabled)) {
 		background-color: SelectedItem;
@@ -223,10 +211,6 @@
 }
 
 .MuiPickerPopper-paper {
-	border: 1px solid;
-}
-
-.MuiPopover-paper {
 	border: 1px solid;
 }
 
@@ -270,10 +254,6 @@
 	:where(.MuiSlider-root.Mui-disabled) & {
 		color: GrayText;
 	}
-}
-
-.MuiSnackbarContent-root {
-	border: 1px solid;
 }
 
 .MuiStepLabel-label {

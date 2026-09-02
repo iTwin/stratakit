@@ -1,1 +1,0 @@
-import{et as i,t as m}from"./jsx-runtime-CvPTumEY.js";import{Jt as n,Rt as o,Yt as _,an as u}from"./~utils-BVosBixf.js";var d=m(),l=i(n(),1),c=_((a,e)=>{o();const{variant:t="text",size:s="medium",...r}=a;return(0,d.jsx)(u.div,{...r,ref:e,className:(0,l.default)("🥝Skeleton",a.className),"data-_sk-variant":t,"data-_sk-size":s,"aria-hidden":!0})});export{c as t};

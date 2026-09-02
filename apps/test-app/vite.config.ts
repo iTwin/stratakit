@@ -4,13 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { reactRouter } from "@react-router/dev/vite";
+import babel from "@rolldown/plugin-babel";
+import { reactCompilerPreset } from "@vitejs/plugin-react";
 import * as lightningcss from "lightningcss";
 import {
 	defaultClientConditions,
 	defaultServerConditions,
 	defineConfig,
 } from "vite";
-import babel from "vite-plugin-babel";
 import devtoolsJson from "vite-plugin-devtools-json";
 import {
 	createVisitor,
@@ -55,10 +56,7 @@ export default defineConfig({
 		reactRouter(),
 		babel({
 			include: /\.[jt]sx?$/,
-			babelConfig: {
-				presets: ["@babel/preset-typescript"],
-				plugins: [["babel-plugin-react-compiler", {}]],
-			},
+			presets: [reactCompilerPreset()],
 		}),
 		bundleCssPlugin(),
 		devtoolsJson(),

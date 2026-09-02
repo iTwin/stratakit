@@ -43,15 +43,16 @@
 		"@babel/preset-typescript": "^7.27.1",
 		"@playwright/test": "catalog:",
 		"@react-router/dev": "^8.3.1",
+		"@rolldown/plugin-babel": "^0.2.3",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
-		"babel-plugin-react-compiler": "~1.0.0",
+		"@vitejs/plugin-react": "^6.1.1",
 		"esbuild": "catalog:",
 		"lightningcss": "catalog:",
+		"react-compiler-runtime": "^1.0.0",
 		"typescript": "catalog:",
 		"vite": "^8.0.0",
-		"vite-plugin-babel": "^1.7.3",
 		"vite-plugin-devtools-json": "^1.1.0"
 	},
 	"wireit": {

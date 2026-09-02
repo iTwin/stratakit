@@ -161,6 +161,9 @@ importers:
       "@react-router/dev":
         specifier: ^8.3.1
         version: 8.3.1(babel-plugin-macros@3.1.0)(react-router@8.3.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
+      "@rolldown/plugin-babel":
+        specifier: ^0.2.3
+        version: 0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
       "@types/node":
         specifier: "catalog:"
         version: 22.19.19
@@ -170,24 +173,24 @@ importers:
       "@types/react-dom":
         specifier: "catalog:"
         version: 19.2.4(@types/react@19.2.18)
-      babel-plugin-react-compiler:
-        specifier: ~1.0.0
-        version: 1.0.0
+      "@vitejs/plugin-react":
+        specifier: ^6.1.1
+        version: 6.1.1(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)))(babel-plugin-react-compiler@1.0.0)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
       esbuild:
         specifier: "catalog:"
         version: 0.28.1
       lightningcss:
         specifier: "catalog:"
         version: 1.33.0
+      react-compiler-runtime:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.2.8)
       typescript:
         specifier: "catalog:"
         version: 7.0.2
       vite:
         specifier: ^8.0.0
         version: 8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)
-      vite-plugin-babel:
-        specifier: ^1.7.3
-        version: 1.7.3(@babel/core@7.29.7(supports-color@7.2.0))(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
       vite-plugin-devtools-json:
         specifier: ^1.1.0
         version: 1.1.0(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
@@ -2476,6 +2479,26 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  "@rolldown/plugin-babel@0.2.3":
+    resolution:
+      {
+        integrity: sha512-+zEk16yGlz1F9STiRr6uG9hmIXb6nprjLczV/htGptYuLoCuxb+itZ03RKCEeOhBpDDd1NU7qF6x1VLMUp62bw==,
+      }
+    engines: { node: ">=22.12.0 || ^24.0.0" }
+    peerDependencies:
+      "@babel/core": ^7.29.0 || ^8.0.0-rc.1
+      "@babel/plugin-transform-runtime": ^7.29.0 || ^8.0.0-rc.1
+      "@babel/runtime": ^7.27.0 || ^8.0.0-rc.1
+      rolldown: ^1.0.0-rc.5
+      vite: ^8.0.0
+    peerDependenciesMeta:
+      "@babel/plugin-transform-runtime":
+        optional: true
+      "@babel/runtime":
+        optional: true
+      vite:
+        optional: true
+
   "@rolldown/pluginutils@1.0.1":
     resolution:
       {
@@ -2872,6 +2895,25 @@ packages:
       {
         integrity: sha512-mUFwbeTqrVgDQxFveS+df2yfap6iuP20NAKAsBt5jDEoOTDew+zwLAOilHCeQJOVSvmgCX4ogqIrA0mnyr08yQ==,
       }
+
+  "@vitejs/plugin-react@6.1.1":
+    resolution:
+      {
+        integrity: sha512-yxLaQV9gkhS8ezJqCM6+ndU7mDY6gqAg75NQ+0IjwEI8IYOmQCgkRwHKVSfWXW076DsqMo0Dk+0FK1U+M5RgFw==,
+      }
+    engines: { node: ^20.19.0 || >=22.12.0 }
+    peerDependencies:
+      "@rolldown/plugin-babel": ^0.1.7 || ^0.2.0
+      babel-plugin-react-compiler: ^1.0.0
+      oxc-transform-react: ^0.145.0
+      vite: ^8.0.0
+    peerDependenciesMeta:
+      "@rolldown/plugin-babel":
+        optional: true
+      babel-plugin-react-compiler:
+        optional: true
+      oxc-transform-react:
+        optional: true
 
   acorn-jsx@5.3.2:
     resolution:
@@ -5835,15 +5877,6 @@ packages:
         integrity: sha512-KzIbH/9tXat2u30jf+smMwFCsno4wHVdNmzFyL+T/L3UGqqk6JKfVqOFOZEpZSHADH1k40ab6NUIXZq422ov3Q==,
       }
 
-  vite-plugin-babel@1.7.3:
-    resolution:
-      {
-        integrity: sha512-PsomVbH74/XyqMzXSwBDqb/1o5sAqE68gPlHLfx4FiMGbvKDhaZVQNv/gj/7oRQ5BvuIlyTKBtNEA9MnirGwRA==,
-      }
-    peerDependencies:
-      "@babel/core": ^7.0.0
-      vite: ^2.7.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0 || ^7.0.0 || ^8.0.0
-
   vite-plugin-devtools-json@1.1.0:
     resolution:
       {
@@ -7233,6 +7266,15 @@ snapshots:
   "@rolldown/binding-win32-x64-msvc@1.2.5":
     optional: true
 
+  "@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))":
+    dependencies:
+      "@babel/core": 7.29.7(supports-color@7.2.0)
+      picomatch: 4.0.7
+      rolldown: 1.2.5
+    optionalDependencies:
+      "@babel/runtime": 7.29.7
+      vite: 8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)
+
   "@rolldown/pluginutils@1.0.1": {}
 
   "@shikijs/core@4.4.1":
@@ -7418,6 +7460,14 @@ snapshots:
     optional: true
 
   "@ungap/structured-clone@1.3.1": {}
+
+  "@vitejs/plugin-react@6.1.1(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)))(babel-plugin-react-compiler@1.0.0)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))":
+    dependencies:
+      "@rolldown/pluginutils": 1.0.1
+      vite: 8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)
+    optionalDependencies:
+      "@rolldown/plugin-babel": 0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
+      babel-plugin-react-compiler: 1.0.0
 
   acorn-jsx@5.3.2(acorn@8.18.0):
     dependencies:
@@ -9591,11 +9641,6 @@ snapshots:
     dependencies:
       "@types/unist": 3.0.3
       vfile-message: 4.0.3
-
-  vite-plugin-babel@1.7.3(@babel/core@7.29.7(supports-color@7.2.0))(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)):
-    dependencies:
-      "@babel/core": 7.29.7(supports-color@7.2.0)
-      vite: 8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)
 
   vite-plugin-devtools-json@1.1.0(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)):
     dependencies:

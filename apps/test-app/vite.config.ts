@@ -75,6 +75,7 @@ export default defineConfig({
 		warmup: { clientFiles: ["./app/root.tsx"] }, // https://github.com/remix-run/react-router/issues/12786#issuecomment-2634033513
 	},
 	preview: {
+		host: "127.0.0.1",
 		port: 1800, // prod server port
 	},
 	resolve: {

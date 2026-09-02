@@ -14,5 +14,8 @@
 	},
 	"scripts": {
 		"test": "node --test lightningcss.test.js"
+	},
+	"devDependencies": {
+		"@babel/preset-typescript": "^8.0.1"
 	}
 }

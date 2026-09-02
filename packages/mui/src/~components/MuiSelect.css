@@ -42,13 +42,13 @@
 			border-width: 0;
 			box-shadow: var(--stratakit-shadow-surface-lg);
 			/* 
-		MUI's `OutlinedInput` wraps the select with another element and the select
-		ends up being 1px smaller that the visual area. The picker uses the select
-		as the anchor and positioning. Use margins to correct the placement to match
-		the wrapper element instead.
-		*/
-			margin-inline: -1px;
-			margin-block: 1px;
+				MUI's `OutlinedInput` wraps the select with another element and the select
+				ends up being 1px smaller that the visual area. The picker uses the select
+				as the anchor and positioning. Use margins to correct the placement to match
+				the wrapper element instead.
+			*/
+			margin-inline-start: -1px;
+			margin-block-start: 1px;
 		}
 	}
 

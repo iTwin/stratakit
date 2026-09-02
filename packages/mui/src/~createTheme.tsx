@@ -99,6 +99,9 @@ function createTheme() {
 
 	return createMuiTheme({
 		spacing: 4,
+		motion: {
+			reducedMotion: "system",
+		},
 		cssVariables: {
 			nativeColor: true,
 			colorSchemeSelector: "[data-color-scheme='%s']",

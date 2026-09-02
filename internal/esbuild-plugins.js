@@ -95,10 +95,11 @@ export function reactCompilerPlugin() {
 		name: "react-compiler",
 
 		setup({ onLoad }) {
-			onLoad({ filter: /\.js$/ }, async (args) => {
+			onLoad({ filter: /\.[tj]sx?$/ }, async (args) => {
 				const source = await fs.readFile(args.path, "utf8");
 				const result = await babel.transformAsync(source, {
 					filename: args.path,
+					presets: ["@babel/preset-typescript"],
 					plugins: [["babel-plugin-react-compiler", { target: "18" }]],
 					sourceMaps: false,
 					configFile: false,

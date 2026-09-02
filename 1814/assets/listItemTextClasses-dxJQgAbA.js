@@ -1,0 +1,1 @@
+import{C as e,S as s}from"./DefaultPropsProvider-6XumKMvl.js";function a(t){return e("MuiListItemIcon",t)}var n=s("MuiListItemIcon",["root","alignItemsFlexStart"]);function r(t){return e("MuiListItemText",t)}var l=s("MuiListItemText",["root","multiline","dense","inset","primary","secondary"]);export{n as i,l as n,a as r,r as t};

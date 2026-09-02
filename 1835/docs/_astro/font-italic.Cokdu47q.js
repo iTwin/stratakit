@@ -1,0 +1,1 @@
+var e=`/1835/docs/_astro/font-bold.CS4vk2-z.svg`,t=`/1835/docs/_astro/font-italic.C8satkxR.svg`;export{e as n,t};

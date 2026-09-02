@@ -58,6 +58,12 @@
 		user-select: auto;
 	}
 
+	&:where(:not(.MuiChip-clickable)),
+	&:where(:has(.MuiChip-deleteIcon.Mui-focusVisible)) {
+		/* Prevents double focus outlines. */
+		outline: unset;
+	}
+
 	&:where(.Mui-disabled) {
 		cursor: not-allowed;
 		opacity: 1;

@@ -12,11 +12,13 @@ import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
-type BadgeProps = React.ComponentProps<typeof Badge>;
-
 const MuiBadgeContext = React.createContext<
 	Pick<BadgeProps, "size" | "type"> | undefined
 >(undefined);
+
+// ----------------------------------------------------------------------------
+
+type BadgeProps = React.ComponentProps<typeof Badge>;
 
 interface MuiBadgeProps
 	extends BaseProps<"span">,

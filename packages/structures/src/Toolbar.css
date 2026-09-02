@@ -9,7 +9,7 @@
 		align-items: center;
 
 		background-color: var(--stratakit-color-bg-page-base);
-		box-shadow: var(--stratakit-shadow-control-toolbar-base);
+		box-shadow: var(--stratakit-shadow-surface-lg);
 		border-radius: var(--stratakit-radius-md);
 		padding: var(--stratakit-space-100);
 

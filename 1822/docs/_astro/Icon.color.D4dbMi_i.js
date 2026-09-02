@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{E as t,P as n}from"./_utils.RTDJ10AY.js";var r={icon:`_icon_18p5z_6`},i=e(),a=()=>(0,i.jsx)(n,{className:r.icon,href:t});export{a as default};

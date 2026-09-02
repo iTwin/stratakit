@@ -1,1 +1,0 @@
-import{_ as e,g as t,y as n}from"./Root.internal.CO7YzpMG.js";var r=`div`,i=`a.button.details.dialog.div.form.h1.h2.h3.h4.h5.h6.header.img.input.label.li.nav.ol.p.section.select.span.summary.textarea.ul.svg`.split(`.`);e(function(e){return e});var a=n(function(e){return t(r,e)});Object.assign(a,i.reduce((e,r)=>(e[r]=n(function(e){return t(r,e)}),e),{}));export{a as t};

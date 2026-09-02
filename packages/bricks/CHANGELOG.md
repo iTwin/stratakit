@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.0-rc.1
+
+- [#1815](https://github.com/iTwin/stratakit/pull/1815): Updated borders for `Button` and `Checkbox`.
+- [#1788](https://github.com/iTwin/stratakit/pull/1788): Increased border contrast in `Button` and `IconButton`.
+- [#1820](https://github.com/iTwin/stratakit/pull/1820): Updated shadow styling across various components (`Button`, `Checkbox`, `Kbd`, `Select`, `Switch`, `Tooltip`).
+- Updated dependencies:
+  - @stratakit/foundations@1.0.0-rc.1
+
 ## 0.6.0-rc.0
 
 - [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.

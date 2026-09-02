@@ -20,7 +20,7 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 ## StrataKit MUI modifications
 
 - Added [`type`](#type) prop.
-- Added an `"inline"` variant.
+- Added an [`"inline"` variant](#inline).
 - Added [`size`](#sizes) prop.
 - The `"default"` and `"primary"` colors have been removed. The default color is now `"secondary"`.
 

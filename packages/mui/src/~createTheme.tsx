@@ -99,6 +99,10 @@ function createTheme() {
 
 	return createMuiTheme({
 		spacing: 4,
+		focusVisible: {
+			outline: "var(--🥝focus-outline)",
+			outlineOffset: "var(--🥝focus-outline-offset)",
+		},
 		cssVariables: {
 			nativeColor: true,
 			colorSchemeSelector: "[data-color-scheme='%s']",

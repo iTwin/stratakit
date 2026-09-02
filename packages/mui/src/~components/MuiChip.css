@@ -58,10 +58,6 @@
 		user-select: auto;
 	}
 
-	&:where(:has(.MuiChip-label:focus-visible)) {
-		outline: var(--🥝focus-outline);
-	}
-
 	&:where(.Mui-disabled) {
 		cursor: not-allowed;
 		opacity: 1;

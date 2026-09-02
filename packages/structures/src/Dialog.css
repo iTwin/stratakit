@@ -130,9 +130,3 @@
 		background: var(--stratakit-color-bg-elevation-overlay);
 	}
 }
-
-@media (forced-colors: active) {
-	.🥝Dialog {
-		border: 1px solid;
-	}
-}

@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.0.0-rc.2
+
+### Patch Changes
+
+- [#1785](https://github.com/iTwin/stratakit/pull/1785): Increased border color contrast across various components.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.0-rc.2
+
 ## 0.6.0-rc.1
 
 - [#1815](https://github.com/iTwin/stratakit/pull/1815): Updated borders for `Button` and `Checkbox`.

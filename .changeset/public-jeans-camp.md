@@ -3,6 +3,7 @@
 "@stratakit/structures": patch
 "@stratakit/bricks": patch
 "@stratakit/mui": patch
+"@stratakit/internal-utils": patch
 ---
 
-Optimized output with React compiler.
+Increased optimization with React compiler.

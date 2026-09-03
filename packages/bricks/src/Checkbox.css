@@ -27,7 +27,7 @@
 		var(--✨border--default) 100%,
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
-	--✨border--checked: var(--stratakit-color-border-shadow-strong);
+	--✨border--checked: var(--stratakit-color-border-glow-strong-default);
 	--✨border--checked-hover: color-mix(
 		in oklch,
 		var(--✨border--checked) 100%,
@@ -63,9 +63,7 @@
 		transition: all 150ms ease-out;
 		transition-property: background-color, border-color, box-shadow, --🥝Checkbox-border-color;
 		position: relative;
-		box-shadow:
-			var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
-			var(--stratakit-shadow-control-button-base-drop);
+		box-shadow: var(--✨shadow-border), var(--stratakit-shadow-surface-sm);
 		-webkit-tap-highlight-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 
 		--🥝Checkbox-border-color: var(--🌀Checkbox-visual-state--default, var(--✨border--default))

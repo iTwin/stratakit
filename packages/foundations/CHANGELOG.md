@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.0.0-rc.1
+
+### Breaking changes
+
+- [#1817](https://github.com/iTwin/stratakit/pull/1817): Removed tokens:
+
+  - `--stratakit-color-border-shadow-base`
+  - `--stratakit-color-border-shadow-strong`
+
+- [#1820](https://github.com/iTwin/stratakit/pull/1820): Removed shadow tokens:
+
+  - `--stratakit-shadow-control-button-base-drop`
+  - `--stratakit-shadow-control-button-base-inset`
+  - `--stratakit-shadow-control-dialog-base`
+  - `--stratakit-shadow-control-dropdown-base`
+  - `--stratakit-shadow-control-input-base`
+  - `--stratakit-shadow-control-table-strong`
+  - `--stratakit-shadow-control-tooltip-base`
+  - `--stratakit-shadow-control-toolbar-base`
+
 ## 1.0.0-rc.0
 
 ### Breaking changes

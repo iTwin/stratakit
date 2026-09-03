@@ -96,15 +96,11 @@ export function reactCompilerPlugin() {
 
 		setup({ onLoad }) {
 			onLoad({ filter: /\.[tj]sx?$/ }, async (args) => {
-				const isJSX = /\.[jt]sx$/.test(args.path);
 				const source = await fs.readFile(args.path, "utf8");
 				const result = await babel.transformAsync(source, {
 					filename: args.path,
 					presets: ["@babel/preset-typescript"],
-					plugins: [
-						...(isJSX ? ["@babel/plugin-syntax-jsx"] : []),
-						["babel-plugin-react-compiler", { target: "18" }],
-					],
+					plugins: [["babel-plugin-react-compiler", { target: "18" }]],
 					sourceMaps: "inline",
 					configFile: false,
 					babelrc: false,

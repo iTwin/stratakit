@@ -24,7 +24,7 @@ export default () => {
 					</>
 				}
 				size="small"
-				inline
+				variant="inline"
 			/>
 			<Badge
 				badgeContent={
@@ -34,7 +34,7 @@ export default () => {
 					</>
 				}
 				size="medium"
-				inline
+				variant="inline"
 			/>
 		</Stack>
 	);

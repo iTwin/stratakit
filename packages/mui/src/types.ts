@@ -238,6 +238,16 @@ declare module "@mui/material/Badge" {
 
 	interface BadgeOwnProps {
 		/**
+		 * The badge variant to use.
+		 *
+		 * - `"standard"`: Displays the badge with its content.
+		 * - `"dot"`: Displays the badge without content.
+		 * - `"inline"`: Displays the badge in normal document flow instead of positioning it relative to its child.
+		 *
+		 * @default 'standard'
+		 */
+		variant?: BadgeProps["variant"];
+		/**
 		 * The size of the badge.
 		 *
 		 * This prop can only be applied when `variant` is `"inline"`.

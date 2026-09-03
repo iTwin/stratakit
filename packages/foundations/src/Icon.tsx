@@ -19,16 +19,11 @@ import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
-const DEFAULT_ICON_HASH = "#icon";
-
-// ----------------------------------------------------------------------------
-
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
 	 * URL of the `.svg` file (e.g. from `@stratakit/icons`).
 	 *
 	 * The URL can contain a hash pointing to a specific symbol within the SVG (e.g. `#icon`, `#icon-large`).
-	 * By default, the `#icon` symbol is used if no hash is provided.
 	 *
 	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
 	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from
@@ -88,7 +83,7 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 	const { href: hrefProp, size, alt, ...rest } = props;
 
 	const isDecorative = !alt;
-	const hrefBase = useNormalizedHrefBase(hrefProp);
+	const href = useNormalizedHrefBase(hrefProp);
 
 	return (
 		<Role.svg
@@ -100,22 +95,11 @@ export const Icon = forwardRef<"svg", IconProps>((props, forwardedRef) => {
 			className={cx("🥝Icon", props.className)}
 			ref={forwardedRef}
 		>
-			{hrefBase ? <use href={toIconHref(hrefBase)} /> : null}
+			{href ? <use href={href} /> : null}
 		</Role.svg>
 	);
 });
 DEV: Icon.displayName = "Icon";
-
-// ----------------------------------------------------------------------------
-
-/**
- * Constructs a final URL from the base.
- * Adds default hash (`#icon`) if the URL does not already contain a hash.
- */
-function toIconHref(hrefBase: string) {
-	if (!hrefBase.includes("#")) return `${hrefBase}${DEFAULT_ICON_HASH}`;
-	return hrefBase;
-}
 
 // ----------------------------------------------------------------------------
 
@@ -184,7 +168,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 				try {
 					// Construct full normalized URL (with base) to support relative non-HTTP URLs.
 					const resourceUrl = new URL(rawHref, ownerDocument.baseURI);
-					const hash = resourceUrl.hash || DEFAULT_ICON_HASH; // Save hash for later.
+					const hash = resourceUrl.hash; // Save hash for later.
 					resourceUrl.hash = ""; // Remove hash as it's not relevant for fetching the resource.
 
 					// Make a network request

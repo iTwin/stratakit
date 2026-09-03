@@ -1,8 +1,6 @@
 # Changelog
 
-## 1.0.0-rc.2
-
-### Patch Changes
+## 0.6.0-rc.2
 
 - [#1785](https://github.com/iTwin/stratakit/pull/1785): Increased border color contrast across various components.
 - Updated dependencies:

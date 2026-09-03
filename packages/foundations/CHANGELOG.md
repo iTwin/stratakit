@@ -2,7 +2,7 @@
 
 ## 1.0.0-rc.2
 
-### Minor Changes
+### Breaking changes
 
 - [#1785](https://github.com/iTwin/stratakit/pull/1785): Removed the "faux border" layer from all `--stratakit-shadow-surface-*` tokens.
 

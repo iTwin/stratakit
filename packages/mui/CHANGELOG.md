@@ -2,7 +2,7 @@
 
 ## 1.0.0-rc.2
 
-### Minor Changes
+### Breaking changes
 
 - [#1835](https://github.com/iTwin/stratakit/pull/1835): Replaced the `inline` prop of `Badge` with the `"inline"` value of the `variant` prop.
 
@@ -13,7 +13,7 @@
 
 - [#1785](https://github.com/iTwin/stratakit/pull/1785): Removed the "faux border" layer from all `--stratakit-shadow-surface-*` tokens.
 
-### Patch Changes
+### Non-breaking changes
 
 - [#1832](https://github.com/iTwin/stratakit/pull/1832): Enabled MUI's built-in `reducedMotion` to use match operating system's preferences.
 - [#1822](https://github.com/iTwin/stratakit/pull/1822): Fixed a bug related to using React compiler with `@stratakit/mui` source.

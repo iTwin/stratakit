@@ -243,8 +243,6 @@ declare module "@mui/material/Badge" {
 		 * - `"standard"`: Displays the badge with its content.
 		 * - `"dot"`: Displays the badge without content.
 		 * - `"inline"`: Displays the badge in normal document flow instead of positioning it relative to its child.
-		 *
-		 * @default 'standard'
 		 */
 		variant?: BadgeProps["variant"];
 		/**

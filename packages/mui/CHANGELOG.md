@@ -1,5 +1,27 @@
 # Changelog
 
+## 1.0.0-rc.2
+
+### Breaking changes
+
+- [#1835](https://github.com/iTwin/stratakit/pull/1835): Replaced the `inline` prop of `Badge` with the `"inline"` value of the `variant` prop.
+
+  ```diff
+  - <Badge inline badgeContent="…" />
+  + <Badge variant="inline" badgeContent="…" />
+  ```
+
+- [#1785](https://github.com/iTwin/stratakit/pull/1785): Removed the "faux border" layer from all `--stratakit-shadow-surface-*` tokens.
+
+### Non-breaking changes
+
+- [#1832](https://github.com/iTwin/stratakit/pull/1832): Enabled MUI's built-in `reducedMotion` to use match operating system's preferences.
+- [#1822](https://github.com/iTwin/stratakit/pull/1822): Fixed a bug related to using React compiler with `@stratakit/mui` source.
+- [#1831](https://github.com/iTwin/stratakit/pull/1831): Enabled MUI's built-in `focusVisible` to use StrataKit's focus ring tokens.
+- [#1785](https://github.com/iTwin/stratakit/pull/1785): Increased border color contrast across various components.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.0-rc.2
+
 ## 1.0.0-rc.1
 
 ### Breaking changes

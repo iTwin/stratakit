@@ -322,6 +322,12 @@ importers:
       "@babel/core":
         specifier: ^7.29.7
         version: 7.29.7(supports-color@7.2.0)
+      "@babel/plugin-syntax-jsx":
+        specifier: ^8.0.1
+        version: 8.0.1(@babel/core@7.29.7(supports-color@7.2.0))
+      "@babel/preset-typescript":
+        specifier: ^8.0.1
+        version: 8.0.1(@babel/core@7.29.7(supports-color@7.2.0))
       babel-plugin-react-compiler:
         specifier: ~1.0.0
         version: 1.0.0
@@ -331,10 +337,6 @@ importers:
       lightningcss:
         specifier: "catalog:"
         version: 1.33.0
-    devDependencies:
-      "@babel/preset-typescript":
-        specifier: ^8.0.1
-        version: 8.0.1(@babel/core@7.29.7(supports-color@7.2.0))
 
   packages/bricks:
     dependencies:
@@ -1054,6 +1056,15 @@ packages:
     engines: { node: ">=6.9.0" }
     peerDependencies:
       "@babel/core": ^7.0.0-0
+
+  "@babel/plugin-syntax-jsx@8.0.1":
+    resolution:
+      {
+        integrity: sha512-n0jtCOxEovhU7METqSQjcZO9pX53nu9uNIjMS+hEt+Nt9jA7oOZoBIgbCxhhASmF6T6rPDGge5UAvh6Z4eFz/g==,
+      }
+    engines: { node: ^22.18.0 || >=24.11.0 }
+    peerDependencies:
+      "@babel/core": ^8.0.0
 
   "@babel/plugin-syntax-typescript@7.29.7":
     resolution:
@@ -7236,6 +7247,11 @@ snapshots:
     dependencies:
       "@babel/core": 7.29.7(supports-color@7.2.0)
       "@babel/helper-plugin-utils": 7.29.7
+
+  "@babel/plugin-syntax-jsx@8.0.1(@babel/core@7.29.7(supports-color@7.2.0))":
+    dependencies:
+      "@babel/core": 7.29.7(supports-color@7.2.0)
+      "@babel/helper-plugin-utils": 8.0.1(@babel/core@7.29.7(supports-color@7.2.0))
 
   "@babel/plugin-syntax-typescript@7.29.7(@babel/core@7.29.7(supports-color@7.2.0))":
     dependencies:

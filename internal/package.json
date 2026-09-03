@@ -8,14 +8,13 @@
 	},
 	"dependencies": {
 		"@babel/core": "^7.29.7",
+		"@babel/plugin-syntax-jsx": "^8.0.1",
+		"@babel/preset-typescript": "^8.0.1",
 		"babel-plugin-react-compiler": "~1.0.0",
 		"colorjs.io": "^0.7.1",
 		"lightningcss": "catalog:"
 	},
 	"scripts": {
 		"test": "node --test lightningcss.test.js"
-	},
-	"devDependencies": {
-		"@babel/preset-typescript": "^8.0.1"
 	}
 }

@@ -15,13 +15,13 @@ We aim to minimize breaking changes by designing our APIs for future flexibility
 
 <dl>
   <dt><code>@stratakit/foundations</code> breaking changes</dt>
-  <dd>Changes to variable names or significant alterations in values.</dd>
+  <dd>Removal or renaming of variables, or significant changes to their values.</dd>
 
   <dt><code>@stratakit/mui</code> breaking changes</dt>
-  <dd>Adjustments to the DOM structure, class names, or significant visual updates. The CSS package may adopt a new major version of the Variables package without requiring a new major version of the CSS package.</dd>
+  <dd>Adjustments to the DOM structure, class names, component props, or significant visual updates. Adopting a new major version of the `foundations` package does not require a major version release of the `mui` package.</dd>
 
   <dt><code>@stratakit/structures</code> breaking changes</dt>
-  <dd>Modifications that cause compilation errors or undesirable runtime behavior in existing code. The React package may adopt a new major version of the CSS package without requiring a new major version of the React package.</dd>
+  <dd>Changes to component APIs, props, rendering behavior, or DOM structure. Adopting new major versions of the `foundations` or `mui` packages does not require a major version release of the `structures` package.</dd>
 </dl>
 
 ## Package versioning policy

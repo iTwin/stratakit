@@ -99,6 +99,10 @@ function createTheme() {
 
 	return createMuiTheme({
 		spacing: 4,
+		focusVisible: {
+			outline: "var(--🥝focus-outline)",
+			outlineOffset: "var(--🥝focus-outline-offset)",
+		},
 		cssVariables: {
 			nativeColor: true,
 			colorSchemeSelector: "[data-color-scheme='%s']",
@@ -757,11 +761,12 @@ function withExcludedProps<Element, Props extends object>(
 	excludedProps: readonly string[],
 ) {
 	return React.forwardRef<Element, Props>((props, forwardedRef) => {
-		const filteredProps = Object.fromEntries(
-			Object.entries(props).filter(([key]) => !excludedProps.includes(key)),
-		) as Props;
+		const filteredProps = { ...props };
+		for (const key of excludedProps) {
+			delete filteredProps[key as keyof React.PropsWithoutRef<Props>];
+		}
 
-		return <Component {...filteredProps} ref={forwardedRef} />;
+		return <Component {...(filteredProps as Props)} ref={forwardedRef} />;
 	});
 }
 

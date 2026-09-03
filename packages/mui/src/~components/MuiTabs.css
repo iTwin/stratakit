@@ -183,10 +183,6 @@
 	:where(.MuiTabs-root:has(.MuiTab-root.Mui-selected.Mui-disabled)) & {
 		background-color: var(--stratakit-color-border-neutral-disabled);
 	}
-
-	@media (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
 }
 
 .MuiTabScrollButton-root {

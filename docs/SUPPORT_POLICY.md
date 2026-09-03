@@ -13,6 +13,9 @@ Sometimes, APIs evolve in a way that requires making backwards-incompatible chan
 
 We aim to minimize breaking changes by designing our APIs for future flexibility. However, evolving needs sometimes necessitate such changes. Here's how we handle them in different StrataKit packages:
 
+> [!NOTE]  
+> APIs or props prefixed with `unstable_` may change at any time without requiring a major version release.
+
 <dl>
   <dt><code>@stratakit/foundations</code> breaking changes</dt>
   <dd>Removal or renaming of variables, or significant changes to their values.</dd>

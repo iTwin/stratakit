@@ -6,18 +6,22 @@
 	--✨width: 2rem;
 	--✨thumb-size: 1rem;
 
-	--✨radius: 9999px;
+	--✨radius: var(--stratakit-radius-round);
 	--✨checked-translateX: 75%;
 	--✨pressed-scaleX: 1.75;
 
-	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-shadow-base) inset;
+	--✨thumb-border-color: light-dark(
+		var(--stratakit-color-border-neutral-base),
+		--primitive("color.white.8")
+	);
 
 	--✨thumb-shadow--default:
-		var(--stratakit-shadow-control-button-base-inset), var(--✨shadow-border),
-		var(--stratakit-shadow-control-button-base-drop);
+		inset 0px -1px 0px 0px --primitive("color.black.8"), /* bevel */
+		inset 0px 0px 0px 1px var(--✨thumb-border-color), /* border */
+		var(--stratakit-shadow-surface-sm);
 	--✨thumb-shadow--checked:
-		var(--stratakit-shadow-control-button-base-inset),
-		var(--stratakit-shadow-control-button-base-drop);
+		inset 0px -1px 0px 0px --primitive("color.black.8"), /* bevel */
+		var(--stratakit-shadow-surface-sm);
 
 	--✨glow--border-hover: var(--stratakit-color-glow-hue)
 		var(--stratakit-color-border-glow-base-hover-\%);
@@ -96,7 +100,7 @@
 		&::before {
 			position: absolute;
 			inline-size: var(--✨width);
-			block-size: var(--stratakit-space-x6);
+			block-size: var(--stratakit-space-600);
 			margin: -1px; /* account for border */
 		}
 

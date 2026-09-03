@@ -48,7 +48,8 @@ jobs:
             return ['commit', ...((await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              state: 'open'
+              state: 'open',
+              per_page: 100
             })).data.map(pr => pr.number))].join('\n')
 
   deploy:

@@ -4,22 +4,22 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝MuiTooltip {
-	--✨border-width: 1px;
-	--✨margin: var(--stratakit-space-x05);
-
-	--✨padding-block: calc(var(--stratakit-space-x1) - var(--✨border-width));
-	--✨padding-inline: calc(var(--stratakit-space-x2) - var(--✨border-width));
+	--✨margin: var(--stratakit-space-50);
+	--✨padding-block: var(--stratakit-space-100);
+	--✨padding-inline: var(--stratakit-space-200);
 
 	@apply --typography("caption-lg");
 	overflow-wrap: anywhere;
 	hyphens: auto;
 
 	background-color: var(--stratakit-color-bg-elevation-emphasis);
-	box-shadow: var(--stratakit-shadow-control-tooltip-base);
+	box-shadow: var(--stratakit-shadow-surface-lg);
 	color: var(--stratakit-color-text-neutral-emphasis);
 
-	border: var(--✨border-width) solid transparent;
-	border-radius: 4px;
+	outline: 1px solid var(--stratakit-color-border-elevation-base);
+	outline-offset: -2px;
+
+	border-radius: var(--stratakit-radius-sm);
 	padding-block-start: var(--✨padding-block);
 	padding-block-end: var(--✨padding-block);
 	padding-inline-start: var(--✨padding-inline);

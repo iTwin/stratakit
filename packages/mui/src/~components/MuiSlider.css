@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiSlider-root {
-	--✨color-rail-bg--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-bg--default: var(--stratakit-color-bg-mono-muted);
 	--✨color-rail-bg--disabled: var(--stratakit-color-bg-control-switch);
-	--✨color-rail-border--default: var(--stratakit-color-bg-control-slider-track);
+	--✨color-rail-border--default: var(--stratakit-color-bg-mono-muted);
 	--✨color-rail-border--disabled: var(--stratakit-color-border-neutral-disabled);
 	--✨color-track-bg--default: var(--stratakit-color-bg-accent-base);
 	--✨color-track-bg--disabled: var(--stratakit-color-border-neutral-disabled);
@@ -16,7 +16,7 @@
 	--✨size-thumb--medium: 1rem;
 	--✨size-track--small: 0.125rem;
 	--✨size-track--medium: 0.25rem;
-	--✨size-track--active-increase: var(--stratakit-space-x1);
+	--✨size-track--active-increase: var(--stratakit-space-100);
 
 	padding: 0;
 	--_MuiSlider-rail-background-color: var(--✨color-rail-bg--default);
@@ -120,7 +120,7 @@
 	block-size: var(--_MuiSlider-thumb-size);
 	inline-size: var(--_MuiSlider-thumb-size);
 	background-color: var(--stratakit-color-bg-neutral-inverse);
-	border: 1px solid var(--stratakit-color-border-shadow-base);
+	border: 1px solid var(--stratakit-color-border-neutral-base);
 	box-shadow: none;
 	cursor: grab;
 
@@ -132,11 +132,6 @@
 		background-color: var(--stratakit-color-icon-neutral-disabled);
 		border-color: var(--stratakit-color-icon-neutral-disabled);
 		cursor: not-allowed;
-	}
-
-	&:where(.Mui-focusVisible) {
-		outline: var(--🥝focus-outline);
-		outline-offset: 2px;
 	}
 
 	/* This pseudo-element increases tap target size to 24x24 */
@@ -164,7 +159,7 @@
 }
 
 .MuiSlider-markLabel {
-	--✨gap: calc(var(--_MuiSlider-thumb-size) + var(--stratakit-space-x1));
+	--✨gap: calc(var(--_MuiSlider-thumb-size) + var(--stratakit-space-100));
 
 	@apply --typography("caption-md");
 	color: var(--stratakit-color-text-neutral-tertiary);
@@ -194,7 +189,7 @@
 }
 
 .MuiSlider-valueLabel {
-	--✨gap: var(--stratakit-space-x1);
+	--✨gap: var(--stratakit-space-100);
 
 	font-variant-numeric: tabular-nums;
 	user-select: none; /* Disabled because tooltip is inside the thumb which intercepts all pointer events */

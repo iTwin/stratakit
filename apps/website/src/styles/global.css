@@ -62,7 +62,7 @@
 
 	dl {
 		display: grid;
-		gap: var(--stratakit-space-x4);
+		gap: var(--stratakit-space-400);
 	}
 
 	dt {
@@ -70,11 +70,11 @@
 	}
 
 	dd {
-		margin-inline-start: var(--stratakit-space-x4);
+		margin-inline-start: var(--stratakit-space-400);
 	}
 
 	example-embed:not(:first-child) {
-		margin-block-start: var(--stratakit-space-x4);
+		margin-block-start: var(--stratakit-space-400);
 	}
 }
 

@@ -9,7 +9,7 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 
 export default () => {
 	return (
-		<Stack spacing={1} direction="column">
+		<Stack spacing={2} direction="column">
 			<Skeleton variant="circular" width={40} height={40} />
 			<Skeleton variant="rectangular" />
 			<Skeleton variant="rounded" />

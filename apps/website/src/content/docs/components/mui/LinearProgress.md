@@ -10,6 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
+- The `color` prop does not support `"inherit"` or `"info"`.
 - Added an end marker when the `variant` prop is set to `"determinate"` or `"buffer"`.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.

@@ -5,7 +5,7 @@
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
 	/* #region Variables */
-	--✨border-radius-checkbox: var(--stratakit-mui-shape-borderRadius);
+	--✨border-radius-checkbox: var(--stratakit-radius-sm);
 	--✨border-radius-radio: 50%;
 
 	--✨bg--default: var(--stratakit-color-bg-neutral-base);
@@ -13,8 +13,8 @@
 	--✨bg--error: var(--stratakit-color-bg-neutral-base);
 	--✨bg--disabled: var(--stratakit-color-bg-glow-on-surface-disabled);
 
-	--✨border--default: var(--stratakit-color-border-shadow-base);
-	--✨border--checked: var(--stratakit-color-border-shadow-strong);
+	--✨border--default: var(--stratakit-color-border-neutral-base);
+	--✨border--checked: var(--stratakit-color-border-glow-strong-default);
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 

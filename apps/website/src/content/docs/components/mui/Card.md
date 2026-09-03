@@ -24,10 +24,23 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ## StrataKit MUI modifications
 
-- `Card` is rendered as an [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article) element by default. This programmatically indicates the bounds of the **Card’s** contents.
-- `CardHeader`'s `title` is rendered as an `<h2>` by default.
-- `CardActionArea` has been redesigned to no longer wrap the entire card content. Instead, it should be used in the **Card's** title.
-- `Card` defaults to `variant="outlined"`.
+Modifications to `Card`:
+
+- The `elevation`, `raised` and `square` props are not supported.
+- Rendered as an [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article) element by default. This programmatically indicates the bounds of the **Card’s** contents.
+- The `variant` prop defaults to `"outlined"`. The `variant` prop is not supported.
+
+Modifications to `CardHeader`:
+
+- The `disableTypography` prop is not supported.
+- The `title` is rendered as an `<h2>` by default.
+
+Modifications to `CardActionArea`:
+
+- The `action` prop is not supported.
+- The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
+- Redesigned to no longer wrap the entire card content. Instead, it should be used in the **Card's** title.
 
 ## Examples
 

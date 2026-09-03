@@ -7,8 +7,9 @@
 		"build": "wireit",
 		"dev": "wireit",
 		"preview": "wireit",
-		"preview:raw": "vite preview",
+		"preview:raw": "vite preview --outDir build/client --port 1800",
 		"test": "wireit",
+		"test-report": "pnpm exec playwright show-report test-results/report",
 		"typecheck": "wireit"
 	},
 	"imports": {
@@ -16,8 +17,6 @@
 	},
 	"dependencies": {
 		"@ariakit/react": "^0.4.35",
-		"@emotion/react": "^11.14.0",
-		"@emotion/styled": "^11.14.1",
 		"@mui/material": "catalog:",
 		"@mui/utils": "catalog:",
 		"@mui/x-date-pickers": "catalog:",

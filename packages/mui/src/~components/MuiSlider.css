@@ -134,11 +134,6 @@
 		cursor: not-allowed;
 	}
 
-	&:where(.Mui-focusVisible) {
-		outline: var(--🥝focus-outline);
-		outline-offset: 2px;
-	}
-
 	/* This pseudo-element increases tap target size to 24x24 */
 	&::after {
 		block-size: 24px;

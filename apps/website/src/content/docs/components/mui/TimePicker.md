@@ -6,4 +6,4 @@ links:
   apiReference: https://mui.com/x/api/date-pickers/time-picker/
 ---
 
-::example{src="mui/DatePicker.time"}
+::example{src="mui/TimePicker.default"}

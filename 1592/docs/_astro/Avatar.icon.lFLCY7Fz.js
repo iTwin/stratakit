@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{z as t}from"./_utils.DvxZo3X8.js";import{t as n}from"./user.BMsXt2iD.js";import{t as r}from"./Avatar.CKKcfuoU.js";var i=e(),a=()=>(0,i.jsx)(r,{"aria-label":`Kit Stratan`,role:`img`,children:(0,i.jsx)(t,{href:n})});export{a as default};

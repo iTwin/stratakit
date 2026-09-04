@@ -1,0 +1,1 @@
+var e=`/1841/docs/_astro/heart.VJPzVpEV.svg`,t=`/1841/docs/_astro/location.C_VRgk7K.svg`;export{e as n,t};

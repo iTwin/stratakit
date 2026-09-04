@@ -93,6 +93,7 @@ const components = {
 	TextField: processExamples(() => import("./TextField.showcase.tsx")),
 	ToggleButton: processExamples(() => import("./ToggleButton.showcase.tsx")),
 	Tooltip: processExamples(() => import("./Tooltip.showcase.tsx")),
+	TransferList: processExamples(() => import("./TransferList.showcase.tsx")),
 	Typography: processExamples(() => import("./Typography.showcase.tsx")),
 };
 

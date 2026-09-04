@@ -5,6 +5,7 @@
 import RadioGroupDefault from "examples/mui/RadioGroup.default.tsx";
 import RadioGroupDefaultValue from "examples/mui/RadioGroup.defaultValue.tsx";
 import RadioGroupError from "examples/mui/RadioGroup.error.tsx";
+import RadioTiles from "examples/mui/RadioGroup.tiles.tsx";
 import { createKnob } from "~/~utils.tsx";
 
 export default function RadioGroupExamples() {
@@ -13,6 +14,7 @@ export default function RadioGroupExamples() {
 			<RadioGroupDefault />
 			<RadioGroupDefaultValue />
 			<RadioGroupError />
+			<RadioTiles />
 		</>
 	);
 }

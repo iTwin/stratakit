@@ -42,6 +42,10 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 
 ::example{src="mui/RadioGroup.error" min-height="200px"}
 
+## Tiles
+
+::example{src="mui/RadioGroup.tiles"}
+
 ## ✅ Do
 
 - Use **Radios** where there is only a handful of input options on offer.

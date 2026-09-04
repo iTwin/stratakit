@@ -2,15 +2,24 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+.container {
+	position: relative;
+}
 
-import DialogDefault from "examples/mui/Dialog.default.tsx";
-import DialogFullScreen from "examples/mui/Dialog.fullScreen.tsx";
+.icon {
+	opacity: 0;
+	position: absolute;
+	left: var(--stratakit-space-100);
+	top: 50%;
+	transform: translateY(-50%);
+	pointer-events: none;
 
-export default function DialogExamples() {
-	return (
-		<>
-			<DialogDefault />
-			<DialogFullScreen />
-		</>
-	);
+	@media (prefers-reduced-motion: no-preference) {
+		will-change: opacity;
+		transition: opacity 0.15s ease-out;
+	}
+
+	:has(:global(.Mui-checked)) + & {
+		opacity: 1;
+	}
 }

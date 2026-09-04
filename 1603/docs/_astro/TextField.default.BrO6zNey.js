@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.B-hcVAMW.js";import{t}from"./TextField.EL5-lvE_.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Name`});export{r as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.B-hcVAMW.js";import{m as t}from"./_utils.CKxJ3tdu.js";import{c as n}from"./ExamplePreview.CJym4zCf.js";var r=e(),i=()=>(0,r.jsx)(t,{title:`Save is disabled until you finish reading the documentation`,children:(0,r.jsx)(n,{disabled:!0,children:`Save`})});export{i as default};

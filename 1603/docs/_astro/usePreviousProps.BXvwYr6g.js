@@ -1,0 +1,1 @@
+import{a as e,n as t}from"./jsx-runtime.B-hcVAMW.js";var n=e(t(),1);function r(e){let t=n.useRef({});return n.useEffect(()=>{t.current=e}),t.current}export{r as t};

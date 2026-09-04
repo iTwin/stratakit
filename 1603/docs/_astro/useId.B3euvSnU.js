@@ -1,0 +1,1 @@
+import{a as e,n as t}from"./jsx-runtime.B-hcVAMW.js";var n=e(t(),1),r=0;function i(e){let[t,i]=n.useState(e),a=e||t;return n.useEffect(()=>{t??(r+=1,i(`mui-${r}`))},[t]),a}var a={...n}.useId;function o(e){if(a!==void 0){let t=a();return e??t}return i(e)}export{o as t};

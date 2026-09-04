@@ -1,0 +1,21 @@
+var e=`/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+import Stack from "@mui/material/Stack";
+import TextField from "@mui/material/TextField";
+
+export default () => {
+	return (
+		<Stack
+			spacing={2}
+			direction="row"
+			sx={{ alignItems: "center", flexWrap: "wrap" }}
+		>
+			<TextField size="small" label="Small" />
+			<TextField size="medium" label="Medium" />
+		</Stack>
+	);
+};
+`;export{e as default};

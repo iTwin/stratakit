@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.B-hcVAMW.js";import{t}from"./IconButton.4QMkCeHo.js";import{t as n}from"./placeholder.GHtNBErw.js";var r=e(),i=()=>(0,r.jsxs)(`div`,{className:`flex`,children:[(0,r.jsx)(t,{variant:`solid`,label:`Solid`,icon:n}),(0,r.jsx)(t,{variant:`outline`,label:`Outline`,icon:n}),(0,r.jsx)(t,{variant:`ghost`,label:`Ghost`,icon:n})]});export{i as default};

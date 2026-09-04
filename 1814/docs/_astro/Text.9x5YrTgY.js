@@ -1,0 +1,1 @@
+import{i as e,t}from"./jsx-runtime.Cltr0gcK.js";import{o as n,s as r}from"./Root.internal.XnMxyQG4.js";import{t as i}from"./role.BeylNdKH.js";import{t as a}from"./_utils.useInit.TGibv4dc.js";var o=t(),s=e(n(),1),c=r((e,t)=>{a();let{variant:n,...r}=e;return(0,o.jsx)(i,{...r,className:(0,s.default)(`🥝Text`,e.className),"data-_sk-text-variant":n,ref:t})});export{c as t};

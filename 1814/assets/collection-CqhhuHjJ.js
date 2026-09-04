@@ -1,0 +1,1 @@
+import{t as a}from"./jsx-runtime-CvPTumEY.js";import{Cn as i,ln as l,on as s,or as c,sn as m}from"./~utils-DqXAIxnW.js";import{a as u,s as v}from"./collection-store-BbjEdas6.js";var C=a(),d="div",f=m(function({store:e,...o}){const n=v();return e=e||n,o=i(o,r=>(0,C.jsx)(u,{value:e,children:r}),[e]),c(o)}),j=l(function(e){const o=f(e);return s(d,o)});export{j as t};

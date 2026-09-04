@@ -1,1 +1,0 @@
-import{et as e,t}from"./jsx-runtime-PSkadNh_.js";import{Jt as n,Rt as r,Yt as i,an as a}from"./~utils-BAv9x-zz.js";var o=t(),s=e(n(),1),c=i((e,t)=>{r();let{variant:n=`text`,size:i=`medium`,...c}=e;return(0,o.jsx)(a.div,{...c,ref:t,className:(0,s.default)(`🥝Skeleton`,e.className),"data-_sk-variant":n,"data-_sk-size":i,"aria-hidden":!0})});export{c as t};

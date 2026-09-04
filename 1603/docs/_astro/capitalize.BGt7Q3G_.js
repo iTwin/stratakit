@@ -1,0 +1,1 @@
+import{j as e}from"./DefaultPropsProvider.BGs4p5OW.js";var t=e;export{t};

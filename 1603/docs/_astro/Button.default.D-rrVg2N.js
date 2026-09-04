@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.B-hcVAMW.js";import{s as t}from"./ExamplePreview.m10BebfQ.js";var n=e(),r=()=>(0,n.jsx)(t,{children:`Create new`});export{r as default};

@@ -62,14 +62,14 @@
 }
 
 .input {
-	border: 0px;
-	clip-path: inset(50%);
-	height: 1px;
-	margin: -1px;
-	overflow: hidden;
-	padding: 0px;
+	border: none;
+	margin: 0;
+	padding: 0;
+	width: unset;
+	height: unset;
 	position: absolute;
-	white-space: nowrap;
-	width: 1px;
-	inset: auto 0 0 0;
+	inset: 0;
+	opacity: 0;
+	cursor: pointer;
+	-webkit-tap-highlight-color: transparent;
 }

@@ -20,6 +20,8 @@ This release uses the newly overhauled design tokens (CSS variables) from `@stra
 
   <details>
   <summary>Background</summary>
+
+  ​
   - `--stratakit-color-bg-neutral-muted`
   - `--stratakit-color-bg-neutral-faded`
   - `--stratakit-color-bg-accent-faded`
@@ -36,6 +38,8 @@ This release uses the newly overhauled design tokens (CSS variables) from `@stra
 
   <details>
   <summary>Text</summary>
+
+  ​
   - `--stratakit-color-text-neutral-faded`
   - `--stratakit-color-text-accent-faded`
   - `--stratakit-color-text-positive-faded`
@@ -51,6 +55,8 @@ This release uses the newly overhauled design tokens (CSS variables) from `@stra
 
   <details>
   <summary>Icon</summary>
+
+  ​
   - `--stratakit-color-icon-neutral-tertiary`
   - `--stratakit-color-icon-neutral-muted`
   - `--stratakit-color-icon-neutral-faded`
@@ -68,6 +74,8 @@ This release uses the newly overhauled design tokens (CSS variables) from `@stra
 
   <details>
   <summary>Border</summary>
+
+  ​
   - `--stratakit-color-border-page-depth`
   - `--stratakit-color-border-neutral-faded`
   - `--stratakit-color-border-accent-faded`
@@ -89,6 +97,8 @@ This release uses the newly overhauled design tokens (CSS variables) from `@stra
 
   <details>
   <summary>Shadow</summary>
+
+  ​
   - `--stratakit-shadow-control-button-base-drop`
   - `--stratakit-shadow-control-button-base-inset`
   - `--stratakit-shadow-control-dialog-base`
@@ -154,6 +164,8 @@ This release uses the newly overhauled design tokens (CSS variables) from `@stra
 
   <details>
   <summary>Line-height variables</summary>
+
+  ​
   - `--stratakit-line-height-display-lg`
   - `--stratakit-line-height-display-md`
   - `--stratakit-line-height-display-sm`
@@ -177,6 +189,8 @@ This release uses the newly overhauled design tokens (CSS variables) from `@stra
 
   <details>
   <summary>Radius variables</summary>
+
+  ​
   - `--stratakit-radius-sm`
   - `--stratakit-radius-md`
   - `--stratakit-radius-lg`

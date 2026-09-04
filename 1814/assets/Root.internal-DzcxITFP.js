@@ -1,0 +1,1 @@
+import{Z as e,et as t}from"./jsx-runtime-PSkadNh_.js";import{rn as n}from"./~utils-Dl3QEWJk.js";var r=t(e(),1),i=r.createContext(void 0);DEV:i.displayName=`RootContext`;var a=r.createContext(void 0);function o(){let e=r.useContext(a);if(n())return e}var s=`🥝-inline-sprites`,c=r.createContext(void 0);export{o as a,s as i,i as n,a as r,c as t};

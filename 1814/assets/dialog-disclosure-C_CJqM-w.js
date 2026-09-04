@@ -1,1 +1,0 @@
-import{Ft as e,ln as t,on as n,qn as r,sn as i,ut as a,vt as o,zn as s}from"./~utils-CZKmDMjS.js";import{n as c}from"./disclosure-Oc8a9UUb.js";var l=`button`,u=i(function({store:e,...t}){let n=a();return e||=n,r(e,!1),t={"aria-haspopup":s(o(e,`contentElement`),`dialog`),...t},t=c({store:e,...t}),t}),d=t(function(t){let r=u(e(t));return n(l,r)});export{u as n,d as t};

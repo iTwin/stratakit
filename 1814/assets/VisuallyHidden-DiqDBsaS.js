@@ -1,0 +1,1 @@
+import{et as e,t}from"./jsx-runtime-PSkadNh_.js";import{$t as n,Qt as r,mn as i}from"./~utils-Dl3QEWJk.js";import{t as a}from"./~utils.useInit-BQdb4Sil.js";var o=t(),s=e(r(),1),c=n((e,t)=>(a(),(0,o.jsx)(i.span,{...e,className:(0,s.default)(`🥝VisuallyHidden`,e.className),ref:t})));export{c as t};

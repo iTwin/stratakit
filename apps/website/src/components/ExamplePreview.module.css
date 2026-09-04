@@ -46,6 +46,15 @@
 			position: static;
 		}
 	}
+
+	.codeBlockWrapper {
+		position: relative;
+	}
+	.codeBlockToolbar {
+		position: absolute;
+		bottom: 0;
+		right: 0;
+	}
 }
 
 /* Prevent leakage of global styles into examples */

@@ -3,8 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import Alert from "@mui/material/Alert";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
+import Collapse from "@mui/material/Collapse";
+import Fade from "@mui/material/Fade";
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import Skeleton from "@mui/material/Skeleton";
@@ -53,16 +56,26 @@ const exampleSources = {
 
 type Status = "idle" | "loading" | "complete" | "error";
 
-function useSourceCode(src: string) {
+function useSourceCode({
+	src,
+	requested,
+}: {
+	src: string;
+	requested: boolean;
+}) {
 	const [status, setStatus] = React.useState<Status>("idle");
 	const [source, setSource] = React.useState<string | null>(null);
 
 	const { exampleName, packageName } = parseSrc(src);
-	const modulePath = `/node_modules/examples/${packageName}/${exampleName}.tsx`;
 
 	React.useEffect(() => {
+		if (!requested) {
+			return;
+		}
+
 		const load = async () => {
 			try {
+				const modulePath = `/node_modules/examples/${packageName}/${exampleName}.tsx`;
 				const sources =
 					exampleSources[packageName as keyof typeof exampleSources];
 				const sourceLoader = sources[modulePath] as () => Promise<string>;
@@ -85,7 +98,7 @@ function useSourceCode(src: string) {
 
 		setStatus("loading");
 		load();
-	}, [exampleName, packageName]);
+	}, [exampleName, packageName, requested]);
 
 	return { status, source };
 }
@@ -213,19 +226,62 @@ function CopyButton({ valueToCopy }: { valueToCopy: string }) {
 	);
 }
 
+type CodeView = "none" | "minimal" | "full";
+
+function CodeView({
+	status,
+	id,
+	code,
+	view,
+}: {
+	status: Status;
+	code: string;
+	id?: string;
+	view: CodeView;
+}) {
+	let content: React.ReactNode;
+	switch (status) {
+		case "loading":
+			content = <CodeSkeleton />;
+			break;
+		case "complete":
+			content = <CodeBlock id={id} code={code} />;
+			break;
+		case "error":
+			content = (
+				<Alert severity="error">
+					There was a problem loading the source code
+				</Alert>
+			);
+			break;
+		case "idle":
+			content = null;
+	}
+
+	return (
+		<Collapse in={view !== "none"} timeout={view === "full" ? 0 : undefined}>
+			{content}
+		</Collapse>
+	);
+}
+
 export function ExampleEmbed({ src }: { src: string }) {
 	const { exampleName, packageName } = parseSrc(src);
 	const labelId = React.useId();
-	const [codeExpanded, setCodeExpanded] = React.useState(false);
+	const [codeView, setCodeView] = React.useState<CodeView>("none");
 	const codeId = React.useId();
 
-	const { source, status } = useSourceCode(src);
+	const { source, status } = useSourceCode({
+		src,
+		requested: codeView !== "none",
+	});
 	const { full, snippet } = React.useMemo(
 		() => (source ? truncateCode(source) : { full: "", snippet: "" }),
 		[source],
 	);
 
-	const codeToShow = codeExpanded ? full : snippet;
+	const codeToShow = codeView === "full" ? full : snippet;
+	const expanded = codeView !== "none";
 
 	return (
 		<div
@@ -242,18 +298,32 @@ export function ExampleEmbed({ src }: { src: string }) {
 			</div>
 
 			<Paper elevation={2} className={styles.toolbar}>
+				<Fade in={codeView === "minimal"}>
+					<Button
+						variant="text"
+						size="small"
+						aria-expanded={expanded}
+						aria-controls={codeId}
+						onClick={() => {
+							setCodeView("full");
+						}}
+					>
+						Expand code
+					</Button>
+				</Fade>
+
 				<Button
 					variant="text"
 					size="small"
-					aria-expanded={codeExpanded}
+					aria-expanded={expanded}
 					aria-controls={codeId}
 					onClick={() => {
-						setCodeExpanded((expanded) => !expanded);
+						setCodeView(expanded ? "none" : "minimal");
 					}}
 				>
-					{codeExpanded ? "Collapse source" : "Expand source"}
+					{expanded ? "Hide code" : "Show code"}
 				</Button>
-				<CopyButton valueToCopy={codeToShow} />
+
 				<IconButton
 					label="Open in new tab"
 					render={
@@ -272,22 +342,18 @@ export function ExampleEmbed({ src }: { src: string }) {
 					<Icon href={svgScript} />
 				</IconButton>
 			</Paper>
-			{status === "complete" ? (
-				<CodeBlock code={codeToShow} id={codeId} />
-			) : (
-				<CodeSkeleton />
-			)}
+			<CodeView status={status} code={codeToShow} id={codeId} view={codeView} />
 		</div>
 	);
 }
 
-function CodeSkeleton() {
+function CodeSkeleton({ ref }: { ref?: React.Ref<HTMLDivElement> }) {
 	return (
-		<div className={styles.code} data-status={status}>
+		<div className={styles.code} ref={ref}>
 			<pre>
 				<Skeleton width="10rem" />
-				<Skeleton sx={{ marginInlineStart: "1rem" }} width="50%" />
-				<Skeleton sx={{ marginInlineStart: "1rem" }} width="20%" />
+				{/* <Skeleton sx={{ marginInlineStart: "1rem" }} width="50%" />
+				<Skeleton sx={{ marginInlineStart: "1rem" }} width="20%" /> */}
 				<Skeleton sx={{ marginInlineStart: "1rem" }} width="25%" />
 				<Skeleton width="1rem" />
 			</pre>
@@ -295,7 +361,15 @@ function CodeSkeleton() {
 	);
 }
 
-function CodeBlock({ code, id }: { code: string; id?: string }) {
+function CodeBlock({
+	code,
+	id,
+	ref,
+}: {
+	code: string;
+	id?: string;
+	ref?: React.Ref<HTMLDivElement>;
+}) {
 	const colorScheme = useColorScheme();
 	const [formattedHtml, setFormattedHtml] = React.useState("");
 
@@ -308,13 +382,18 @@ function CodeBlock({ code, id }: { code: string; id?: string }) {
 	}, [code, colorScheme]);
 
 	return (
-		<div
-			id={id}
-			className={styles.code}
-			dangerouslySetInnerHTML={{
-				__html: formattedHtml,
-			}}
-		/>
+		<div className={styles.codeBlockWrapper} ref={ref} id={id}>
+			<div
+				className={styles.code}
+				// biome-ignore lint/security/noDangerouslySetInnerHtml: HTML is generated from known source that is safe
+				dangerouslySetInnerHTML={{
+					__html: formattedHtml,
+				}}
+			/>
+			<div className={styles.codeBlockToolbar}>
+				<CopyButton valueToCopy={code} />
+			</div>
+		</div>
 	);
 }
 

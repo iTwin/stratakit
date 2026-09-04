@@ -23,3 +23,90 @@
 	translate: 0 -50%;
 	inset-inline-end: calc(var(--_MuiInput-padding-inline) - 1px);
 }
+
+@supports (appearance: base-select) {
+	.MuiNativeSelect-select {
+		--_NativeSelect-icon-spacing: var(--stratakit-space-150);
+		appearance: base-select;
+
+		&::picker-icon {
+			display: none;
+		}
+
+		&::picker(select) {
+			appearance: base-select;
+			padding: var(--stratakit-space-100);
+			background-color: var(--stratakit-color-bg-elevation-level-1);
+			color: var(--stratakit-color-text-neutral-primary);
+			border-radius: var(--stratakit-radius-md);
+			border-width: 0;
+			box-shadow: var(--stratakit-shadow-surface-lg);
+			/* 
+				MUI's `OutlinedInput` wraps the select with another element and the select
+				ends up being 1px smaller that the visual area. The picker uses the select
+				as the anchor and positioning. Use margins to correct the placement to match
+				the wrapper element instead.
+			*/
+			margin-inline-start: -1px;
+			margin-block-start: 1px;
+		}
+	}
+
+	/* biome-ignore lint/correctness/noUnknownTypeSelector: See https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/selectedcontent*/
+	.MuiNativeSelect-select > button > selectedcontent {
+		display: flex;
+		gap: var(--_NativeSelect-icon-spacing);
+		align-items: center;
+	}
+
+	:where(.MuiNativeSelect-select) option {
+		--✨svg-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.607 4.191a.5.5 0 0 1 .787.617l-5.5 7a.503.503 0 0 1-.777.012l-2.5-3-.057-.084a.5.5 0 0 1 .752-.627l.072.07 2.105 2.526 5.118-6.514Z"/></svg>'); /* `checkmark.svg` default size */
+		--_NativeSelect-checkmark-color: var(--stratakit-color-icon-accent-strong);
+		min-height: 2rem;
+		padding-inline: var(--stratakit-space-200);
+		background-color: transparent;
+		border-radius: var(--stratakit-radius-sm);
+		border: 1px solid transparent;
+		gap: var(--_NativeSelect-icon-spacing);
+
+		&:where(:focus-visible) {
+			outline-offset: calc(var(--🥝focus-outline-offset) * -1);
+		}
+
+		&::checkmark {
+			content: "";
+			grid-column: checkmark-before;
+			background-color: var(--_NativeSelect-checkmark-color);
+			width: 1rem;
+			height: 1rem;
+			mask-image: var(--✨svg-checked);
+			mask-repeat: no-repeat;
+			mask-position: center;
+		}
+
+		@media (any-hover: hover) {
+			&:where(:hover:not(:disabled)) {
+				background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+			}
+		}
+
+		&:where(:checked:not(:disabled)) {
+			color: var(--stratakit-color-text-accent-strong);
+			background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+			border-color: var(--stratakit-color-border-accent-strong);
+
+			@media (any-hover: hover) {
+				&:where(:hover) {
+					background-color: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+				}
+			}
+		}
+
+		&:where(:disabled) {
+			background: transparent;
+			color: var(--stratakit-color-text-neutral-disabled);
+			cursor: not-allowed;
+			--_NativeSelect-checkmark-color: var(--stratakit-color-icon-neutral-disabled);
+		}
+	}
+}

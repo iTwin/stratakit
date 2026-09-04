@@ -1,1 +1,0 @@
-import{b3 as r}from"./~utils-B111J5jY.js";function p(t){const{theme:o,name:e,props:n}=t;return!o||!o.components||!o.components[e]||!o.components[e].defaultProps?n:r(o.components[e].defaultProps,n)}export{p as g};

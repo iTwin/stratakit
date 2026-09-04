@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{t}from"./Button.DZOBa5j1.js";var n=e(),r=()=>(0,n.jsx)(t,{loading:!0,children:`Sign in`});export{r as default};

@@ -1,0 +1,1 @@
+import{g as s,j as e}from"./~utils-BVmtah2z.js";function a(t){return s("MuiListItemIcon",t)}const n=e("MuiListItemIcon",["root","alignItemsFlexStart"]);function l(t){return s("MuiListItemText",t)}const o=e("MuiListItemText",["root","multiline","dense","inset","primary","secondary"]);export{o as a,l as b,a as g,n as l};

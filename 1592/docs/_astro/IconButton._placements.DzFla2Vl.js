@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{h as t,z as n}from"./_utils.DvxZo3X8.js";import{t as r}from"./placeholder.ZXqEpghq.js";var i=e(),a=[`left`,`top`,`bottom`,`right`],o=()=>a.map(e=>(0,i.jsx)(t,{label:`${e.charAt(0).toUpperCase()}${e.slice(1)}`,labelPlacement:e,children:(0,i.jsx)(n,{href:r})},e));export{o as default};

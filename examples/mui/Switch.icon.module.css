@@ -9,7 +9,7 @@
 .icon {
 	opacity: 0;
 	position: absolute;
-	left: var(--stratakit-space-x1);
+	left: var(--stratakit-space-100);
 	top: 50%;
 	transform: translateY(-50%);
 	pointer-events: none;

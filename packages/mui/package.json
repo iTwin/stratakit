@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/mui",
 	"type": "module",
-	"version": "1.0.0-rc.1",
+	"version": "1.0.0-rc.2",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -69,7 +69,7 @@
 	},
 	"peerDependencies": {
 		"@mui/material": "^9.4.0",
-		"@stratakit/foundations": "^1.0.0-rc.1",
+		"@stratakit/foundations": "^1.0.0-rc.2",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"
 	},

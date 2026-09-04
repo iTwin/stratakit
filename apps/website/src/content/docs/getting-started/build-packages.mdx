@@ -1,0 +1,159 @@
+---
+title: Build packages with StrataKit
+description: Learn how to build packages with StrataKit
+sidebar:
+  label: Building packages
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+## Quick start
+
+This guide is for **package** developers. It supplements the general [Development guide](/getting-started/develop) with package-specific instructions.
+
+Follow the steps listed below to build a package on top of StrataKit.
+
+<Steps>
+
+1. **Install shared packages**
+
+   Install [shared packages](#shared-packages) as [peer dependencies](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies) instead of regular dependencies:
+
+   ```console
+   npm add @stratakit/mui --save-peer
+   ```
+
+   :::note
+   `@mui/material`, `react` and `react-dom` should also be installed as peer dependencies.
+   :::
+
+2. **Set up TypeScript types**
+
+   Add `@stratakit/mui/types.d.ts` to your **tsconfig** file as described in the [development guide](/getting-started/develop/#quick-start).
+
+3. **Use icons** (optional)
+
+   To use StrataKit icons, install the `@stratakit/icons` package:
+
+   ```console
+   npm add @stratakit/icons
+   ```
+
+   Use StrataKit icons as described in the [development guide](/getting-started/develop/#quick-start).
+
+   :::note
+   Packages don't configure the bundler themselves - the host application is responsible for [serving StrataKit icons as external SVG files](/getting-started/develop/#bundler-configuration).
+   :::
+
+4. **Use foundations** (optional)
+
+   If you are using StrataKit CSS variables or other foundations in your package, install the `@stratakit/foundations` [shared package](#shared-packages) to explicitly control the package version:
+
+   ```console
+   npm add @stratakit/foundations --save-peer
+   ```
+
+5. **Use structures** (optional)
+
+   To use StrataKit structures in your package, install the `@stratakit/structures` package:
+
+   ```console
+   npm add @stratakit/structures
+   ```
+
+</Steps>
+
+## Shared packages
+
+Packages that are expected to be installed at most once in the host application are called **shared packages**. The installed instances of shared packages are used across all other packages in the project.
+
+Shared packages of StrataKit include:
+
+- `@stratakit/mui`
+- `@stratakit/foundations`
+
+Other shared packages include:
+
+- `@mui/material`
+- `react`
+- `react-dom`
+
+Packages should install shared packages as [`peerDependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies) and ensure that the implementation supports the specified range.
+
+Applications should install shared packages as regular [`dependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#dependencies).
+
+:::caution
+Version range of shared packages should be carefully managed to ensure compatibility across all packages in the project.
+:::
+
+## Package versioning
+
+Follow [semantic versioning](https://semver.org/) when releasing new versions of your package.
+
+### Transitive peer dependencies
+
+[Shared packages](#shared-packages) introduce additional challenges when managing dependencies, especially when dealing with transitive peer dependencies. Package developers should consider the full dependency graph.
+
+For example, since `@stratakit/foundations` is a peer dependency of `@stratakit/structures`, a version bump of `@stratakit/structures` can transitively require a newer `@stratakit/foundations` in the host application - even when the change looks internal from your package's perspective.
+
+### Updating peer dependencies
+
+To use a newer feature non-conditionally in your package, you may need to update the version of a peer dependency.
+
+StrataKit packages consider version bumps of peer dependencies as a non-breaking change if the host application can upgrade to a newer version without disruption.
+
+<details>
+<summary>**Non-breaking** changes</summary>
+
+These widen the accepted range or bump the minimum version of a range to a newer minor or patch version:
+
+```diff
+ {
+ 	"peerDependencies": {
+-  		"@stratakit/foundations": "^1.0.0"
++  		"@stratakit/foundations": "^1.0.0 || ^2.0.0"
+	 }
+ }
+```
+
+```diff
+ {
+ 	"peerDependencies": {
+-  		"@stratakit/foundations": "^1.0.0"
++  		"@stratakit/foundations": "^1.1.0"
+	 }
+ }
+```
+
+</details>
+
+<details>
+<summary>**Breaking** changes</summary>
+
+These narrow the accepted range or require a new major version:
+
+```diff
+ {
+ 	"peerDependencies": {
+-  		"@stratakit/foundations": "^1.0.0"
++  		"@stratakit/foundations": "1.1.0"
+	 }
+ }
+```
+
+```diff
+ {
+ 	"peerDependencies": {
+-  		"@stratakit/foundations": "^1.0.0"
++  		"@stratakit/foundations": "^2.0.0"
+	 }
+ }
+```
+
+</details>
+
+## Migrating from iTwinUI
+
+Consider releasing a new major version of your package when adding support for StrataKit. Otherwise, you may introduce breaking changes for users who are still using iTwinUI without setting up StrataKit.
+
+See [Migrating from iTwinUI](/getting-started/develop/#migrating-from-itwinui) for more information.

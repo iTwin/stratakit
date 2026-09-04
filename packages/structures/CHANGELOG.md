@@ -1,18 +1,27 @@
 # Changelog
 
-## 0.6.0
+## 0.6.0-rc.2
 
-- [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.
-- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Currently the packages will continue to work with `^18.0.0`, but you must upgrade to React v19 to ensure future compatibility.
 - [#1785](https://github.com/iTwin/stratakit/pull/1785): Increased border color contrast across various components.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.0-rc.2
+  - @stratakit/bricks@0.6.0-rc.2
+
+## 0.6.0-rc.1
+
 - [#1820](https://github.com/iTwin/stratakit/pull/1820): Updated shadow styling across various components (`Dialog`, `DropdownMenu`, `Popover`, `Toolbar`).
 - Updated dependencies:
-  - @stratakit/bricks@0.6.0
-  - @stratakit/internal-utils@0.2.0
+  - @stratakit/bricks@0.6.0-rc.1
+  - @stratakit/foundations@1.0.0-rc.1
 
-## 0.6.0-rc-*
+## 0.6.0-rc.0
 
-See [CHANGELOG.md](https://github.com/iTwin/stratakit/blob/%40stratakit/structures%400.6.0-rc.2/packages/structures/CHANGELOG.md) in `@stratakit/structures@0.6.0-rc.2` for a list of changes in the `0.6.0-rc.*` releases. These changes are included in the `0.6.0` release.
+- [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.
+- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Short term the packages will continue to work with `^18.0.0`, but it is recommended to upgrade to React v19 to ensure future compatibility.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.0-rc.0
+  - @stratakit/bricks@0.6.0-rc.0
+  - @stratakit/internal-utils@0.2.0-rc.0
 
 ## 0.5.10
 

@@ -1,20 +1,29 @@
 # Changelog
 
-## 0.6.0
+## 0.6.0-rc.2
+
+- [#1785](https://github.com/iTwin/stratakit/pull/1785): Increased border color contrast across various components.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.0-rc.2
+
+## 0.6.0-rc.1
+
+- [#1815](https://github.com/iTwin/stratakit/pull/1815): Updated borders for `Button` and `Checkbox`.
+- [#1788](https://github.com/iTwin/stratakit/pull/1788): Increased border contrast in `Button` and `IconButton`.
+- [#1820](https://github.com/iTwin/stratakit/pull/1820): Updated shadow styling across various components (`Button`, `Checkbox`, `Kbd`, `Select`, `Switch`, `Tooltip`).
+- Updated dependencies:
+  - @stratakit/foundations@1.0.0-rc.1
+
+## 0.6.0-rc.0
 
 - [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.
-- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Currently the packages will continue to work with `^18.0.0`, but you must upgrade to React v19 to ensure future compatibility.
-- [#1785](https://github.com/iTwin/stratakit/pull/1785), [#1788](https://github.com/iTwin/stratakit/pull/1788): Increased border color contrast across various components.
-- [#1815](https://github.com/iTwin/stratakit/pull/1815), [#1820](https://github.com/iTwin/stratakit/pull/1820): Updated shadow styling across various components (`Button`, `Checkbox`, `Kbd`, `Select`, `Switch`, `Tooltip`).
+- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Short term the packages will continue to work with `^18.0.0`, but it is recommended to upgrade to React v19 to ensure future compatibility.
 - [#1795](https://github.com/iTwin/stratakit/pull/1795): Updated colors for `Button` and `Anchor`.
-- [#1797](https://github.com/iTwin/stratakit/pull/1797): Updated placeholder text styling across various components (e.g. `TextBox`).
+- [#1797](https://github.com/iTwin/stratakit/pull/1797): Updated placeholder text styling across various components.
 - [#1805](https://github.com/iTwin/stratakit/pull/1805): Updated `border-radius` of `Skeleton`.
 - Updated dependencies:
-  - @stratakit/internal-utils@0.2.0
-
-## 0.6.0-rc-*
-
-See [CHANGELOG.md](https://github.com/iTwin/stratakit/blob/%40stratakit/bricks%400.6.0-rc.2/packages/bricks/CHANGELOG.md) in `@stratakit/bricks@0.6.0-rc.2` for a list of changes in the `0.6.0-rc.*` releases. These changes are included in the `0.6.0` release.
+  - @stratakit/foundations@1.0.0-rc.0
+  - @stratakit/internal-utils@0.2.0-rc.0
 
 ## 0.5.6
 

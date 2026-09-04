@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 import React from "react";
-import { Typography } from "@mui/material";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
+import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/foundations";
 
 import androidSvg from "@stratakit/icons/brand-android.svg";

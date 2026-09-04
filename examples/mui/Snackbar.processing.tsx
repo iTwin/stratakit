@@ -4,10 +4,13 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Alert, SnackbarContent, Stack, Typography } from "@mui/material";
+import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Snackbar from "@mui/material/Snackbar";
+import SnackbarContent from "@mui/material/SnackbarContent";
+import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 
 export default () => {
 	const [status, setStatus] = React.useState<

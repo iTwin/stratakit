@@ -1,0 +1,75 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.wrapper {
+	position: relative;
+}
+
+.swatch {
+	--swatch-size: 1em;
+
+	display: inline-block;
+	block-size: var(--swatch-size);
+	inline-size: var(--swatch-size);
+	background-color: var(--swatch-color);
+	background-position:
+		0 0,
+		calc(var(--swatch-size) * 0.25) calc(var(--swatch-size) * 0.25);
+	background-size: calc(var(--swatch-size) * 0.5) calc(var(--swatch-size) * 0.5);
+	background-image:
+		repeating-linear-gradient(
+			45deg,
+			var(--stratakit-color-bg-mono-base) 25%,
+			transparent 25%,
+			transparent 75%,
+			var(--stratakit-color-bg-mono-base) 75%,
+			var(--stratakit-color-bg-mono-base)
+		),
+		repeating-linear-gradient(
+			45deg,
+			var(--stratakit-color-bg-mono-base) 25%,
+			var(--stratakit-color-bg-mono-muted) 25%,
+			var(--stratakit-color-bg-mono-muted) 75%,
+			var(--stratakit-color-bg-mono-base) 75%,
+			var(--stratakit-color-bg-mono-base)
+		);
+	border: 1px solid currentColor;
+	border-radius: var(--stratakit-radius-sm);
+	position: relative;
+	overflow: clip;
+
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-color: var(--swatch-color, var(--stratakit-color-bg-neutral-base));
+		forced-color-adjust: none;
+	}
+
+	:global(.MuiButton-root.Mui-disabled .MuiButton-icon) & {
+		background: none;
+
+		&::before {
+			display: none;
+		}
+	}
+}
+
+.value {
+	text-transform: uppercase;
+}
+
+.input {
+	border: 0px;
+	clip-path: inset(50%);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0px;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+	inset: auto 0 0 0;
+}

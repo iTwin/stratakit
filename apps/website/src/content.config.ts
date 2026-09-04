@@ -73,7 +73,7 @@ function packagesLoader() {
 		parser: (content) => {
 			const packages = JSON.parse(content) as Api;
 			return packages.map((pkg) => ({
-				id: pkg.name,
+				id: pkg.name.replace(/^@[^/]+\//, ""),
 				...pkg,
 				apis: pkg.apis.map((api) => {
 					const status = getApiStatus(api);
@@ -133,6 +133,7 @@ function packagesSchema() {
 			optional: z.boolean().optional(),
 			jsdoc: reference("jsdoc").optional(),
 			defaultValue: z.string().optional(),
+			deprecated: z.union([z.boolean(), z.string()]).optional(),
 		}),
 	);
 	const component = z.object({
@@ -142,7 +143,7 @@ function packagesSchema() {
 		baseProps: z.array(z.string()),
 		props,
 		barrelName: z.string().optional(),
-		deprecated: z.boolean().optional(),
+		deprecated: z.union([z.boolean(), z.string()]).optional(),
 	});
 	return z.object({
 		name: z.string(),

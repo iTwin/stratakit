@@ -19,8 +19,8 @@ packages.sort((a, b) => {
 
 const headings = packages.map((pkg) => ({
 	depth: 2 as const,
-	slug: pkg.data.name,
-	text: `@stratakit/${pkg.data.name}`,
+	slug: pkg.id,
+	text: pkg.data.name,
 }));
 ---
 

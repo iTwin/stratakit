@@ -1,6 +1,7 @@
 ---
 // See https://starlight.astro.build/reference/overrides/#pagetitle
 
+import { getEntry } from "astro:content";
 import Breadcrumb from "./Breadcrumb.astro";
 
 const { entry } = Astro.locals.starlightRoute;
@@ -9,7 +10,7 @@ const { entry } = Astro.locals.starlightRoute;
  * Generates breadcrumbs for API reference pages based on route id
  * Returns breadcrumbs for API pages, undefined for all other pages.
  */
-function getBreadcrumbsFromRoute(id: string | undefined) {
+async function getBreadcrumbsFromRoute(id: string | undefined) {
 	if (!id) {
 		return undefined;
 	}
@@ -24,10 +25,13 @@ function getBreadcrumbsFromRoute(id: string | undefined) {
 	const apiName = parts.slice(2).join("/"); // In case there are more parts
 	const baseUrl = import.meta.env.BASE_URL;
 
+	const pkg = await getEntry("packages", packageId);
+	const packageLabel = pkg?.data.name ?? `@stratakit/${packageId}`;
+
 	return [
 		{ label: "API Reference", href: `${baseUrl}/reference/` },
 		{
-			label: `@stratakit/${packageId}`,
+			label: packageLabel,
 			href: `${baseUrl}/reference/#${packageId}`,
 		},
 		{ label: apiName },
@@ -36,7 +40,7 @@ function getBreadcrumbsFromRoute(id: string | undefined) {
 
 const status = entry.data.status;
 const links = entry.data.links || {};
-const breadcrumbs = getBreadcrumbsFromRoute(entry.id);
+const breadcrumbs = await getBreadcrumbsFromRoute(entry.id);
 
 const muiDocsUrl = links.muiDocs;
 const componentStatusOverviewUrl = `${import.meta.env.BASE_URL}/components/overview/#component-status`;

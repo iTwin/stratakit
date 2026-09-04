@@ -20,23 +20,24 @@ function getBarrelImport(component: (typeof api)["composition"][number]) {
 	// import { unstable_Dialog as Dialog } from "@stratakit/structures";
 	if (barrelNameParts[0].startsWith("unstable_")) {
 		const localName = barrelNameParts[0].replace("unstable_", "");
-		return `import { ${barrelNameParts[0]} as ${localName} } from "@stratakit/${pkg.data.name}";`;
+		return `import { ${barrelNameParts[0]} as ${localName} } from "${pkg.data.name}";`;
 	}
 
 	// import { DropdownMenu } from "@stratakit/structures";
-	return `import { ${barrelNameParts[0]} } from "@stratakit/${pkg.data.name}";`;
+	return `import { ${barrelNameParts[0]} } from "${pkg.data.name}";`;
 }
 
 function getModuleImport() {
 	if (!api.exportName) return undefined;
 
 	// import Divider from "@stratakit/bricks/Divider";
-	if (api.composition.length === 0) {
-		return `import ${api.name} from "@stratakit/${pkg.data.name}/${api.exportName}";`;
+	// import Button from "@mui/material/Button";
+	if (api.composition.length === 0 || pkg.data.name === "@mui/material") {
+		return `import ${api.exportName} from "${pkg.data.name}/${api.exportName}";`;
 	}
 
 	// import * as Anchor from "@stratakit/bricks/Anchor";
-	return `import * as ${api.name} from "@stratakit/${pkg.data.name}/${api.exportName}";`;
+	return `import * as ${api.name} from "${pkg.data.name}/${api.exportName}";`;
 }
 
 const barrelImport = components

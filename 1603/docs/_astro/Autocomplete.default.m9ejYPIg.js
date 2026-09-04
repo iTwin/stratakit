@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.B-hcVAMW.js";import{t}from"./Autocomplete.Dh-T5AyU.js";import{t as n}from"./TextField.EL5-lvE_.js";var r=e(),i=()=>(0,r.jsx)(t,{options:[`Badge`,`Button`,`Checkbox`,`Dialog`,`Divider`,`Progress`,`Rating`,`Select`,`Switch`,`TextField`],renderInput:e=>(0,r.jsx)(n,{...e,label:`Favorite component`})});export{i as default};

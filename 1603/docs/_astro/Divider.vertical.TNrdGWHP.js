@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.B-hcVAMW.js";import{t}from"./Divider.5F0d6v3S.js";var n={divider:`_divider_etlms_6`},r=e(),i=()=>(0,r.jsx)(t,{className:n.divider,orientation:`vertical`});export{i as default};

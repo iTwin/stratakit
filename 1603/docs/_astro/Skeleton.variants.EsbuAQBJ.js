@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.B-hcVAMW.js";import{t}from"./VisuallyHidden.Bl0yFv-J.js";import{t as n}from"./Skeleton.BPoIp_YI.js";var r=e(),i=()=>(0,r.jsxs)(`div`,{className:`flex`,style:{alignItems:`center`},children:[(0,r.jsx)(n,{variant:`object`}),(0,r.jsx)(n,{variant:`text`}),(0,r.jsx)(t,{children:`Loading…`})]});export{i as default};

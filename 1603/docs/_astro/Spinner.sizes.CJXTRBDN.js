@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.B-hcVAMW.js";import{t}from"./Spinner.CMmRjO1X.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{className:`flex`,children:[(0,n.jsx)(t,{size:`small`}),(0,n.jsx)(t,{size:`medium`}),(0,n.jsx)(t,{size:`large`}),(0,n.jsx)(t,{size:`xlarge`})]});export{r as default};

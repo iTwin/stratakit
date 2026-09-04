@@ -1,1 +1,0 @@
-import{Z as a,et as f}from"./jsx-runtime-CvPTumEY.js";import{t as s}from"./useForkRef-D2MFJYL5.js";var e=f(a(),1),o=typeof window<"u"?e.useLayoutEffect:e.useEffect;function i(r){const t=e.useRef(r);return o(()=>{t.current=r}),e.useRef((...u)=>(0,t.current)(...u)).current}var E=s;export{i as n,o as r,E as t};

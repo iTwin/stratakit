@@ -1,1 +1,0 @@
-import{$ as a}from"./jsx-runtime-CvPTumEY.js";var e=a({default:()=>t}),t="/1814/assets/heart-VJPzVpEV.svg",o=a({default:()=>s}),s="/1814/assets/location-C_VRgk7K.svg";export{e as i,o as n,t as r,s as t};

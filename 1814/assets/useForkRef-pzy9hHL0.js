@@ -1,0 +1,1 @@
+import{Z as e,et as t}from"./jsx-runtime-PSkadNh_.js";import{t as n}from"./useForkRef-BPF9dfYm.js";var r=t(e(),1),i=typeof window<`u`?r.useLayoutEffect:r.useEffect;function a(e){let t=r.useRef(e);return i(()=>{t.current=e}),r.useRef((...e)=>(0,t.current)(...e)).current}var o=n;export{a as n,i as r,o as t};

@@ -1,0 +1,1 @@
+import{$ as e}from"./jsx-runtime-PSkadNh_.js";var t=e({default:()=>n}),n=`/1814/assets/arrow-down-DJS2iBhv.svg`;export{t as n,n as t};

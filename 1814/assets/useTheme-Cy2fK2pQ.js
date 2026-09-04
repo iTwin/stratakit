@@ -1,1 +1,0 @@
-import{Z as t,et as r}from"./jsx-runtime-CvPTumEY.js";import{o as a}from"./DefaultPropsProvider-6XumKMvl.js";import{t as m}from"./useTheme-D4nJW1QO.js";var u=r(t(),1);function n(){const e=m(a);return e.$$material||e}export{n as t};

@@ -1,0 +1,1 @@
+import{$ as e}from"./jsx-runtime-PSkadNh_.js";var t=e({default:()=>n}),n=`/1814/assets/notifications-DrPjL4ho.svg`;export{t as n,n as t};

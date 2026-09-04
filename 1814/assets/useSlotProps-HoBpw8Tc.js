@@ -1,0 +1,1 @@
+import{S as e,T as t,w as n}from"./Backdrop-IuFmMwYu.js";import{t as r}from"./useForkRef-BPF9dfYm.js";function i(i){let{elementType:a,externalSlotProps:o,ownerState:s,skipResolvingSlotProps:c=!1,...l}=i,u=c?{}:n(o,s),{props:d,internalRef:f}=e({...l,externalSlotProps:u}),p=r(f,u?.ref,i.additionalProps?.ref);return t(a,{...d,ref:p},s)}export{i as t};

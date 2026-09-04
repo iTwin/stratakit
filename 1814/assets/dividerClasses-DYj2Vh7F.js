@@ -1,1 +1,0 @@
-import{C as i,S as t}from"./DefaultPropsProvider-6XumKMvl.js";function l(e){return i("MuiDivider",e)}var a=t("MuiDivider",["root","absolute","fullWidth","inset","middle","flexItem","vertical","withChildren","textAlignRight","textAlignLeft","wrapper","wrapperVertical"]);export{l as n,a as t};

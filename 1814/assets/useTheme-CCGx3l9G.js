@@ -1,0 +1,1 @@
+import{Z as e,et as t}from"./jsx-runtime-PSkadNh_.js";import{B as n,E as r}from"./DefaultPropsProvider-BnggTyLw.js";var i=t(e(),1);function a(e){return Object.keys(e).length===0}function o(e=null){let t=i.useContext(n);return!t||a(t)?e:t}var s=r();function c(e=s){return o(e)}export{o as n,c as t};

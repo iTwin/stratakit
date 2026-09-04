@@ -68,7 +68,7 @@ export default defineConfig({
 		},
 		// assetsDir must not start with "/".
 		assetsDir: basename ? `${basename.replace(/^\//, "")}/assets` : "assets",
-		minify: "esbuild",
+		cssMinify: "esbuild",
 	},
 	server: {
 		port: 1800, // dev server port
@@ -94,10 +94,17 @@ export default defineConfig({
 
 /** Vite plugin that bundles "*.css?inline" files using lightningcss. Only used during dev. */
 function bundleCssPlugin() {
+	let isDev = false;
+
 	return {
 		name: "bundle-css",
 
+		configResolved({ command }) {
+			isDev = command === "serve";
+		},
+
 		async transform(_, id) {
+			if (!isDev) return;
 			if (!id.endsWith(".css?inline")) return;
 
 			const filename = id.replace(/\?inline$/, "");

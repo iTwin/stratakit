@@ -4,18 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 @layer {
-	.exampleEmbedRoot {
-		display: grid;
-		align-items: var(--example-align-items, center);
-
-		> * {
-			grid-area: 1 / 1 / -1 / -1;
-		}
-	}
-
 	.examplePreviewWrapper {
 		margin-inline: auto;
 		padding: 2rem;
+		justify-self: center;
 
 		min-inline-size: min(var(--example-min-width), 100%);
 		max-inline-size: 100%;
@@ -24,9 +16,44 @@
 	}
 
 	.toolbar {
-		place-self: end;
 		display: flex;
-		padding: 4px;
+		padding: 4px 2rem;
+		align-items: center;
+		justify-content: end;
+		gap: 0.5rem;
+		border-radius: 0;
+	}
+
+	.code {
+		overflow: auto;
+		max-block-size: 20rem;
+	}
+
+	.code pre {
+		background: unset !important; /* override the background color inline on the element */
+		padding: 2rem;
+	}
+
+	.copyButtonIcon {
+		transition: all 300ms ease-in-out;
+		opacity: 0;
+		transform: scale(0.8) rotate(-180deg);
+		position: absolute;
+
+		&[data-active="true"] {
+			opacity: 1;
+			transform: scale(1) rotate(0deg);
+			position: static;
+		}
+	}
+
+	.codeBlockWrapper {
+		position: relative;
+	}
+	.codeBlockToolbar {
+		position: absolute;
+		bottom: 0;
+		right: 0;
 	}
 }
 

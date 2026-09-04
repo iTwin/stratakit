@@ -5,6 +5,7 @@
 
 .MuiMenu-paper {
 	box-shadow: var(--stratakit-shadow-surface-lg);
+	border: 1px solid var(--stratakit-color-border-page-base);
 }
 
 .MuiMenu-list {

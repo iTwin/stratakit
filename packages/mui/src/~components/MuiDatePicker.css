@@ -122,8 +122,7 @@
 		outline: unset;
 
 		&:where(.Mui-focusVisible) {
-			outline: var(--🥝focus-outline);
-			outline-offset: var(--🥝focus-outline-offset);
+			outline: var(--🥝focus-outline); /* Override MUI's `outline-color` */
 		}
 
 		&::after {

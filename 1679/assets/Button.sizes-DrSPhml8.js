@@ -1,0 +1,1 @@
+import{j as r}from"./jsx-runtime-Dy-FSfdM.js";import{a as s}from"./Stack-i0CjOa6O.js";import{a5 as e}from"./Button-Ci637QRY.js";const m=()=>r.jsxs(s,{spacing:2,direction:"row",sx:{alignItems:"center",flexWrap:"wrap"},children:[r.jsx(e,{size:"small",children:"Small"}),r.jsx(e,{size:"medium",children:"Medium"}),r.jsx(e,{size:"large",children:"Large"})]});export{m as B};

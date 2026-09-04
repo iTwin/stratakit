@@ -1,1 +1,0 @@
-import{z as P,A as i,B as m}from"./Icon-C4UFSNk0.js";import{a8 as S}from"./~utils-DstE45dN.js";function g(o){const{elementType:s,externalSlotProps:t,ownerState:e,skipResolvingSlotProps:p=!1,...n}=o,r=p?{}:P(t,e),{props:l,internalRef:a}=i({...n,externalSlotProps:r}),f=S(a,r?.ref,o.additionalProps?.ref);return m(s,{...l,ref:f},e)}export{g as u};

@@ -33,6 +33,7 @@
 		"immer": "^11.1.15",
 		"isbot": "^5.2.1",
 		"react": "catalog:",
+		"react-compiler-runtime": "^1.0.0",
 		"react-dom": "catalog:",
 		"react-resizable-panels": "^3.0.6",
 		"react-router": "^8.3.1",
@@ -49,9 +50,8 @@
 		"@vitejs/plugin-react": "^6.1.1",
 		"esbuild": "catalog:",
 		"lightningcss": "catalog:",
-		"react-compiler-runtime": "^1.0.0",
 		"typescript": "catalog:",
-		"vite": "^8.0.0",
+		"vite": "^8.2.2",
 		"vite-plugin-devtools-json": "^1.1.0"
 	},
 	"wireit": {

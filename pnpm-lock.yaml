@@ -136,6 +136,9 @@ importers:
       react:
         specifier: "catalog:"
         version: 19.2.8
+      react-compiler-runtime:
+        specifier: ^1.0.0
+        version: 1.0.0(react@19.2.8)
       react-dom:
         specifier: "catalog:"
         version: 19.2.8(react@19.2.8)
@@ -179,14 +182,11 @@ importers:
       lightningcss:
         specifier: "catalog:"
         version: 1.33.0
-      react-compiler-runtime:
-        specifier: ^1.0.0
-        version: 1.0.0(react@19.2.8)
       typescript:
         specifier: "catalog:"
         version: 7.0.2
       vite:
-        specifier: ^8.0.0
+        specifier: ^8.2.2
         version: 8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)
       vite-plugin-devtools-json:
         specifier: ^1.1.0
@@ -342,10 +342,10 @@ importers:
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
         specifier: ^1.0.0-rc.2
-        version: link:../foundations
+        version: 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/internal-utils":
         specifier: ^0.2.0-rc.0
-        version: link:../internal-utils
+        version: 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -382,7 +382,7 @@ importers:
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/internal-utils":
         specifier: ^0.2.0-rc.0
-        version: link:../internal-utils
+        version: 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -461,13 +461,13 @@ importers:
         version: 9.4.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
         specifier: ^1.0.0-rc.2
-        version: link:../foundations
+        version: 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/icons":
         specifier: ^0.4.3
         version: link:../icons
       "@stratakit/internal-utils":
         specifier: ^0.2.0-rc.0
-        version: link:../internal-utils
+        version: 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -504,13 +504,13 @@ importers:
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/bricks":
         specifier: ^0.6.0-rc.2
-        version: link:../bricks
+        version: 0.6.0(@stratakit/foundations@1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
         specifier: ^1.0.0-rc.2
-        version: link:../foundations
+        version: 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/internal-utils":
         specifier: ^0.2.0-rc.0
-        version: link:../internal-utils
+        version: 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -2458,6 +2458,39 @@ packages:
       {
         integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==,
       }
+
+  "@stratakit/bricks@0.6.0":
+    resolution:
+      {
+        integrity: sha512-kEWQHxCCd7JQBrScF2z8KMQFqZKFFLlTxx1le51O011hQf9XuNqriuJYqWTTpgXZ5x/Vlv40DdQqd2GegLnMHw==,
+      }
+    peerDependencies:
+      "@stratakit/foundations": ^1.0.0
+      react: ^19.0.0
+      react-dom: ^19.0.0
+
+  "@stratakit/foundations@1.0.0":
+    resolution:
+      {
+        integrity: sha512-O2WfaYgG25XJ7yil6M712mQLY7ngSDWoFsrO6/mHEU4W8gq/Jr4DsLDEVYOWbArAolxbLbIqaF0qJXi2srX1lQ==,
+      }
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  "@stratakit/internal-utils@0.2.0":
+    resolution:
+      {
+        integrity: sha512-QCJ7iX1LA0lJ/KDdu935Ghyz1K3kG3klXDxbNqE2iMm70V0QBLbk+W7IUViszMzdn/eb/8WZyDwbHDRDSphomg==,
+      }
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
 
   "@tanstack/query-core@5.101.4":
     resolution:
@@ -7129,6 +7162,32 @@ snapshots:
       "@types/hast": 3.0.5
 
   "@shikijs/vscode-textmate@10.0.2": {}
+
+  "@stratakit/bricks@0.6.0(@stratakit/foundations@1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)":
+    dependencies:
+      "@ariakit/react": 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      "@stratakit/foundations": 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      "@stratakit/internal-utils": 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      classnames: 2.5.1
+      react: 19.2.8
+      react-compiler-runtime: 1.0.0(react@19.2.8)
+      react-dom: 19.2.8(react@19.2.8)
+
+  "@stratakit/foundations@1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)":
+    dependencies:
+      "@ariakit/react": 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      "@stratakit/internal-utils": 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      classnames: 2.5.1
+      react-compiler-runtime: 1.0.0(react@19.2.8)
+    optionalDependencies:
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+
+  "@stratakit/internal-utils@0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)":
+    dependencies:
+      react: 19.2.8
+      react-compiler-runtime: 1.0.0(react@19.2.8)
+      react-dom: 19.2.8(react@19.2.8)
 
   "@tanstack/query-core@5.101.4": {}
 

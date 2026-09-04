@@ -20,9 +20,9 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 ## StrataKit MUI modifications
 
 - Added [`type`](#type) prop.
-- Added [`inline`](#inline) prop.
+- Added an [`"inline"` variant](#inline).
 - Added [`size`](#sizes) prop.
-- The `"default"` color has been removed. The default color is now `"secondary"`.
+- The `"default"` and `"primary"` colors have been removed. The default color is now `"secondary"`.
 
 ## Examples
 
@@ -34,13 +34,13 @@ Use `variant="dot"` to display the badge without a count inside.
 
 ### Inline
 
-Set the `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
+Set `variant="inline"` to display the badge in normal document flow instead of positioned relative to its child.
 
 ::example{src="mui/Badge.inline"}
 
 ### Sizes
 
-The `size` prop can only be set when [`inline`](#inline).
+The `size` prop can only be set when using the [`"inline"` variant](#inline).
 
 - **Small:** Use in compact interfaces where space is limited.
 - **Medium:** Default size, suitable for most use cases.
@@ -63,7 +63,7 @@ In most cases, you should supplement the `color` with iconography so that color 
 
 ### Type
 
-Use the `type` prop to adjust the visual prominence of an [`inline`](#inline) **Badge**.
+Use the `type` prop to adjust the visual prominence of an [`"inline"` variant](#inline) **Badge**.
 
 - **Strong:** The default, use when you need the strongest emphasis.
 - **Muted:** Use when you want a balanced level of emphasis.
@@ -75,7 +75,7 @@ Use the `type` prop to adjust the visual prominence of an [`inline`](#inline) **
 
 - Use **Badge** for indicating state or status.
 - Include a concise and descriptive label.
-- Use an [`icon`](#icons) to communicate a status `color` in a color-independent fashion.
+- Use an `icon` to communicate a status [`color`](#colors) in a color-independent fashion.
 
 ## 🚫 Don't
 

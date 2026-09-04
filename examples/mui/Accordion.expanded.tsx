@@ -6,14 +6,11 @@
 import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
-import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
 		<Accordion defaultExpanded>
-			<AccordionSummary>
-				<Typography render={<span />}>What is StrataKit?</Typography>
-			</AccordionSummary>
+			<AccordionSummary>What is StrataKit?</AccordionSummary>
 			<AccordionDetails>
 				StrataKit is Bentley Systems' open source design system and the
 				successor to iTwinUI.

@@ -14,7 +14,7 @@ export default () => {
 	const descriptionId = React.useId();
 	return (
 		<IconButton label="Notifications" aria-describedby={descriptionId}>
-			<Badge variant="dot" color="primary">
+			<Badge variant="dot">
 				<Icon href={`${svgNotifications}#icon-large`} size="large" />
 				<span id={descriptionId} hidden>
 					You have 4 unread notifications

@@ -6,14 +6,14 @@
 .dialogContent {
 	display: flex;
 	flex-direction: column;
-	gap: var(--stratakit-space-x3);
-	padding-block-start: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-300);
+	padding-block-start: var(--stratakit-space-100);
 }
 
 .formControl {
 	flex-direction: row;
 	align-items: center;
-	gap: var(--stratakit-space-x2);
+	gap: var(--stratakit-space-200);
 }
 
 .label {

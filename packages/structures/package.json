@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/structures",
 	"type": "module",
-	"version": "0.5.8",
+	"version": "0.6.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -123,15 +123,14 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.29",
-		"@stratakit/bricks": "^0.5.5",
-		"@stratakit/foundations": "^0.4.9",
+		"@ariakit/react": "^0.4.35",
+		"@stratakit/bricks": "^0.6.0",
+		"@stratakit/internal-utils": "^0.2.0",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0",
 		"zustand": "^5.0.14"
 	},
 	"devDependencies": {
-		"@stratakit/foundations": "workspace:*",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
@@ -141,17 +140,19 @@
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"react": ">=18.0.0",
-		"react-dom": ">=18.0.0"
+		"@stratakit/foundations": "^1.0.0",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
 	},
 	"wireit": {
 		"build": {
 			"dependencies": [
-				"../foundations:build",
-				"../bricks:build",
 				"build:js",
 				"build:DEV",
-				"build:types"
+				"build:types",
+				"../internal-utils:build",
+				"../foundations:build",
+				"../bricks:build"
 			]
 		},
 		"build:js": {
@@ -183,6 +184,7 @@
 		"build:types": {
 			"command": "tsc --outDir dist",
 			"dependencies": [
+				"../internal-utils:build:types",
 				"../foundations:build:types",
 				"../bricks:build:types"
 			],

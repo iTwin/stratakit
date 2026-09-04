@@ -3,11 +3,21 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+/**
+ * Prevents the viewport from scrolling when a Dialog is open.
+ * This is necessary because the equivalent JS doesn't work when Dialog is rendered in a portal container.
+ */
+:is(html, body):where(:has(.MuiDialog-root:not(.MuiModal-root.MuiModal-hidden))) {
+	overflow: clip;
+}
+
 .MuiDialog-paper {
-	--✨min-inset: var(--stratakit-space-x4);
+	--✨min-inset: var(--stratakit-space-400);
 
 	min-block-size: min(calc(100% - var(--✨min-inset)), 100px);
 	min-inline-size: min(calc(100% - var(--✨min-inset)), 100%, 296px);
+
+	box-shadow: var(--stratakit-shadow-surface-xl);
 }
 
 .MuiDialogActions-root {
@@ -19,9 +29,9 @@
 	border-end-start-radius: inherit;
 
 	&:where(.MuiDialogActions-spacing) {
-		padding-block-start: var(--stratakit-space-x4);
-		padding-block-end: var(--stratakit-space-x4);
-		padding-inline-start: var(--stratakit-space-x5);
-		padding-inline-end: var(--stratakit-space-x5);
+		padding-block-start: var(--stratakit-space-400);
+		padding-block-end: var(--stratakit-space-400);
+		padding-inline-start: var(--stratakit-space-500);
+		padding-inline-end: var(--stratakit-space-500);
 	}
 }

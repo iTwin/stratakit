@@ -24,12 +24,12 @@
 
 	&:where(.MuiChip-sizeSmall) {
 		--_MuiChip-block-size: var(--stratakit-size-control-field-height-small);
-		--_MuiChip-padding-inline: var(--stratakit-space-x2);
+		--_MuiChip-padding-inline: var(--stratakit-space-200);
 	}
 
 	&:where(.MuiChip-sizeMedium) {
 		--_MuiChip-block-size: var(--stratakit-size-control-field-height-medium);
-		--_MuiChip-padding-inline: var(--stratakit-space-x3);
+		--_MuiChip-padding-inline: var(--stratakit-space-300);
 	}
 
 	&:where(.MuiChip-filled) {
@@ -58,8 +58,10 @@
 		user-select: auto;
 	}
 
-	&:where(:has(.MuiChip-label:focus-visible)) {
-		outline: var(--🥝focus-outline);
+	&:where(:not(.MuiChip-clickable)),
+	&:where(:has(.MuiChip-deleteIcon.Mui-focusVisible)) {
+		/* Prevents double focus outlines. */
+		outline: unset;
 	}
 
 	&:where(.Mui-disabled) {
@@ -97,14 +99,14 @@
 
 .MuiChip-deleteIcon:is(.MuiIconButton-root) {
 	border-radius: inherit;
-	margin-inline-start: calc(var(--stratakit-space-x2) * -1);
+	margin-inline-start: calc(var(--stratakit-space-200) * -1);
 
 	:where(.MuiChip-root.MuiChip-sizeSmall) & {
 		margin-inline-end: -1px; /* Accounts for `border-width` */
 	}
 
 	:where(.MuiChip-root.MuiChip-sizeMedium) & {
-		margin-inline-end: calc(var(--stratakit-space-x1) - 1px);
+		margin-inline-end: calc(var(--stratakit-space-100) - 1px);
 	}
 
 	/* Makes touch target area square & `24px` */
@@ -116,13 +118,13 @@
 }
 
 .MuiChip-avatar {
-	margin-inline-start: calc(var(--stratakit-space-x1) - 1px);
+	margin-inline-start: calc(var(--stratakit-space-100) - 1px);
 
 	:where(.MuiChip-root.MuiChip-sizeSmall) & {
-		margin-inline-end: calc(var(--stratakit-space-x1) * -1);
+		margin-inline-end: calc(var(--stratakit-space-100) * -1);
 	}
 
 	:where(.MuiChip-root.MuiChip-sizeMedium) & {
-		margin-inline-end: calc(var(--stratakit-space-x2) * -1);
+		margin-inline-end: calc(var(--stratakit-space-200) * -1);
 	}
 }

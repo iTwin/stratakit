@@ -22,9 +22,13 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 
 ## StrataKit MUI modifications
 
+- The `action` prop is not supported.
+- The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - The `"default"`, `"info"`, `"success"`, `"warning"`, `"inherit"` colors have been removed. The default color is now `"secondary"`.
 - The `size` options (`"small"`, `"medium"`, `"large"`) have all been decreased in height.
-- A `label` prop has been added. When specified, it is used as the **IconButton's** accessible name and is also shown in a tooltip on hover and focus.
+- A `label` prop has been added. When specified, it is used as the **IconButton's** accessible name and is also shown in a tooltip on hover and focus. This is the recommended way to set the accessible name and tooltip.
+- The `title` prop is automatically mapped to `label` as a fallback, providing better compatibility with external components that use the native `title` attribute.
 - A `labelPlacement` prop has been added to control the placement of a tooltip that is shown when the `label` prop is specified.
 
 ## Examples
@@ -55,3 +59,4 @@ Make sure to provide an accessible description in the form of a visually hidden 
 
 - Don't use to replace buttons.
 - Don't use if an icon doesn't clearly convey the action. Use a [**Button**](/components/button) with a text label or a more suitable icon.
+- Don't set both `title` and `label` at the same time. Use only `label` instead.

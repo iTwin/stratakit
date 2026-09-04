@@ -1,0 +1,43 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiCircularProgress-root {
+	--_MuiCircularProgress-track-thickness: 1px;
+	--_MuiCircularProgress-fill-thickness: 5px;
+
+	&:where(.MuiCircularProgress-colorPrimary) {
+		--_MuiCircularProgress-color: var(--stratakit-color-icon-accent-strong);
+	}
+
+	&:where(.MuiCircularProgress-colorSecondary) {
+		--_MuiCircularProgress-color: var(--stratakit-color-icon-neutral-base);
+	}
+
+	&:where(.MuiCircularProgress-colorError) {
+		--_MuiCircularProgress-color: var(--stratakit-color-icon-critical-base);
+	}
+
+	&:where(.MuiCircularProgress-colorWarning) {
+		--_MuiCircularProgress-color: var(--stratakit-color-icon-attention-base);
+	}
+
+	&:where(.MuiCircularProgress-colorSuccess) {
+		--_MuiCircularProgress-color: var(--stratakit-color-icon-positive-base);
+	}
+}
+
+:is(.MuiCircularProgress-track, .MuiCircularProgress-circle) {
+	stroke: var(--_MuiCircularProgress-color);
+}
+
+.MuiCircularProgress-track {
+	opacity: 1;
+	stroke-width: var(--_MuiCircularProgress-track-thickness);
+}
+
+.MuiCircularProgress-circle {
+	stroke-linecap: round;
+	stroke-width: var(--_MuiCircularProgress-fill-thickness);
+}

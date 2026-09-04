@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.6.0
+
+- [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.
+- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Currently the packages will continue to work with `^18.0.0`, but you must upgrade to React v19 to ensure future compatibility.
+- [#1785](https://github.com/iTwin/stratakit/pull/1785): Increased border color contrast across various components.
+- [#1820](https://github.com/iTwin/stratakit/pull/1820): Updated shadow styling across various components (`Dialog`, `DropdownMenu`, `Popover`, `Toolbar`).
+- Updated dependencies:
+  - @stratakit/bricks@0.6.0
+  - @stratakit/internal-utils@0.2.0
+
+## 0.6.0-rc-*
+
+See [CHANGELOG.md](https://github.com/iTwin/stratakit/blob/%40stratakit/structures%400.6.0-rc.2/packages/structures/CHANGELOG.md) in `@stratakit/structures@0.6.0-rc.2` for a list of changes in the `0.6.0-rc.*` releases. These changes are included in the `0.6.0` release.
+
+## 0.5.10
+
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Increased border color contrast across various components.
+- Updated dependencies:
+  - @stratakit/bricks@0.5.6
+  - @stratakit/foundations@0.5.0
+
+## 0.5.9
+
+- [#1664](https://github.com/iTwin/stratakit/pull/1664): Fixed icon size of `NavigationRail.Button` and `NavigationRail.Anchor` components when a React element is passed to the `icon` prop.
+- Updated dependencies:
+  - @stratakit/foundations@0.4.10
+
 ## 0.5.8
 
 - [#1445](https://github.com/iTwin/stratakit/pull/1445): Added `suffix` prop to `NavigationRail.Anchor` and `NavigationRail.Button` components.

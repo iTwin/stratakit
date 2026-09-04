@@ -105,6 +105,9 @@
 			"security": {
 				"noBlankTarget": "off"
 			}
+		},
+		"domains": {
+			"react": "recommended"
 		}
 	},
 	"overrides": [

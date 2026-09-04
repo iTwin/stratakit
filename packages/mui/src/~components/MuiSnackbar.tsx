@@ -4,9 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Portal } from "@ariakit/react/portal";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 

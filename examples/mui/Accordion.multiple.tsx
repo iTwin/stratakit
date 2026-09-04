@@ -7,35 +7,20 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Link from "@mui/material/Link";
-import Typography from "@mui/material/Typography";
 
 export default () => {
 	return (
 		<div role="list">
-			<Accordion
-				role="listitem"
-				slots={{
-					heading: "h2",
-				}}
-			>
-				<AccordionSummary>
-					<Typography render={<span />}>What is StrataKit?</Typography>
-				</AccordionSummary>
+			<Accordion role="listitem" slotProps={{ heading: { render: <h2 /> } }}>
+				<AccordionSummary>What is StrataKit?</AccordionSummary>
 				<AccordionDetails>
 					StrataKit is Bentley Systems' open source design system and the
 					successor to iTwinUI.
 				</AccordionDetails>
 			</Accordion>
 
-			<Accordion
-				role="listitem"
-				slots={{
-					heading: "h2",
-				}}
-			>
-				<AccordionSummary>
-					<Typography render={<span />}>What is a design system?</Typography>
-				</AccordionSummary>
+			<Accordion role="listitem" slotProps={{ heading: { render: <h2 /> } }}>
+				<AccordionSummary>What is a design system?</AccordionSummary>
 				<AccordionDetails>
 					A design system is a comprehensive framework of standards, reusable
 					components, and documentation that guides the consistent development
@@ -43,15 +28,8 @@ export default () => {
 				</AccordionDetails>
 			</Accordion>
 
-			<Accordion
-				role="listitem"
-				slots={{
-					heading: "h2",
-				}}
-			>
-				<AccordionSummary>
-					<Typography render={<span />}>What is design?</Typography>
-				</AccordionSummary>
+			<Accordion role="listitem" slotProps={{ heading: { render: <h2 /> } }}>
+				<AccordionSummary>What is design?</AccordionSummary>
 				<AccordionDetails>
 					“Design is when designers design a design to produce a design.” —{" "}
 					<Link href="https://academic.oup.com/book/790">

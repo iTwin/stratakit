@@ -5,24 +5,28 @@
 
 import * as React from "react";
 import * as AkDialog from "@ariakit/react/dialog";
-import { Portal, PortalContext } from "@ariakit/react/portal";
+import { Portal } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
+import { RootContext } from "@stratakit/foundations/secret-internals";
 import {
-	forwardRef,
+	useCloseWatcher,
 	usePopoverApi,
-	useUnreactiveCallback,
-} from "@stratakit/foundations/secret-internals";
+	useSafeContext,
+	useStableCallback,
+} from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
+import { PortalProvider } from "./~PortalProvider.js";
 import { Dismiss } from "./~utils.icons.js";
 import { useInit } from "./~utils.useInit.js";
 
 import type {
 	BaseProps,
 	FocusableProps,
-} from "@stratakit/foundations/secret-internals";
+} from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -75,7 +79,22 @@ interface DialogRootProps
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	useInit();
 
-	const { backdrop = true, unmountOnHide = true, ...rest } = props;
+	const { rootNode } = useSafeContext(RootContext);
+
+	const defaultId = React.useId();
+
+	const {
+		backdrop = true,
+		unmountOnHide = true,
+		id = defaultId,
+		...rest
+	} = props;
+
+	const getContainer = React.useCallback(() => {
+		// Lookup using element id; `getContainer` is called (from layout effect) before the ref is attached.
+		const containerEl = rootNode?.getElementById(id);
+		return containerEl ?? null;
+	}, [rootNode, id]);
 
 	const store = AkDialog.useDialogStore();
 	const contentElement = useStoreState(store, "contentElement");
@@ -90,6 +109,7 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 		<AkDialog.DialogProvider store={store}>
 			<DialogWrapper open={props.open}>
 				<AkDialog.Dialog
+					id={id}
 					unmountOnHide={unmountOnHide}
 					portal={false} // Portaling will be done by DialogWrapper
 					{...rest}
@@ -99,9 +119,12 @@ const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 				>
 					{/* Avoids rendering a visually hidden dismiss button for screen readers. */}
 					<AkDialog.DialogDismiss hidden />
-					<PortalContext.Provider value={contentElement}>
+					<PortalProvider
+						container={contentElement}
+						unstable_getContainer={getContainer}
+					>
 						{props.children}
-					</PortalContext.Provider>
+					</PortalProvider>
 				</AkDialog.Dialog>
 			</DialogWrapper>
 		</AkDialog.DialogProvider>
@@ -121,10 +144,13 @@ function DialogWrapper(props: DialogWrapperProps) {
 	const open = useStoreState(store, (state) => {
 		return props.open ?? state?.open;
 	});
-	const setOpen = useUnreactiveCallback(store?.setOpen);
+	const setOpen = useStableCallback(store?.setOpen);
 
 	const popoverProps = usePopoverApi({
 		element: wrapper,
+		open,
+	});
+	useCloseWatcher({
 		open,
 		setOpen,
 	});

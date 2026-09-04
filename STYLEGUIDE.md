@@ -10,7 +10,7 @@ Although they are very similar, use `interface` for consistency and [better dete
 
 ### forwardRef
 
-Use the `forwardRef` utility from [packages/foundations](./packages/foundations/src/~utils.tsx) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.
+Use the `forwardRef` utility from [packages/internal-utils](./packages/internal-utils/src/react.ts) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.
 
 ## CSS
 
@@ -98,3 +98,41 @@ Wrap any rules relating to hover with the [`any-hover` media query](https://deve
 	}
 }
 ```
+
+## Changesets
+
+### Grammar
+
+- Begin with a past tense verb.
+- Use proper grammar and end with a period.
+
+**✅ Do**
+
+> Deprecated the `color` prop of `Chip`.
+
+**❌ Don't**
+
+> Deprecate `color` prop of `Chip`
+
+### Format Code
+
+- Use backticks to highlight code.
+- Include quotes around string values. Numbers and boolean values are unquoted.
+- Refer to React components without the `<` `>` unless you are referencing them in JSX syntax.
+- Refer to HTML elements wth `<` `>`.
+
+**✅ Do**
+
+> Updated `List` to render as `<ul>`.
+
+> Set `"primary"` the default `color` for `CircularProgress`.
+
+> Fixed bug with `hidden={true}` of `Dialog`.
+
+**❌ Don't**
+
+> Updated `<List>` to render as `ul`
+
+> Made `primary` the default color for `<CircularProgress>`.
+
+> Fixed bug with hidden=true of Dialog.

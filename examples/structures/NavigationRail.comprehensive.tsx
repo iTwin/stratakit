@@ -99,7 +99,7 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 					{expanded && (
 						<Badge // Inline badge is displayed when the rail is expanded
 							badgeContent={notificationCount}
-							inline
+							variant="inline"
 							color="error"
 							aria-hidden="true" // The badge is hidden from assistive technologies
 						/>

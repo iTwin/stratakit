@@ -29,7 +29,9 @@
 
 		border-radius: var(--stratakit-radius-lg);
 		background-color: var(--stratakit-color-bg-elevation-base);
+
 		box-shadow: var(--stratakit-shadow-surface-xl);
+		border: 1px solid var(--stratakit-color-border-page-base);
 
 		/* Prevents footer from overlapping the box-shadow */
 		padding: 1px;
@@ -126,11 +128,5 @@
 	@layer base {
 		opacity: 0.8;
 		background: var(--stratakit-color-bg-elevation-overlay);
-	}
-}
-
-@media (forced-colors: active) {
-	.🥝Dialog {
-		border: 1px solid;
 	}
 }

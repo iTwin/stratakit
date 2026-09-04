@@ -6,10 +6,12 @@
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { ThemeProvider } from "@mui/material/styles";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
+import { SortAscendingIcon, SortDescendingIcon } from "../Icon.js";
 
 import type { Theme } from "@mui/material/styles";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { TableSortLabelOwnerState } from "@mui/material/TableSortLabel";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -68,4 +70,26 @@ DEV: MuiTableCell.displayName = "MuiTableCell";
 
 // ----------------------------------------------------------------------------
 
-export { MuiTableBody, MuiTableCell, MuiTableHead };
+interface MuiTableSortLabelIconSlotProps extends BaseProps<"svg"> {
+	ownerState?: TableSortLabelOwnerState;
+	as?: React.ElementType;
+}
+const MuiTableSortLabelIconSlot = forwardRef<
+	"svg",
+	MuiTableSortLabelIconSlotProps
+>((props, forwardRef) => {
+	const { ownerState, as: _, ...rest } = props;
+	switch (ownerState?.direction) {
+		case "asc":
+			return <SortAscendingIcon {...rest} ref={forwardRef} />;
+		case "desc":
+			return <SortDescendingIcon {...rest} ref={forwardRef} />;
+		default:
+			return null;
+	}
+});
+DEV: MuiTableSortLabelIconSlot.displayName = "MuiTableSortLabelIconSlot";
+
+// ----------------------------------------------------------------------------
+
+export { MuiTableBody, MuiTableCell, MuiTableHead, MuiTableSortLabelIconSlot };

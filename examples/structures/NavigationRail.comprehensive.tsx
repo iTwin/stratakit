@@ -50,7 +50,7 @@ export default () => {
 							/>
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
-					<Divider className={styles.divider} role="presentation" />
+					<Divider role="presentation" margin />
 					<NavigationRail.Anchor
 						href="#"
 						icon={`${svgDisconnect}#icon-large`}
@@ -70,7 +70,7 @@ export default () => {
 								/>
 							</NavigationRail.ListItem>
 						</NavigationRail.List>
-						<Divider className={styles.divider} role="presentation" />
+						<Divider role="presentation" margin />
 						<AccountButton />
 					</NavigationRail.Footer>
 				</NavigationRail.Content>
@@ -99,7 +99,7 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 					{expanded && (
 						<Badge // Inline badge is displayed when the rail is expanded
 							badgeContent={notificationCount}
-							inline
+							variant="inline"
 							color="error"
 							aria-hidden="true" // The badge is hidden from assistive technologies
 						/>

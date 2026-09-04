@@ -4,19 +4,19 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Role } from "@ariakit/react/role";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type { DividerOwnProps } from "@mui/material/Divider";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
 interface MuiDividerProps
 	extends BaseProps<"hr">,
-		Pick<DividerOwnProps, "children"> {}
+		Pick<DividerOwnProps, "children" | "margin"> {}
 
 const MuiDivider = forwardRef<"hr", MuiDividerProps>((props, forwardedRef) => {
-	const { children, ...rest } = props;
+	const { children, margin, ...rest } = props;
 
 	const defaultRender = (() => {
 		if (
@@ -29,7 +29,15 @@ const MuiDivider = forwardRef<"hr", MuiDividerProps>((props, forwardedRef) => {
 	})();
 
 	return (
-		<Role render={defaultRender} {...rest} ref={forwardedRef}>
+		<Role
+			render={defaultRender}
+			data-_sk-margin={margin ? "" : undefined}
+			{...rest}
+			// Remove separator semantics when children is passed, to prevent the content from being suppressed.
+			role={children ? undefined : props.role}
+			aria-orientation={children ? undefined : props["aria-orientation"]}
+			ref={forwardedRef}
+		>
 			{children}
 		</Role>
 	);

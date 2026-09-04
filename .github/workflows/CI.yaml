@@ -18,10 +18,10 @@ jobs:
 
       - uses: pnpm/action-setup@v6
         with:
-          version: 10.30.1
+          version: 11.18.0
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -38,10 +38,10 @@ jobs:
 
       - uses: pnpm/action-setup@v6
         with:
-          version: 10.30.1
+          version: 11.18.0
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -59,12 +59,12 @@ jobs:
 
       - uses: pnpm/action-setup@v6
         with:
-          version: 10.30.1
+          version: 11.18.0
 
       - uses: biomejs/setup-biome@v2
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -96,10 +96,10 @@ jobs:
 
       - uses: pnpm/action-setup@v6
         with:
-          version: 10.30.1
+          version: 11.18.0
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 22.x
           cache: "pnpm"
@@ -118,7 +118,7 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
     strategy:
       fail-fast: false
       matrix:
@@ -129,7 +129,7 @@ jobs:
 
       - uses: pnpm/action-setup@v6
         with:
-          version: 10.30.1
+          version: 11.18.0
 
       - run: pnpm install
       - run: pnpm run build
@@ -148,14 +148,14 @@ jobs:
     needs: install
     runs-on: ubuntu-latest
     container:
-      image: mcr.microsoft.com/playwright:v1.60.0-noble
+      image: mcr.microsoft.com/playwright:v1.62.1-noble
 
     steps:
       - uses: actions/checkout@v7
 
       - uses: pnpm/action-setup@v6
         with:
-          version: 10.30.1
+          version: 11.18.0
 
       - run: pnpm install
       - run: pnpm run build
@@ -173,10 +173,10 @@ jobs:
 
       - uses: pnpm/action-setup@v6
         with:
-          version: 10.30.1
+          version: 11.18.0
 
       - name: Use Node 22.x
-        uses: actions/setup-node@v6
+        uses: actions/setup-node@v7
         with:
           node-version: 22.x
           cache: "pnpm"

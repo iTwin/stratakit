@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiTabs-root {
-	--_MuiTabs-indicator-gap: var(--stratakit-space-x2);
+	--_MuiTabs-indicator-gap: var(--stratakit-space-200);
 	--_MuiTab-height: var(--stratakit-size-control-field-height-medium);
 	--_MuiTab-max-width: 70ch;
-	--_MuiTab-padding-block: var(--stratakit-space-x1);
-	--_MuiTab-padding-inline: var(--stratakit-space-x3);
+	--_MuiTab-padding-block: var(--stratakit-space-100);
+	--_MuiTab-padding-inline: var(--stratakit-space-300);
 	--_MuiTab-scroll-button-size: var(
 		--stratakit-size-control-field-height-small
 	); /* Uses small size to minimize obscuring tabs. */
@@ -19,8 +19,8 @@
 
 	&:where([data-_sk-size="small"]) {
 		--_MuiTab-height: var(--stratakit-size-control-field-height-small);
-		--_MuiTab-padding-block: var(--stratakit-space-x05);
-		--_MuiTab-padding-inline: var(--stratakit-space-x2);
+		--_MuiTab-padding-block: var(--stratakit-space-50);
+		--_MuiTab-padding-inline: var(--stratakit-space-200);
 	}
 
 	/* #region Pseudo element to prevent accidental tab clicks near first scroll button */
@@ -52,7 +52,7 @@
 }
 
 .MuiTabs-list {
-	gap: var(--stratakit-space-x2);
+	gap: var(--stratakit-space-200);
 }
 
 .MuiTab-root {
@@ -77,9 +77,9 @@
 	/* #region Structural */
 	@apply --typography("body-md");
 	background-color: var(--_MuiTab-background-color);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiTab-color);
-	gap: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-100);
 	max-inline-size: var(--_MuiTab-max-width);
 	min-block-size: var(--_MuiTab-height);
 	min-inline-size: var(--_MuiTab-height); /* Forces 1:1 aspect ratio when the tab is icon-only */
@@ -183,10 +183,6 @@
 	:where(.MuiTabs-root:has(.MuiTab-root.Mui-selected.Mui-disabled)) & {
 		background-color: var(--stratakit-color-border-neutral-disabled);
 	}
-
-	@media (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
 }
 
 .MuiTabScrollButton-root {
@@ -194,7 +190,7 @@
 
 	background-color: var(--_MuiTab-scroll-button-background-color, transparent);
 	block-size: var(--_MuiTab-scroll-button-size);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	opacity: 1;
 	transition: background-color 150ms ease-out;
 
@@ -209,7 +205,7 @@
 		inset-block: 0;
 
 		:where(.MuiTabs-root:not([data-_sk-size="small"])) & {
-			margin-block-start: var(--stratakit-space-x1);
+			margin-block-start: var(--stratakit-space-100);
 		}
 
 		&:where(:nth-child(1 of &)) {
@@ -250,7 +246,7 @@
 }
 
 .MuiTabs-scroller {
-	--✨fade-size: var(--stratakit-space-x2);
+	--✨fade-size: var(--stratakit-space-200);
 	--✨scroll-padding: calc(var(--✨fade-size) + var(--_MuiTab-scroll-button-size));
 
 	--_MuiTabs-scroller-fade-start: var(--✨fade-size);

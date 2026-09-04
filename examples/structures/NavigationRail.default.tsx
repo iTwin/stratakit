@@ -42,7 +42,7 @@ export default () => {
 							/>
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
-					<Divider className={styles.divider} role="presentation" />
+					<Divider role="presentation" margin />
 					<NavigationRail.Anchor
 						href="#"
 						icon={`${svgDisconnect}#icon-large`}
@@ -50,7 +50,7 @@ export default () => {
 						suffix={<Icon href={svgWindowPopout} alt="(opens in new tab)" />}
 					/>
 					<NavigationRail.Footer>
-						<Divider className={styles.divider} />
+						<Divider margin />
 						<NavigationRail.Button
 							icon={`${svgSettings}#icon-large`}
 							label="Settings"

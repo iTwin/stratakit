@@ -5,7 +5,7 @@
 .page {
 	display: flex;
 	flex-wrap: wrap;
-	gap: var(--stratakit-space-x4);
+	gap: var(--stratakit-space-400);
 	container-type: inline-size;
 }
 
@@ -16,14 +16,14 @@
 }
 
 .main {
-	padding: var(--stratakit-space-x4);
+	padding: var(--stratakit-space-400);
 	flex: 999;
 	min-inline-size: 50%; /* never less than half the screen */
 }
 
 .h2,
 .h3 {
-	padding-inline-start: var(--stratakit-space-x2);
+	padding-inline-start: var(--stratakit-space-200);
 	font-weight: 500;
 }
 
@@ -35,7 +35,7 @@
 	align-self: flex-start;
 	min-inline-size: min(100vi, 256px);
 	max-inline-size: 100%;
-	padding: var(--stratakit-space-x2);
+	padding: var(--stratakit-space-200);
 
 	overflow: auto;
 	overflow-inline: clip;
@@ -46,7 +46,7 @@
 
 	display: flex;
 	flex-direction: column;
-	row-gap: var(--stratakit-space-x2);
+	row-gap: var(--stratakit-space-200);
 	flex-grow: 1;
 
 	@container (inline-size >= 542px) {
@@ -61,5 +61,5 @@
 }
 
 .navList {
-	margin-block-end: var(--stratakit-space-x4);
+	margin-block-end: var(--stratakit-space-400);
 }

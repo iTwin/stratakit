@@ -14,10 +14,10 @@
 			&::before {
 				content: "";
 				position: absolute;
-				inset-inline-start: var(--stratakit-space-x4);
+				inset-inline-start: var(--stratakit-space-400);
 				inset-block: 0;
 				border-inline-start: 1px solid var(--stratakit-color-border-page-base);
-				border-radius: 4px;
+				border-radius: var(--stratakit-radius-sm);
 			}
 		}
 	}
@@ -25,8 +25,8 @@
 
 .🥝NavigationListItemAction {
 	--✨height--default: 2rem;
-	--✨padding-inline: var(--stratakit-space-x2);
-	--✨padding-block: var(--stratakit-space-x1);
+	--✨padding-inline: var(--stratakit-space-200);
+	--✨padding-block: var(--stratakit-space-100);
 
 	--✨bg--default: transparent;
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
@@ -47,17 +47,17 @@
 		position: relative;
 		display: flex;
 		align-items: center;
-		gap: var(--stratakit-space-x2);
+		gap: var(--stratakit-space-200);
 
 		inline-size: stretch;
 		min-block-size: var(--✨height--default);
-		border-radius: 4px;
+		border-radius: var(--stratakit-radius-sm);
 		padding-inline-start: var(--✨padding-inline);
 		padding-inline-end: var(--✨padding-inline);
 		padding-block-start: var(--✨padding-block);
 		padding-block-end: var(--✨padding-block);
 
-		font-size: var(--stratakit-font-size-12);
+		font-size: var(--stratakit-font-size-body-sm);
 		line-height: 1.2;
 		text-decoration: none;
 		cursor: pointer;
@@ -89,7 +89,7 @@
 			&::before {
 				content: "";
 				display: inline-block;
-				inline-size: var(--stratakit-space-x4);
+				inline-size: var(--stratakit-space-400);
 			}
 		}
 	}
@@ -124,7 +124,7 @@
 				&::after {
 					inset: unset;
 					border: none;
-					inset-inline-start: var(--stratakit-space-x4);
+					inset-inline-start: var(--stratakit-space-400);
 					transform: translateX(-0.5px); /* Place on top of the faint indentation line */
 					inline-size: 2px;
 					block-size: 1rem;

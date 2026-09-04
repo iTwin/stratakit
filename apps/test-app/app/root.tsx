@@ -128,7 +128,8 @@ export function HydrateFallback() {
 }
 
 function useIsRootTest() {
-	type RootTestHandle = typeof import("~/tests/root/index.tsx").handle;
+	type RootTestHandle =
+		typeof import("~/tests/foundations/root/index.tsx").handle;
 	return !!(useMatches()?.at(-1)?.handle as RootTestHandle)?.rootTest;
 }
 

@@ -1,5 +1,33 @@
 # Changelog
 
+## 0.6.0
+
+- [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.
+- [#1813](https://github.com/iTwin/stratakit/pull/1813): Updated the supported version of `react` and `react-dom` to `^19.0.0`. Currently the packages will continue to work with `^18.0.0`, but you must upgrade to React v19 to ensure future compatibility.
+- [#1785](https://github.com/iTwin/stratakit/pull/1785), [#1788](https://github.com/iTwin/stratakit/pull/1788): Increased border color contrast across various components.
+- [#1815](https://github.com/iTwin/stratakit/pull/1815), [#1820](https://github.com/iTwin/stratakit/pull/1820): Updated shadow styling across various components (`Button`, `Checkbox`, `Kbd`, `Select`, `Switch`, `Tooltip`).
+- [#1795](https://github.com/iTwin/stratakit/pull/1795): Updated colors for `Button` and `Anchor`.
+- [#1797](https://github.com/iTwin/stratakit/pull/1797): Updated placeholder text styling across various components (e.g. `TextBox`).
+- [#1805](https://github.com/iTwin/stratakit/pull/1805): Updated `border-radius` of `Skeleton`.
+- Updated dependencies:
+  - @stratakit/internal-utils@0.2.0
+
+## 0.6.0-rc-*
+
+See [CHANGELOG.md](https://github.com/iTwin/stratakit/blob/%40stratakit/bricks%400.6.0-rc.2/packages/bricks/CHANGELOG.md) in `@stratakit/bricks@0.6.0-rc.2` for a list of changes in the `0.6.0-rc.*` releases. These changes are included in the `0.6.0` release.
+
+## 0.5.6
+
+- [#1670](https://github.com/iTwin/stratakit/pull/1670): Removed [`CloseWatcher`](https://developer.mozilla.org/en-US/docs/Web/API/CloseWatcher) responsible for device-specific close actions from the `Tooltip`.
+- [#1565](https://github.com/iTwin/stratakit/pull/1565): Added a dependency on `@stratakit/internal-utils` package.
+- [#1497](https://github.com/iTwin/stratakit/pull/1497): Increased border color contrast across various components.
+- [#1707](https://github.com/iTwin/stratakit/pull/1707): Updated borders for `Switch`.
+- [#1759](https://github.com/iTwin/stratakit/pull/1759): Updated colors for `Badge`.
+- [#1760](https://github.com/iTwin/stratakit/pull/1760): Updated background for `Select`.
+- [#1774](https://github.com/iTwin/stratakit/pull/1774): Updated borders for `Checkbox`, `Kbd`, `Radio`, `Select`, and `Switch`.
+- Updated dependencies:
+  - @stratakit/foundations@0.5.0
+
 ## 0.5.5
 
 - [#1487](https://github.com/iTwin/stratakit/pull/1487): Marked all components from `@stratakit/bricks` as deprecated. Read [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#use-mui-components) for details on how to migrate to `@mui/material`.

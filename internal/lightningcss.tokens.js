@@ -3,11 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { dropNullValues } from "./lightningcss.ast.js";
+
 import Color from "colorjs.io";
 import primitives from "./primitives.json" with { type: "json" };
 import darkTheme from "./theme-dark.json" with { type: "json" };
 import lightTheme from "./theme-light.json" with { type: "json" };
-import typography from "./typography.json" with { type: "json" };
 
 /**
  * LightningCSS visitor that inlines the values of primitive color tokens.
@@ -115,7 +116,6 @@ export function themeTransform() {
 				const declarations = [];
 
 				const colorTokens = parseTokens(themes.get(theme)?.color);
-				const shadowTokens = parseTokens(themes.get(theme)?.shadow);
 
 				for (let [name, { $value }] of colorTokens.entries()) {
 					// Tokens that should be skipped are marked using "🫥" (by convention).
@@ -147,20 +147,6 @@ export function themeTransform() {
 					);
 				}
 
-				for (let [name, { $value }] of shadowTokens.entries()) {
-					$value = $value.join(", ");
-
-					if (isFallback)
-						$value = $value.replaceAll("--primitive", "--primitive-fallback");
-
-					// Pass shadow values through the `_raw` function for inlining.
-					$value = cssFunction("_raw", $value);
-
-					declarations.push(
-						cssCustomProperty(name, $value, { prefix: "stratakit-shadow" }),
-					);
-				}
-
 				// Style rule that can be nested under any selector.
 				return [
 					{
@@ -184,72 +170,6 @@ export function themeTransform() {
 				if (fn.arguments.length === 1 && fn.arguments[0].type === "token") {
 					return { raw: fn.arguments[0].value.value };
 				}
-			},
-		},
-	};
-}
-
-/**
- * LightningCSS visitor that exposes a `--typography-tokens` CSS mixin (applied
- * with `@apply`) that adds typography-related tokens as custom properties.
- *
- * Input:
- * ```css
- * :root {
- * 	 \@apply --typography-tokens;
- * }
- * ```
- *
- * Output:
- * ```css
- * :root {
- * 	 …
- * 	 --stratakit-font-size-32: 2rem;
- * 	 …
- * }
- * ```
- *
- * @returns {import("lightningcss").Visitor}
- */
-export function typographyTokensTransform() {
-	return {
-		Rule: {
-			unknown({ name, prelude, loc }) {
-				if (
-					name !== "apply" ||
-					prelude[0]?.type !== "dashed-ident" ||
-					prelude[0].value !== "--typography-tokens"
-				) {
-					return;
-				}
-
-				const declarations = [];
-
-				for (const [step, token] of Object.entries(typography.size)) {
-					declarations.push(
-						cssCustomProperty(
-							step,
-							{
-								type: "length",
-								// This shape of this object coincidentally matches what Lightning expects
-								value: token.$value,
-							},
-							{ prefix: "stratakit-font-size" },
-						),
-					);
-				}
-
-				return [
-					{
-						type: "style",
-						value: {
-							declarations: { declarations },
-							selectors: [[{ type: "nesting" }]],
-							rules: [],
-							loc,
-						},
-					},
-				];
 			},
 		},
 	};
@@ -299,10 +219,12 @@ export function staticVariablesTransform() {
 		},
 		Variable({ name }) {
 			if (name.ident.startsWith("--✨")) {
-				return [
-					...(savedValues.get(lastNonNestedSelector)?.[name.ident] ?? []),
+				return dropNullValues([
+					...structuredClone(
+						savedValues.get(lastNonNestedSelector)?.[name.ident] ?? [],
+					),
 					{ type: "token", value: { type: "white-space", value: " " } },
-				];
+				]);
 			}
 		},
 	};

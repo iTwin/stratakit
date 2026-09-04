@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiFormControl-root {
-	row-gap: var(--stratakit-space-x1);
+	row-gap: var(--stratakit-space-100);
 }
 
 .MuiFormControlLabel-root {
-	gap: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-100);
 	margin-inline: 0;
 
 	&:where(.MuiFormControlLabel-labelPlacementTop, .MuiFormControlLabel-labelPlacementBottom) {
@@ -20,19 +20,15 @@
 	}
 }
 
-.MuiFormControlLabel-label {
-	@apply --typography("body-md");
-}
-
 .MuiFormLabel-root {
 	&:where(legend) {
-		margin-block-end: var(--stratakit-space-x1); /* legend does not support gap */
+		margin-block-end: var(--stratakit-space-100); /* legend does not support gap */
 	}
 }
 
 .MuiFormGroup-root {
-	row-gap: var(--stratakit-space-x1);
-	column-gap: var(--stratakit-space-x2);
+	row-gap: var(--stratakit-space-100);
+	column-gap: var(--stratakit-space-200);
 }
 
 .MuiFormHelperText-root {
@@ -64,7 +60,7 @@
 			background-image: var(--_❗);
 			background-repeat: no-repeat;
 
-			margin-inline-end: var(--stratakit-space-x1);
+			margin-inline-end: var(--stratakit-space-100);
 		}
 
 		&::after {

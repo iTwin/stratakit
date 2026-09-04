@@ -4,23 +4,19 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝Popover {
-	--✨padding: var(--stratakit-space-x1);
+	--✨padding: var(--stratakit-space-100);
 
 	@layer base {
-		border-radius: 8px /* radius/medium */;
+		border-radius: var(--stratakit-radius-md);
 		background: var(--stratakit-color-bg-elevation-level-1);
-		box-shadow: var(--stratakit-shadow-control-dropdown-base);
+
+		box-shadow: var(--stratakit-shadow-surface-lg);
+		border: 1px solid var(--stratakit-color-border-page-base);
 
 		overflow: auto;
 		min-inline-size: min(95vi, 164px);
 		max-inline-size: var(--popover-available-width);
 		max-block-size: var(--popover-available-height);
 		padding: var(--✨padding);
-	}
-}
-
-@media (forced-colors: active) {
-	.🥝Popover {
-		border: 1px solid;
 	}
 }

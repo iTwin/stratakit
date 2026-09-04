@@ -1,0 +1,29 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.MuiDivider-root {
+	&:where(:not(.MuiDivider-vertical)) {
+		&:where([data-_sk-margin]) {
+			margin-block-start: var(--stratakit-space-100);
+			margin-block-end: var(--stratakit-space-100);
+		}
+
+		&:where(.MuiDivider-middle) {
+			margin-inline-start: var(--stratakit-space-200);
+			margin-inline-end: var(--stratakit-space-200);
+		}
+	}
+
+	&:where(.MuiDivider-vertical) {
+		&:where([data-_sk-margin]) {
+			margin-inline-start: var(--stratakit-space-100);
+			margin-inline-end: var(--stratakit-space-100);
+		}
+
+		&:where(.MuiDivider-middle) {
+			margin-block-start: var(--stratakit-space-200);
+			margin-block-end: var(--stratakit-space-200);
+		}
+	}
+}

@@ -1,5 +1,109 @@
 # Changelog
 
+## 0.4.3
+
+- [#1682](https://github.com/iTwin/stratakit/pull/1682): Added new icons:
+  - `arrow-north.svg`
+  - `assign.svg`
+  - `prefab.svg`
+  - `reaction-add.svg`
+  - `slab-opening.svg`
+  - `slab-region.svg`
+  - `slice.svg`
+  - `unassign.svg`
+
+  Updated icons:
+  - `construction-area.svg`
+  - `list.svg`
+  - `sorting.svg`
+
+- [#1661](https://github.com/iTwin/stratakit/pull/1661): Added new icon: `components.svg`.
+- [#1674](https://github.com/iTwin/stratakit/pull/1674): Updated icon: `merge-cells.svg` (now uses the correct glyph for the regular size).
+
+## 0.4.2
+
+- [#1630](https://github.com/iTwin/stratakit/pull/1630): Added new icons:
+  - `apply-down.svg`
+  - `asset-copy.svg`
+  - `axis-lock.svg`
+  - `beam.svg`
+  - `brace.svg`
+  - `column.svg`
+  - `cone.svg`
+  - `construction-area.svg`
+  - `construction-line.svg`
+  - `construction-point.svg`
+  - `cylinder.svg`
+  - `drop-cap.svg`
+  - `footing-combined.svg`
+  - `footing-isolated.svg`
+  - `footing-mat.svg`
+  - `footing-pilecap.svg`
+  - `grid-lines.svg`
+  - `ice.svg`
+  - `load-area.svg`
+  - `load-case.svg`
+  - `load-combination.svg`
+  - `load-linear.svg`
+  - `load-perimeter.svg`
+  - `load-point.svg`
+  - `mass-area.svg`
+  - `mass-excitation.svg`
+  - `mass-linear.svg`
+  - `mass-perimeter.svg`
+  - `mass.svg`
+  - `project-copy.svg`
+  - `reality-capture.svg`
+  - `seismic.svg`
+  - `slab.svg`
+  - `snap-grid.svg`
+  - `snap-orthogonal.svg`
+  - `snap-point.svg`
+  - `snowflake.svg`
+  - `spring-area.svg`
+  - `spring-linear.svg`
+  - `spring-point.svg`
+  - `support-linear.svg`
+  - `support-point.svg`
+  - `temperature.svg`
+  - `templates.svg`
+  - `templates-copy.svg`
+  - `templates-create.svg`
+  - `tower-crane.svg`
+  - `truck.svg`
+  - `wind.svg`
+
+## 0.4.1
+
+- [#1619](https://github.com/iTwin/stratakit/pull/1619): Added new icon:
+  - `production-sheet.svg` (matches the `production-drawing.svg` icon from before this release)
+
+  Updated icon:
+  - `production-drawing.svg` (reverted to the original version from before 0.3.1)
+
+- [#1597](https://github.com/iTwin/stratakit/pull/1597): Added new icons:
+  - `add-region.svg`
+  - `annotate-balloon.svg`
+  - `asset-information.svg`
+  - `control-line-add.svg`
+  - `control-line.svg`
+  - `corner.svg`
+  - `define-region-size.svg`
+  - `ditch.svg`
+  - `hatch.svg`
+  - `path-animation-crowd.svg`
+  - `path-animation-single.svg`
+  - `path-animation-traffic.svg`
+  - `quality-custom.svg`
+  - `quality-high.svg`
+  - `quality-low.svg`
+  - `quality-mid.svg`
+  - `rotate-point.svg`
+  - `rule-ditch.svg`
+  - `rule.svg`
+  - `sheet-defined-region.svg`
+  - `vertex.svg`
+
 ## 0.4.0
 
 ### Breaking changes

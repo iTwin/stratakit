@@ -7,3 +7,8 @@ links:
 ---
 
 ::example{src="mui/Backdrop.default"}
+
+## StrataKit MUI modifications
+
+- Deprecated `in` from `Fade`. Use `open` instead.
+- Deprecated `timeout` from `Fade` Use `transitionDuration` instead.

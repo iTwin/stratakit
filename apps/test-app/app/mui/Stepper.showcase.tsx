@@ -10,7 +10,7 @@ import StepperOptional from "examples/mui/Stepper.optional.tsx";
 
 export default function StepperExamples() {
 	return (
-		<Stack spacing={4} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={8} sx={{ alignSelf: "stretch" }}>
 			<StepperDefault />
 			<StepperOptional />
 			<StepperClickable />

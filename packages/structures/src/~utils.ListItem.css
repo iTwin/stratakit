@@ -5,7 +5,7 @@
 .🥝ListItem {
 	--✨height--default: 1.75rem;
 	--✨height--large: 2.75rem;
-	--✨padding-inline: var(--stratakit-space-x2);
+	--✨padding-inline: var(--stratakit-space-200);
 
 	--✨bg--default: transparent;
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
@@ -21,7 +21,7 @@
 	@layer base {
 		cursor: pointer;
 		line-height: 1.2;
-		font-size: var(--stratakit-font-size-12);
+		font-size: var(--stratakit-font-size-body-sm);
 
 		display: grid;
 		align-items: center;
@@ -103,7 +103,7 @@
 }
 
 .🥝ListItemDecoration {
-	--✨gap: var(--stratakit-space-x1);
+	--✨gap: var(--stratakit-space-100);
 
 	@layer base {
 		grid-column: decoration-before;

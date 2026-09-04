@@ -4,35 +4,32 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import {
-	forwardRef,
-	useSafeContext,
-} from "@stratakit/foundations/secret-internals";
+import { useSafeContext } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type Badge from "@mui/material/Badge";
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
-const MuiBadgeContext = React.createContext<{ inline?: boolean } | undefined>(
-	undefined,
-);
+const MuiBadgeContext = React.createContext<
+	Pick<BadgeProps, "size" | "type"> | undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 
 type BadgeProps = React.ComponentProps<typeof Badge>;
 
-interface MuiBadgeProps extends BaseProps<"span">, Pick<BadgeProps, "inline"> {}
+interface MuiBadgeProps
+	extends BaseProps<"span">,
+		Pick<BadgeProps, "size" | "type"> {}
 
 const MuiBadge = forwardRef<"span", MuiBadgeProps>((props, forwardedRef) => {
-	const { inline, ...rest } = props;
+	const { size = "medium", type = "strong", ...rest } = props;
+
 	return (
-		<MuiBadgeContext.Provider value={{ inline }}>
-			<Role.span
-				{...rest}
-				data-_sk-inline={inline ? "" : undefined}
-				ref={forwardedRef}
-			/>
+		<MuiBadgeContext.Provider value={{ size, type }}>
+			<Role.span {...rest} ref={forwardedRef} />
 		</MuiBadgeContext.Provider>
 	);
 });
@@ -41,11 +38,15 @@ DEV: MuiBadge.displayName = "MuiBadge";
 // ----------------------------------------------------------------------------
 
 const MuiBadgeBadge = forwardRef<"span", BaseProps>((props, forwardedRef) => {
-	const { inline } = useSafeContext(MuiBadgeContext);
+	const { size, type } = useSafeContext(MuiBadgeContext);
+	const inline = props.className?.includes("MuiBadge-inline");
+
 	return (
 		<Role.span
 			{...props}
 			aria-hidden={inline ? undefined : props["aria-hidden"]}
+			data-_sk-size={inline && size === "small" ? "small" : undefined}
+			data-_sk-type={inline && type !== "strong" ? type : undefined}
 			ref={forwardedRef}
 		/>
 	);

@@ -7,3 +7,18 @@ links:
 ---
 
 ::example{src="mui/DatePicker.default"}
+
+## StrataKit MUI modifications
+
+- `dayOfWeekFormatter` defaults to a locale-aware 2-character weekday label.
+
+## Examples
+
+### Sizes
+
+Use [`slotProps.textField`](https://mui.com/x/api/date-pickers/date-picker/#date-picker-prop-slotProps) to set the [`size`](https://mui.com/x/api/date-pickers/pickers-text-field/#pickers-text-field-prop-size) of the DatePicker input.
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/DatePicker.sizes"}

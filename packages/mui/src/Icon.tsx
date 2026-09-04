@@ -7,6 +7,7 @@ import * as React from "react";
 import { Icon } from "@stratakit/foundations";
 
 import svgArrowDown from "@stratakit/icons/arrow-down.svg";
+import svgCalendar from "@stratakit/icons/calendar.svg";
 import svgCaretsUpDown from "@stratakit/icons/carets-up-down.svg";
 import svgCheckmark from "@stratakit/icons/checkmark.svg";
 import svgChevronDown from "@stratakit/icons/chevron-down.svg";
@@ -14,10 +15,13 @@ import svgChevronLeft from "@stratakit/icons/chevron-left.svg";
 import svgChevronLeftDouble from "@stratakit/icons/chevron-left-double.svg";
 import svgChevronRight from "@stratakit/icons/chevron-right.svg";
 import svgChevronRightDouble from "@stratakit/icons/chevron-right-double.svg";
+import svgClock from "@stratakit/icons/clock.svg";
 import svgDismiss from "@stratakit/icons/dismiss.svg";
 import svgDismissCircle from "@stratakit/icons/dismiss-circle.svg";
 import svgError from "@stratakit/icons/error.svg";
 import svgInfo from "@stratakit/icons/info.svg";
+import svgSortAscending from "@stratakit/icons/sort-ascending.svg";
+import svgSortDescending from "@stratakit/icons/sort-descending.svg";
 import svgStatusSuccess from "@stratakit/icons/status-success.svg";
 import svgWarning from "@stratakit/icons/warning.svg";
 
@@ -34,6 +38,9 @@ function createIconComponent(href: string) {
 // ----------------------------------------------------------------------------
 
 const ArrowDownIcon = createIconComponent(svgArrowDown);
+
+const CalendarIcon = createIconComponent(svgCalendar);
+const ClockIcon = createIconComponent(svgClock);
 
 const CheckmarkIcon = createIconComponent(svgCheckmark);
 
@@ -53,10 +60,14 @@ const InfoIcon = createIconComponent(svgInfo);
 const SuccessIcon = createIconComponent(svgStatusSuccess);
 const WarningIcon = createIconComponent(svgWarning);
 
+const SortAscendingIcon = createIconComponent(svgSortAscending);
+const SortDescendingIcon = createIconComponent(svgSortDescending);
+
 // ----------------------------------------------------------------------------
 
 export {
 	ArrowDownIcon,
+	CalendarIcon,
 	CaretsUpDownIcon,
 	CheckmarkIcon,
 	ChevronDownIcon,
@@ -64,11 +75,14 @@ export {
 	ChevronLeftIcon,
 	ChevronRightDoubleIcon,
 	ChevronRightIcon,
+	ClockIcon,
 	DismissCircleIcon,
 	DismissIcon,
 	ErrorIcon,
 	Icon,
 	InfoIcon,
+	SortAscendingIcon,
+	SortDescendingIcon,
 	SuccessIcon,
 	WarningIcon,
 };

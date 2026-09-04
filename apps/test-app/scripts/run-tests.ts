@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { spawn } from "node:child_process";
+import { mkdir } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 
 const repoDir = fileURLToPath(new URL("../../..", import.meta.url));
@@ -32,12 +33,37 @@ async function execute(command: string, args: string[] = []) {
 }
 
 void (async () => {
+	// Create the test output folder mount point in case it does not exist
+	await mkdir(`${appDir}/test-results`, { recursive: true });
+
+	// Patches folder may not exist currently but want to keep working and
+	// applying those patches if it ever is needed.
+	await mkdir(`${repoDir}/patches`, { recursive: true });
+
+	// On Linux, pass the host UID/GID as build args so the image's ubuntu user
+	// is remapped to match — files written to bind-mounted directories are then
+	// owned by the correct host user. On macOS, Docker Desktop handles ownership
+	// transparently via its Linux VM. process.getuid is undefined on Windows.
+	const isLinux = process.platform === "linux";
+	const uidArgs =
+		isLinux && process.getuid && process.getgid
+			? [
+					"--build-arg",
+					"LINUX_HOST=true",
+					"--build-arg",
+					`UID=${process.getuid()}`,
+					"--build-arg",
+					`GID=${process.getgid()}`,
+				]
+			: [];
+
 	await execute("docker", [
 		"build",
 		"-t",
 		imageName,
 		"-f",
 		dockerfilePath,
+		...uidArgs,
 		repoDir, // Build context
 	]);
 
@@ -45,12 +71,12 @@ void (async () => {
 		"run",
 		"--init", // Use init process to handle zombie processes
 		"--rm", // Remove the container after run
-		"-v", // Mount snapshot directory from host to container
+		"-v", // Mount the .spec files
 		`${appDir}/app:${containerAppDir}/app`,
-		"-v", // Mount test-results directory from host to container
+		"-v", // Mount build directory with website code
+		`${appDir}/build:${containerAppDir}/build`,
+		"-v", // Mount results directory
 		`${appDir}/test-results:${containerAppDir}/test-results`,
-		"-v", // Mount playwright-report directory from host to container
-		`${appDir}/playwright-report:${containerAppDir}/playwright-report`,
 		"-w", // Set working directory
 		containerAppDir,
 		imageName,

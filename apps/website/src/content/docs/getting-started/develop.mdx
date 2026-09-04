@@ -18,10 +18,10 @@ Open the [minimal starter template on StackBlitz](https://stackblitz.com/github/
 1. **Install the StrataKit packages**
 
    ```console
-   npm add @stratakit/mui @stratakit/icons
+   npm add @stratakit/foundations @stratakit/mui @stratakit/icons
    ```
 
-   You will also need to install `@mui/material` and its peer dependencies (`@emotion/styled` and `@emotion/react`).
+   You will also need to install `@mui/material`.
 
 2. **Configure your bundler**
 
@@ -142,6 +142,10 @@ To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.
 ```
 
 Build tools such as [Vite](https://vite.dev/guide/assets.html#importing-asset-as-url) can handle `url()` references and automatically copy these files into your output directory with hashed file names. These files can then be safely served with [HTTP caching](https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/#how_to_cache_static_resources_using_http_caching) without blocking upgrades to newer versions of the fonts.
+
+## Agent skill
+
+Use the [`stratakit-usage`](https://github.com/iTwin/stratakit/blob/main/skills/stratakit-usage/README.md) agent skill to help AI coding agents follow the StrataKit conventions automatically - using the right components, icons, and tokens while avoiding incompatible libraries.
 
 ## Migrating from iTwinUI
 

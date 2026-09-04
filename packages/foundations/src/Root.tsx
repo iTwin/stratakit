@@ -5,18 +5,19 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { PortalContext } from "@ariakit/react/portal";
+import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
-import cx from "classnames";
-import css from "./~styles.css.js";
+import { identity } from "@stratakit/internal-utils/common";
 import {
-	forwardRef,
 	getOwnerDocument,
 	getWindow,
-	identity,
 	isBrowser,
 	isDocument,
-} from "./~utils.js";
+} from "@stratakit/internal-utils/dom";
+import { useMergedRefs, useSafeContext } from "@stratakit/internal-utils/hooks";
+import { forwardRef } from "@stratakit/internal-utils/react";
+import cx from "classnames";
+import css from "./~styles.css.js";
 import {
 	HtmlSanitizerContext,
 	RootContext,
@@ -26,7 +27,7 @@ import {
 } from "./Root.internal.js";
 import { loadStyles } from "./styles.internal.js";
 
-import type { BaseProps } from "./~utils.js";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 const packageName = "@stratakit/foundations";
 const key = `${packageName}@${__VERSION__}`;
@@ -97,6 +98,11 @@ interface RootProps extends BaseProps {
 	 * @default document
 	 */
 	rootNode?: Document | ShadowRoot;
+
+	/**
+	 * Allows to customize the portal provider.
+	 */
+	unstable_portalProvider?: React.ReactElement;
 }
 
 /**
@@ -112,20 +118,21 @@ interface RootProps extends BaseProps {
  * </Root>
  * ```
  */
-export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
+const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	throwIfNotSingleton();
 
 	const {
 		children,
 		synchronizeColorScheme = true,
 		unstable_htmlSanitizer = identity,
+		unstable_portalProvider,
 		portalContainer: portalContainerProp,
 		...rest
 	} = props;
 
 	return (
 		<RootInternal {...rest} ref={forwardedRef}>
-			<RootProvider>
+			<RootProvider portalProvider={unstable_portalProvider}>
 				<Styles />
 				<Fonts />
 				<InlineSpriteSheet />
@@ -136,14 +143,14 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				<SynchronizeAccentColor accentColor={props.unstable_accentColor} />
 
 				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
-					<PortalProvider
+					<RootPortalProvider
 						colorScheme={props.colorScheme}
 						unstable_accentColor={props.unstable_accentColor}
 						density={props.density}
 						portalContainerProp={portalContainerProp}
 					>
 						{children}
-					</PortalProvider>
+					</RootPortalProvider>
 				</HtmlSanitizerContext.Provider>
 			</RootProvider>
 		</RootInternal>
@@ -151,11 +158,23 @@ export const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 });
 DEV: Root.displayName = "Root";
 
-const RootProvider = (props: React.PropsWithChildren) => {
+interface RootProviderProps {
+	children?: React.ReactNode;
+	portalProvider?: RootProps["unstable_portalProvider"];
+}
+
+const RootProvider = (props: RootProviderProps) => {
 	const rootNode = useRootNode();
 
 	return (
-		<RootContext.Provider value={{ versions, rootNode, loadStyles }}>
+		<RootContext.Provider
+			value={{
+				versions,
+				rootNode,
+				loadStyles,
+				portalProvider: props.portalProvider,
+			}}
+		>
 			{props.children}
 		</RootContext.Provider>
 	);
@@ -254,25 +273,53 @@ function SynchronizeAccentColor({
 
 // ----------------------------------------------------------------------------
 
-interface PortalProviderProps
+const PortalContext = React.createContext<
+	| {
+			container: HTMLElement | null;
+			/**
+			 * Function that is lazily resolved by MUI when the portal mounts. Passing the
+			 * element directly requires the theme to be recreated once the element becomes available, which
+			 * leaves a one-commit window where portals fall back to `<body>`.
+			 *
+			 * Needed to workaround https://github.com/mui/material-ui/issues/48882
+			 */
+			unstable_getContainer?: () => HTMLElement | null;
+	  }
+	| undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
+interface RootPortalProviderProps
 	extends Pick<RootProps, "colorScheme" | "unstable_accentColor" | "density"> {
+	children?: React.ReactNode;
 	portalContainerProp?: RootProps["portalContainer"];
 }
 
-function PortalProvider(props: React.PropsWithChildren<PortalProviderProps>) {
-	const [portalContainer, setPortalContainer] =
-		React.useState<HTMLElement | null>(null);
+function RootPortalProvider(props: RootPortalProviderProps) {
+	const { portalProvider } = useSafeContext(RootContext);
+
+	const containerRef = React.useRef<HTMLDivElement>(null);
+	const [container, setContainer] = React.useState<HTMLElement | null>(null);
+
+	const getContainer = React.useCallback(() => containerRef.current, []);
 
 	return (
-		<PortalContext.Provider value={portalContainer}>
-			{props.children}
-			<PortalContainer
-				colorScheme={props.colorScheme}
-				unstable_accentColor={props.unstable_accentColor}
-				density={props.density}
-				ref={setPortalContainer}
-				render={props.portalContainerProp}
-			/>
+		<PortalContext.Provider
+			value={{ container, unstable_getContainer: getContainer }}
+		>
+			<AkPortalContext.Provider value={container}>
+				<Role render={portalProvider ?? <React.Fragment />}>
+					<PortalContainer
+						colorScheme={props.colorScheme}
+						unstable_accentColor={props.unstable_accentColor}
+						density={props.density}
+						ref={useMergedRefs(containerRef, setContainer)}
+						render={props.portalContainerProp}
+					/>
+					{props.children}
+				</Role>
+			</AkPortalContext.Provider>
 		</PortalContext.Provider>
 	);
 }
@@ -464,3 +511,7 @@ function isShadow(node?: Node): node is ShadowRoot {
 			!!(node as ShadowRoot)?.host)
 	);
 }
+
+// ----------------------------------------------------------------------------
+
+export { PortalContext, Root };

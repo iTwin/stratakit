@@ -12,14 +12,21 @@
 }
 
 .MuiStepButton-root {
-	padding: var(--stratakit-space-x3);
-	margin: calc(-1 * var(--stratakit-space-x3));
+	padding: var(--stratakit-space-300);
+	margin: calc(-1 * var(--stratakit-space-300));
 }
 
 .MuiStepLabel-labelContainer {
 	display: grid;
 	align-content: start;
-	row-gap: var(--stratakit-space-x05);
+	row-gap: var(--stratakit-space-50);
+}
+
+.MuiStepLabel-root {
+	:where(.MuiStepButton-root.Mui-focusVisible) & {
+		/* Prevents double focus outlines. */
+		outline: unset;
+	}
 }
 
 .MuiStepLabel-label {

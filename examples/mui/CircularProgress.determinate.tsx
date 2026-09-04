@@ -8,42 +8,23 @@ import Box from "@mui/material/Box";
 import CircularProgress from "@mui/material/CircularProgress";
 import Typography from "@mui/material/Typography";
 
+import styles from "./CircularProgress.determinate.module.css";
+
 export default () => {
 	const labelId = React.useId();
-	const [value, setValue] = React.useState(10);
-
-	React.useEffect(() => {
-		const timer = setInterval(() => {
-			setValue((prevValue) => (prevValue >= 100 ? 0 : prevValue + 10));
-		}, 800);
-
-		return () => {
-			clearInterval(timer);
-		};
-	}, []);
+	const progress = 50;
 
 	return (
 		<>
-			<Box sx={{ position: "relative", display: "inline-flex" }}>
+			<Box className={styles.container}>
 				<CircularProgress
-					aria-labelledby={labelId}
 					variant="determinate"
-					value={value}
+					value={progress}
+					aria-labelledby={labelId}
 				/>
-
-				<Typography
-					variant="caption"
-					sx={{
-						top: 0,
-						left: 0,
-						bottom: 0,
-						right: 0,
-						position: "absolute",
-						display: "flex",
-						alignItems: "center",
-						justifyContent: "center",
-					}}
-				>{`${Math.round(value)}%`}</Typography>
+				<Typography variant="caption" className={styles.percentage}>
+					{progress}%
+				</Typography>
 			</Box>
 			<Typography id={labelId}>Uploading…</Typography>
 		</>

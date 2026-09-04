@@ -10,6 +10,7 @@ import type { Page } from "@playwright/test";
 
 /** See https://playwright.dev/docs/test-configuration. */
 export default defineConfig({
+	outputDir: "test-results/output",
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -21,7 +22,7 @@ export default defineConfig({
 	/* Opt out of parallel tests on CI. */
 	workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
-	reporter: [["html", { open: "never" }]],
+	reporter: [["html", { open: "never", outputFolder: "test-results/report" }]],
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		/* Base URL to use in actions like `await page.goto('/')`. */
@@ -66,7 +67,7 @@ export default defineConfig({
 		},
 	],
 	webServer: {
-		command: "pnpm preview",
+		command: "pnpm run preview:raw",
 		url: "http://localhost:1800",
 		reuseExistingServer: true,
 	},

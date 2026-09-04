@@ -1,0 +1,55 @@
+---
+type Crumb = {
+	label: string;
+	href?: string;
+};
+
+type Props = {
+	crumbs: Crumb[];
+};
+
+const { crumbs, ...rest } = Astro.props;
+---
+
+<nav aria-label="breadcrumb" {...rest}>
+	<ol>
+		{
+			crumbs.map((crumb, index) => {
+				const isCurrent = index === crumbs.length - 1;
+				return (
+					<li>
+						{crumb.href && !isCurrent ? (
+							<a href={crumb.href}>{crumb.label}</a>
+						) : (
+							<span aria-current={isCurrent ? "page" : undefined}>{crumb.label}</span>
+						)}
+					</li>
+				);
+			})
+		}
+	</ol>
+</nav>
+
+<style>
+	@layer page {
+		ol {
+			display: flex;
+			flex-wrap: wrap;
+			list-style: none;
+			padding: 0;
+			margin: 0;
+			align-items: center;
+		}
+
+		li:not(:last-of-type)::after {
+			content: "›" / "";
+			display: inline-block;
+			width: var(--stratakit-space-400);
+			text-align: center;
+			margin-inline-start: var(--stratakit-space-100);
+			margin-inline-end: var(--stratakit-space-100);
+			color: var(--stratakit-color-icon-neutral-base);
+			font-weight: var(--stratakit-font-weight-medium);
+		}
+	}
+</style>

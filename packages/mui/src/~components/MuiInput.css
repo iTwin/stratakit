@@ -3,25 +3,20 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiInputBase-root {
-	--✨border--default: var(--stratakit-color-border-control-textbox);
+.🥝MuiInput {
+	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
-	--✨padding-inline--small: var(--stratakit-space-x2);
-	--✨padding-inline--medium: var(--stratakit-space-x3);
-
+	@apply --typography("body-md");
 	padding: 0;
 	border: 1px solid var(--_MuiInput-border-color);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	background-color: var(--stratakit-color-bg-control-textbox);
 	transition: border-color 150ms ease-out;
 
-	@apply --typography("body-md");
-	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
 	--_MuiInput-border-color: var(--✨border--default);
-	--_MuiInput-padding-inline: var(--✨padding-inline--medium);
 
 	@media (any-hover: hover) {
 		&:where(:not(.Mui-disabled)):hover {
@@ -31,12 +26,6 @@
 				var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 			);
 		}
-	}
-
-	&:where(.MuiInputBase-sizeSmall) {
-		@apply --typography("body-sm");
-		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
-		--_MuiInput-padding-inline: var(--✨padding-inline--small);
 	}
 
 	&:where(:focus-within) {
@@ -61,6 +50,17 @@
 	}
 }
 
+.MuiInputBase-root {
+	--_MuiInput-block-size: var(--stratakit-size-control-field-height-medium);
+	--_MuiInput-padding-inline: var(--stratakit-space-300);
+
+	&:where(.MuiInputBase-sizeSmall) {
+		@apply --typography("body-sm");
+		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
+		--_MuiInput-padding-inline: var(--stratakit-space-200);
+	}
+}
+
 .MuiInputBase-input {
 	height: unset;
 	min-block-size: calc(var(--_MuiInput-block-size) - 2px); /* Accommodate for border width */
@@ -71,7 +71,7 @@
 
 	&:where(input, textarea) {
 		&::placeholder {
-			color: var(--stratakit-color-text-neutral-secondary);
+			color: var(--stratakit-color-text-neutral-placeholder);
 			opacity: 1;
 			user-select: none;
 		}
@@ -101,12 +101,12 @@
 
 .MuiInputAdornment-root {
 	&:where(.MuiInputAdornment-positionStart) {
-		margin-inline-start: var(--stratakit-space-x2);
-		margin-inline-end: var(--stratakit-space-x1);
+		margin-inline-start: var(--stratakit-space-200);
+		margin-inline-end: var(--stratakit-space-100);
 	}
 
 	&:where(.MuiInputAdornment-positionEnd) {
-		margin-inline-start: var(--stratakit-space-x1);
-		margin-inline-end: var(--stratakit-space-x2);
+		margin-inline-start: var(--stratakit-space-100);
+		margin-inline-end: var(--stratakit-space-200);
 	}
 }

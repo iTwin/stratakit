@@ -1,10 +1,42 @@
 ---
 // See https://starlight.astro.build/reference/overrides/#pagetitle
 
+import Breadcrumb from "./Breadcrumb.astro";
+
 const { entry } = Astro.locals.starlightRoute;
+
+/**
+ * Generates breadcrumbs for API reference pages based on route id
+ * Returns breadcrumbs for API pages, undefined for all other pages.
+ */
+function getBreadcrumbsFromRoute(id: string | undefined) {
+	if (!id) {
+		return undefined;
+	}
+
+	// Only return breadcrubms for the API reference pages, and we need at least 3 parts: reference/packageId/apiName
+	const parts = id.split("/");
+	if (parts.length < 3 || parts[0] !== "reference") {
+		return undefined;
+	}
+
+	const packageId = parts[1];
+	const apiName = parts.slice(2).join("/"); // In case there are more parts
+	const baseUrl = import.meta.env.BASE_URL;
+
+	return [
+		{ label: "API Reference", href: `${baseUrl}/reference/` },
+		{
+			label: `@stratakit/${packageId}`,
+			href: `${baseUrl}/reference/#${packageId}`,
+		},
+		{ label: apiName },
+	];
+}
 
 const status = entry.data.status;
 const links = entry.data.links || {};
+const breadcrumbs = getBreadcrumbsFromRoute(entry.id);
 
 const muiDocsUrl = links.muiDocs;
 const componentStatusOverviewUrl = `${import.meta.env.BASE_URL}/components/overview/#component-status`;
@@ -19,6 +51,8 @@ const apiReferenceUrl = (() => {
 	return url;
 })();
 ---
+
+{breadcrumbs && <Breadcrumb crumbs={breadcrumbs} />}
 
 <hgroup>
 	<h1 id="_top">{entry.data.title}</h1>
@@ -72,14 +106,14 @@ const apiReferenceUrl = (() => {
 		}
 
 		h1 + p {
-			margin-top: var(--stratakit-space-x4);
+			margin-top: var(--stratakit-space-400);
 			color: var(--stratakit-color-text-neutral-secondary);
 		}
 
 		ul {
 			list-style-type: none;
 			display: grid;
-			gap: var(--stratakit-space-x1);
+			gap: var(--stratakit-space-100);
 		}
 
 		a:where([href^="https://"])::after {
@@ -91,7 +125,7 @@ const apiReferenceUrl = (() => {
 
 		.inline-item {
 			display: flex;
-			gap: var(--stratakit-space-x1);
+			gap: var(--stratakit-space-100);
 
 			dt,
 			dd {
@@ -106,7 +140,7 @@ const apiReferenceUrl = (() => {
 		}
 
 		dt {
-			margin-block-end: var(--stratakit-space-x1);
+			margin-block-end: var(--stratakit-space-100);
 		}
 
 		dt a {

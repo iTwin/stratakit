@@ -20,7 +20,7 @@
 	@layer base {
 		block-size: var(--🥝ProgressBar-size);
 		inline-size: 100%;
-		border-radius: 9999px;
+		border-radius: var(--stratakit-radius-round);
 		contain: strict;
 		display: grid;
 		background-color: var(--🥝ProgressBar-track-color);

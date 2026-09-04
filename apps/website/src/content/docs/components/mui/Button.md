@@ -24,11 +24,13 @@ Make sure the **Button** is suitable for your use case. There may be other, more
 
 Modifications to `ButtonBase` (applies to all MUI components that extend `ButtonBase`):
 
+- The `action` prop is not supported.
 - The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
-- Ripple effect removed.
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 
 Modifications specific to `Button`:
 
+- The `disableElevation` and `disableFocusRipple` props are not supported.
 - Restyled using StrataKit's visual language.
 - The default `variant` is now `"contained"`.
 - The default `loadingPosition` is now `"start"`.

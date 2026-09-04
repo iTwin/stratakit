@@ -71,6 +71,7 @@ Packages:
 - [`@stratakit/foundations`](./packages/foundations/): Foundational pieces of StrataKit.
 - [`@stratakit/bricks`](./packages/bricks/): Small, modular components that can be assembled to create larger, more functional experiences.
 - [`@stratakit/structures`](./packages/structures): Medium-sized component structures built on top of `@stratakit/bricks`.
+- [`@stratakit/internal-utils`](./packages/internal-utils/): Internal utility functions and types for StrataKit.
 
 Apps:
 
@@ -82,6 +83,14 @@ Examples:
 - [`examples`](./examples): A private package for storing examples of StrataKit in action.
 
 Also, there’s [an internal package](./internal) which is used for configuration files and common variables for the workspace at large.
+
+### Customizing Material UI
+
+The `@stratakit/mui` package uses [themed components](https://mui.com/material-ui/customization/theme-components/) and [customized component structures](https://mui.com/material-ui/customization/overriding-component-structure/) to align the default Material UI components with the StrataKit design system.
+
+### Project code style and conventions
+
+Please review the [style guide](./STYLEGUIDE.md) for a list of project coventions and best practices to keep our coding style aligned and avoid bugs.
 
 ### Development environment
 
@@ -155,6 +164,16 @@ export const Button = forwardRef<"button", ButtonProps>((props, forwardedRef) =>
 Before creating a pull request, make sure your changes address a specific issue. Do a search to see if there are any existing issues that are still open. If you don't find one, you can create one. For user-facing changes, add a [changeset](https://github.com/changesets/changesets/blob/main/docs/adding-a-changeset.md) by running the `pnpm changeset` command.
 
 To enable us to quickly review and accept your pull requests, always create one pull request per issue. Never merge multiple requests in one unless they have the same root cause. Be sure to follow best practices and keep code changes as small as possible. Avoid pure formatting changes or random "fixes" that are unrelated to the linked issue.
+
+### Responding to reviews
+
+- When updating the pull request based on feedback, link to the commit that resolves the comment and allow the reviewer to choose to resolve the comment if they are satisfied.
+- Don't resolve threads started by others.
+- Keep your branch up-to-date with the latest changes from main.
+
+### Merging
+
+Pull requests should be merged after at least two approvals from core team members. Core team members are expected to merge their own PRs. This is not a hard rule and it may be acceptable to merge with only one approval or by other core team members.
 
 ### AI use
 

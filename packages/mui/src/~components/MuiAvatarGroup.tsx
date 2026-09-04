@@ -5,9 +5,9 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import { forwardRef } from "@stratakit/foundations/secret-internals";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
-import type { BaseProps } from "@stratakit/foundations/secret-internals";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
@@ -18,6 +18,10 @@ const MuiAvatarGroup = forwardRef<"div", MuiAvatarGroupProps>(
 		const { children: childrenProp, ...rest } = props;
 
 		const children = React.Children.map(childrenProp, (child) => {
+			// When no surplus chip is present, the first child is null. We must skip it,
+			// or it will render an empty list item.
+			if (child == null) return null;
+
 			return (
 				<div className="🥝MuiAvatarGroupItem" role="listitem">
 					{child}

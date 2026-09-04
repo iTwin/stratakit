@@ -5,38 +5,46 @@
 .MuiRating-root {
 	--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-base);
 	inline-size: fit-content;
-	border-radius: var(--stratakit-mui-shape-borderRadius);
+	border-radius: var(--stratakit-radius-sm);
+	color: var(--_MuiRating-icon-color);
+
+	&:where(:has(.MuiRating-icon.MuiRating-iconHover)) {
+		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
+	}
 
 	&:where(.Mui-disabled) {
 		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-disabled);
 		opacity: 1;
 	}
 
-	&.Mui-focusVisible {
+	&:where(.Mui-focusVisible) {
 		outline: var(--🥝focus-outline);
 		outline-offset: var(--🥝focus-outline-offset);
 	}
 }
 
 .MuiRating-icon {
-	color: var(--_MuiRating-icon-color);
+	outline: 0; /* Remove focus outline from individual icons. */
+}
 
-	&:where(.MuiRating-iconHover) {
-		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
-	}
+.MuiRating-decimal {
+	/* When using a non-integer precision value, the MuiIcon gets wrapped in the MuiDecimal element,
+     which brings its own focus outline that needs to be removed separately. */
+	outline: 0;
+}
 
-	&:where(.MuiRating-iconActive) {
-		--_MuiRating-icon-color: var(--stratakit-color-icon-neutral-primary);
-
-		:where(.MuiRating-root.Mui-focusVisible) & {
-			outline: 0;
-		}
-	}
+:where(.MuiRating-decimal) .MuiSvgIcon-root {
+	/* 
+		reset.css sets max-inline-size to 100%, however the Rating component + precision
+		prop relies on the svg size being greater than than the width of the
+		container and getting clipped. Unset it here to allow the icon to overflow and clip.
+		*/
+	max-inline-size: unset;
 }
 
 .MuiRating-label {
 	&:where(.MuiRating-labelEmptyValueActive) {
-		border-radius: var(--stratakit-mui-shape-borderRadius);
+		border-radius: var(--stratakit-radius-sm);
 		outline: var(--🥝focus-outline);
 		outline-offset: var(--🥝focus-outline-offset);
 	}

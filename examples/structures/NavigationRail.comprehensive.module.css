@@ -6,7 +6,3 @@
 .container {
 	block-size: 100%;
 }
-
-.divider {
-	margin-block: var(--stratakit-space-x1);
-}

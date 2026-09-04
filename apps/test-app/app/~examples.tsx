@@ -12,11 +12,18 @@ import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
+import {
+	getResizeHandleElement,
+	Panel,
+	PanelGroup,
+	PanelResizeHandle,
+} from "react-resizable-panels";
 import { createStore, useStore } from "zustand";
 
 import type { Knob } from "./~utils.tsx";
 
 import svgConfiguration from "@stratakit/icons/configuration.svg";
+import svgDragHandleVertical from "@stratakit/icons/drag-handle-vertical.svg";
 import svgLink from "@stratakit/icons/link.svg";
 import styles from "./~examples.module.css";
 
@@ -74,11 +81,59 @@ export function ExamplesShowcase(props: ExamplesShowcaseProps) {
 				</IconButton>
 			</hgroup>
 
-			<div className={styles.exampleContent}>
-				{toolbar}
-				{children}
-			</div>
+			<Resizable label={`Resize ${name} examples`}>
+				<div className={styles.exampleContent}>
+					{toolbar}
+					{children}
+				</div>
+			</Resizable>
 		</section>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+interface ResizableProps extends React.PropsWithChildren {
+	label: string;
+}
+
+function Resizable(props: ResizableProps) {
+	const { children, label } = props;
+
+	const resizerId = React.useId();
+
+	React.useEffect(
+		function overrideResizerRole() {
+			const resizer = getResizeHandleElement(resizerId);
+
+			// The slider role has better NVDA support than the default separator role.
+			// It is also more semantically correct, since there is only one panel that is being resized.
+			resizer?.setAttribute("role", "slider");
+		},
+		[resizerId],
+	);
+
+	return (
+		<PanelGroup
+			direction="horizontal"
+			keyboardResizeBy={5}
+			style={{ overflow: "auto" }}
+		>
+			<Panel defaultSize={100} minSize={25} style={{ overflow: "auto" }}>
+				{children}
+			</Panel>
+
+			<PanelResizeHandle
+				id={resizerId}
+				hitAreaMargins={{ fine: 0, coarse: 8 }}
+				className={styles.resizeHandle}
+				aria-label={label}
+			>
+				<Icon href={svgDragHandleVertical} />
+			</PanelResizeHandle>
+
+			<Panel defaultSize={0} minSize={0} aria-hidden="true" />
+		</PanelGroup>
 	);
 }
 

@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/mui",
 	"type": "module",
-	"version": "0.5.0",
+	"version": "1.0.0",
 	"license": "MIT",
 	"sideEffects": false,
 	"types": "./dist/index.d.ts",
@@ -49,27 +49,29 @@
 		"dev": "wireit"
 	},
 	"dependencies": {
-		"@ariakit/react": "^0.4.29",
+		"@ariakit/react": "^0.4.35",
 		"@emotion/cache": "^11.14.0",
 		"@emotion/react": "^11.14.0",
 		"@emotion/styled": "^11.14.1",
-		"@stratakit/foundations": "^0.4.9",
-		"@stratakit/icons": "^0.4.0",
+		"@stratakit/icons": "^0.4.3",
+		"@stratakit/internal-utils": "^0.2.0",
 		"classnames": "^2.5.1",
 		"react-compiler-runtime": "^1.0.0"
 	},
 	"devDependencies": {
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
+		"@mui/x-date-pickers": "catalog:",
 		"esbuild": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@mui/material": "^9.0.0",
-		"react": ">=18.0.0",
-		"react-dom": ">=18.0.0"
+		"@mui/material": "^9.4.0",
+		"@stratakit/foundations": "^1.0.0",
+		"react": "^19.0.0",
+		"react-dom": "^19.0.0"
 	},
 	"wireit": {
 		"build": {
@@ -77,6 +79,7 @@
 				"build:js",
 				"build:DEV",
 				"build:types",
+				"../internal-utils:build",
 				"../foundations:build"
 			]
 		},
@@ -115,6 +118,7 @@
 				"dist/**/*.d.ts"
 			],
 			"dependencies": [
+				"../internal-utils:build:types",
 				"../foundations:build:types"
 			]
 		},

@@ -4,15 +4,122 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiBadge-badge {
-	--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 	--🥝selection-color-bg: var(--stratakit-color-static-white);
 	--🥝selection-color-text: var(--stratakit-color-static-black);
+	--_MuiBadge-color: var(--stratakit-color-text-neutral-emphasis);
 
-	box-shadow: 0px 0px 0px 1px var(--stratakit-color-border-glow-strong-default) inset;
+	@apply --typography("body-md");
+	background-color: var(--_MuiBadge-background-color);
+	box-shadow: 0px 0px 0px 1px var(--_MuiBadge-border-color) inset;
+	border-radius: var(--stratakit-radius-round);
+	color: var(--_MuiBadge-color);
 
-	:where(.MuiBadge-root[data-_sk-inline]) & {
-		column-gap: var(--stratakit-space-x05);
+	&:where(.MuiBadge-inline) {
+		--_MuiBadge-padding-inline: var(--stratakit-space-300);
+		--_MuiBadge-block-size: 1.5rem;
+
+		block-size: var(--_MuiBadge-block-size);
+		column-gap: var(--stratakit-space-100);
+		padding-inline-start: var(--_MuiBadge-padding-inline);
+		padding-inline-end: var(--_MuiBadge-padding-inline);
 		position: static;
 		transform: none;
+	}
+
+	&:where(.MuiBadge-inline[data-_sk-size="small"]) {
+		@apply --typography("body-sm");
+		--_MuiBadge-block-size: 1.25rem;
+		--_MuiBadge-padding-inline: var(--stratakit-space-200);
+	}
+
+	/* #region Type: strong */
+	&:where(.MuiBadge-colorError) {
+		--_MuiBadge-background-color: var(--stratakit-color-bg-critical-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-critical-base);
+	}
+
+	&:where(.MuiBadge-colorInfo) {
+		--_MuiBadge-background-color: var(--stratakit-color-bg-info-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-info-base);
+	}
+
+	&:where(.MuiBadge-colorPrimary) {
+		--_MuiBadge-background-color: var(--stratakit-color-bg-accent-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-accent-base);
+	}
+
+	&:where(.MuiBadge-colorSecondary) {
+		--_MuiBadge-background-color: var(--stratakit-color-bg-mono-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-glow-strong-default);
+	}
+
+	&:where(.MuiBadge-colorSuccess) {
+		--_MuiBadge-background-color: var(--stratakit-color-bg-positive-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-positive-base);
+	}
+
+	&:where(.MuiBadge-colorWarning) {
+		--_MuiBadge-background-color: var(--stratakit-color-bg-attention-base);
+		--_MuiBadge-border-color: var(--stratakit-color-border-attention-base);
+	}
+	/* #endregion */
+
+	&:where(.MuiBadge-inline[data-_sk-type="muted"]) {
+		--_MuiBadge-color: var(--stratakit-color-text-neutral-primary);
+
+		&:where(.MuiBadge-colorError) {
+			--_MuiBadge-background-color: var(--stratakit-color-bg-critical-muted);
+		}
+
+		&:where(.MuiBadge-colorInfo) {
+			--_MuiBadge-background-color: var(--stratakit-color-bg-info-muted);
+		}
+
+		&:where(.MuiBadge-colorPrimary) {
+			--_MuiBadge-background-color: var(--stratakit-color-bg-accent-muted);
+		}
+
+		&:where(.MuiBadge-colorSecondary) {
+			--_MuiBadge-background-color: var(--stratakit-color-bg-mono-muted);
+		}
+
+		&:where(.MuiBadge-colorSuccess) {
+			--_MuiBadge-background-color: var(--stratakit-color-bg-positive-muted);
+		}
+
+		&:where(.MuiBadge-colorWarning) {
+			--_MuiBadge-background-color: var(--stratakit-color-bg-attention-muted);
+		}
+	}
+
+	&:where(.MuiBadge-inline[data-_sk-type="outlined"]) {
+		--_MuiBadge-background-color: transparent;
+		--🥝selection-color-bg: var(--stratakit-color-bg-accent-base);
+		--🥝selection-color-text: var(--stratakit-color-text-neutral-emphasis);
+
+		&:where(.MuiBadge-colorError) {
+			--_MuiBadge-color: var(--stratakit-color-text-critical-base);
+		}
+
+		&:where(.MuiBadge-colorInfo) {
+			--_MuiBadge-color: var(--stratakit-color-text-info-base);
+		}
+
+		&:where(.MuiBadge-colorPrimary) {
+			--_MuiBadge-color: var(--stratakit-color-text-accent-base);
+		}
+
+		&:where(.MuiBadge-colorSecondary) {
+			--_MuiBadge-color: var(--stratakit-color-text-mono-base);
+			--_MuiBadge-border-color: var(--stratakit-color-border-mono-base);
+		}
+
+		&:where(.MuiBadge-colorSuccess) {
+			--_MuiBadge-color: var(--stratakit-color-text-positive-base);
+		}
+
+		&:where(.MuiBadge-colorWarning) {
+			--_MuiBadge-color: var(--stratakit-color-text-attention-base);
+		}
 	}
 }

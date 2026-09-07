@@ -148,7 +148,7 @@
 				},
 				"overlay": {
 					"$type": "color",
-					"$value": "{p-color.gray.975}"
+					"$value": "{p-color.black.80}"
 				},
 				"level-2": {
 					"$type": "color",

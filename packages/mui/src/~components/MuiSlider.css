@@ -134,11 +134,6 @@
 		cursor: not-allowed;
 	}
 
-	&:where(.Mui-focusVisible) {
-		outline: var(--🥝focus-outline);
-		outline-offset: 2px;
-	}
-
 	/* This pseudo-element increases tap target size to 24x24 */
 	&::after {
 		block-size: 24px;
@@ -184,12 +179,6 @@
 
 	:where(.MuiSlider-root.Mui-disabled) & {
 		color: var(--stratakit-color-text-neutral-disabled);
-	}
-}
-
-@media (prefers-reduced-motion: reduce) {
-	:is(.MuiSlider-track, .MuiSlider-thumb) {
-		transition: none;
 	}
 }
 

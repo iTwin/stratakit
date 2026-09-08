@@ -23,7 +23,7 @@ export default () => {
 					</>
 				}
 				color="info"
-				inline
+				variant="inline"
 			/>
 			<Badge
 				badgeContent={
@@ -33,7 +33,7 @@ export default () => {
 					</>
 				}
 				color="success"
-				inline
+				variant="inline"
 			/>
 			<Badge
 				badgeContent={
@@ -43,7 +43,7 @@ export default () => {
 					</>
 				}
 				color="warning"
-				inline
+				variant="inline"
 			/>
 			<Badge
 				badgeContent={
@@ -53,7 +53,7 @@ export default () => {
 					</>
 				}
 				color="error"
-				inline
+				variant="inline"
 			/>
 		</Stack>
 	);

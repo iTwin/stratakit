@@ -19,6 +19,11 @@
 	border-end-end-radius: var(--_MuiAccordion-border-radius-bottom);
 	overflow-anchor: none; /* Prevent scroll jump with exclusive accordions */
 
+	&:where([data-_sk-size="small"]) {
+		--_MuiAccordion-padding: var(--stratakit-space-200);
+		--_MuiAccordion-column-gap: var(--stratakit-space-200);
+	}
+
 	@container (inline-size < 500px) {
 		&:where(:has(.MuiAccordionSummary-root:not([data-_sk-marker-placement="start"]))) {
 			--_MuiAccordion-details-indent: var(--_MuiAccordion-padding);
@@ -70,6 +75,10 @@
 	padding-inline-start: var(--_MuiAccordion-padding);
 	padding-inline-end: var(--_MuiAccordion-padding);
 
+	:where(.MuiAccordion-root[data-_sk-size="small"]) & {
+		min-block-size: var(--stratakit-size-control-listitem-height-small);
+	}
+
 	:where(.MuiAccordion-root.MuiPaper-elevation) & {
 		--🥝focus-outline-offset: -2px;
 	}
@@ -102,6 +111,10 @@
 	font-weight: 500;
 	margin-block-start: var(--stratakit-space-100);
 	margin-block-end: var(--stratakit-space-100);
+
+	:where(.MuiAccordion-root[data-_sk-size="small"]) & {
+		@apply --typography("body-sm");
+	}
 }
 
 .MuiAccordionSummary-expandIconWrapper {

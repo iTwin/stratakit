@@ -94,6 +94,8 @@ export default function App() {
 				// Use `@stratakit/mui` for everything else.
 				const Root = isRootTest ? StrataKitRoot : StrataKitMuiRoot;
 
+				const isHomePage = location.pathname === "/";
+
 				return (
 					<Root
 						key={isRootTest ? "foundations" : "mui"}
@@ -103,7 +105,12 @@ export default function App() {
 						synchronizeColorScheme={false}
 						style={{ display: "contents" }}
 					>
-						<AppNavigationRail mainContent={<Outlet />} />
+						{isHomePage ? (
+							<Outlet />
+						) : (
+							// TODO: move AppNavigationRail out of root layout
+							<AppNavigationRail mainContent={<Outlet />} />
+						)}
 					</Root>
 				);
 			})()}

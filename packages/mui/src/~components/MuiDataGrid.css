@@ -36,3 +36,25 @@
 		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
 	}
 }
+
+.MuiDataGrid-row {
+	--✨row-bg--default: transparent;
+	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨row-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨row-bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+
+	--_MuiDataGrid-row-background-color: var(--✨row-bg--default);
+	--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--hover);
+
+	background-color: var(--_MuiDataGrid-row-background-color);
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			background-color: var(--_MuiDataGrid-row-background-color--hover);
+		}
+	}
+
+	&:where(.Mui-selected) {
+		--_MuiDataGrid-row-background-color: var(--✨row-bg--active);
+		--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--active-hover);
+	}
+}

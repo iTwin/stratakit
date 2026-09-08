@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{n as t,r as n,t as r}from"./AccordionSummary.BXLbkTb1.js";var i=e(),a=()=>(0,i.jsxs)(n,{size:`small`,children:[(0,i.jsxs)(r,{children:[(0,i.jsx)(`code`,{children:`small`}),` size`]}),(0,i.jsx)(t,{children:`A more compact accordion for dense layouts.`})]});export{a as default};

@@ -31,8 +31,12 @@
 }
 
 /* Prevent leakage of global styles into examples */
-.exampleEmbedRoot
-*:not(#a#b, select /* Work around https://issues.chromium.org/issues/544708765 */) {
+
+.exampleEmbedRoot *:not(
+	#a#b,
+	/* biome-ignore format: Keep comment for work comment on same line as fix */
+	select /* Work around https://issues.chromium.org/issues/544708765 */
+) {
 	@layer starlight.base {
 		all: revert-layer;
 	}

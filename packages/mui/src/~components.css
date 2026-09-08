@@ -52,6 +52,6 @@
 
 .MuiBackdrop-root {
 	&:where(:not(.MuiBackdrop-invisible)) {
-		background-color: oklch(from var(--stratakit-color-bg-elevation-overlay) l c h / 0.8);
+		background-color: var(--stratakit-color-bg-elevation-overlay);
 	}
 }

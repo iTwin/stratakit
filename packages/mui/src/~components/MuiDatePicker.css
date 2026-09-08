@@ -48,6 +48,10 @@
 	}
 }
 
+.MuiDateCalendar-root {
+	margin: unset;
+}
+
 .MuiDayCalendar-root {
 	--_MuiDayCalendar-day-size: var(--stratakit-size-control-field-height-medium);
 	--_MuiDayCalendar-day-margin: var(--stratakit-space-100);

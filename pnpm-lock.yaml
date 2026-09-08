@@ -163,7 +163,7 @@ importers:
         version: 8.3.1(babel-plugin-macros@3.1.0)(react-router@8.3.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(supports-color@7.2.0)(typescript@7.0.2)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
       "@rolldown/plugin-babel":
         specifier: ^0.2.3
-        version: 0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
+        version: 0.2.4(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
       "@types/node":
         specifier: "catalog:"
         version: 22.19.19
@@ -175,7 +175,7 @@ importers:
         version: 19.2.4(@types/react@19.2.18)
       "@vitejs/plugin-react":
         specifier: ^6.1.1
-        version: 6.1.1(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)))(babel-plugin-react-compiler@1.0.0)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
+        version: 6.1.1(@rolldown/plugin-babel@0.2.4(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)))(babel-plugin-react-compiler@1.0.0)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
       esbuild:
         specifier: "catalog:"
         version: 0.28.1
@@ -341,11 +341,11 @@ importers:
         specifier: ^0.4.35
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
-        specifier: ^1.0.0-rc.2
-        version: 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^1.0.0
+        version: link:../foundations
       "@stratakit/internal-utils":
-        specifier: ^0.2.0-rc.0
-        version: 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^0.2.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -381,8 +381,8 @@ importers:
         specifier: ^0.4.35
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/internal-utils":
-        specifier: ^0.2.0-rc.0
-        version: 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^0.2.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -460,14 +460,14 @@ importers:
         specifier: ^9.4.0
         version: 9.4.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
-        specifier: ^1.0.0-rc.2
-        version: 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^1.0.0
+        version: link:../foundations
       "@stratakit/icons":
         specifier: ^0.4.3
         version: link:../icons
       "@stratakit/internal-utils":
-        specifier: ^0.2.0-rc.0
-        version: 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^0.2.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -503,14 +503,14 @@ importers:
         specifier: ^0.4.35
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/bricks":
-        specifier: ^0.6.0-rc.2
-        version: 0.6.0(@stratakit/foundations@1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^0.6.0
+        version: link:../bricks
       "@stratakit/foundations":
-        specifier: ^1.0.0-rc.2
-        version: 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^1.0.0
+        version: link:../foundations
       "@stratakit/internal-utils":
-        specifier: ^0.2.0-rc.0
-        version: 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+        specifier: ^0.2.0
+        version: link:../internal-utils
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -2378,10 +2378,10 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  "@rolldown/plugin-babel@0.2.3":
+  "@rolldown/plugin-babel@0.2.4":
     resolution:
       {
-        integrity: sha512-+zEk16yGlz1F9STiRr6uG9hmIXb6nprjLczV/htGptYuLoCuxb+itZ03RKCEeOhBpDDd1NU7qF6x1VLMUp62bw==,
+        integrity: sha512-ygmm2j/mN+aCvstHo0x3IOu4uc6LqXT9SJ3q4kpfG/+Yhfz0B+E47FITcC0FljZADwUFARP6E2kiE+Lc26D8wg==,
       }
     engines: { node: ">=22.12.0 || ^24.0.0" }
     peerDependencies:
@@ -2458,39 +2458,6 @@ packages:
       {
         integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==,
       }
-
-  "@stratakit/bricks@0.6.0":
-    resolution:
-      {
-        integrity: sha512-kEWQHxCCd7JQBrScF2z8KMQFqZKFFLlTxx1le51O011hQf9XuNqriuJYqWTTpgXZ5x/Vlv40DdQqd2GegLnMHw==,
-      }
-    peerDependencies:
-      "@stratakit/foundations": ^1.0.0
-      react: ^19.0.0
-      react-dom: ^19.0.0
-
-  "@stratakit/foundations@1.0.0":
-    resolution:
-      {
-        integrity: sha512-O2WfaYgG25XJ7yil6M712mQLY7ngSDWoFsrO6/mHEU4W8gq/Jr4DsLDEVYOWbArAolxbLbIqaF0qJXi2srX1lQ==,
-      }
-    peerDependencies:
-      react: ^19.0.0
-      react-dom: ^19.0.0
-    peerDependenciesMeta:
-      react:
-        optional: true
-      react-dom:
-        optional: true
-
-  "@stratakit/internal-utils@0.2.0":
-    resolution:
-      {
-        integrity: sha512-QCJ7iX1LA0lJ/KDdu935Ghyz1K3kG3klXDxbNqE2iMm70V0QBLbk+W7IUViszMzdn/eb/8WZyDwbHDRDSphomg==,
-      }
-    peerDependencies:
-      react: ^19.0.0
-      react-dom: ^19.0.0
 
   "@tanstack/query-core@5.101.4":
     resolution:
@@ -7112,7 +7079,7 @@ snapshots:
   "@rolldown/binding-win32-x64-msvc@1.2.5":
     optional: true
 
-  "@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))":
+  "@rolldown/plugin-babel@0.2.4(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))":
     dependencies:
       "@babel/core": 7.29.7(supports-color@7.2.0)
       picomatch: 4.0.7
@@ -7162,32 +7129,6 @@ snapshots:
       "@types/hast": 3.0.5
 
   "@shikijs/vscode-textmate@10.0.2": {}
-
-  "@stratakit/bricks@0.6.0(@stratakit/foundations@1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)":
-    dependencies:
-      "@ariakit/react": 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      "@stratakit/foundations": 1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      "@stratakit/internal-utils": 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      classnames: 2.5.1
-      react: 19.2.8
-      react-compiler-runtime: 1.0.0(react@19.2.8)
-      react-dom: 19.2.8(react@19.2.8)
-
-  "@stratakit/foundations@1.0.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)":
-    dependencies:
-      "@ariakit/react": 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      "@stratakit/internal-utils": 0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
-      classnames: 2.5.1
-      react-compiler-runtime: 1.0.0(react@19.2.8)
-    optionalDependencies:
-      react: 19.2.8
-      react-dom: 19.2.8(react@19.2.8)
-
-  "@stratakit/internal-utils@0.2.0(react-dom@19.2.8(react@19.2.8))(react@19.2.8)":
-    dependencies:
-      react: 19.2.8
-      react-compiler-runtime: 1.0.0(react@19.2.8)
-      react-dom: 19.2.8(react@19.2.8)
 
   "@tanstack/query-core@5.101.4": {}
 
@@ -7333,12 +7274,12 @@ snapshots:
 
   "@ungap/structured-clone@1.3.1": {}
 
-  "@vitejs/plugin-react@6.1.1(@rolldown/plugin-babel@0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)))(babel-plugin-react-compiler@1.0.0)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))":
+  "@vitejs/plugin-react@6.1.1(@rolldown/plugin-babel@0.2.4(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)))(babel-plugin-react-compiler@1.0.0)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))":
     dependencies:
       "@rolldown/pluginutils": 1.0.1
       vite: 8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1)
     optionalDependencies:
-      "@rolldown/plugin-babel": 0.2.3(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
+      "@rolldown/plugin-babel": 0.2.4(@babel/core@7.29.7(supports-color@7.2.0))(@babel/runtime@7.29.7)(rolldown@1.2.5)(vite@8.2.2(@types/node@22.19.19)(esbuild@0.28.1)(tsx@4.23.1))
       babel-plugin-react-compiler: 1.0.0
 
   acorn-jsx@5.3.2(acorn@8.18.0):

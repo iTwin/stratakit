@@ -126,7 +126,6 @@
 
 .🥝DialogBackdrop {
 	@layer base {
-		opacity: 0.8;
 		background: var(--stratakit-color-bg-elevation-overlay);
 	}
 }

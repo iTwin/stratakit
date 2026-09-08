@@ -15,6 +15,7 @@ export default () => {
 	return (
 		<div className={styles.wrapper}>
 			<Button
+				classes={{ disabled: styles.disabledColorPicker }}
 				onClick={() => inputRef.current?.click()}
 				startIcon={
 					<span

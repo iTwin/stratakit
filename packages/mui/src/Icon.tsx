@@ -16,13 +16,17 @@ import svgChevronLeftDouble from "@stratakit/icons/chevron-left-double.svg";
 import svgChevronRight from "@stratakit/icons/chevron-right.svg";
 import svgChevronRightDouble from "@stratakit/icons/chevron-right-double.svg";
 import svgClock from "@stratakit/icons/clock.svg";
+import svgColumnManage from "@stratakit/icons/column-manage.svg";
 import svgDismiss from "@stratakit/icons/dismiss.svg";
 import svgDismissCircle from "@stratakit/icons/dismiss-circle.svg";
 import svgError from "@stratakit/icons/error.svg";
+import svgFilter from "@stratakit/icons/filter.svg";
 import svgInfo from "@stratakit/icons/info.svg";
+import svgMenu from "@stratakit/icons/menu.svg";
 import svgSortAscending from "@stratakit/icons/sort-ascending.svg";
 import svgSortDescending from "@stratakit/icons/sort-descending.svg";
 import svgStatusSuccess from "@stratakit/icons/status-success.svg";
+import svgVisibilityHide from "@stratakit/icons/visibility-hide.svg";
 import svgWarning from "@stratakit/icons/warning.svg";
 
 // ----------------------------------------------------------------------------
@@ -63,6 +67,11 @@ const WarningIcon = createIconComponent(svgWarning);
 const SortAscendingIcon = createIconComponent(svgSortAscending);
 const SortDescendingIcon = createIconComponent(svgSortDescending);
 
+const FilterIcon = createIconComponent(svgFilter);
+const MenuIcon = createIconComponent(svgMenu);
+const ColumnManageIcon = createIconComponent(svgColumnManage);
+const VisibilityHideIcon = createIconComponent(svgVisibilityHide);
+
 // ----------------------------------------------------------------------------
 
 export {
@@ -76,13 +85,17 @@ export {
 	ChevronRightDoubleIcon,
 	ChevronRightIcon,
 	ClockIcon,
+	ColumnManageIcon,
 	DismissCircleIcon,
 	DismissIcon,
 	ErrorIcon,
+	FilterIcon,
 	Icon,
 	InfoIcon,
+	MenuIcon,
 	SortAscendingIcon,
 	SortDescendingIcon,
 	SuccessIcon,
+	VisibilityHideIcon,
 	WarningIcon,
 };

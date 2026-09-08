@@ -8,11 +8,11 @@
 	flex-direction: row;
 	align-items: center;
 	justify-content: flex-start;
-	gap: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-100);
 }
 
 .errorPage {
-	margin-block: var(--stratakit-space-x4);
+	margin-block: var(--stratakit-space-400);
 	margin-inline: auto;
 	max-width: 30rem;
 }

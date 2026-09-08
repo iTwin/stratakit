@@ -31,7 +31,8 @@
 }
 
 /* Prevent leakage of global styles into examples */
-.exampleEmbedRoot *:not(#a#b) {
+.exampleEmbedRoot
+*:not(#a#b, select /* Work around https://issues.chromium.org/issues/544708765 */) {
 	@layer starlight.base {
 		all: revert-layer;
 	}

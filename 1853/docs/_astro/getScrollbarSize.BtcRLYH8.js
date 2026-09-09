@@ -1,1 +1,0 @@
-function e(e=window){let t=e.document.documentElement.clientWidth;return e.innerWidth-t}export{e as t};

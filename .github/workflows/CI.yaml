@@ -125,7 +125,12 @@ jobs:
         shard: [1/4, 2/4, 3/4, 4/4]
 
     steps:
+      - name: Install git-lfs
+        run: apt-get update && apt-get install -y git-lfs
+
       - uses: actions/checkout@v7
+        with:
+          lfs: true
 
       - uses: pnpm/action-setup@v6
         with:
@@ -151,7 +156,12 @@ jobs:
       image: mcr.microsoft.com/playwright:v1.62.1-noble
 
     steps:
+      - name: Install git-lfs
+        run: apt-get update && apt-get install -y git-lfs
+
       - uses: actions/checkout@v7
+        with:
+          lfs: true
 
       - uses: pnpm/action-setup@v6
         with:

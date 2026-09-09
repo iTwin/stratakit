@@ -26,13 +26,14 @@ const reexportedApi = await (async () => {
 	const reexport = _api.reexport;
 	if (!reexport) return undefined;
 
-	const entry = await getEntry("packages", reexport.packageName);
+	const entry = await getEntry("packages", reexport.packageName.replace(/^@[^/]+\//, ""));
 	if (!entry) return undefined;
 
 	return entry.data.apis.find((api) => api.name === reexport.apiName);
 })();
 
 const api = reexportedApi ?? _api;
+const reexportPackageId = _api.reexport?.packageName.split("/").at(-1);
 const components = [...(api.convenience ? [api.convenience] : []), ...api.composition];
 
 function isConvenience(name: string) {
@@ -115,9 +116,9 @@ function getBaseElementLink(baseElement: string) {
 		_api.reexport && (
 			<Aside>
 				This component is re-exported from the
-				<code>@stratakit/{_api.reexport.packageName}</code> package. See
+				<code>{_api.reexport.packageName}</code> package. See
 				<a
-					href={`${import.meta.env.BASE_URL}/reference/${_api.reexport.packageName}/${_api.reexport.apiName}`}
+					href={`${import.meta.env.BASE_URL}/reference/${reexportPackageId}/${_api.reexport.apiName}`}
 				>
 					{_api.reexport.apiName} documentation.
 				</a>
@@ -163,7 +164,16 @@ function getBaseElementLink(baseElement: string) {
 							<>
 								<AnchorHeading level={propHeading.depth} id={propHeading.slug}>
 									{propHeading.text}
+									{prop.deprecated && (
+										<>
+											{" "}
+											<Badge variant="danger" text="Deprecated" />
+										</>
+									)}
 								</AnchorHeading>
+								{typeof prop.deprecated === "string" && (
+									<Aside type="caution">{prop.deprecated}</Aside>
+								)}
 								<div>
 									<strong>Type:</strong>
 									<code>{prop.type}</code>

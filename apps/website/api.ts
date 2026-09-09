@@ -20,7 +20,12 @@ import {
 
 const repoPath = process.env.REPO_PATH || "../..";
 
-const packageNames = ["mui", "foundations", "bricks", "structures"];
+const packageNames = [
+	"@stratakit/mui",
+	"@stratakit/foundations",
+	"@stratakit/bricks",
+	"@stratakit/structures",
+];
 
 const baseTypeNames = ["BaseProps", "FocusableProps"];
 const utilityFunctions = ["loadFoundationsStyles"];
@@ -54,7 +59,7 @@ namespace Api {
 		 * Dot separated if star export: `unstable_ErrorRegion.Root`
 		 */
 		barrelName?: string;
-		deprecated?: boolean;
+		deprecated?: string | boolean;
 	}
 
 	export interface Type {
@@ -69,6 +74,7 @@ namespace Api {
 		optional: boolean;
 		jsdoc?: string;
 		defaultValue?: string;
+		deprecated?: string | boolean;
 	}
 
 	export interface Reexport {
@@ -77,14 +83,619 @@ namespace Api {
 	}
 }
 
+function extractMuiMaterialComponents(
+	project: Project,
+): Api.Package | undefined {
+	// Ensure types.ts augmentations are loaded
+	const typesPath = `${repoPath}/packages/mui/src/types.ts`;
+	if (fs.existsSync(typesPath)) {
+		try {
+			project.addSourceFilesAtPaths([typesPath]);
+		} catch {
+			// Continue even if types.ts can't be added
+		}
+	}
+
+	// Extract MUI Material components (126 stable components)
+	// Excludes: utilities (hooks, generators), non-UI exports (constants), and experimental/unstable components
+	const muiMaterialComponents = [
+		"Accordion",
+		"AccordionActions",
+		"AccordionDetails",
+		"AccordionSummary",
+		"Alert",
+		"AlertTitle",
+		"AppBar",
+		"Autocomplete",
+		"Avatar",
+		"AvatarGroup",
+		"Backdrop",
+		"Badge",
+		"BottomNavigation",
+		"BottomNavigationAction",
+		"Box",
+		"Breadcrumbs",
+		"Button",
+		"ButtonBase",
+		"ButtonGroup",
+		"Card",
+		"CardActionArea",
+		"CardActions",
+		"CardContent",
+		"CardHeader",
+		"CardMedia",
+		"Checkbox",
+		"Chip",
+		"CircularProgress",
+		"Collapse",
+		"Container",
+		"CssBaseline",
+		"Dialog",
+		"DialogActions",
+		"DialogContent",
+		"DialogContentText",
+		"DialogTitle",
+		"Divider",
+		"Drawer",
+		"Fab",
+		"Fade",
+		"FilledInput",
+		"FormControl",
+		"FormControlLabel",
+		"FormGroup",
+		"FormHelperText",
+		"FormLabel",
+		"GlobalStyles",
+		"Grid",
+		"Grow",
+		"Icon",
+		"IconButton",
+		"ImageList",
+		"ImageListItem",
+		"ImageListItemBar",
+		"InitColorSchemeScript",
+		"Input",
+		"InputAdornment",
+		"InputBase",
+		"InputLabel",
+		"LinearProgress",
+		"Link",
+		"List",
+		"ListItem",
+		"ListItemAvatar",
+		"ListItemButton",
+		"ListItemIcon",
+		"ListItemSecondaryAction",
+		"ListItemText",
+		"ListSubheader",
+		"Menu",
+		"MenuItem",
+		"MenuList",
+		"MobileStepper",
+		"Modal",
+		"NativeSelect",
+		"OutlinedInput",
+		"Pagination",
+		"PaginationItem",
+		"Paper",
+		"Popover",
+		"Popper",
+		"Radio",
+		"RadioGroup",
+		"Rating",
+		"ScopedCssBaseline",
+		"Select",
+		"Skeleton",
+		"Slide",
+		"Slider",
+		"Snackbar",
+		"SnackbarContent",
+		"SpeedDial",
+		"SpeedDialAction",
+		"SpeedDialIcon",
+		"Stack",
+		"Step",
+		"StepButton",
+		"StepConnector",
+		"StepContent",
+		"StepIcon",
+		"StepLabel",
+		"Stepper",
+		"SvgIcon",
+		"SwipeableDrawer",
+		"Switch",
+		"Tab",
+		"TabScrollButton",
+		"Table",
+		"TableBody",
+		"TableCell",
+		"TableContainer",
+		"TableFooter",
+		"TableHead",
+		"TablePagination",
+		"TablePaginationActions",
+		"TableRow",
+		"TableSortLabel",
+		"Tabs",
+		"TextField",
+		"TextareaAutosize",
+		"ToggleButton",
+		"ToggleButtonGroup",
+		"Toolbar",
+		"Tooltip",
+		"Typography",
+		"Zoom",
+	];
+
+	// Add @mui/material type files from packages/mui/node_modules/@mui/material
+	const muiMaterialPath = `${repoPath}/packages/mui/node_modules/@mui/material`;
+	const sourceFilePaths: string[] = [];
+
+	// Load component files - prioritize ComponentName.d.ts over index.d.ts
+	for (const componentName of muiMaterialComponents) {
+		const componentDtsPath = `${muiMaterialPath}/${componentName}/${componentName}.d.ts`;
+		if (fs.existsSync(componentDtsPath)) {
+			sourceFilePaths.push(componentDtsPath);
+		}
+	}
+
+	// Then load index.d.ts files as fallback
+	for (const componentName of muiMaterialComponents) {
+		const indexPath = `${muiMaterialPath}/${componentName}/index.d.ts`;
+		if (fs.existsSync(indexPath)) {
+			const componentDtsPath = `${muiMaterialPath}/${componentName}/${componentName}.d.ts`;
+			// Only add if we didn't already add the component.d.ts file
+			if (!fs.existsSync(componentDtsPath)) {
+				sourceFilePaths.push(indexPath);
+			}
+		}
+	}
+
+	// Load dependency files needed for type resolution
+	const depPaths = [
+		`${muiMaterialPath}/styles/index.d.ts`,
+		`${muiMaterialPath}/ButtonBase/index.d.ts`,
+		`${muiMaterialPath}/OverridableComponent/index.d.ts`,
+	];
+	for (const depPath of depPaths) {
+		if (fs.existsSync(depPath)) {
+			sourceFilePaths.push(depPath);
+		}
+	}
+
+	// Resolve symlinks to real paths in the pnpm virtual store before adding to the
+	// project. The symlinked paths (packages/mui/node_modules/@mui/material/...) walk
+	// up through a node_modules tree where transitive deps like @mui/types are absent.
+	// The real paths in .pnpm land in a node_modules directory that has @mui/types as
+	// a sibling, so TypeScript's module resolution can find it automatically.
+	const resolvedSourceFilePaths = sourceFilePaths.map((p) => {
+		try {
+			return fs.realpathSync(p);
+		} catch {
+			return p;
+		}
+	});
+
+	// Add all source files to the project
+	if (resolvedSourceFilePaths.length > 0) {
+		project.addSourceFilesAtPaths(resolvedSourceFilePaths);
+	}
+
+	// Extract components
+	const apis: Api.Api[] = [];
+	for (const componentName of muiMaterialComponents) {
+		try {
+			const component = extractMuiComponent(project, componentName);
+			if (component) {
+				apis.push({
+					name: componentName,
+					composition: [component],
+					exportName: componentName,
+				});
+			}
+		} catch (error) {
+			console.error(`Failed to extract ${componentName}`, error);
+		}
+	}
+
+	return apis.length > 0 ? { name: "@mui/material", apis } : undefined;
+}
+
+function extractMuiComponent(
+	project: Project,
+	componentName: string,
+): Api.Component | undefined {
+	try {
+		const sourceFiles = project.getSourceFiles();
+		let componentSourceFile: SourceFile | undefined;
+
+		// Find source file for @mui/material/ComponentName
+		// Prefer ComponentName.d.ts over index.d.ts since index.d.ts just re-exports
+		for (const sourceFile of sourceFiles) {
+			const filePath = sourceFile.getFilePath().replace(/\\/g, "/");
+
+			// Match @mui/material/ComponentName/ComponentName.d.ts first
+			if (
+				filePath.includes(`/@mui/material/${componentName}/`) &&
+				filePath.endsWith(`${componentName}.d.ts`)
+			) {
+				componentSourceFile = sourceFile;
+				break;
+			}
+		}
+
+		// If not found, try index.d.ts
+		if (!componentSourceFile) {
+			for (const sourceFile of sourceFiles) {
+				const filePath = sourceFile.getFilePath().replace(/\\/g, "/");
+
+				if (
+					filePath.includes(`/@mui/material/${componentName}/`) &&
+					filePath.endsWith("index.d.ts")
+				) {
+					componentSourceFile = sourceFile;
+					break;
+				}
+			}
+		}
+
+		if (!componentSourceFile) {
+			console.warn(`[MUI Extract] Source file not found for ${componentName}`);
+			return undefined;
+		}
+
+		// Extract props from the component, using StrataKit's types.ts augmentations
+		const typesSourceFile = project
+			.getSourceFiles()
+			.find((f) => f.getFilePath().includes("/packages/mui/src/types.ts"));
+		const strataKitProps = typesSourceFile
+			? buildStrataKitAugmentedPropsMap(typesSourceFile, componentName)
+			: new Map<string, PropertySignature>();
+		const props = extractMuiComponentProps(
+			componentSourceFile,
+			componentName,
+			strataKitProps,
+		);
+
+		// Extract JSDoc and deprecated flag from the exported symbol
+		let jsdoc: JSDoc | undefined;
+		let deprecated: string | boolean = false;
+		try {
+			const exportSymbols = componentSourceFile.getExportSymbols();
+			const exportedSymbol = exportSymbols.find(
+				(sym) => sym.getName() === componentName,
+			);
+			if (exportedSymbol) {
+				const declaration = exportedSymbol.getDeclarations()[0];
+				if (declaration && "getJsDocs" in declaration) {
+					const jsDocableNode = declaration as JSDocableNode;
+					jsdoc = jsDocableNode.getJsDocs().at(0);
+					deprecated = getDeprecated(jsDocableNode);
+				}
+			}
+		} catch (error) {
+			console.warn(
+				`[MUI Extract] Failed to extract JSDoc for ${componentName}: ${error}`,
+			);
+		}
+
+		return {
+			name: componentName,
+			baseProps: [],
+			props,
+			jsdoc: getJsdocComment(jsdoc),
+			...(deprecated ? { deprecated } : {}),
+		} satisfies Api.Component;
+	} catch (error) {
+		console.error(
+			`[MUI Extract] Error in extractMuiComponent(${componentName}): ${error}`,
+		);
+		return undefined;
+	}
+}
+
+function extractMuiComponentProps(
+	sourceFile: SourceFile,
+	componentName: string,
+	strataKitProps: Map<string, PropertySignature>,
+): Api.Prop[] {
+	// Strategy 1: Try virtual type extraction via React.ComponentProps
+	// This follows the actual component type dependencies
+	const virtualProps = extractMuiComponentPropsViaVirtualType(
+		sourceFile,
+		componentName,
+		strataKitProps,
+	);
+	if (virtualProps.length > 0) {
+		return virtualProps;
+	}
+
+	// Strategy 2: Fallback to named type patterns (OwnProps, ComponentProps, etc.)
+	// This is faster and handles components with simpler patterns
+	const namedProps = extractMuiComponentPropsViaNamedTypes(
+		sourceFile,
+		componentName,
+		strataKitProps,
+	);
+	return namedProps;
+}
+
+function extractMuiComponentPropsViaVirtualType(
+	sourceFile: SourceFile,
+	componentName: string,
+	strataKitProps: Map<string, PropertySignature>,
+): Api.Prop[] {
+	const project = sourceFile.getProject();
+	const componentDir = sourceFile.getDirectory().getPath();
+	const tempFilePath = `${componentDir}/__extract_${componentName}_props__.ts`;
+
+	let tempFile: SourceFile | undefined;
+
+	try {
+		// Write a temporary extraction helper to disk
+		// This allows natural module resolution and type evaluation
+		const extractorCode = `import { ${componentName} } from './${componentName}';
+type _ExtractedProps = React.ComponentProps<typeof ${componentName}>;
+export type { _ExtractedProps };`;
+
+		fs.writeFileSync(tempFilePath, extractorCode);
+
+		// Add the temp file to the project
+		tempFile = project.addSourceFileAtPath(tempFilePath);
+
+		// Extract the type alias
+		const typeAlias = tempFile.getTypeAliasOrThrow("_ExtractedProps");
+		const resolvedType = typeAlias.getType();
+
+		// Check if the type resolved meaningfully
+		const typeText = resolvedType.getText();
+		if (typeText === "never" || typeText === "unknown" || typeText === "any") {
+			return [];
+		}
+
+		// Extract properties from the resolved type
+		const properties = resolvedType.getProperties();
+		const props: Api.Prop[] = [];
+
+		for (const property of properties) {
+			const name = property.getName();
+			const optional = property.isOptional();
+
+			// Get the property type at the type alias location
+			const propertyType = property.getTypeAtLocation(typeAlias);
+			const type = getPropType(propertyType);
+
+			const {
+				comment,
+				defaultValue,
+				deprecated: propDeprecated,
+			} = getMuiPropJsdocData(property, strataKitProps);
+
+			props.push({
+				name,
+				type,
+				optional,
+				jsdoc: comment,
+				defaultValue,
+				...(propDeprecated ? { deprecated: propDeprecated } : {}),
+			});
+		}
+
+		// Sort: required first, then alphabetically
+		return props.sort((a, b) => {
+			if (a.optional !== b.optional) return a.optional ? 1 : -1;
+			return a.name.localeCompare(b.name);
+		});
+	} catch {
+		// Virtual type extraction failed, will fallback to named types
+		return [];
+	} finally {
+		// Clean up
+		if (tempFile) {
+			project.removeSourceFile(tempFile);
+		}
+		if (fs.existsSync(tempFilePath)) {
+			fs.unlinkSync(tempFilePath);
+		}
+	}
+}
+
+function extractMuiComponentPropsViaNamedTypes(
+	sourceFile: SourceFile,
+	componentName: string,
+	strataKitProps: Map<string, PropertySignature>,
+): Api.Prop[] {
+	const props: Api.Prop[] = [];
+
+	// Strategy 2a: Try ComponentNameOwnProps interface
+	let ownPropsInterface = sourceFile.getInterface(`${componentName}OwnProps`);
+
+	// Strategy 2b: Try ComponentNameProps type alias
+	let propsTypeAlias =
+		ownPropsInterface === undefined
+			? sourceFile.getTypeAlias(`${componentName}Props`)
+			: undefined;
+
+	// Strategy 2c: Try any exported type with "Props" that contains component name
+	if (!ownPropsInterface && !propsTypeAlias) {
+		const exportSymbols = sourceFile.getExportSymbols();
+		const propsSymbol = exportSymbols.find((sym) => {
+			const name = sym.getName();
+			// Match: AlertProps, StandardTextFieldProps, OutlinedTextFieldProps, etc.
+			return (
+				name.endsWith("Props") &&
+				name.toLowerCase().includes(componentName.toLowerCase())
+			);
+		});
+
+		if (propsSymbol) {
+			const decl = propsSymbol.getDeclarations().at(0);
+			// Try to get as type alias or interface
+			if (decl) {
+				const typeAlias = sourceFile.getTypeAlias(propsSymbol.getName());
+				if (typeAlias) {
+					propsTypeAlias = typeAlias;
+				} else {
+					const iface = sourceFile.getInterface(propsSymbol.getName());
+					if (iface) {
+						ownPropsInterface = iface;
+					}
+				}
+			}
+		}
+	}
+
+	// Get properties from whichever we found
+	let properties: TSMorphSymbol[] = [];
+
+	try {
+		if (ownPropsInterface) {
+			properties = ownPropsInterface.getType().getProperties();
+		} else if (propsTypeAlias) {
+			const typeNode = propsTypeAlias.getTypeNodeOrThrow();
+			properties = typeNode.getType().getProperties();
+		} else {
+			return [];
+		}
+	} catch (err) {
+		console.warn(
+			`[MUI Extract] Type resolution failed for ${componentName} named types: ${err}`,
+		);
+		return [];
+	}
+
+	// Extract props from the properties
+	for (const property of properties) {
+		const name = property.getName();
+		const optional = property.isOptional();
+
+		// Get the property type at the location
+		const location = ownPropsInterface ?? propsTypeAlias;
+		if (!location) {
+			throw new Error(
+				`Missing ownProps and propTypeAlias for ${componentName}`,
+			);
+		}
+		const propertyType = property.getTypeAtLocation(location);
+		const type = getPropType(propertyType);
+
+		const {
+			comment,
+			defaultValue,
+			deprecated: propDeprecated,
+		} = getMuiPropJsdocData(property, strataKitProps);
+
+		props.push({
+			name,
+			type,
+			optional,
+			jsdoc: comment,
+			defaultValue,
+			...(propDeprecated ? { deprecated: propDeprecated } : {}),
+		});
+	}
+
+	// Sort: required first, then alphabetically
+	return props.sort((a, b) => {
+		if (a.optional !== b.optional) return a.optional ? 1 : -1;
+		return a.name.localeCompare(b.name);
+	});
+}
+
+/**
+ * Builds a map of prop name → PropertySignature from StrataKit's types.ts
+ * module augmentations for the given component. Component-specific props
+ * take priority over shared props from OverridableComponent.
+ */
+function buildStrataKitAugmentedPropsMap(
+	typesSourceFile: SourceFile,
+	componentName: string,
+): Map<string, PropertySignature> {
+	const result = new Map<string, PropertySignature>();
+
+	for (const mod of typesSourceFile.getModules()) {
+		const modName = mod.getName().replace(/["']/g, "");
+		const isComponentModule = modName === `@mui/material/${componentName}`;
+		// OverridableComponent augments CommonProps with shared props (render, component)
+		const isSharedModule = modName === "@mui/material/OverridableComponent";
+
+		if (!isComponentModule && !isSharedModule) continue;
+
+		for (const iface of mod.getInterfaces()) {
+			for (const prop of iface.getProperties()) {
+				// Component-specific props overwrite shared props
+				if (!result.has(prop.getName()) || isComponentModule) {
+					result.set(prop.getName(), prop);
+				}
+			}
+		}
+	}
+
+	return result;
+}
+
+interface MuiPropJsdocData {
+	comment: string | undefined;
+	defaultValue: string | undefined;
+	deprecated: string | boolean;
+}
+
+function getMuiPropJsdocData(
+	property: TSMorphSymbol,
+	strataKitProps: Map<string, PropertySignature>,
+): MuiPropJsdocData {
+	// Look up the StrataKit override directly from types.ts module augmentation
+	const strataKitJsdoc = strataKitProps
+		.get(property.getName())
+		?.getJsDocs()
+		.at(0);
+
+	// Fall back to MUI's original declaration
+	const muiJsdoc = property
+		.getDeclarations()
+		.find(
+			(node): node is PropertySignature =>
+				!!node.asKind(SyntaxKind.PropertySignature),
+		)
+		?.getJsDocs()
+		.at(0);
+
+	const getDefault = (jsdoc: JSDoc | undefined) =>
+		jsdoc
+			?.getTags()
+			.find((tag) => tag.getTagName() === "default")
+			?.getCommentText();
+
+	const isDeprecated = (jsdoc: JSDoc | undefined): string | boolean => {
+		const tag = jsdoc
+			?.getTags()
+			.find((tag) => tag.getTagName() === "deprecated");
+		if (!tag) return false;
+		return tag.getCommentText() || true;
+	};
+
+	return {
+		comment: getJsdocComment(strataKitJsdoc) ?? getJsdocComment(muiJsdoc),
+		defaultValue: getDefault(strataKitJsdoc) ?? getDefault(muiJsdoc),
+		deprecated: isDeprecated(strataKitJsdoc) || isDeprecated(muiJsdoc),
+	};
+}
+
 function generateApi() {
 	const packages: Api = [];
+	let muiProject: Project | undefined;
 
 	for (const packageName of packageNames) {
-		const packageDir = `${repoPath}/packages/${packageName}`;
+		const dirName = packageName.replace(/^@stratakit\//, "");
+		const packageDir = `${repoPath}/packages/${dirName}`;
 		const project = new Project({
 			tsConfigFilePath: `${packageDir}/tsconfig.json`,
 		});
+
+		// Store the mui project for later use in extracting @mui/material components
+		if (packageName === "@stratakit/mui") {
+			muiProject = project;
+		}
 
 		const utilsSourceFiles = [
 			project.getSourceFile("~utils.d.ts"),
@@ -219,6 +830,15 @@ function generateApi() {
 		});
 	}
 
+	// Extract @mui/material components using the mui project
+	// This ensures type augmentations from packages/mui/src/types.ts are applied
+	if (muiProject) {
+		const muiMaterialPackage = extractMuiMaterialComponents(muiProject);
+		if (muiMaterialPackage) {
+			packages.push(muiMaterialPackage);
+		}
+	}
+
 	let apiStr = JSON.stringify(packages, null, "\t");
 	apiStr = `${apiStr}\n`;
 	fs.writeFileSync("./api.json", apiStr);
@@ -252,7 +872,7 @@ function getReexport(symbol: TSMorphSymbol): Api.Reexport | undefined {
 function getPackageNameFromFilePath(symbol: TSMorphSymbol) {
 	const name = symbol.getFullyQualifiedName();
 	const match = name.match(/\/packages\/([^/]+)\//);
-	return match ? match[1] : undefined;
+	return match ? `@stratakit/${match[1]}` : undefined;
 }
 
 function getConvenienceComponent({ sourceFile }: { sourceFile: SourceFile }) {
@@ -339,7 +959,7 @@ function getComponent({ exportSymbol }: { exportSymbol: TSMorphSymbol }) {
 		props,
 		baseElement,
 		jsdoc: getJsdocComment(jsdoc),
-		...(deprecated ? { deprecated } : {}),
+		deprecated,
 	} satisfies Api.Component;
 }
 
@@ -610,13 +1230,14 @@ function getBaseTypeName(type: TSMorphType) {
 	});
 }
 
-function getDeprecated(node: JSDocableNode) {
+function getDeprecated(node: JSDocableNode): string | boolean {
 	const jsdoc = node.getJsDocs().at(0);
 	if (!jsdoc) return false;
 	const deprecated = jsdoc
 		.getTags()
 		.find((tag) => tag.getTagName() === "deprecated");
-	return !!deprecated;
+	if (!deprecated) return false;
+	return deprecated.getCommentText() || true;
 }
 
 generateApi();

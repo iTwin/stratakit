@@ -2,7 +2,12 @@
 	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
 	"files": {
 		"ignoreUnknown": true,
-		"includes": ["**", "!**/*.astro"]
+		"includes": [
+			"**",
+			"!**/*.astro",
+			// Skip formatting the api doc since it is large and produced programattically with formatting included
+			"!apps/website/api.json"
+		]
 	},
 	"vcs": {
 		"enabled": true,

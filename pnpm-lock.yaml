@@ -200,6 +200,9 @@ importers:
       "@mui/material":
         specifier: "catalog:"
         version: 9.4.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      "@mui/utils":
+        specifier: "catalog:"
+        version: 9.4.0(@types/react@19.2.18)(react@19.2.8)
       "@stratakit/bricks":
         specifier: workspace:*
         version: link:../../packages/bricks
@@ -230,6 +233,9 @@ importers:
       sharp:
         specifier: ^0.35.0
         version: 0.35.4(@types/node@22.19.19)
+      shiki:
+        specifier: ^4.4.1
+        version: 4.4.1
     devDependencies:
       "@axe-core/playwright":
         specifier: ^4.12.1

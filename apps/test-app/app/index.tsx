@@ -14,8 +14,8 @@ import CardHeader from "@mui/material/CardHeader";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/mui";
-import { useSettingsStore } from "./~settings.tsx";
-import { useColorScheme } from "./~utils.tsx";
+import { SettingsDialog, useSettingsStore } from "./~settings.tsx";
+import { isProduction, useColorScheme } from "./~utils.tsx";
 import { SvgStrataKitLogo } from "./assets/SvgStrataKitLogo.tsx";
 
 import type { LinksFunction, MetaFunction } from "react-router";
@@ -28,6 +28,8 @@ import svgSun from "@stratakit/icons/sun.svg";
 import svgSwap from "@stratakit/icons/swap.svg";
 import svgBentleyWordmark from "./assets/bentley-wordmark.svg";
 import svgIcons from "./assets/icons.svg";
+import svgMuiLogo from "./assets/mui.svg";
+import svgSandbox from "./assets/sandbox.svg";
 import svgTokens from "./assets/tokens.svg";
 import styles from "./index.module.css";
 
@@ -52,13 +54,16 @@ export const links: LinksFunction = () => {
 const mainContentId = "main-content";
 
 export default function HomePage() {
+	const debugMode = useSettingsStore((state) => state.debugMode);
+
 	return (
 		<div className={styles.page}>
 			<Header />
 			<div className={styles.contentWrapper}>
 				<main className={styles.main} tabIndex={-1} id={mainContentId}>
 					<HeroSection />
-					<GettingStartedSection />
+					{debugMode && <DebugSection />}
+					{!debugMode && <GettingStartedSection />}
 					<StructureSection />
 				</main>
 				<Footer />
@@ -105,6 +110,14 @@ function Header() {
 // ----------------------------------------------------------------------------
 
 function Footer() {
+	const [settingsOpen, setSettingsOpen] = React.useState(false);
+
+	// Note: This sitemap only includes pages that are part of the documentation website. Test-app routes are not included.
+	let sitemapLink = useHref("/docs/sitemap-0.xml");
+	if (!isProduction) {
+		sitemapLink = "http://localhost:4321/docs/sitemap-0.xml"; // Link to the local docs server during development.
+	}
+
 	return (
 		<footer className={styles.footer}>
 			<Typography>&copy; 2026 Bentley Systems, Incorporated</Typography>
@@ -113,7 +126,7 @@ function Footer() {
 				<li>
 					<Link
 						className={styles.footerLink}
-						href={useHref("/docs/sitemap-0.xml")}
+						href={sitemapLink}
 						color="inherit"
 					>
 						Sitemap
@@ -129,7 +142,23 @@ function Footer() {
 						Report an issue
 					</Link>
 				</li>
+
+				<li>
+					<Link
+						className={styles.footerLink}
+						color="inherit"
+						render={<button />}
+						onClick={() => setSettingsOpen(true)}
+					>
+						Settings
+					</Link>
+				</li>
 			</ul>
+
+			<SettingsDialog
+				open={settingsOpen}
+				onClose={() => setSettingsOpen(false)}
+			/>
 		</footer>
 	);
 }
@@ -138,6 +167,12 @@ function Footer() {
 
 function HeroSection() {
 	const headingId = React.useId();
+	const debugMode = useSettingsStore((state) => state.debugMode);
+
+	let docsLink = useHref("/docs");
+	if (!isProduction) {
+		docsLink = "http://localhost:4321/docs"; // Link to the local docs server during development.
+	}
 
 	return (
 		<section className={styles.section} aria-labelledby={headingId}>
@@ -167,8 +202,8 @@ function HeroSection() {
 
 			<ul className={styles.ctaList}>
 				<li>
-					<Button href={useHref("/docs")} size="large">
-						Get started
+					<Button href={docsLink} size="large">
+						{!debugMode ? "Get started" : "Documentation"}
 					</Button>
 				</li>
 				<li>
@@ -240,6 +275,11 @@ function GettingStartedSection() {
 function StructureSection() {
 	const headingId = React.useId();
 
+	let componentsLink = useHref("/docs/components/overview/");
+	if (!isProduction) {
+		componentsLink = "http://localhost:4321/docs/components/overview/"; // Link to the local docs server during development.
+	}
+
 	return (
 		<section className={styles.section} aria-labelledby={headingId}>
 			<Typography
@@ -275,7 +315,55 @@ function StructureSection() {
 						title="Components"
 						icon={`${svgComponents}#icon-large`}
 						description="Browse the complete catalog of production-ready components."
-						href={useHref("/docs/components/overview/")}
+						href={componentsLink}
+					/>
+				</li>
+			</ul>
+		</section>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+function DebugSection() {
+	const headingId = React.useId();
+
+	return (
+		<section className={styles.section}>
+			<Typography
+				variant="display-sm"
+				render={<h2 />}
+				id={headingId}
+				className={styles.semiBold}
+			>
+				Debug
+			</Typography>
+
+			<ul className={styles.cardList}>
+				<li>
+					<SectionCard
+						title="MUI components"
+						icon={`${svgMuiLogo}#icon`}
+						description="Live demos of StrataKit-themed MUI components."
+						href={useHref("/mui")}
+					/>
+				</li>
+
+				<li>
+					<SectionCard
+						title="StrataKit components"
+						icon={`${svgComponents}#icon-large`}
+						description="Live demos of custom StrataKit components."
+						href={useHref("/tests/accordion-item")}
+					/>
+				</li>
+
+				<li>
+					<SectionCard
+						title="Sandbox"
+						icon={`${svgSandbox}#icon`}
+						description="A playground for experimenting with various components."
+						href={useHref("/sandbox")}
 					/>
 				</li>
 			</ul>
@@ -287,7 +375,7 @@ function StructureSection() {
 
 interface SectionCardProps {
 	title: string;
-	description: string;
+	description?: string;
 	href: string;
 	icon: string;
 }
@@ -315,9 +403,11 @@ function SectionCard(props: SectionCardProps) {
 					},
 				}}
 			/>
-			<CardContent>
-				<Typography variant="body-lg">{description}</Typography>
-			</CardContent>
+			{description && (
+				<CardContent>
+					<Typography variant="body-lg">{description}</Typography>
+				</CardContent>
+			)}
 		</Card>
 	);
 }

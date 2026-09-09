@@ -1,12 +1,14 @@
 ---
 // See https://starlight.astro.build/reference/overrides/#themeprovider
+
+import { colorSchemeStorageKey } from "internal/color-scheme-storage.ts";
 ---
 
 {/* This is intentionally inlined to avoid FOUC. */}
-<script is:inline>
+<script is:inline define:vars={{ colorSchemeStorageKey }}>
 	let storedTheme;
 	try {
-		storedTheme = JSON.parse(localStorage.getItem("🥝:settings") ?? "{}")?.state?.colorScheme;
+		storedTheme = localStorage.getItem(colorSchemeStorageKey);
 	} catch {}
 	const preferredTheme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 	const currentTheme =

@@ -43,43 +43,15 @@ import { Icon } from "@astrojs/starlight/components";
 </style>
 
 <script>
+	import { getStoredColorScheme, setStoredColorScheme } from "internal/color-scheme-storage.ts";
+
 	type Theme = "dark" | "light";
-
-	// Matches the default shape of zustand's persist middleware. https://zustand.docs.pmnd.rs/reference/integrations/persisting-store-data
-	type PersistedSettings = {
-		state?: Record<string, unknown>;
-		version?: number;
-	};
-
-	/** Key in `localStorage` to store color theme preference at. Matches test-app settings. */
-	const storageKey = "🥝:settings";
-
-	/** Load the persisted settings from `localStorage`. */
-	const loadSettings = (): PersistedSettings => {
-		try {
-			return JSON.parse(localStorage.getItem(storageKey) ?? "{}") as PersistedSettings;
-		} catch {
-			return {};
-		}
-	};
 
 	/** Load the color-scheme from `localStorage`. */
 	const loadTheme = (): Theme | undefined => {
-		const theme = loadSettings()?.state?.colorScheme;
-		if (theme === "light" || theme === "dark") {
-			return theme;
-		}
-		return undefined;
+		const theme = getStoredColorScheme();
+		return theme === "auto" ? undefined : theme;
 	};
-
-	/** Store the color-scheme in `localStorage`. */
-	function storeTheme(theme: Theme): void {
-		const settings = loadSettings();
-		localStorage.setItem(
-			storageKey,
-			JSON.stringify({ ...settings, state: { ...settings.state, colorScheme: theme } }),
-		);
-	}
 
 	/** Get the preferred system color scheme. */
 	const getPreferredColorScheme = (): Theme =>
@@ -90,7 +62,7 @@ import { Icon } from "@astrojs/starlight/components";
 		updateIcon(theme);
 		document.documentElement.dataset.theme = theme;
 		document.documentElement.dataset.colorScheme = theme;
-		storeTheme(theme);
+		setStoredColorScheme(theme);
 	}
 
 	/** Updates the icon shown inside the theme switcher. */

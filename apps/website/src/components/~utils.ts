@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
+import { getStoredColorScheme } from "internal/color-scheme-storage.ts";
 
 export function useColorScheme(): "light" | "dark" {
 	const prefersDarkQuery = React.useMemo(
@@ -24,14 +25,10 @@ export function useColorScheme(): "light" | "dark" {
 			[prefersDarkQuery],
 		),
 		() => {
-			try {
-				const localSetting = JSON.parse(
-					localStorage.getItem("🥝:settings") ?? "{}",
-				)?.state?.colorScheme;
-				if (localSetting === "light" || localSetting === "dark") {
-					return localSetting;
-				}
-			} catch {}
+			const localSetting = getStoredColorScheme();
+			if (localSetting === "light" || localSetting === "dark") {
+				return localSetting;
+			}
 			return prefersDarkQuery.matches ? "dark" : "light";
 		},
 		() => "dark",

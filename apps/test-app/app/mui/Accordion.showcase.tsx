@@ -11,6 +11,7 @@ import AccordionExpanded from "examples/mui/Accordion.expanded.tsx";
 import AccordionMarkerPlacement from "examples/mui/Accordion.marker-placement.tsx";
 import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
 import AccordionResponsive from "examples/mui/Accordion.responsive.tsx";
+import AccordionSizes from "examples/mui/Accordion.sizes.tsx";
 import AccordionVariants from "examples/mui/Accordion.variants.tsx";
 import { createKnob, isProduction } from "~/~utils.tsx";
 
@@ -36,6 +37,7 @@ export default function AccordionExamples() {
 			<AccordionMultiple />
 			{!isProduction && <AccordionMultipleOutlined_ />}
 			<AccordionVariants />
+			<AccordionSizes />
 		</Stack>
 	);
 }

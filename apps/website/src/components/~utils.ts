@@ -24,10 +24,14 @@ export function useColorScheme(): "light" | "dark" {
 			[prefersDarkQuery],
 		),
 		() => {
-			const localSetting = localStorage.getItem("color-scheme");
-			if (localSetting === "light" || localSetting === "dark") {
-				return localSetting;
-			}
+			try {
+				const localSetting = JSON.parse(
+					localStorage.getItem("🥝:settings") ?? "{}",
+				)?.state?.colorScheme;
+				if (localSetting === "light" || localSetting === "dark") {
+					return localSetting;
+				}
+			} catch {}
 			return prefersDarkQuery.matches ? "dark" : "light";
 		},
 		() => "dark",

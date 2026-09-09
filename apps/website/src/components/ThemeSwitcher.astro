@@ -45,21 +45,40 @@ import { Icon } from "@astrojs/starlight/components";
 <script>
 	type Theme = "dark" | "light";
 
-	/** Key in `localStorage` to store color theme preference at. */
-	const storageKey = "color-scheme";
+	// Matches the default shape of zustand's persist middleware. https://zustand.docs.pmnd.rs/reference/integrations/persisting-store-data
+	type PersistedSettings = {
+		state?: Record<string, unknown>;
+		version?: number;
+	};
 
-	/** Load the user’s preference from `localStorage`. */
+	/** Key in `localStorage` to store color theme preference at. Matches test-app settings. */
+	const storageKey = "🥝:settings";
+
+	/** Load the persisted settings from `localStorage`. */
+	const loadSettings = (): PersistedSettings => {
+		try {
+			return JSON.parse(localStorage.getItem(storageKey) ?? "{}") as PersistedSettings;
+		} catch {
+			return {};
+		}
+	};
+
+	/** Load the color-scheme from `localStorage`. */
 	const loadTheme = (): Theme | undefined => {
-		const theme = localStorage.getItem(storageKey);
+		const theme = loadSettings()?.state?.colorScheme;
 		if (theme === "light" || theme === "dark") {
 			return theme;
 		}
 		return undefined;
 	};
 
-	/** Store the user’s preference in `localStorage`. */
+	/** Store the color-scheme in `localStorage`. */
 	function storeTheme(theme: Theme): void {
-		localStorage.setItem(storageKey, theme === "light" || theme === "dark" ? theme : "");
+		const settings = loadSettings();
+		localStorage.setItem(
+			storageKey,
+			JSON.stringify({ ...settings, state: { ...settings.state, colorScheme: theme } }),
+		);
 	}
 
 	/** Get the preferred system color scheme. */

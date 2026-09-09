@@ -4,9 +4,13 @@
 
 {/* This is intentionally inlined to avoid FOUC. */}
 <script is:inline>
-	const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("color-scheme");
+	let storedTheme;
+	try {
+		storedTheme = JSON.parse(localStorage.getItem("🥝:settings") ?? "{}")?.state?.colorScheme;
+	} catch {}
+	const preferredTheme = matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark";
 	const currentTheme =
-		storedTheme || (window.matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark");
+		storedTheme === "light" || storedTheme === "dark" ? storedTheme : preferredTheme;
 	document.documentElement.dataset.theme = currentTheme === "light" ? "light" : "dark";
 	document.documentElement.dataset.colorScheme = currentTheme === "light" ? "light" : "dark";
 </script>

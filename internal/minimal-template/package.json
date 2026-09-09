@@ -20,8 +20,8 @@
 		"@types/node": "^24.10.1",
 		"@types/react": "^19.2.14",
 		"@types/react-dom": "^19.2.3",
-		"@vitejs/plugin-react": "^6.0.0",
-		"oxc-transform-react": "^0.148.0",
+		"@vitejs/plugin-react": "^6.1.1",
+		"oxc-transform-react": "*",
 		"typescript": "~7.0.2",
 		"vite": "^8.2.2"
 	}

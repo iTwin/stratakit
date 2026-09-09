@@ -1,0 +1,1 @@
+var e=`/1830/docs/_astro/edit.Dn200_C6.svg`;export{e as t};

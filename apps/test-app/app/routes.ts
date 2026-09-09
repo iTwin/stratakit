@@ -19,17 +19,18 @@ function routesForPackage(folder: string, components: string[]) {
 
 export default [
 	index("./index.tsx"),
-	route("sandbox", "./sandbox/index.tsx"),
-	route("tokens", "./tokens.tsx"),
-	route("icons", "./icons.tsx"),
-	route("mui", "./mui/mui.tsx"),
-
-	layout(
-		"./tests/tests.tsx",
-		Object.entries(components).flatMap(([folder, components]) =>
-			routesForPackage(folder, components),
+	layout("./~navigation.layout.tsx", [
+		route("sandbox", "./sandbox/index.tsx"),
+		route("tokens", "./tokens.tsx"),
+		route("icons", "./icons.tsx"),
+		route("mui", "./mui/mui.tsx"),
+		layout(
+			"./tests/tests.tsx",
+			Object.entries(components).flatMap(([folder, components]) =>
+				routesForPackage(folder, components),
+			),
 		),
-	),
+	]),
 ] satisfies RouteConfig;
 
 // ----------------------------------------------------------------------------

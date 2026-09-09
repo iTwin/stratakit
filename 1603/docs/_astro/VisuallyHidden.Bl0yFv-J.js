@@ -1,1 +1,0 @@
-import{a as e,t}from"./jsx-runtime.B-hcVAMW.js";import{o as n,s as r}from"./Root.internal.Doxid_9j.js";import{t as i}from"./role.D-0VB0aA.js";import{t as a}from"./_utils.useInit.y8PfxedT.js";var o=t(),s=e(n(),1),c=r((e,t)=>(a(),(0,o.jsx)(i.span,{...e,className:(0,s.default)(`🥝VisuallyHidden`,e.className),ref:t})));export{c as t};

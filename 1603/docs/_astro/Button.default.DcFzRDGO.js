@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.B-hcVAMW.js";import{t}from"./Button.B6YrqJUi.js";var n=e(),r=()=>(0,n.jsx)(t,{onClick:()=>{},children:`Create new`});export{r as default};

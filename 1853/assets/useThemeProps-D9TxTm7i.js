@@ -1,1 +1,0 @@
-import{aZ as a,a_ as p}from"./~settings-BGsZj6BC.js";import{g as h}from"./getThemeProps-BYoNHpp5.js";const f=a();function c(s){const{props:m,name:o,defaultTheme:r,themeId:t}=s;let e=p(r);return t&&(e=e[t]||e),h({theme:e,name:o,props:m})}export{f as s,c as u};

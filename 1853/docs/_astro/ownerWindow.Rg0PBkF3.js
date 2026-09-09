@@ -1,1 +1,0 @@
-import{t as e}from"./ownerDocument.Zu5Vm1vv.js";function t(t){return e(t).defaultView||window}export{t};

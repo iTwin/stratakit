@@ -52,6 +52,7 @@ const rows = [
 export default function DefaultExample() {
 	return (
 		<DataGrid
+			showToolbar
 			rows={rows}
 			columns={columns}
 			initialState={{

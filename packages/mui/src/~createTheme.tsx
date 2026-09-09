@@ -67,9 +67,11 @@ import {
 	ColumnManageIcon,
 	DismissIcon,
 	ErrorIcon,
+	ExportIcon,
 	FilterIcon,
 	InfoIcon,
-	MenuIcon,
+	MoreVerticalIcon,
+	SearchIcon,
 	SortAscendingIcon,
 	SortDescendingIcon,
 	SuccessIcon,
@@ -376,7 +378,7 @@ function createTheme() {
 			MuiDataGrid: {
 				defaultProps: {
 					slots: {
-						columnMenuIcon: MenuIcon,
+						columnMenuIcon: MoreVerticalIcon,
 						columnMenuSortAscendingIcon: SortAscendingIcon,
 						columnMenuSortDescendingIcon: SortDescendingIcon,
 						columnMenuFilterIcon: FilterIcon,
@@ -384,8 +386,12 @@ function createTheme() {
 						columnSortedAscendingIcon: SortAscendingIcon,
 						columnSortedDescendingIcon: SortDescendingIcon,
 						columnFilteredIcon: FilterIcon,
-
 						columnMenuManageColumnsIcon: ColumnManageIcon,
+						columnSelectorIcon: ColumnManageIcon,
+						exportIcon: ExportIcon,
+						filterPanelDeleteIcon: DismissIcon,
+						quickFilterIcon: SearchIcon,
+						quickFilterClearIcon: DismissIcon,
 						openFilterButtonIcon: FilterIcon,
 					},
 				},

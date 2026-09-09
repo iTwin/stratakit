@@ -17,12 +17,15 @@ import svgChevronRight from "@stratakit/icons/chevron-right.svg";
 import svgChevronRightDouble from "@stratakit/icons/chevron-right-double.svg";
 import svgClock from "@stratakit/icons/clock.svg";
 import svgColumnManage from "@stratakit/icons/column-manage.svg";
+import svgDelete from "@stratakit/icons/delete.svg";
 import svgDismiss from "@stratakit/icons/dismiss.svg";
 import svgDismissCircle from "@stratakit/icons/dismiss-circle.svg";
 import svgError from "@stratakit/icons/error.svg";
+import svgExport from "@stratakit/icons/export.svg";
 import svgFilter from "@stratakit/icons/filter.svg";
 import svgInfo from "@stratakit/icons/info.svg";
-import svgMenu from "@stratakit/icons/menu.svg";
+import svgMoreVertical from "@stratakit/icons/more-vertical.svg";
+import svgSearch from "@stratakit/icons/search.svg";
 import svgSortAscending from "@stratakit/icons/sort-ascending.svg";
 import svgSortDescending from "@stratakit/icons/sort-descending.svg";
 import svgStatusSuccess from "@stratakit/icons/status-success.svg";
@@ -56,6 +59,7 @@ const ChevronLeftDoubleIcon = createIconComponent(svgChevronLeftDouble);
 const ChevronRightIcon = createIconComponent(svgChevronRight);
 const ChevronRightDoubleIcon = createIconComponent(svgChevronRightDouble);
 
+const DeleteIcon = createIconComponent(svgDelete);
 const DismissIcon = createIconComponent(svgDismiss);
 const DismissCircleIcon = createIconComponent(svgDismissCircle);
 
@@ -68,9 +72,11 @@ const SortAscendingIcon = createIconComponent(svgSortAscending);
 const SortDescendingIcon = createIconComponent(svgSortDescending);
 
 const FilterIcon = createIconComponent(svgFilter);
-const MenuIcon = createIconComponent(svgMenu);
+const MoreVerticalIcon = createIconComponent(svgMoreVertical);
 const ColumnManageIcon = createIconComponent(svgColumnManage);
 const VisibilityHideIcon = createIconComponent(svgVisibilityHide);
+const SearchIcon = createIconComponent(svgSearch);
+const ExportIcon = createIconComponent(svgExport);
 
 // ----------------------------------------------------------------------------
 
@@ -86,13 +92,16 @@ export {
 	ChevronRightIcon,
 	ClockIcon,
 	ColumnManageIcon,
+	DeleteIcon,
 	DismissCircleIcon,
 	DismissIcon,
 	ErrorIcon,
+	ExportIcon,
 	FilterIcon,
 	Icon,
 	InfoIcon,
-	MenuIcon,
+	MoreVerticalIcon,
+	SearchIcon,
 	SortAscendingIcon,
 	SortDescendingIcon,
 	SuccessIcon,

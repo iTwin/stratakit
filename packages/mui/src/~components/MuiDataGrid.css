@@ -58,3 +58,11 @@
 		--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--active-hover);
 	}
 }
+
+.MuiDataGrid-toolbar {
+	background: none;
+}
+
+.MuiDataGrid-filterFormDeleteIcon {
+	align-items: flex-end; /* Align with the input field when the label and input field are vertically stacked */
+}

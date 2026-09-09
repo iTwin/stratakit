@@ -39,8 +39,9 @@
 			background-color: var(--stratakit-color-bg-elevation-level-1);
 			color: var(--stratakit-color-text-neutral-primary);
 			border-radius: var(--stratakit-radius-md);
-			border-width: 0;
+			border: 1px solid var(--stratakit-color-border-page-base);
 			box-shadow: var(--stratakit-shadow-surface-lg);
+
 			/* 
 				MUI's `OutlinedInput` wraps the select with another element which has a border,
        	offsetting the select by 1px. The picker is still positioned relative to

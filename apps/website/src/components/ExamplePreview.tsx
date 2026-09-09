@@ -13,8 +13,9 @@ import Paper from "@mui/material/Paper";
 import Skeleton from "@mui/material/Skeleton";
 import { visuallyHidden } from "@mui/utils";
 import { Icon, Root } from "@stratakit/mui";
-import { codeToHtml } from "shiki";
 import { useColorScheme } from "./~utils.ts";
+
+import type { HighlighterCore } from "shiki/core";
 
 import svgCopy from "@stratakit/icons/copy.svg";
 import svgScript from "@stratakit/icons/script.svg";
@@ -361,6 +362,46 @@ function CodeSkeleton({ ref }: { ref?: React.Ref<HTMLDivElement> }) {
 	);
 }
 
+// ----------------------------------------------------------------------------
+
+/**
+ * Lazily-created singleton Shiki highlighter. The Shiki core, engine, `tsx`
+ * grammar, and the two GitHub themes are dynamically imported on first use, so
+ * they are only downloaded when a code block is actually rendered and are kept
+ * out of the initial ExamplePreview chunk. Uses the JavaScript RegExp engine
+ * instead of the Oniguruma WASM engine.
+ */
+let highlighterPromise: Promise<HighlighterCore> | undefined;
+
+function getHighlighter() {
+	if (highlighterPromise) {
+		return highlighterPromise;
+	}
+
+	highlighterPromise = (async () => {
+		const [
+			{ createHighlighterCore },
+			{ createJavaScriptRegexEngine },
+			{ default: tsx },
+			{ default: githubDark },
+			{ default: githubLight },
+		] = await Promise.all([
+			import("shiki/core"),
+			import("shiki/engine/javascript"),
+			import("shiki/langs/tsx.mjs"),
+			import("shiki/themes/github-dark.mjs"),
+			import("shiki/themes/github-light.mjs"),
+		]);
+		return createHighlighterCore({
+			themes: [githubDark, githubLight],
+			langs: [tsx],
+			engine: createJavaScriptRegexEngine(),
+		});
+	})();
+
+	return highlighterPromise;
+}
+
 function CodeBlock({
 	code,
 	id,
@@ -375,10 +416,16 @@ function CodeBlock({
 
 	React.useEffect(() => {
 		const theme = colorScheme === "dark" ? "github-dark" : "github-light";
-		codeToHtml(code, {
-			lang: "tsx",
-			theme,
-		}).then(setFormattedHtml);
+		let cancelled = false;
+		getHighlighter().then((highlighter) => {
+			if (cancelled) {
+				return;
+			}
+			setFormattedHtml(highlighter.codeToHtml(code, { lang: "tsx", theme }));
+		});
+		return () => {
+			cancelled = true;
+		};
 	}, [code, colorScheme]);
 
 	return (

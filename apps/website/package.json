@@ -68,7 +68,7 @@
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"sharp": "^0.35.0",
-		"shiki": "^1.0.0"
+		"shiki": "^4.4.1"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.12.1",

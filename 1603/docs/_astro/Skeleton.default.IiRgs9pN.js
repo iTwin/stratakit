@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{a as t,o as n}from"./ExamplePreview.Bekj32z_.js";var r=e(),i=()=>(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(n,{}),(0,r.jsx)(`div`,{style:t,children:`Loading...`})]});export{i as default};

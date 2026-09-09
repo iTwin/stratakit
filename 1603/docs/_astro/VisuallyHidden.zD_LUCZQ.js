@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime.hePW80VL.js";import{t}from"./jsx-runtime.BPK4hkxk.js";import{o as n,s as r}from"./Root.internal.BeQXzt_v.js";import{t as i}from"./role.WcnH1XkH.js";import{t as a}from"./_utils.useInit.ZsneGhZ8.js";var o=t(),s=e(n(),1),c=r((e,t)=>(a(),(0,o.jsx)(i.span,{...e,className:(0,s.default)(`🥝VisuallyHidden`,e.className),ref:t})));export{c as t};

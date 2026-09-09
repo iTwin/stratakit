@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{t}from"./Chip.9pjO5_Jz.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{className:`flex`,children:[(0,n.jsx)(t,{onDismiss:()=>{},label:`sort:updated-desc`}),(0,n.jsx)(t,{onDismiss:()=>{},label:`is:pr`}),(0,n.jsx)(t,{onDismiss:()=>{},label:`is:open`})]});export{r as default};

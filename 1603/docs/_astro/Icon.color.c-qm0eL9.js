@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{I as t,O as n}from"./_utils.B4UobqQ_.js";var r={icon:`_icon_18p5z_6`},i=e(),a=()=>(0,i.jsx)(t,{className:r.icon,href:n});export{a as default};

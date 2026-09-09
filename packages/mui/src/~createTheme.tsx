@@ -383,6 +383,7 @@ function createTheme() {
 						columnMenuHideIcon: VisibilityHideIcon,
 						columnSortedAscendingIcon: SortAscendingIcon,
 						columnSortedDescendingIcon: SortDescendingIcon,
+						columnFilteredIcon: FilterIcon,
 
 						columnMenuManageColumnsIcon: ColumnManageIcon,
 						openFilterButtonIcon: FilterIcon,

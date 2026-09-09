@@ -1,1 +1,0 @@
-import{b2 as a,b3 as p}from"./~utils-XCQSNlUC.js";import{g as h}from"./getThemeProps-DSeeZjDj.js";const f=a();function c(s){const{props:m,name:o,defaultTheme:r,themeId:t}=s;let e=p(r);return t&&(e=e[t]||e),h({theme:e,name:o,props:m})}export{f as s,c as u};

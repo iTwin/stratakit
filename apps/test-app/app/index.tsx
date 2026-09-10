@@ -112,27 +112,11 @@ function Header() {
 function Footer() {
 	const [settingsOpen, setSettingsOpen] = React.useState(false);
 
-	// Note: This sitemap only includes pages that are part of the documentation website. Test-app routes are not included.
-	let sitemapLink = useHref("/docs/sitemap-0.xml");
-	if (!isProduction) {
-		sitemapLink = "http://localhost:4321/docs/sitemap-0.xml"; // Link to the local docs server during development.
-	}
-
 	return (
 		<footer className={styles.footer}>
 			<Typography>&copy; 2026 Bentley Systems, Incorporated</Typography>
 
 			<ul className={styles.footerList}>
-				<li>
-					<Link
-						className={styles.footerLink}
-						href={sitemapLink}
-						color="inherit"
-					>
-						Sitemap
-					</Link>
-				</li>
-
 				<li>
 					<Link
 						className={styles.footerLink}

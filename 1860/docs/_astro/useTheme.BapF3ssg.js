@@ -1,0 +1,1 @@
+import{n as e}from"./jsx-runtime.Cltr0gcK.js";import{o as t}from"./DefaultPropsProvider.CMQOYUA8.js";import{t as n}from"./useTheme.DHxHdotT.js";e();function r(){let e=n(t);return e.$$material||e}export{r as t};

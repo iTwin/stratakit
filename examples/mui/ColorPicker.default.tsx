@@ -36,8 +36,9 @@ export default () => {
 				value={color}
 				onChange={(event) => setColor(event.target.value)}
 				tabIndex={-1}
-				aria-hidden="false"
+				aria-hidden="true"
 				className={styles.input}
+				style={visuallyHidden}
 			/>
 		</div>
 	);

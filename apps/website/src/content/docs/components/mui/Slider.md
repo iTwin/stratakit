@@ -3,7 +3,7 @@ title: Slider
 description: Sliders allow users to select from a range of values.
 links:
   muiDocs: https://mui.com/material-ui/react-slider/
-  apiReference: https://mui.com/material-ui/api/slider/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Slider.default" min-width="300px"}
@@ -41,3 +41,9 @@ Use the `valueLabelDisplay` prop to show a tooltip near the **Slider** thumb for
 ### Vertical
 
 ::example{src="mui/Slider.vertical" min-width="300px"}
+
+## API reference
+
+- [`<Slider />`](https://mui.com/material-ui/api/slider/)
+- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
+- [`<FormLabel />`](https://mui.com/material-ui/api/form-label/)

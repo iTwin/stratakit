@@ -3,7 +3,7 @@ title: TextField
 description: Text fields are used to input single or multiple lines of text.
 links:
   muiDocs: https://mui.com/material-ui/react-text-field/
-  apiReference: https://mui.com/material-ui/api/text-field/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/TextField.default"}
@@ -70,3 +70,9 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 - Don't place the label below or to the right of the input.
 - Don't resort to generic error messages.
 - Don't use the `placeholder` attribute for essential instructions.
+
+## API reference
+
+- [`<TextField />`](https://mui.com/material-ui/api/text-field/)
+- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
+- [`<InputAdornment />`](https://mui.com/material-ui/api/input-adornment/)

@@ -3,7 +3,7 @@ title: Avatar
 description: Avatars are used to show a representation of an individual.
 links:
   muiDocs: https://mui.com/material-ui/react-avatar/
-  apiReference: https://mui.com/material-ui/api/avatar/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Avatar.default"}
@@ -49,3 +49,7 @@ In some cases, the **Avatar** may be considered presentational, since text ident
 
 - Don‘t resort to displaying initials if an image is available.
 - Don't omit an accessible label if there is no other label in place.
+
+## API reference
+
+- [`<Avatar />`](https://mui.com/material-ui/api/avatar/)

@@ -3,7 +3,7 @@ title: AvatarGroup
 description: Avatar groups are used to display a collection of avatars.
 links:
   muiDocs: https://mui.com/material-ui/react-avatar/#grouped
-  apiReference: https://mui.com/material-ui/api/avatar-group/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/AvatarGroup.default"}
@@ -23,3 +23,7 @@ links:
 When multiple **Avatars** exceed the configured [`max`](https://mui.com/material-ui/api/avatar-group/#avatar-group-prop-max) limit of the **AvatarGroup**, a surplus item can be shown using the [`renderSurplus`](https://mui.com/material-ui/api/avatar-group/#avatar-group-prop-renderSurplus) prop.
 
 ::example{src="mui/AvatarGroup.surplus"}
+
+## API reference
+
+- [`<AvatarGroup />`](https://mui.com/material-ui/api/avatar-group/)

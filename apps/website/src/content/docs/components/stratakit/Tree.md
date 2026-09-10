@@ -3,7 +3,7 @@ title: Tree
 description: Trees are interactive hierarchies.
 status: stable
 links:
-  apiReference: /reference/structures/Tree
+  apiReference: "#api-reference"
 ---
 
 ::example{src="structures/Tree.default" min-width="300px" min-height="150px" vertical-stretch}
@@ -145,3 +145,9 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 - Don't make expandable items reveal items of the same `aria-level`. They must be the parent's level plus `1`.
 - Don't try to place `Tree.Item`s inside `Tree.Item`s. Each `Tree.Item` is a sibling under a `Tree.Root` parent.
 - Don't put any components besides [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction) in [`Tree.Item`'s](/reference/structures/Tree/#Tree.Item) `action`.
+
+## API reference
+
+- [`<Tree.Root />`](/reference/structures/Tree/#Tree.Root)
+- [`<Tree.Item />`](/reference/structures/Tree/#Tree.Item)
+- [`<Tree.ItemAction />`](/reference/structures/Tree/#Tree.ItemAction)

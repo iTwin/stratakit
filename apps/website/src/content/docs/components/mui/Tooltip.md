@@ -3,7 +3,7 @@ title: Tooltip
 description: Tooltips are used to convey additional context on interactive elements.
 links:
   muiDocs: https://mui.com/material-ui/react-tooltip/
-  apiReference: https://mui.com/material-ui/api/tooltip/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Tooltip.default"}
@@ -67,3 +67,7 @@ Since the **IconButton's** tooltip represents its principle label, choose a `lab
 - Don't use **Tooltips** for the labels or descriptions of form inputs. Use inline text elements instead.
 - Don't use **Tooltips** for revealing truncated text.
 - Don't omit a programmatically associated label or description unless an [accessible label/name](https://developer.mozilla.org/en-US/docs/Glossary/Accessible_name) is in place by other means.
+
+## API reference
+
+- [`<Tooltip />`](https://mui.com/material-ui/api/tooltip/)

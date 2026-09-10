@@ -3,7 +3,7 @@ title: DatePicker
 description: A calendar view to simplify selection of dates.
 links:
   muiDocs: https://mui.com/x/react-date-pickers/date-picker/
-  apiReference: https://mui.com/x/api/date-pickers/date-picker/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/DatePicker.default"}
@@ -22,3 +22,8 @@ Use [`slotProps.textField`](https://mui.com/x/api/date-pickers/date-picker/#date
 - **Medium:** Default size, suitable for most use cases.
 
 ::example{src="mui/DatePicker.sizes"}
+
+## API reference
+
+- [`<DatePicker />`](https://mui.com/x/api/date-pickers/date-picker/)
+- [`<DateCalendar />`](https://mui.com/x/api/date-pickers/date-calendar/)

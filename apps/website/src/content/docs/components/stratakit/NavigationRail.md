@@ -3,7 +3,7 @@ title: NavigationRail
 description: Navigation rails are used for primary navigation in an app.
 status: unstable
 links:
-  apiReference: /reference/structures/NavigationRail
+  apiReference: "#api-reference"
 ---
 
 ::example{src="structures/NavigationRail.default" min-height="450px" min-width="450px" vertical-stretch}
@@ -165,3 +165,15 @@ In the example below:
 - Don't insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
 - Don't place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer).
 - Don't make multiple [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor)s `active` at the same time.
+
+## API reference
+
+- [`<NavigationRail.Root />`](/reference/structures/NavigationRail/#NavigationRail.Root)
+- [`<NavigationRail.Header />`](/reference/structures/NavigationRail/#NavigationRail.Header)
+- [`<NavigationRail.Content />`](/reference/structures/NavigationRail/#NavigationRail.Content)
+- [`<NavigationRail.Footer />`](/reference/structures/NavigationRail/#NavigationRail.Footer)
+- [`<NavigationRail.List />`](/reference/structures/NavigationRail/#NavigationRail.List)
+- [`<NavigationRail.ListItem />`](/reference/structures/NavigationRail/#NavigationRail.ListItem)
+- [`<NavigationRail.Anchor />`](/reference/structures/NavigationRail/#NavigationRail.Anchor)
+- [`<NavigationRail.Button />`](/reference/structures/NavigationRail/#NavigationRail.Button)
+- [`<NavigationRail.ToggleButton />`](/reference/structures/NavigationRail/#NavigationRail.ToggleButton)

@@ -3,7 +3,7 @@ title: Rating
 description: Ratings are used to indicate the quality of a particular item.
 links:
   muiDocs: https://mui.com/material-ui/react-rating/
-  apiReference: https://mui.com/material-ui/api/rating/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Rating.default"}
@@ -21,3 +21,7 @@ links:
 ### Precision
 
 ::example{src="mui/Rating.precision"}
+
+## API reference
+
+- [`<Rating />`](https://mui.com/material-ui/api/rating/)

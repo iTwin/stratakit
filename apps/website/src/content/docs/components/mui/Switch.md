@@ -3,7 +3,7 @@ title: Switch
 description: Switches are toggles for Boolean values.
 links:
   muiDocs: https://mui.com/material-ui/react-switch/
-  apiReference: https://mui.com/material-ui/api/switch/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Switch.default"}
@@ -52,3 +52,9 @@ Use the `defaultChecked` prop to set the initial checked state. Alternatively, u
 - Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
 - Don't use one switch to change multiple settings simultaneously.
 - Don't use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.
+
+## API reference
+
+- [`<Switch />`](https://mui.com/material-ui/api/switch/)
+- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
+- [`<FormControlLabel />`](https://mui.com/material-ui/api/form-control-label/)

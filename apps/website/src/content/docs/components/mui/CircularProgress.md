@@ -3,7 +3,7 @@ title: CircularProgress
 description: Progress indicators are used to display a loading state or visualize the progress of an operation.
 links:
   muiDocs: https://mui.com/material-ui/react-progress/
-  apiReference: https://mui.com/material-ui/api/circular-progress/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/CircularProgress.default"}
@@ -29,3 +29,7 @@ links:
 Set the `variant` prop to `"determinate"` when the completion percentage is known.
 
 ::example{src="mui/CircularProgress.determinate"}
+
+## API reference
+
+- [`<CircularProgress />`](https://mui.com/material-ui/api/circular-progress/)

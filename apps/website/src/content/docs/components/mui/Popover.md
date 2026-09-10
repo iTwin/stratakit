@@ -3,7 +3,7 @@ title: Popover
 description: Popovers display content in a non-modal window overlay that is positioned relative to a trigger element.
 links:
   muiDocs: https://mui.com/material-ui/react-popover/
-  apiReference: https://mui.com/material-ui/api/popover/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Popover.default"}
@@ -24,3 +24,7 @@ links:
 ## 🚫 Don't
 
 - Don't forget to validate that the **Popover** has an appropriate accessible [label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling).
+
+## API reference
+
+- [`<Popover />`](https://mui.com/material-ui/api/popover/)

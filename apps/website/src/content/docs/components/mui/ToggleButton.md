@@ -3,7 +3,7 @@ title: ToggleButton
 description: Toggle buttons are used to represent the pressed state.
 links:
   muiDocs: https://mui.com/material-ui/react-toggle-button/
-  apiReference: https://mui.com/material-ui/api/toggle-button/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/ToggleButton.default"}
@@ -62,3 +62,8 @@ In the example above, the [`exclusive`](https://mui.com/material-ui/api/toggle-b
 
 - Don't use to replace buttons.
 - Don't mix text and icon-only **ToggleButtons** in the same group.
+
+## API reference
+
+- [`<ToggleButton />`](https://mui.com/material-ui/api/toggle-button/)
+- [`<ToggleButtonGroup />`](https://mui.com/material-ui/api/toggle-button-group/)

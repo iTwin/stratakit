@@ -3,7 +3,7 @@ title: Icon
 description: Icons are used to visually represent actions or information.
 status: stable
 links:
-  apiReference: /reference/mui/Icon/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Icon.default"}
@@ -62,3 +62,7 @@ Alternatively, the `render` prop can be used to display an inlined SVG, as in th
 - Don't use custom icons when a standard icon is available in `@stratakit/icons`.
 - Don't use non-standard icons from `@mui/icons-material`.
 - Don't use the `SvgIcon` or `Icon` component from `@mui/material`.
+
+## API reference
+
+- [`<Icon />`](/reference/mui/Icon)

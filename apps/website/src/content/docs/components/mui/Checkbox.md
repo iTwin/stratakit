@@ -3,7 +3,7 @@ title: Checkbox
 description: Checkboxes are for confirming a predefined input.
 links:
   muiDocs: https://mui.com/material-ui/react-checkbox/
-  apiReference: https://mui.com/material-ui/api/checkbox/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Checkbox.default"}
@@ -65,3 +65,12 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 - Don't omit a programmatically associated label.
 - Don't use the `checked` state of one **Checkbox** to alter the `checked` state of others (don't use **Checkboxes** as [**Radios**](/components/radio)).
 - Don't use a **Checkbox** when the effect of checking it is instantaneous (no confirmation or submission is required). Use [**Switch**](/components/switch) instead.
+
+## API reference
+
+- [`<Checkbox />`](https://mui.com/material-ui/api/checkbox/)
+- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
+- [`<FormControlLabel />`](https://mui.com/material-ui/api/form-control-label/)
+- [`<FormGroup />`](https://mui.com/material-ui/api/form-group/)
+- [`<FormLabel />`](https://mui.com/material-ui/api/form-label/)
+- [`<FormHelperText />`](https://mui.com/material-ui/api/form-helper-text/)

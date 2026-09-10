@@ -3,7 +3,7 @@ title: Radio
 description: Radio buttons are for choosing one of multiple predefined inputs.
 links:
   muiDocs: https://mui.com/material-ui/react-radio-button/
-  apiReference: https://mui.com/material-ui/api/radio/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/RadioGroup.default" min-height="200px"}
@@ -54,3 +54,12 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 - Don't use one **Radio** in isolation. For a single option, use [**Checkbox**](/components/checkbox).
 - Don't add `tabindex="0"` to **Radios**. Only the checked/selected **Radio** should be focusable using the <kbd>Tab</kbd> key.
 - Don't use **Radios** where there are many options, such as choosing a country. Use [**Select**](/components/select) or [**Autocomplete**](/components/autocomplete) instead.
+
+## API reference
+
+- [`<Radio />`](https://mui.com/material-ui/api/radio/)
+- [`<RadioGroup />`](https://mui.com/material-ui/api/radio-group/)
+- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
+- [`<FormControlLabel />`](https://mui.com/material-ui/api/form-control-label/)
+- [`<FormLabel />`](https://mui.com/material-ui/api/form-label/)
+- [`<FormHelperText />`](https://mui.com/material-ui/api/form-helper-text/)

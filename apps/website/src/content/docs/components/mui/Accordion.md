@@ -3,7 +3,7 @@ title: Accordion
 description: Accordions are used to progressively disclose information.
 links:
   muiDocs: https://mui.com/material-ui/react-accordion/
-  apiReference: https://mui.com/material-ui/api/accordion/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Accordion.default"}
@@ -114,3 +114,10 @@ Use the `AccordionActions` component to display actions related to the content o
 - Don't use different heading levels for **Accordion** items in the same set. Since **Accordions** cannot be nested, they are at the same level in the document hierarchy.
 - Don't close an **Accordion** when another **Accordion** is opened. Exclusive **Accordions** create [accessibility and usability issues](https://yatil.net/blog/exclusive-accordions).
 - Don't place interactive elements inside an `AccordionSummary`.
+
+## API reference
+
+- [`<Accordion />`](https://mui.com/material-ui/api/accordion/)
+- [`<AccordionSummary />`](https://mui.com/material-ui/api/accordion-summary/)
+- [`<AccordionDetails />`](https://mui.com/material-ui/api/accordion-details/)
+- [`<AccordionActions />`](https://mui.com/material-ui/api/accordion-actions/)

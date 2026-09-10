@@ -3,7 +3,7 @@ title: Chip
 description: Chips are used to filter content or trigger actions.
 links:
   muiDocs: https://mui.com/material-ui/react-chip/
-  apiReference: https://mui.com/material-ui/api/chip/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Chip.default"}
@@ -37,3 +37,7 @@ links:
 - **Medium:** Default size, suitable for most use cases.
 
 ::example{src="mui/Chip.sizes"}
+
+## API reference
+
+- [`<Chip />`](https://mui.com/material-ui/api/chip/)

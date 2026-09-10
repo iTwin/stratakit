@@ -49,6 +49,13 @@ Make sure to provide an accessible description in the form of a visually hidden 
 
 ::example{src="mui/IconButton.sizes"}
 
+### Variant
+
+- **Ghost:** Default variant, suitable for most cases.
+- **Outlined:** Adds a border for greater emphasis. Use when a standalone icon button needs more visual weight to clearly convey that it's interactive.
+
+::example{src="mui/IconButton.variants"}
+
 ## ✅ Do
 
 - Use the `label` prop to provide an accessible name and tooltip for the **IconButton**.

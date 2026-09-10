@@ -5,12 +5,19 @@
 
 .MuiIconButton-root {
 	--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-base);
+	--_MuiIconButton-border-color: transparent;
 
 	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiIconButton-icon-color);
 	min-block-size: var(--_MuiIconButton-size);
 	min-inline-size: var(--_MuiIconButton-size);
 	padding: var(--_MuiIconButton-padding);
+
+	&:where([data-_sk-iconbutton-variant="outlined"]) {
+		--_MuiIconButton-border-color: var(--stratakit-color-border-neutral-base);
+		border: 1px solid;
+		border-color: var(--_MuiIconButton-border-color);
+	}
 
 	&:where(.MuiIconButton-edgeStart) {
 		margin-inline-start: calc(var(--_MuiIconButton-margin-negative) * -1);
@@ -23,6 +30,11 @@
 	@media (any-hover: hover) {
 		&:where(:hover) {
 			--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-primary);
+			--_MuiIconButton-border-color: red;
+
+			&:where([data-_sk-iconbutton-variant="outlined"]) {
+				background: none;
+			}
 		}
 	}
 
@@ -54,5 +66,6 @@
 
 	&:where(.Mui-disabled) {
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
+		--_MuiIconButton-border-color: var(--stratakit-color-border-neutral-disabled);
 	}
 }

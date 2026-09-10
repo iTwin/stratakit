@@ -258,6 +258,7 @@ function GettingStartedSection() {
 
 function StructureSection() {
 	const headingId = React.useId();
+	const debugMode = useSettingsStore((state) => state.debugMode);
 
 	let componentsLink = useHref("/docs/components/overview/");
 	if (!isProduction) {
@@ -290,7 +291,7 @@ function StructureSection() {
 						title="Icons"
 						icon={`${svgIcons}#icon`}
 						description="Standalone library of 1000+ icons, optimized for different sizes."
-						href={useHref("/icons")}
+						href={useHref(debugMode ? "/icons" : "/docs/icons")}
 					/>
 				</li>
 

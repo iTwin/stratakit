@@ -20,20 +20,6 @@
 	box-shadow: var(--stratakit-shadow-surface-xl);
 }
 
-.MuiDialogTitle-root {
-	padding-block: var(--stratakit-space-400);
-	padding-inline: var(--stratakit-space-500);
-}
-
-.MuiDialogContent-root {
-	padding-block: var(--stratakit-space-400);
-	padding-inline: var(--stratakit-space-500);
-
-	:where(.MuiDialogTitle-root) + & {
-		padding-block-start: 0;
-	}
-}
-
 .MuiDialogActions-root {
 	background-color: var(--stratakit-color-bg-page-base);
 	border-block-start: 1px solid var(--stratakit-color-border-page-base);

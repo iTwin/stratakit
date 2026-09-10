@@ -3,4 +3,4 @@
 "@stratakit/mui": patch
 ---
 
-Updated spacing in `Dialog`.
+Fixed redundant borders in `Dialog`.

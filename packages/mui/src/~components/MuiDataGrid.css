@@ -66,3 +66,7 @@
 .MuiDataGrid-filterFormDeleteIcon {
 	align-items: flex-end; /* Align with the input field when the label and input field are vertically stacked */
 }
+
+.MuiDataGrid-toolbarQuickFilter .MuiFormControl-root {
+	overflow: visible;
+}

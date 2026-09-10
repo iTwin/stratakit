@@ -55,7 +55,6 @@
 .MuiCardContent-root {
 	color: var(--stratakit-color-text-neutral-secondary);
 	padding: var(--stratakit-space-400);
-	padding-block-end: var(--stratakit-space-500);
 
 	&:where(:has(+ .MuiCardActions-root)) {
 		padding-block-end: 0;

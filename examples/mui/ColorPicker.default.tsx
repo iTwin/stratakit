@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import Button from "@mui/material/Button";
+import { visuallyHidden } from "@mui/utils";
 
 import styles from "./ColorPicker.default.module.css";
 
@@ -25,6 +26,7 @@ export default () => {
 					/>
 				}
 			>
+				<span style={visuallyHidden}>HEX color: </span>
 				<code className={styles.value}>{color}</code>
 			</Button>
 

@@ -5,12 +5,18 @@
 
 .MuiIconButton-root {
 	--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-base);
+	--_MuiIconButton-outlined-border-color: var(--stratakit-color-border-neutral-base);
 
 	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiIconButton-icon-color);
 	min-block-size: var(--_MuiIconButton-size);
 	min-inline-size: var(--_MuiIconButton-size);
 	padding: var(--_MuiIconButton-padding);
+
+	&:where([data-_sk-iconbutton-variant="outlined"]) {
+		border: 1px solid;
+		border-color: var(--_MuiIconButton-outlined-border-color);
+	}
 
 	&:where(.MuiIconButton-edgeStart) {
 		margin-inline-start: calc(var(--_MuiIconButton-margin-negative) * -1);
@@ -23,6 +29,15 @@
 	@media (any-hover: hover) {
 		&:where(:hover) {
 			--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-primary);
+			--_MuiIconButton-outlined-border-color: color-mix(
+				in oklch,
+				var(--stratakit-color-border-neutral-base) 100%,
+				var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+			);
+
+			&:where([data-_sk-iconbutton-variant="outlined"]) {
+				background: none;
+			}
 		}
 	}
 
@@ -52,7 +67,16 @@
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-critical-base);
 	}
 
+	&:where(:active) {
+		--_MuiIconButton-outlined-border-color: color-mix(
+			in oklch,
+			var(--stratakit-color-border-neutral-base) 100%,
+			var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-pressed-hover-\%)
+		);
+	}
+
 	&:where(.Mui-disabled) {
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
+		--_MuiIconButton-outlined-border-color: var(--stratakit-color-border-neutral-disabled);
 	}
 }

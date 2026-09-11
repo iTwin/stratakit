@@ -1,0 +1,1 @@
+import{st as e,tt as t}from"./Button-DaiDlTsp.js";import{t as n}from"./getThemeProps-B-4lz9Ju.js";var r=t();function i(t){let{props:r,name:i,defaultTheme:a,themeId:o}=t,s=e(a);return o&&(s=s[o]||s),n({theme:s,name:i,props:r})}export{r as n,i as t};

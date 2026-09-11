@@ -1,0 +1,1 @@
+import{R as e}from"./Button-DaiDlTsp.js";import{d as t,f as n,l as r}from"./IconButton-BqqSLKCo.js";function i(i){let{elementType:a,externalSlotProps:o,ownerState:s,skipResolvingSlotProps:c=!1,...l}=i,u=c?{}:t(o,s),{props:d,internalRef:f}=r({...l,externalSlotProps:u}),p=e(f,u?.ref,i.additionalProps?.ref);return n(a,{...d,ref:p},s)}export{i as t};

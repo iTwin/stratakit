@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CyeCyYCX.js";import{nt as t,st as n}from"./~utils-CiRDOJSS.js";var r=e();function i(e={}){return(0,r.jsx)(n,{value:t(e),children:e.children})}export{i as t};

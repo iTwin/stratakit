@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CyeCyYCX.js";import{Qt as t,Zt as n,en as r,vn as i,yr as a}from"./Button-DaiDlTsp.js";import{a as o,s}from"./collection-store-D8hpW0Rg.js";var c=e(),l=`div`,u=t(function({store:e,...t}){let n=s();return e||=n,t=i(t,t=>(0,c.jsx)(o,{value:e,children:t}),[e]),a(t)}),d=r(function(e){let t=u(e);return n(l,t)});export{d as t};

@@ -1,0 +1,1 @@
+import{J as e}from"./jsx-runtime-CyeCyYCX.js";var t=e({default:()=>n}),n=`/1679/assets/more-vertical-5gqhcowm.svg`;export{t as n,n as t};

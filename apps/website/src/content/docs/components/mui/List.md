@@ -29,10 +29,10 @@ links:
 
 ## API reference
 
-- [`<List />`](https://mui.com/material-ui/api/list/)
-- [`<ListItem />`](https://mui.com/material-ui/api/list-item/)
-- [`<ListItemButton />`](https://mui.com/material-ui/api/list-item-button/)
-- [`<ListItemText />`](https://mui.com/material-ui/api/list-item-text/)
-- [`<ListItemIcon />`](https://mui.com/material-ui/api/list-item-icon/)
-- [`<ListItemAvatar />`](https://mui.com/material-ui/api/list-item-avatar/)
-- [`<ListSubheader />`](https://mui.com/material-ui/api/list-subheader/)
+- [`List`](https://mui.com/material-ui/api/list/)
+- [`ListItem`](https://mui.com/material-ui/api/list-item/)
+- [`ListItemButton`](https://mui.com/material-ui/api/list-item-button/)
+- [`ListItemText`](https://mui.com/material-ui/api/list-item-text/)
+- [`ListItemIcon`](https://mui.com/material-ui/api/list-item-icon/)
+- [`ListItemAvatar`](https://mui.com/material-ui/api/list-item-avatar/)
+- [`ListSubheader`](https://mui.com/material-ui/api/list-subheader/)

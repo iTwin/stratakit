@@ -38,4 +38,4 @@ Set the `variant` prop to `"buffer"` when progress and buffered work are tracked
 
 ## API reference
 
-- [`<LinearProgress />`](https://mui.com/material-ui/api/linear-progress/)
+- [`LinearProgress`](https://mui.com/material-ui/api/linear-progress/)

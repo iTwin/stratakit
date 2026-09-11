@@ -18,5 +18,5 @@ links:
 
 ## API reference
 
-- [`<BottomNavigation />`](https://mui.com/material-ui/api/bottom-navigation/)
-- [`<BottomNavigationAction />`](https://mui.com/material-ui/api/bottom-navigation-action/)
+- [`BottomNavigation`](https://mui.com/material-ui/api/bottom-navigation/)
+- [`BottomNavigationAction`](https://mui.com/material-ui/api/bottom-navigation-action/)

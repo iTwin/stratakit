@@ -55,6 +55,6 @@ Use the `defaultChecked` prop to set the initial checked state. Alternatively, u
 
 ## API reference
 
-- [`<Switch />`](https://mui.com/material-ui/api/switch/)
-- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
-- [`<FormControlLabel />`](https://mui.com/material-ui/api/form-control-label/)
+- [`Switch`](https://mui.com/material-ui/api/switch/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/)

@@ -24,4 +24,4 @@ links:
 
 ## API reference
 
-- [`<Rating />`](https://mui.com/material-ui/api/rating/)
+- [`Rating`](https://mui.com/material-ui/api/rating/)

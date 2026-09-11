@@ -81,4 +81,4 @@ When the `children` prop is passed, the **Divider** will render as a generic `<d
 
 ## API reference
 
-- [`<Divider />`](https://mui.com/material-ui/api/divider/)
+- [`Divider`](https://mui.com/material-ui/api/divider/)

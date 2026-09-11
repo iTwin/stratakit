@@ -18,5 +18,5 @@ links:
 
 ## API reference
 
-- [`<Pagination />`](https://mui.com/material-ui/api/pagination/)
-- [`<PaginationItem />`](https://mui.com/material-ui/api/pagination-item/)
+- [`Pagination`](https://mui.com/material-ui/api/pagination/)
+- [`PaginationItem`](https://mui.com/material-ui/api/pagination-item/)

@@ -92,9 +92,9 @@ Use `slotProps` to give the [`CardHeader`](https://mui.com/material-ui/api/card-
 
 ## API reference
 
-- [`<Card />`](https://mui.com/material-ui/api/card/)
-- [`<CardHeader />`](https://mui.com/material-ui/api/card-header/)
-- [`<CardActionArea />`](https://mui.com/material-ui/api/card-action-area/)
-- [`<CardMedia />`](https://mui.com/material-ui/api/card-media/)
-- [`<CardContent />`](https://mui.com/material-ui/api/card-content/)
-- [`<CardActions />`](https://mui.com/material-ui/api/card-actions/)
+- [`Card`](https://mui.com/material-ui/api/card/)
+- [`CardHeader`](https://mui.com/material-ui/api/card-header/)
+- [`CardActionArea`](https://mui.com/material-ui/api/card-action-area/)
+- [`CardMedia`](https://mui.com/material-ui/api/card-media/)
+- [`CardContent`](https://mui.com/material-ui/api/card-content/)
+- [`CardActions`](https://mui.com/material-ui/api/card-actions/)

@@ -84,4 +84,4 @@ Use the `type` prop to adjust the visual prominence of an [`"inline"` variant](#
 
 ## API reference
 
-- [`<Badge />`](https://mui.com/material-ui/api/badge/)
+- [`Badge`](https://mui.com/material-ui/api/badge/)

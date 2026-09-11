@@ -70,4 +70,4 @@ Since the **IconButton's** tooltip represents its principle label, choose a `lab
 
 ## API reference
 
-- [`<Tooltip />`](https://mui.com/material-ui/api/tooltip/)
+- [`Tooltip`](https://mui.com/material-ui/api/tooltip/)

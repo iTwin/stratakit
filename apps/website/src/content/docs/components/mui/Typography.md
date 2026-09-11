@@ -86,4 +86,4 @@ The following color are available for the `color` prop:
 
 ## API reference
 
-- [`<Typography />`](https://mui.com/material-ui/api/typography/)
+- [`Typography`](https://mui.com/material-ui/api/typography/)

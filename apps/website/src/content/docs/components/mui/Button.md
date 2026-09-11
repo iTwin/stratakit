@@ -99,5 +99,5 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button's*
 
 ## API reference
 
-- [`<Button />`](https://mui.com/material-ui/api/button/)
-- [`<ButtonBase />`](https://mui.com/material-ui/api/button-base/)
+- [`Button`](https://mui.com/material-ui/api/button/)
+- [`ButtonBase`](https://mui.com/material-ui/api/button-base/)

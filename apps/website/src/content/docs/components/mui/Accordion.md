@@ -117,7 +117,7 @@ Use the `AccordionActions` component to display actions related to the content o
 
 ## API reference
 
-- [`<Accordion />`](https://mui.com/material-ui/api/accordion/)
-- [`<AccordionSummary />`](https://mui.com/material-ui/api/accordion-summary/)
-- [`<AccordionDetails />`](https://mui.com/material-ui/api/accordion-details/)
-- [`<AccordionActions />`](https://mui.com/material-ui/api/accordion-actions/)
+- [`Accordion`](https://mui.com/material-ui/api/accordion/)
+- [`AccordionSummary`](https://mui.com/material-ui/api/accordion-summary/)
+- [`AccordionDetails`](https://mui.com/material-ui/api/accordion-details/)
+- [`AccordionActions`](https://mui.com/material-ui/api/accordion-actions/)

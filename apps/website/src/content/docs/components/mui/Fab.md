@@ -17,4 +17,4 @@ links:
 
 ## API reference
 
-- [`<Fab />`](https://mui.com/material-ui/api/fab/)
+- [`Fab`](https://mui.com/material-ui/api/fab/)

@@ -15,4 +15,4 @@ links:
 
 ## API reference
 
-- [`<Backdrop />`](https://mui.com/material-ui/api/backdrop/)
+- [`Backdrop`](https://mui.com/material-ui/api/backdrop/)

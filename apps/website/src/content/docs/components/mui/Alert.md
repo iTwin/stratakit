@@ -28,5 +28,5 @@ For other types of actions, the [`action`](https://mui.com/material-ui/api/alert
 
 ## API reference
 
-- [`<Alert />`](https://mui.com/material-ui/api/alert/)
-- [`<AlertTitle />`](https://mui.com/material-ui/api/alert-title/)
+- [`Alert`](https://mui.com/material-ui/api/alert/)
+- [`AlertTitle`](https://mui.com/material-ui/api/alert-title/)

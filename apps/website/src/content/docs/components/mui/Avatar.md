@@ -52,4 +52,4 @@ In some cases, the **Avatar** may be considered presentational, since text ident
 
 ## API reference
 
-- [`<Avatar />`](https://mui.com/material-ui/api/avatar/)
+- [`Avatar`](https://mui.com/material-ui/api/avatar/)

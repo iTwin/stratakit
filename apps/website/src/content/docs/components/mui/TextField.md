@@ -73,6 +73,6 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 
 ## API reference
 
-- [`<TextField />`](https://mui.com/material-ui/api/text-field/)
-- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
-- [`<InputAdornment />`](https://mui.com/material-ui/api/input-adornment/)
+- [`TextField`](https://mui.com/material-ui/api/text-field/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`InputAdornment`](https://mui.com/material-ui/api/input-adornment/)

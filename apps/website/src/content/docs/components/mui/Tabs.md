@@ -57,5 +57,5 @@ When there are too many tabs, the tab list becomes scrollable. A fade indicates 
 
 ## API reference
 
-- [`<Tabs />`](https://mui.com/material-ui/api/tabs/)
-- [`<Tab />`](https://mui.com/material-ui/api/tab/)
+- [`Tabs`](https://mui.com/material-ui/api/tabs/)
+- [`Tab`](https://mui.com/material-ui/api/tab/)

@@ -25,5 +25,5 @@ Use [`slotProps.textField`](https://mui.com/x/api/date-pickers/date-picker/#date
 
 ## API reference
 
-- [`<DatePicker />`](https://mui.com/x/api/date-pickers/date-picker/)
-- [`<DateCalendar />`](https://mui.com/x/api/date-pickers/date-calendar/)
+- [`DatePicker`](https://mui.com/x/api/date-pickers/date-picker/)
+- [`DateCalendar`](https://mui.com/x/api/date-pickers/date-calendar/)

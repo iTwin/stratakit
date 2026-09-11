@@ -18,8 +18,8 @@ links:
 
 ## API reference
 
-- [`<Dialog />`](https://mui.com/material-ui/api/dialog/)
-- [`<DialogTitle />`](https://mui.com/material-ui/api/dialog-title/)
-- [`<DialogContent />`](https://mui.com/material-ui/api/dialog-content/)
-- [`<DialogContentText />`](https://mui.com/material-ui/api/dialog-content-text/)
-- [`<DialogActions />`](https://mui.com/material-ui/api/dialog-actions/)
+- [`Dialog`](https://mui.com/material-ui/api/dialog/)
+- [`DialogTitle`](https://mui.com/material-ui/api/dialog-title/)
+- [`DialogContent`](https://mui.com/material-ui/api/dialog-content/)
+- [`DialogContentText`](https://mui.com/material-ui/api/dialog-content-text/)
+- [`DialogActions`](https://mui.com/material-ui/api/dialog-actions/)

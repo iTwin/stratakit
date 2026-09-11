@@ -10,6 +10,6 @@ links:
 
 ## API reference
 
-- [`<SpeedDial />`](https://mui.com/material-ui/api/speed-dial/)
-- [`<SpeedDialAction />`](https://mui.com/material-ui/api/speed-dial-action/)
-- [`<SpeedDialIcon />`](https://mui.com/material-ui/api/speed-dial-icon/)
+- [`SpeedDial`](https://mui.com/material-ui/api/speed-dial/)
+- [`SpeedDialAction`](https://mui.com/material-ui/api/speed-dial-action/)
+- [`SpeedDialIcon`](https://mui.com/material-ui/api/speed-dial-icon/)

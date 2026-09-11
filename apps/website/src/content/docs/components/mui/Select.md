@@ -78,9 +78,9 @@ Use the [`NativeSelect`](https://mui.com/material-ui/api/native-select/) compone
 
 ## API reference
 
-- [`<Select />`](https://mui.com/material-ui/api/select/)
-- [`<NativeSelect />`](https://mui.com/material-ui/api/native-select/)
-- [`<MenuItem />`](https://mui.com/material-ui/api/menu-item/)
-- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
-- [`<InputLabel />`](https://mui.com/material-ui/api/input-label/)
-- [`<FormHelperText />`](https://mui.com/material-ui/api/form-helper-text/)
+- [`Select`](https://mui.com/material-ui/api/select/)
+- [`NativeSelect`](https://mui.com/material-ui/api/native-select/)
+- [`MenuItem`](https://mui.com/material-ui/api/menu-item/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`InputLabel`](https://mui.com/material-ui/api/input-label/)
+- [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/)

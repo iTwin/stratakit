@@ -14,5 +14,5 @@ links:
 
 ## API reference
 
-- [`<Snackbar />`](https://mui.com/material-ui/api/snackbar/)
-- [`<SnackbarContent />`](https://mui.com/material-ui/api/snackbar-content/)
+- [`Snackbar`](https://mui.com/material-ui/api/snackbar/)
+- [`SnackbarContent`](https://mui.com/material-ui/api/snackbar-content/)

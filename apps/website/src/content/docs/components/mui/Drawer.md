@@ -22,5 +22,5 @@ links:
 
 ## API reference
 
-- [`<Drawer />`](https://mui.com/material-ui/api/drawer/)
-- [`<SwipeableDrawer />`](https://mui.com/material-ui/api/swipeable-drawer/)
+- [`Drawer`](https://mui.com/material-ui/api/drawer/)
+- [`SwipeableDrawer`](https://mui.com/material-ui/api/swipeable-drawer/)

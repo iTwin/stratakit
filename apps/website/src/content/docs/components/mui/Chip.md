@@ -40,4 +40,4 @@ links:
 
 ## API reference
 
-- [`<Chip />`](https://mui.com/material-ui/api/chip/)
+- [`Chip`](https://mui.com/material-ui/api/chip/)

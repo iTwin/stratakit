@@ -27,4 +27,4 @@ links:
 
 ## API reference
 
-- [`<Popover />`](https://mui.com/material-ui/api/popover/)
+- [`Popover`](https://mui.com/material-ui/api/popover/)

@@ -24,4 +24,4 @@ links:
 
 ## API reference
 
-- [`<ButtonGroup />`](https://mui.com/material-ui/api/button-group/)
+- [`ButtonGroup`](https://mui.com/material-ui/api/button-group/)

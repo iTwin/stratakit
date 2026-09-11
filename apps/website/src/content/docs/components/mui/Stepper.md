@@ -35,10 +35,10 @@ links:
 
 ## API reference
 
-- [`<Stepper />`](https://mui.com/material-ui/api/stepper/)
-- [`<MobileStepper />`](https://mui.com/material-ui/api/mobile-stepper/)
-- [`<Step />`](https://mui.com/material-ui/api/step/)
-- [`<StepLabel />`](https://mui.com/material-ui/api/step-label/)
-- [`<StepButton />`](https://mui.com/material-ui/api/step-button/)
-- [`<StepContent />`](https://mui.com/material-ui/api/step-content/)
-- [`<StepConnector />`](https://mui.com/material-ui/api/step-connector/)
+- [`Stepper`](https://mui.com/material-ui/api/stepper/)
+- [`MobileStepper`](https://mui.com/material-ui/api/mobile-stepper/)
+- [`Step`](https://mui.com/material-ui/api/step/)
+- [`StepLabel`](https://mui.com/material-ui/api/step-label/)
+- [`StepButton`](https://mui.com/material-ui/api/step-button/)
+- [`StepContent`](https://mui.com/material-ui/api/step-content/)
+- [`StepConnector`](https://mui.com/material-ui/api/step-connector/)

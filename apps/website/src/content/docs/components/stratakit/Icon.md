@@ -65,4 +65,4 @@ Alternatively, the `render` prop can be used to display an inlined SVG, as in th
 
 ## API reference
 
-- [`<Icon />`](/reference/mui/Icon)
+- [`Icon`](/reference/mui/Icon)

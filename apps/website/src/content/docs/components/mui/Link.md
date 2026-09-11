@@ -36,4 +36,4 @@ Make sure the **Link** is suitable for your use case. There may be other, more a
 
 ## API reference
 
-- [`<Link />`](https://mui.com/material-ui/api/link/)
+- [`Link`](https://mui.com/material-ui/api/link/)

@@ -10,4 +10,4 @@ links:
 
 ## API reference
 
-- [`<Paper />`](https://mui.com/material-ui/api/paper/)
+- [`Paper`](https://mui.com/material-ui/api/paper/)

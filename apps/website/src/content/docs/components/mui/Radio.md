@@ -57,9 +57,9 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 
 ## API reference
 
-- [`<Radio />`](https://mui.com/material-ui/api/radio/)
-- [`<RadioGroup />`](https://mui.com/material-ui/api/radio-group/)
-- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
-- [`<FormControlLabel />`](https://mui.com/material-ui/api/form-control-label/)
-- [`<FormLabel />`](https://mui.com/material-ui/api/form-label/)
-- [`<FormHelperText />`](https://mui.com/material-ui/api/form-helper-text/)
+- [`Radio`](https://mui.com/material-ui/api/radio/)
+- [`RadioGroup`](https://mui.com/material-ui/api/radio-group/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/)
+- [`FormLabel`](https://mui.com/material-ui/api/form-label/)
+- [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/)

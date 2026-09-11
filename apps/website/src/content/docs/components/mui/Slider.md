@@ -44,6 +44,6 @@ Use the `valueLabelDisplay` prop to show a tooltip near the **Slider** thumb for
 
 ## API reference
 
-- [`<Slider />`](https://mui.com/material-ui/api/slider/)
-- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
-- [`<FormLabel />`](https://mui.com/material-ui/api/form-label/)
+- [`Slider`](https://mui.com/material-ui/api/slider/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`FormLabel`](https://mui.com/material-ui/api/form-label/)

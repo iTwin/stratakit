@@ -10,4 +10,4 @@ links:
 
 ## API reference
 
-- [`<TimePicker />`](https://mui.com/x/api/date-pickers/time-picker/)
+- [`TimePicker`](https://mui.com/x/api/date-pickers/time-picker/)

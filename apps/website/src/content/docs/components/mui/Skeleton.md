@@ -46,4 +46,4 @@ Accurately representing the shape and structure of a loading interface is a case
 
 ## API reference
 
-- [`<Skeleton />`](https://mui.com/material-ui/api/skeleton/)
+- [`Skeleton`](https://mui.com/material-ui/api/skeleton/)

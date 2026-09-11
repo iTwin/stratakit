@@ -32,4 +32,4 @@ Set the `variant` prop to `"determinate"` when the completion percentage is know
 
 ## API reference
 
-- [`<CircularProgress />`](https://mui.com/material-ui/api/circular-progress/)
+- [`CircularProgress`](https://mui.com/material-ui/api/circular-progress/)

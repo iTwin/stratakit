@@ -65,5 +65,5 @@ In the example above, the [`exclusive`](https://mui.com/material-ui/api/toggle-b
 
 ## API reference
 
-- [`<ToggleButton />`](https://mui.com/material-ui/api/toggle-button/)
-- [`<ToggleButtonGroup />`](https://mui.com/material-ui/api/toggle-button-group/)
+- [`ToggleButton`](https://mui.com/material-ui/api/toggle-button/)
+- [`ToggleButtonGroup`](https://mui.com/material-ui/api/toggle-button-group/)

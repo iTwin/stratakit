@@ -63,4 +63,4 @@ Make sure to provide an accessible description in the form of a visually hidden 
 
 ## API reference
 
-- [`<IconButton />`](https://mui.com/material-ui/api/icon-button/)
+- [`IconButton`](https://mui.com/material-ui/api/icon-button/)

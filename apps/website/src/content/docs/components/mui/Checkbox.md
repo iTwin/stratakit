@@ -68,9 +68,9 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 
 ## API reference
 
-- [`<Checkbox />`](https://mui.com/material-ui/api/checkbox/)
-- [`<FormControl />`](https://mui.com/material-ui/api/form-control/)
-- [`<FormControlLabel />`](https://mui.com/material-ui/api/form-control-label/)
-- [`<FormGroup />`](https://mui.com/material-ui/api/form-group/)
-- [`<FormLabel />`](https://mui.com/material-ui/api/form-label/)
-- [`<FormHelperText />`](https://mui.com/material-ui/api/form-helper-text/)
+- [`Checkbox`](https://mui.com/material-ui/api/checkbox/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/)
+- [`FormGroup`](https://mui.com/material-ui/api/form-group/)
+- [`FormLabel`](https://mui.com/material-ui/api/form-label/)
+- [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/)

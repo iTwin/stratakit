@@ -15,4 +15,4 @@ links:
 
 ## API reference
 
-- [`<AppBar />`](https://mui.com/material-ui/api/app-bar/)
+- [`AppBar`](https://mui.com/material-ui/api/app-bar/)

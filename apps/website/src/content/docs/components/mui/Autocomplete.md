@@ -34,4 +34,4 @@ links:
 
 ## API reference
 
-- [`<Autocomplete />`](https://mui.com/material-ui/api/autocomplete/)
+- [`Autocomplete`](https://mui.com/material-ui/api/autocomplete/)

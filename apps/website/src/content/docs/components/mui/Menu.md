@@ -49,5 +49,5 @@ Make sure the triggering button starts with a predictable label that stays consi
 
 ## API reference
 
-- [`<Menu />`](https://mui.com/material-ui/api/menu/)
-- [`<MenuItem />`](https://mui.com/material-ui/api/menu-item/)
+- [`Menu`](https://mui.com/material-ui/api/menu/)
+- [`MenuItem`](https://mui.com/material-ui/api/menu-item/)

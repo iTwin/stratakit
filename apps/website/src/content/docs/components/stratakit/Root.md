@@ -74,4 +74,4 @@ The **Root** component creates a separate [portal container](https://react.dev/r
 
 ## API reference
 
-- [`<Root />`](/reference/mui/Root)
+- [`Root`](/reference/mui/Root)

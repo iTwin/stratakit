@@ -1,0 +1,500 @@
+---
+title: Migrating from iTwinUI
+description: Learn how to migrate from iTwinUI to StrataKit
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+This guide provides the necessary steps for migrating from [iTwinUI](https://itwinui.bentley.com/) to StrataKit.
+
+:::note
+Migration to StrataKit can be done gradually, since iTwinUI can coexist in the same application by utilizing the [StrataKit theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge). To facilitate a visual transition, you may want to use StrataKit's "cobalt" [accent color](/components/root/#accent-color), which is designed for better compatibility with iTwinUI's color palette.
+:::
+
+## Migration steps
+
+<Steps>
+
+1. **Set up StrataKit**
+
+   Follow the [set up StrataKit guide](/getting-started/develop/) to install the necessary dependencies and set up your project.
+
+2. **Enable the StrataKit theme bridge**
+
+   Pass the StrataKit [Root](/components/root) into the `as` prop of the iTwinUI [ThemeProvider](https://itwinui.bentley.com/docs/themeprovider) to render a single DOM element.
+
+   ```diff
+     <ThemeProvider
+       theme={theme}
+    +  as={Root}
+     >
+       {/* … */}
+     </ThemeProvider>
+   ```
+
+   Specify the `Root` props directly on the `ThemeProvider` component.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+      as={Root}
+   +  colorScheme="light"
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+   Finally, activate the `themeBridge` future flag.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+      as={Root}
+      colorScheme="light"
+   +  future={{ themeBridge: true }} // or future={true}
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+3. **Replace `@itwin/itwinui-icons` with `@stratakit/icons`**
+
+   Replace the usage of iTwinUI icons from `@itwin/itwinui-icons` with their StrataKit counterparts. Refer to the [use StrataKit icons](#use-stratakit-icons) section below for the icon mapping.
+
+   ```diff
+   - import { SvgAdd } from '@itwin/itwinui-icons-react';
+   - <SvgAdd />
+
+   + import { Icon } from "@stratakit/mui";
+   + import svgAdd from "@stratakit/icons/add.svg";
+   + <Icon href={svgAdd} />
+   ```
+
+   Once all usage of `@itwin/itwinui-icons` has been replaced, it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @itwin/itwinui-icons
+   ```
+
+4. **Replace usage of `@itwin/itwinui-react`**
+
+   Replace the usage of components from `@itwin/itwinui-react` with their [StrataKit counterparts](/components/overview/).
+
+   Some components are provided by `@mui/material`.
+
+   ```diff
+   - import { Button } from '@itwin/itwinui-react';
+   + import Button from "@mui/material/Button";
+   ```
+
+   Others live in `@stratakit/structures`.
+
+   ```diff
+   - import { Tree } from '@itwin/itwinui-react';
+   + import { Tree } from "@stratakit/structures";
+   ```
+
+   Once all usage of `@itwin/itwinui-react` has been replaced, it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @itwin/itwinui-react
+   ```
+
+</Steps>
+
+## Use StrataKit icons
+
+Replace [iTwinUI icons](https://itwin.github.io/iTwinUI-icons/) with their [StrataKit counterparts](/icons).
+
+| iTwinUI icon                  | StrataKit icon                    |
+| ----------------------------- | --------------------------------- |
+| 2d                            | 2d.svg                            |
+| 3d                            | 3d.svg                            |
+| activity                      | activity.svg                      |
+| add-circular                  | add-circle.svg                    |
+| add                           | add.svg                           |
+| airplane                      | airplane.svg                      |
+| align-bottom                  | align-bottom.svg                  |
+| align-center-horizontal       | align-center-horizontal.svg       |
+| align-center-vertical         | align-center-vertical.svg         |
+| align-left                    | align-left.svg                    |
+| align-right                   | align-right.svg                   |
+| align-top                     | align-top.svg                     |
+| android                       | brand-android.svg                 |
+| annotation                    | annotation.svg                    |
+| apple                         | brand-apple.svg                   |
+| archive                       | archive.svg                       |
+| arrow-down                    | arrow-down.svg                    |
+| arrow-left                    | arrow-left.svg                    |
+| arrow-right                   | arrow-right.svg                   |
+| arrow-up                      | arrow-up.svg                      |
+| attach                        | attach.svg                        |
+| automatic                     | automagic.svg                     |
+| away                          | user-away.svg                     |
+| basket                        | basket.svg                        |
+| bentley-systems               | brand-bentley-systems.svg         |
+| blank                         | -                                 |
+| bolt                          | bolt.svg                          |
+| bookmark                      | bookmark.svg                      |
+| calendar                      | calendar.svg                      |
+| camera-animation-disabled     | camera-video-disabled.svg         |
+| camera-animation              | camera-video.svg                  |
+| camera-retake                 | camera-retake.svg                 |
+| camera                        | camera.svg                        |
+| caret-down-small              | caret-down.svg                    |
+| caret-down                    | caret-down.svg                    |
+| caret-left-small              | caret-left.svg                    |
+| caret-left                    | caret-left.svg                    |
+| caret-right-small             | caret-right.svg                   |
+| caret-right                   | caret-right.svg                   |
+| caret-up-small                | caret-up.svg                      |
+| caret-up                      | caret-up.svg                      |
+| charts                        | chart-bar.svg                     |
+| chat                          | chat.svg                          |
+| checkbox-deselect             | checkbox-deselect.svg             |
+| checkbox-select               | checkbox-select.svg               |
+| checkmark-small               | checkmark.svg                     |
+| checkmark                     | checkmark.svg                     |
+| chevron-down                  | chevron-down.svg                  |
+| chevron-left-double           | chevron-left-double.svg           |
+| chevron-left                  | chevron-left.svg                  |
+| chevron-right-double          | chevron-right-double.svg          |
+| chevron-right-small           | chevron-right.svg                 |
+| chevron-right                 | chevron-right.svg                 |
+| chevron-up                    | chevron-up.svg                    |
+| circle                        | circle.svg                        |
+| clash                         | clash.svg                         |
+| clipboard                     | clipboard.svg                     |
+| clock                         | clock.svg                         |
+| close-circular                | dismiss-circle.svg                |
+| close-small                   | dismiss.svg                       |
+| close                         | dismiss.svg                       |
+| cloud-download                | cloud-download.svg                |
+| cloud-upload                  | cloud-upload.svg                  |
+| cloud                         | cloud.svg                         |
+| collapse-all                  | collapse-rows-all.svg             |
+| collapse                      | collapse-rows.svg                 |
+| column-manager                | column-manage.svg                 |
+| compare                       | compare.svg                       |
+| computer                      | computer.svg                      |
+| configuration                 | configuration.svg                 |
+| copy                          | copy.svg                          |
+| crop                          | crop.svg                          |
+| crown                         | crown.svg                         |
+| cursor-click                  | cursor-click.svg                  |
+| cursor                        | cursor.svg                        |
+| cut                           | cut.svg                           |
+| database                      | database.svg                      |
+| delete                        | delete.svg                        |
+| details                       | details.svg                       |
+| developer                     | developer.svg                     |
+| disconnect                    | disconnect.svg                    |
+| distribute-bottom             | -                                 |
+| distribute-center-horizontal  | distribute-center-horizontal.svg  |
+| distribute-center-vertical    | distribute-center-vertical.svg    |
+| distribute-left               | distribute-left.svg               |
+| distribute-right              | distribute-right.svg              |
+| distribute-top                | distribute-top.svg                |
+| dock-bottom                   | dock-bottom.svg                   |
+| dock-left                     | dock-left.svg                     |
+| dock-right                    | dock-right.svg                    |
+| dock-top                      | dock-top.svg                      |
+| document-lock                 | document-locked.svg               |
+| document-reference            | document-reference.svg            |
+| document                      | document-blank.svg                |
+| documentation                 | documentation.svg                 |
+| download                      | download.svg                      |
+| drag-handle-vertical          | drag-handle-vertical.svg          |
+| drag-handle                   | drag-handle-horizontal.svg        |
+| draw                          | draw.svg                          |
+| duplicate                     | duplicate.svg                     |
+| edit-all                      | edit-all.svg                      |
+| edit                          | edit.svg                          |
+| ellipse                       | ellipse.svg                       |
+| email-at                      | email-at.svg                      |
+| email                         | email.svg                         |
+| exit                          | exit.svg                          |
+| expand-all                    | expand-rows-all.svg               |
+| expand                        | expand-rows.svg                   |
+| export                        | export.svg                        |
+| eyedropper-drop               | eyedropper-drop.svg               |
+| eyedropper-filled             | eyedropper-filled.svg             |
+| eyedropper                    | eyedropper.svg                    |
+| fast-backward                 | fast-backward.svg                 |
+| fast-forward                  | fast-forward.svg                  |
+| feedback                      | feedback.svg                      |
+| filter-hollow                 | filter.svg                        |
+| filter                        | filter.svg                        |
+| find                          | find.svg                          |
+| fire-extinguisher             | fire-extinguisher.svg             |
+| fit-to-view                   | fit-to-view.svg                   |
+| flag                          | flag.svg                          |
+| folder-add                    | folder-add.svg                    |
+| folder-browse                 | folder-browse.svg                 |
+| folder-chevron-down           | folder-chevron-down.svg           |
+| folder-chevron-up             | folder-chevron-up.svg             |
+| folder-export                 | folder-export.svg                 |
+| folder-import                 | folder-import.svg                 |
+| folder-lock                   | folder-lock.svg                   |
+| folder-minimize               | -                                 |
+| folder-opened                 | folder-open.svg                   |
+| folder-remove                 | folder-remove.svg                 |
+| folder-shortcut               | folder-shortcut.svg               |
+| folder                        | folder.svg                        |
+| font-bold                     | font-bold.svg                     |
+| font-color                    | font-color.svg                    |
+| font-italic                   | font-italic.svg                   |
+| font-size                     | font-size.svg                     |
+| forms                         | form.svg                          |
+| frame-backward                | frame-backward.svg                |
+| frame-forward                 | frame-forward.svg                 |
+| function                      | function.svg                      |
+| geosearch                     | geolocate.svg                     |
+| gesture-one-finger-drag       | gesture-one-finger-drag.svg       |
+| gesture-one-finger-tap-double | gesture-one-finger-double-tap.svg |
+| gesture-one-finger-tap        | gesture-one-finger-tap.svg        |
+| gesture-pinch                 | gesture-pinch.svg                 |
+| gesture-touch                 | gesture-touch.svg                 |
+| gesture-two-finger-drag       | gesture-two-finger-drag.svg       |
+| gesture-two-finger-tap        | gesture-two-finger-tap.svg        |
+| gesture-two-finger            | gesture-two-finger.svg            |
+| globe                         | globe.svg                         |
+| go-to-end                     | go-to-end.svg                     |
+| go-to-start                   | go-to-start.svg                   |
+| graph-bar                     | chart-bar.svg                     |
+| graph-pie-chart               | chart-pie.svg                     |
+| graph-scatter-chart           | graph-scatter-chart.svg           |
+| graph                         | chart-line.svg                    |
+| grid                          | grid.svg                          |
+| group-ungroup                 | ungroup.svg                       |
+| group                         | group.svg                         |
+| hand                          | hand.svg                          |
+| heart                         | heart.svg                         |
+| help-circular-hollow          | help.svg                          |
+| help-circular                 | help.svg                          |
+| hide-manually-suppressed      | -                                 |
+| hide-rule-suppressed          | -                                 |
+| hierarchy-tree                | hierarchy-tree.svg                |
+| history                       | history.svg                       |
+| home                          | home.svg                          |
+| hourglass                     | hourglass.svg                     |
+| i-beam                        | i-beam.svg                        |
+| image-frame                   | image.svg                         |
+| image                         | image.svg                         |
+| imodel-hollow                 | imodel.svg                        |
+| imodel                        | imodel.svg                        |
+| import                        | import.svg                        |
+| important-small               | important.svg                     |
+| important-very                | important-very.svg                |
+| important                     | important.svg                     |
+| info-circular-hollow          | info.svg                          |
+| info-circular                 | info.svg                          |
+| info                          | info.svg                          |
+| install                       | install.svg                       |
+| isolate                       | isolate.svg                       |
+| issue-report                  | issue.svg                         |
+| item                          | -                                 |
+| itwin                         | itwin.svg                         |
+| key                           | key.svg                           |
+| label                         | label.svg                         |
+| layers                        | layers.svg                        |
+| lightbulb-hollow              | lightbulb.svg                     |
+| lightbulb                     | lightbulb.svg                     |
+| line                          | line.svg                          |
+| link                          | link.svg                          |
+| list                          | list.svg                          |
+| location                      | location.svg                      |
+| lock-unlocked                 | lock-unlocked.svg                 |
+| lock                          | lock.svg                          |
+| loop                          | loop.svg                          |
+| maintenance                   | maintenance.svg                   |
+| manager                       | manager.svg                       |
+| map-info                      | map-info.svg                      |
+| map                           | map.svg                           |
+| measure                       | measure.svg                       |
+| menu                          | menu.svg                          |
+| merge                         | merge.svg                         |
+| minimize                      | minus.svg                         |
+| model                         | model.svg                         |
+| moon                          | moon.svg                          |
+| more-circular                 | more-horizontal-circle.svg        |
+| more-small                    | more-horizontal-circle.svg        |
+| more-vertical-circular        | more-vertical-circle.svg          |
+| more-vertical-small           | more-vertical-circle.svg          |
+| more-vertical                 | more-vertical.svg                 |
+| more                          | more-horizontal.svg               |
+| mouse-click-left              | mouse-click-left.svg              |
+| mouse-click-right             | mouse-click-right.svg             |
+| mouse-click-wheel             | mouse-click-middle.svg            |
+| mouse-click                   | mouse-click.svg                   |
+| move                          | move.svg                          |
+| named-version-add             | add.svg                           |
+| network                       | network.svg                       |
+| new                           | new.svg                           |
+| news                          | news.svg                          |
+| notification-settings         | notifications-settings.svg        |
+| notification                  | notifications.svg                 |
+| object-move                   | object-move.svg                   |
+| object-rotate                 | object-rotate.svg                 |
+| object-scale                  | object-scale.svg                  |
+| offline                       | cloud-offline.svg                 |
+| paintbrush                    | paint-brush.svg                   |
+| palette                       | palette.svg                       |
+| panorama-model                | panorama-model.svg                |
+| panorama                      | panorama.svg                      |
+| paste-hollow                  | clipboard.svg                     |
+| paste                         | clipboard.svg                     |
+| pause-circular                | pause-circle.svg                  |
+| pause                         | pause.svg                         |
+| perspective                   | perspective.svg                   |
+| pin-hollow                    | pin.svg                           |
+| pin-unpin                     | pin-unpin.svg                     |
+| pin                           | pin.svg                           |
+| placeholder                   | placeholder.svg                   |
+| play-backward                 | play-backward.svg                 |
+| play-circular                 | play-circle.svg                   |
+| play                          | play.svg                          |
+| plugin                        | plugins.svg                       |
+| polygon                       | polygon.svg                       |
+| print-preview                 | print-preview.svg                 |
+| print-settings                | print-settings.svg                |
+| print                         | print.svg                         |
+| process                       | process.svg                       |
+| progress-backward-circular    | chevron-left.svg                  |
+| progress-backward             | chevron-left.svg                  |
+| progress-forward-circular     | chevron-right.svg                 |
+| progress-forward              | chevron-right.svg                 |
+| project                       | project.svg                       |
+| properties-list               | settings.svg                      |
+| properties                    | properties.svg                    |
+| puzzle                        | puzzle.svg                        |
+| re-center                     | re-center.svg                     |
+| read-only                     | read-only.svg                     |
+| reality-mesh                  | reality-mesh.svg                  |
+| record                        | record.svg                        |
+| records                       | records.svg                       |
+| rectangle                     | rectangle.svg                     |
+| redo                          | redo.svg                          |
+| refresh                       | refresh.svg                       |
+| remove                        | dismiss.svg                       |
+| rename                        | rename.svg                        |
+| reorder                       | reorder.svg                       |
+| replace                       | replace.svg                       |
+| reports                       | report.svg                        |
+| road                          | road.svg                          |
+| rotate-left                   | rotate-left.svg                   |
+| rotate-right                  | rotate-right.svg                  |
+| save-as                       | save-as.svg                       |
+| save-settings                 | save-settings.svg                 |
+| save-update                   | -                                 |
+| save                          | save.svg                          |
+| saved-view                    | saved-views.svg                   |
+| scale                         | object-scale.svg                  |
+| screenshare-stop              | screenshare-stop.svg              |
+| screenshare                   | screenshare.svg                   |
+| script-run                    | script-run.svg                    |
+| script-status                 | script-status.svg                 |
+| script                        | script.svg                        |
+| search                        | search.svg                        |
+| selection-clear               | selection-clear.svg               |
+| selection                     | selection.svg                     |
+| send                          | send.svg                          |
+| settings                      | settings.svg                      |
+| setup                         | setup.svg                         |
+| share                         | share.svg                         |
+| smartphone                    | smartphone.svg                    |
+| smiley-happy-hollow           | smiley-happy.svg                  |
+| smiley-happy-very-hollow      | smiley-very-happy.svg             |
+| smiley-happy-very             | smiley-very-happy.svg             |
+| smiley-happy                  | smiley-happy.svg                  |
+| smiley-neutral-hollow         | smiley-neutral.svg                |
+| smiley-neutral                | smiley-neutral.svg                |
+| smiley-sad-hollow             | smiley-sad.svg                    |
+| smiley-sad-very-hollow        | smiley-very-sad.svg               |
+| smiley-sad-very               | smiley-very-sad.svg               |
+| smiley-sad                    | smiley-sad.svg                    |
+| sort-down                     | sort-ascending.svg                |
+| sort-menu                     | sorting.svg                       |
+| sort-up                       | sort-descending.svg               |
+| sound-loud                    | sound-loud.svg                    |
+| sound-mute                    | sound-mute.svg                    |
+| sound-quiet                   | sound-quiet.svg                   |
+| spin                          | spin.svg                          |
+| star-hollow                   | star.svg                          |
+| star                          | star.svg                          |
+| status-draft                  | status-draft.svg                  |
+| status-error-hollow           | status-error.svg                  |
+| status-error                  | status-error.svg                  |
+| status-pending-hollow         | status-pending.svg                |
+| status-pending                | status-pending.svg                |
+| status-rejected-hollow        | status-rejected.svg               |
+| status-rejected               | status-rejected.svg               |
+| status-running                | status-running.svg                |
+| status-success-hollow         | status-success.svg                |
+| status-success                | status-success.svg                |
+| status-update                 | status-update.svg                 |
+| status-warning                | status-warning.svg                |
+| stop-circular                 | stop-circle.svg                   |
+| stop                          | stop.svg                          |
+| sun                           | sun.svg                           |
+| suppress-manually             | suppress.svg                      |
+| swap                          | swap.svg                          |
+| sync-disabled                 | cloud-offline.svg                 |
+| sync                          | loop.svg                          |
+| table-of-contents             | table-of-contents.svg             |
+| table                         | table.svg                         |
+| tag                           | tag.svg                           |
+| technical-preview-badge-bw    | technical-preview-badge.svg       |
+| technical-preview-bw          | technical-preview.svg             |
+| technical-preview-mini-bw     | technical-preview.svg             |
+| text-align-center             | text-align-center.svg             |
+| text-align-justify            | text-align-justify.svg            |
+| text-align-left               | text-align-left.svg               |
+| text-align-right              | text-align-right.svg              |
+| text-medium                   | text.svg                          |
+| text-small                    | text.svg                          |
+| text                          | text.svg                          |
+| thumbnails                    | -                                 |
+| timer                         | timer.svg                         |
+| transparency                  | transparency.svg                  |
+| tree-navigate-down            | -                                 |
+| tree-navigate-up              | -                                 |
+| underline                     | font-underline.svg                |
+| undo                          | undo.svg                          |
+| unlink                        | unlink.svg                        |
+| upgrade                       | update.svg                        |
+| upload-to-cloud               | cloud-upload.svg                  |
+| upload                        | upload.svg                        |
+| user-add                      | user-add.svg                      |
+| user-restricted               | user-restricted.svg               |
+| user                          | user.svg                          |
+| users                         | users.svg                         |
+| validate                      | validate.svg                      |
+| visibility-emphasize          | visibility-emphasis.svg           |
+| visibility-half               | visibility-partial.svg            |
+| visibility-hide               | visibility-hide.svg               |
+| visibility-show               | visibility-show.svg               |
+| walk                          | walk.svg                          |
+| wifi-disabled                 | wifi-disabled.svg                 |
+| wifi                          | wifi.svg                          |
+| window-add                    | window-add.svg                    |
+| window-area                   | window-area.svg                   |
+| window-backward               | window-back.svg                   |
+| window-collapse               | window-collapse.svg               |
+| window-forward                | window-forward.svg                |
+| window-full-screen            | window-expand.svg                 |
+| window-maximize               | window-maximize.svg               |
+| window-minimize               | window-minimize.svg               |
+| window-popout                 | window-popout.svg                 |
+| window-settings               | window-settings.svg               |
+| window-split-horizontal       | window-split-horizontal.svg       |
+| window-split-vertical         | window-split-vertical.svg         |
+| window-zoom-in                | window-zoom-in.svg                |
+| window-zoom-out               | window-zoom-out.svg               |
+| window                        | window.svg                        |
+| windows                       | brand-windows.svg                 |
+| zoom-in-circular              | zoom-in-circle.svg                |
+| zoom-in                       | zoom-in-magnifier.svg             |
+| zoom-out-circular             | zoom-out-circle.svg               |
+| zoom-out                      | zoom-out-magnifier.svg            |
+| zoom-search                   | search.svg                        |

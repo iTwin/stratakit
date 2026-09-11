@@ -28,15 +28,6 @@
 	font-weight: unset;
 }
 
-.MuiDataGrid-cell {
-	border-top-color: var(--_MuiDataGrid-rowBorderColor);
-
-	:where(.MuiDataGrid-row.Mui-selected > &),
-	:where(.MuiDataGrid-row.Mui-selected + .MuiDataGrid-row > &) {
-		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
-	}
-}
-
 .MuiDataGrid-row {
 	--✨row-bg--default: transparent;
 	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
@@ -56,6 +47,34 @@
 	&:where(.Mui-selected) {
 		--_MuiDataGrid-row-background-color: var(--✨row-bg--active);
 		--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--active-hover);
+	}
+}
+
+.MuiDataGrid-cell,
+.MuiDataGrid-columnHeader {
+	position: relative;
+	border-top-color: var(--_MuiDataGrid-rowBorderColor);
+
+	:where(.MuiDataGrid-row.Mui-selected > &),
+	:where(.MuiDataGrid-row.Mui-selected + .MuiDataGrid-row > &) {
+		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
+	}
+
+	&:focus,
+	&:focus-within {
+		/* 
+			Use ::after with `border` instead of `outline` because the cell has a
+			border only on the bottom and `outline` takes this into consideration
+			resulting in an off center outline. ::after will appear entirely within
+			the cell borders.
+		*/
+		outline: none !important;
+		&::after {
+			content: "";
+			position: absolute;
+			border: var(--🥝focus-outline);
+			inset: 0;
+		}
 	}
 }
 

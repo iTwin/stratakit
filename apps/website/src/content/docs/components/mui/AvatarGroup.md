@@ -27,3 +27,4 @@ When multiple **Avatars** exceed the configured [`max`](https://mui.com/material
 ## API reference
 
 - [`AvatarGroup`](https://mui.com/material-ui/api/avatar-group/)
+- [`Avatar`](https://mui.com/material-ui/api/avatar/)

@@ -15,3 +15,4 @@ links:
 ## API reference
 
 - [`Breadcrumbs`](https://mui.com/material-ui/api/breadcrumbs/)
+- [`Link`](https://mui.com/material-ui/api/link/)

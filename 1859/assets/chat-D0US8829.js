@@ -1,1 +1,0 @@
-import{$ as e}from"./jsx-runtime-PTEwNWIc.js";var t=e({default:()=>n}),n=`/1859/assets/chat-VL0rLimQ.svg`;export{t as n,n as t};

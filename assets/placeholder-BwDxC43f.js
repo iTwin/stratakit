@@ -1,1 +1,0 @@
-import{$ as e}from"./jsx-runtime-PSkadNh_.js";var t=e({default:()=>n}),n=`/assets/placeholder-DKNetxeO.svg`;export{t as n,n as t};

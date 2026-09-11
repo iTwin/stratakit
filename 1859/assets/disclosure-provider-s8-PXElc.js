@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-PTEwNWIc.js";import{dt as t,ot as n}from"./~utils-CAOICe4n.js";var r=e();function i(e={}){return(0,r.jsx)(t,{value:n(e),children:e.children})}export{i as t};

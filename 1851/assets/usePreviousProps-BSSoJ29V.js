@@ -1,0 +1,1 @@
+import{Z as e,et as t}from"./jsx-runtime-PSkadNh_.js";var n=t(e(),1);function r(e){let t=n.useRef({});return n.useEffect(()=>{t.current=e}),t.current}export{r as t};

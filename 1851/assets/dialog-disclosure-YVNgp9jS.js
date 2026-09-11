@@ -1,0 +1,1 @@
+import{Bn as e,It as t,Jn as n,cn as r,sn as i,un as a,ut as o,vt as s}from"./~utils-BodGuCld.js";import{n as c}from"./disclosure-Dy-ZKPQ-.js";var l=`button`,u=r(function({store:t,...r}){let i=o();return t||=i,n(t,!1),r={"aria-haspopup":e(s(t,`contentElement`),`dialog`),...r},r=c({store:t,...r}),r}),d=a(function(e){let n=u(t(e));return i(l,n)});export{u as n,d as t};

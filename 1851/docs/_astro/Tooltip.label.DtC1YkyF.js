@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{m as t,z as n}from"./_utils.DJFbnPp5.js";import{t as r}from"./user.L9GiDwSy.js";import{t as i}from"./Avatar.CKKcfuoU.js";var a=e(),o=()=>(0,a.jsx)(t,{title:`User profile`,describeChild:!1,children:(0,a.jsx)(`button`,{children:(0,a.jsx)(i,{children:(0,a.jsx)(n,{href:r})})})});export{o as default};

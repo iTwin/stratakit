@@ -1,0 +1,1 @@
+import{Z as e,et as t}from"./jsx-runtime-PSkadNh_.js";var n=t(e(),1),r=0;function i(e){let[t,i]=n.useState(e),a=e||t;return n.useEffect(()=>{t??(r+=1,i(`mui-${r}`))},[t]),a}var a={...n}.useId;function o(e){if(a!==void 0){let t=a();return e??t}return i(e)}var s=o;export{o as n,s as t};

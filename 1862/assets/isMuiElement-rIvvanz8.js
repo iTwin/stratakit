@@ -1,0 +1,1 @@
+import{Z as e,et as t}from"./jsx-runtime-PSkadNh_.js";var n=t(e(),1);function r(e,t){return n.isValidElement(e)&&t.indexOf(e.type.muiName??e.type?._payload?.value?.muiName)!==-1}var i=r;export{i as t};

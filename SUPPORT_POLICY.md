@@ -21,7 +21,7 @@ We aim to minimize breaking changes by designing our APIs for future flexibility
   <dd>Removal or renaming of variables, or significant changes to their values.</dd>
 
   <dt><code>@stratakit/mui</code> breaking changes</dt>
-  <dd>Adjustments to the DOM structure, class names, component props, or significant visual updates. Adopting a new major version of the `foundations` package does not require a major version release of the `mui` package.</dd>
+  <dd>Adjustments to the expected DOM structure, public class names, component props, or significant visual updates. Adopting a new major version of the `foundations` package does not require a major version release of the `mui` package.</dd>
 
   <dt><code>@stratakit/structures</code> breaking changes</dt>
   <dd>Changes to component APIs, props, rendering behavior, or DOM structure. Adopting new major versions of the `foundations` or `mui` packages does not require a major version release of the `structures` package.</dd>
@@ -46,7 +46,7 @@ Rare exceptions may be made to this policy when a breaking API change is require
 
 ## Package support policy
 
-Each major release of an StrataKit package undergoes a support lifecycle consisting of the following consecutive phases:
+Each major release of a StrataKit package undergoes a support lifecycle consisting of the following consecutive phases:
 
 <dl>
   <dt>✅ Current</dt>

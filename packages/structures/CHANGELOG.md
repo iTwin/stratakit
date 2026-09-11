@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.1
+
+### Patch Changes
+
+- [#1842](https://github.com/iTwin/stratakit/pull/1842): Updated some colors in `Dialog`.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.1
+
 ## 0.6.0
 
 - [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.

@@ -3,14 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import DialogDefault from "examples/mui/Dialog.default.tsx";
-import DialogFullScreen from "examples/mui/Dialog.fullScreen.tsx";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Button from "@mui/material/Button";
 
-export default function DialogExamples() {
+export default () => {
 	return (
-		<>
-			<DialogDefault />
-			<DialogFullScreen />
-		</>
+		<Breadcrumbs aria-label="breadcrumb">
+			<Button variant="text">Home</Button>
+			<Button variant="text">Packages</Button>
+			<Button variant="text" aria-current="true">
+				@stratakit/mui
+			</Button>
+		</Breadcrumbs>
 	);
-}
+};

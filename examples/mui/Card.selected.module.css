@@ -1,0 +1,34 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.card {
+	max-width: 345px;
+
+	&[data-active="true"] {
+		border-color: var(--stratakit-color-border-accent-strong);
+		background-color: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+			}
+		}
+	}
+
+	&:has(input:focus-visible) {
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+}
+
+.title {
+	.card[data-active="true"] & svg {
+		color: var(--stratakit-color-icon-accent-strong);
+	}
+}
+
+.media {
+	max-block-size: 140px;
+}

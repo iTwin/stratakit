@@ -2,15 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+.media {
+	block-size: 140px;
+	background: var(--stratakit-color-bg-neutral-base);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
 
-import DialogDefault from "examples/mui/Dialog.default.tsx";
-import DialogFullScreen from "examples/mui/Dialog.fullScreen.tsx";
-
-export default function DialogExamples() {
-	return (
-		<>
-			<DialogDefault />
-			<DialogFullScreen />
-		</>
-	);
+.card {
+	inline-size: 345px;
 }

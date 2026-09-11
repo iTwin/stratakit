@@ -286,6 +286,7 @@ function createTheme() {
 				defaultProps: {
 					component: MuiButtonBase,
 					color: "secondary",
+					loadingPosition: "start",
 					variant: "contained",
 				},
 			},

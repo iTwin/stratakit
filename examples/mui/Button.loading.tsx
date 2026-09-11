@@ -3,14 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import DialogDefault from "examples/mui/Dialog.default.tsx";
-import DialogFullScreen from "examples/mui/Dialog.fullScreen.tsx";
+import Button from "@mui/material/Button";
 
-export default function DialogExamples() {
-	return (
-		<>
-			<DialogDefault />
-			<DialogFullScreen />
-		</>
-	);
-}
+export default () => {
+	return <Button loading>Sign in</Button>;
+};

@@ -1,1 +1,0 @@
-function e(...e){return e.reduce((e,t)=>t==null?e:function(...n){e.apply(this,n),t.apply(this,n)},()=>{})}export{e as t};

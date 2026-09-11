@@ -1,0 +1,1 @@
+import{et as e,t}from"./jsx-runtime-PTEwNWIc.js";import{Qt as n,Zt as r,cn as i,nt as a}from"./~settings-dGXl9lg0.js";var o=t(),s=e(r(),1),c=n((e,t)=>{a();let{variant:n=`text`,size:r=`medium`,...c}=e;return(0,o.jsx)(i.div,{...c,ref:t,className:(0,s.default)(`🥝Skeleton`,e.className),"data-_sk-variant":n,"data-_sk-size":r,"aria-hidden":!0})});export{c as t};

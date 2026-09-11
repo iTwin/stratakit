@@ -78,6 +78,11 @@ export default defineConfig({
 							slug: "components/overview",
 						},
 						{
+							label: "Patterns",
+							items: [{ autogenerate: { directory: "components/patterns" } }],
+							collapsed: true,
+						},
+						{
 							label: "MUI components",
 							items: [{ autogenerate: { directory: "components/mui" } }],
 							collapsed: true,

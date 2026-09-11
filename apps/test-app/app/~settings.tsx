@@ -10,17 +10,21 @@ import Switch from "@mui/material/Switch";
 import * as Dialog from "@stratakit/structures/unstable_Dialog";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
+import {
+	colorSchemeStorageKey,
+	getStoredColorScheme,
+	isValidColorScheme,
+	setStoredColorScheme,
+} from "internal/color-scheme-storage.ts";
 import { isProduction } from "./~utils.tsx";
 
-import type { Root } from "@stratakit/mui";
+import type { ColorSchemeSetting } from "internal/color-scheme-storage.ts";
+import type { PersistStorage, StorageValue } from "zustand/middleware";
 
 import styles from "./~settings.module.css";
 
 // ----------------------------------------------------------------------------
 
-type RootProps = React.ComponentProps<typeof Root>;
-type ColorScheme = RootProps["colorScheme"];
-type ColorSchemeSetting = ColorScheme | "auto";
 type AccentColor = "aurora" | "cobalt";
 
 interface SettingsState {
@@ -31,6 +35,49 @@ interface SettingsState {
 	debugMode: boolean;
 	setDebugMode: (debug: boolean) => void;
 }
+
+type PersistedSettings = Partial<
+	Pick<SettingsState, "colorScheme" | "accentColor">
+>;
+
+/**
+ * Splits the store into two localStorage entries:
+ * - colorScheme is stored separately (in `🥝:color-scheme`).
+ * - the default key used for all the other settings.
+ */
+const settingsStorage: PersistStorage<PersistedSettings> = {
+	getItem: (name) => {
+		if (typeof localStorage === "undefined") return null;
+
+		let settings: StorageValue<PersistedSettings> | undefined;
+		try {
+			settings = JSON.parse(localStorage.getItem(name) ?? "null");
+		} catch {}
+		const colorScheme = getStoredColorScheme();
+		if (!settings && !colorScheme) return null;
+
+		return {
+			...settings,
+			state: {
+				...settings?.state,
+				...(colorScheme ? { colorScheme } : {}),
+			},
+		};
+	},
+	setItem: (name, settings) => {
+		const { colorScheme, ...state } = settings.state ?? {};
+		if (isValidColorScheme(colorScheme)) setStoredColorScheme(colorScheme);
+		try {
+			localStorage.setItem(name, JSON.stringify({ ...settings, state }));
+		} catch {}
+	},
+	removeItem: (name) => {
+		try {
+			localStorage.removeItem(name);
+			localStorage.removeItem(colorSchemeStorageKey);
+		} catch {}
+	},
+};
 
 export const useSettingsStore = create<SettingsState>()(
 	persist(
@@ -44,6 +91,9 @@ export const useSettingsStore = create<SettingsState>()(
 		}),
 		{
 			name: "🥝:settings",
+			storage: settingsStorage,
+			partialize: ({ colorScheme, accentColor }) =>
+				({ colorScheme, accentColor }) satisfies PersistedSettings,
 		},
 	),
 );

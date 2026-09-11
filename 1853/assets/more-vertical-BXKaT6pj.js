@@ -1,1 +1,0 @@
-import{$ as e}from"./jsx-runtime-PTEwNWIc.js";var t=e({default:()=>n}),n=`/1853/assets/more-vertical-5gqhcowm.svg`;export{t as n,n as t};

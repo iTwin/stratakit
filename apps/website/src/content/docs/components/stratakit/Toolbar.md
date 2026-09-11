@@ -50,5 +50,5 @@ In the example below, the toolbar item for selecting the font family is using a 
 
 ## API reference
 
-- [`<Toolbar.Group />`](/reference/structures/Toolbar/#Toolbar.Group)
-- [`<Toolbar.Item />`](/reference/structures/Toolbar/#Toolbar.Item)
+- [`Toolbar.Group`](/reference/structures/Toolbar/#Toolbar.Group)
+- [`Toolbar.Item`](/reference/structures/Toolbar/#Toolbar.Item)

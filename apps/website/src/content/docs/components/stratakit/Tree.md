@@ -148,6 +148,6 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 
 ## API reference
 
-- [`<Tree.Root />`](/reference/structures/Tree/#Tree.Root)
-- [`<Tree.Item />`](/reference/structures/Tree/#Tree.Item)
-- [`<Tree.ItemAction />`](/reference/structures/Tree/#Tree.ItemAction)
+- [`Tree.Root`](/reference/structures/Tree/#Tree.Root)
+- [`Tree.Item`](/reference/structures/Tree/#Tree.Item)
+- [`Tree.ItemAction`](/reference/structures/Tree/#Tree.ItemAction)

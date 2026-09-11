@@ -10,5 +10,5 @@ links:
 
 ## API reference
 
-- [`<ErrorRegion.Root />`](/reference/structures/ErrorRegion/#ErrorRegion.Root)
-- [`<ErrorRegion.Item />`](/reference/structures/ErrorRegion/#ErrorRegion.Item)
+- [`ErrorRegion.Root`](/reference/structures/ErrorRegion/#ErrorRegion.Root)
+- [`ErrorRegion.Item`](/reference/structures/ErrorRegion/#ErrorRegion.Item)

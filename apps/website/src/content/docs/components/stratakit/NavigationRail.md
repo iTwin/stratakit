@@ -168,12 +168,12 @@ In the example below:
 
 ## API reference
 
-- [`<NavigationRail.Root />`](/reference/structures/NavigationRail/#NavigationRail.Root)
-- [`<NavigationRail.Header />`](/reference/structures/NavigationRail/#NavigationRail.Header)
-- [`<NavigationRail.Content />`](/reference/structures/NavigationRail/#NavigationRail.Content)
-- [`<NavigationRail.Footer />`](/reference/structures/NavigationRail/#NavigationRail.Footer)
-- [`<NavigationRail.List />`](/reference/structures/NavigationRail/#NavigationRail.List)
-- [`<NavigationRail.ListItem />`](/reference/structures/NavigationRail/#NavigationRail.ListItem)
-- [`<NavigationRail.Anchor />`](/reference/structures/NavigationRail/#NavigationRail.Anchor)
-- [`<NavigationRail.Button />`](/reference/structures/NavigationRail/#NavigationRail.Button)
-- [`<NavigationRail.ToggleButton />`](/reference/structures/NavigationRail/#NavigationRail.ToggleButton)
+- [`NavigationRail.Root`](/reference/structures/NavigationRail/#NavigationRail.Root)
+- [`NavigationRail.Header`](/reference/structures/NavigationRail/#NavigationRail.Header)
+- [`NavigationRail.Content`](/reference/structures/NavigationRail/#NavigationRail.Content)
+- [`NavigationRail.Footer`](/reference/structures/NavigationRail/#NavigationRail.Footer)
+- [`NavigationRail.List`](/reference/structures/NavigationRail/#NavigationRail.List)
+- [`NavigationRail.ListItem`](/reference/structures/NavigationRail/#NavigationRail.ListItem)
+- [`NavigationRail.Anchor`](/reference/structures/NavigationRail/#NavigationRail.Anchor)
+- [`NavigationRail.Button`](/reference/structures/NavigationRail/#NavigationRail.Button)
+- [`NavigationRail.ToggleButton`](/reference/structures/NavigationRail/#NavigationRail.ToggleButton)

@@ -1,0 +1,1 @@
+import{$ as e}from"./jsx-runtime-PTEwNWIc.js";var t=e({default:()=>n}),n=`/1854/assets/clock-BGP3CvPS.svg`;export{t as n,n as t};

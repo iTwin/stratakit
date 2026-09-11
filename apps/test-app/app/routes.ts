@@ -23,6 +23,7 @@ export default [
 	route("tokens", "./tokens.tsx"),
 	route("icons", "./icons.tsx"),
 	route("mui", "./mui/mui.tsx"),
+	route("tests/mui/:component/:story", "./tests/mui/index.tsx"),
 
 	layout(
 		"./tests/tests.tsx",

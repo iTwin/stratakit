@@ -1,0 +1,91 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.MuiDataGrid-root {
+	border: none;
+	background: none;
+
+	--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-neutral-muted);
+
+	/* Last selected row uses footer top as the bottom border */
+	&:has(.Mui-selected.MuiDataGrid-row--lastVisible) .MuiDataGrid-footerContainer {
+		border-top-color: var(--stratakit-color-border-accent-strong);
+	}
+}
+
+.MuiDataGrid-columnHeaders {
+	background: none;
+}
+
+.MuiDataGrid-columnHeaders > [role="row"] > * {
+	border-bottom: none;
+	background: none;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+	color: var(--stratakit-color-text-neutral-secondary);
+	font-weight: unset;
+}
+
+.MuiDataGrid-row {
+	--✨row-bg--default: transparent;
+	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨row-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨row-bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+
+	--_MuiDataGrid-row-background-color: var(--✨row-bg--default);
+	--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--hover);
+
+	background-color: var(--_MuiDataGrid-row-background-color);
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			background-color: var(--_MuiDataGrid-row-background-color--hover);
+		}
+	}
+
+	&:where(.Mui-selected) {
+		--_MuiDataGrid-row-background-color: var(--✨row-bg--active);
+		--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--active-hover);
+	}
+}
+
+.MuiDataGrid-cell,
+.MuiDataGrid-columnHeader {
+	position: relative;
+	border-top-color: var(--_MuiDataGrid-rowBorderColor);
+
+	:where(.MuiDataGrid-row.Mui-selected > &),
+	:where(.MuiDataGrid-row.Mui-selected + .MuiDataGrid-row > &) {
+		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
+	}
+
+	&:focus,
+	&:focus-within {
+		/* 
+			Use ::after with `border` instead of `outline` because the cell has a
+			border only on the bottom and `outline` takes this into consideration
+			resulting in an off center outline. ::after will appear entirely within
+			the cell borders.
+		*/
+		outline: none !important;
+		&::after {
+			content: "";
+			position: absolute;
+			border: var(--🥝focus-outline);
+			inset: 0;
+		}
+	}
+}
+
+.MuiDataGrid-toolbar {
+	background: none;
+}
+
+.MuiDataGrid-filterFormDeleteIcon {
+	align-items: flex-end; /* Align with the input field when the label and input field are vertically stacked */
+}
+
+.MuiDataGrid-toolbarQuickFilter .MuiFormControl-root {
+	overflow: visible;
+}

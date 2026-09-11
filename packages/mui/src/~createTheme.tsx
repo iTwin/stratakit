@@ -64,15 +64,24 @@ import {
 	ChevronRightDoubleIcon,
 	ChevronRightIcon,
 	ClockIcon,
+	ColumnManageIcon,
 	DismissIcon,
 	ErrorIcon,
+	ExportIcon,
+	FilterIcon,
 	InfoIcon,
+	MoreVerticalIcon,
+	SearchIcon,
+	SortAscendingIcon,
+	SortDescendingIcon,
 	SuccessIcon,
+	VisibilityHideIcon,
 	WarningIcon,
 } from "./Icon.js";
 
 import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
+import type {} from "@mui/x-data-grid/themeAugmentation";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
@@ -364,6 +373,27 @@ function createTheme() {
 						date
 							.toLocaleDateString(undefined, { weekday: "short" })
 							.slice(0, 2),
+				},
+			},
+			MuiDataGrid: {
+				defaultProps: {
+					slots: {
+						columnMenuIcon: MoreVerticalIcon,
+						columnMenuSortAscendingIcon: SortAscendingIcon,
+						columnMenuSortDescendingIcon: SortDescendingIcon,
+						columnMenuFilterIcon: FilterIcon,
+						columnMenuHideIcon: VisibilityHideIcon,
+						columnSortedAscendingIcon: SortAscendingIcon,
+						columnSortedDescendingIcon: SortDescendingIcon,
+						columnFilteredIcon: FilterIcon,
+						columnMenuManageColumnsIcon: ColumnManageIcon,
+						columnSelectorIcon: ColumnManageIcon,
+						exportIcon: ExportIcon,
+						filterPanelDeleteIcon: DismissIcon,
+						quickFilterIcon: SearchIcon,
+						quickFilterClearIcon: DismissIcon,
+						openFilterButtonIcon: FilterIcon,
+					},
 				},
 			},
 			MuiDatePicker: {

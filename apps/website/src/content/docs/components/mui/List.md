@@ -3,7 +3,7 @@ title: List
 description: Lists are used to display a collection of items.
 links:
   muiDocs: https://mui.com/material-ui/react-list/
-  apiReference: https://mui.com/material-ui/api/list/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/List.default" min-width="300px" min-height="200px"}
@@ -26,3 +26,13 @@ links:
 ### ListSubheader
 
 ::example{src="mui/List.subheader" min-width="300px"}
+
+## API reference
+
+- [`List`](https://mui.com/material-ui/api/list/)
+- [`ListItem`](https://mui.com/material-ui/api/list-item/)
+- [`ListItemButton`](https://mui.com/material-ui/api/list-item-button/)
+- [`ListItemText`](https://mui.com/material-ui/api/list-item-text/)
+- [`ListItemIcon`](https://mui.com/material-ui/api/list-item-icon/)
+- [`ListItemAvatar`](https://mui.com/material-ui/api/list-item-avatar/)
+- [`ListSubheader`](https://mui.com/material-ui/api/list-subheader/)

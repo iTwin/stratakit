@@ -3,7 +3,7 @@ title: Toolbar
 description: Toolbars are used for grouping related tools in applications.
 status: unstable
 links:
-  apiReference: /reference/structures/Toolbar
+  apiReference: "#api-reference"
 ---
 
 ::example{src="structures/Toolbar.default"}
@@ -47,3 +47,8 @@ In the example below, one of the toolbar items is rendered as a [**ToggleButton*
 In the example below, the toolbar item for selecting the font family is using a [**Menu**](/components/menu/). The `MenuItem`s are [selectable](/components/menu/#selectable) and use [`role="menuitemradio"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemradio_role), since only one font family can be selected at a time.
 
 ::example{src="structures/Toolbar.menu" min-width="300px"}
+
+## API reference
+
+- [`Toolbar.Group`](/reference/structures/Toolbar/#Toolbar.Group)
+- [`Toolbar.Item`](/reference/structures/Toolbar/#Toolbar.Item)

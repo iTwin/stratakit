@@ -3,7 +3,7 @@ title: Divider
 description: Dividers are used to separate actions or information.
 links:
   muiDocs: https://mui.com/material-ui/react-divider/
-  apiReference: https://mui.com/material-ui/api/divider/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Divider.default" min-width="300px"}
@@ -78,3 +78,7 @@ When the `children` prop is passed, the **Divider** will render as a generic `<d
 ## 🚫 Don't
 
 - Don't use a **Divider** where a heading would better introduce a section of content.
+
+## API reference
+
+- [`Divider`](https://mui.com/material-ui/api/divider/)

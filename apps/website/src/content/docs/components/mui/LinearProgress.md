@@ -3,7 +3,7 @@ title: LinearProgress
 description: Progress indicators are used to display a loading state or visualize the progress of an operation.
 links:
   muiDocs: https://mui.com/material-ui/react-progress/
-  apiReference: https://mui.com/material-ui/api/linear-progress/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/LinearProgress.default" min-width="300px"}
@@ -35,3 +35,7 @@ Set the `variant` prop to `"determinate"` when the completion percentage is know
 Set the `variant` prop to `"buffer"` when progress and buffered work are tracked separately.
 
 ::example{src="mui/LinearProgress.buffer" min-width="300px"}
+
+## API reference
+
+- [`LinearProgress`](https://mui.com/material-ui/api/linear-progress/)

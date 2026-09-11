@@ -3,7 +3,7 @@ title: Card
 description: A Card concisely introduces a subject and its related actions.
 links:
   muiDocs: https://mui.com/material-ui/react-card/
-  apiReference: https://mui.com/material-ui/api/card/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Card.default" min-height="325px"}
@@ -89,3 +89,12 @@ Use `slotProps` to give the [`CardHeader`](https://mui.com/material-ui/api/card-
 - Don’t use a **Card** to group unrelated content or actions.
 - Don’t use **Card** just to highlight some content belonging to a larger subject.
 - Don’t wrap the entire contents of the **Card** in a `CardActionArea`. Typically, it should be passed into the `CardHeader`'s `title`.
+
+## API reference
+
+- [`Card`](https://mui.com/material-ui/api/card/)
+- [`CardHeader`](https://mui.com/material-ui/api/card-header/)
+- [`CardActionArea`](https://mui.com/material-ui/api/card-action-area/)
+- [`CardMedia`](https://mui.com/material-ui/api/card-media/)
+- [`CardContent`](https://mui.com/material-ui/api/card-content/)
+- [`CardActions`](https://mui.com/material-ui/api/card-actions/)

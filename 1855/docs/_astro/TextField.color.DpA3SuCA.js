@@ -1,1 +1,0 @@
-import{i as e,n as t,t as n}from"./jsx-runtime.Cltr0gcK.js";import{t as r}from"./TextField.Cfho4gS-.js";var i=e(t(),1),a=n(),o=()=>{let[e,t]=i.useState(`#188166`);return(0,a.jsx)(r,{label:`Color`,type:`color`,value:e,onChange:e=>t(e.target.value),style:{marginBottom:`400px`,alignSelf:`flex-start`}})};export{o as default};

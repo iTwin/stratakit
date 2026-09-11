@@ -329,3 +329,36 @@
 		color: SelectedItemText;
 	}
 }
+
+@supports (appearance: base-select) {
+	.MuiNativeSelect-select {
+		&:where(:disabled) {
+			color: CanvasText;
+			border-color: GrayText;
+		}
+
+		&::picker(select) {
+			border: 1px solid CanvasText;
+		}
+	}
+
+	.MuiNativeSelect-select option {
+		border-color: Canvas;
+		--_NativeSelect-checkmark-color: currentColor;
+
+		&:where(:checked:not(:disabled)) {
+			forced-color-adjust: none; /* removing the backplate */
+			background-color: SelectedItem;
+			border-color: SelectedItemText;
+			color: SelectedItemText;
+		}
+
+		&:where(:disabled) {
+			color: GrayText;
+		}
+
+		&::checkmark {
+			forced-color-adjust: none; /* removing the backplate */
+		}
+	}
+}

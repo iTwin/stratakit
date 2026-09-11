@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-PTEwNWIc.js";import{Z as t}from"./DefaultPropsProvider-Dsg7_Lea.js";import{b as n}from"./Backdrop-Cs0C9HKH.js";var r=t(),i={paper:`_paper_1mq3b_6`},a=e(),o=()=>(0,a.jsx)(n,{className:i.paper,elevation:4});function s(){let e=(0,r.c)(1),t;return e[0]===Symbol.for(`react.memo_cache_sentinel`)?(t=(0,a.jsx)(o,{}),e[0]=t):t=e[0],t}export{s as default};

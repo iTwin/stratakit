@@ -77,6 +77,26 @@
 		}
 	}
 
+	&:where(input[type="color" i]) {
+		--_MuiInput-padding-inline: 0;
+		cursor: pointer;
+
+		&::-webkit-color-swatch-wrapper {
+			block-size: calc(var(--_MuiInput-block-size) - 2px);
+			padding: var(--stratakit-space-100);
+		}
+
+		&::-webkit-color-swatch {
+			border-radius: 1px;
+			border: 1px solid currentColor;
+		}
+
+		&::-moz-color-swatch {
+			border-radius: 1px;
+			border: 1px solid currentColor;
+		}
+	}
+
 	:where(.MuiInputBase-root.MuiInputBase-multiline) > & {
 		padding-block: 8.25px;
 		align-content: baseline;

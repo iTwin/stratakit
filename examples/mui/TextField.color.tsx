@@ -2,19 +2,20 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import ColorPickerDefault from "examples/mui/ColorPicker.default.tsx";
-import { createKnob } from "~/~utils.tsx";
 
-export default function ColorPickerExamples() {
-	return <ColorPickerDefault />;
-}
+import * as React from "react";
+import TextField from "@mui/material/TextField";
 
-export const knobs = {
-	disabled: createKnob({
-		props: {
-			MuiButton: {
-				disabled: true,
-			},
-		},
-	}),
+export default () => {
+	const [color, setColor] = React.useState("#188166");
+
+	return (
+		<TextField
+			label="Color"
+			type="color"
+			value={color}
+			onChange={(e) => setColor(e.target.value)}
+			style={{ marginBottom: "400px", alignSelf: "flex-start" }}
+		/>
+	);
 };

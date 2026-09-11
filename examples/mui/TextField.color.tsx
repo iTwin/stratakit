@@ -15,7 +15,6 @@ export default () => {
 			type="color"
 			value={color}
 			onChange={(e) => setColor(e.target.value)}
-			style={{ marginBottom: "400px", alignSelf: "flex-start" }}
 		/>
 	);
 };

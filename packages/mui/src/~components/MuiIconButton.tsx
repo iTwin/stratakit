@@ -20,15 +20,15 @@ const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 	(props, forwardedRef) => {
 		const { title, label = title, labelPlacement, ...rest } = props;
 
-		if (label) {
-			return (
-				<Tooltip title={label} describeChild={false} placement={labelPlacement}>
-					<MuiButtonBase {...rest} ref={forwardedRef} />
-				</Tooltip>
-			);
-		}
-
-		return <MuiButtonBase {...rest} ref={forwardedRef} />;
+		return (
+			<Tooltip
+				title={label ?? ""}
+				describeChild={false}
+				placement={labelPlacement}
+			>
+				<MuiButtonBase {...rest} ref={forwardedRef} />
+			</Tooltip>
+		);
 	},
 );
 DEV: MuiIconButton.displayName = "MuiIconButton";

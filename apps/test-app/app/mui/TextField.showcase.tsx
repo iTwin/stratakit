@@ -3,6 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import Stack from "@mui/material/Stack";
+import TextFieldColor from "examples/mui/TextField.color.tsx";
 import TextFieldDefault from "examples/mui/TextField.default.tsx";
 import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
@@ -18,6 +19,7 @@ export default function TextFieldExamples() {
 			<TextFieldIcon />
 			<TextFieldError />
 			<TextFieldSizes />
+			<TextFieldColor />
 		</Stack>
 	);
 }

@@ -107,6 +107,17 @@
 	},
 	"overrides": [
 		{
+			"includes": ["**/*.module.css"],
+			"linter": {
+				"rules": {
+					"correctness": {
+						/* Allow using :global in CSS modules*/
+						"noUnknownPseudoClass": "off"
+					}
+				}
+			}
+		},
+		{
 			"includes": ["apps/test-app/**"],
 			"linter": {
 				"rules": {

@@ -47,6 +47,9 @@ We adhere to <a href="https://semver.org/">semantic versioning</a>, signaling AP
 
 Rare exceptions may be made to this policy when a breaking API change is required to fix a bug and the severity of the bug significantly outweighs the impact of the API change on existing code.
 
+> [!NOTE]  
+> For packages with a `0.x` version, this policy is shifted down by one version component: patch releases may introduce new features while maintaining compatibility, and minor releases may include breaking changes.
+
 ## Package support policy
 
 Each major release of a StrataKit package undergoes a support lifecycle consisting of the following consecutive phases:

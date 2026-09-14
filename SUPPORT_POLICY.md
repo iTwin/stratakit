@@ -20,6 +20,9 @@ We aim to minimize breaking changes by designing our APIs for future flexibility
   <dt><code>@stratakit/foundations</code> breaking changes</dt>
   <dd>Removal or renaming of variables, or significant changes to their values.</dd>
 
+  <dt><code>@stratakit/icons</code> breaking changes</dt>
+  <dd>Removal or renaming of icons, or changes to their supported symbol IDs.</dd>
+
   <dt><code>@stratakit/mui</code> breaking changes</dt>
   <dd>Adjustments to the expected DOM structure, public class names, component props, or significant visual updates. Adopting a new major version of the `foundations` package does not require a major version release of the `mui` package.</dd>
 
@@ -66,6 +69,12 @@ Each major release of a StrataKit package undergoes a support lifecycle consisti
 | Major version | Status         | Release    | Maintenance | End-of-life |
 | ------------- | -------------- | ---------- | ----------- | ----------- |
 | `1.x`         | ✅ **Current** | 2026-09-04 | TBD         | TBD         |
+
+### <code>@stratakit/icons</code>
+
+| Major version | Status             | Release | Maintenance | End-of-life |
+| ------------- | ------------------ | ------- | ----------- | ----------- |
+| `1.x`         | 👀 **Coming soon** | TBD     | TBD         | TBD         |
 
 ### <code>@stratakit/mui</code>
 

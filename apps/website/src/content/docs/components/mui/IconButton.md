@@ -3,7 +3,7 @@ title: IconButton
 description: Icon buttons are compact buttons used for toolbar and supplementary actions.
 links:
   muiDocs: https://mui.com/material-ui/react-button/#icon-button
-  apiReference: https://mui.com/material-ui/api/icon-button/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/IconButton.default"}
@@ -60,3 +60,8 @@ Make sure to provide an accessible description in the form of a visually hidden 
 - Don't use to replace buttons.
 - Don't use if an icon doesn't clearly convey the action. Use a [**Button**](/components/button) with a text label or a more suitable icon.
 - Don't set both `title` and `label` at the same time. Use only `label` instead.
+
+## API reference
+
+- [`IconButton`](https://mui.com/material-ui/api/icon-button/)
+- [`ButtonBase`](https://mui.com/material-ui/api/button-base/)

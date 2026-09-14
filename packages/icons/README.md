@@ -28,7 +28,7 @@ npm add @stratakit/icons
 1. Import the icon you want to use from `@stratakit/icons`. Each icon is available as a separate module which provides _named exports_ pointing to the different symbols within the `.svg`.
 
    ```tsx
-   import { svgPlaceholder, svgPlaceholderLarge } from "@stratakit/icons/placeholder.svg";
+   import { svgPlaceholder, svgPlaceholderLarge } from "@stratakit/icons/placeholder";
    ```
 
 2. Pass it to the `Icon` component from [`@stratakit/mui`](https://www.npmjs.com/package/@stratakit/mui) or [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations).

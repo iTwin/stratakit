@@ -13,7 +13,7 @@
 	min-inline-size: var(--_MuiIconButton-size);
 	padding: var(--_MuiIconButton-padding);
 
-	&:where([data-_sk-iconbutton-variant="outlined"]) {
+	&:where([data-_sk-variant="outlined"]) {
 		border: 1px solid;
 		border-color: var(--_MuiIconButton-outlined-border-color);
 	}
@@ -35,7 +35,7 @@
 				var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 			);
 
-			&:where([data-_sk-iconbutton-variant="outlined"]) {
+			&:where([data-_sk-variant="outlined"]) {
 				background: none;
 			}
 		}

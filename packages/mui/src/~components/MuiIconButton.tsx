@@ -31,14 +31,16 @@ const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 				<Tooltip title={label} describeChild={false} placement={labelPlacement}>
 					<MuiButtonBase
 						{...rest}
-						data-_sk-IconButton-variant={variant}
+						data-_sk-variant={variant}
 						ref={forwardedRef}
 					/>
 				</Tooltip>
 			);
 		}
 
-		return <MuiButtonBase {...rest} ref={forwardedRef} />;
+		return (
+			<MuiButtonBase {...rest} data-_sk-variant={variant} ref={forwardedRef} />
+		);
 	},
 );
 DEV: MuiIconButton.displayName = "MuiIconButton";

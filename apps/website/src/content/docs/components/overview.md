@@ -40,6 +40,7 @@ All components are accompanied by implementation guidance. This adheres to the f
 - **Examples**: What variants are there, and to which contexts are they suited?
 - **✅ Do**: What's needed for an efficient and accessible implementation? What opportunities are there to improve user experience?
 - **🚫 Don't**: What are some common pitfalls? What are the bad practices to avoid?
+- **API reference**: Links to the technical documentation for each API that this component exposes or uses.
 
 :::caution[MUI documentation]
 

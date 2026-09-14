@@ -18,7 +18,7 @@ We aim to minimize breaking changes by designing our APIs for future flexibility
 
 <dl>
   <dt><code>@stratakit/foundations</code> breaking changes</dt>
-  <dd>Removal or renaming of variables, or significant changes to their values.</dd>
+  <dd>Removal or renaming of variables or public exports, significant changes to variable values, or changes to props or rendering behavior.</dd>
 
   <dt><code>@stratakit/icons</code> breaking changes</dt>
   <dd>Removal or renaming of icons, or changes to their supported symbol IDs.</dd>

@@ -16,6 +16,9 @@ We aim to minimize breaking changes by designing our APIs for future flexibility
 > [!NOTE]  
 > APIs or props prefixed with `unstable_` may change at any time without requiring a major version release.
 
+> [!NOTE]  
+> `@stratakit/internal-utils` is exempt from this support policy.
+
 <dl>
   <dt><code>@stratakit/foundations</code> breaking changes</dt>
   <dd>Removal or renaming of variables or public exports, significant changes to variable values, or changes to props or rendering behavior.</dd>

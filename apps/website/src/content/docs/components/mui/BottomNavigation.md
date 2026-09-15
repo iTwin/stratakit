@@ -3,7 +3,7 @@ title: BottomNavigation
 description: Bottom navigation bars are used to navigate between primary application views.
 links:
   muiDocs: https://mui.com/material-ui/react-bottom-navigation/
-  apiReference: https://mui.com/material-ui/api/bottom-navigation/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/BottomNavigation.default" min-width="450px"}
@@ -15,3 +15,8 @@ links:
 - Includes `forced-colors` support.
 - `showLabels` prop of `ButtonNavigation` now defaults to `true`.
 - `showLabel` prop of `BottomNavigationAction` is not supported. Set `showLabels` on `BottomNavigation` to have it applied consistently to all `BottomNavigationAction`
+
+## API reference
+
+- [`BottomNavigation`](https://mui.com/material-ui/api/bottom-navigation/)
+- [`BottomNavigationAction`](https://mui.com/material-ui/api/bottom-navigation-action/)

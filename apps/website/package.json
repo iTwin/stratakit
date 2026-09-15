@@ -54,7 +54,7 @@
 		}
 	},
 	"dependencies": {
-		"@astrojs/markdown-remark": "^7.2.4",
+		"@astrojs/markdown-remark": "^7.3.1",
 		"@astrojs/starlight": "^0.41.9",
 		"@mui/material": "catalog:",
 		"@stratakit/bricks": "workspace:*",
@@ -62,11 +62,11 @@
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*",
 		"@stratakit/structures": "workspace:*",
-		"astro": "^7.2.6",
+		"astro": "^7.3.2",
 		"examples": "workspace:*",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"sharp": "^0.35.0"
+		"sharp": "^0.35.4"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.12.1",

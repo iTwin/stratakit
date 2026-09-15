@@ -25,7 +25,7 @@ These are the main packages of StrataKit:
 Additional packages: [`@stratakit/bricks`](./packages/bricks/), [`@stratakit/internal-utils`](./packages/internal-utils/).
 
 > [!NOTE]
-> All StrataKit packages follow [semantic versioning](https://semver.org/), even though some packages are currently in their pre-`1.0` stage. It is therefore safe to use the `^` syntax to specify version ranges in your `package.json`. See the [support policy](./SUPPORT_POLICY.md) for details on versioning, breaking changes, and package support.
+> All StrataKit packages follow [semantic versioning](https://semver.org/), even though some packages are currently in their pre-`1.0` stage. It is therefore safe to use the `^` syntax to specify version ranges in your `package.json`. See the [support policy](./notes/SUPPORT_POLICY.md) for details on versioning, breaking changes, and package support.
 
 ### Examples
 

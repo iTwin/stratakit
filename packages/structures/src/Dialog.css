@@ -33,9 +33,6 @@
 		box-shadow: var(--stratakit-shadow-surface-xl);
 		border: 1px solid var(--stratakit-color-border-page-base);
 
-		/* Prevents footer from overlapping the box-shadow */
-		padding: 1px;
-
 		display: flex;
 		flex-direction: column;
 

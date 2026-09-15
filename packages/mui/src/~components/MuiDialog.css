@@ -22,9 +22,7 @@
 
 .MuiDialogActions-root {
 	background-color: var(--stratakit-color-bg-page-base);
-	background-clip: padding-box; /* Ensure background-color doesn't bleed into transparent border */
-	border: 1px solid transparent;
-	border-block-start-color: var(--stratakit-color-border-page-base);
+	border-block-start: 1px solid var(--stratakit-color-border-page-base);
 	border-end-end-radius: inherit;
 	border-end-start-radius: inherit;
 

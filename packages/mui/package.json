@@ -80,7 +80,8 @@
 				"build:DEV",
 				"build:types",
 				"../internal-utils:build",
-				"../foundations:build"
+				"../foundations:build",
+				"../icons:build"
 			]
 		},
 		"build:js": {
@@ -119,7 +120,8 @@
 			],
 			"dependencies": [
 				"../internal-utils:build:types",
-				"../foundations:build:types"
+				"../foundations:build:types",
+				"../icons:build:types"
 			]
 		},
 		"dev": {

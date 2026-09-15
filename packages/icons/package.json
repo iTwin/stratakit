@@ -3,11 +3,18 @@
 	"type": "module",
 	"version": "0.4.3",
 	"license": "MIT",
+	"sideEffects": false,
 	"exports": {
+		"./*": {
+			"@stratakit/source": "./src/*.ts",
+			"types": "./dist/*.d.ts",
+			"default": "./dist/*.js"
+		},
 		"./*.svg": "./icons/*.svg",
 		"./icons-list.json": "./icons-list.json"
 	},
 	"files": [
+		"dist",
 		"icons/*.svg",
 		"icons-list.json",
 		"LICENSE.md",
@@ -31,12 +38,47 @@
 	"scripts": {
 		"build": "wireit"
 	},
+	"devDependencies": {
+		"esbuild": "catalog:",
+		"typescript": "catalog:"
+	},
 	"wireit": {
 		"build": {
+			"dependencies": [
+				"build:js",
+				"build:types",
+				"build:icons-list"
+			]
+		},
+		"build:js": {
+			"command": "node scripts/build.js",
+			"files": [
+				"src",
+				"scripts/build.js",
+				"tsconfig.json",
+				"../../internal/tsconfig*.json"
+			],
+			"output": [
+				"dist/**/*.js"
+			]
+		},
+		"build:types": {
+			"command": "tsc --outDir dist",
+			"files": [
+				"src",
+				"types.d.ts",
+				"tsconfig.json",
+				"../../internal/tsconfig*.json"
+			],
+			"output": [
+				"dist/**/*.d.ts"
+			]
+		},
+		"build:icons-list": {
 			"command": "tsx scripts/icons-list.ts",
 			"files": [
 				"icons",
-				"scripts"
+				"scripts/icons-list.ts"
 			],
 			"output": [
 				"icons-list.json"

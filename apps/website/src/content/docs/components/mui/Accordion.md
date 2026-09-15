@@ -29,6 +29,7 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 - Restyled using StrataKit's visual language.
 - The overall size has been decreased.
+- Added [`size`](#sizes) prop.
 - Added [responsive design](#responsive-design) that reorients the marker placement based on container width.
 - Added [`markerPlacement`](#marker-placement) prop to `AccordionSummary` to override responsive design.
 - Added details indentation when the `markerPlacement` is set to `"start"`.
@@ -58,6 +59,13 @@ Disclose any **Accordion's** content by default using the `defaultExpanded` prop
 | ------------- | --------- | -------- |
 | Settings page | ❌        | ✅       |
 | Widget        | ✅        | ❌       |
+
+### Sizes
+
+- **Small:** Use in compact interfaces where space is limited.
+- **Medium:** Default size, suitable for most use cases.
+
+::example{src="mui/Accordion.sizes"}
 
 ### Responsive design
 

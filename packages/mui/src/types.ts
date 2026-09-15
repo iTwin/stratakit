@@ -93,6 +93,13 @@ declare module "@mui/material/Accordion" {
 	interface AccordionHeadingSlotPropsOverrides extends TypographyProps {}
 
 	interface AccordionOwnProps {
+		/**
+		 * The size of the accordion.
+		 *
+		 * @default 'medium'
+		 */
+		size?: "small" | "medium";
+
 		/** @deprecated StrataKit does not support this prop. */
 		disableGutters?: boolean | undefined;
 	}

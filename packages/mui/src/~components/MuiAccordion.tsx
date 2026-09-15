@@ -20,12 +20,13 @@ interface MuiAccordionRootSlotProps extends BaseProps {
 
 const MuiAccordionRootSlot = forwardRef<"div", MuiAccordionRootSlotProps>(
 	(props, forwardedRef) => {
-		const { square, variant } = props.ownerState || {};
+		const { size = "medium", square, variant } = props.ownerState || {};
 
 		return (
 			<Paper
 				{...props}
 				square={square ?? variant !== "outlined"} // Disable rounded corners on non-outlined variants
+				data-_sk-size={size !== "medium" ? size : undefined}
 				ref={forwardedRef}
 			/>
 		);

@@ -9,17 +9,17 @@ import Divider from "@mui/material/Divider";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import visuallyHidden from "@mui/utils/visuallyHidden";
+import { svgBrandBentleySystemsLarge } from "@stratakit/icons/brand-bentley-systems";
+import { svgDisconnectLarge } from "@stratakit/icons/disconnect";
+import { svgInspectionLarge } from "@stratakit/icons/inspection";
+import { svgNotificationsLarge } from "@stratakit/icons/notifications";
+import { svgReportLarge } from "@stratakit/icons/report";
+import { svgSettingsLarge } from "@stratakit/icons/settings";
+import { svgUserLarge } from "@stratakit/icons/user";
+import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { Icon } from "@stratakit/mui";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 
-import svgBentley from "@stratakit/icons/brand-bentley-systems.svg";
-import svgDisconnect from "@stratakit/icons/disconnect.svg";
-import svgInspection from "@stratakit/icons/inspection.svg";
-import svgNotifications from "@stratakit/icons/notifications.svg";
-import svgReport from "@stratakit/icons/report.svg";
-import svgSettings from "@stratakit/icons/settings.svg";
-import svgUser from "@stratakit/icons/user.svg";
-import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./NavigationRail.comprehensive.module.css";
 
 export default () => {
@@ -28,7 +28,11 @@ export default () => {
 		<div className={styles.container}>
 			<NavigationRail.Root expanded={expanded} setExpanded={setExpanded}>
 				<NavigationRail.Header>
-					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+					<Icon
+						alt="Acme app"
+						href={svgBrandBentleySystemsLarge}
+						size="large"
+					/>
 					<NavigationRail.ToggleButton />
 				</NavigationRail.Header>
 
@@ -37,7 +41,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={`${svgReport}#icon-large`}
+								icon={svgReportLarge}
 								label="Reports"
 								active
 							/>
@@ -45,7 +49,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={`${svgInspection}#icon-large`}
+								icon={svgInspectionLarge}
 								label="Logs"
 							/>
 						</NavigationRail.ListItem>
@@ -53,7 +57,7 @@ export default () => {
 					<Divider role="presentation" margin />
 					<NavigationRail.Anchor
 						href="#"
-						icon={`${svgDisconnect}#icon-large`}
+						icon={svgDisconnectLarge}
 						label="Integrations"
 						suffix={<Icon href={svgWindowPopout} alt="(opens in new tab)" />}
 					/>
@@ -65,7 +69,7 @@ export default () => {
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={`${svgSettings}#icon-large`}
+									icon={svgSettingsLarge}
 									label="Settings"
 								/>
 							</NavigationRail.ListItem>
@@ -90,7 +94,7 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 			icon={
 				// The dot badge is shown when the rail is collapsed
 				<Badge variant="dot" color="error" invisible={expanded}>
-					<Icon href={`${svgNotifications}#icon-large`} size="large" />
+					<Icon href={svgNotificationsLarge} size="large" />
 				</Badge>
 			}
 			label="Notifications"
@@ -124,7 +128,7 @@ function AccountButton() {
 	return (
 		<>
 			<NavigationRail.Button
-				icon={`${svgUser}#icon-large`}
+				icon={svgUserLarge}
 				label="Account"
 				onClick={(event) => setAnchorEl(event.currentTarget)}
 			/>

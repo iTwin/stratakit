@@ -24,9 +24,6 @@ These are the main packages of StrataKit:
 
 Additional packages: [`@stratakit/bricks`](./packages/bricks/), [`@stratakit/internal-utils`](./packages/internal-utils/).
 
-> [!NOTE]
-> All StrataKit packages follow [semantic versioning](https://semver.org/), even though some packages are currently in their pre-`1.0` stage. It is therefore safe to use the `^` syntax to specify version ranges in your `package.json`. See the [support policy](./notes/SUPPORT_POLICY.md) for details on versioning, breaking changes, and package support.
-
 ### Examples
 
 The [`examples`](./examples/) directory contains standalone examples for every component in StrataKit. These examples are embedded in the StrataKit documentation, and are also reused for testing.
@@ -37,6 +34,10 @@ This monorepo has the following "apps":
 
 - [test app](./apps/test-app/) which is used for testing and demonstration purposes.
 - [docs website](./apps/website/) which contains the source for the StrataKit website and documentation.
+
+## Support policy
+
+All StrataKit packages follow [semantic versioning](https://semver.org/), even though some packages are currently in their pre-`1.0` stage. It is therefore safe to use the `^` syntax to specify version ranges in your `package.json`. See the [support policy](./notes/SUPPORT_POLICY.md) for details on versioning, breaking changes, and package support.
 
 ## Core team
 

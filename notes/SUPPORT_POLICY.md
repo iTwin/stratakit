@@ -27,10 +27,10 @@ We aim to minimize breaking changes by designing our APIs for future flexibility
   <dd>Removal or renaming of icons, or changes to their supported symbol IDs.</dd>
 
   <dt><code>@stratakit/mui</code> breaking changes</dt>
-  <dd>Changes to component APIs, props, rendering behavior, or DOM structure. This also affects the APIs from <code>@mui/material</code>.</dd>
+  <dd>Changes to component APIs, props, rendering behavior, or DOM structure that break existing usage. The same criteria apply to the APIs from <code>@mui/material</code>. Additions and backwards-compatible changes are not considered breaking changes.</dd>
 
   <dt><code>@stratakit/structures</code> breaking changes</dt>
-  <dd>Changes to component APIs, props, rendering behavior, or DOM structure.</dd>
+  <dd>Changes to component APIs, props, rendering behavior, or DOM structure that break existing usage. Additions and backwards-compatible changes are not considered breaking changes.</dd>
 </dl>
 
 ## Package versioning policy

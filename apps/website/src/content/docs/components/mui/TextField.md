@@ -60,6 +60,18 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 
 ::example{src="mui/TextField.multiline" min-height="200px"}
 
+### Color
+
+Use `type="color"` to render a native color picker. When controlling the color, use the `value` prop with a hexadecimal color value.
+
+:::note
+
+The color picker's appearance may vary across browsers and operating systems.
+
+:::
+
+::example{src="mui/TextField.color"}
+
 ## ✅ Do
 
 - Use descriptive labels and helpful error messages.

@@ -35,7 +35,7 @@ We aim to minimize breaking changes by designing our APIs for future flexibility
 
 ## Package versioning policy
 
-We adhere to <a href="https://semver.org/">semantic versioning</a>, signaling API changes through our version numbers:
+We adhere to [semantic versioning](https://semver.org/), signaling API changes through our version numbers:
 
 <dl>
   <dt>Patch release</dt>

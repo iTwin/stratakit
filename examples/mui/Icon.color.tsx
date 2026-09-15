@@ -3,9 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { svgError } from "@stratakit/icons/error";
 import { Icon } from "@stratakit/mui";
 
-import svgError from "@stratakit/icons/error.svg";
 import styles from "./Icon.color.module.css";
 
 export default () => {

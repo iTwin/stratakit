@@ -68,6 +68,9 @@ Each major release of a StrataKit package undergoes a support lifecycle consisti
   <dd>After six months a "maintenance" version transitions to "end of life", after which it receives no further updates.</dd>
 </dl>
 
+> [!NOTE]  
+> For `0.x` packages, there is no maintenance period. After a new minor release, the previous version transitions directly to end of life.
+
 ## Version support status
 
 ### <code>@stratakit/foundations</code>

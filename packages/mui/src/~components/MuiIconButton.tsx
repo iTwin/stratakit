@@ -14,21 +14,33 @@ import type { BaseProps } from "@stratakit/internal-utils/props";
 
 interface MuiIconButtonProps
 	extends BaseProps<"button">,
-		Pick<IconButtonOwnProps, "label" | "labelPlacement"> {}
+		Pick<IconButtonOwnProps, "label" | "labelPlacement" | "variant"> {}
 
 const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 	(props, forwardedRef) => {
-		const { title, label = title, labelPlacement, ...rest } = props;
+		const {
+			title,
+			label = title,
+			labelPlacement,
+			variant = "ghost",
+			...rest
+		} = props;
 
 		if (label) {
 			return (
 				<Tooltip title={label} describeChild={false} placement={labelPlacement}>
-					<MuiButtonBase {...rest} ref={forwardedRef} />
+					<MuiButtonBase
+						{...rest}
+						data-_sk-variant={variant}
+						ref={forwardedRef}
+					/>
 				</Tooltip>
 			);
 		}
 
-		return <MuiButtonBase {...rest} ref={forwardedRef} />;
+		return (
+			<MuiButtonBase {...rest} data-_sk-variant={variant} ref={forwardedRef} />
+		);
 	},
 );
 DEV: MuiIconButton.displayName = "MuiIconButton";

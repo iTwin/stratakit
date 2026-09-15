@@ -7,9 +7,8 @@ import Accordion from "@mui/material/Accordion";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import Typography from "@mui/material/Typography";
+import { svgInfo } from "@stratakit/icons/info";
 import { Icon } from "@stratakit/mui";
-
-import svgInfo from "@stratakit/icons/info.svg";
 
 export default () => {
 	return (

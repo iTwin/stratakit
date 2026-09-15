@@ -6,17 +6,16 @@
 import * as React from "react";
 import { Avatar, Button, Divider, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { svgBrandBentleySystemsLarge } from "@stratakit/icons/brand-bentley-systems";
+import { svgHelpLarge } from "@stratakit/icons/help";
+import { svgNotificationsLarge } from "@stratakit/icons/notifications";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
+import { svgPlugins } from "@stratakit/icons/plugins";
+import { svgSettingsLarge } from "@stratakit/icons/settings";
+import { svgUser } from "@stratakit/icons/user";
+import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import { definePage, type VariantProps } from "~/~utils.tsx";
-
-import svgBentley from "@stratakit/icons/brand-bentley-systems.svg";
-import svgHelp from "@stratakit/icons/help.svg";
-import svgNotifications from "@stratakit/icons/notifications.svg";
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
-import svgPlugins from "@stratakit/icons/plugins.svg";
-import svgSettings from "@stratakit/icons/settings.svg";
-import svgUser from "@stratakit/icons/user.svg";
-import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 
 export const handle = { title: "NavigationRail" };
 
@@ -54,7 +53,11 @@ export default definePage(
 		return (
 			<NavigationRail.Root defaultExpanded={!!defaultExpanded}>
 				<NavigationRail.Header>
-					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+					<Icon
+						alt="Acme app"
+						href={svgBrandBentleySystemsLarge}
+						size="large"
+					/>
 					<NavigationRail.ToggleButton />
 				</NavigationRail.Header>
 
@@ -85,21 +88,18 @@ export default definePage(
 					<NavigationRail.Footer>
 						<NavigationRail.List>
 							<NavigationRail.ListItem>
-								<NavigationRail.Button
-									icon={`${svgHelp}#icon-large`}
-									label="Support"
-								/>
+								<NavigationRail.Button icon={svgHelpLarge} label="Support" />
 							</NavigationRail.ListItem>
 							<Divider presentational />
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={`${svgNotifications}#icon-large`}
+									icon={svgNotificationsLarge}
 									label="Notifications"
 								/>
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={`${svgSettings}#icon-large`}
+									icon={svgSettingsLarge}
 									label="Settings"
 								/>
 							</NavigationRail.ListItem>
@@ -122,7 +122,7 @@ function VisualTest() {
 	return (
 		<NavigationRail.Root>
 			<NavigationRail.Header>
-				<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+				<Icon alt="Acme app" href={svgBrandBentleySystemsLarge} size="large" />
 				<NavigationRail.ToggleButton />
 			</NavigationRail.Header>
 
@@ -189,7 +189,11 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 				}}
 			>
 				<NavigationRail.Header>
-					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+					<Icon
+						alt="Acme app"
+						href={svgBrandBentleySystemsLarge}
+						size="large"
+					/>
 					<NavigationRail.ToggleButton />
 				</NavigationRail.Header>
 				<NavigationRail.Content>

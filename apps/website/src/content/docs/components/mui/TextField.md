@@ -62,7 +62,7 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 
 ### Color
 
-Use `type="color"` to render a native color picker.
+Use `type="color"` to render a native color picker. When controlling the color, use the `value` prop with a hexadecimal color value.
 
 :::note
 

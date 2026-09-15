@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Added support for `type="color"` to `TextField`.
+Added styling support for `type="color"` inputs rendered by `TextField`.

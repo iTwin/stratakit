@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{t}from"./Spinner.bsaZ1-25.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{className:`flex`,children:[(0,n.jsx)(t,{tone:`neutral`}),(0,n.jsx)(t,{tone:`accent`})]});export{r as default};

@@ -1,0 +1,1 @@
+function e(e){return typeof e.main==`string`}function t(t,n=[]){if(!e(t))return!1;for(let e of n)if(!t.hasOwnProperty(e)||typeof t[e]!=`string`)return!1;return!0}function n(e=[]){return([,n])=>n&&t(n,e)}export{n as t};

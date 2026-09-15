@@ -27,10 +27,10 @@ We aim to minimize breaking changes by designing our APIs for future flexibility
   <dd>Removal or renaming of icons, or changes to their supported symbol IDs.</dd>
 
   <dt><code>@stratakit/mui</code> breaking changes</dt>
-  <dd>Adjustments to the expected DOM structure, public class names, component props, or significant visual updates. Adopting a new major version of the `foundations` package does not require a major version release of the `mui` package.</dd>
+  <dd>Changes to component APIs, props, rendering behavior, or DOM structure. This also affects the APIs from <code>@mui/material</code>.</dd>
 
   <dt><code>@stratakit/structures</code> breaking changes</dt>
-  <dd>Changes to component APIs, props, rendering behavior, or DOM structure. Adopting new major versions of the `foundations` or `mui` packages does not require a major version release of the `structures` package.</dd>
+  <dd>Changes to component APIs, props, rendering behavior, or DOM structure.</dd>
 </dl>
 
 ## Package versioning policy

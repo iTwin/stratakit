@@ -5,7 +5,7 @@ links:
   muiDocs: https://mui.com/material-ui/react-transfer-list/
 ---
 
-::example{src="patterns/TransferList.default"}
+::example{src="composite/TransferList.default"}
 
 This example is taken from the [MUI documentation for TransferList](https://mui.com/material-ui/react-transfer-list/) with only minor modifications.
 

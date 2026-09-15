@@ -22,7 +22,7 @@ const exampleModules = {
 	bricks: import.meta.glob("/node_modules/examples/bricks/*.tsx"),
 	structures: import.meta.glob("/node_modules/examples/structures/*.tsx"),
 	mui: import.meta.glob("/node_modules/examples/mui/*.tsx"),
-	patterns: import.meta.glob("/node_modules/examples/patterns/*.tsx"),
+	composite: import.meta.glob("/node_modules/examples/composite/*.tsx"),
 } as const;
 
 // ----------------------------------------------------------------------------

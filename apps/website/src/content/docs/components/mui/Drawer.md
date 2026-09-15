@@ -3,7 +3,7 @@ title: Drawer
 description: Drawers are used to display navigation in a sliding panel.
 links:
   muiDocs: https://mui.com/material-ui/react-drawer/
-  apiReference: https://mui.com/material-ui/api/drawer/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Drawer.default"}
@@ -19,3 +19,8 @@ links:
 ### SwipeableDrawer
 
 ::example{src="mui/SwipeableDrawer.default"}
+
+## API reference
+
+- [`Drawer`](https://mui.com/material-ui/api/drawer/)
+- [`SwipeableDrawer`](https://mui.com/material-ui/api/swipeable-drawer/)

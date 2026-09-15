@@ -9,6 +9,8 @@ import {
 	type GridRenderCellParams,
 } from "@mui/x-data-grid";
 
+import style from "./DataGrid.datatypes.module.css";
+
 interface Asset {
 	assetId: number;
 	assetName: string;
@@ -275,6 +277,7 @@ const columns: GridColDef<Asset>[] = [
 		field: "tagColor",
 		headerName: "Tag Color",
 		type: "custom",
+		cellClassName: style.color,
 		renderCell: (params: GridRenderCellParams<Asset, string>) => (
 			<Swatch color={params.value} />
 		),

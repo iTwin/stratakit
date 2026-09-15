@@ -3,15 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .MuiDataGrid-root {
-	border: none;
-	background: none;
-
 	--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-neutral-muted);
 
-	/* Last selected row uses footer top as the bottom border */
-	&:has(.Mui-selected.MuiDataGrid-row--lastVisible) .MuiDataGrid-footerContainer {
-		border-top-color: var(--stratakit-color-border-accent-strong);
-	}
+	border: none;
+	background: none;
 }
 
 .MuiDataGrid-columnHeaders {
@@ -88,4 +83,13 @@
 
 .MuiDataGrid-toolbarQuickFilter .MuiFormControl-root {
 	overflow: visible;
+}
+
+.MuiDataGrid-footerContainer {
+	border-top-color: var(--_MuiDataGrid-rowBorderColor);
+
+	/* Last selected row uses footer top as the bottom border */
+	:where(.MuiDataGrid-root:has(.Mui-selected.MuiDataGrid-row--lastVisible)) & {
+		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
+	}
 }

@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Updated `Input` to include the StrataKit root class for consistent styling.
+Updated `Input` to include StrataKit's internal class for consistent styling.

@@ -438,7 +438,7 @@ function createTheme() {
 			MuiImageListItem: { defaultProps: { component: Role.li } },
 			MuiInputBase: {
 				defaultProps: {
-					className: "🥝MuiInput",
+					classes: { root: "🥝MuiInput" },
 				},
 			},
 			MuiInput: {

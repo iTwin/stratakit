@@ -1,5 +1,5 @@
 ---
-"@stratakit/mui": minor
+"@stratakit/mui": patch
 ---
 
-Added the `🥝MuiInput` root class to `Input`.
+Updated `Input` to include the StrataKit root class for consistent styling.

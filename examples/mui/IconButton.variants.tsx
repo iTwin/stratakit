@@ -16,7 +16,7 @@ export default () => {
 			direction="row"
 			sx={{ alignItems: "center", flexWrap: "wrap" }}
 		>
-			<IconButton variant="ghost" label="Ghost">
+			<IconButton variant="icon" label="Icon">
 				<Icon href={svgPlaceholder} />
 			</IconButton>
 

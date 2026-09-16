@@ -763,9 +763,9 @@ declare module "@mui/material/IconButton" {
 		/**
 		 * The variant to use.
 		 *
-		 * @default 'ghost'
+		 * @default 'icon'
 		 */
-		variant?: "ghost" | "outlined";
+		variant?: "icon" | "outlined";
 	}
 }
 

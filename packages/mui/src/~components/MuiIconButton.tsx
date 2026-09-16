@@ -20,20 +20,18 @@ const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 	(props, forwardedRef) => {
 		const { title, label = title, labelPlacement, variant, ...rest } = props;
 
-		if (label) {
-			return (
-				<Tooltip title={label} describeChild={false} placement={labelPlacement}>
-					<MuiButtonBase
-						{...rest}
-						data-_sk-variant={variant}
-						ref={forwardedRef}
-					/>
-				</Tooltip>
-			);
-		}
-
 		return (
-			<MuiButtonBase {...rest} data-_sk-variant={variant} ref={forwardedRef} />
+			<Tooltip
+				title={label ?? ""}
+				describeChild={false}
+				placement={labelPlacement}
+			>
+				<MuiButtonBase
+					{...rest}
+					data-_sk-variant={variant}
+					ref={forwardedRef}
+				/>
+			</Tooltip>
 		);
 	},
 );

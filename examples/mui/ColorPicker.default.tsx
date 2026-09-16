@@ -4,17 +4,23 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import TextField from "@mui/material/TextField";
+import FormControl from "@mui/material/FormControl";
+import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
 
 export default () => {
 	const [color, setColor] = React.useState("#188166");
+	const id = React.useId();
 
 	return (
-		<TextField
-			label="Color"
-			type="color"
-			value={color}
-			onChange={(e) => setColor(e.target.value)}
-		/>
+		<FormControl>
+			<InputLabel htmlFor={id}>Color</InputLabel>
+			<Input
+				id={id}
+				type="color"
+				value={color}
+				onChange={(e) => setColor(e.target.value)}
+			/>
+		</FormControl>
 	);
 };

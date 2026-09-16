@@ -2,9 +2,7 @@
 
 ## 0.4.4
 
-### Patch Changes
-
-- [#1826](https://github.com/iTwin/stratakit/pull/1826): Added new icons:
+- [#1826](https://github.com/iTwin/stratakit/pull/1826), [#1844](https://github.com/iTwin/stratakit/pull/1844): Added new icons:
 
   - `commit-changes.svg`
   - `date-time-picker.svg`
@@ -14,12 +12,9 @@
   - `radio-buttons.svg`
   - `signature.svg`
   - `textbox.svg`
-
-- [#1844](https://github.com/iTwin/stratakit/pull/1844): Added a new icon:
-
   - `dropdown.svg`
 
-  Updated icons:
+- [#1844](https://github.com/iTwin/stratakit/pull/1844): Updated icons:
 
   - `apply-down.svg`
   - `asset-copy.svg`

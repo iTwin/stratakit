@@ -2,8 +2,6 @@
 
 ## 0.6.1
 
-### Patch Changes
-
 - [#1856](https://github.com/iTwin/stratakit/pull/1856): Fixed redundant borders in `Dialog`.
 - [#1842](https://github.com/iTwin/stratakit/pull/1842): Updated some colors in `Dialog`.
 - Updated dependencies:

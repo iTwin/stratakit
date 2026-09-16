@@ -4,13 +4,13 @@
 
 ### Patch Changes
 
+- [#1662](https://github.com/iTwin/stratakit/pull/1662): Styled `NativeSelect` for supporting browsers.
 - [#1858](https://github.com/iTwin/stratakit/pull/1858): Fixed redundant borders in `Drawer`.
 - [#1856](https://github.com/iTwin/stratakit/pull/1856): Fixed redundant borders in `Dialog`.
 - [#1866](https://github.com/iTwin/stratakit/pull/1866): Fixed color contrast of `IconButton` when passed into `Snackbar`'s `action` prop.
-- [#1867](https://github.com/iTwin/stratakit/pull/1867): Improved styling for required field indicators in form labels.
+- [#1867](https://github.com/iTwin/stratakit/pull/1867): Improved styling for `required` field indicators in form labels.
 - [#1842](https://github.com/iTwin/stratakit/pull/1842): Updated some colors in `Backdrop` and `Dialog`.
 - [#1843](https://github.com/iTwin/stratakit/pull/1843): Removed margins from `DateCalendar`.
-- [#1662](https://github.com/iTwin/stratakit/pull/1662): Styled `NativeSelect` for supporting browsers
 - Updated dependencies:
   - @stratakit/foundations@1.0.1
   - @stratakit/icons@0.4.4

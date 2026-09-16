@@ -64,6 +64,7 @@ const components = {
 	Divider: processExamples(() => import("./Divider.showcase.tsx")),
 	Drawer: processExamples(() => import("./Drawer.showcase.tsx")),
 	Fab: processExamples(() => import("./Fab.showcase.tsx")),
+	"File upload": processExamples(() => import("./FileUpload.showcase.tsx")),
 	IconButton: processExamples(() => import("./IconButton.showcase.tsx")),
 	LinearProgress: processExamples(
 		() => import("./LinearProgress.showcase.tsx"),

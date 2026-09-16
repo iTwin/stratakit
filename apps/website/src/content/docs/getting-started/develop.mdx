@@ -3,13 +3,14 @@ title: Develop with StrataKit
 description: Learn how to set up StrataKit in your React project.
 sidebar:
   label: Developing
+  order: 1
 ---
 
 import { Steps, Tabs, TabItem } from "@astrojs/starlight/components";
 
 ## Quick start
 
-This guide is for **application** developers. If you're building a package on top of StrataKit, you can usually skip most of these steps, since the host application will already have StrataKit set up for you.
+This guide is for **application** developers. If you're building a package on top of StrataKit, you can usually skip most of these steps, since the host application will already have StrataKit set up for you. See [Building packages](/getting-started/build-packages) for more information.
 
 Open the [minimal starter template on StackBlitz](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template?file=src%2FApp.tsx) to see a working example and to understand the steps listed below.
 
@@ -21,7 +22,7 @@ Open the [minimal starter template on StackBlitz](https://stackblitz.com/github/
    npm add @stratakit/foundations @stratakit/mui @stratakit/icons
    ```
 
-   You will also need to install `@mui/material`.
+   You will also need to install `@mui/material`. Additionally, install `@stratakit/structures` if you use any of the StrataKit structure components.
 
 2. **Configure your bundler**
 

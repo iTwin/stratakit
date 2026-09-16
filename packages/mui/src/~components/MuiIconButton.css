@@ -5,8 +5,9 @@
 
 .MuiIconButton-root {
 	--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-base);
-	--_MuiIconButton-outlined-border-color: var(--stratakit-color-border-neutral-base);
+	--_MuiIconButton-border-color: transparent;
 
+	border: 1px solid var(--_MuiIconButton-border-color);
 	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiIconButton-icon-color);
 	min-block-size: var(--_MuiIconButton-size);
@@ -14,8 +15,7 @@
 	padding: var(--_MuiIconButton-padding);
 
 	&:where([data-_sk-variant="outlined"]) {
-		border: 1px solid;
-		border-color: var(--_MuiIconButton-outlined-border-color);
+		--_MuiIconButton-border-color: var(--stratakit-color-border-neutral-base);
 	}
 
 	&:where(.MuiIconButton-edgeStart) {
@@ -29,14 +29,14 @@
 	@media (any-hover: hover) {
 		&:where(:hover) {
 			--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-primary);
-			--_MuiIconButton-outlined-border-color: color-mix(
-				in oklch,
-				var(--stratakit-color-border-neutral-base) 100%,
-				var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
-			);
 
 			&:where([data-_sk-variant="outlined"]) {
 				background: none;
+				--_MuiIconButton-border-color: color-mix(
+					in oklch,
+					var(--stratakit-color-border-neutral-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
+				);
 			}
 		}
 	}
@@ -67,16 +67,16 @@
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-critical-base);
 	}
 
-	&:where(:active) {
-		--_MuiIconButton-outlined-border-color: color-mix(
+	&:where([data-_sk-variant="outlined"]:active) {
+		--_MuiIconButton-border-color: color-mix(
 			in oklch,
 			var(--stratakit-color-border-neutral-base) 100%,
-			var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-pressed-hover-\%)
+			var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 		);
 	}
 
 	&:where(.Mui-disabled) {
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
-		--_MuiIconButton-outlined-border-color: var(--stratakit-color-border-neutral-disabled);
+		--_MuiIconButton-border-color: var(--stratakit-color-border-neutral-disabled);
 	}
 }

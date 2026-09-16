@@ -1,1 +1,0 @@
-import{$ as e}from"./jsx-runtime-PTEwNWIc.js";var t=e({default:()=>n}),n=`/1865/assets/chevron-left-BbSGwDxv.svg`,r=e({default:()=>i}),i=`/1865/assets/chevron-right-ia40WXiF.svg`;export{t as i,r as n,n as r,i as t};

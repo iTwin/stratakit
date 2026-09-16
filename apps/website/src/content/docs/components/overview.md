@@ -6,15 +6,15 @@ description: How components are organized in StrataKit
 The **StrataKit** component catalog comes in two tiers:
 
 1. Generic components are taken from the third-party [Material UI (**MUI**)](https://mui.com/material-ui/) library.
-2. Specialized components are developed separately and called _structures_.
+2. Specialized components are developed separately in `@stratakit` packages.
 
-See [**Develop with StrataKit**](/docs/getting-started/develop/) for detailed installation instructions.
+See [**Develop with StrataKit**](/getting-started/develop/) for detailed installation instructions.
 
 ## MUI components
 
 By making an established open-source library responsible for generic components, we are free to focus efforts on developing components that solve more complex and specific tasks.
 
-**StrataKit**'s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating **StrataKit's** design tokens and [iconography](/docs/icons/).
+**StrataKit**'s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating **StrataKit's** design tokens and [iconography](/icons/).
 
 The theme includes the following modifications:
 
@@ -40,6 +40,7 @@ All components are accompanied by implementation guidance. This adheres to the f
 - **Examples**: What variants are there, and to which contexts are they suited?
 - **✅ Do**: What's needed for an efficient and accessible implementation? What opportunities are there to improve user experience?
 - **🚫 Don't**: What are some common pitfalls? What are the bad practices to avoid?
+- **API reference**: Links to the technical documentation for each API that this component exposes or uses.
 
 :::caution[MUI documentation]
 

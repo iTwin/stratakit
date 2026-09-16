@@ -3,7 +3,7 @@ title: Table
 description: Tables are used to display information from a data set.
 links:
   muiDocs: https://mui.com/material-ui/react-table/
-  apiReference: https://mui.com/material-ui/api/table/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Table.default"}
@@ -47,3 +47,15 @@ The [`sortDirection`](https://mui.com/material-ui/api/table-cell/#table-cell-pro
 This example is adapted from the [MUI Table Sorting example](https://mui.com/material-ui/react-table/#sorting-selecting) and follows the accessibility guidance described in [Adrian Roselli's article on sortable table columns](https://adrianroselli.com/2021/04/sortable-table-columns.html).
 
 ::example{src="mui/Table.sort"}
+
+## API reference
+
+- [`Table`](https://mui.com/material-ui/api/table/)
+- [`TableContainer`](https://mui.com/material-ui/api/table-container/)
+- [`TableHead`](https://mui.com/material-ui/api/table-head/)
+- [`TableBody`](https://mui.com/material-ui/api/table-body/)
+- [`TableRow`](https://mui.com/material-ui/api/table-row/)
+- [`TableCell`](https://mui.com/material-ui/api/table-cell/)
+- [`TableFooter`](https://mui.com/material-ui/api/table-footer/)
+- [`TablePagination`](https://mui.com/material-ui/api/table-pagination/)
+- [`TableSortLabel`](https://mui.com/material-ui/api/table-sort-label/)

@@ -58,8 +58,10 @@
 		user-select: auto;
 	}
 
-	&:where(:has(.MuiChip-label:focus-visible)) {
-		outline: var(--🥝focus-outline);
+	&:where(:not(.MuiChip-clickable)),
+	&:where(:has(.MuiChip-deleteIcon.Mui-focusVisible)) {
+		/* Prevents double focus outlines. */
+		outline: unset;
 	}
 
 	&:where(.Mui-disabled) {

@@ -3,7 +3,7 @@ title: Autocomplete
 description: Autocomplete inputs are used to provide suggestions while users type.
 links:
   muiDocs: https://mui.com/material-ui/react-autocomplete/
-  apiReference: https://mui.com/material-ui/api/autocomplete/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Autocomplete.default"}
@@ -31,3 +31,7 @@ links:
 - **Medium:** Default size, suitable for most use cases.
 
 ::example{src="mui/Autocomplete.sizes"}
+
+## API reference
+
+- [`Autocomplete`](https://mui.com/material-ui/api/autocomplete/)

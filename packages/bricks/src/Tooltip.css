@@ -6,8 +6,6 @@
 .🥝Tooltip {
 	--✨bg: var(--stratakit-color-bg-elevation-emphasis);
 	--✨color: var(--stratakit-color-text-neutral-emphasis);
-	--✨border: var(--stratakit-color-border-elevation-base);
-	--✨border-width: 1px;
 
 	@layer base {
 		@apply --typography("caption-lg");
@@ -22,10 +20,12 @@
 		justify-content: center;
 		gap: var(--stratakit-space-100);
 
-		border: var(--✨border-width) solid var(--✨border);
+		outline: 1px solid var(--stratakit-color-border-elevation-base);
+		outline-offset: -2px;
+
 		border-radius: var(--stratakit-radius-sm);
-		padding-block: calc(var(--stratakit-space-100) - var(--✨border-width));
-		padding-inline: calc(var(--stratakit-space-200) - var(--✨border-width));
+		padding-block: var(--stratakit-space-100);
+		padding-inline: var(--stratakit-space-200);
 		min-block-size: 1rem;
 		max-inline-size: 12.25rem;
 	}

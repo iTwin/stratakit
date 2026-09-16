@@ -25,16 +25,6 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
 		width: 110,
 		editable: true,
 	},
-	{
-		field: "fullName",
-		headerName: "Full name",
-		rowHeader: true,
-		description: "This column has a value getter and is not sortable.",
-		sortable: false,
-		width: 160,
-		valueGetter: (_value, row) =>
-			`${row.firstName || ""} ${row.lastName || ""}`,
-	},
 ];
 
 const rows = [
@@ -63,8 +53,6 @@ export default function DefaultExample() {
 				},
 			}}
 			pageSizeOptions={[5]}
-			checkboxSelection
-			disableRowSelectionOnClick
 		/>
 	);
 }

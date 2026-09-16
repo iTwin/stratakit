@@ -30,6 +30,7 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 - A `label` prop has been added. When specified, it is used as the **IconButton's** accessible name and is also shown in a tooltip on hover and focus. This is the recommended way to set the accessible name and tooltip.
 - The `title` prop is automatically mapped to `label` as a fallback, providing better compatibility with external components that use the native `title` attribute.
 - A `labelPlacement` prop has been added to control the placement of a tooltip that is shown when the `label` prop is specified.
+- Added `variant` prop.
 
 ## Examples
 

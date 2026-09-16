@@ -8,6 +8,7 @@
 - [#1858](https://github.com/iTwin/stratakit/pull/1858): Fixed redundant borders in `Drawer`.
 - [#1856](https://github.com/iTwin/stratakit/pull/1856): Fixed redundant borders in `Dialog`.
 - [#1866](https://github.com/iTwin/stratakit/pull/1866): Fixed color contrast of `IconButton` when passed into `Snackbar`'s `action` prop.
+- [#1860](https://github.com/iTwin/stratakit/pull/1860): Fixed a bug with `IconButton` losing focus when its `title` was changed.
 - [#1867](https://github.com/iTwin/stratakit/pull/1867): Improved styling for `required` field indicators in form labels.
 - [#1842](https://github.com/iTwin/stratakit/pull/1842): Updated some colors in `Backdrop` and `Dialog`.
 - [#1843](https://github.com/iTwin/stratakit/pull/1843): Removed margins from `DateCalendar`.

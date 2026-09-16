@@ -1,1 +1,0 @@
-import{et as e,t}from"./jsx-runtime-PTEwNWIc.js";import{Xt as n,Zt as r,nt as i,sn as a}from"./~settings-BHESR0K4.js";var o=t(),s=e(n(),1),c=r((e,t)=>{i();let{variant:n=`text`,size:r=`medium`,...c}=e;return(0,o.jsx)(a.div,{...c,ref:t,className:(0,s.default)(`🥝Skeleton`,e.className),"data-_sk-variant":n,"data-_sk-size":r,"aria-hidden":!0})});export{c as t};

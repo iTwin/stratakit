@@ -7,3 +7,5 @@ import url from "../icons/filter.svg";
 
 export const svgFilter = `${url}#icon`;
 export const svgFilterLarge = `${url}#icon-large`;
+export const svgFilterFilled = `${url}#filled`;
+export const svgFilterFilledLarge = `${url}#filled-large`;

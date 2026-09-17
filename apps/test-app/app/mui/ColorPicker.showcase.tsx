@@ -17,7 +17,7 @@ export default function ColorPickerExamples() {
 export const knobs = {
 	disabled: createKnob({
 		props: {
-			MuiFormControl: {
+			MuiFormControlLabel: {
 				disabled: true,
 			},
 		},

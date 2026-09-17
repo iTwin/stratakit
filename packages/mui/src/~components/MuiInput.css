@@ -89,6 +89,7 @@
 		--_MuiInput-padding-inline: var(--stratakit-space-100);
 
 		min-inline-size: var(--_MuiInput-block-size);
+		max-inline-size: calc(var(--_MuiInput-block-size) * 2);
 		cursor: pointer;
 
 		&::-webkit-color-swatch-wrapper {

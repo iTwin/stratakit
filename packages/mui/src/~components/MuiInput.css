@@ -98,13 +98,13 @@
 		}
 
 		&::-webkit-color-swatch {
-			border: 1px solid var(--_MuiInput-border-color);
+			border: 1px solid var(--stratakit-color-border-neutral-base);
 			border-radius: 1px;
 		}
 
 		&::-moz-color-swatch {
 			block-size: var(--✨color-swatch-size);
-			border: 1px solid var(--_MuiInput-border-color);
+			border: 1px solid var(--stratakit-color-border-neutral-base);
 			border-radius: 1px;
 		}
 	}

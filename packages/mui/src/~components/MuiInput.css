@@ -88,6 +88,7 @@
 	&:where(input[type="color" i]) {
 		--_MuiInput-padding-inline: var(--stratakit-space-100);
 
+		min-inline-size: var(--_MuiInput-block-size);
 		cursor: pointer;
 
 		&::-webkit-color-swatch-wrapper {

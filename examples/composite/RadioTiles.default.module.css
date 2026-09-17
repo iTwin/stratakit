@@ -3,9 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .tile {
-	--_label-color: var(--stratakit-color-text-neutral-primary);
-	--_description-color: var(--stratakit-color-text-neutral-secondary);
-	--_icon-color: var(--stratakit-color-icon-neutral-base);
+	--_RadioTile-label-color: var(--stratakit-color-text-neutral-primary);
+	--_RadioTile-description-color: var(--stratakit-color-text-neutral-secondary);
+	--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-base);
+	--_RadioTile-border-color: var(--stratakit-color-border-neutral-muted);
 
 	position: relative;
 	display: grid;
@@ -17,46 +18,53 @@
 
 	padding: var(--stratakit-space-300);
 	border-radius: var(--stratakit-mui-shape-borderRadius);
-	border: 1px solid var(--stratakit-color-border-neutral-muted);
-	color: var(--_icon-color);
+	border: 1px solid var(--_RadioTile-border-color);
+	color: var(--_RadioTile-icon-color);
 
 	@media (any-hover: hover) {
 		&:hover:not(:has(input:disabled)) {
-			--_icon-color: var(--stratakit-color-icon-neutral-base);
-			border-color: var(--stratakit-color-border-neutral-muted);
+			--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-base);
+			--_RadioTile-border-color: var(--stratakit-color-border-neutral-muted);
 			background: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 		}
 	}
 
 	&:has(input:active):not(:has(input:disabled)) {
-		border-color: 1px solid var(--stratakit-color-border-neutral-muted);
+		--_RadioTile-border-color: var(--stratakit-color-border-neutral-muted);
 		background: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	}
 
 	&:has(input:checked) {
-		--_icon-color: var(--stratakit-color-icon-neutral-hover);
-		border-color: var(--stratakit-color-border-accent-strong);
+		--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-hover);
+		--_RadioTile-border-color: var(--stratakit-color-border-accent-strong);
 		background: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 
 		@media (any-hover: hover) {
 			&:hover {
-				border-color: var(--stratakit-color-border-accent-strong);
+				--_RadioTile-border-color: var(--stratakit-color-border-accent-strong);
 				background: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
 			}
 		}
 	}
 
 	&:has(input:disabled) {
-		--_icon-color: var(--stratakit-color-icon-neutral-disabled);
-		--_label-color: var(--stratakit-color-text-neutral-disabled);
-		--_description-color: var(--stratakit-color-text-neutral-disabled);
-		border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+		--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-disabled);
+		--_RadioTile-label-color: var(--stratakit-color-text-neutral-disabled);
+		--_RadioTile-description-color: var(--stratakit-color-text-neutral-disabled);
+		--_RadioTile-border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+
+		@media (forced-colors: active) {
+			--_RadioTile-icon-color: GrayText;
+			--_RadioTile-label-color: GrayText;
+			--_RadioTile-description-color: GrayText;
+			--_RadioTile-border-color: GrayText;
+		}
 	}
 }
 
 .label {
 	grid-column: 2 / 3;
-	color: var(--_label-color);
+	color: var(--_RadioTile-label-color);
 	line-height: var(--stratakit-space-400);
 	/* Add 1 padding space + 1 gap space = 2 space called for in Figma */
 	padding-inline-end: var(--stratakit-space-100);
@@ -86,7 +94,7 @@
 	grid-row: 2 / 3;
 	grid-column: 2 / 3;
 
-	color: var(--_description-color);
+	color: var(--_RadioTile-description-color);
 }
 
 .radio {

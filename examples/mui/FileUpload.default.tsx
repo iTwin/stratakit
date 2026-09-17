@@ -15,9 +15,10 @@ export default () => {
 			variant="contained"
 			startIcon={<Icon href={svgUpload} />}
 			render={<label />}
+			nativeButton={false}
 		>
 			Upload
-			<input type="file" multiple style={visuallyHidden} />
+			<input type="file" multiple tabIndex={-1} style={visuallyHidden} />
 		</Button>
 	);
 };

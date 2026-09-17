@@ -1,0 +1,31 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.states {
+	inline-size: min(100%, 36rem);
+}
+
+.fileUpload {
+	border: 1px dashed transparent;
+	transition:
+		background-color 150ms ease-out,
+		border-color 150ms ease-out;
+
+	&[data-drag-active] {
+		background-color: var(--stratakit-color-bg-glow-on-surface-accent-hover);
+		border-color: var(--stratakit-color-border-accent-strong);
+	}
+
+	@media (forced-colors: active) {
+		border-color: Canvas;
+	}
+}
+
+.emptyState {
+	align-items: center;
+	justify-content: center;
+	padding-block: var(--stratakit-space-300);
+	padding-inline: var(--stratakit-space-200);
+}

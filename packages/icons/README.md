@@ -2,14 +2,16 @@
 
 Standalone `.svg` icons for StrataKit.
 
-Each icon is available as an SVG containing multiple resolutions of the same icon using [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements. This allows the icon to be used at different sizes with increasing detail and quality.
+## Symbols
 
-Currently supported symbols as identified by their `id` attribute values are:
+Each icon is available as a single SVG file, which can contain multiple variations defined as [`<symbol>`](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/symbol) elements.
 
-- `icon`
+All icons provide regular and large variations, allowing the icons to be used at different sizes with increasing detail and quality:
+
+- `icon` (default)
 - `icon-large`
 
-These symbols can be accessed by appending a hash (e.g. `#icon`, `#icon-large`) to the `.svg` URL.
+[Named exports](#named-exports) include the symbol fragment (e.g. `#icon` or `#icon-large`) for you. [Raw `.svg` imports](#raw-svg-imports) require appending it yourself.
 
 ## Installation
 
@@ -25,26 +27,50 @@ npm add @stratakit/icons
 
 ## Usage
 
-1. Import the icon you want to use from `@stratakit/icons`. Each icon is available as a separate module which provides _named exports_ pointing to the different symbols within the `.svg`.
+There are two ways to import an icon:
 
-   ```tsx
-   import { svgPlaceholder, svgPlaceholderLarge } from "@stratakit/icons/placeholder";
-   ```
+- **Named JS exports** return ready-to-use, complete URLs for specific symbols.
+- **Raw SVG imports** return the URL of the SVG file (without a symbol fragment).
 
-2. Pass it to the `Icon` component from [`@stratakit/mui`](https://www.npmjs.com/package/@stratakit/mui) or [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations).
+Both approaches require [bundler configuration](#bundler-configuration) to load SVGs as asset URLs.
 
-   ```tsx
-   import { Icon } from "@stratakit/mui";
+### Named exports
 
-   <Icon href={svgPlaceholder} />;
-   <Icon href={svgPlaceholderLarge} size="large" />;
-   ```
+Import the symbols you need from the icon's subpath (without the `.svg` extension):
+
+```tsx
+import { svgPlaceholder, svgPlaceholderLarge } from "@stratakit/icons/placeholder";
+```
+
+These named exports give you complete URLs that can be passed directly to the `Icon` component from [`@stratakit/mui`](https://www.npmjs.com/package/@stratakit/mui) or [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations):
+
+```tsx
+import { Icon } from "@stratakit/mui";
+
+<Icon href={svgPlaceholder} />;
+<Icon href={svgPlaceholderLarge} size="large" />;
+```
+
+### Raw SVG imports
+
+Directly importing the raw `.svg` file gives you its asset URL without selecting a symbol. Append the desired [symbol](#symbols) ID when using the URL:
+
+```tsx
+import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+
+<Icon href={`${svgPlaceholder}#icon`} />;
+<Icon href={`${svgPlaceholder}#icon-large`} size="large" />;
+```
+
+TypeScript consumers may need a `*.svg` module declaration for raw imports, though this is sometimes handled automatically by build tools like Vite.
 
 > [!IMPORTANT]
 > Icons of `@stratakit/icons` should always be used as external HTTP resources, because of [SVG `<use>` element restrictions](https://developer.mozilla.org/en-US/docs/Web/SVG/Element/use#usage_notes). Do not inline the SVG content directly in your React components.
 > Data URIs and non-HTTP protocols are supported on a best effort basis using client-side JavaScript.
 
 ## Bundler configuration
+
+Configure your bundler to emit SVG files and return their URLs rather than inline their contents. This is necessary regardless of whether you are using named exports or raw `.svg` imports.
 
 ### Vite
 

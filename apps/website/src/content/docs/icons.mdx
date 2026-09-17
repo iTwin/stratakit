@@ -5,13 +5,13 @@ title: Icons
 import { Steps } from "@astrojs/starlight/components";
 import IconList from "../../components/IconList.astro";
 
-This page lists all the icons available in [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons). Each icon is available as a standalone `.svg` file.
+This page lists all the icons available in [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons). Each icon provides typed URLs for its symbols and is also available as a standalone `.svg` file.
 
 ## Example usage
 
 <Steps>
 
-1.  Grab a URL to the icon (for example, `placeholder.svg`) by importing it:
+1.  Import the icon you want from the its subpath (without the `.svg` extension). This gives you a complete URL, including a symbol fragment.
 
     ```tsx
     import { svgPlaceholder } from "@stratakit/icons/placeholder";

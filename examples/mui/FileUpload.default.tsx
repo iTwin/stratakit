@@ -16,9 +16,10 @@ export default () => {
 			startIcon={<Icon href={svgUpload} />}
 			render={<label />}
 			nativeButton={false}
+			tabIndex={-1}
 		>
 			Upload
-			<input type="file" multiple tabIndex={-1} style={visuallyHidden} />
+			<input type="file" multiple style={visuallyHidden} />
 		</Button>
 	);
 };

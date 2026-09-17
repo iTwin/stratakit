@@ -14,7 +14,7 @@
 		border-color 150ms ease-out;
 
 	&[data-drag-active] {
-		background-color: var(--stratakit-color-bg-accent-muted); /* Deviation */
+		background-color: var(--stratakit-color-bg-glow-on-surface-accent-hover);
 		border-color: var(--stratakit-color-border-accent-strong);
 	}
 

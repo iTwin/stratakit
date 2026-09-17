@@ -1,0 +1,1 @@
+var e=`/1879/docs/_astro/brand-bentley-systems.DLGar3cA.svg`;export{e as t};

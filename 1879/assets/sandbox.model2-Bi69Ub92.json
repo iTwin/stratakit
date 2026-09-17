@@ -1,0 +1,216 @@
+{
+	"name": "Epoch System iModel 2",
+	"version": "2024 Refresh",
+	"slow": true,
+	"data": {
+		"default": [
+			{
+				"label": "ITC_Master",
+				"color": "purple",
+				"items": [
+					{
+						"label": "002_Substation",
+						"expanded": false,
+						"color": "red",
+						"items": [
+							{
+								"label": "002_Substation_A"
+							}
+						]
+					},
+					{
+						"label": "003-BENARCH-ZO-RF-M3-A-00001 - S-COLS",
+						"description": "Columns",
+						"expanded": false,
+						"color": "yellow",
+						"items": [
+							{
+								"label": "003-BENARCH-ZO-RF-M3-A-00001 - S-JOIS-ENVL",
+								"description": "Bar Joist: Envelopes",
+								"color": "teal"
+							}
+						]
+					},
+					{
+						"label": "003-BENARCH-ZO-RF-M3-A-00001 - S-SLAB-CONC",
+						"description": "Slabs: Concrete",
+						"color": "green"
+					},
+					{
+						"label": "003-BENSTR-ZO-LG2-M3-S-00001 - S-BEAM-PURL",
+						"description": "Columns: concrete",
+						"color": "yellow"
+					},
+					{
+						"label": "005-BENROAD-00-XX-M3-G-00002.dgn",
+						"expanded": false,
+						"color": "yellow",
+						"items": [
+							{
+								"label": "005-BENROAD-00-XX-M3-G-00002-A",
+								"color": "red"
+							}
+						]
+					},
+					{
+						"label": "005-BENROAD-00-XX-M3-G-00003.dgn",
+						"color": "yellow",
+						"expanded": false,
+						"items": [
+							{
+								"label": "005-BENROAD-00-XX-M3-G-00003-A",
+								"color": "blue"
+							}
+						]
+					},
+					{
+						"label": "007-aa_master.dgn",
+						"color": "green",
+						"items": [
+							{
+								"label": "A-CLNG-LITE",
+								"expanded": false,
+								"color": "blue",
+								"items": [
+									{
+										"label": "A-CLNG-LITE-A"
+									}
+								]
+							},
+							{
+								"label": "A-CLNG-TILE",
+								"color": "gray",
+								"items": [
+									{
+										"label": "A-DOOR-2D-PLAN",
+										"color": "green",
+										"items": [
+											{
+												"label": "P00003 [2-KA62]",
+												"color": "yellow",
+												"items": [
+													{
+														"label": "Cell [2-KA63]",
+														"color": "teal",
+														"items": [
+															{
+																"label": "Cell [2-KA64]",
+																"color": "red",
+																"items": [
+																	{
+																		"label": "Complex Chain [2-KA6A]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA6B]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA6C]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA6D]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA6E]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA6F]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA6G]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA6H]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA61]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA65]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA66]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA67]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA68]",
+																		"color": "purple"
+																	},
+																	{
+																		"label": "Complex Chain [2-KA69]",
+																		"color": "purple"
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"label": "P00003 [2-KA74]",
+												"expanded": false,
+												"color": "yellow",
+												"items": [
+													{
+														"label": "P00003 [2-KA74-A]",
+														"color": "green"
+													}
+												]
+											},
+											{
+												"label": "P00003 [2-KA86]",
+												"expanded": false,
+												"color": "teal",
+												"items": [
+													{
+														"label": "P00003 [2-KA74-A]",
+														"color": "blue"
+													}
+												]
+											},
+											{
+												"label": "P00003 [2-KA98]",
+												"expanded": false,
+												"color": "red",
+												"items": [
+													{
+														"label": "P00003 [2-KA98-A]",
+														"color": "purple"
+													}
+												]
+											},
+											{
+												"label": "P00003 [2-KAAA]",
+												"expanded": false,
+												"color": "teal",
+												"items": [
+													{
+														"label": "P00003 [2-KAAA-A]",
+														"color": "gray"
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -77,6 +77,7 @@ export default defineConfig({
 							label: "Overview",
 							slug: "components/overview",
 						},
+
 						{
 							label: "MUI components",
 							items: [{ autogenerate: { directory: "components/mui" } }],
@@ -85,6 +86,11 @@ export default defineConfig({
 						{
 							label: "StrataKit components",
 							items: [{ autogenerate: { directory: "components/stratakit" } }],
+							collapsed: true,
+						},
+						{
+							label: "Composite components",
+							items: [{ autogenerate: { directory: "components/composite" } }],
 							collapsed: true,
 						},
 					],

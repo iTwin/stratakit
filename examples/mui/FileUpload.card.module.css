@@ -17,6 +17,10 @@
 		background-color: var(--stratakit-color-bg-accent-muted); /* Deviation */
 		border-color: var(--stratakit-color-border-accent-strong);
 	}
+
+	@media (forced-colors: active) {
+		border-color: Canvas;
+	}
 }
 
 .emptyState {

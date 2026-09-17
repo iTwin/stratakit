@@ -114,24 +114,6 @@
 	--_MuiCircularProgress-color: CanvasText;
 }
 
-.MuiDrawer-paper {
-	:where(.MuiDrawer-anchorTop) > & {
-		border-block-end: 1px solid;
-	}
-
-	:where(.MuiDrawer-anchorRight) > & {
-		border-inline-start: 1px solid;
-	}
-
-	:where(.MuiDrawer-anchorBottom) > & {
-		border-block-start: 1px solid;
-	}
-
-	:where(.MuiDrawer-anchorLeft) > & {
-		border-inline-end: 1px solid;
-	}
-}
-
 .MuiFormControlLabel-label:where(.Mui-disabled) {
 	color: GrayText;
 }

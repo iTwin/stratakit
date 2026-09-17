@@ -20,7 +20,7 @@
 		"@mui/material": "catalog:",
 		"@mui/utils": "catalog:",
 		"@mui/x-date-pickers": "catalog:",
-		"@react-router/node": "^7.18.1",
+		"@react-router/node": "^8.3.1",
 		"@stratakit/bricks": "workspace:*",
 		"@stratakit/foundations": "workspace:*",
 		"@stratakit/icons": "workspace:*",
@@ -33,25 +33,26 @@
 		"immer": "^11.1.15",
 		"isbot": "^5.2.1",
 		"react": "catalog:",
+		"react-compiler-runtime": "^1.0.0",
 		"react-dom": "catalog:",
 		"react-resizable-panels": "^3.0.6",
-		"react-router": "^7.18.2",
+		"react-router": "^8.3.1",
 		"zustand": "^5.0.14"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.12.1",
 		"@playwright/test": "catalog:",
-		"@react-router/dev": "^7.18.1",
+		"@react-router/dev": "^8.3.1",
+		"@rolldown/plugin-babel": "^0.2.3",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
+		"@vitejs/plugin-react": "^6.1.1",
 		"esbuild": "catalog:",
 		"lightningcss": "catalog:",
 		"typescript": "catalog:",
-		"vite": "^7.3.5",
-		"vite-plugin-babel": "^1.7.3",
-		"vite-plugin-devtools-json": "^1.1.0",
-		"vite-tsconfig-paths": "^6.1.1"
+		"vite": "^8.2.2",
+		"vite-plugin-devtools-json": "^1.1.0"
 	},
 	"wireit": {
 		"build": {

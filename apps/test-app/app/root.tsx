@@ -16,7 +16,6 @@ import {
 import { Root as StrataKitRoot } from "@stratakit/foundations";
 import { Root as StrataKitMuiRoot } from "@stratakit/mui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { AppNavigationRail } from "./~navigation.tsx";
 import { useSettingsStore } from "./~settings.tsx";
 import { isProduction, useColorScheme } from "./~utils.tsx";
 
@@ -103,7 +102,7 @@ export default function App() {
 						synchronizeColorScheme={false}
 						style={{ display: "contents" }}
 					>
-						<AppNavigationRail mainContent={<Outlet />} />
+						<Outlet />
 					</Root>
 				);
 			})()}

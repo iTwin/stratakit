@@ -1,1 +1,0 @@
-var e=`/1880/docs/_astro/star.CtHgOND1.svg`;export{e as t};

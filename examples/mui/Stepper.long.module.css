@@ -1,0 +1,41 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.long {
+	position: relative;
+	padding-bottom: 2.5rem;
+}
+
+.label {
+	&:not(.labelActive) {
+		clip-path: inset(50%) !important;
+		overflow: hidden !important;
+		position: absolute !important;
+		white-space: nowrap !important;
+		block-size: 1px !important;
+		inline-size: 1px !important;
+		user-select: none !important;
+	}
+
+	&.labelActive {
+		position: absolute;
+		inset-block-end: 0;
+		inset-inline-start: 0;
+		inset-inline-end: 0;
+		text-align: center;
+	}
+}
+
+.stepNOfStepTotal {
+	font-weight: normal;
+	color: var(--stratakit-color-text-neutral-secondary);
+}
+
+.completed {
+	display: none;
+
+	.labelCompleted & {
+		display: inline;
+	}
+}

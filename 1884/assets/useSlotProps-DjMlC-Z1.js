@@ -1,0 +1,1 @@
+import{t as e}from"./useForkRef-4d1_rxiY.js";import{a as t,n,o as r}from"./useSlot-OSZCoxXf.js";function i(i){let{elementType:a,externalSlotProps:o,ownerState:s,skipResolvingSlotProps:c=!1,...l}=i,u=c?{}:t(o,s),{props:d,internalRef:f}=n({...l,externalSlotProps:u}),p=e(f,u?.ref,i.additionalProps?.ref);return r(a,{...d,ref:p},s)}export{i as t};

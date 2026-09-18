@@ -20,6 +20,12 @@ Breadcrumb items are typically rendered as links. If a breadcrumb item triggers 
 
 ::example{src="mui/Breadcrumbs.button"}
 
+### Truncation
+
+When the full hierarchy does not fit, hide intermediate breadcrumb items and use a [**menu**](/components/menu) to provide access to them.
+
+::example{src="mui/Breadcrumbs.menu"}
+
 ## API reference
 
 - [`Breadcrumbs`](https://mui.com/material-ui/api/breadcrumbs/)

@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.0.1
+
+### Patch Changes
+
+- [#1662](https://github.com/iTwin/stratakit/pull/1662): Styled `NativeSelect` for supporting browsers.
+- [#1858](https://github.com/iTwin/stratakit/pull/1858): Fixed redundant borders in `Drawer`.
+- [#1856](https://github.com/iTwin/stratakit/pull/1856): Fixed redundant borders in `Dialog`.
+- [#1866](https://github.com/iTwin/stratakit/pull/1866): Fixed color contrast of `IconButton` when passed into `Snackbar`'s `action` prop.
+- [#1860](https://github.com/iTwin/stratakit/pull/1860): Fixed a bug with `IconButton` losing focus when its `title` was changed.
+- [#1867](https://github.com/iTwin/stratakit/pull/1867): Improved styling for `required` field indicators in form labels.
+- [#1842](https://github.com/iTwin/stratakit/pull/1842): Updated some colors in `Backdrop` and `Dialog`.
+- [#1843](https://github.com/iTwin/stratakit/pull/1843): Removed margins from `DateCalendar`.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.1
+  - @stratakit/icons@0.4.4
+
 ## 1.0.0
 
 `@stratakit/mui@1.0.0` is the first stable 1.0 release of the package. This release includes a number of ⚠️ **breaking** changes, as well as updates to dependencies, design tokens, portal behavior, and styling. Please read the following sections carefully to understand the impact of these changes if you are upgrading from a previous version of `@stratakit/mui`.

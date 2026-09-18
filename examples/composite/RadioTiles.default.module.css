@@ -17,7 +17,7 @@
 	margin-block-end: var(--stratakit-space-100);
 
 	padding: var(--stratakit-space-300);
-	border-radius: var(--stratakit-mui-shape-borderRadius);
+	border-radius: var(--stratakit-radius-md);
 	border: 1px solid var(--_RadioTile-border-color);
 	color: var(--_RadioTile-icon-color);
 

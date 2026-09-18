@@ -3,14 +3,14 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import BreadcrumbsButton from "examples/mui/Breadcrumbs.button.tsx";
-import BreadcrumbsDefault from "examples/mui/Breadcrumbs.default.tsx";
+.MuiBreadcrumbs-li {
+	&:where(:has(.MuiButtonBase-root)) + :where(.MuiBreadcrumbs-separator) {
+		margin-inline-start: 0;
+	}
+}
 
-export default function BreadcrumbsExamples() {
-	return (
-		<>
-			<BreadcrumbsDefault />
-			<BreadcrumbsButton />
-		</>
-	);
+.MuiBreadcrumbs-separator {
+	&:where(:has(+ .MuiBreadcrumbs-li > .MuiButtonBase-root)) {
+		margin-inline-end: 0;
+	}
 }

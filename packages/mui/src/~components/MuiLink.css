@@ -11,6 +11,7 @@
 	transition: text-underline-offset 150ms ease-out;
 
 	&:where(a:not(:any-link)) {
+		font-weight: 400;
 		text-decoration-line: none; /* Remove underline from static anchors */
 	}
 

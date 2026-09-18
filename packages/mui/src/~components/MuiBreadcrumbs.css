@@ -3,13 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiBreadcrumbs-li {
-	&:where(:has(.MuiButtonBase-root)) + :where(.MuiBreadcrumbs-separator) {
+.MuiBreadcrumbs-separator {
+	:where(.MuiBreadcrumbs-li:has(.MuiButtonBase-root)) + & {
 		margin-inline-start: 0;
 	}
-}
 
-.MuiBreadcrumbs-separator {
 	&:where(:has(+ .MuiBreadcrumbs-li > .MuiButtonBase-root)) {
 		margin-inline-end: 0;
 	}

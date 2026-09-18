@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import SwitchChecked from "examples/mui/Switch.checked.tsx";
 import SwitchDefault from "examples/mui/Switch.default.tsx";
+import SwitchIcon from "examples/mui/Switch.icon.tsx";
 import SwitchSizes from "examples/mui/Switch.sizes.tsx";
 import { createKnob } from "~/~utils.tsx";
 
@@ -13,6 +14,7 @@ export default function SwitchExamples() {
 			<SwitchDefault />
 			<SwitchChecked />
 			<SwitchSizes />
+			<SwitchIcon />
 		</>
 	);
 }

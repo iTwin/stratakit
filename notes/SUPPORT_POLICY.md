@@ -13,11 +13,10 @@ Sometimes, APIs evolve in a way that requires making backwards-incompatible chan
 
 We aim to minimize breaking changes by designing our APIs for future flexibility. However, evolving needs sometimes necessitate such changes. Here's how we handle them in different StrataKit packages:
 
-> [!NOTE]  
-> APIs or props prefixed with `unstable_` may change at any time without requiring a major version release.
-
-> [!NOTE]  
-> `@stratakit/internal-utils` is exempt from this support policy.
+> [!NOTE]
+>
+> - APIs or props prefixed with `unstable_` may change at any time without requiring a major version release.
+> - Only CSS variables prefixed with `--stratakit` are public and covered by this support policy. Variables prefixed with `--_` or `--🥝` are private implementation details and should not be used by consumers.
 
 <dl>
   <dt><code>@stratakit/foundations</code> breaking changes</dt>
@@ -37,6 +36,9 @@ We aim to minimize breaking changes by designing our APIs for future flexibility
   <dt><code>@stratakit/structures</code> breaking changes</dt>
   <dd>Changes to component APIs, props, rendering behavior, or DOM structure that break existing usage. Additions and backwards-compatible changes are not considered breaking changes.</dd>
 </dl>
+
+> [!NOTE]  
+> `@stratakit/internal-utils` is exempt from this support policy.
 
 ## Package versioning policy
 

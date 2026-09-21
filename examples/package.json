@@ -10,12 +10,13 @@
 		"@mui/material": "catalog:",
 		"@mui/utils": "catalog:",
 		"@mui/x-date-pickers": "catalog:",
-		"date-fns": "^4.4.0",
 		"@stratakit/bricks": "workspace:*",
 		"@stratakit/foundations": "workspace:*",
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*",
-		"@stratakit/structures": "workspace:*"
+		"@stratakit/structures": "workspace:*",
+		"date-fns": "^4.4.0",
+		"react-draggable": "^4.7.2"
 	},
 	"devDependencies": {
 		"@types/react": "catalog:"

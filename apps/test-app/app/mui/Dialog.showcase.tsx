@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import DialogDefault from "examples/mui/Dialog.default.tsx";
+import DialogDraggable from "examples/mui/Dialog.draggable.tsx";
 import DialogFullScreen from "examples/mui/Dialog.fullScreen.tsx";
 
 export default function DialogExamples() {
@@ -11,6 +12,7 @@ export default function DialogExamples() {
 		<>
 			<DialogDefault />
 			<DialogFullScreen />
+			<DialogDraggable />
 		</>
 	);
 }

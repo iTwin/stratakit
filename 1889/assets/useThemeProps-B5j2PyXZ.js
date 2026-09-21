@@ -1,0 +1,1 @@
+import{b as e}from"./DefaultPropsProvider-Dsg7_Lea.js";import{t}from"./useTheme-BGkwpjdd.js";import{t as n}from"./getThemeProps-Bc4Tvf9i.js";var r=e();function i(e){let{props:r,name:i,defaultTheme:a,themeId:o}=e,s=t(a);return o&&(s=s[o]||s),n({theme:s,name:i,props:r})}export{r as n,i as t};

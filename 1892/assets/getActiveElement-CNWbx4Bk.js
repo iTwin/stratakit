@@ -1,0 +1,1 @@
+import{t as e}from"./ownerDocument-Zu5Vm1vv.js";import{t}from"./getActiveElement-DreILhHN.js";function n(t){return e(t).defaultView||window}var r=e,i=t;export{r as n,n as r,i as t};

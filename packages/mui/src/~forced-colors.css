@@ -268,7 +268,7 @@
 			background-color: SelectedItem;
 		}
 
-		.MuiSwitch-thumb::before {
+		:where(.MuiSwitch-thumb)::before {
 			background-color: SelectedItem;
 		}
 	}

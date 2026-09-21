@@ -34,6 +34,12 @@ Use the `actions` prop of `DialogTitle` to display additional actions within the
 
 The title and header actions are wrapped in a header element, which can be customized by passing `slotProps.header` to the `DialogTitle`.
 
+### Full Screen
+
+For large forms or complex interactions the `Dialog` can be sized to take up the full screen.
+
+::example{src="mui/Dialog.fullScreen"}
+
 ## API reference
 
 - [`Dialog`](https://mui.com/material-ui/api/dialog/)

@@ -1,0 +1,1 @@
+import{n as e,o as t,t as n}from"./jsx-runtime-C7ynoptP.js";import{Nr as r}from"./SwitchBase-DDxFvBW9.js";import{t as i}from"./~navigation-fkSBb_96.js";var a=r(),o=n(),s=t(function(){let t=(0,a.c)(1),n;return t[0]===Symbol.for(`react.memo_cache_sentinel`)?(n=(0,o.jsx)(i,{mainContent:(0,o.jsx)(e,{})}),t[0]=n):n=t[0],n});export{s as default};

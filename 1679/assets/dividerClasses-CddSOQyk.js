@@ -1,0 +1,1 @@
+import{ft as e,pt as t}from"./SwitchBase-DDxFvBW9.js";function n(e){return t(`MuiDivider`,e)}var r=e(`MuiDivider`,[`root`,`absolute`,`fullWidth`,`inset`,`middle`,`flexItem`,`vertical`,`withChildren`,`textAlignRight`,`textAlignLeft`,`wrapper`,`wrapperVertical`]);export{n,r as t};

@@ -1,0 +1,1 @@
+import{S as e,T as t,q as n,w as r}from"./SwitchBase-DDxFvBW9.js";function i(i){let{elementType:a,externalSlotProps:o,ownerState:s,skipResolvingSlotProps:c=!1,...l}=i,u=c?{}:r(o,s),{props:d,internalRef:f}=e({...l,externalSlotProps:u}),p=n(f,u?.ref,i.additionalProps?.ref);return t(a,{...d,ref:p},s)}export{i as t};

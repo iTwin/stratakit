@@ -3,7 +3,7 @@ title: Menu
 description: Dropdown menus are used to display a list of quick actions in a floating surface.
 links:
   muiDocs: https://mui.com/material-ui/react-menu/
-  apiReference: https://mui.com/material-ui/api/menu/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Menu.default"}
@@ -46,3 +46,8 @@ With the appropriate role in place, use [`aria-checked="true"`](https://develope
 Make sure the triggering button starts with a predictable label that stays consistent regardless of the selected item. In the example above, the text "Sort by:" remains stable, while the text following it changes based on the selected item. This allows assistive technology users to easily find and operate the menu button.
 
 :::
+
+## API reference
+
+- [`Menu`](https://mui.com/material-ui/api/menu/)
+- [`MenuItem`](https://mui.com/material-ui/api/menu-item/)

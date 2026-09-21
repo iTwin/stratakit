@@ -3,7 +3,7 @@ title: AppBar
 description: App bars are used to display information and actions related to the current screen.
 links:
   muiDocs: https://mui.com/material-ui/react-app-bar/
-  apiReference: https://mui.com/material-ui/api/app-bar/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/AppBar.default" min-width="450px"}
@@ -12,3 +12,7 @@ links:
 
 - Deprecated `color`, `elevation`, `enableColorOnDark`, `square` and `variant` props
 - The use of MUI's `Toolbar` has been replaced with a styled `<div>` to avoid confusion with the [StrataKit `Toolbar`](/components/toolbar/).
+
+## API reference
+
+- [`AppBar`](https://mui.com/material-ui/api/app-bar/)

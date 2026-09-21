@@ -20,6 +20,12 @@ You can use a `Snackbar` to provide updates while processing.
 
 ::example{src="mui/Snackbar.processing"}
 
+### Statuses
+
+You can use `Alert` in combination with `Snackbar` to show status updates.
+
+::example{src="mui/Snackbar.status"}
+
 ## API reference
 
 - [`Snackbar`](https://mui.com/material-ui/api/snackbar/)

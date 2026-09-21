@@ -117,7 +117,7 @@
 .MuiSwitch-thumb {
 	--✨icon-checked-color: var(--stratakit-color-bg-accent-base);
 	--✨icon-disabled-color: var(--stratakit-color-bg-neutral-inverse);
-	--✨svg-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.607 4.191a.5.5 0 0 1 .787.617l-5.5 7a.503.503 0 0 1-.777.012l-2.5-3-.057-.084a.5.5 0 0 1 .752-.627l.072.07 2.105 2.526 5.118-6.514Z"/></svg>'); /* `checkmark.svg` default size */
+	--✨svg-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="8" height="6" viewBox="0 0 8 6" fill="none"><path fill="currentColor" d="M6.61996 0.219572C6.91287 -0.0731256 7.38768 -0.0732559 7.68051 0.219572C7.97314 0.512416 7.97314 0.987275 7.68051 1.28012L3.28012 5.68051C2.98728 5.97314 2.51242 5.97314 2.21957 5.68051L0.219572 3.68051C-0.0732559 3.38768 -0.0731256 2.91287 0.219572 2.61996C0.512465 2.32707 0.987226 2.32707 1.28012 2.61996L2.74985 4.08969L6.61996 0.219572Z"/></svg>'); /* SVG from Figma switch, different from checkmark.svg */
 
 	aspect-ratio: inherit; /* Inherited from `.MuiSwitch-switchBase` */
 	background-color: var(--_MuiSwitch-thumb-background-color);

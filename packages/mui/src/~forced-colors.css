@@ -269,7 +269,7 @@
 		}
 
 		.MuiSwitch-thumb::before {
-			background-color: CanvasText;
+			background-color: SelectedItem;
 		}
 	}
 

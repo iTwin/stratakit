@@ -267,6 +267,10 @@
 		+ .MuiSwitch-track {
 			background-color: SelectedItem;
 		}
+
+		.MuiSwitch-thumb::before {
+			background-color: CanvasText;
+		}
 	}
 
 	&:where(.Mui-disabled) {

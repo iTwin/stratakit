@@ -1,0 +1,1 @@
+var e=`🥝:color-scheme`,t=e=>e===`auto`||e===`light`||e===`dark`,n=()=>{try{let n=localStorage.getItem(e);return t(n)?n:void 0}catch{return}},r=t=>{try{localStorage.setItem(e,t)}catch{}};export{r as n,n as t};

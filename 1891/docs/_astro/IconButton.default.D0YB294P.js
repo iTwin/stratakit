@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{i as t}from"./ExamplePreview.CgQ74Ant.js";import{t as n}from"./download.BMQmuf_q.js";var r=e(),i=()=>(0,r.jsx)(t,{label:`Download`,icon:n});export{i as default};

@@ -2,14 +2,14 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import PaperDefault from "examples/mui/Paper.default.tsx";
-import PaperOutlined from "examples/mui/Paper.outlined.tsx";
 
-export default function PaperExamples() {
+import Paper from "@mui/material/Paper";
+
+export default () => {
 	return (
-		<>
-			<PaperDefault />
-			<PaperOutlined />
-		</>
+		<Paper
+			sx={{ minInlineSize: "128px", minBlockSize: "128px" }}
+			variant="outlined"
+		/>
 	);
-}
+};

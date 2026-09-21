@@ -9,6 +9,7 @@ import Stack from "@mui/material/Stack";
 import Step, { useStepContext } from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
+import Typography from "@mui/material/Typography";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 
 import styles from "./Stepper.long.module.css";
@@ -20,23 +21,24 @@ function LongStepLabel({
 	...rest
 }: React.ComponentProps<typeof StepLabel> & { index: number; total: number }) {
 	const context = useStepContext();
-	console.debug(context);
 	return (
 		<StepLabel
 			{...rest}
 			slotProps={{
 				label: {
 					className: styles.label,
+					style: !("active" in context && context.active)
+						? visuallyHidden
+						: undefined,
 				},
 			}}
 			classes={{
-				active: styles.labelActive,
 				completed: styles.labelCompleted,
 			}}
 		>
-			<span aria-hidden className={styles.stepNOfStepTotal}>
+			<Typography aria-hidden render={<span />} color="textSecondary">
 				Step {index + 1} of {total}:{" "}
-			</span>
+			</Typography>
 			{children}
 			<span style={visuallyHidden} className={styles.completed}>
 				{" "}

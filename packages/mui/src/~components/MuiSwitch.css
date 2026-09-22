@@ -128,11 +128,7 @@
 	inline-size: 100%;
 	transform: var(--_MuiSwitch-thumb-stretch-transform);
 
-	/*
-		This pseudo-element displays a checkmark for selected menu items 
-		
-		All the ::before rules are written out individually to work around https://github.com/parcel-bundler/lightningcss/issues/352
-	*/
+	/* This pseudo-element displays a checkmark for selected menu items */
 	&::before {
 		content: "";
 		opacity: 0;
@@ -158,7 +154,7 @@
 		transition-duration: 100ms;
 	}
 
-	:where(.MuiSwitch-root):has(.MuiSwitch-input:active) &::before {
+	:where(.MuiSwitch-root :has(.MuiSwitch-input:active)) &::before {
 		/* 
 			Hide it immediately when pressed to avoid showing it in the stretched
 			button. Use display instead of transition-duration to avoid having to add

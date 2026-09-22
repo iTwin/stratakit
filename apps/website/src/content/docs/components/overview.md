@@ -3,9 +3,6 @@ title: Components
 description: How components are organized in StrataKit
 ---
 
-The **StrataKit** component catalog comes in two tiers:
-
-1. Generic components are taken from the third-party [Material UI (**MUI**)](https://mui.com/material-ui/) library.
 The **StrataKit** component catalog comes in three tiers:
 
 1. Generic components are taken from the third-party [Material UI (**MUI**)](https://mui.com/material-ui/) library.

@@ -7,9 +7,11 @@ description: Color pickers let users choose a color value.
 
 Use the native [`<input type="color">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color) element to let users select a color.
 
-::callout{type="warning"}
+:::caution[Opacity]
+
 The native color input does not currently have good support for [`alpha`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color#alpha). If `alpha` is required, handle it separately with a [`Slider`](/components/slider) or [TextField](/components/textfield).
-::
+
+:::
 
 ## Use cases
 

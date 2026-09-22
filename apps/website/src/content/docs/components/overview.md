@@ -32,7 +32,7 @@ These components are developed independently, to meet the interface requirements
 
 ## Composite components
 
-Composite components combine basic **Components** to enable more complex interactions. They may be built exclusively from **MUI components** or incorporate third-party libraries.
+Composite components combine basic components to enable more complex interactions. They may be built exclusively from MUI components or incorporate third-party libraries.
 
 ## Component guidance
 

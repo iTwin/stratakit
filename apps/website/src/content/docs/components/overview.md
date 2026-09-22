@@ -32,7 +32,9 @@ These components are developed independently, to meet the interface requirements
 
 ## Composite components
 
-Composite components combine basic components to enable more complex interactions. They may be built exclusively from MUI components or incorporate third-party libraries.
+Composite components combine other components to enable more specific interactions. They may be built using any combination of **MUI components**, **StrataKit components**, or third-party libraries.
+
+These components are not exported directly, and instead distributed primarily through example code snippets. The underlying APIs used will be listed under the "API reference" subheading.
 
 ## Component guidance
 

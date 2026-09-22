@@ -30,6 +30,10 @@ Accompanying specialized components are available in separate packages, such as 
 
 These components are developed independently, to meet the interface requirements of construction and infrastructure design software.
 
+## Composite components
+
+Composite components combine basic components to enable more complex interactions. They may be built exclusively from MUI components or incorporate third-party libraries.
+
 ## Component guidance
 
 All components are accompanied by implementation guidance. This adheres to the following structure:

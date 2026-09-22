@@ -1,5 +1,5 @@
 ---
-title: ColorPicker
+title: Color picker
 description: Color pickers let users choose a color value.
 ---
 
@@ -7,13 +7,13 @@ description: Color pickers let users choose a color value.
 
 ## Use cases
 
-Make sure the **ColorPicker** is suitable for your use case. There may be other, more appropriate components available.
+Make sure the **color picker** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                          | [ColorPicker](/components/colorpicker) | [Select](/components/select) | [TextField](/components/textfield) |
-| ------------------------------------------------- | -------------------------------------- | ---------------------------- | ---------------------------------- |
-| Choose a value from a color field                 | ✅                                     | ❌                           | ❌                                 |
-| Pick between a small number of predefined choices | ❌                                     | ✅                           | ❌                                 |
-| Enter a color code value                          | ❌                                     | ❌                           | ✅                                 |
+| Use case                                          | Color picker | [Select](/components/select) | [TextField](/components/textfield) |
+| ------------------------------------------------- | ------------ | ---------------------------- | ---------------------------------- |
+| Choose a value from a color field                 | ✅           | ❌                           | ❌                                 |
+| Pick between a small number of predefined choices | ❌           | ✅                           | ❌                                 |
+| Enter a color code value                          | ❌           | ❌                           | ✅                                 |
 
 ## Examples
 
@@ -33,5 +33,5 @@ The native color input does not currently have good support for [`alpha`](https:
 
 ## 🚫 Don't
 
-- Don't use a **ColorPicker** when users need to choose from many color options with custom previews or alpha editing.
+- Don't use a **color picker** when users need to choose from many color options with custom previews or alpha editing.
 - Don't rely on color alone to communicate meaning; pair it with text or a label.

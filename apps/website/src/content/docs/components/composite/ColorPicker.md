@@ -5,6 +5,12 @@ description: Color pickers let users choose a color value.
 
 ::example{src="composite/ColorPicker.default"}
 
+Use the native [`<input type="color">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color) element to let users select a color.
+
+::callout{type="warning"}
+The native color input does not currently have good support for [`alpha`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color#alpha). If `alpha` is required, handle it separately with a [`Slider`](/components/slider) or [TextField](/components/textfield).
+::
+
 ## Use cases
 
 Make sure the **color picker** is suitable for your use case. There may be other, more appropriate components available.
@@ -14,16 +20,6 @@ Make sure the **color picker** is suitable for your use case. There may be other
 | Choose a value from a color field                 | ✅           | ❌                           | ❌                                 |
 | Pick between a small number of predefined choices | ❌           | ✅                           | ❌                                 |
 | Enter a color code value                          | ❌           | ❌                           | ✅                                 |
-
-## Examples
-
-### Default
-
-Use the native [`<input type="color">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color) element to let users select a color.
-
-::callout{type="warning"}
-The native color input does not currently have good support for [`alpha`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color#alpha). If `alpha` is required, handle it separately with a [`Slider`](/components/slider) or [TextField](/components/textfield).
-::
 
 ## ✅ Do
 

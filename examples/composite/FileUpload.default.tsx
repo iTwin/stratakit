@@ -14,9 +14,8 @@ export default () => {
 		<Button
 			variant="contained"
 			startIcon={<Icon href={svgUpload} />}
-			render={<label />}
+			render={<label role={undefined} tabIndex={undefined} />}
 			nativeButton={false}
-			tabIndex={-1}
 		>
 			Upload
 			<input type="file" multiple style={visuallyHidden} />

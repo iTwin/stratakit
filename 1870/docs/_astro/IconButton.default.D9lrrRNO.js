@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{i as t}from"./ExamplePreview.g8qleSVl.js";import{t as n}from"./download.BRfLlq2K.js";var r=e(),i=()=>(0,r.jsx)(t,{label:`Download`,icon:n});export{i as default};

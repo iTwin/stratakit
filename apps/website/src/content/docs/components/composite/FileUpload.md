@@ -7,7 +7,7 @@ description: File uploads let users select and attach one or more files.
 
 ## Use cases
 
-Make sure **File upload** is suitable for your use case. There may be other, more appropriate components available.
+Make sure **file upload** is suitable for your use case. There may be other, more appropriate components available.
 
 | Use case                                        | [File upload](/components/fileupload) | [TextField](/components/textfield) | [Button](/components/button) |
 | ----------------------------------------------- | ------------------------------------- | ---------------------------------- | ---------------------------- |

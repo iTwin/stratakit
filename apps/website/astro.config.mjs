@@ -87,6 +87,11 @@ export default defineConfig({
 							items: [{ autogenerate: { directory: "components/stratakit" } }],
 							collapsed: true,
 						},
+						{
+							label: "Composite components",
+							items: [{ autogenerate: { directory: "components/composite" } }],
+							collapsed: true,
+						},
 					],
 				},
 				{ label: "Icons", slug: "icons" },

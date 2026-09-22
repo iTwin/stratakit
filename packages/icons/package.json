@@ -36,7 +36,8 @@
 		"icons"
 	],
 	"scripts": {
-		"build": "wireit"
+		"build": "wireit",
+		"test": "node --test scripts/icons.test.js"
 	},
 	"devDependencies": {
 		"esbuild": "catalog:",

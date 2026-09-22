@@ -9,7 +9,7 @@ Use the native [`<input type="color">`](https://developer.mozilla.org/en-US/docs
 
 :::caution[Opacity]
 
-The native color input does not currently have good support for [`alpha`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color#alpha). If `alpha` is required, handle it separately with a [`Slider`](/components/slider) or [TextField](/components/textfield).
+The native color input does not currently have good support for [`alpha`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color#alpha). If `alpha` is required, handle it separately with a [`Slider`](/components/slider) or [`TextField`](/components/textfield).
 
 :::
 

@@ -1,0 +1,1 @@
+var e=`/1897/docs/_astro/star.DbgmPKW-.svg`;export{e as t};

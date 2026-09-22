@@ -2,6 +2,7 @@
 title: Transfer List
 description: Enables the user to move one or more list items between lists.
 links:
+  apiReference: "#api-reference"
   muiDocs: https://mui.com/material-ui/react-transfer-list/
 ---
 
@@ -32,3 +33,14 @@ A Transfer list consists of:
 - Buttons to move the selected items in one set to the other set.
 
 It may also include buttons to move all items from one set to the other set if that is a typical action the user may do.
+
+## API Reference
+
+- [`Button`](/components/button)
+- [`Grid`](https://mui.com/material-ui/api/grid)
+- [`ListItemText`](https://mui.com/material-ui/api/list-item-text/)
+- [`MenuItem`](https://mui.com/material-ui/api/menu-item/)
+- [`MenuList`](https://mui.com/material-ui/api/menu-list/)
+- [`Paper`](/components/paper)
+- [`Stack`](https://mui.com/material-ui/api/stack/)
+- [`Typography`](/components/typography)

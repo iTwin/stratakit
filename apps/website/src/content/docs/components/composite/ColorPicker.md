@@ -17,11 +17,11 @@ The native color input does not currently have good support for [`alpha`](https:
 
 Make sure the **color picker** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                          | Color picker | [Select](/components/select) | [TextField](/components/textfield) |
-| ------------------------------------------------- | ------------ | ---------------------------- | ---------------------------------- |
-| Choose a value from a color field                 | ✅           | ❌                           | ❌                                 |
-| Pick between a small number of predefined choices | ❌           | ✅                           | ❌                                 |
-| Enter a color code value                          | ❌           | ❌                           | ✅                                 |
+| Use case                                          | [Color picker](/components/colorpicker) | [Select](/components/select) | [TextField](/components/textfield) |
+| ------------------------------------------------- | --------------------------------------- | ---------------------------- | ---------------------------------- |
+| Choose a value from a color field                 | ✅                                      | ❌                           | ❌                                 |
+| Pick between a small number of predefined choices | ❌                                      | ✅                           | ❌                                 |
+| Enter a color code value                          | ❌                                      | ❌                           | ✅                                 |
 
 ## ✅ Do
 

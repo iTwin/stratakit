@@ -16,7 +16,7 @@ links:
 
 ### Buttons
 
-Breadcrumb items can be displayed as [**buttons**](/components/button). If clicking a breadcrumb item keeps the user on the same URL but loads different content within the page, the button style must be used.
+Breadcrumb items are typically rendered as links. If a breadcrumb item triggers in-page navigation without changing the URL, the [**button**](/components/button) style may be more appropriate.
 
 ::example{src="mui/Breadcrumbs.button"}
 

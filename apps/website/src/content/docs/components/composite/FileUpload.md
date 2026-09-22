@@ -36,3 +36,18 @@ Show each selected file in a list with its filename, size, and an action to remo
 
 - Don't hide the only file-selection mechanism behind an unlabeled icon.
 - Don't make drag and drop the only way to select files.
+
+## API reference
+
+- [`Button`](https://mui.com/material-ui/api/button/)
+- [`IconButton`](https://mui.com/material-ui/api/icon-button/)
+- [`Link`](https://mui.com/material-ui/api/link/)
+- [`List`](https://mui.com/material-ui/api/list/)
+- [`ListItem`](https://mui.com/material-ui/api/list-item/)
+- [`ListItemIcon`](https://mui.com/material-ui/api/list-item-icon/)
+- [`ListItemText`](https://mui.com/material-ui/api/list-item-text/)
+- [`Paper`](https://mui.com/material-ui/api/paper/)
+- [`Stack`](https://mui.com/material-ui/api/stack/)
+- [`Typography`](https://mui.com/material-ui/api/typography/)
+- [`Icon`](/reference/mui/Icon)
+- [`<input type="file">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file)

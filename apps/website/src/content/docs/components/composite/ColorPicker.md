@@ -36,5 +36,6 @@ Make sure the **color picker** is suitable for your use case. There may be other
 
 ## API reference
 
-- [`Input`](https://mui.com/material-ui/api/input/)
 - [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/)
+- [`Input`](https://mui.com/material-ui/api/input/)
+- [`<input type="color">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/color)

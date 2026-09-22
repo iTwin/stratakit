@@ -1,1 +1,0 @@
-var e=`/1886/docs/_astro/chat.VL0rLimQ.svg`;export{e as t};

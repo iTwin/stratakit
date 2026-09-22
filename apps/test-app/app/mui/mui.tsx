@@ -59,7 +59,6 @@ const components = {
 	CircularProgress: processExamples(
 		() => import("./CircularProgress.showcase.tsx"),
 	),
-	ColorPicker: processExamples(() => import("./ColorPicker.showcase.tsx")),
 	DatePicker: processExamples(() => import("./DatePicker.showcase.tsx")),
 	Dialog: processExamples(() => import("./Dialog.showcase.tsx")),
 	Divider: processExamples(() => import("./Divider.showcase.tsx")),

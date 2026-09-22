@@ -31,3 +31,8 @@ Make sure the **color picker** is suitable for your use case. There may be other
 
 - Don't use a **color picker** when users need to choose from many color options with custom previews or alpha editing.
 - Don't rely on color alone to communicate meaning; pair it with text or a label.
+
+## API reference
+
+- [`Input`](https://mui.com/material-ui/api/input/)
+- [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/)

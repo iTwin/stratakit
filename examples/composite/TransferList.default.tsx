@@ -10,6 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/foundations";
 
 import cheveronLeft from "@stratakit/icons/chevron-left.svg";
@@ -18,6 +19,16 @@ import cheveronRight from "@stratakit/icons/chevron-right.svg";
 import cheveronRightDouble from "@stratakit/icons/chevron-right-double.svg";
 import style from "./TransferList.default.module.css";
 
+const itemNames = [
+	"Roof trusses",
+	"Mezzanine beams",
+	"Perimeter columns",
+	"Bracing",
+	"Ground floor slab",
+	"Core walls",
+	"Retaining walls",
+	"Transfer beams",
+];
 function not(a: readonly number[], b: readonly number[]) {
 	return a.filter((value) => !b.includes(value));
 }
@@ -38,39 +49,43 @@ const CustomList = React.forwardRef(function CustomList(
 	ref: React.Ref<HTMLElement & { focus: () => void }>,
 ) {
 	const { "aria-label": ariaLabel, items, selected, handleToggle } = props;
+	const id = React.useId();
 
 	return (
-		<Paper className={style.paper} elevation={2}>
-			<MenuList
-				aria-label={ariaLabel}
-				aria-multiselectable="true"
-				role="listbox"
-				dense
-				className={style.list}
-				render={<div />}
-				ref={
-					ref as React.Ref<HTMLUListElement> /* MenuList expects an UL ref */
-				}
-			>
-				{items.map((value: number) => {
-					const labelId = `transfer-list-item-${value}-label`;
-					const isSelected = selected.includes(value);
+		<div>
+			<Typography id={id}>{ariaLabel}</Typography>
+			<Paper className={style.paper} elevation={2}>
+				<MenuList
+					aria-labelledby={id}
+					aria-multiselectable="true"
+					role="listbox"
+					dense
+					className={style.list}
+					render={<div />}
+					ref={
+						ref as React.Ref<HTMLUListElement> /* MenuList expects an UL ref */
+					}
+				>
+					{items.map((value: number) => {
+						const labelId = `transfer-list-item-${value}-label`;
+						const isSelected = selected.includes(value);
 
-					return (
-						<MenuItem
-							render={<div />}
-							key={value}
-							role="option"
-							aria-selected={isSelected}
-							aria-labelledby={labelId}
-							onClick={handleToggle(value)}
-						>
-							<ListItemText id={labelId} primary={`List item ${value + 1}`} />
-						</MenuItem>
-					);
-				})}
-			</MenuList>
-		</Paper>
+						return (
+							<MenuItem
+								render={<div />}
+								key={value}
+								role="option"
+								aria-selected={isSelected}
+								aria-labelledby={labelId}
+								onClick={handleToggle(value)}
+							>
+								<ListItemText id={labelId} primary={itemNames[value]} />
+							</MenuItem>
+						);
+					})}
+				</MenuList>
+			</Paper>
+		</div>
 	);
 });
 
@@ -133,7 +148,7 @@ export default function TransferList() {
 	return (
 		<Grid container spacing={2} className={style.grid}>
 			<CustomList
-				aria-label="choices"
+				aria-label="Steel"
 				ref={leftListRef}
 				items={left}
 				selected={selected}
@@ -178,7 +193,7 @@ export default function TransferList() {
 				</Button>
 			</Stack>
 			<CustomList
-				aria-label="chosen"
+				aria-label="Concrete"
 				ref={rightListRef}
 				items={right}
 				selected={selected}

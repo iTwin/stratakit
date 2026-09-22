@@ -1,5 +1,5 @@
 ---
-title: File Upload
+title: File upload
 description: File uploads let users select and attach one or more files.
 ---
 
@@ -7,13 +7,13 @@ description: File uploads let users select and attach one or more files.
 
 ## Use cases
 
-Make sure **File Upload** is suitable for your use case. There may be other, more appropriate components available.
+Make sure **File upload** is suitable for your use case. There may be other, more appropriate components available.
 
-| Use case                                        | [File Upload](/components/fileupload) | [TextField](/components/textfield) | [Button](/components/button) |
-| ----------------------------------------------- | ------------------------------------- | ---------------------------------- | ---------------------------- |
-| Select one or more files from the user's device | ✅                                    | ❌                                 | ❌                           |
-| Enter text or metadata                          | ❌                                    | ✅                                 | ❌                           |
-| Trigger an action without selecting files       | ❌                                    | ❌                                 | ✅                           |
+| Use case                                        | File upload | [TextField](/components/textfield) | [Button](/components/button) |
+| ----------------------------------------------- | ----------- | ---------------------------------- | ---------------------------- |
+| Select one or more files from the user's device | ✅          | ❌                                 | ❌                           |
+| Enter text or metadata                          | ❌          | ✅                                 | ❌                           |
+| Trigger an action without selecting files       | ❌          | ❌                                 | ✅                           |
 
 ## Examples
 

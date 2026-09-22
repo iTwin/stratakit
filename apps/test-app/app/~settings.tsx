@@ -37,7 +37,7 @@ interface SettingsState {
 }
 
 type PersistedSettings = Partial<
-	Pick<SettingsState, "colorScheme" | "accentColor">
+	Pick<SettingsState, "colorScheme" | "accentColor" | "debugMode">
 >;
 
 /**
@@ -92,8 +92,8 @@ export const useSettingsStore = create<SettingsState>()(
 		{
 			name: "🥝:settings",
 			storage: settingsStorage,
-			partialize: ({ colorScheme, accentColor }) =>
-				({ colorScheme, accentColor }) satisfies PersistedSettings,
+			partialize: ({ colorScheme, accentColor, debugMode }) =>
+				({ colorScheme, accentColor, debugMode }) satisfies PersistedSettings,
 		},
 	),
 );

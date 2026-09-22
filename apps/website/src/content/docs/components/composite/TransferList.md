@@ -10,7 +10,7 @@ links:
 
 This example is taken from the [MUI documentation for TransferList](https://mui.com/material-ui/react-transfer-list/) with only minor modifications.
 
-### StrataKit modifications
+## StrataKit modifications
 
 - Removed non-supported props.
 - Replaced text chevrons with StrataKit icons.

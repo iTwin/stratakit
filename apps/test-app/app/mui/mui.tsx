@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { type MetaFunction, useLocation } from "react-router";
+import { type MetaFunction, useHref, useLocation } from "react-router";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
@@ -26,6 +26,7 @@ import type { ComponentsProps, Theme } from "@mui/material/styles";
 import type { Knob } from "~/~utils.tsx";
 
 import svgScript from "@stratakit/icons/script.svg";
+import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./mui.module.css";
 
 // ----------------------------------------------------------------------------
@@ -213,6 +214,14 @@ function ComponentExamples(props: ComponentExamplesProps) {
 						<Icon href={svgScript} />
 					</IconButton>
 					<KnobControlEntrypoint />
+					<IconButton
+						render={<a />}
+						href={useHref(`/showcase?component=mui/${name}`)}
+						label="Standalone showcase"
+						size="small"
+					>
+						<Icon href={svgWindowPopout} />
+					</IconButton>
 				</>
 			}
 		>

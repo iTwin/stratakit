@@ -29,3 +29,7 @@
 	padding-block: var(--stratakit-space-300);
 	padding-inline: var(--stratakit-space-200);
 }
+
+.input {
+	-webkit-tap-highlight-color: transparent;
+}

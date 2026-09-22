@@ -3,10 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.states {
-	inline-size: min(100%, 36rem);
-}
-
 .fileUpload {
 	border: 1px dashed transparent;
 	transition:

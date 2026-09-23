@@ -10,12 +10,11 @@ import ListItemText from "@mui/material/ListItemText";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import visuallyHidden from "@mui/utils/visuallyHidden";
+import { svgChevronDown } from "@stratakit/icons/chevron-down";
+import { svgClipboardLarge } from "@stratakit/icons/clipboard";
+import { svgCopyLarge } from "@stratakit/icons/copy";
 import { Icon } from "@stratakit/mui";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
-
-import svgChevronDown from "@stratakit/icons/chevron-down.svg";
-import svgClipboard from "@stratakit/icons/clipboard.svg";
-import svgCopy from "@stratakit/icons/copy.svg";
 
 export default () => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -31,14 +30,14 @@ export default () => {
 			<Toolbar.Item
 				render={
 					<IconButton label="Copy">
-						<Icon href={`${svgCopy}#icon-large`} size="large" />
+						<Icon href={svgCopyLarge} size="large" />
 					</IconButton>
 				}
 			/>
 			<Toolbar.Item
 				render={
 					<IconButton label="Paste">
-						<Icon href={`${svgClipboard}#icon-large`} size="large" />
+						<Icon href={svgClipboardLarge} size="large" />
 					</IconButton>
 				}
 			/>

@@ -6,10 +6,9 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import MobileStepper from "@mui/material/MobileStepper";
+import { svgChevronLeft } from "@stratakit/icons/chevron-left";
+import { svgChevronRight } from "@stratakit/icons/chevron-right";
 import { Icon } from "@stratakit/mui";
-
-import svgBack from "@stratakit/icons/chevron-left.svg";
-import svgNext from "@stratakit/icons/chevron-right.svg";
 
 export default () => {
 	const [activeStep, setActiveStep] = React.useState(0);
@@ -28,7 +27,7 @@ export default () => {
 					disabled={activeStep === steps - 1}
 				>
 					Next
-					<Icon href={svgNext} />
+					<Icon href={svgChevronRight} />
 				</Button>
 			}
 			backButton={
@@ -38,7 +37,7 @@ export default () => {
 					onClick={() => setActiveStep((prev) => prev - 1)}
 					disabled={activeStep === 0}
 				>
-					<Icon href={svgBack} />
+					<Icon href={svgChevronLeft} />
 					Back
 				</Button>
 			}

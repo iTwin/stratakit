@@ -1,0 +1,1 @@
+var e=`/1880/docs/_astro/heart.VJPzVpEV.svg`,t=`${e}#icon`,n=`${e}#icon-large`,r=`/1880/docs/_astro/location.C_VRgk7K.svg`,i=`${r}#icon`,a=`${r}#icon-large`;export{n as i,a as n,t as r,i as t};

@@ -105,7 +105,7 @@ To use a newer feature non-conditionally in your package, you may need to update
 StrataKit packages consider version bumps of peer dependencies as a non-breaking change if the host application can upgrade to a newer version without disruption.
 
 <details>
-<summary>**Non-breaking** changes</summary>
+<summary>Non-breaking changes</summary>
 
 These widen the accepted range or bump the minimum version of a range to a newer minor or patch version:
 
@@ -130,7 +130,7 @@ These widen the accepted range or bump the minimum version of a range to a newer
 </details>
 
 <details>
-<summary>**Breaking** changes</summary>
+<summary>Breaking changes</summary>
 
 These narrow the accepted range or require a new major version:
 

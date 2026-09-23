@@ -23,6 +23,22 @@ Add [shared packages](#shared-packages) to your `package.json` as [peer dependen
 `@mui/material`, `react` and `react-dom` should also be listed under `peerDependencies`.
 :::
 
+To use StrataKit icons, add `@stratakit/icons` to your `peerDependencies`:
+
+```json
+{
+	"peerDependencies": {
+		"@stratakit/icons": "^0.4.4"
+	}
+}
+```
+
+Use StrataKit icons as described in the [development guide](/getting-started/develop/#quick-start).
+
+:::note
+Packages don't configure the bundler themselves - the host application is responsible for [serving StrataKit icons as external SVG files](/getting-started/develop/#bundler-configuration).
+:::
+
 If you are using StrataKit CSS variables or other foundations in your package, add the `@stratakit/foundations` shared package to your `peerDependencies` to explicitly control the package version:
 
 ```json
@@ -44,22 +60,6 @@ To use StrataKit structures in your package, add `@stratakit/structures` to your
 	}
 }
 ```
-
-To use StrataKit icons, add `@stratakit/icons` to your `dependencies`:
-
-```json
-{
-	"dependencies": {
-		"@stratakit/icons": "^0.4.4"
-	}
-}
-```
-
-Use StrataKit icons as described in the [development guide](/getting-started/develop/#quick-start).
-
-:::note
-Packages don't configure the bundler themselves - the host application is responsible for [serving StrataKit icons as external SVG files](/getting-started/develop/#bundler-configuration).
-:::
 
 ## Set up TypeScript types
 

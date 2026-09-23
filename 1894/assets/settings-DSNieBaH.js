@@ -1,1 +1,0 @@
-import{$ as e}from"./jsx-runtime-PTEwNWIc.js";var t=e({default:()=>n}),n=`/1894/assets/settings-BSloW3Ma.svg`,r=`${n}#icon`,i=`${n}#icon-large`;export{i as n,t as r,r as t};

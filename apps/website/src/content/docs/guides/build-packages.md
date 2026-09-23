@@ -5,63 +5,65 @@ sidebar:
   label: Building packages
 ---
 
-import { Steps } from "@astrojs/starlight/components";
+This guide is for **package** developers. It supplements the general [Development guide](/getting-started/develop) with additional instructions to build a package on top of StrataKit.
 
-## Quick start
+## Define peer dependencies
 
-This guide is for **package** developers. It supplements the general [Development guide](/getting-started/develop) with package-specific instructions.
+Add [shared packages](#shared-packages) to your `package.json` as [peer dependencies](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies) instead of regular dependencies:
 
-Follow the steps listed below to build a package on top of StrataKit.
+```json
+{
+	"peerDependencies": {
+		"@stratakit/mui": "^1.0.0"
+	}
+}
+```
 
-<Steps>
+:::note
+`@mui/material`, `react` and `react-dom` should also be listed under `peerDependencies`.
+:::
 
-1. **Install shared packages**
+If you are using StrataKit CSS variables or other foundations in your package, add the `@stratakit/foundations` shared package to your `peerDependencies` to explicitly control the package version:
 
-   Install [shared packages](#shared-packages) as [peer dependencies](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies) instead of regular dependencies:
+```json
+{
+	"peerDependencies": {
+		"@stratakit/foundations": "^1.0.0"
+	}
+}
+```
 
-   ```console
-   npm add @stratakit/mui --save-peer
-   ```
+## Define dependencies
 
-   :::note
-   `@mui/material`, `react` and `react-dom` should also be installed as peer dependencies.
-   :::
+To use StrataKit structures in your package, add `@stratakit/structures` to your `dependencies`:
 
-2. **Set up TypeScript types**
+```json
+{
+	"dependencies": {
+		"@stratakit/structures": "^0.6.1"
+	}
+}
+```
 
-   Add `@stratakit/mui/types.d.ts` to your **tsconfig** file as described in the [development guide](/getting-started/develop/#quick-start).
+To use StrataKit icons, add `@stratakit/icons` to your `dependencies`:
 
-3. **Use icons** (optional)
+```json
+{
+	"dependencies": {
+		"@stratakit/icons": "^0.4.4"
+	}
+}
+```
 
-   To use StrataKit icons, install the `@stratakit/icons` package:
+Use StrataKit icons as described in the [development guide](/getting-started/develop/#quick-start).
 
-   ```console
-   npm add @stratakit/icons
-   ```
+:::note
+Packages don't configure the bundler themselves - the host application is responsible for [serving StrataKit icons as external SVG files](/getting-started/develop/#bundler-configuration).
+:::
 
-   Use StrataKit icons as described in the [development guide](/getting-started/develop/#quick-start).
+## Set up TypeScript types
 
-   :::note
-   Packages don't configure the bundler themselves - the host application is responsible for [serving StrataKit icons as external SVG files](/getting-started/develop/#bundler-configuration).
-   :::
-
-4. **Use foundations** (optional)
-
-   If you are using StrataKit CSS variables or other foundations in your package, install the `@stratakit/foundations` [shared package](#shared-packages) to explicitly control the package version:
-
-   ```console
-   npm add @stratakit/foundations --save-peer
-   ```
-
-5. **Use structures** (optional)
-
-   To use StrataKit structures in your package, install the `@stratakit/structures` package:
-
-   ```console
-   npm add @stratakit/structures
-   ```
-
-</Steps>
+Add `@stratakit/mui/types.d.ts` to your **tsconfig** file as described in the [development guide](/getting-started/develop/#quick-start).
 
 ## Shared packages
 
@@ -78,7 +80,7 @@ Other shared packages include:
 - `react`
 - `react-dom`
 
-Packages should install shared packages as [`peerDependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies) and ensure that the implementation supports the specified range.
+Packages should list shared packages under [`peerDependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies) and ensure that the implementation supports the specified range.
 
 Applications should install shared packages as regular [`dependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#dependencies).
 

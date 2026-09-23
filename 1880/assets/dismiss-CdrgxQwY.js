@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-Mi2ETXlw.js";var t=`${e}#icon`;`${e}`;export{t};

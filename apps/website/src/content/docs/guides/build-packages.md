@@ -23,7 +23,11 @@ Other packages that should be listed as peer dependencies:
 - `react`
 - `react-dom`
 
-Define the `peerDependencies` field of your `package.json`:
+:::caution
+Version ranges of peer dependencies should be carefully managed to ensure compatibility across all packages in the project.
+:::
+
+Define the `peerDependencies` in your `package.json`:
 
 ```json
 {
@@ -36,22 +40,10 @@ Define the `peerDependencies` field of your `package.json`:
 }
 ```
 
-:::caution
-Version ranges of peer dependencies should be carefully managed to ensure compatibility across all packages in the project.
-:::
-
 To use StrataKit icons in your package, add `@stratakit/icons` to your `peerDependencies`:
 
-```diff
-{
-	"peerDependencies": {
-		"@mui/material": "^9.4.0",
-+		"@stratakit/icons": "^0.4.4",
-		"@stratakit/mui": "^1.0.0",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
-	}
-}
+```console
+npm add @stratakit/icons --save-peer
 ```
 
 Use StrataKit icons as described in the [development guide](/getting-started/develop/#quick-start).
@@ -62,29 +54,16 @@ Packages don't configure the bundler themselves - the host application is respon
 
 If you are using StrataKit CSS variables or other foundations in your package, add `@stratakit/foundations` to your `peerDependencies` to explicitly control the package version:
 
-```diff
-{
-	"peerDependencies": {
-		"@mui/material": "^9.4.0",
-+		"@stratakit/foundations": "^1.0.0",
-		"@stratakit/icons": "^0.4.4",
-		"@stratakit/mui": "^1.0.0",
-		"react": "^19.0.0",
-		"react-dom": "^19.0.0"
-	}
-}
+```console
+npm add @stratakit/foundations --save-peer
 ```
 
 ## Define dependencies
 
 To use StrataKit structures in your package, add `@stratakit/structures` to your `dependencies`:
 
-```json
-{
-	"dependencies": {
-		"@stratakit/structures": "^0.6.1"
-	}
-}
+```console
+npm add @stratakit/structures
 ```
 
 ## Set up TypeScript types

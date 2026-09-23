@@ -11,6 +11,7 @@ import Stack from "@mui/material/Stack";
 import { ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import deepmerge from "@mui/utils/deepmerge";
+import { svgScript } from "@stratakit/icons/script";
 import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import {
@@ -25,7 +26,6 @@ import { useIsWideScreen } from "~/~utils.tsx";
 import type { ComponentsProps, Theme } from "@mui/material/styles";
 import type { Knob } from "~/~utils.tsx";
 
-import svgScript from "@stratakit/icons/script.svg";
 import styles from "./mui.module.css";
 
 // ----------------------------------------------------------------------------

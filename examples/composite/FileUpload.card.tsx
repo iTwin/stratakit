@@ -108,7 +108,6 @@ function FilePicker({ label, onFilesChange }: FilePickerProps) {
 				type="file"
 				multiple
 				style={visuallyHidden}
-				className={styles.input}
 				onChange={(event) => {
 					onFilesChange(event.currentTarget.files);
 					event.currentTarget.value = "";

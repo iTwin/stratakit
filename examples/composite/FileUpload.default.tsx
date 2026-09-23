@@ -8,7 +8,6 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 import { Icon } from "@stratakit/mui";
 
 import svgUpload from "@stratakit/icons/upload.svg";
-import styles from "./FileUpload.default.module.css";
 
 export default () => {
 	return (
@@ -19,12 +18,7 @@ export default () => {
 			nativeButton={false}
 		>
 			Upload
-			<input
-				type="file"
-				multiple
-				style={visuallyHidden}
-				className={styles.input}
-			/>
+			<input type="file" multiple style={visuallyHidden} />
 		</Button>
 	);
 };

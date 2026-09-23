@@ -28,6 +28,7 @@ Make sure the **color picker** is suitable for your use case. There may be other
 - Use a clear, descriptive label to explain what the color controls.
 - Display the selected color so users can confirm the result.
 - Use the native color input to select a single color.
+- Use a separate control to adjust the color's `alpha` value.
 
 ## 🚫 Don't
 

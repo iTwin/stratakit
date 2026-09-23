@@ -44,7 +44,7 @@ Now you can use any components directly from `@mui/material`, and they will be a
 
 ```jsx
 import { Icon } from "@stratakit/mui";
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 
 <Icon href={svgPlaceholder} />;
 ```

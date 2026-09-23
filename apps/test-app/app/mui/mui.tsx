@@ -216,7 +216,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 					<KnobControlEntrypoint />
 					<IconButton
 						render={<a />}
-						href={useHref(`/showcase?component=mui/${name}`)}
+						href={useHref(`/showcase?path=mui/${name}.showcase`)}
 						label="Standalone showcase"
 						size="small"
 					>

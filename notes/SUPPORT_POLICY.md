@@ -69,7 +69,7 @@ Each major release of a StrataKit package undergoes a support lifecycle consisti
   <dd>The most recent major release. It receives regular updates containing new features, bug fixes, and security patches.</dd>
 
   <dt>🔧 Maintenance</dt>
-  <dd>Immediately after a new major release, the "current" version becomes a "maintenance" version. It receives updates containing bug fixes and security patches.</dd>
+  <dd>Immediately after a new major release, the "current" version becomes a "maintenance" version. It receives updates containing significant bug fixes and security patches.</dd>
 
   <dt>💀 End-of-life</dt>
   <dd>After six months a "maintenance" version transitions to "end of life", after which it receives no further updates.</dd>

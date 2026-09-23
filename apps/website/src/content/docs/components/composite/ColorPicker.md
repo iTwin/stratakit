@@ -25,14 +25,13 @@ Make sure the **color picker** is suitable for your use case. There may be other
 
 ## ✅ Do
 
-- Use a clear label or adjacent text that explains what the color controls.
-- Keep the selected value visible so users can confirm the result.
-- Use the native input when a single color value is the only required choice.
+- Use a clear, descriptive label to explain what the color controls.
+- Display the selected color so users can confirm the result.
+- Use the native color input to select a single color.
 
 ## 🚫 Don't
 
-- Don't use a **color picker** when users need to choose from many color options with custom previews or alpha editing.
-- Don't rely on color alone to communicate meaning; pair it with text or a label.
+- Don't use a native color input to limit selection to one of predefined color values.
 
 ## API reference
 

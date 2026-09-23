@@ -147,7 +147,7 @@
 		background-color: var(--✨icon-disabled-color);
 	}
 
-	:where(.MuiSwitch-root.Mui-checked) &::before {
+	:where(.MuiSwitch-root .Mui-checked) &::before {
 		opacity: 1;
 		/* Fade in after the thumb has completed its animation when going from off->on */
 		transition-delay: 150ms;

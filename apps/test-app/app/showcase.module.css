@@ -3,9 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/brand-bentley-systems.svg";
-
-export const svgBrandBentleySystems = `${url}#icon`;
-export const svgBrandBentleySystemsLarge = `${url}#icon-large`;
-export const svgBrandBentleySystemsFilled = `${url}#filled`;
-export const svgBrandBentleySystemsFilledLarge = `${url}#filled-large`;
+.root {
+	padding: var(--stratakit-space-400);
+	block-size: 100dvb;
+}

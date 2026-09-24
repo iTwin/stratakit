@@ -3,9 +3,15 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/brand-bentley-systems.svg";
+.MuiBreadcrumbs-separator {
+	min-inline-size: 1rem; /* Reserve space for a separator icon when a text character is used instead */
+	justify-content: center;
 
-export const svgBrandBentleySystems = `${url}#icon`;
-export const svgBrandBentleySystemsLarge = `${url}#icon-large`;
-export const svgBrandBentleySystemsFilled = `${url}#filled`;
-export const svgBrandBentleySystemsFilledLarge = `${url}#filled-large`;
+	:where(.MuiBreadcrumbs-li:has(.MuiButtonBase-root)) + & {
+		margin-inline-start: 0;
+	}
+
+	&:where(:has(+ .MuiBreadcrumbs-li > .MuiButtonBase-root)) {
+		margin-inline-end: 0;
+	}
+}

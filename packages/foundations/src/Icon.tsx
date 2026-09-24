@@ -66,7 +66,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
  * <Icon href={svgArrow} />
  * ```
  *
- * Inline SVG elements are also supported, via the `render `prop:
+ * Inline SVG elements are also supported, via the `render` prop:
  *
  * ```tsx
  * <Icon render={<svg><path d="…" fill="currentColor" /></svg>} />

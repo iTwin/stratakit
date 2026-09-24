@@ -1,1 +1,0 @@
-var e=`/1643/docs/_astro/save.Brs3a-6s.svg`;`${e}`;var t=`${e}#icon-large`;export{t};

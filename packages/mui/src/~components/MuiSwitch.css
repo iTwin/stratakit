@@ -143,18 +143,18 @@
 		transition-duration: 0; /* Hide immediately when going from on->off to avoid getting moved or stretched by the thumb transform */
 	}
 
-	:where(.MuiSwitch-root.Mui-disabled) &::before {
+	:where(.MuiSwitch-switchBase.Mui-disabled) &::before {
 		background-color: var(--✨icon-disabled-color);
 	}
 
-	:where(.MuiSwitch-root .Mui-checked) &::before {
+	:where(.MuiSwitch-switchBase.Mui-checked) &::before {
 		opacity: 1;
 		/* Fade in after the thumb has completed its animation when going from off->on */
 		transition-delay: 150ms;
 		transition-duration: 100ms;
 	}
 
-	:where(.MuiSwitch-root:has(.MuiSwitch-input:active)) &::before {
+	:where(.MuiSwitch-switchBase:has(.MuiSwitch-input:active)) &::before {
 		/* 
 			Hide it immediately when pressed to avoid showing it in the stretched
 			button. Use display instead of transition-duration to avoid having to add

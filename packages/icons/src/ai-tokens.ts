@@ -3,9 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/brand-bentley-systems.svg";
+import url from "../icons/ai-tokens.svg";
 
-export const svgBrandBentleySystems = `${url}#icon`;
-export const svgBrandBentleySystemsLarge = `${url}#icon-large`;
-export const svgBrandBentleySystemsFilled = `${url}#filled`;
-export const svgBrandBentleySystemsFilledLarge = `${url}#filled-large`;
+export const svgAITokens = `${url}#icon`;
+export const svgAITokensLarge = `${url}#icon-large`;

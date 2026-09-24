@@ -1,0 +1,1 @@
+import{t as e}from"./info-WN4LA4c_.js";var t=`${e}#icon`;`${e}`;export{t};

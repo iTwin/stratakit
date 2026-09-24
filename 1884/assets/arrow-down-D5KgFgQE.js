@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-DaN5V_CC.js";var t=`${e}#icon`;`${e}`;export{t};

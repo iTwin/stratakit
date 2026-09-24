@@ -7,3 +7,5 @@ import url from "../icons/star.svg";
 
 export const svgStar = `${url}#icon`;
 export const svgStarLarge = `${url}#icon-large`;
+export const svgStarFilled = `${url}#filled`;
+export const svgStarFilledLarge = `${url}#filled-large`;

@@ -5,13 +5,12 @@
 
 import * as React from "react";
 import { Divider, IconButton } from "@stratakit/bricks";
+import { svgPlaceholderLarge } from "@stratakit/icons/placeholder";
 import {
 	DropdownMenu,
 	unstable_Toolbar as Toolbar,
 } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page() {
@@ -24,7 +23,7 @@ export default definePage(
 				<Toolbar.Item
 					render={
 						<IconButton
-							icon={`${svgPlaceholder}#icon-large`}
+							icon={svgPlaceholderLarge}
 							label="Click me"
 							variant="ghost"
 							active={active === "1"}
@@ -38,7 +37,7 @@ export default definePage(
 							<DropdownMenu.Button
 								render={
 									<IconButton
-										icon={`${svgPlaceholder}#icon-large`}
+										icon={svgPlaceholderLarge}
 										label="Click me"
 										variant="ghost"
 										{...itemProps}
@@ -56,7 +55,7 @@ export default definePage(
 				<Toolbar.Item
 					render={
 						<IconButton
-							icon={`${svgPlaceholder}#icon-large`}
+							icon={svgPlaceholderLarge}
 							label="Click me"
 							variant="ghost"
 							active={active === "3"}
@@ -84,7 +83,7 @@ function TestToolbar({ orientation, hasPopup }: TestToolbarProps) {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${svgPlaceholder}#icon-large`}
+						icon={svgPlaceholderLarge}
 						label="Click me"
 						variant="ghost"
 					/>
@@ -96,7 +95,7 @@ function TestToolbar({ orientation, hasPopup }: TestToolbarProps) {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${svgPlaceholder}#icon-large`}
+						icon={svgPlaceholderLarge}
 						label="Click me"
 						variant="ghost"
 						active
@@ -106,7 +105,7 @@ function TestToolbar({ orientation, hasPopup }: TestToolbarProps) {
 			<Toolbar.Item
 				render={
 					<IconButton
-						icon={`${svgPlaceholder}#icon-large`}
+						icon={svgPlaceholderLarge}
 						label="Click me"
 						variant="ghost"
 						aria-haspopup={hasPopup ? "true" : undefined} // Just for visual test. Do not do this in real code.

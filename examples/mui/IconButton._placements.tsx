@@ -4,9 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import IconButton from "@mui/material/IconButton";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { Icon } from "@stratakit/mui";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 type IconButtonProps = React.ComponentProps<typeof IconButton>;
 const placements = [

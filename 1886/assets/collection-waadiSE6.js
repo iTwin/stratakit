@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CHTBqLa3.js";import{C as t,S as n,T as r,U as i,Wt as a}from"./Icon-0tG8K39O.js";import{a as o,s}from"./collection-store-B2zlolD8.js";var c=e(),l=`div`,u=t(function({store:e,...t}){let n=s();return e||=n,t=i(t,t=>(0,c.jsx)(o,{value:e,children:t}),[e]),a(t)}),d=r(function(e){let t=u(e);return n(l,t)});export{d as t};

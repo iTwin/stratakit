@@ -1,1 +1,0 @@
-import{t as e}from"./star-DsM44_cF.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

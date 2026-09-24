@@ -1,0 +1,17 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.stepperTitle {
+	text-align: center;
+	margin-bottom: var(--stratakit-space-400);
+}
+
+.completed {
+	display: none;
+
+	.labelCompleted & {
+		display: inline;
+	}
+}

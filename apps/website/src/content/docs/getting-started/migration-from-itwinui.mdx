@@ -63,7 +63,7 @@ Migration to StrataKit can be done gradually, since iTwinUI can coexist in the s
 
 3. **Replace `@itwin/itwinui-icons-react` with `@stratakit/icons`**
 
-   Replace the usage of iTwinUI icons from `@itwin/itwinui-icons-react` with their StrataKit counterparts. Refer to the [use StrataKit icons](#use-stratakit-icons) section below for the icon mapping.
+   Replace the usage of iTwinUI icons from `@itwin/itwinui-icons-react` with their StrataKit counterparts. Refer to the [use StrataKit icons](#use-stratakit-icons) section below for the full icon mapping.
 
    ```diff
    - import { SvgAdd } from '@itwin/itwinui-icons-react';
@@ -82,9 +82,7 @@ Migration to StrataKit can be done gradually, since iTwinUI can coexist in the s
 
 4. **Replace usage of `@itwin/itwinui-react`**
 
-   Replace the usage of components from `@itwin/itwinui-react` with their [StrataKit counterparts](/components/overview/).
-
-   Some components are provided by `@mui/material`. Others live in `@stratakit/structures`.
+   Replace the usage of components from `@itwin/itwinui-react` with their [StrataKit counterparts](/components/overview/). Some components are provided by `@mui/material`, while others live in `@stratakit/structures`.
 
    Once all usage of `@itwin/itwinui-react` has been replaced, it is safe to remove the dependency.
 
@@ -98,7 +96,7 @@ Migration to StrataKit can be done gradually, since iTwinUI can coexist in the s
 
 By default, StrataKit uses its preferred **"aurora"** green [accent color](/components/root/#accent-color). Some legacy applications rely on a blue accent color, especially when parts of the UI are not implemented with up-to-date iTwinUI components. In these cases, the aurora accent color can clash with the existing UI or require significant adjustments to it.
 
-To ease the visual transition, use StrataKit's "cobalt" accent color, which is designed for better compatibility with iTwinUI's color palette. Set the `unstable_accentColor` prop on the [**Root**](/components/root) component to apply the accent color to all StrataKit components.
+To ease the visual transition, use StrataKit's **"cobalt"** accent color, which is designed for better compatibility with iTwinUI's color palette. Set the `unstable_accentColor` prop on the [**Root**](/components/root) component to apply the accent color to all StrataKit components.
 
 ```diff
  <ThemeProvider
@@ -108,11 +106,11 @@ To ease the visual transition, use StrataKit's "cobalt" accent color, which is d
  </ThemeProvider>
 ```
 
-Once the visual transition is complete, remove the `unstable_accentColor` prop to continue using StrataKit's preferred **"aurora"** accent color.
+Once the visual transition is complete, remove the `unstable_accentColor` prop to continue using StrataKit's preferred accent color.
 
 ## Use StrataKit icons
 
-Replace [iTwinUI icons](https://itwin.github.io/iTwinUI-icons/) with their [StrataKit counterparts](/icons).
+Replace [iTwinUI icons](https://itwin.github.io/iTwinUI-icons/) with their [StrataKit counterparts](/icons) using the mapping below.
 
 | iTwinUI icon                  | StrataKit icon                    |
 | ----------------------------- | --------------------------------- |

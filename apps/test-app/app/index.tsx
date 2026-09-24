@@ -244,9 +244,7 @@ function GettingStartedSection() {
 						title="Migration"
 						icon={svgSwapLarge}
 						description="Transitioning from legacy iTwinUI to StrataKit."
-						href={useHref(
-							"/docs/getting-started/develop/#migrating-from-itwinui",
-						)}
+						href={useHref("/docs/getting-started/migration-from-itwinui/")}
 					/>
 				</li>
 			</ul>

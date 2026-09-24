@@ -5,6 +5,8 @@ description: File uploads let users select and attach one or more files.
 
 ::example{src="composite/FileUpload.default"}
 
+Use a native [`<input type="file">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file) to let users select one or more files. Provide feedback about the upload status so users know when their files have been received successfully.
+
 ## Use cases
 
 Make sure **file upload** is suitable for your use case. There may be other, more appropriate components available.
@@ -16,10 +18,6 @@ Make sure **file upload** is suitable for your use case. There may be other, mor
 | Trigger an action without selecting files       | ❌                                    | ❌                                 | ✅                           |
 
 ## Examples
-
-### Default
-
-Use a native [`<input type="file">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file) paired with [`Button`](/components/button) for the most basic file upload experience. You'll want to give the user some indication that the file was successfully uploaded.
 
 ### Card
 

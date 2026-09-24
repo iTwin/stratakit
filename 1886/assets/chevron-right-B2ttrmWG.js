@@ -1,1 +1,0 @@
-import{r as e,t}from"./chevron-right-BuGCrU2X.js";var n=`${e}#icon`;`${e}`;var r=`${t}#icon`;`${t}`;export{n,r as t};

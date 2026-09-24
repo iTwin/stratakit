@@ -1,1 +1,0 @@
-import{t as e}from"./status-success-BgOA_huj.js";var t=`${e}#icon`;`${e}`;export{t};

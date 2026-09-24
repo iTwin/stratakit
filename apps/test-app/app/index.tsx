@@ -13,6 +13,12 @@ import CardContent from "@mui/material/CardContent";
 import CardHeader from "@mui/material/CardHeader";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { svgComponentsLarge } from "@stratakit/icons/components";
+import { svgDeveloperLarge } from "@stratakit/icons/developer";
+import { svgLightbulbLarge } from "@stratakit/icons/lightbulb";
+import { svgMoon } from "@stratakit/icons/moon";
+import { svgSun } from "@stratakit/icons/sun";
+import { svgSwapLarge } from "@stratakit/icons/swap";
 import { Icon } from "@stratakit/mui";
 import { SettingsDialog, useSettingsStore } from "./~settings.tsx";
 import { isProduction, useColorScheme } from "./~utils.tsx";
@@ -20,12 +26,6 @@ import { SvgStrataKitLogo } from "./assets/SvgStrataKitLogo.tsx";
 
 import type { LinksFunction, MetaFunction } from "react-router";
 
-import svgComponents from "@stratakit/icons/components.svg";
-import svgDeveloper from "@stratakit/icons/developer.svg";
-import svgLightbulb from "@stratakit/icons/lightbulb.svg";
-import svgMoon from "@stratakit/icons/moon.svg";
-import svgSun from "@stratakit/icons/sun.svg";
-import svgSwap from "@stratakit/icons/swap.svg";
 import svgBentleyWordmark from "./assets/bentley-wordmark.svg";
 import svgIcons from "./assets/icons.svg";
 import svgMuiLogo from "./assets/mui.svg";
@@ -224,7 +224,7 @@ function GettingStartedSection() {
 				<li>
 					<SectionCard
 						title="Introduction"
-						icon={`${svgLightbulb}#icon-large`}
+						icon={svgLightbulbLarge}
 						description="Learn the fundamental principles and core philosophies behind the design system."
 						href={useHref("/docs")}
 					/>
@@ -233,7 +233,7 @@ function GettingStartedSection() {
 				<li>
 					<SectionCard
 						title="Developer setup"
-						icon={`${svgDeveloper}#icon-large`}
+						icon={svgDeveloperLarge}
 						description="Installation guide for React-based projects."
 						href={useHref("/docs/getting-started/develop/")}
 					/>
@@ -242,7 +242,7 @@ function GettingStartedSection() {
 				<li>
 					<SectionCard
 						title="Migration"
-						icon={`${svgSwap}#icon-large`}
+						icon={svgSwapLarge}
 						description="Transitioning from legacy iTwinUI to StrataKit."
 						href={useHref(
 							"/docs/getting-started/develop/#migrating-from-itwinui",
@@ -298,7 +298,7 @@ function StructureSection() {
 				<li>
 					<SectionCard
 						title="Components"
-						icon={`${svgComponents}#icon-large`}
+						icon={svgComponentsLarge}
 						description="Browse the complete catalog of production-ready components."
 						href={componentsLink}
 					/>
@@ -337,7 +337,7 @@ function DebugSection() {
 				<li>
 					<SectionCard
 						title="StrataKit components"
-						icon={`${svgComponents}#icon-large`}
+						icon={svgComponentsLarge}
 						description="Live demos of custom StrataKit components."
 						href={useHref("/tests/accordion-item")}
 					/>

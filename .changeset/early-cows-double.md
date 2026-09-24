@@ -1,5 +1,5 @@
 ---
-"@stratakit/mui": minor
+"@stratakit/mui": patch
 ---
 
-Add `variant="outlined"` styling to `Paper`.
+Fixed `variant="outlined"` styling on `Paper`.

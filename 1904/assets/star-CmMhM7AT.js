@@ -1,0 +1,1 @@
+import{t as e}from"./star-CCG-HA_9.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

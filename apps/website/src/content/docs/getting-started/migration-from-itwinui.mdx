@@ -571,3 +571,38 @@ Replace [iTwinUI components](https://itwinui.bentley.com/docs/components) compon
 | [`TransferList`](https://itwinui.bentley.com/docs/transferlist)                | Composite transfer list                                                                                                                                                                        |
 | [`Tree`](https://itwinui.bentley.com/docs/tree)                                | StrataKit [`Tree`](/components/tree/)                                                                                                                                                          |
 | [`VisuallyHidden`](https://itwinui.bentley.com/docs/visuallyhidden)            | -                                                                                                                                                                                              |
+
+:::tip
+Read additional [StrataKit component documentation](/components/overview/) for more details on usage and customization.
+:::
+
+### Alert
+
+- Use the `severity` prop to replicate iTwinUI `Alert`'s [`status`](https://itwinui.bentley.com/docs/alert#statuses) prop.
+- Set the CSS [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position) property to `sticky` to replicate iTwinUI `Alert`'s [`sticky`](https://itwinui.bentley.com/docs/alert#sticky-alert) prop.
+
+### Anchor
+
+- Append the `Link` with an [`Icon`](/components/icon/) displaying [`window-popout.svg`](/icons/) to replicate iTwinUI's `Anchor`'s [`external`](https://itwinui.bentley.com/docs/anchor#external-links) prop.
+- The [`underline`](https://itwinui.bentley.com/docs/alert#underlines) prop has been purposefully not exposed as a prop and is instead handled by the design system itself.
+
+### Avatar
+
+- Set the CSS [`block-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/block-size) and [`inline-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/inline-size) properties to replicate iTwinUI `Avatar`'s [`size`](https://itwinui.bentley.com/docs/avatar#sizes) prop.
+- Pair with [`Badge`](/components/badge/) to replicate iTwinUI `Avatar`'s [`status`](https://itwinui.bentley.com/docs/avatar#status-indicators) prop.
+
+### AvatarGroup
+
+- Use the [`renderSurplus`](/components/avatargroup/#surplus) prop to replicate iTwinUI `AvatarGroup`'s [overflow](https://itwinui.bentley.com/docs/avatar#overflow).
+
+### Badge
+
+- Use the [`color`](/components/badge/#colors) prop to replicate iTwinUI `Badge`'s [status background colors](https://itwinui.bentley.com/docs/badge#statuses).
+
+### Blockquote
+
+- Use the native [`<blockquote>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/blockquote) element.
+
+### Breadcrumbs
+
+- The [truncation](https://itwinui.bentley.com/docs/breadcrumbs#truncation) feature is not suggested.

@@ -16,12 +16,19 @@ links:
 
 ### Buttons
 
-Breadcrumb items are typically rendered as links. If a breadcrumb item triggers in-page navigation without changing the URL, the [**button**](/components/button) style may be more appropriate.
+Breadcrumb items are typically rendered as links. If a breadcrumb item triggers in-page navigation without changing the URL, the [**Button**](/components/button) style may be more appropriate.
 
 ::example{src="mui/Breadcrumbs.button"}
+
+### Truncation
+
+When the full hierarchy does not fit, hide intermediate breadcrumb items and use a [**Menu**](/components/menu) to provide access to them.
+
+::example{src="mui/Breadcrumbs.menu"}
 
 ## API reference
 
 - [`Breadcrumbs`](https://mui.com/material-ui/api/breadcrumbs/)
 - [`Link`](https://mui.com/material-ui/api/link/)
 - [`Button`](https://mui.com/material-ui/api/button/)
+- [`Menu`](https://mui.com/material-ui/api/menu/)

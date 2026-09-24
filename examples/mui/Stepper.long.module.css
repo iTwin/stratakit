@@ -2,17 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.long {
-	position: relative;
-	padding-bottom: 2.5rem;
-}
 
-.label {
-	position: absolute;
-	inset-block-end: 0;
-	inset-inline-start: 0;
-	inset-inline-end: 0;
+.stepperTitle {
 	text-align: center;
+	margin-bottom: var(--stratakit-space-400);
 }
 
 .completed {

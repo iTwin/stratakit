@@ -6,7 +6,7 @@
 import React from "react";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import Step, { useStepContext } from "@mui/material/Step";
+import Step from "@mui/material/Step";
 import StepLabel from "@mui/material/StepLabel";
 import Stepper from "@mui/material/Stepper";
 import Typography from "@mui/material/Typography";
@@ -14,37 +14,42 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 
 import styles from "./Stepper.long.module.css";
 
-function LongStepLabel({
-	children,
-	index,
-	total,
-	...rest
-}: React.ComponentProps<typeof StepLabel> & { index: number; total: number }) {
-	const context = useStepContext();
+function LongStep({ children, ...rest }: React.ComponentProps<typeof Step>) {
 	return (
-		<StepLabel
-			{...rest}
-			slotProps={{
-				label: {
-					className: styles.label,
-					style: !("active" in context && context.active)
-						? visuallyHidden
-						: undefined,
-				},
-			}}
-			classes={{
-				completed: styles.labelCompleted,
-			}}
-		>
+		<Step {...rest}>
+			<StepLabel
+				slotProps={{
+					label: {
+						style: visuallyHidden,
+					},
+				}}
+				classes={{
+					completed: styles.labelCompleted,
+				}}
+			>
+				{children}
+				<span className={styles.completed}> (completed)</span>
+			</StepLabel>
+		</Step>
+	);
+}
+
+function StepperTitle({
+	index,
+	stepNames,
+}: {
+	index: number;
+	stepNames: string[];
+}) {
+	return (
+		<div className={styles.stepperTitle}>
 			<Typography aria-hidden render={<span />} color="textSecondary">
-				Step {index + 1} of {total}:{" "}
+				Step {index + 1} of {stepNames.length}:{" "}
+			</Typography>{" "}
+			<Typography render={<span />} color="textPrimary">
+				{stepNames[index]}
 			</Typography>
-			{children}
-			<span style={visuallyHidden} className={styles.completed}>
-				{" "}
-				(completed)
-			</span>
-		</StepLabel>
+		</div>
 	);
 }
 
@@ -52,30 +57,24 @@ export default () => {
 	const [activeStep, setActiveStep] = React.useState(2);
 	const total = 4;
 
+	const stepNames = [
+		"Requirements Definition",
+		"Architecture Design",
+		"Environment Provisioning",
+		"Implementation & Integration",
+	];
+
 	return (
 		<Stack spacing={2}>
 			<Stepper activeStep={activeStep} className={styles.long}>
-				<Step>
-					<LongStepLabel index={0} total={total}>
-						Requirements Definition
-					</LongStepLabel>
-				</Step>
-				<Step>
-					<LongStepLabel index={1} total={total}>
-						Architecture Design
-					</LongStepLabel>
-				</Step>
-				<Step>
-					<LongStepLabel index={2} total={total}>
-						Environment Provisioning
-					</LongStepLabel>
-				</Step>
-				<Step>
-					<LongStepLabel index={3} total={total}>
-						Implementation & Integration
-					</LongStepLabel>
-				</Step>
+				{stepNames.map((name, index) => (
+					<LongStep key={name} completed={index < activeStep}>
+						{name}
+					</LongStep>
+				))}
 			</Stepper>
+			<StepperTitle stepNames={stepNames} index={activeStep} />
+
 			<Stack direction="row" spacing={1}>
 				<Button
 					onClick={() => setActiveStep((step) => step - 1)}

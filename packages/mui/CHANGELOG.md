@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- [#1855](https://github.com/iTwin/stratakit/pull/1855): Added styling support for `type="color"` rendered by `Input`.
+- [#1886](https://github.com/iTwin/stratakit/pull/1886): Added checkmark icon to `Switch` when in the on position.
+
+### Patch Changes
+
+- [#1882](https://github.com/iTwin/stratakit/pull/1882): When `Link` has no `href`, its font weight matches regular text.
+- [#1890](https://github.com/iTwin/stratakit/pull/1890): Fixed the `variant` prop of `CardHeader`'s `slotProps.title`.
+- [#1903](https://github.com/iTwin/stratakit/pull/1903): Fixed text alignment for month buttons in `DatePicker`.
+- [#1882](https://github.com/iTwin/stratakit/pull/1882): Improved visuals of `Breadcrumbs` when used with `Button`.
+
 ## 1.0.2
 
 ### Patch Changes

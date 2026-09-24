@@ -57,9 +57,9 @@ Migration to StrataKit can be done gradually, since iTwinUI can coexist in the s
     </ThemeProvider>
    ```
 
-3. **Replace `@itwin/itwinui-icons` with `@stratakit/icons`**
+3. **Replace `@itwin/itwinui-icons-react` with `@stratakit/icons`**
 
-   Replace the usage of iTwinUI icons from `@itwin/itwinui-icons` with their StrataKit counterparts. Refer to the [use StrataKit icons](#use-stratakit-icons) section below for the icon mapping.
+   Replace the usage of iTwinUI icons from `@itwin/itwinui-icons-react` with their StrataKit counterparts. Refer to the [use StrataKit icons](#use-stratakit-icons) section below for the icon mapping.
 
    ```diff
    - import { SvgAdd } from '@itwin/itwinui-icons-react';
@@ -70,10 +70,10 @@ Migration to StrataKit can be done gradually, since iTwinUI can coexist in the s
    + <Icon href={svgAdd} />
    ```
 
-   Once all usage of `@itwin/itwinui-icons` has been replaced, it is safe to remove the dependency.
+   Once all usage of `@itwin/itwinui-icons-react` has been replaced, it is safe to remove the dependency.
 
    ```console
-   npm uninstall @itwin/itwinui-icons
+   npm uninstall @itwin/itwinui-icons-react
    ```
 
 4. **Replace usage of `@itwin/itwinui-react`**

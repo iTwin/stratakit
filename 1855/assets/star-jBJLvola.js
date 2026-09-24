@@ -1,1 +1,0 @@
-import{t as e}from"./star-CSGNnMm6.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

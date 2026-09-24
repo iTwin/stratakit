@@ -1,12 +1,15 @@
 {
 	"2d": {
-		"aliases": ["view", "model", "visualize", "dimension", "two"]
+		"aliases": ["view", "model", "visualize", "dimension", "two"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"3d-object": {
-		"aliases": ["render", "model", "three", "element"]
+		"aliases": ["render", "model", "three", "element"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"3d": {
-		"aliases": ["view", "model", "visualize", "dimension", "three"]
+		"aliases": ["view", "model", "visualize", "dimension", "three"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"4d": {
 		"aliases": [
@@ -18,7 +21,8 @@
 			"view",
 			"time",
 			"four"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"access-inherited": {
 		"aliases": [
@@ -33,7 +37,8 @@
 			"privilege",
 			"rights",
 			"lock"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"action-script": {
 		"aliases": [
@@ -48,13 +53,16 @@
 			"program",
 			"run",
 			"task"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"activity": {
-		"aliases": ["monitor", "track", "measure", "analyze", "report", "pulse"]
+		"aliases": ["monitor", "track", "measure", "analyze", "report", "pulse"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"add-circle": {
-		"aliases": ["create", "insert", "new", "attach", "plus", "+"]
+		"aliases": ["create", "insert", "new", "attach", "plus", "+"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"add-region": {
 		"aliases": [
@@ -71,16 +79,20 @@
 			"division",
 			"volume",
 			"space"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"add-square": {
-		"aliases": ["create", "insert", "new", "attach", "plus", "+"]
+		"aliases": ["create", "insert", "new", "attach", "plus", "+"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"add": {
-		"aliases": ["create", "insert", "new", "attach", "plus", "+"]
+		"aliases": ["create", "insert", "new", "attach", "plus", "+"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"ai-chat-add": {
-		"aliases": ["assistant", "bot", "conversation", "new"]
+		"aliases": ["assistant", "bot", "conversation", "new"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"ai-chat": {
 		"aliases": [
@@ -89,7 +101,8 @@
 			"bot",
 			"conversation",
 			"intelligence"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"ai-sparkle": {
 		"aliases": [
@@ -100,7 +113,8 @@
 			"optimize",
 			"process",
 			"generate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"ai-tokens": {
 		"aliases": [
@@ -114,10 +128,12 @@
 			"value",
 			"model",
 			"artificial intelligence"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"airplane": {
-		"aliases": ["transport", "dispatch", "travel", "fly", "flight"]
+		"aliases": ["transport", "dispatch", "travel", "fly", "flight"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"align-bottom": {
 		"aliases": [
@@ -130,7 +146,8 @@
 			"structure",
 			"format",
 			"layout"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"align-center-horizontal": {
 		"aliases": [
@@ -143,7 +160,8 @@
 			"layout",
 			"organize",
 			"structure"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"align-center-vertical": {
 		"aliases": [
@@ -156,7 +174,8 @@
 			"layout",
 			"organize",
 			"structure"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"align-left": {
 		"aliases": [
@@ -169,7 +188,8 @@
 			"structure",
 			"format",
 			"layout"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"align-right": {
 		"aliases": [
@@ -182,7 +202,8 @@
 			"structure",
 			"format",
 			"layout"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"align-top": {
 		"aliases": [
@@ -195,7 +216,8 @@
 			"structure",
 			"format",
 			"layout"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"annotate-balloon": {
 		"aliases": [
@@ -211,7 +233,8 @@
 			"note",
 			"bill-of-materials",
 			"balloon-text"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"annotation": {
 		"aliases": [
@@ -224,7 +247,8 @@
 			"explain",
 			"document",
 			"reference"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"apply-down": {
 		"aliases": [
@@ -237,10 +261,12 @@
 			"inherited",
 			"bulk-apply",
 			"cells"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"arc": {
-		"aliases": ["draw", "shape", "curve", "construct", "line", "path"]
+		"aliases": ["draw", "shape", "curve", "construct", "line", "path"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"archive": {
 		"aliases": [
@@ -254,40 +280,52 @@
 			"consolidate",
 			"retain",
 			"box"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"area-building": {
-		"aliases": ["structure", "footprint", "region", "zone", "space"]
+		"aliases": ["structure", "footprint", "region", "zone", "space"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"area-island-traffic": {
-		"aliases": ["intersection", "median", "road", "safety"]
+		"aliases": ["intersection", "median", "road", "safety"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"area-pad": {
-		"aliases": ["platform", "foundation", "base", "surface", "zone"]
+		"aliases": ["platform", "foundation", "base", "surface", "zone"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"area-parking": {
-		"aliases": ["garage", "lot", "space", "stall", "vehicle"]
+		"aliases": ["garage", "lot", "space", "stall", "vehicle"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"area-pond": {
-		"aliases": ["feature", "landscape", "reservoir", "water", "wetland"]
+		"aliases": ["feature", "landscape", "reservoir", "water", "wetland"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"arrow-down": {
-		"aliases": ["navigate", "direct", "move", "descend", "lower", "next"]
+		"aliases": ["navigate", "direct", "move", "descend", "lower", "next"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"arrow-left": {
-		"aliases": ["navigate", "direct", "move", "previous", "back", "return"]
+		"aliases": ["navigate", "direct", "move", "previous", "back", "return"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"arrow-north": {
-		"aliases": ["up", "north", "direction", "compass", "top", "navigation"]
+		"aliases": ["up", "north", "direction", "compass", "top", "navigation"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"arrow-right": {
-		"aliases": ["navigate", "direct", "move", "next", "forward", "advance"]
+		"aliases": ["navigate", "direct", "move", "next", "forward", "advance"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"arrow-up": {
-		"aliases": ["navigate", "direct", "move", "ascend", "raise", "previous"]
+		"aliases": ["navigate", "direct", "move", "ascend", "raise", "previous"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"assemble": {
-		"aliases": ["join", "combine", "build", "construct", "connect"]
+		"aliases": ["join", "combine", "build", "construct", "connect"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"asset-copy": {
 		"aliases": [
@@ -296,7 +334,8 @@
 			"copy-element",
 			"replicate-component",
 			"asset-multiply"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"asset-information": {
 		"aliases": [
@@ -318,7 +357,8 @@
 			"lane",
 			"street",
 			"transport"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"asset-infrastructure": {
 		"aliases": [
@@ -333,13 +373,16 @@
 			"structure",
 			"system",
 			"utility"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"assign": {
-		"aliases": ["user", "add", "plus", "allocate", "member", "role", "person"]
+		"aliases": ["user", "add", "plus", "allocate", "member", "role", "person"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"attach": {
-		"aliases": ["append", "clip", "add", "upload"]
+		"aliases": ["append", "clip", "add", "upload"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"automagic": {
 		"aliases": [
@@ -353,7 +396,8 @@
 			"generate",
 			"wand",
 			"sparkle"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"axis-lock": {
 		"aliases": [
@@ -364,13 +408,16 @@
 			"guide",
 			"direction",
 			"coordinate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bag": {
-		"aliases": ["store", "carry", "collect", "basket", "shop"]
+		"aliases": ["store", "carry", "collect", "basket", "shop"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"basket": {
-		"aliases": ["collect", "store", "contain", "bag", "shop"]
+		"aliases": ["collect", "store", "contain", "bag", "shop"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"beam": {
 		"aliases": [
@@ -381,7 +428,8 @@
 			"structural",
 			"horizontal",
 			"frame"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"binder": {
 		"aliases": [
@@ -397,7 +445,8 @@
 			"collection",
 			"work",
 			"manage"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"binoculars": {
 		"aliases": [
@@ -414,28 +463,36 @@
 			"view",
 			"watch",
 			"zoom"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bis-category-3d": {
-		"aliases": ["spatial", "model", "classification", "organize"]
+		"aliases": ["spatial", "model", "classification", "organize"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bis-category-subcategory": {
-		"aliases": ["group", "subset", "classification", "organize"]
+		"aliases": ["group", "subset", "classification", "organize"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bis-class": {
-		"aliases": ["type", "category", "group", "classification", "set"]
+		"aliases": ["type", "category", "group", "classification", "set"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bis-definitions-container": {
-		"aliases": ["group", "collection", "set", "store", "hold"]
+		"aliases": ["group", "collection", "set", "store", "hold"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bis-element": {
-		"aliases": ["component", "part", "object", "item", "unit"]
+		"aliases": ["component", "part", "object", "item", "unit"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bis-item-generic": {
-		"aliases": ["element", "object", "component", "part", "piece"]
+		"aliases": ["element", "object", "component", "part", "piece"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bis-subject": {
-		"aliases": ["topic", "category", "classification", "type", "group"]
+		"aliases": ["topic", "category", "classification", "type", "group"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bolt": {
 		"aliases": [
@@ -447,7 +504,8 @@
 			"electrify",
 			"trigger",
 			"lightning"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bookmark": {
 		"aliases": [
@@ -459,7 +517,8 @@
 			"remember",
 			"store",
 			"preserve"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"boolean": {
 		"aliases": [
@@ -471,10 +530,12 @@
 			"union",
 			"intersect",
 			"subtract"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"boundary-property": {
-		"aliases": ["area", "border", "land", "perimeter", "survey"]
+		"aliases": ["area", "border", "land", "perimeter", "survey"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"brace": {
 		"aliases": [
@@ -485,7 +546,8 @@
 			"lateral",
 			"framing",
 			"truss"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"brain": {
 		"aliases": [
@@ -495,7 +557,8 @@
 			"mind",
 			"neural",
 			"thinking"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"branch": {
 		"aliases": [
@@ -509,10 +572,12 @@
 			"source control",
 			"version",
 			"workflow"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"brand-android": {
-		"aliases": ["identify", "brand", "platform", "system", "mark", "google"]
+		"aliases": ["identify", "brand", "platform", "system", "mark", "google"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"brand-apple": {
 		"aliases": [
@@ -523,7 +588,8 @@
 			"system",
 			"mark",
 			"steve"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"brand-bentley-systems": {
 		"aliases": [
@@ -534,7 +600,8 @@
 			"reference",
 			"corporate",
 			"infrastructure"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"brand-windows": {
 		"aliases": [
@@ -545,7 +612,8 @@
 			"platform",
 			"pc",
 			"bill"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"building": {
 		"aliases": [
@@ -554,10 +622,12 @@
 			"construction",
 			"facility",
 			"edifice"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"bulldozer": {
-		"aliases": ["construction", "equipment", "vehicle", "earthwork", "machine"]
+		"aliases": ["construction", "equipment", "vehicle", "earthwork", "machine"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"calendar": {
 		"aliases": [
@@ -569,7 +639,8 @@
 			"arrange",
 			"coordinate",
 			"track"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"camera-retake": {
 		"aliases": [
@@ -580,7 +651,8 @@
 			"correct",
 			"repeat",
 			"update"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"camera-video-disabled": {
 		"aliases": [
@@ -599,7 +671,8 @@
 			"halt",
 			"cease",
 			"deactivate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"camera-video": {
 		"aliases": [
@@ -611,10 +684,19 @@
 			"record",
 			"broadcast",
 			"view"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"camera": {
-		"aliases": ["capture", "photograph", "record", "shoot", "image", "snapshot"]
+		"aliases": [
+			"capture",
+			"photograph",
+			"record",
+			"shoot",
+			"image",
+			"snapshot"
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"caret-down": {
 		"aliases": [
@@ -626,13 +708,16 @@
 			"display",
 			"select",
 			"dropdown"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"caret-left": {
-		"aliases": ["indicate"]
+		"aliases": ["indicate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"caret-right": {
-		"aliases": ["indicate"]
+		"aliases": ["indicate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"caret-up": {
 		"aliases": [
@@ -643,16 +728,20 @@
 			"minimize",
 			"select",
 			"dropdown"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"carets-up-down": {
-		"aliases": ["arrows", "direction", "navigation", "select", "vertical"]
+		"aliases": ["arrows", "direction", "navigation", "select", "vertical"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cart": {
-		"aliases": ["collect", "purchase", "store", "shop", "buy", "gather"]
+		"aliases": ["collect", "purchase", "store", "shop", "buy", "gather"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"catchment": {
-		"aliases": ["water", "collection", "drainage", "area", "basin"]
+		"aliases": ["water", "collection", "drainage", "area", "basin"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"category": {
 		"aliases": [
@@ -664,10 +753,12 @@
 			"structure",
 			"label",
 			"tag"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cesium": {
-		"aliases": ["3d", "globe", "map", "world", "visualization"]
+		"aliases": ["3d", "globe", "map", "world", "visualization"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chart-bar": {
 		"aliases": [
@@ -679,7 +770,8 @@
 			"track",
 			"quantify",
 			"evaluate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chart-line": {
 		"aliases": [
@@ -691,7 +783,8 @@
 			"visualize",
 			"plot",
 			"graph"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chart-pie": {
 		"aliases": [
@@ -703,7 +796,8 @@
 			"visualize",
 			"segment",
 			"allocate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chart": {
 		"aliases": [
@@ -717,7 +811,8 @@
 			"present",
 			"report",
 			"graph"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chat": {
 		"aliases": [
@@ -729,7 +824,8 @@
 			"exchange",
 			"interact",
 			"connect"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"checkbox-deselect": {
 		"aliases": [
@@ -744,7 +840,8 @@
 			"reset",
 			"toggle",
 			"uncheck"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"checkbox-select": {
 		"aliases": [
@@ -760,7 +857,8 @@
 			"tick",
 			"toggle",
 			"validate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"checkmark": {
 		"aliases": [
@@ -772,13 +870,16 @@
 			"accept",
 			"check",
 			"tick"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chevron-down": {
-		"aliases": ["collapse", "navigate", "direct", "indicate", "close", "hide"]
+		"aliases": ["collapse", "navigate", "direct", "indicate", "close", "hide"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chevron-left-double": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chevron-left": {
 		"aliases": [
@@ -789,10 +890,12 @@
 			"back",
 			"return",
 			"indicate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chevron-right-double": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chevron-right": {
 		"aliases": [
@@ -807,7 +910,8 @@
 			"expand",
 			"open",
 			"reveal"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"chevron-up": {
 		"aliases": [
@@ -819,10 +923,12 @@
 			"minimize",
 			"reduce",
 			"conceal"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"circle": {
-		"aliases": ["draw", "shape", "form", "outline", "enclose"]
+		"aliases": ["draw", "shape", "form", "outline", "enclose"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"clash": {
 		"aliases": [
@@ -834,10 +940,12 @@
 			"collide",
 			"overlap",
 			"intersect"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"clipboard": {
-		"aliases": ["copy", "store", "paste", "collect", "gather"]
+		"aliases": ["copy", "store", "paste", "collect", "gather"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"clock": {
 		"aliases": [
@@ -850,7 +958,8 @@
 			"hours",
 			"minutes",
 			"seconds"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cloud-download": {
 		"aliases": [
@@ -862,10 +971,12 @@
 			"obtain",
 			"receive",
 			"sync"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cloud-lightning": {
-		"aliases": ["weather", "storm", "alert", "warning", "forecast"]
+		"aliases": ["weather", "storm", "alert", "warning", "forecast"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cloud-offline": {
 		"aliases": [
@@ -875,7 +986,8 @@
 			"unavailable",
 			"status",
 			"state"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cloud-sync-disabled": {
 		"aliases": [
@@ -894,10 +1006,12 @@
 			"disable",
 			"cease",
 			"halt"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cloud-sync": {
-		"aliases": ["update", "synchronize", "refresh", "sync", "save"]
+		"aliases": ["update", "synchronize", "refresh", "sync", "save"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cloud-upload": {
 		"aliases": [
@@ -909,7 +1023,8 @@
 			"save",
 			"transmit",
 			"backup"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cloud": {
 		"aliases": [
@@ -922,13 +1037,16 @@
 			"remote",
 			"host",
 			"save"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"collapse-rows-all": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"collapse-rows": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"column-manage": {
 		"aliases": [
@@ -941,10 +1059,12 @@
 			"configure",
 			"settings",
 			"prefences"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"column": {
-		"aliases": ["structure", "support", "pillar", "post", "vertical", "frame"]
+		"aliases": ["structure", "support", "pillar", "post", "vertical", "frame"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"commit-changes": {
 		"aliases": [
@@ -956,7 +1076,8 @@
 			"record",
 			"git",
 			"source control"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"compare": {
 		"aliases": [
@@ -967,10 +1088,12 @@
 			"assess",
 			"differentiate",
 			"review"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"compass": {
-		"aliases": ["direction", "navigate", "orientation", "bearing", "tool"]
+		"aliases": ["direction", "navigate", "orientation", "bearing", "tool"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"components": {
 		"aliases": [
@@ -984,7 +1107,8 @@
 			"interface",
 			"reusable",
 			"section"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"computer": {
 		"aliases": [
@@ -996,10 +1120,12 @@
 			"operate",
 			"interact",
 			"machine"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cone": {
-		"aliases": ["shape", "geometry", "primitive", "tapered", "conical"]
+		"aliases": ["shape", "geometry", "primitive", "tapered", "conical"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"configuration": {
 		"aliases": [
@@ -1013,7 +1139,8 @@
 			"arrange",
 			"tune",
 			"preferences"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"construction-area": {
 		"aliases": [
@@ -1024,7 +1151,8 @@
 			"helper",
 			"region",
 			"zone"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"construction-line": {
 		"aliases": [
@@ -1035,10 +1163,12 @@
 			"helper",
 			"edge",
 			"axis"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"construction-point": {
-		"aliases": ["guide", "reference", "temporary", "draft", "helper", "node"]
+		"aliases": ["guide", "reference", "temporary", "draft", "helper", "node"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"control-line-add": {
 		"aliases": [
@@ -1053,7 +1183,8 @@
 			"curve",
 			"geometry",
 			"vector"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"control-line": {
 		"aliases": [
@@ -1069,10 +1200,12 @@
 			"adjust",
 			"geometry",
 			"vector"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"controller": {
-		"aliases": ["controller", "gamepad", "buttons", "interact"]
+		"aliases": ["controller", "gamepad", "buttons", "interact"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"copy": {
 		"aliases": [
@@ -1084,7 +1217,8 @@
 			"mirror",
 			"repeat",
 			"paste"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"corner": {
 		"aliases": [
@@ -1101,10 +1235,12 @@
 			"sharp",
 			"point",
 			"corner-mark"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cost-configuration": {
-		"aliases": ["price", "setup", "settings", "budget", "finance"]
+		"aliases": ["price", "setup", "settings", "budget", "finance"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"crop": {
 		"aliases": [
@@ -1116,22 +1252,28 @@
 			"shape",
 			"modify",
 			"edit"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cross-section-perpendicular": {
-		"aliases": ["right angle", "cut", "view", "plane", "section"]
+		"aliases": ["right angle", "cut", "view", "plane", "section"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cross-section-profile": {
-		"aliases": ["elevation", "view", "cut", "drawing", "plane"]
+		"aliases": ["elevation", "view", "cut", "drawing", "plane"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cross-section-three-point": {
-		"aliases": ["cut", "view", "profile", "slice", "plane"]
+		"aliases": ["cut", "view", "profile", "slice", "plane"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cross-section-two-point": {
-		"aliases": ["cut", "view", "profile", "slice", "plane"]
+		"aliases": ["cut", "view", "profile", "slice", "plane"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cross-section": {
-		"aliases": ["cut", "view", "profile", "slice", "section"]
+		"aliases": ["cut", "view", "profile", "slice", "section"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"crown": {
 		"aliases": [
@@ -1143,7 +1285,8 @@
 			"important",
 			"emphasize",
 			"royal"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cursor-box": {
 		"aliases": [
@@ -1157,7 +1300,8 @@
 			"mark",
 			"area",
 			"region"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cursor-click": {
 		"aliases": [
@@ -1168,7 +1312,8 @@
 			"press",
 			"trigger",
 			"engage"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cursor-select": {
 		"aliases": [
@@ -1179,10 +1324,12 @@
 			"indicate",
 			"identify",
 			"direct"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cursor": {
-		"aliases": ["point", "select", "indicate", "locate", "choose", "identify"]
+		"aliases": ["point", "select", "indicate", "locate", "choose", "identify"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"curve": {
 		"aliases": [
@@ -1194,10 +1341,20 @@
 			"outline",
 			"sketch",
 			"line"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cut": {
-		"aliases": ["divide", "separate", "split", "slice", "copy", "paste", "trim"]
+		"aliases": [
+			"divide",
+			"separate",
+			"split",
+			"slice",
+			"copy",
+			"paste",
+			"trim"
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"cylinder": {
 		"aliases": [
@@ -1208,7 +1365,8 @@
 			"tube",
 			"pipe",
 			"column"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dashboard": {
 		"aliases": [
@@ -1218,7 +1376,8 @@
 			"monitor",
 			"overview",
 			"panel"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"database": {
 		"aliases": [
@@ -1230,7 +1389,8 @@
 			"maintain",
 			"structure",
 			"audit"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"date-time-picker": {
 		"aliases": [
@@ -1242,7 +1402,8 @@
 			"input",
 			"select",
 			"time"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"define-region-size": {
 		"aliases": [
@@ -1257,16 +1418,20 @@
 			"extent",
 			"layout-measure",
 			"footprint-dimensions"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"delete-columns": {
-		"aliases": ["columns", "delete", "remove", "table"]
+		"aliases": ["columns", "delete", "remove", "table"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"delete-rows": {
-		"aliases": ["rows", "delete", "remove", "table"]
+		"aliases": ["rows", "delete", "remove", "table"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"delete-table": {
-		"aliases": ["delete", "remove", "table"]
+		"aliases": ["delete", "remove", "table"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"delete": {
 		"aliases": [
@@ -1280,13 +1445,16 @@
 			"trash",
 			"bin",
 			"waste"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"deliverables": {
-		"aliases": ["output", "product", "result", "submission", "delivery"]
+		"aliases": ["output", "product", "result", "submission", "delivery"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"details": {
-		"aliases": ["list", "information", "items"]
+		"aliases": ["list", "information", "items"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"developer": {
 		"aliases": [
@@ -1297,13 +1465,22 @@
 			"create",
 			"construct",
 			"implement"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dimension-angle": {
-		"aliases": ["degree", "inclination", "measurement", "rotation", "technical"]
+		"aliases": [
+			"degree",
+			"inclination",
+			"measurement",
+			"rotation",
+			"technical"
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dimension-linear": {
-		"aliases": ["distance", "length", "measurement", "straight", "technical"]
+		"aliases": ["distance", "length", "measurement", "straight", "technical"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dimension-ordinate": {
 		"aliases": [
@@ -1312,10 +1489,12 @@
 			"measurement",
 			"position",
 			"technical"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dimension-radial": {
-		"aliases": ["circular", "measurement", "radius", "round", "technical"]
+		"aliases": ["circular", "measurement", "radius", "round", "technical"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"disconnect": {
 		"aliases": [
@@ -1328,13 +1507,16 @@
 			"isolate",
 			"connect",
 			"plug"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dismiss-circle": {
-		"aliases": ["delete", "subtract", "eliminate", "remove", "erase", "minus"]
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase", "minus"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dismiss-square": {
-		"aliases": ["delete", "subtract", "eliminate", "remove", "erase", "minus"]
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase", "minus"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dismiss": {
 		"aliases": [
@@ -1347,22 +1529,28 @@
 			"clear",
 			"cross",
 			"x"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"distribute-center-horizontal": {
-		"aliases": ["space", "arrange", "align", "distribute", "order", "position"]
+		"aliases": ["space", "arrange", "align", "distribute", "order", "position"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"distribute-center-vertical": {
-		"aliases": ["space", "arrange", "align", "distribute", "order", "position"]
+		"aliases": ["space", "arrange", "align", "distribute", "order", "position"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"distribute-left": {
-		"aliases": ["align", "arrange", "position", "even", "layout", "space"]
+		"aliases": ["align", "arrange", "position", "even", "layout", "space"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"distribute-right": {
-		"aliases": ["align", "arrange", "position", "even", "layout", "space"]
+		"aliases": ["align", "arrange", "position", "even", "layout", "space"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"distribute-top": {
-		"aliases": ["align", "arrange", "position", "even", "layout", "space"]
+		"aliases": ["align", "arrange", "position", "even", "layout", "space"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"ditch": {
 		"aliases": [
@@ -1376,7 +1564,8 @@
 			"agriculture",
 			"landform",
 			"survey"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dock-bottom": {
 		"aliases": [
@@ -1388,7 +1577,8 @@
 			"secure",
 			"anchor",
 			"pin"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dock-left": {
 		"aliases": [
@@ -1400,7 +1590,8 @@
 			"secure",
 			"anchor",
 			"pin"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dock-right": {
 		"aliases": [
@@ -1412,7 +1603,8 @@
 			"secure",
 			"anchor",
 			"pin"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dock-top": {
 		"aliases": [
@@ -1424,10 +1616,12 @@
 			"secure",
 			"anchor",
 			"pin"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"document-blank": {
-		"aliases": ["file", "page", "sheet", "write", "compose", "draft", "author"]
+		"aliases": ["file", "page", "sheet", "write", "compose", "draft", "author"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"document-locked": {
 		"aliases": [
@@ -1440,13 +1634,16 @@
 			"lock",
 			"safeguard",
 			"prevent"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"document-migration": {
-		"aliases": ["transfer", "move", "convert", "file", "migrate"]
+		"aliases": ["transfer", "move", "convert", "file", "migrate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"document-pdf": {
-		"aliases": ["file", "format", "adobe", "read", "document"]
+		"aliases": ["file", "format", "adobe", "read", "document"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"document-reference": {
 		"aliases": [
@@ -1459,10 +1656,12 @@
 			"reference",
 			"relate",
 			"associate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"document": {
-		"aliases": ["file", "paper", "content", "record", "page"]
+		"aliases": ["file", "paper", "content", "record", "page"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"documentation": {
 		"aliases": [
@@ -1475,7 +1674,8 @@
 			"how",
 			"help",
 			"support"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"download": {
 		"aliases": [
@@ -1487,22 +1687,28 @@
 			"acquire",
 			"receive",
 			"export"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"downloads-view": {
-		"aliases": ["archive", "browser", "files", "history", "list"]
+		"aliases": ["archive", "browser", "files", "history", "list"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"drag-handle-horizontal": {
-		"aliases": ["move", "reorder", "grip", "arrange", "shift", "position"]
+		"aliases": ["move", "reorder", "grip", "arrange", "shift", "position"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"drag-handle-vertical": {
-		"aliases": ["move", "reorder", "grip", "arrange", "shift", "position"]
+		"aliases": ["move", "reorder", "grip", "arrange", "shift", "position"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"drainage-tools": {
-		"aliases": ["cleanout", "drain", "pipes", "plumbing", "sewer", "tools"]
+		"aliases": ["cleanout", "drain", "pipes", "plumbing", "sewer", "tools"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"drainage": {
-		"aliases": ["water", "flow", "system", "runoff", "pipe"]
+		"aliases": ["water", "flow", "system", "runoff", "pipe"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"draw": {
 		"aliases": [
@@ -1513,10 +1719,12 @@
 			"compose",
 			"draft",
 			"render"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"drawing-view-create": {
-		"aliases": ["blueprint", "design", "engineering", "technical"]
+		"aliases": ["blueprint", "design", "engineering", "technical"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"drone": {
 		"aliases": [
@@ -1527,7 +1735,8 @@
 			"control",
 			"survey",
 			"capture"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"drop-cap": {
 		"aliases": [
@@ -1538,10 +1747,12 @@
 			"slab",
 			"support",
 			"mushroom"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"drop": {
-		"aliases": ["separate", "break", "split", "expand", "scatter"]
+		"aliases": ["separate", "break", "split", "expand", "scatter"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"dropdown": {
 		"aliases": [
@@ -1556,10 +1767,12 @@
 			"collapse",
 			"expand",
 			"combobox"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"duplicate": {
-		"aliases": ["copy", "clone", "replicate", "reproduce", "mirror", "repeat"]
+		"aliases": ["copy", "clone", "replicate", "reproduce", "mirror", "repeat"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"edit-all": {
 		"aliases": [
@@ -1571,7 +1784,8 @@
 			"update",
 			"amend",
 			"bulk"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"edit": {
 		"aliases": [
@@ -1583,13 +1797,23 @@
 			"update",
 			"amend",
 			"pencil"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"ellipse": {
-		"aliases": ["draw", "shape", "form", "outline"]
+		"aliases": ["draw", "shape", "form", "outline"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"email-at": {
-		"aliases": ["address", "identify", "locate", "contact", "specify", "target"]
+		"aliases": [
+			"address",
+			"identify",
+			"locate",
+			"contact",
+			"specify",
+			"target"
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"email": {
 		"aliases": [
@@ -1600,7 +1824,8 @@
 			"write",
 			"correspond",
 			"envelope"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"environment": {
 		"aliases": [
@@ -1612,7 +1837,8 @@
 			"sun",
 			"weather",
 			"sky"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"equals": {
 		"aliases": [
@@ -1623,13 +1849,16 @@
 			"match",
 			"math",
 			"same"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"eraser": {
-		"aliases": ["clean", "clear", "delete", "edit", "remove", "tool", "wipe"]
+		"aliases": ["clean", "clear", "delete", "edit", "remove", "tool", "wipe"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"error": {
-		"aliases": ["problem", "issue", "alert", "failure", "fault", "invalid"]
+		"aliases": ["problem", "issue", "alert", "failure", "fault", "invalid"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"exit": {
 		"aliases": [
@@ -1641,16 +1870,20 @@
 			"abandon",
 			"end",
 			"log out"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"expand-rows-all": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"expand-rows": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"explode": {
-		"aliases": ["separate", "break", "split", "expand", "scatter"]
+		"aliases": ["separate", "break", "split", "expand", "scatter"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"export": {
 		"aliases": [
@@ -1661,25 +1894,39 @@
 			"save",
 			"download",
 			"move"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"eyedropper-drop": {
-		"aliases": ["sample", "pick", "select", "choose", "collect", "color"]
+		"aliases": ["sample", "pick", "select", "choose", "collect", "color"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"eyedropper-filled": {
-		"aliases": ["sample", "pick", "select", "choose", "collect", "color"]
+		"aliases": ["sample", "pick", "select", "choose", "collect", "color"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"eyedropper": {
-		"aliases": ["sample", "pick", "select", "choose", "collect", "color"]
+		"aliases": ["sample", "pick", "select", "choose", "collect", "color"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"fast-backward": {
-		"aliases": ["rewind", "reverse", "speed", "previous", "back", "return"]
+		"aliases": ["rewind", "reverse", "speed", "previous", "back", "return"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"fast-forward": {
-		"aliases": ["advance", "speed", "accelerate", "next", "forward", "progress"]
+		"aliases": [
+			"advance",
+			"speed",
+			"accelerate",
+			"next",
+			"forward",
+			"progress"
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"feedback": {
-		"aliases": ["comment", "suggest", "respond", "review", "evaluate"]
+		"aliases": ["comment", "suggest", "respond", "review", "evaluate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"filter": {
 		"aliases": [
@@ -1690,7 +1937,8 @@
 			"strain",
 			"sift",
 			"isolate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"find": {
 		"aliases": [
@@ -1701,10 +1949,19 @@
 			"explore",
 			"hunt",
 			"detect"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"fire-extinguisher": {
-		"aliases": ["safety", "protect", "suppress", "prevent", "secure", "control"]
+		"aliases": [
+			"safety",
+			"protect",
+			"suppress",
+			"prevent",
+			"secure",
+			"control"
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"fire": {
 		"aliases": [
@@ -1716,7 +1973,8 @@
 			"hazard",
 			"emergency",
 			"urgent"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"fit-to-view": {
 		"aliases": [
@@ -1727,7 +1985,8 @@
 			"frame",
 			"align",
 			"position"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"flag": {
 		"aliases": [
@@ -1738,28 +1997,36 @@
 			"highlight",
 			"identify",
 			"note"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-add": {
-		"aliases": ["create", "store", "organize", "new", "generate", "make", "+"]
+		"aliases": ["create", "store", "organize", "new", "generate", "make", "+"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-browse": {
-		"aliases": ["explore", "search", "view", "examine", "look", "inspect"]
+		"aliases": ["explore", "search", "view", "examine", "look", "inspect"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-chevron-down": {
-		"aliases": ["expand", "open", "reveal", "show", "display", "unfold"]
+		"aliases": ["expand", "open", "reveal", "show", "display", "unfold"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-chevron-up": {
-		"aliases": ["collapse", "close", "hide", "conceal", "fold", "minimize"]
+		"aliases": ["collapse", "close", "hide", "conceal", "fold", "minimize"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-export": {
-		"aliases": ["send", "move", "transfer", "download", "export"]
+		"aliases": ["send", "move", "transfer", "download", "export"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-import": {
-		"aliases": ["receive", "move", "transfer", "upload"]
+		"aliases": ["receive", "move", "transfer", "upload"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-lock": {
-		"aliases": ["secure", "protect", "restrict", "safeguard", "prevent"]
+		"aliases": ["secure", "protect", "restrict", "safeguard", "prevent"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-maximize": {
 		"aliases": [
@@ -1772,10 +2039,12 @@
 			"hide",
 			"reduce",
 			"shrink"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-open": {
-		"aliases": ["access", "view", "reveal", "show", "display", "examine"]
+		"aliases": ["access", "view", "reveal", "show", "display", "examine"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-remove": {
 		"aliases": [
@@ -1786,10 +2055,12 @@
 			"document",
 			"file",
 			"directory"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder-shortcut": {
-		"aliases": ["link", "reference", "access", "connect", "quick", "fast"]
+		"aliases": ["link", "reference", "access", "connect", "quick", "fast"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"folder": {
 		"aliases": [
@@ -1800,7 +2071,8 @@
 			"group",
 			"arrange",
 			"hold"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"font-bold": {
 		"aliases": [
@@ -1811,7 +2083,8 @@
 			"stress",
 			"text style",
 			"font"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"font-color": {
 		"aliases": [
@@ -1823,7 +2096,8 @@
 			"modify",
 			"text style",
 			"font"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"font-italic": {
 		"aliases": [
@@ -1835,7 +2109,8 @@
 			"customize",
 			"text style",
 			"font"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"font-size": {
 		"aliases": [
@@ -1847,7 +2122,8 @@
 			"alter",
 			"text style",
 			"font"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"font-strikethrough": {
 		"aliases": [
@@ -1859,7 +2135,8 @@
 			"negate",
 			"text style",
 			"font"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"font-underline": {
 		"aliases": [
@@ -1870,7 +2147,8 @@
 			"underscore",
 			"text style",
 			"font"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"footing-combined": {
 		"aliases": [
@@ -1880,19 +2158,24 @@
 			"multiple",
 			"support",
 			"structure"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"footing-isolated": {
-		"aliases": ["foundation", "base", "pad", "column", "support", "structure"]
+		"aliases": ["foundation", "base", "pad", "column", "support", "structure"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"footing-mat": {
-		"aliases": ["foundation", "base", "raft", "slab", "support", "structure"]
+		"aliases": ["foundation", "base", "raft", "slab", "support", "structure"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"footing-pilecap": {
-		"aliases": ["foundation", "deep", "piles", "support", "structure", "cap"]
+		"aliases": ["foundation", "deep", "piles", "support", "structure", "cap"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"form": {
-		"aliases": ["input", "data", "entry", "fields"]
+		"aliases": ["input", "data", "entry", "fields"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"format": {
 		"aliases": [
@@ -1904,13 +2187,16 @@
 			"structure",
 			"style",
 			"template"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"frame-backward": {
-		"aliases": ["navigate", "reverse", "previous", "return", "back"]
+		"aliases": ["navigate", "reverse", "previous", "return", "back"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"frame-forward": {
-		"aliases": ["navigate", "advance", "next", "proceed", "continue"]
+		"aliases": ["navigate", "advance", "next", "proceed", "continue"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"function": {
 		"aliases": [
@@ -1920,10 +2206,12 @@
 			"solve",
 			"evaluate",
 			"determine"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"geolocate": {
-		"aliases": ["find", "position", "locate", "place", "spot", "identify"]
+		"aliases": ["find", "position", "locate", "place", "spot", "identify"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"geospatial-connection": {
 		"aliases": [
@@ -1935,7 +2223,8 @@
 			"location",
 			"integrate",
 			"join"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"geospatial-features": {
 		"aliases": [
@@ -1947,16 +2236,20 @@
 			"point",
 			"polygon",
 			"spatial"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-one-finger-double-tap": {
-		"aliases": ["touch", "interact", "tap", "press", "click"]
+		"aliases": ["touch", "interact", "tap", "press", "click"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-one-finger-drag": {
-		"aliases": ["move", "slide", "swipe", "shift", "relocate"]
+		"aliases": ["move", "slide", "swipe", "shift", "relocate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-one-finger-tap": {
-		"aliases": ["touch", "press", "select", "activate", "interact", "click"]
+		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-pinch": {
 		"aliases": [
@@ -1967,7 +2260,8 @@
 			"modify",
 			"interact",
 			"change"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-touch": {
 		"aliases": [
@@ -1978,16 +2272,20 @@
 			"tap",
 			"handle",
 			"finger"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-two-finger-drag": {
-		"aliases": ["move", "slide", "swipe", "shift", "interact", "relocate"]
+		"aliases": ["move", "slide", "swipe", "shift", "interact", "relocate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-two-finger-tap": {
-		"aliases": ["touch", "press", "select", "activate", "interact", "click"]
+		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-two-finger": {
-		"aliases": ["interact", "press", "touch", "handle", "manipulate"]
+		"aliases": ["interact", "press", "touch", "handle", "manipulate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"git-branch": {
 		"aliases": [
@@ -1999,7 +2297,8 @@
 			"repository",
 			"source control",
 			"version control"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"git-merge": {
 		"aliases": [
@@ -2011,10 +2310,12 @@
 			"source control",
 			"unite",
 			"version control"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"globe": {
-		"aliases": ["explore", "navigate", "world", "travel", "country", "map"]
+		"aliases": ["explore", "navigate", "world", "travel", "country", "map"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"go-to-end": {
 		"aliases": [
@@ -2025,7 +2326,8 @@
 			"conclude",
 			"end",
 			"last"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"go-to-start": {
 		"aliases": [
@@ -2036,22 +2338,28 @@
 			"initiate",
 			"commence",
 			"first"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"grading-area": {
-		"aliases": ["terrain", "surface", "region", "elevation", "zone"]
+		"aliases": ["terrain", "surface", "region", "elevation", "zone"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"grading-constraints": {
-		"aliases": ["civil", "construction", "engineering", "limits", "terrain"]
+		"aliases": ["civil", "construction", "engineering", "limits", "terrain"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"grading-direction": {
-		"aliases": ["terrain", "flow", "slope", "arrow", "elevation"]
+		"aliases": ["terrain", "flow", "slope", "arrow", "elevation"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"grading-limit": {
-		"aliases": ["terrain", "boundary", "elevation", "extent", "slope"]
+		"aliases": ["terrain", "boundary", "elevation", "extent", "slope"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"graph-scatter-chart": {
-		"aliases": ["plot", "chart", "data", "statistics", "analysis", "points"]
+		"aliases": ["plot", "chart", "data", "statistics", "analysis", "points"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"grid-lines": {
 		"aliases": [
@@ -2061,7 +2369,8 @@
 			"reference",
 			"structure",
 			"column-lines"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"grid": {
 		"aliases": [
@@ -2072,7 +2381,8 @@
 			"order",
 			"align",
 			"view"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"group": {
 		"aliases": [
@@ -2084,7 +2394,8 @@
 			"assemble",
 			"objects",
 			"elements"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"hand": {
 		"aliases": [
@@ -2096,7 +2407,8 @@
 			"handle",
 			"move",
 			"pan"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"hardhat": {
 		"aliases": [
@@ -2107,7 +2419,8 @@
 			"worker",
 			"site",
 			"engineering"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"hatch": {
 		"aliases": [
@@ -2121,7 +2434,8 @@
 			"shading",
 			"drafting-pattern",
 			"material-indicator"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"heart": {
 		"aliases": [
@@ -2132,13 +2446,16 @@
 			"bookmark",
 			"mark",
 			"love"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"help": {
-		"aliases": ["assist", "guide", "support", "aid", "explain", "inform", "?"]
+		"aliases": ["assist", "guide", "support", "aid", "explain", "inform", "?"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"hierarchy-tree": {
-		"aliases": ["organize", "structure", "relate", "arrange", "order"]
+		"aliases": ["organize", "structure", "relate", "arrange", "order"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"history": {
 		"aliases": [
@@ -2149,7 +2466,8 @@
 			"monitor",
 			"previous",
 			"time"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"home": {
 		"aliases": [
@@ -2160,7 +2478,8 @@
 			"main",
 			"primary",
 			"house"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"hourglass": {
 		"aliases": [
@@ -2172,10 +2491,12 @@
 			"period",
 			"progress",
 			"loading"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"i-beam": {
-		"aliases": ["beam", "steel", "structure"]
+		"aliases": ["beam", "steel", "structure"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"ice": {
 		"aliases": [
@@ -2186,7 +2507,8 @@
 			"cold",
 			"freezing",
 			"snow"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"image": {
 		"aliases": [
@@ -2197,7 +2519,8 @@
 			"photo",
 			"graphic",
 			"file"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"imodel": {
 		"aliases": [
@@ -2210,10 +2533,12 @@
 			"bentley",
 			"project",
 			"file"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"import": {
-		"aliases": ["receive", "transfer", "input", "upload", "get"]
+		"aliases": ["receive", "transfer", "input", "upload", "get"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"important-very": {
 		"aliases": [
@@ -2227,7 +2552,8 @@
 			"alert",
 			"critical",
 			"urgent"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"important": {
 		"aliases": [
@@ -2237,10 +2563,12 @@
 			"emphasize",
 			"stress",
 			"exclaim"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"inbox": {
-		"aliases": ["email", "collect", "store", "gather", "tray"]
+		"aliases": ["email", "collect", "store", "gather", "tray"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"info": {
 		"aliases": [
@@ -2250,16 +2578,20 @@
 			"describe",
 			"clarify",
 			"information"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"inlet": {
-		"aliases": ["drainage", "water", "entry", "flow", "pipe"]
+		"aliases": ["drainage", "water", "entry", "flow", "pipe"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"inspection": {
-		"aliases": ["check", "review", "examine", "assess", "validate"]
+		"aliases": ["check", "review", "examine", "assess", "validate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"install": {
-		"aliases": ["setup", "add", "implement", "deploy", "integrate", "update"]
+		"aliases": ["setup", "add", "implement", "deploy", "integrate", "update"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"isolate": {
 		"aliases": [
@@ -2270,13 +2602,16 @@
 			"detach",
 			"layer",
 			"view"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"issue-report": {
-		"aliases": ["notify", "alert", "report", "inform", "support", "bug"]
+		"aliases": ["notify", "alert", "report", "inform", "support", "bug"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"issue": {
-		"aliases": ["error", "alert", "support", "bug"]
+		"aliases": ["error", "alert", "support", "bug"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"itwin": {
 		"aliases": [
@@ -2290,7 +2625,8 @@
 			"project",
 			"file",
 			"digital twin"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"key": {
 		"aliases": [
@@ -2301,13 +2637,16 @@
 			"authorize",
 			"lock",
 			"api"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"keyboard": {
-		"aliases": ["type", "input", "enter", "write", "compose", "kbd"]
+		"aliases": ["type", "input", "enter", "write", "compose", "kbd"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"label": {
-		"aliases": ["identify", "tag", "mark", "name", "designate", "annotate"]
+		"aliases": ["identify", "tag", "mark", "name", "designate", "annotate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"layers": {
 		"aliases": [
@@ -2319,22 +2658,28 @@
 			"objects",
 			"elements",
 			"items"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"layout-parking": {
-		"aliases": ["vehicle", "area", "plan", "design", "space"]
+		"aliases": ["vehicle", "area", "plan", "design", "space"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"layout-pond": {
-		"aliases": ["water", "design", "area", "landscape", "plan"]
+		"aliases": ["water", "design", "area", "landscape", "plan"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"layout": {
-		"aliases": ["arrange", "organize", "structure", "plan", "format"]
+		"aliases": ["arrange", "organize", "structure", "plan", "format"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"library": {
-		"aliases": ["collect", "store", "organize", "gather", "archive", "items"]
+		"aliases": ["collect", "store", "organize", "gather", "archive", "items"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"license-add": {
-		"aliases": ["grant", "issue", "new", "permission", "software"]
+		"aliases": ["grant", "issue", "new", "permission", "software"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"license-check-in": {
 		"aliases": [
@@ -2344,7 +2689,8 @@
 			"restore",
 			"return",
 			"software"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"license-check-out": {
 		"aliases": [
@@ -2354,22 +2700,28 @@
 			"check-out",
 			"permission",
 			"software"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"license-download": {
-		"aliases": ["acquire", "get", "obtain", "permission", "software"]
+		"aliases": ["acquire", "get", "obtain", "permission", "software"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"license-minus": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"lightbulb": {
-		"aliases": ["ideate", "suggest", "inspire", "create", "think"]
+		"aliases": ["ideate", "suggest", "inspire", "create", "think"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"line": {
-		"aliases": ["draw", "connect", "path", "shape"]
+		"aliases": ["draw", "connect", "path", "shape"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"link": {
-		"aliases": ["connect", "join", "relate", "associate", "bind", "url", "www"]
+		"aliases": ["connect", "join", "relate", "associate", "bind", "url", "www"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"list": {
 		"aliases": [
@@ -2380,7 +2732,8 @@
 			"structure",
 			"items",
 			"view"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"load-area": {
 		"aliases": [
@@ -2392,7 +2745,8 @@
 			"live-load",
 			"dead-load",
 			"stress-region"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"load-case": {
 		"aliases": [
@@ -2402,10 +2756,12 @@
 			"set",
 			"condition",
 			"group"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"load-combination": {
-		"aliases": ["add", "sum", "group", "analysis", "design", "factors", "case"]
+		"aliases": ["add", "sum", "group", "analysis", "design", "factors", "case"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"load-linear": {
 		"aliases": [
@@ -2416,7 +2772,8 @@
 			"edge",
 			"uniform",
 			"trapezoidal"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"load-perimeter": {
 		"aliases": [
@@ -2427,16 +2784,20 @@
 			"edge-force",
 			"stress-line",
 			"perimeter-distribution"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"load-point": {
-		"aliases": ["force", "moment", "torque", "concentrated", "apply", "node"]
+		"aliases": ["force", "moment", "torque", "concentrated", "apply", "node"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"location": {
-		"aliases": ["mark", "position", "place", "locate", "pin", "map"]
+		"aliases": ["mark", "position", "place", "locate", "pin", "map"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"lock-unlocked": {
-		"aliases": ["access", "permit", "allow", "enable"]
+		"aliases": ["access", "permit", "allow", "enable"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"lock": {
 		"aliases": [
@@ -2446,16 +2807,20 @@
 			"safeguard",
 			"prevent",
 			"block"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"loop": {
-		"aliases": ["repeat", "cycle", "circulate", "revolve"]
+		"aliases": ["repeat", "cycle", "circulate", "revolve"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"magnet": {
-		"aliases": ["attract", "connect", "pull", "snap", "point"]
+		"aliases": ["attract", "connect", "pull", "snap", "point"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"maintenance": {
-		"aliases": ["repair", "update", "service", "maintain", "fix", "configure"]
+		"aliases": ["repair", "update", "service", "maintain", "fix", "configure"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"manager": {
 		"aliases": [
@@ -2466,7 +2831,8 @@
 			"admin",
 			"briefcase",
 			"business"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"manhole-sewer": {
 		"aliases": [
@@ -2476,7 +2842,8 @@
 			"underground",
 			"drain",
 			"cover"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"map-google": {
 		"aliases": [
@@ -2487,7 +2854,8 @@
 			"find",
 			"google",
 			"pin"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"map-info": {
 		"aliases": [
@@ -2502,10 +2870,12 @@
 			"describe",
 			"explain",
 			"specify"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"map": {
-		"aliases": ["navigate", "locate", "view", "explore", "find", "world"]
+		"aliases": ["navigate", "locate", "view", "explore", "find", "world"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mass-area": {
 		"aliases": [
@@ -2517,7 +2887,8 @@
 			"block",
 			"space",
 			"solid"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mass-excitation": {
 		"aliases": [
@@ -2527,7 +2898,8 @@
 			"resonance",
 			"harmonic",
 			"force"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mass-linear": {
 		"aliases": [
@@ -2537,7 +2909,8 @@
 			"line",
 			"dynamic",
 			"gravity"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mass-perimeter": {
 		"aliases": [
@@ -2549,7 +2922,8 @@
 			"silhouette",
 			"limit",
 			"exterior"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mass": {
 		"aliases": [
@@ -2559,7 +2933,8 @@
 			"dead-load",
 			"dynamic",
 			"seismic"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mcp-server": {
 		"aliases": [
@@ -2571,28 +2946,36 @@
 			"process",
 			"service",
 			"storage"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measure-angle": {
-		"aliases": ["degree", "geometry", "rotation", "protractor", "angle"]
+		"aliases": ["degree", "geometry", "rotation", "protractor", "angle"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measure-area": {
-		"aliases": ["surface", "space", "size", "coverage", "dimension"]
+		"aliases": ["surface", "space", "size", "coverage", "dimension"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measure-distance": {
-		"aliases": ["length", "span", "dimension", "measurement", "size"]
+		"aliases": ["length", "span", "dimension", "measurement", "size"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measure-height": {
-		"aliases": ["dimension", "elevation", "height", "measure", "size"]
+		"aliases": ["dimension", "elevation", "height", "measure", "size"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measure-location": {
-		"aliases": ["position", "place", "coordinate", "point", "spot"]
+		"aliases": ["position", "place", "coordinate", "point", "spot"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measure-perpendicular-distance": {
-		"aliases": ["spacing", "right angle", "geometry"]
+		"aliases": ["spacing", "right angle", "geometry"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measure-radius": {
-		"aliases": ["dimension", "circle", "distance", "geometry", "size"]
+		"aliases": ["dimension", "circle", "distance", "geometry", "size"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measure-slope": {
 		"aliases": [
@@ -2604,7 +2987,8 @@
 			"grade",
 			"dimension",
 			"measurement"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measure": {
 		"aliases": [
@@ -2617,7 +3001,8 @@
 			"height",
 			"depth",
 			"length"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"measurements": {
 		"aliases": [
@@ -2632,22 +3017,28 @@
 			"height",
 			"depth",
 			"length"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"menu": {
-		"aliases": ["select", "choose", "list", "pick", "options", "hamburger"]
+		"aliases": ["select", "choose", "list", "pick", "options", "hamburger"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"merge-cells": {
-		"aliases": ["cells", "combine", "join", "merge", "table"]
+		"aliases": ["cells", "combine", "join", "merge", "table"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"merge": {
-		"aliases": ["combine", "join", "unite", "fuse", "integrate", "mix"]
+		"aliases": ["combine", "join", "unite", "fuse", "integrate", "mix"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mesh-surface": {
-		"aliases": ["topology", "network", "grid", "structure", "wireframe"]
+		"aliases": ["topology", "network", "grid", "structure", "wireframe"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mesh": {
-		"aliases": ["network", "grid", "structure", "web", "wireframe", "points"]
+		"aliases": ["network", "grid", "structure", "web", "wireframe", "points"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"microphone": {
 		"aliases": [
@@ -2658,25 +3049,32 @@
 			"sound",
 			"speak",
 			"voice"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"minimize": {
-		"aliases": ["reduce", "shrink", "collapse", "decrease", "contract", "hide"]
+		"aliases": ["reduce", "shrink", "collapse", "decrease", "contract", "hide"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"minus-circle": {
-		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"]
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"minus-square": {
-		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"]
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"minus": {
-		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"]
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"model-cube": {
-		"aliases": ["display", "rotate", "view", "3d", "shape", "sides"]
+		"aliases": ["display", "rotate", "view", "3d", "shape", "sides"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"model-sphere": {
-		"aliases": ["display", "rotate", "view", "3d", "shape"]
+		"aliases": ["display", "rotate", "view", "3d", "shape"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"model": {
 		"aliases": [
@@ -2690,25 +3088,32 @@
 			"structure",
 			"view",
 			"visualize"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"moon": {
-		"aliases": ["switch", "darken", "toggle", "night", "mode", "sky", "planet"]
+		"aliases": ["switch", "darken", "toggle", "night", "mode", "sky", "planet"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"more-horizontal-circle": {
-		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"]
+		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"more-horizontal": {
-		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"]
+		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"more-vertical-circle": {
-		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"]
+		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"more-vertical": {
-		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"]
+		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mouse-click-left": {
-		"aliases": ["interact", "select", "press", "activate", "trigger"]
+		"aliases": ["interact", "select", "press", "activate", "trigger"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mouse-click-middle": {
 		"aliases": [
@@ -2718,13 +3123,16 @@
 			"activate",
 			"trigger",
 			"scroll wheel"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mouse-click-right": {
-		"aliases": ["interact", "select", "press", "activate", "trigger"]
+		"aliases": ["interact", "select", "press", "activate", "trigger"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"mouse-click": {
-		"aliases": ["interact", "select", "press", "activate", "trigger"]
+		"aliases": ["interact", "select", "press", "activate", "trigger"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"move-to-group": {
 		"aliases": [
@@ -2735,16 +3143,20 @@
 			"group",
 			"combine",
 			"join"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"move": {
-		"aliases": ["relocate", "drag", "position", "shift", "arrows"]
+		"aliases": ["relocate", "drag", "position", "shift", "arrows"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"network": {
-		"aliases": ["web", "link", "globe", "internet", "ball"]
+		"aliases": ["web", "link", "globe", "internet", "ball"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"new": {
-		"aliases": ["release", "update", "badge", "sparkle", "focus"]
+		"aliases": ["release", "update", "badge", "sparkle", "focus"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"news": {
 		"aliases": [
@@ -2756,7 +3168,8 @@
 			"paper",
 			"blog",
 			"post"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"notifications-settings": {
 		"aliases": [
@@ -2771,10 +3184,12 @@
 			"set",
 			"customize",
 			"modify"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"notifications": {
-		"aliases": ["alert", "inform", "notify", "announce", "signal", "bell"]
+		"aliases": ["alert", "inform", "notify", "announce", "signal", "bell"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"numberbox": {
 		"aliases": [
@@ -2785,7 +3200,8 @@
 			"value",
 			"numeric",
 			"data"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-array": {
 		"aliases": [
@@ -2795,22 +3211,28 @@
 			"arrange",
 			"sequence",
 			"instance"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-copy": {
-		"aliases": ["duplicate", "clone", "replicate", "create"]
+		"aliases": ["duplicate", "clone", "replicate", "create"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-edit": {
-		"aliases": ["modify", "change", "update", "adjust", "transform"]
+		"aliases": ["modify", "change", "update", "adjust", "transform"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-mirror": {
-		"aliases": ["reflect", "duplicate", "copy", "flip", "transform"]
+		"aliases": ["reflect", "duplicate", "copy", "flip", "transform"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-move": {
-		"aliases": ["relocate", "drag", "position", "shift", "transform"]
+		"aliases": ["relocate", "drag", "position", "shift", "transform"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-offset": {
-		"aliases": ["position", "move", "adjust", "distance", "space"]
+		"aliases": ["position", "move", "adjust", "distance", "space"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-rotate": {
 		"aliases": [
@@ -2821,40 +3243,52 @@
 			"clockwise",
 			"anti",
 			"transform"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-scale": {
-		"aliases": ["resize", "adjust", "transform", "modify", "scale"]
+		"aliases": ["resize", "adjust", "transform", "modify", "scale"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-transform": {
-		"aliases": ["modify", "change", "adjust", "edit", "convert"]
+		"aliases": ["modify", "change", "adjust", "edit", "convert"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"object-zoom-to": {
-		"aliases": ["focus", "view", "magnify", "target", "center"]
+		"aliases": ["focus", "view", "magnify", "target", "center"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"outfall": {
-		"aliases": ["drainage", "water", "exit", "discharge", "outlet"]
+		"aliases": ["drainage", "water", "exit", "discharge", "outlet"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"outlet-pond": {
-		"aliases": ["water", "drainage", "exit", "flow", "discharge"]
+		"aliases": ["water", "drainage", "exit", "flow", "discharge"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"paint-brush": {
-		"aliases": ["draw", "color", "colour", "paint", "create", "design"]
+		"aliases": ["draw", "color", "colour", "paint", "create", "design"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"palette": {
-		"aliases": ["choose", "color", "colour", "select", "pick", "options"]
+		"aliases": ["choose", "color", "colour", "select", "pick", "options"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"panel-collapse-left": {
-		"aliases": ["close", "hide", "minimize", "conceal", "reduce"]
+		"aliases": ["close", "hide", "minimize", "conceal", "reduce"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"panel-collapse-right": {
-		"aliases": ["close", "hide", "minimize", "conceal", "reduce"]
+		"aliases": ["close", "hide", "minimize", "conceal", "reduce"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"panel-expand-left": {
-		"aliases": ["open", "reveal", "extend", "show", "maximize"]
+		"aliases": ["open", "reveal", "extend", "show", "maximize"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"panel-expand-right": {
-		"aliases": ["open", "reveal", "extend", "show", "maximize"]
+		"aliases": ["open", "reveal", "extend", "show", "maximize"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"panorama-model": {
 		"aliases": [
@@ -2865,10 +3299,12 @@
 			"inspect",
 			"object",
 			"element"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"panorama": {
-		"aliases": ["view", "scan", "rotate", "examine", "inspect"]
+		"aliases": ["view", "scan", "rotate", "examine", "inspect"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"paragraph": {
 		"aliases": [
@@ -2880,16 +3316,20 @@
 			"editor",
 			"format",
 			"write"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"parking-row": {
-		"aliases": ["alignment", "line", "space", "stalls", "vehicle"]
+		"aliases": ["alignment", "line", "space", "stalls", "vehicle"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"parking": {
-		"aliases": ["vehicle", "car", "space", "lot", "area"]
+		"aliases": ["vehicle", "car", "space", "lot", "area"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"password-reset": {
-		"aliases": ["authentication", "change", "recover", "restore", "security"]
+		"aliases": ["authentication", "change", "recover", "restore", "security"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"path-animation-crowd": {
 		"aliases": [
@@ -2910,7 +3350,8 @@
 			"density",
 			"walk",
 			"travel"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"path-animation-single": {
 		"aliases": [
@@ -2928,7 +3369,8 @@
 			"direction",
 			"vector",
 			"simulation"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"path-animation-traffic": {
 		"aliases": [
@@ -2950,31 +3392,40 @@
 			"lane",
 			"street",
 			"transport"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"path-break": {
-		"aliases": ["disconnect", "split", "separate", "divide", "segment"]
+		"aliases": ["disconnect", "split", "separate", "divide", "segment"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"path-driveway": {
-		"aliases": ["vehicle", "access", "route", "road", "entry"]
+		"aliases": ["vehicle", "access", "route", "road", "entry"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"path-extend": {
-		"aliases": ["lengthen", "line", "continue", "geometry", "stretch"]
+		"aliases": ["lengthen", "line", "continue", "geometry", "stretch"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"path-fillet": {
-		"aliases": ["round", "corner", "curve", "smooth", "radius"]
+		"aliases": ["round", "corner", "curve", "smooth", "radius"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"path-sidewalk": {
-		"aliases": ["walkway", "pedestrian", "route", "path", "way"]
+		"aliases": ["walkway", "pedestrian", "route", "path", "way"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"path-trim": {
-		"aliases": ["cut", "adjust", "line", "modify", "shorten"]
+		"aliases": ["cut", "adjust", "line", "modify", "shorten"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"pause-circle": {
-		"aliases": ["stop", "wait", "hold", "suspend", "interrupt"]
+		"aliases": ["stop", "wait", "hold", "suspend", "interrupt"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"pause": {
-		"aliases": ["stop", "wait", "hold", "suspend", "interrupt"]
+		"aliases": ["stop", "wait", "hold", "suspend", "interrupt"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"perspective": {
 		"aliases": [
@@ -2985,28 +3436,36 @@
 			"align",
 			"3d",
 			"isometric"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"photo-drop": {
-		"aliases": ["image", "picture", "upload", "add", "drag", "drop", "file"]
+		"aliases": ["image", "picture", "upload", "add", "drag", "drop", "file"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"pin-unpin": {
-		"aliases": ["detach", "release", "free", "remove", "disconnect"]
+		"aliases": ["detach", "release", "free", "remove", "disconnect"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"pin": {
-		"aliases": ["mark", "attach", "fix", "secure", "fasten"]
+		"aliases": ["mark", "attach", "fix", "secure", "fasten"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"pipe-sewer": {
-		"aliases": ["drain", "waste", "utility", "infrastructure", "disposal"]
+		"aliases": ["drain", "waste", "utility", "infrastructure", "disposal"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"pipe-water": {
-		"aliases": ["utility", "plumbing", "infrastructure", "flow", "supply"]
+		"aliases": ["utility", "plumbing", "infrastructure", "flow", "supply"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"pipes": {
-		"aliases": ["conduit", "pipe", "pipeline", "plumbing", "tube"]
+		"aliases": ["conduit", "pipe", "pipeline", "plumbing", "tube"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"placeholder": {
-		"aliases": ["empty"]
+		"aliases": ["empty"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"play-backward": {
 		"aliases": [
@@ -3017,34 +3476,44 @@
 			"media",
 			"audio",
 			"video"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"play-circle": {
-		"aliases": ["start", "begin", "initiate", "launch", "run"]
+		"aliases": ["start", "begin", "initiate", "launch", "run"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"play": {
-		"aliases": ["start", "begin", "initiate", "launch", "run"]
+		"aliases": ["start", "begin", "initiate", "launch", "run"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"plugins": {
-		"aliases": ["extend", "add", "integrate", "enhance"]
+		"aliases": ["extend", "add", "integrate", "enhance"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"point-parking-aisle": {
-		"aliases": ["lane", "path", "way", "access", "route"]
+		"aliases": ["lane", "path", "way", "access", "route"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"point-parking-bay": {
-		"aliases": ["area", "spot", "section", "vehicle", "space"]
+		"aliases": ["area", "spot", "section", "vehicle", "space"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"point-parking-direction": {
-		"aliases": ["flow", "arrow", "traffic", "movement", "sign"]
+		"aliases": ["flow", "arrow", "traffic", "movement", "sign"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"point-parking-island": {
-		"aliases": ["divider", "median", "traffic", "vehicle", "area"]
+		"aliases": ["divider", "median", "traffic", "vehicle", "area"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"point-parking-space": {
-		"aliases": ["spot", "location", "car", "vehicle", "park"]
+		"aliases": ["spot", "location", "car", "vehicle", "park"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"polygon": {
-		"aliases": ["draw", "shape", "path", "line", "form"]
+		"aliases": ["draw", "shape", "path", "line", "form"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"pond-layout": {
 		"aliases": [
@@ -3056,16 +3525,20 @@
 			"reservoir",
 			"site",
 			"water"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"portable-water-pipes": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"portal-connect": {
-		"aliases": ["access", "bridge", "gateway", "link", "tunnel"]
+		"aliases": ["access", "bridge", "gateway", "link", "tunnel"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"power-bi": {
-		"aliases": ["analytics", "data", "report", "microsoft", "business"]
+		"aliases": ["analytics", "data", "report", "microsoft", "business"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"prefab": {
 		"aliases": [
@@ -3076,7 +3549,8 @@
 			"build",
 			"3D",
 			"asset"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"print-preview": {
 		"aliases": [
@@ -3088,7 +3562,8 @@
 			"prepare",
 			"examine",
 			"inspect"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"print-settings": {
 		"aliases": [
@@ -3100,13 +3575,16 @@
 			"set",
 			"customize",
 			"modify"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"print": {
-		"aliases": ["output", "document", "page"]
+		"aliases": ["output", "document", "page"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"process": {
-		"aliases": ["execute", "run", "perform", "operate", "conduct", "chip"]
+		"aliases": ["execute", "run", "perform", "operate", "conduct", "chip"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"production-drawing": {
 		"aliases": [
@@ -3115,7 +3593,8 @@
 			"fabrication",
 			"manufacturing",
 			"technical"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"production-sheet": {
 		"aliases": [
@@ -3126,7 +3605,8 @@
 			"engineering",
 			"manufacturing",
 			"plan"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"products": {
 		"aliases": [
@@ -3137,10 +3617,12 @@
 			"items",
 			"merchandise",
 			"stock"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"profile": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"project-copy": {
 		"aliases": [
@@ -3149,7 +3631,8 @@
 			"copy-structure",
 			"replicate-workspace",
 			"project-multiply"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"project": {
 		"aliases": [
@@ -3161,7 +3644,8 @@
 			"new",
 			"blueprint",
 			"sheet"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"properties": {
 		"aliases": [
@@ -3174,7 +3658,8 @@
 			"adjust",
 			"configure",
 			"details"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"puzzle": {
 		"aliases": [
@@ -3185,7 +3670,8 @@
 			"fit",
 			"piece",
 			"jigsaw"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"quality-custom": {
 		"aliases": [
@@ -3201,7 +3687,8 @@
 			"custom",
 			"bespoke",
 			"advanced"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"quality-high": {
 		"aliases": [
@@ -3218,7 +3705,8 @@
 			"heavy",
 			"dense",
 			"detailed"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"quality-low": {
 		"aliases": [
@@ -3235,7 +3723,8 @@
 			"pixelated",
 			"performance",
 			"draft-mode"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"quality-mid": {
 		"aliases": [
@@ -3249,7 +3738,8 @@
 			"resolution",
 			"intermediate",
 			"balanced"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"radio-buttons": {
 		"aliases": [
@@ -3260,7 +3750,8 @@
 			"select",
 			"toggle",
 			"multiple choice"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"re-center": {
 		"aliases": [
@@ -3271,7 +3762,8 @@
 			"adjust",
 			"place",
 			"map"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"reaction-add": {
 		"aliases": [
@@ -3282,10 +3774,12 @@
 			"load-point",
 			"reaction-point",
 			"node-action"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"read-only": {
-		"aliases": ["view", "restrict", "protect", "limit", "prevent"]
+		"aliases": ["view", "restrict", "protect", "limit", "prevent"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"reality-capture": {
 		"aliases": [
@@ -3299,19 +3793,24 @@
 			"digital-twin",
 			"spatial-data",
 			"contextcapture"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"reality-mesh": {
-		"aliases": ["model", "object", "represent", "capture", "data"]
+		"aliases": ["model", "object", "represent", "capture", "data"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"reassign": {
-		"aliases": ["change", "delegate", "move", "redirect", "transfer"]
+		"aliases": ["change", "delegate", "move", "redirect", "transfer"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"record": {
-		"aliases": ["capture", "save", "store", "preserve", "start"]
+		"aliases": ["capture", "save", "store", "preserve", "start"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"recording": {
-		"aliases": ["capture", "save", "store", "preserve", "stop"]
+		"aliases": ["capture", "save", "store", "preserve", "stop"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"records": {
 		"aliases": [
@@ -3321,13 +3820,16 @@
 			"maintain",
 			"manage",
 			"documents"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"rectangle": {
-		"aliases": ["draw", "shape", "contain", "create", "form"]
+		"aliases": ["draw", "shape", "contain", "create", "form"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"redo": {
-		"aliases": ["repeat", "restore", "reapply", "recreate", "reinstate"]
+		"aliases": ["repeat", "restore", "reapply", "recreate", "reinstate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"refresh": {
 		"aliases": [
@@ -3337,16 +3839,20 @@
 			"regenerate",
 			"restore",
 			"clockwise"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"regenerate": {
-		"aliases": ["renew", "update", "recreate", "rebuild", "generate"]
+		"aliases": ["renew", "update", "recreate", "rebuild", "generate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"rename": {
-		"aliases": ["edit", "change", "modify", "alter", "update", "name", "text"]
+		"aliases": ["edit", "change", "modify", "alter", "update", "name", "text"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"reorder": {
-		"aliases": ["arrange", "sort", "move", "organize", "sequence"]
+		"aliases": ["arrange", "sort", "move", "organize", "sequence"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"replace": {
 		"aliases": [
@@ -3356,10 +3862,12 @@
 			"switch",
 			"change",
 			"selection"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"report": {
-		"aliases": ["document", "analyze", "present", "inform", "detail", "data"]
+		"aliases": ["document", "analyze", "present", "inform", "detail", "data"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"reschedule": {
 		"aliases": [
@@ -3370,13 +3878,16 @@
 			"modify",
 			"change",
 			"appointment"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"retry": {
-		"aliases": ["repeat", "attempt", "again", "restart"]
+		"aliases": ["repeat", "attempt", "again", "restart"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"road": {
-		"aliases": ["navigate", "travel", "direct", "guide", "drive", "way"]
+		"aliases": ["navigate", "travel", "direct", "guide", "drive", "way"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"rotate-left": {
 		"aliases": [
@@ -3387,7 +3898,8 @@
 			"twist",
 			"object",
 			"anti-clockwise"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"rotate-point": {
 		"aliases": [
@@ -3404,7 +3916,8 @@
 			"coordinate",
 			"origin",
 			"transform"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"rotate-right": {
 		"aliases": [
@@ -3415,10 +3928,12 @@
 			"twist",
 			"object",
 			"clockwise"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"rule-delta-create": {
-		"aliases": ["change", "difference", "geometry", "variation"]
+		"aliases": ["change", "difference", "geometry", "variation"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"rule-ditch": {
 		"aliases": [
@@ -3434,10 +3949,12 @@
 			"channel",
 			"water management",
 			"land planning"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"rule-slope-create": {
-		"aliases": ["angle", "constraint", "geometry", "gradient"]
+		"aliases": ["angle", "constraint", "geometry", "gradient"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"rule": {
 		"aliases": [
@@ -3450,7 +3967,8 @@
 			"boundary",
 			"survey line",
 			"straightedge"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"save-as": {
 		"aliases": [
@@ -3461,7 +3979,8 @@
 			"floppy disk",
 			"copy",
 			"duplicate"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"save-settings": {
 		"aliases": [
@@ -3473,13 +3992,16 @@
 			"configure",
 			"customize",
 			"maintain"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"save": {
-		"aliases": ["store", "keep", "retain", "remember", "floppy disk"]
+		"aliases": ["store", "keep", "retain", "remember", "floppy disk"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"saved-views": {
-		"aliases": ["store", "preserve", "arrange", "organize", "memory", "camera"]
+		"aliases": ["store", "preserve", "arrange", "organize", "memory", "camera"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"scene": {
 		"aliases": [
@@ -3492,7 +4014,8 @@
 			"shot",
 			"stage",
 			"view"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"screenshare-stop": {
 		"aliases": [
@@ -3505,10 +4028,12 @@
 			"cease",
 			"terminate",
 			"stop"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"screenshare": {
-		"aliases": ["broadcast", "display", "present", "stream"]
+		"aliases": ["broadcast", "display", "present", "stream"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"script-run": {
 		"aliases": [
@@ -3521,7 +4046,8 @@
 			"process",
 			"operate",
 			"perform"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"script-status": {
 		"aliases": [
@@ -3534,10 +4060,12 @@
 			"verify",
 			"examine",
 			"track"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"script": {
-		"aliases": ["code", "program", "automate", "write"]
+		"aliases": ["code", "program", "automate", "write"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"search": {
 		"aliases": [
@@ -3547,7 +4075,8 @@
 			"seek",
 			"explore",
 			"magnifying glass"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"seismic": {
 		"aliases": [
@@ -3557,22 +4086,28 @@
 			"dynamic",
 			"lateral",
 			"ground-motion"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"selection-all": {
-		"aliases": ["choose", "group", "highlight", "pick", "select"]
+		"aliases": ["choose", "group", "highlight", "pick", "select"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"selection-children": {
-		"aliases": ["group", "nested", "items", "subset", "hierarchy"]
+		"aliases": ["group", "nested", "items", "subset", "hierarchy"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"selection-clear": {
-		"aliases": ["deselect", "unselect", "remove selection", "cancel", "wipe"]
+		"aliases": ["deselect", "unselect", "remove selection", "cancel", "wipe"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"selection": {
-		"aliases": ["choose", "highlight", "pick", "select"]
+		"aliases": ["choose", "highlight", "pick", "select"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"send": {
-		"aliases": ["transmit", "dispatch", "deliver", "forward", "transfer"]
+		"aliases": ["transmit", "dispatch", "deliver", "forward", "transfer"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"settings": {
 		"aliases": [
@@ -3585,7 +4120,8 @@
 			"cog",
 			"change",
 			"setup"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"setup": {
 		"aliases": [
@@ -3599,13 +4135,23 @@
 			"customize",
 			"setup",
 			"preferences"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sewage-pipes": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"share": {
-		"aliases": ["distribute", "give", "spread", "allocate", "export", "publish"]
+		"aliases": [
+			"distribute",
+			"give",
+			"spread",
+			"allocate",
+			"export",
+			"publish"
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sheet-defined-region": {
 		"aliases": [
@@ -3620,13 +4166,23 @@
 			"print-area",
 			"plot-window",
 			"definition-box"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sheet": {
-		"aliases": ["document", "file", "page", "paper", "spreadsheet", "worksheet"]
+		"aliases": [
+			"document",
+			"file",
+			"page",
+			"paper",
+			"spreadsheet",
+			"worksheet"
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"shield": {
-		"aliases": ["protect", "secure", "defend", "guard", "safeguard"]
+		"aliases": ["protect", "secure", "defend", "guard", "safeguard"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"signature": {
 		"aliases": [
@@ -3637,7 +4193,8 @@
 			"document",
 			"verify",
 			"input"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"slab-opening": {
 		"aliases": [
@@ -3648,10 +4205,12 @@
 			"penetration",
 			"floor",
 			"structure"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"slab-region": {
-		"aliases": ["area", "zone", "partial", "section", "floor", "concrete"]
+		"aliases": ["area", "zone", "partial", "section", "floor", "concrete"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"slab": {
 		"aliases": [
@@ -3662,7 +4221,8 @@
 			"surface",
 			"horizontal",
 			"structure"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"slice": {
 		"aliases": [
@@ -3674,7 +4234,8 @@
 			"portion",
 			"pie",
 			"graph"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"smartphone": {
 		"aliases": [
@@ -3688,7 +4249,8 @@
 			"apple",
 			"iphone",
 			"steve"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"smiley-happy": {
 		"aliases": [
@@ -3700,7 +4262,8 @@
 			"rate",
 			"rating",
 			"smile"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"smiley-neutral": {
 		"aliases": [
@@ -3711,7 +4274,8 @@
 			"show",
 			"rate",
 			"rating"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"smiley-sad": {
 		"aliases": [
@@ -3722,7 +4286,8 @@
 			"show",
 			"rate",
 			"rating"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"smiley-very-happy": {
 		"aliases": [
@@ -3734,7 +4299,8 @@
 			"rate",
 			"rating",
 			"smile"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"smiley-very-sad": {
 		"aliases": [
@@ -3745,19 +4311,24 @@
 			"show",
 			"rate",
 			"rating"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-bisector": {
-		"aliases": ["divide", "angle", "line", "geometry", "half"]
+		"aliases": ["divide", "angle", "line", "geometry", "half"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-center": {
-		"aliases": ["middle", "circle", "point", "geometry", "origin"]
+		"aliases": ["middle", "circle", "point", "geometry", "origin"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-endpoint": {
-		"aliases": ["terminate", "end", "point", "geometry", "finish"]
+		"aliases": ["terminate", "end", "point", "geometry", "finish"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-extension": {
-		"aliases": ["continue", "line", "geometry", "extend", "project"]
+		"aliases": ["continue", "line", "geometry", "extend", "project"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-grid": {
 		"aliases": [
@@ -3768,22 +4339,28 @@
 			"matrix",
 			"pattern",
 			"precision"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-intersection": {
-		"aliases": ["cross", "meet", "point", "geometry", "overlap"]
+		"aliases": ["cross", "meet", "point", "geometry", "overlap"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-keypoint": {
-		"aliases": ["significant", "node", "geometry", "vertex", "point"]
+		"aliases": ["significant", "node", "geometry", "vertex", "point"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-midpoint": {
-		"aliases": ["center", "half", "point", "geometry", "middle"]
+		"aliases": ["center", "half", "point", "geometry", "middle"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-nearest": {
-		"aliases": ["close", "point", "geometry", "proximity", "location"]
+		"aliases": ["close", "point", "geometry", "proximity", "location"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-origin": {
-		"aliases": ["start", "base", "point", "geometry", "center"]
+		"aliases": ["start", "base", "point", "geometry", "center"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-orthogonal": {
 		"aliases": [
@@ -3794,13 +4371,16 @@
 			"constraint",
 			"ortho",
 			"precision"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-parallel": {
-		"aliases": ["align", "equal", "distance", "geometry", "line"]
+		"aliases": ["align", "equal", "distance", "geometry", "line"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-perpendicular": {
-		"aliases": ["right angle", "normal", "geometry", "line"]
+		"aliases": ["right angle", "normal", "geometry", "line"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-point": {
 		"aliases": [
@@ -3812,16 +4392,20 @@
 			"vertex",
 			"guide",
 			"precision"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-quadrant": {
-		"aliases": ["quarter", "circle", "point", "geometry", "arc"]
+		"aliases": ["quarter", "circle", "point", "geometry", "arc"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snap-tangent": {
-		"aliases": ["touch", "curve", "point", "geometry", "line"]
+		"aliases": ["touch", "curve", "point", "geometry", "line"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"snowflake": {
-		"aliases": ["load", "snow", "environmental", "weather", "climate", "roof"]
+		"aliases": ["load", "snow", "environmental", "weather", "climate", "roof"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sort-ascending": {
 		"aliases": [
@@ -3832,7 +4416,8 @@
 			"sort",
 			"sorting",
 			"a-z"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sort-descending": {
 		"aliases": [
@@ -3843,10 +4428,12 @@
 			"sort",
 			"sorting",
 			"z-a"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sorting": {
-		"aliases": ["arrange", "order", "sequence", "organize", "sort", "arrows"]
+		"aliases": ["arrange", "order", "sequence", "organize", "sort", "arrows"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sound-loud": {
 		"aliases": [
@@ -3856,7 +4443,8 @@
 			"increase",
 			"volume",
 			"speaker"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sound-mute": {
 		"aliases": [
@@ -3867,19 +4455,24 @@
 			"stop",
 			"volume",
 			"speaker"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sound-quiet": {
-		"aliases": ["reduce", "soften", "decrease", "lower", "volume", "speaker"]
+		"aliases": ["reduce", "soften", "decrease", "lower", "volume", "speaker"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"spin": {
-		"aliases": ["rotate", "turn", "space", "revolve", "twist", "3d", "move"]
+		"aliases": ["rotate", "turn", "space", "revolve", "twist", "3d", "move"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"split-cells": {
-		"aliases": ["cells", "divide", "separate", "split", "table"]
+		"aliases": ["cells", "divide", "separate", "split", "table"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"spring-area": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"spring-linear": {
 		"aliases": [
@@ -3890,7 +4483,8 @@
 			"wall",
 			"connection",
 			"edge"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"spring-point": {
 		"aliases": [
@@ -3901,52 +4495,75 @@
 			"vibration",
 			"damper",
 			"node"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"star": {
-		"aliases": ["mark", "rate", "favorite", "favourite", "highlight", "feature"]
+		"aliases": [
+			"mark",
+			"rate",
+			"favorite",
+			"favourite",
+			"highlight",
+			"feature"
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"state-inherited-dot": {
-		"aliases": ["indicate", "mark", "status", "inherit", "derive"]
+		"aliases": ["indicate", "mark", "status", "inherit", "derive"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"status-draft": {
-		"aliases": ["indicate", "mark", "draft", "prepare"]
+		"aliases": ["indicate", "mark", "draft", "prepare"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"status-error": {
-		"aliases": ["warn", "indicate", "error", "fail", "!"]
+		"aliases": ["warn", "indicate", "error", "fail", "!"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"status-pending": {
-		"aliases": ["wait", "indicate", "pending", "process"]
+		"aliases": ["wait", "indicate", "pending", "process"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"status-rejected": {
-		"aliases": ["deny", "indicate", "reject", "decline"]
+		"aliases": ["deny", "indicate", "reject", "decline"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"status-running": {
-		"aliases": ["process", "indicate", "execute", "operate", "progress"]
+		"aliases": ["process", "indicate", "execute", "operate", "progress"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"status-stop": {
-		"aliases": ["halt", "indicate", "stop", "cease"]
+		"aliases": ["halt", "indicate", "stop", "cease"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"status-success": {
-		"aliases": ["confirm", "indicate", "succeed", "complete", "check"]
+		"aliases": ["confirm", "indicate", "succeed", "complete", "check"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"status-update": {
-		"aliases": ["change", "indicate", "show", "refresh"]
+		"aliases": ["change", "indicate", "show", "refresh"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"status-warning": {
-		"aliases": ["caution", "indicate", "warn", "alert", "!"]
+		"aliases": ["caution", "indicate", "warn", "alert", "!"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"stop-circle": {
-		"aliases": ["halt", "cease", "end", "terminate", "stop"]
+		"aliases": ["halt", "cease", "end", "terminate", "stop"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"stop": {
-		"aliases": ["halt", "cease", "end", "terminate", "stop"]
+		"aliases": ["halt", "cease", "end", "terminate", "stop"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"stopwatch": {
-		"aliases": ["time", "measure", "track", "monitor", "record", "clock"]
+		"aliases": ["time", "measure", "track", "monitor", "record", "clock"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"storm-water-pipes": {
-		"aliases": []
+		"aliases": [],
+		"symbols": ["icon", "icon-large"]
 	},
 	"subscriptions": {
 		"aliases": [
@@ -3956,10 +4573,12 @@
 			"recurring",
 			"renewal",
 			"service"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"sun": {
-		"aliases": ["switch", "brighten", "toggle", "light", "mode", "planet"]
+		"aliases": ["switch", "brighten", "toggle", "light", "mode", "planet"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"supply-chain": {
 		"aliases": [
@@ -3971,7 +4590,8 @@
 			"structure",
 			"style",
 			"template"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"support-linear": {
 		"aliases": [
@@ -3982,7 +4602,8 @@
 			"load",
 			"continuous",
 			"edge"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"support-point": {
 		"aliases": [
@@ -3994,22 +4615,28 @@
 			"pin",
 			"fixed",
 			"node"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"support": {
-		"aliases": ["aid", "assistance", "customer", "guidance", "help", "service"]
+		"aliases": ["aid", "assistance", "customer", "guidance", "help", "service"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"suppress": {
-		"aliases": ["hide", "remove", "eliminate", "conceal", "gavel"]
+		"aliases": ["hide", "remove", "eliminate", "conceal", "gavel"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"swap": {
-		"aliases": ["exchange", "switch", "trade", "alternate", "interchange"]
+		"aliases": ["exchange", "switch", "trade", "alternate", "interchange"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"swatch": {
-		"aliases": ["select", "sample", "choose", "pick", "color"]
+		"aliases": ["select", "sample", "choose", "pick", "color"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"table-column-insert-right": {
-		"aliases": ["add", "data", "new"]
+		"aliases": ["add", "data", "new"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"table-of-contents": {
 		"aliases": [
@@ -4021,16 +4648,20 @@
 			"items",
 			"bullets",
 			"toc"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"table-row-insert-below": {
-		"aliases": ["add", "data", "new"]
+		"aliases": ["add", "data", "new"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"table-rows-comfortable": {
-		"aliases": ["data", "generous", "relaxed", "spacing"]
+		"aliases": ["data", "generous", "relaxed", "spacing"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"table-rows-compact": {
-		"aliases": ["condensed", "data", "dense", "tight"]
+		"aliases": ["condensed", "data", "dense", "tight"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"table": {
 		"aliases": [
@@ -4044,16 +4675,20 @@
 			"column",
 			"row",
 			"cell"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"tag": {
-		"aliases": ["label", "mark", "identify", "categorize", "classify"]
+		"aliases": ["label", "mark", "identify", "categorize", "classify"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"technical-preview-badge": {
-		"aliases": ["mark", "indicate", "preview", "demonstrate"]
+		"aliases": ["mark", "indicate", "preview", "demonstrate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"technical-preview": {
-		"aliases": ["mark", "indicate", "preview", "demonstrate"]
+		"aliases": ["mark", "indicate", "preview", "demonstrate"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"temperature": {
 		"aliases": [
@@ -4063,7 +4698,8 @@
 			"contraction",
 			"climate",
 			"stress"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"templates-copy": {
 		"aliases": [
@@ -4072,7 +4708,8 @@
 			"copy-sheet",
 			"replicate-framework",
 			"template-multiply"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"templates-create": {
 		"aliases": [
@@ -4082,7 +4719,8 @@
 			"plus-template",
 			"template-builder",
 			"blank-canvas"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"templates": {
 		"aliases": [
@@ -4094,7 +4732,8 @@
 			"patterns",
 			"formats",
 			"guides"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"text-align-center": {
 		"aliases": [
@@ -4107,7 +4746,8 @@
 			"center",
 			"format",
 			"middle"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"text-align-justify": {
 		"aliases": [
@@ -4119,7 +4759,8 @@
 			"arrange",
 			"justify",
 			"format"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"text-align-left": {
 		"aliases": [
@@ -4132,7 +4773,8 @@
 			"left",
 			"format",
 			"start"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"text-align-right": {
 		"aliases": [
@@ -4145,10 +4787,12 @@
 			"right",
 			"format",
 			"end"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"text-rotate-right": {
-		"aliases": ["format", "rotate", "text", "turn"]
+		"aliases": ["format", "rotate", "text", "turn"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"text": {
 		"aliases": [
@@ -4159,10 +4803,12 @@
 			"font",
 			"typeface",
 			"typography"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"textbox": {
-		"aliases": ["input", "form", "field", "text", "entry", "data", "write"]
+		"aliases": ["input", "form", "field", "text", "entry", "data", "write"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"thumbs-down": {
 		"aliases": [
@@ -4173,7 +4819,8 @@
 			"no",
 			"reject",
 			"vote"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"thumbs-up": {
 		"aliases": [
@@ -4184,40 +4831,52 @@
 			"recommend",
 			"vote",
 			"yes"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"timeline": {
-		"aliases": ["schedule", "sequence", "order", "arrange", "plan", "gant"]
+		"aliases": ["schedule", "sequence", "order", "arrange", "plan", "gant"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"timer": {
-		"aliases": ["measure", "count", "track", "time", "monitor", "clock"]
+		"aliases": ["measure", "count", "track", "time", "monitor", "clock"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"toilet": {
-		"aliases": ["restroom", "bathroom", "facility", "amenity", "washroom"]
+		"aliases": ["restroom", "bathroom", "facility", "amenity", "washroom"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"tower-crane": {
-		"aliases": ["load", "construction", "temporary", "equipment", "hoisting"]
+		"aliases": ["load", "construction", "temporary", "equipment", "hoisting"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"transparency": {
-		"aliases": ["adjust", "fade", "opacity", "transparent", "clear"]
+		"aliases": ["adjust", "fade", "opacity", "transparent", "clear"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"tree-item-locked": {
-		"aliases": ["secure", "restricted", "protected", "hierarchy", "node"]
+		"aliases": ["secure", "restricted", "protected", "hierarchy", "node"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"tree-item-unlocked": {
-		"aliases": ["open", "access", "available", "hierarchy", "node"]
+		"aliases": ["open", "access", "available", "hierarchy", "node"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"truck": {
-		"aliases": ["load", "vehicle", "moving", "live-load", "traffic", "highway"]
+		"aliases": ["load", "vehicle", "moving", "live-load", "traffic", "highway"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"unassign": {
-		"aliases": ["user", "remove", "minus", "deallocate", "person", "clear"]
+		"aliases": ["user", "remove", "minus", "deallocate", "person", "clear"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"underground-storage": {
-		"aliases": ["subsurface", "tank", "container", "below", "utility"]
+		"aliases": ["subsurface", "tank", "container", "below", "utility"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"undo": {
-		"aliases": ["reverse", "revert", "cancel", "restore", "return"]
+		"aliases": ["reverse", "revert", "cancel", "restore", "return"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"ungroup": {
 		"aliases": [
@@ -4228,7 +4887,8 @@
 			"split",
 			"unlink",
 			"divide"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"unlink": {
 		"aliases": [
@@ -4240,16 +4900,20 @@
 			"url",
 			"web",
 			"www"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"update": {
-		"aliases": ["refresh", "change", "modify", "revise", "renew"]
+		"aliases": ["refresh", "change", "modify", "revise", "renew"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"upload": {
-		"aliases": ["send", "transfer", "submit", "transmit", "deliver", "import"]
+		"aliases": ["send", "transfer", "submit", "transmit", "deliver", "import"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"user-active": {
-		"aliases": ["account", "available", "logged-in", "online", "status"]
+		"aliases": ["account", "available", "logged-in", "online", "status"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"user-add": {
 		"aliases": [
@@ -4264,7 +4928,8 @@
 			"create",
 			"new",
 			"+"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"user-away": {
 		"aliases": [
@@ -4279,10 +4944,12 @@
 			"unavailable",
 			"away",
 			"AFK"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"user-edit": {
-		"aliases": ["account", "change", "modify", "profile", "update"]
+		"aliases": ["account", "change", "modify", "profile", "update"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"user-restricted": {
 		"aliases": [
@@ -4296,7 +4963,8 @@
 			"restrict",
 			"constrain",
 			"prevent"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"user-settings": {
 		"aliases": [
@@ -4305,10 +4973,12 @@
 			"controls",
 			"options",
 			"preferences"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"user": {
-		"aliases": ["identify", "represent", "profile", "person", "account"]
+		"aliases": ["identify", "represent", "profile", "person", "account"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"users": {
 		"aliases": [
@@ -4322,31 +4992,40 @@
 			"represent",
 			"people",
 			"accounts"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"validate": {
-		"aliases": ["check", "verify", "confirm", "authenticate", "approve"]
+		"aliases": ["check", "verify", "confirm", "authenticate", "approve"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-add": {
-		"aliases": ["create", "point", "node", "new", "geometry"]
+		"aliases": ["create", "point", "node", "new", "geometry"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-control-direction": {
-		"aliases": ["bearing", "geometry", "orientation", "point", "vector"]
+		"aliases": ["bearing", "geometry", "orientation", "point", "vector"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-control-slope": {
-		"aliases": ["angle", "geometry", "gradient", "incline", "point"]
+		"aliases": ["angle", "geometry", "gradient", "incline", "point"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-edit": {
-		"aliases": ["modify", "point", "node", "adjust", "geometry"]
+		"aliases": ["modify", "point", "node", "adjust", "geometry"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-mesh-add": {
-		"aliases": ["3d", "create", "geometry", "new", "point"]
+		"aliases": ["3d", "create", "geometry", "new", "point"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-mesh-control": {
-		"aliases": ["3d", "edit", "geometry", "manipulate", "point"]
+		"aliases": ["3d", "edit", "geometry", "manipulate", "point"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-remove": {
-		"aliases": ["delete", "point", "node", "remove", "geometry"]
+		"aliases": ["delete", "point", "node", "remove", "geometry"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"vertex": {
 		"aliases": [
@@ -4359,10 +5038,12 @@
 			"control point",
 			"survey point",
 			"location"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"visibility-disabled": {
-		"aliases": ["hide", "show", "hidden", "view", "toggle"]
+		"aliases": ["hide", "show", "hidden", "view", "toggle"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"visibility-emphasis": {
 		"aliases": [
@@ -4373,7 +5054,8 @@
 			"accent",
 			"visible",
 			"eye"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"visibility-hide": {
 		"aliases": [
@@ -4384,13 +5066,16 @@
 			"mask",
 			"invisible",
 			"eye"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"visibility-invert": {
-		"aliases": ["reverse", "toggle", "switch", "display", "view"]
+		"aliases": ["reverse", "toggle", "switch", "display", "view"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"visibility-partial": {
-		"aliases": ["show", "hide", "display", "view", "opacity"]
+		"aliases": ["show", "hide", "display", "view", "opacity"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"visibility-show": {
 		"aliases": [
@@ -4401,10 +5086,12 @@
 			"present",
 			"visible",
 			"eye"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"walk": {
-		"aliases": ["move", "navigate", "tour", "traverse", "progress"]
+		"aliases": ["move", "navigate", "tour", "traverse", "progress"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"wall-retaining": {
 		"aliases": [
@@ -4422,7 +5109,8 @@
 			"support",
 			"terrain",
 			"wall"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"warning": {
 		"aliases": [
@@ -4432,7 +5120,8 @@
 			"attention",
 			"hazard",
 			"important"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"wifi-disabled": {
 		"aliases": [
@@ -4446,10 +5135,12 @@
 			"offline",
 			"deactivate",
 			"block"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"wifi": {
-		"aliases": ["connect", "network", "wireless", "communicate", "link"]
+		"aliases": ["connect", "network", "wireless", "communicate", "link"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"wind": {
 		"aliases": [
@@ -4459,19 +5150,24 @@
 			"pressure",
 			"gust",
 			"aerodynamic"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-add": {
-		"aliases": ["create", "open", "add", "new", "generate", "+"]
+		"aliases": ["create", "open", "add", "new", "generate", "+"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-area": {
-		"aliases": ["select", "define", "mark", "specify", "determine"]
+		"aliases": ["select", "define", "mark", "specify", "determine"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-back": {
-		"aliases": ["move", "order", "arrange", "position", "shift", "previous"]
+		"aliases": ["move", "order", "arrange", "position", "shift", "previous"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-collapse": {
-		"aliases": ["minimize", "reduce", "shrink", "contract", "decrease"]
+		"aliases": ["minimize", "reduce", "shrink", "contract", "decrease"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-expand": {
 		"aliases": [
@@ -4481,19 +5177,24 @@
 			"increase",
 			"extend",
 			"full screen"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-forward": {
-		"aliases": ["move", "order", "arrange", "position", "shift", "next"]
+		"aliases": ["move", "order", "arrange", "position", "shift", "next"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-maximize": {
-		"aliases": ["enlarge", "expand", "full", "grow", "increase"]
+		"aliases": ["enlarge", "expand", "full", "grow", "increase"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-minimize": {
-		"aliases": ["reduce", "shrink", "small", "contract", "decrease"]
+		"aliases": ["reduce", "shrink", "small", "contract", "decrease"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-popout": {
-		"aliases": ["open", "separate", "detach", "float", "isolate", "extract"]
+		"aliases": ["open", "separate", "detach", "float", "isolate", "extract"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-popover": {
 		"aliases": [
@@ -4505,7 +5206,8 @@
 			"overlay",
 			"popup",
 			"view"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-settings": {
 		"aliases": [
@@ -4519,22 +5221,28 @@
 			"set",
 			"customize",
 			"modify"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-split-horizontal": {
-		"aliases": ["divide", "separate", "split", "partition", "section"]
+		"aliases": ["divide", "separate", "split", "partition", "section"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-split-vertical": {
-		"aliases": ["divide", "separate", "split", "partition", "section"]
+		"aliases": ["divide", "separate", "split", "partition", "section"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-zoom-in": {
-		"aliases": ["enlarge", "magnify", "expand", "increase", "grow"]
+		"aliases": ["enlarge", "magnify", "expand", "increase", "grow"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window-zoom-out": {
-		"aliases": ["reduce", "shrink", "minimize", "decrease", "contract"]
+		"aliases": ["reduce", "shrink", "minimize", "decrease", "contract"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"window": {
-		"aliases": ["view", "display", "contain", "show", "present"]
+		"aliases": ["view", "display", "contain", "show", "present"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"workflow": {
 		"aliases": [
@@ -4547,18 +5255,23 @@
 			"procedure",
 			"sequence",
 			"steps"
-		]
+		],
+		"symbols": ["icon", "icon-large"]
 	},
 	"zoom-in-circle": {
-		"aliases": ["enlarge", "magnify", "expand", "increase", "grow"]
+		"aliases": ["enlarge", "magnify", "expand", "increase", "grow"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"zoom-in-magnifier": {
-		"aliases": ["enlarge", "magnify", "expand", "increase", "grow"]
+		"aliases": ["enlarge", "magnify", "expand", "increase", "grow"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"zoom-out-circle": {
-		"aliases": ["reduce", "shrink", "minimize", "decrease", "contract"]
+		"aliases": ["reduce", "shrink", "minimize", "decrease", "contract"],
+		"symbols": ["icon", "icon-large"]
 	},
 	"zoom-out-magnifier": {
-		"aliases": ["reduce", "shrink", "minimize", "decrease", "contract"]
+		"aliases": ["reduce", "shrink", "minimize", "decrease", "contract"],
+		"symbols": ["icon", "icon-large"]
 	}
 }

@@ -1,1 +1,0 @@
-import{K as e,Y as t}from"./jsx-runtime-CHTBqLa3.js";var n=t(e(),1);function r(e){let{controlled:t,default:r,name:i,state:a=`value`}=e,{current:o}=n.useRef(t!==void 0),[s,c]=n.useState(r);return[o?t:s,n.useCallback(e=>{o||c(e)},[])]}export{r as t};

@@ -1,0 +1,1 @@
+import{t as e}from"./notifications-Bn0OI0MA.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

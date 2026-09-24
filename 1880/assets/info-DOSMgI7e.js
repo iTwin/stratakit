@@ -1,1 +1,0 @@
-import{t as e}from"./info-CruC3TEU.js";var t=`${e}#icon`;`${e}`;export{t};

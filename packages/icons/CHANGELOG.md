@@ -2,8 +2,6 @@
 
 ## 0.4.5
 
-### Patch Changes
-
 - [#1863](https://github.com/iTwin/stratakit/pull/1863): Added typed named exports for every icon, available from subpaths without the `.svg` extension. These provide complete URLs for all icon variations, without having to manually manage SVG symbol fragments. Example usage:
 
   ```tsx

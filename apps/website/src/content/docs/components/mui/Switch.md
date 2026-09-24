@@ -26,6 +26,7 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 - Ripple effect removed. The `centerRipple`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
+- Added a checkmark on the thumb when checked to help further differentiate the checked and unchecked states.
 
 ## Examples
 

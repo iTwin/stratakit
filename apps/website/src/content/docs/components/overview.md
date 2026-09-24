@@ -3,10 +3,11 @@ title: Components
 description: How components are organized in StrataKit
 ---
 
-The **StrataKit** component catalog comes in two tiers:
+The **StrataKit** component catalog comes in three tiers:
 
 1. Generic components are taken from the third-party [Material UI (**MUI**)](https://mui.com/material-ui/) library.
 2. Specialized components are developed separately in `@stratakit` packages.
+3. Composite components build upon other types of components and are distributed as examples.
 
 See [**Develop with StrataKit**](/getting-started/develop/) for detailed installation instructions.
 
@@ -29,6 +30,12 @@ The theme includes the following modifications:
 Accompanying specialized components are available in separate packages, such as [@stratakit/structures](https://www.npmjs.com/package/@stratakit/structures).
 
 These components are developed independently, to meet the interface requirements of construction and infrastructure design software.
+
+## Composite components
+
+Composite components combine other components to enable more specific interactions. They may be built using any combination of **MUI components**, **StrataKit components**, or third-party libraries.
+
+These components are not exported directly, and instead distributed primarily through example code snippets. The underlying APIs used will be listed under the "API reference" subheading.
 
 ## Component guidance
 

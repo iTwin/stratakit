@@ -163,8 +163,8 @@ jobs:
       - name: Run playwright tests (website)
         run: pnpm --filter=@stratakit/website exec playwright test
 
-  internal-tests:
-    name: Run internal tests
+  other-tests:
+    name: Run other tests
     needs: install
     runs-on: ubuntu-latest
 
@@ -185,6 +185,9 @@ jobs:
 
       - name: Run internal tests
         run: pnpm --filter=internal test
+
+      - name: Run @stratakit/icons tests
+        run: pnpm --filter=@stratakit/icons test
 
   deploy-gh-pages:
     name: Deploy test app

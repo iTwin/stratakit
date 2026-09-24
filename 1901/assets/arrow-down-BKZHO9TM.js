@@ -1,1 +1,0 @@
-import{t as e}from"./arrow-down-BBXgmk-0.js";var t=`${e}#icon`;`${e}`;export{t};

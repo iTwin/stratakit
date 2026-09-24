@@ -27,25 +27,24 @@ import styles from "./~settings.module.css";
 
 type AccentColor = "aurora" | "cobalt";
 
-interface SettingsState {
+interface PersistedSettings {
 	colorScheme: ColorSchemeSetting;
 	accentColor: AccentColor;
-	setColorScheme: (scheme: ColorSchemeSetting) => void;
-	setAccentColor: (color: AccentColor) => void;
 	debugMode: boolean;
-	setDebugMode: (debug: boolean) => void;
 }
 
-type PersistedSettings = Partial<
-	Pick<SettingsState, "colorScheme" | "accentColor">
->;
+interface SettingsState extends PersistedSettings {
+	setColorScheme: (scheme: ColorSchemeSetting) => void;
+	setAccentColor: (color: AccentColor) => void;
+	setDebugMode: (debug: boolean) => void;
+}
 
 /**
  * Splits the store into two localStorage entries:
  * - colorScheme is stored separately (in `🥝:color-scheme`).
  * - the default key used for all the other settings.
  */
-const settingsStorage: PersistStorage<PersistedSettings> = {
+const settingsStorage: PersistStorage<Partial<PersistedSettings>> = {
 	getItem: (name) => {
 		if (typeof localStorage === "undefined") return null;
 
@@ -92,8 +91,8 @@ export const useSettingsStore = create<SettingsState>()(
 		{
 			name: "🥝:settings",
 			storage: settingsStorage,
-			partialize: ({ colorScheme, accentColor }) =>
-				({ colorScheme, accentColor }) satisfies PersistedSettings,
+			partialize: ({ colorScheme, accentColor, debugMode }) =>
+				({ colorScheme, accentColor, debugMode }) satisfies PersistedSettings,
 		},
 	),
 );

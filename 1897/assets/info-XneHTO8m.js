@@ -1,1 +1,0 @@
-import{t as e}from"./info-D6vtn-0E.js";var t=`${e}#icon`;`${e}`;export{t};

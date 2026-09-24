@@ -1,1 +1,0 @@
-import{J as e}from"./jsx-runtime-CHTBqLa3.js";var t=e({default:()=>n}),n=`/1897/assets/script-VOastga3.svg`,r=e({default:()=>i}),i=`/1897/assets/window-popout-pJesppJT.svg`;export{t as i,r as n,n as r,i as t};

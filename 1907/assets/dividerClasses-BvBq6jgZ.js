@@ -1,1 +1,0 @@
-import{S as e}from"./DefaultPropsProvider-CttC6f9u.js";import{n as t}from"./memoTheme-C7OvJhA7.js";function n(t){return e(`MuiDivider`,t)}var r=t(`MuiDivider`,[`root`,`absolute`,`fullWidth`,`inset`,`middle`,`flexItem`,`vertical`,`withChildren`,`textAlignRight`,`textAlignLeft`,`wrapper`,`wrapperVertical`]);export{n,r as t};

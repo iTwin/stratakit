@@ -23,12 +23,6 @@ Use [`slotProps.textField`](https://mui.com/x/api/date-pickers/date-picker/#date
 
 ::example{src="mui/DatePicker.sizes"}
 
-### Month selection
-
-Use the [`views`](https://mui.com/x/api/date-pickers/date-picker/#date-picker-prop-views) prop to allow selecting the year and month in addition to the day. Defaults to `["year", "day"]`.
-
-::example{src="mui/DatePicker.month"}
-
 ## API reference
 
 - [`DatePicker`](https://mui.com/x/api/date-pickers/date-picker/)

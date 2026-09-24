@@ -1,1 +1,0 @@
-import{t as e}from"./info-CbMuSIN5.js";var t=`${e}#icon`;`${e}`;export{t};

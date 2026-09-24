@@ -1,1 +1,0 @@
-import{t as e}from"./star-CfAb2pO_.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

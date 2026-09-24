@@ -11,12 +11,14 @@
 			"default": "./dist/*.js"
 		},
 		"./*.svg": "./icons/*.svg",
-		"./icons-list.json": "./icons-list.json"
+		"./icons-list.json": "./icons-list.json",
+		"./icons-meta.json": "./icons-meta.json"
 	},
 	"files": [
 		"dist",
 		"icons/*.svg",
 		"icons-list.json",
+		"icons-meta.json",
 		"LICENSE.md",
 		"CHANGELOG.md"
 	],
@@ -37,6 +39,7 @@
 	],
 	"scripts": {
 		"build": "wireit",
+		"extract-meta": "node --env-file-if-exists=.env scripts/icons-meta.ts",
 		"test": "node --test scripts/icons.test.js"
 	},
 	"devDependencies": {

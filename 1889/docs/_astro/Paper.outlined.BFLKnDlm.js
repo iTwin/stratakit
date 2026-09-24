@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{t}from"./Paper.DAMB5-U8.js";var n=e(),r=()=>(0,n.jsx)(t,{sx:{minInlineSize:`128px`,minBlockSize:`128px`},variant:`outlined`});export{r as default};

@@ -1,0 +1,1 @@
+import{$ as e}from"./jsx-runtime-PTEwNWIc.js";var t=e({default:()=>n}),n=`/1889/assets/star-BiFwr69e.svg`;export{t as n,n as t};

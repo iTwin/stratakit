@@ -24,12 +24,12 @@ Migration to StrataKit can be done gradually, since iTwinUI can coexist in the s
    Pass the StrataKit [Root](/components/root) into the `as` prop of the iTwinUI [ThemeProvider](https://itwinui.bentley.com/docs/themeprovider) to render a single DOM element.
 
    ```diff
-     <ThemeProvider
-       theme={theme}
-    +  as={Root}
-     >
-       {/* … */}
-     </ThemeProvider>
+    <ThemeProvider
+      theme={theme}
+   +  as={Root}
+    >
+      {/* … */}
+    </ThemeProvider>
    ```
 
    Specify the `Root` props directly on the `ThemeProvider` component.
@@ -38,7 +38,7 @@ Migration to StrataKit can be done gradually, since iTwinUI can coexist in the s
     <ThemeProvider
       theme={theme}
       as={Root}
-   +  colorScheme="light"
+   +  colorScheme={theme}
     >
       {/* … */}
     </ThemeProvider>
@@ -50,7 +50,7 @@ Migration to StrataKit can be done gradually, since iTwinUI can coexist in the s
     <ThemeProvider
       theme={theme}
       as={Root}
-      colorScheme="light"
+      colorScheme={theme}
    +  future={{ themeBridge: true }} // or future={true}
     >
       {/* … */}

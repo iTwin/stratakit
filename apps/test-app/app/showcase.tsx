@@ -82,17 +82,19 @@ function ShowcaseRenderer({ modulePath, exportName }: ShowcaseRendererProps) {
  * @returns A promise that resolves to the React component representing the showcase. Can be used with `React.use()`.
  */
 function loadModule(path: string, exportName?: string): Promise<React.FC> {
+	exportName ??= "default";
+
 	const load = moduleLoaders.get(path);
-	if (!load) throw new Error(`Unknown showcase module: ${path}`);
+	if (!load) throw new Error(`Unknown module: ${path}.tsx`);
 
 	const cacheKey = `${path}#${exportName}`;
 	const cachedPromise = modulePromises.get(cacheKey);
 	if (cachedPromise) return cachedPromise;
 
 	const promise = load().then((module) => {
-		const Showcase = module[exportName ?? "default"];
+		const Showcase = module[exportName];
 		if (typeof Showcase !== "function")
-			throw new Error(`Unknown module: ${cacheKey}`);
+			throw new Error(`Unsupported export "${exportName}" in ${path}.tsx`);
 		return Showcase as React.FC;
 	});
 	modulePromises.set(cacheKey, promise);

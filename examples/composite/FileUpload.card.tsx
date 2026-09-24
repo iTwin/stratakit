@@ -75,7 +75,7 @@ export default () => {
 							<ListItemText
 								primary={file.name}
 								secondary={
-									<Typography variant="caption-sm" color="textSecondary">
+									<Typography variant="caption-lg" color="textSecondary">
 										{formatBytes(file.size)}
 									</Typography>
 								}

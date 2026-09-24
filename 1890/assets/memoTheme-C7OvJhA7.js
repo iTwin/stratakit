@@ -1,0 +1,1 @@
+import{S as e,x as t}from"./DefaultPropsProvider-CttC6f9u.js";function n(t,n,r=`Mui`){let i={};return n.forEach(n=>{i[n]=e(t,n,r)}),i}var r={theme:void 0};function i(e){let n,i;return function(a){let o=n;return(o===void 0||a.theme!==i)&&(r.theme=a.theme,o=t(e(r)),n=o,i=a.theme),o}}var a=i;export{n,a as t};

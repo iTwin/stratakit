@@ -7,16 +7,6 @@ description: File uploads let users select and attach one or more files.
 
 Use a native [`<input type="file">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file) to let users select one or more files. Provide feedback about the upload status so users know when their files have been received successfully.
 
-## Use cases
-
-Make sure **file upload** is suitable for your use case. There may be other, more appropriate components available.
-
-| Use case                                        | [File upload](/components/fileupload) | [TextField](/components/textfield) | [Button](/components/button) |
-| ----------------------------------------------- | ------------------------------------- | ---------------------------------- | ---------------------------- |
-| Select one or more files from the user's device | ✅                                    | ❌                                 | ❌                           |
-| Enter text or metadata                          | ❌                                    | ✅                                 | ❌                           |
-| Trigger an action without selecting files       | ❌                                    | ❌                                 | ✅                           |
-
 ## Examples
 
 ### Card

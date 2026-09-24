@@ -4,13 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Link, useLocation } from "react-router";
+import { svgHome } from "@stratakit/icons/home";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
+import { svgSettings } from "@stratakit/icons/settings";
+import { svgUser } from "@stratakit/icons/user";
 import { unstable_NavigationList as NavigationList } from "@stratakit/structures";
 import { definePage, type VariantProps } from "~/~utils.tsx";
-
-import svgHome from "@stratakit/icons/home.svg";
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
-import svgSettings from "@stratakit/icons/settings.svg";
-import svgUser from "@stratakit/icons/user.svg";
 
 export const handle = { title: "NavigationList" };
 

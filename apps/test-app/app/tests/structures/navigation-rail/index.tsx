@@ -6,17 +6,21 @@
 import * as React from "react";
 import { Avatar, Button, Divider, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { svgBrandBentleySystemsLarge } from "@stratakit/icons/brand-bentley-systems";
+import { svgDatabaseLarge } from "@stratakit/icons/database";
+import { svgHelpLarge } from "@stratakit/icons/help";
+import { svgHourglassLarge } from "@stratakit/icons/hourglass";
+import { svgKeyLarge } from "@stratakit/icons/key";
+import { svgNotificationsLarge } from "@stratakit/icons/notifications";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
+import { svgPlugins } from "@stratakit/icons/plugins";
+import { svgProcessLarge } from "@stratakit/icons/process";
+import { svgScriptLarge } from "@stratakit/icons/script";
+import { svgSettingsLarge } from "@stratakit/icons/settings";
+import { svgUser } from "@stratakit/icons/user";
+import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import { definePage, type VariantProps } from "~/~utils.tsx";
-
-import svgBentley from "@stratakit/icons/brand-bentley-systems.svg";
-import svgHelp from "@stratakit/icons/help.svg";
-import svgNotifications from "@stratakit/icons/notifications.svg";
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
-import svgPlugins from "@stratakit/icons/plugins.svg";
-import svgSettings from "@stratakit/icons/settings.svg";
-import svgUser from "@stratakit/icons/user.svg";
-import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 
 export const handle = { title: "NavigationRail" };
 
@@ -25,23 +29,23 @@ export const handle = { title: "NavigationRail" };
 const exampleNavItems = {
 	database: {
 		label: "Database",
-		icon: new URL("@stratakit/icons/database.svg", import.meta.url).href,
+		icon: svgDatabaseLarge,
 	},
 	administration: {
 		label: "Administration",
-		icon: new URL("@stratakit/icons/key.svg", import.meta.url).href,
+		icon: svgKeyLarge,
 	},
 	storage: {
 		label: "Storage",
-		icon: new URL("@stratakit/icons/process.svg", import.meta.url).href,
+		icon: svgProcessLarge,
 	},
 	functions: {
 		label: "Functions",
-		icon: new URL("@stratakit/icons/script.svg", import.meta.url).href,
+		icon: svgScriptLarge,
 	},
 	realtime: {
 		label: "Realtime",
-		icon: new URL("@stratakit/icons/hourglass.svg", import.meta.url).href,
+		icon: svgHourglassLarge,
 	},
 } as const;
 
@@ -54,7 +58,11 @@ export default definePage(
 		return (
 			<NavigationRail.Root defaultExpanded={!!defaultExpanded}>
 				<NavigationRail.Header>
-					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+					<Icon
+						alt="Acme app"
+						href={svgBrandBentleySystemsLarge}
+						size="large"
+					/>
 					<NavigationRail.ToggleButton />
 				</NavigationRail.Header>
 
@@ -63,7 +71,7 @@ export default definePage(
 						{Object.entries(exampleNavItems).map(([key, item]) => (
 							<NavigationRail.ListItem key={key}>
 								<NavigationRail.Anchor
-									icon={`${item.icon}#icon-large`}
+									icon={item.icon}
 									label={item.label}
 									href="#" // placeholder
 									active={active === key}
@@ -85,21 +93,18 @@ export default definePage(
 					<NavigationRail.Footer>
 						<NavigationRail.List>
 							<NavigationRail.ListItem>
-								<NavigationRail.Button
-									icon={`${svgHelp}#icon-large`}
-									label="Support"
-								/>
+								<NavigationRail.Button icon={svgHelpLarge} label="Support" />
 							</NavigationRail.ListItem>
 							<Divider presentational />
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={`${svgNotifications}#icon-large`}
+									icon={svgNotificationsLarge}
 									label="Notifications"
 								/>
 							</NavigationRail.ListItem>
 							<NavigationRail.ListItem>
 								<NavigationRail.Button
-									icon={`${svgSettings}#icon-large`}
+									icon={svgSettingsLarge}
 									label="Settings"
 								/>
 							</NavigationRail.ListItem>
@@ -122,7 +127,7 @@ function VisualTest() {
 	return (
 		<NavigationRail.Root>
 			<NavigationRail.Header>
-				<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+				<Icon alt="Acme app" href={svgBrandBentleySystemsLarge} size="large" />
 				<NavigationRail.ToggleButton />
 			</NavigationRail.Header>
 
@@ -189,7 +194,11 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 				}}
 			>
 				<NavigationRail.Header>
-					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+					<Icon
+						alt="Acme app"
+						href={svgBrandBentleySystemsLarge}
+						size="large"
+					/>
 					<NavigationRail.ToggleButton />
 				</NavigationRail.Header>
 				<NavigationRail.Content>

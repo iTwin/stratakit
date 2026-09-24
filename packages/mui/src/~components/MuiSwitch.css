@@ -172,7 +172,6 @@
 		&::before {
 			transition-timing-function: ease-out;
 			transition-property: opacity;
-			will-change: opacity;
 		}
 	}
 }

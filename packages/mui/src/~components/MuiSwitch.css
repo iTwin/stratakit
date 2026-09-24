@@ -138,6 +138,7 @@
 		height: 100%;
 		background-color: var(--✨icon-checked-color);
 		mask-image: var(--✨svg-checked);
+		mask-size: 16px 16px;
 		mask-position: center;
 		mask-repeat: no-repeat;
 		transition-duration: 0; /* Hide immediately when going from on->off to avoid getting moved or stretched by the thumb transform */

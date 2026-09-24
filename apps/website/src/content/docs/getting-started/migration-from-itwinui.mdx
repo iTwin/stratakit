@@ -80,19 +80,7 @@ Migration to StrataKit can be done gradually, since iTwinUI can coexist in the s
 
    Replace the usage of components from `@itwin/itwinui-react` with their [StrataKit counterparts](/components/overview/).
 
-   Some components are provided by `@mui/material`.
-
-   ```diff
-   - import { Button } from '@itwin/itwinui-react';
-   + import Button from "@mui/material/Button";
-   ```
-
-   Others live in `@stratakit/structures`.
-
-   ```diff
-   - import { Tree } from '@itwin/itwinui-react';
-   + import { Tree } from "@stratakit/structures";
-   ```
+   Some components are provided by `@mui/material`. Others live in `@stratakit/structures`.
 
    Once all usage of `@itwin/itwinui-react` has been replaced, it is safe to remove the dependency.
 

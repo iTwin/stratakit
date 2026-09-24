@@ -25,3 +25,10 @@
 	padding-block: var(--stratakit-space-300);
 	padding-inline: var(--stratakit-space-200);
 }
+
+.fileItem {
+	padding-inline-end: calc(
+		var(--stratakit-size-control-field-height-medium) +
+		var(--stratakit-space-300)
+	);
+}

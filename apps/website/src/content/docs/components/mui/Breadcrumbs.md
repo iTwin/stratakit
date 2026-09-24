@@ -31,3 +31,4 @@ When the full hierarchy does not fit, hide intermediate breadcrumb items and use
 - [`Breadcrumbs`](https://mui.com/material-ui/api/breadcrumbs/)
 - [`Link`](https://mui.com/material-ui/api/link/)
 - [`Button`](https://mui.com/material-ui/api/button/)
+- [`Menu`](https://mui.com/material-ui/api/menu/)

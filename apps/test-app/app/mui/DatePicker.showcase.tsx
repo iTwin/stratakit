@@ -14,9 +14,9 @@ export default function DatePickerExamples() {
 		<>
 			<DatePickerDefault />
 			<DatePickerSizes />
-			<DatePickerMonth />
 			<DatePickerTime />
 			<DatePickerCalendar />
+			<DatePickerMonth />
 		</>
 	);
 }

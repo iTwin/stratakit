@@ -43,24 +43,15 @@ import { Icon } from "@astrojs/starlight/components";
 </style>
 
 <script>
+	import { getStoredColorScheme, setStoredColorScheme } from "internal/color-scheme-storage.ts";
+
 	type Theme = "dark" | "light";
 
-	/** Key in `localStorage` to store color theme preference at. */
-	const storageKey = "color-scheme";
-
-	/** Load the user’s preference from `localStorage`. */
+	/** Load the color-scheme from `localStorage`. */
 	const loadTheme = (): Theme | undefined => {
-		const theme = localStorage.getItem(storageKey);
-		if (theme === "light" || theme === "dark") {
-			return theme;
-		}
-		return undefined;
+		const theme = getStoredColorScheme();
+		return theme === "auto" ? undefined : theme;
 	};
-
-	/** Store the user’s preference in `localStorage`. */
-	function storeTheme(theme: Theme): void {
-		localStorage.setItem(storageKey, theme === "light" || theme === "dark" ? theme : "");
-	}
 
 	/** Get the preferred system color scheme. */
 	const getPreferredColorScheme = (): Theme =>
@@ -71,7 +62,7 @@ import { Icon } from "@astrojs/starlight/components";
 		updateIcon(theme);
 		document.documentElement.dataset.theme = theme;
 		document.documentElement.dataset.colorScheme = theme;
-		storeTheme(theme);
+		setStoredColorScheme(theme);
 	}
 
 	/** Updates the icon shown inside the theme switcher. */

@@ -5,9 +5,8 @@
 
 import Stack from "@mui/material/Stack";
 import ToggleButton from "@mui/material/ToggleButton";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { Icon } from "@stratakit/mui";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (

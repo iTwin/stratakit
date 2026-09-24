@@ -32,6 +32,7 @@
 @import "./~components/MuiRating.css";
 @import "./~components/MuiSelect.css";
 @import "./~components/MuiSlider.css";
+@import "./~components/MuiSnackbar.css";
 @import "./~components/MuiStepper.css";
 @import "./~components/MuiSwitch.css";
 @import "./~components/MuiTable.css";
@@ -52,6 +53,6 @@
 
 .MuiBackdrop-root {
 	&:where(:not(.MuiBackdrop-invisible)) {
-		background-color: oklch(from var(--stratakit-color-bg-elevation-overlay) l c h / 0.8);
+		background-color: var(--stratakit-color-bg-elevation-overlay);
 	}
 }

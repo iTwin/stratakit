@@ -99,6 +99,9 @@ function createTheme() {
 
 	return createMuiTheme({
 		spacing: 4,
+		motion: {
+			reducedMotion: "system",
+		},
 		focusVisible: {
 			outline: "var(--🥝focus-outline)",
 			outlineOffset: "var(--🥝focus-outline-offset)",
@@ -440,6 +443,7 @@ function createTheme() {
 			},
 			MuiInput: {
 				defaultProps: {
+					classes: { root: "🥝MuiInput" },
 					disableUnderline: true,
 				},
 			},

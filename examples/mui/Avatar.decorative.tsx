@@ -5,9 +5,9 @@
 
 import Avatar from "@mui/material/Avatar";
 import Link from "@mui/material/Link";
+import { svgUser } from "@stratakit/icons/user";
 import { Icon } from "@stratakit/mui";
 
-import svgUser from "@stratakit/icons/user.svg";
 import styles from "./Avatar.decorative.module.css";
 
 export default () => {

@@ -25,10 +25,10 @@ const DEFAULT_ICON_HASH = "#icon";
 
 interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	/**
-	 * URL of the `.svg` file (e.g. from `@stratakit/icons`).
+	 * URL to an SVG symbol (e.g. from `@stratakit/icons` or a custom `.svg` file).
 	 *
-	 * The URL can contain a hash pointing to a specific symbol within the SVG (e.g. `#icon`, `#icon-large`).
-	 * By default, the `#icon` symbol is used if no hash is provided.
+	 * The URL should include a hash pointing to a specific symbol within the SVG (e.g. `#icon`, `#icon-large`).
+	 * By default, the `#icon` symbol is appended if no hash is provided.
 	 *
 	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
 	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from
@@ -59,18 +59,14 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 /**
  * Icon component that provides fill and sizing to the SVGs from `@stratakit/icons`.
  *
- * ```tsx
- * const arrowIcon = new URL("@stratakit/icons/arrow.svg", import.meta.url).href;
- * <Icon href={arrowIcon} />
- * ```
- *
- * The `href` can point to a specific symbol (e.g. `#icon`, `#icon-large`) within the SVG file:
+ * The `href` prop expects a valid URL to a specific symbol within an `.svg` file.
+ * It works with the named exports from `@stratakit/icons`, as well as custom `.svg` files.
  *
  * ```tsx
- * <Icon href={`${arrowIcon}#icon-large`} />
+ * <Icon href={svgArrow} />
  * ```
  *
- * It also accepts a custom SVG, via the `render `prop:
+ * Inline SVG elements are also supported, via the `render `prop:
  *
  * ```tsx
  * <Icon render={<svg><path d="…" fill="currentColor" /></svg>} />

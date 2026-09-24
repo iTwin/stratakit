@@ -5,9 +5,8 @@
 
 import Badge from "@mui/material/Badge";
 import Stack from "@mui/material/Stack";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { Icon } from "@stratakit/mui";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
@@ -24,7 +23,7 @@ export default () => {
 					</>
 				}
 				size="small"
-				inline
+				variant="inline"
 			/>
 			<Badge
 				badgeContent={
@@ -34,7 +33,7 @@ export default () => {
 					</>
 				}
 				size="medium"
-				inline
+				variant="inline"
 			/>
 		</Stack>
 	);

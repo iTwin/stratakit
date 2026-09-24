@@ -11,6 +11,8 @@ All icons provide regular and large variations, allowing the icons to be used at
 - `icon` (default)
 - `icon-large`
 
+Some icons may include symbols for other variations, such as `filled` and `filled-large`.
+
 [Named exports](#named-exports) include the symbol fragment (e.g. `#icon` or `#icon-large`) for you. [Raw `.svg` imports](#raw-svg-imports) require appending it yourself.
 
 ## Installation

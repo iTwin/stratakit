@@ -14,11 +14,11 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import visuallyHidden from "@mui/utils/visuallyHidden";
+import { svgDismiss } from "@stratakit/icons/dismiss";
+import { svgDocument } from "@stratakit/icons/document";
+import { svgUpload } from "@stratakit/icons/upload";
 import { Icon } from "@stratakit/mui";
 
-import svgDismiss from "@stratakit/icons/dismiss.svg";
-import svgDocument from "@stratakit/icons/document.svg";
-import svgUpload from "@stratakit/icons/upload.svg";
 import styles from "./FileUpload.card.module.css";
 
 export default () => {

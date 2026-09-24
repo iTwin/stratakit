@@ -5,9 +5,8 @@
 
 import Button from "@mui/material/Button";
 import visuallyHidden from "@mui/utils/visuallyHidden";
+import { svgUpload } from "@stratakit/icons/upload";
 import { Icon } from "@stratakit/mui";
-
-import svgUpload from "@stratakit/icons/upload.svg";
 
 export default () => {
 	return (

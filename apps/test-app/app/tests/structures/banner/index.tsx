@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Anchor, Button, VisuallyHidden } from "@stratakit/bricks";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { unstable_Banner as Banner } from "@stratakit/structures";
 import {
 	Actions as BannerActions,
@@ -14,8 +15,6 @@ import {
 	Root as BannerRoot,
 } from "@stratakit/structures/unstable_Banner";
 import { definePage } from "~/~utils.tsx";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Banner" };
 

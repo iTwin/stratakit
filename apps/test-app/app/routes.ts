@@ -31,6 +31,7 @@ export default [
 			),
 		),
 	]),
+	route("tests/mui/:component/:story", "./tests/mui/index.tsx"),
 ] satisfies RouteConfig;
 
 // ----------------------------------------------------------------------------

@@ -3,6 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { globSync, readFileSync } from "node:fs";
+import { fileURLToPath } from "node:url";
+
 import { reactRouter } from "@react-router/dev/vite";
 import babel from "@rolldown/plugin-babel";
 import { reactCompilerPreset } from "@vitejs/plugin-react";
@@ -43,11 +46,41 @@ const basename = (() => {
 
 const customConditions = isDev ? ["@stratakit/source"] : [];
 
+/**
+ * Enumerates the available paths for the dynamic `tests/mui/:component/:story`
+ * route so they can be pre-rendered. Each `*.spec.stories.tsx` file maps to a
+ * `:component`, and each of its named exports maps to a `:story`.
+ */
+function getMuiStoryPaths() {
+	const dirUrl = new URL("./app/tests/mui/", import.meta.url);
+	const paths: string[] = [];
+
+	for (const file of globSync("*.spec.stories.tsx", {
+		cwd: fileURLToPath(dirUrl),
+	})) {
+		const component = file.replace(/\.spec\.stories\.tsx$/, "");
+		const source = readFileSync(new URL(file, dirUrl), "utf8");
+
+		// Collect named exports, e.g. `export function Visual() {}`
+		// or `export const Visual = () => {}`.
+		for (const match of source.matchAll(
+			/export\s+(?:function|const|let|var)\s+(\w+)/g,
+		)) {
+			paths.push(`/tests/mui/${component}/${match[1]}`);
+		}
+	}
+
+	return paths;
+}
+
 // https://reactrouter.com/explanation/special-files#react-routerconfigts
 export const reactRouterConfig = {
 	...(basename && { basename }),
 	ssr: false,
-	prerender: true,
+	prerender: async ({ getStaticPaths }) => [
+		...getStaticPaths(),
+		...getMuiStoryPaths(),
+	],
 } satisfies ReactRouterConfig;
 
 // https://vite.dev/config/

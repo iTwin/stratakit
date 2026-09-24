@@ -50,4 +50,14 @@ test("every SVG has meta data", async () => {
 		);
 	});
 	assert.deepEqual(iconsWithoutAliases, [], "Icons without aliases found");
+
+	const iconsWithoutSymbols = icons.filter((icon) => {
+		const iconMeta = iconsMeta[icon];
+		return (
+			!iconMeta ||
+			!Array.isArray(iconMeta.symbols) ||
+			iconMeta.symbols.length === 0
+		);
+	});
+	assert.deepEqual(iconsWithoutSymbols, [], "Icons without symbols found");
 });

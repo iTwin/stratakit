@@ -1,1 +1,0 @@
-import{et as e,t}from"./jsx-runtime-PTEwNWIc.js";import{Qt as n,Zt as r,nt as i}from"./~settings-e5VkF_zL.js";import{t as a}from"./DjvJNLSl-D40p_9iV.js";import{r as o}from"./Field.internal-DM1MiA_t.js";var s=t(),c=e(r(),1),l=n((e,t)=>(i(),o(`checkable`),(0,s.jsx)(a,{accessibleWhenDisabled:!0,...e,className:(0,c.default)(`🥝Checkbox`,e.className),ref:t})));export{l as t};

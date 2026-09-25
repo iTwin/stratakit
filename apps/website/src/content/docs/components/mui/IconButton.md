@@ -52,6 +52,8 @@ Make sure to provide an accessible description in the form of a visually hidden 
 
 ### Variants
 
+The `variant` prop can be used to control the visual look of the `IconButton`.
+
 - **Icon:** Default variant, suitable for most cases.
 - **Outlined:** Adds a border for greater emphasis. Use when a standalone icon button needs more visual weight to clearly convey that it's interactive.
 

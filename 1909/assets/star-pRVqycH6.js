@@ -1,0 +1,1 @@
+import{t as e}from"./star-Wg64WOLT.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

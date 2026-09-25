@@ -22,6 +22,10 @@ Drawing its name from _strata_ (the vertical layers in rock), **StrataKit** is o
 
 Elemental **StrataKit** components are taken from the open source **Material UI** (MUI) library and **StrataKit's** custom MUI theme is optimized for accessibility. More complex and specialized components are custom made, incorporating the same **Tokens** for consistency. This site exemplifies how to correctly implement the entire component catalogue.
 
+## Composite components
+
+Composite components combine basic **Components** to enable more complex interactions. They may be built exclusively from **MUI components** or incorporate third-party libraries.
+
 ## Patterns
 
 When making interfaces used in construction and infrastructure design, some specific—and sometimes highly complex—patterns emerge. **StrataKit** documents these patterns so that multiple teams can implement them according to their individual use cases. This site details how to calibrate the pattern using the **Token**, **Icon**, and **Component** libraries offered.

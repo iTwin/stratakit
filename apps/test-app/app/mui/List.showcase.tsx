@@ -28,7 +28,7 @@ export default function ListExamples() {
 
 export function SecondaryActionPadding() {
 	return (
-		<Box sx={{ width: "320px" }}>
+		<Box sx={{ width: "240px" }}>
 			<List>
 				<ListItem
 					secondaryAction={
@@ -37,7 +37,7 @@ export function SecondaryActionPadding() {
 						</IconButton>
 					}
 				>
-					<ListItemText primary="Bldg 274_Architectural_0SY71309-293-31-24_RVT2022.rvt" />
+					<ListItemText primary="Bldg 274_Architectural_0SY71309-293-31-24_RVT2022-rev2-final.rvt" />
 				</ListItem>
 				<ListItem
 					disablePadding
@@ -48,7 +48,7 @@ export function SecondaryActionPadding() {
 					}
 				>
 					<ListItemButton>
-						<ListItemText primary="Bldg 274_Architectural_0SY71309-293-31-24_RVT2022.rvt" />
+						<ListItemText primary="Bldg 274_Architectural_0SY71309-293-31-24_RVT2022-rev2-final.rvt.rvt" />
 					</ListItemButton>
 				</ListItem>
 			</List>

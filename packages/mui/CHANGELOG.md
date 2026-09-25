@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.0.2
+
+### Patch Changes
+
+- [#1874](https://github.com/iTwin/stratakit/pull/1874): Updated `Input` to include StrataKit's internal class for consistent styling.
+- [#1870](https://github.com/iTwin/stratakit/pull/1870): Updated `@stratakit/icons` svg imports.
+- [#1857](https://github.com/iTwin/stratakit/pull/1857): Updated spacing for `Card`.
+- Updated dependencies:
+  - @stratakit/icons@0.4.5
+
 ## 1.0.1
 
 ### Patch Changes

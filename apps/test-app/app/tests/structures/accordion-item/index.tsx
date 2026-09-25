@@ -4,10 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Icon } from "@stratakit/foundations";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default definePage(
 	function Page({

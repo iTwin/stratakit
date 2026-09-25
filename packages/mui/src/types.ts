@@ -15,6 +15,7 @@ import type { ButtonProps } from "@mui/material/Button";
 import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
 import type { CardProps } from "@mui/material/Card";
+import type { CardHeaderProps as MuiCardHeaderProps } from "@mui/material/CardHeader";
 import type { CheckboxProps } from "@mui/material/Checkbox";
 import type { CssBaselineProps } from "@mui/material/CssBaseline";
 import type { DrawerProps } from "@mui/material/Drawer";
@@ -403,7 +404,21 @@ declare module "@mui/material/CardActionArea" {
 	}
 }
 
+// Redeclare CardHeaderProps to fix heading variants in `slotProps.title.variant`
+interface CardHeaderProps extends Omit<MuiCardHeaderProps, "slotProps"> {
+	slotProps: Omit<NonNullable<MuiCardHeaderProps["slotProps"]>, "title"> & {
+		title: Omit<TypographyProps, "variant"> & {
+			variant: TypographyHeadingVariantProps["variant"];
+		};
+	};
+}
+
 declare module "@mui/material/CardHeader" {
+	interface OverridableCardHeader {
+		// biome-ignore lint/style/useShorthandFunctionType: Interface with call signature is necessary when overriding.
+		(props: CardHeaderProps): React.JSX.Element;
+	}
+
 	interface CardHeaderOwnProps {
 		/** @deprecated StrataKit does not support this prop. */
 		disableTypography?: CardHeaderOwnProps["disableTypography"];

@@ -13,12 +13,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { svgEmailLarge } from "@stratakit/icons/email";
+import { svgStarLarge } from "@stratakit/icons/star";
+import { svgStatusDraftLarge } from "@stratakit/icons/status-draft";
+import { svgUserLarge } from "@stratakit/icons/user";
 import { Icon } from "@stratakit/mui";
 
-import svgEmail from "@stratakit/icons/email.svg";
-import svgStar from "@stratakit/icons/star.svg";
-import svgStatusDraft from "@stratakit/icons/status-draft.svg";
-import svgUser from "@stratakit/icons/user.svg";
 import styles from "./Drawer._comprehensive.module.css";
 
 export default () => {
@@ -32,7 +32,7 @@ export default () => {
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
-								<Icon href={`${svgEmail}#icon-large`} size="large" />
+								<Icon href={svgEmailLarge} size="large" />
 							</ListItemIcon>
 							<ListItemText primary="Inbox" />
 						</ListItemButton>
@@ -40,7 +40,7 @@ export default () => {
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
-								<Icon href={`${svgStar}#icon-large`} size="large" />
+								<Icon href={svgStarLarge} size="large" />
 							</ListItemIcon>
 							<ListItemText primary="Starred" />
 						</ListItemButton>
@@ -48,7 +48,7 @@ export default () => {
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>
-								<Icon href={`${svgStatusDraft}#icon-large`} size="large" />
+								<Icon href={svgStatusDraftLarge} size="large" />
 							</ListItemIcon>
 							<ListItemText primary="Drafts" />
 						</ListItemButton>
@@ -72,7 +72,7 @@ function AccountButton() {
 		<>
 			<ListItemButton onClick={(event) => setAnchorEl(event.currentTarget)}>
 				<ListItemIcon>
-					<Icon href={`${svgUser}#icon-large`} size="large" />
+					<Icon href={svgUserLarge} size="large" />
 				</ListItemIcon>
 				<ListItemText primary="Account" />
 			</ListItemButton>

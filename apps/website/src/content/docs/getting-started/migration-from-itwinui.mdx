@@ -609,13 +609,12 @@ Read additional [StrataKit component documentation](/components/overview/) for m
 
 ### Button
 
-Replace the [`Button` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button) with the `Button` component from `@mui/material`. See [Button examples](/components/icon/) for reference.
+Replace the [`Button` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button) with the `Button` component from `@mui/material`. See [Button examples](/components/button/) for reference.
 
 - Replace `styleType="cta"` with `color="primary"`.
 - Replace `styleType="borderless"` with `variant="text"`.
 - Replace `styleType="high-visibility"` with the default button unless it is the main action for a dialog or a page. In that case use `color="primary"`
 - `size` and `loading` props require no adjustment.
-
 - In place of `DropDownButton` use a [selectable menu](/components/menu/#selectable)
 - In place of `SplitButton` use a `ButtonGroup` to wrap two `Button`s. The first `Button` executes the selected action, the other opens a `Menu` to change the action.
 - In place of `IconButton` from `@itwin/itwinui-react` use [`IconButton`](components/iconbutton/) from `@mui/material`.
@@ -623,7 +622,14 @@ Replace the [`Button` component from `@itwin/itwinui-react`](https://itwinui.ben
 
 ### ButtonGroup
 
+Replace the [`ButtonGroup` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/buttongroup) with the `ButtonGroup` component from `@mui/material`. See [ButtonGroup examples](/components/buttongroup/) for reference.
+
+- Replace `<ButtonGroup role="toolbar">` with [`Toolbar` from `@stratakit/structures`](/components/toolbar/)
+- Instead of `ButtonGroup` and `Input` use `TextField` from `@material/mui` with `startAdornment` or `endAdornment` props.
+
 ### Carousel
+
+Use of [Carousel](https://itwinui.bentley.com/docs/carousel) is discouraged. StrataKit does not provide this component.
 
 ### Checkbox
 

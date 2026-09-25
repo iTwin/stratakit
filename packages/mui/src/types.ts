@@ -774,6 +774,13 @@ declare module "@mui/material/IconButton" {
 		 * @default 'top'
 		 */
 		labelPlacement?: TooltipProps["placement"];
+
+		/**
+		 * The variant to use.
+		 *
+		 * @default 'icon'
+		 */
+		variant?: "icon" | "outlined";
 	}
 }
 

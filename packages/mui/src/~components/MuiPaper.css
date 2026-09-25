@@ -50,4 +50,8 @@
 		) {
 		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
 	}
+
+	&:where(.MuiPaper-outlined) {
+		border: 1px solid var(--stratakit-color-border-neutral-base);
+	}
 }

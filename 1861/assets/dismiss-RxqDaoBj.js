@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-Cpe5HtUI.js";var t=`${e}#icon`;`${e}`;export{t};

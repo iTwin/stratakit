@@ -1,0 +1,1 @@
+import{t as e}from"./star-DPF9H8-m.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

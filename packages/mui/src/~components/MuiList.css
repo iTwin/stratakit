@@ -33,7 +33,7 @@
 		@apply --typography("body-sm");
 	}
 
-	&:where(:has(~ .MuiListItem-secondaryAction)) {
+	&:has(.MuiListItemSecondaryAction-root) {
 		padding-inline-end: calc(
 			var(--stratakit-size-control-field-height-medium) +
 			var(--stratakit-space-300)

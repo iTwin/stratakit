@@ -633,13 +633,30 @@ Use of [Carousel](https://itwinui.bentley.com/docs/carousel) is discouraged. Str
 
 ### Checkbox
 
+Replace the [`Checkbox` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/checkbox) with the `Checkbox` component from `@mui/material`. See [Checkbox examples](/components/checkbox/) for reference.
+
+- `<Checkbox status="negative"/>` for errors can be replaced with`<FormControlLabel error>`, see the [Checkbox error example](/components/checkbox/#error).
+
 ### Code
+
+No StrataKit equivalent, use native [`<code>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/code)
 
 ### ColorPicker
 
+For basic usage requiring a limited list of colors you can replace `ColorPicker` with a `Select` from `@mui/material`.
+
+For more advanced usage that requires setting arbitrary color values, use `<Input type="color"/>` from `@material/mui`.
+
 ### Combobox
 
+Replace [`Combobox` from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/combobox) with `Autocomplete` from `@mui/material`. See [`Autocomplete` examples](/components/autocomplete/).
+
 ### DatePicker
+
+Replace [`DatePicker` from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/datepicker) with `DatePicker` from `@mui/x-date-pickers`. See [`DatePicker` examples](/components/datepicker/).
+
+- For date range selection replace the single `<DatePicker enableRangeSelect>` with two `DatePickers`, one for the start and one for the end.
+- For stand alone usage, use `DateCalendar` from `@mui/x-date-pickers`.
 
 ### Dialog
 

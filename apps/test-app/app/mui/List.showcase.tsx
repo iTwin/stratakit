@@ -28,7 +28,7 @@ export default function ListExamples() {
 
 export function SecondaryActionPadding() {
 	return (
-		<List sx={{ width: "240px" }}>
+		<List sx={{ width: "240px" }} data-testid="list">
 			<ListItem
 				secondaryAction={
 					<IconButton label="Rename">

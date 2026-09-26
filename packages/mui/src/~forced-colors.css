@@ -267,6 +267,10 @@
 		+ .MuiSwitch-track {
 			background-color: SelectedItem;
 		}
+
+		:where(.MuiSwitch-thumb)::before {
+			background-color: SelectedItem;
+		}
 	}
 
 	&:where(.Mui-disabled) {

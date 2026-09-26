@@ -31,6 +31,7 @@ export default [
 			),
 		),
 	]),
+	route("showcase", "./showcase.tsx"),
 ] satisfies RouteConfig;
 
 // ----------------------------------------------------------------------------

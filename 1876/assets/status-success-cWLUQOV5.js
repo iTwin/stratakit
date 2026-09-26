@@ -1,1 +1,0 @@
-import{t as e}from"./status-success-CQPN2MWB.js";var t=`${e}#icon`;`${e}`;export{t};

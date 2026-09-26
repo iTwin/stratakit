@@ -578,32 +578,44 @@ Read additional [StrataKit component documentation](/components/overview/) for m
 
 ### Alert
 
+Replace the [`Alert` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/alert) with the `Alert` component from `@mui/material`. See [Alert examples](/components/alert/) for reference.
+
 - Use the `severity` prop to replicate iTwinUI `Alert`'s [`status`](https://itwinui.bentley.com/docs/alert#statuses) prop.
 - Set the CSS [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position) property to `sticky` to replicate iTwinUI `Alert`'s [`sticky`](https://itwinui.bentley.com/docs/alert#sticky-alert) prop.
 
 ### Anchor
+
+Replace the [`Anchor` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/anchor) with the `Link` component from `@mui/material`. See [Link examples](/components/link/) for reference.
 
 - Append the `Link` with an [`Icon`](/components/icon/) displaying [`window-popout.svg`](/icons/) to replicate iTwinUI's `Anchor`'s [`external`](https://itwinui.bentley.com/docs/anchor#external-links) prop.
 - The [`underline`](https://itwinui.bentley.com/docs/alert#underlines) prop has been purposefully not exposed as a prop and is instead handled by the design system itself.
 
 ### Avatar
 
+Replace the [`Avatar` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/avatar) with the `Avatar` component from `@mui/material`. See [Avatar examples](/components/avatar/) for reference.
+
 - Set the CSS [`block-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/block-size) and [`inline-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/inline-size) properties to replicate iTwinUI `Avatar`'s [`size`](https://itwinui.bentley.com/docs/avatar#sizes) prop.
 - Pair with [`Badge`](/components/badge/) to replicate iTwinUI `Avatar`'s [`status`](https://itwinui.bentley.com/docs/avatar#status-indicators) prop.
 
 ### AvatarGroup
 
+Replace the [`AvatarGroup` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/avatar#avatargroup) with the `AvatarGroup` component from `@mui/material`. See [AvatarGroup examples](/components/avatargroup/) for reference.
+
 - Use the [`renderSurplus`](/components/avatargroup/#surplus) prop to replicate iTwinUI `AvatarGroup`'s [overflow](https://itwinui.bentley.com/docs/avatar#overflow).
 
 ### Badge
+
+Replace the [`Badge` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/badge) with the `Badge` component from `@mui/material`. See [Badge examples](/components/badge/) for reference.
 
 - Use the [`color`](/components/badge/#colors) prop to replicate iTwinUI `Badge`'s [status background colors](https://itwinui.bentley.com/docs/badge#statuses).
 
 ### Blockquote
 
-- Use the native [`<blockquote>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/blockquote) element.
+Use the native [`<blockquote>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/blockquote) element.
 
 ### Breadcrumbs
+
+Replace the [`Breadcrumbs` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/breadcrumbs) with the `Breadcrumbs` component from `@mui/material`. See [Breadcrumbs examples](/components/breadcrumbs/) for reference.
 
 - The [truncation](https://itwinui.bentley.com/docs/breadcrumbs#truncation) feature is not suggested.
 
@@ -639,7 +651,7 @@ Replace the [`Checkbox` component from `@itwin/itwinui-react`](https://itwinui.b
 
 ### Code
 
-No StrataKit equivalent, use native [`<code>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/code)
+No StrataKit equivalent, use native [`<code>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/code) element.
 
 ### ColorPicker
 
@@ -649,54 +661,94 @@ For more advanced usage that requires setting arbitrary color values, use `<Inpu
 
 ### Combobox
 
-Replace [`Combobox` from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/combobox) with `Autocomplete` from `@mui/material`. See [`Autocomplete` examples](/components/autocomplete/).
+Replace [`Combobox` from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/combobox) with `Autocomplete` from `@mui/material`. See [Autocomplete examples](/components/autocomplete/).
 
 ### DatePicker
 
-Replace [`DatePicker` from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/datepicker) with `DatePicker` from `@mui/x-date-pickers`. See [`DatePicker` examples](/components/datepicker/).
+Replace [`DatePicker` from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/datepicker) with `DatePicker` from `@mui/x-date-pickers`. See [DatePicker examples](/components/datepicker/).
 
 - For date range selection replace the single `<DatePicker enableRangeSelect>` with two `DatePickers`, one for the start and one for the end.
 - For stand alone usage, use `DateCalendar` from `@mui/x-date-pickers`.
 
 ### Dialog
 
+Replace the [`Dialog` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/dialog) with the `Dialog` component from `@mui/material`. See [Dialog examples](/components/dialog/) for reference.
+
 ### Divider
+
+Replace the [`Divider` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/divider) with the `Divider` component from `@mui/material`. See [Divider examples](/components/divider/) for reference.
 
 ### DropdownMenu
 
+Replace the [`DropdownMenu` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/dropdownmenu) with the `Menu` component from `@mui/material`. See [Menu examples](/components/menu/) for reference.
+
 ### ExpandableBlock
 
+Replace the [`ExpandableBlock` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/expandableblock) with the `Accordion` component from `@mui/material`. See [Accordion examples](/components/accordion/) for reference.
+
 ### Fieldset
+
+No StrataKit equivalent, use native [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset) element.
 
 ### FileUpload
 
 ### Footer
 
+No StrataKit equivalent, use native [`<footer>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/footer) element.
+
 ### Header
+
+No StrataKit equivalent, use native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/header) element.
 
 ### InformationPanel
 
+Replace the [`InformationPanel` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/informationpanel) with the `Drawer` component from `@mui/material`. See [Drawer examples](/components/drawer/) for reference.
+
 ### Input
+
+Replace the [`Input` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/input) with the `Input` or `TextField` components from `@mui/material`. See [TextField examples](/components/textfield/) for reference.
 
 #### With decorations
 
 ### InputGroup
 
+Replace the [`InputGroup` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputgroup) with the `FormControl` component from `@mui/material`.
+
 ### Kbd
+
+No StrataKit equivalent, use native [`<kbd>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/kbd) element.
 
 ### Label
 
+Replace the [`Label` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/label) with the `FormLabel` component from `@mui/material`.
+
 ### List
+
+Replace the [`List` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/list) with the `List` component from `@mui/material`. See [List examples](/components/list/) for reference.
 
 ### NonIdealState
 
 ### NotificationMarker
 
+Replace the [`NotificationMarker` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/notificationmarker) with the `Badge` component from `@mui/material`. See [Badge examples](/components/badge/) for reference.
+
 ### Overlay
+
+Replace the [`Overlay` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/overlay) with the `Backdrop` component from `@mui/material`. See [Backdrop examples](/components/backdrop/) for reference.
 
 ### ProgressIndicator
 
+#### Linear
+
+Replace the [`ProgressLinear` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/progressindicator) with the `LinearProgress` component from `@mui/material`. See [LinearProgress examples](/components/linearprogress/) for reference.
+
+#### Radial
+
+Replace the [`ProgressRadial` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/progressindicator) with the `CircularProgress` component from `@mui/material`. See [CircularProgress examples](/components/circularprogress/) for reference.
+
 ### Radio
+
+Replace the [`Radio` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/radio) with the `Radio` component from `@mui/material`. See [Radio examples](/components/radio/) for reference.
 
 ### RadioTile
 
@@ -704,38 +756,68 @@ Replace [`DatePicker` from `@itwin/itwinui-react`](https://itwinui.bentley.com/d
 
 ### Select
 
+Replace the [`Select` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/select) with the `Select` or `NativeSelect` components from `@mui/material`. See [Select examples](/components/divider/) for reference.
+
 ### SideNavigation
+
+Replace the [`SideNavigation` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/sidenavigation) with the `NavigationRail` component from `@stratakit/structures`. See [NavigationRail examples](/components/navigationrail/) for reference.
 
 ### SkipToContentLink
 
 ### Slider
 
+Replace the [`Slider` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/slider) with the `Slider` component from `@mui/material`. See [Slider examples](/components/slider/) for reference.
+
 ### Stepper
+
+Replace the [`Stepper` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/stepper) with the `Stepper` component from `@mui/material`. See [Stepper examples](/components/stepper/) for reference.
 
 ### Surface
 
+Replace the [`Surface` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/surface) with the `Paper` component from `@mui/material`. See [Paper examples](/components/paper/) for reference.
+
 ### Table
+
+Replace the [`Table` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/table) with the `Table` component from `@mui/material`. See [Table examples](/components/table/) for reference.
 
 ### Tabs
 
+Replace the [`Tabs` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tabs) with the `Tabs` component from `@mui/material`. See [Tabs examples](/components/tabs/) for reference.
+
 ### Tag
+
+Replace the [`Tag` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tag) with the `Chip` component from `@mui/material`. See [Chip examples](/components/chip/) for reference.
 
 ### Text
 
+Replace the [`Text` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/text) with the `Typography` component from `@mui/material`. See [Typography examples](/components/typography/) for reference.
+
 ### TextArea
+
+Replace the [`Textarea` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/textarea) with the `Input` or `TextField` components from `@mui/material`. See [TextField examples](/components/textfield/) for reference.
 
 ### ThemeProvider
 
 ### Tile
 
+Replace the [`Tile` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tile) with the `Card` component from `@mui/material`. See [Card examples](/components/card/) for reference.
+
 ### Toast
+
+Replace the [`Toast` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/toast) with the `Snackbar` component from `@mui/material`. See [Snackbar examples](/components/snackbar/) for reference.
 
 ### ToggleSwitch
 
+Replace the [`ToggleSwitch` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/toggleswitch) with the `Switch` component from `@mui/material`. See [Switch examples](/components/switch/) for reference.
+
 ### Tooltip
+
+Replace the [`Tooltip` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tooltip) with the `Tooltip` component from `@mui/material`. See [Tooltip examples](/components/tooltip/) for reference.
 
 ### TransferList
 
 ### Tree
+
+Replace the [`Tree` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tree) with the `Tree` component from `@stratakit/structures`. See [Tree examples](/components/tree/) for reference.
 
 ### VisuallyHidden

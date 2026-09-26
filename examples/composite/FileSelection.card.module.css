@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.fileUpload {
+.fileSelection {
 	border: 1px dashed transparent;
 	transition:
 		background-color 150ms ease-out,

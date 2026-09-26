@@ -1,29 +1,30 @@
 ---
-title: File upload
-description: File uploads let users select and attach one or more files.
+title: File selection
+description: File selection lets users choose one or more files from their device.
 ---
 
-::example{src="composite/FileUpload.default"}
+::example{src="composite/FileSelection.default"}
 
-Use a native [`<input type="file">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file) to let users select one or more files. Provide feedback about the upload status so users know when their files have been received successfully.
+Use a native [`<input type="file">`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/file) to let users select files. Selecting a file does not upload it; provide separate feedback when an application starts or completes an upload.
 
 ## Examples
 
 ### Card
 
-Show each selected file in a list with its filename, size, and an action to remove it. Allow users to drag and drop files onto the upload area as well as browse for files.
+Show selected files in a list with their filenames, sizes, and actions to remove them. Let users select files by browsing or dragging and dropping them onto the selection area.
 
-::example{src="composite/FileUpload.card"}
+::example{src="composite/FileSelection.card"}
 
 ## ✅ Do
 
-- Use a clear label such as "Upload" or "Browse files".
+- Use a clear label such as "Select files" or "Browse files".
 - Show selected filenames and file sizes so users can confirm their selection.
 
 ## 🚫 Don't
 
 - Don't hide the only file-selection mechanism behind an unlabeled icon.
 - Don't make drag and drop the only way to select files.
+- Don't upload files immediately after selection; let the user confirm the upload first.
 
 ## API reference
 

@@ -19,7 +19,7 @@ import { svgDocument } from "@stratakit/icons/document";
 import { svgUpload } from "@stratakit/icons/upload";
 import { Icon } from "@stratakit/mui";
 
-import styles from "./FileUpload.card.module.css";
+import styles from "./FileSelection.card.module.css";
 
 export default () => {
 	const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
@@ -31,7 +31,7 @@ export default () => {
 
 	return (
 		<Paper
-			className={`${styles.states} ${styles.fileUpload}`}
+			className={`${styles.states} ${styles.fileSelection}`}
 			data-drag-active={isDragActive || undefined}
 			onDragEnter={(event) => {
 				event.preventDefault();
@@ -88,7 +88,7 @@ export default () => {
 				<Stack direction="row" spacing={2} className={styles.emptyState}>
 					<Icon href={svgUpload} />
 					<Typography>
-						Drag &amp; drop files here to upload them or&nbsp;
+						Drag &amp; drop files here to select them or&nbsp;
 						<FilePicker label="browse files" onFilesChange={selectFiles} />.
 					</Typography>
 				</Stack>

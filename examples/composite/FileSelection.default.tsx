@@ -16,7 +16,7 @@ export default () => {
 			render={<label role={undefined} tabIndex={undefined} />}
 			nativeButton={false}
 		>
-			Upload
+			Select files
 			<input type="file" multiple style={visuallyHidden} />
 		</Button>
 	);

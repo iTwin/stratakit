@@ -9,11 +9,11 @@ Use a native [`<input type="file">`](https://developer.mozilla.org/en-US/docs/We
 
 ## Examples
 
-### Card
+### Drag and drop
 
 Show selected files in a list with their filenames, sizes, and actions to remove them. Let users select files by browsing or dragging and dropping them onto the selection area.
 
-::example{src="composite/FileSelection.card"}
+::example{src="composite/FileSelection.drag-and-drop"}
 
 ## ✅ Do
 

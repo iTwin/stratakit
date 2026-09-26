@@ -19,7 +19,7 @@ import { svgDocument } from "@stratakit/icons/document";
 import { svgUpload } from "@stratakit/icons/upload";
 import { Icon } from "@stratakit/mui";
 
-import styles from "./FileSelection.card.module.css";
+import styles from "./FileSelection.drag-and-drop.module.css";
 
 export default () => {
 	const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);

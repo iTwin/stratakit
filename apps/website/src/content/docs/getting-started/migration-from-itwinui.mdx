@@ -657,6 +657,8 @@ Use of [Carousel](https://itwinui.bentley.com/docs/carousel) is discouraged. Str
 Replace the [`Checkbox` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/checkbox) with the `Checkbox` component from `@mui/material`. See [Checkbox examples](/components/checkbox/) for reference.
 
 - `<Checkbox status="negative"/>` for errors can be replaced with `<FormControlLabel error>`, see the [Checkbox error example](/components/checkbox/#error).
+- For iTwinUI `Checkbox`’s `loading` prop, render `CircularProgress` in place of the checkbox while loading.
+- MUI `Checkbox` has no equivalent to iTwinUI `Checkbox`'s `visibility` prop.
 
 ### Code
 

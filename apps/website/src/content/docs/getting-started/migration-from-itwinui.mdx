@@ -817,13 +817,35 @@ Replace the [`Slider` component from `@itwin/itwinui-react`](https://itwinui.ben
 
 ### StatusMessage
 
+Depending on the use case of `StatusMessage` it may be replaced with one of the following components:
+
+- [`Alert`](/components/alert) when the message is longer explanation.
+- [`Badge` with an icon and color](/components/badge/#colors) when the message is a short status indicator.
+
 ### Stepper
 
 Replace the [`Stepper` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/stepper) with the `Stepper` component from `@mui/material`. See [Stepper examples](/components/stepper/) for reference.
 
+- Replace `type="short"` with the `Stepper`
+- Replace `type="long"` with a custom implementation of the [long stepper example](/components/stepper/#long)
+- For smaller viewports, consider [`MobileStepper`](/components/stepper/#mobilestepper).
+
 ### Surface
 
 Replace the [`Surface` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/surface) with the `Paper` component from `@mui/material`. See [Paper examples](/components/paper/) for reference.
+
+While the `elevation` prop is used on both `Surface` and `Paper` its value is different between the two components. Use the following table to map between the ranges.
+
+| Surface.elevation | Paper.elevation |
+| ----------------- | --------------- |
+| 0                 | 4               |
+| 1                 | 8               |
+| 2                 | 12              |
+| 3                 | 16              |
+| 4                 | 10              |
+| 5                 | 24              |
+
+- For uses with `Surface.Header` consider using [`Card`](/components/card) or supplying your own styling with [`Typography`](/components/typography).
 
 ### Table
 

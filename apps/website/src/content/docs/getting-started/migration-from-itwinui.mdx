@@ -753,6 +753,12 @@ Replace the [`Input` component from `@itwin/itwinui-react`](https://itwinui.bent
 
 #### With decorations
 
+Replace [`InputWithDecorations`](https://itwinui.bentley.com/docs/inputwithdecorations) with the `Input` or `TextField` components from `@mui/material` and use `InputAdornment` for content alongside the input. Use `slotProps.input` with `TextField`, or pass adornment props directly to `Input`.
+
+- Replace `InputWithDecorations.Icon` with an `Icon` inside `InputAdornment` in `slotProps.input.startAdornment` or `slotProps.input.endAdornment`.
+- Replace `InputWithDecorations.Button` with an `IconButton` inside an end `InputAdornment`. Additional text, dividers, and actions can be composed in the same adornment with custom layout styling.
+- Replace `isDisabled` with `disabled` on the input. Disable any interactive adornments separately, since disabling the input does not disable their buttons.
+
 ### InputGrid
 
 ### InputGroup

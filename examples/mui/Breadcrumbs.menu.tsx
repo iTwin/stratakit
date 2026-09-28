@@ -29,7 +29,7 @@ export default function CondensedWithPopover() {
 				<IconButton
 					aria-haspopup="dialog"
 					aria-expanded={open}
-					label="Show hidden breadcrumbs"
+					label="Show collapsed breadcrumbs"
 					onClick={() => setOpen(true)}
 					ref={setAnchorEl}
 				>
@@ -51,11 +51,11 @@ export default function CondensedWithPopover() {
 				slotProps={{
 					paper: {
 						className: styles.popover,
-						"aria-label": "Hidden breadcrumbs",
+						"aria-label": "Collapsed breadcrumbs",
 					},
 				}}
 			>
-				<Breadcrumbs aria-label="hidden breadcrumbs">
+				<Breadcrumbs aria-label="collapsed breadcrumbs">
 					<Typography aria-current="true" color="textSecondary">
 						…
 					</Typography>

@@ -701,6 +701,12 @@ Replace the [`Divider` component from `@itwin/itwinui-react`](https://itwinui.be
 
 Replace the [`DropdownMenu` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/dropdownmenu) with the `Menu` component from `@mui/material`. See [Menu examples](/components/menu/) for reference.
 
+- For a [start icon](https://itwinui.bentley.com/docs/dropdownmenu#start-icon), place an `Icon` inside `ListItemIcon` before the text in `MenuItem`.
+- For an [end icon](https://itwinui.bentley.com/docs/dropdownmenu#end-icon), place an `Icon` after `ListItemText` in `MenuItem` and align it to the end.
+- Replace a [sublabel](https://itwinui.bentley.com/docs/dropdownmenu#sublabel) with `ListItemText`'s `primary` and `secondary` props inside `MenuItem`.
+- MUI `MenuItem` has no [submenu](https://itwinui.bentley.com/docs/dropdownmenu#submenu) prop.
+- Replace iTwinUI [`MenuDivider`](https://itwinui.bentley.com/docs/dropdownmenu#separator) with a `Divider` between `MenuItem` components.
+
 ### ExpandableBlock
 
 Replace the [`ExpandableBlock` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/expandableblock) with the `Accordion` component from `@mui/material`. See [Accordion examples](/components/accordion/) for reference.

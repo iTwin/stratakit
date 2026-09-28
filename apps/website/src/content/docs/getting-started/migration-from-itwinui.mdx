@@ -831,6 +831,18 @@ Replace the [`Tile` component from `@itwin/itwinui-react`](https://itwinui.bentl
 
 Replace the [`Toast` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/toast) with the `Snackbar` component from `@mui/material`. See [Snackbar examples](/components/snackbar/) for reference.
 
+`Snackbar` does not show mulitple items by default, which is a significant difference from `Toast`. MUI does provide examples on how to show [multiple notifications without stacking](https://mui.com/material-ui/react-snackbar/#consecutive-snackbars) as well as [alternatives if you do need to stack notifications](https://mui.com/material-ui/react-snackbar/#supplementary-components).
+
+The dismissal trigger is another area that differs. `Snackbar` closes by default on the next pointer click on the page. `Toast` closes by default after a certian amount of time. The `Snackbar` approach is prefered because it allows user to control the amount of time the notification is displayed.
+
+- Replace `type="persisting"` with a `Snackbar` that [prevents the default on the click away event](https://mui.com/material-ui/react-snackbar/#preventing-default-click-away-event). Provide a close button in the `Snackbar` to dismiss.
+- Replace `type="temporary"` (or an unset `type`) with a `Snackbar`. Leave `autoHideDuration` unset.
+
+Other modifications when migrating `Toast` to `Snackbar` include:
+
+- Replace `placement` prop with the [`position` prop](https://mui.com/material-ui/react-snackbar/#position).
+- Replace `status` prop with an [wrapped `Alert`](https://mui.com/material-ui/react-snackbar/#position) to communicate serverity.
+
 ### ToggleSwitch
 
 Replace the [`ToggleSwitch` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/toggleswitch) with the `Switch` component from `@mui/material`. See [Switch examples](/components/switch/) for reference.

@@ -711,6 +711,12 @@ Replace the [`DropdownMenu` component from `@itwin/itwinui-react`](https://itwin
 
 Replace the [`ExpandableBlock` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/expandableblock) with the `Accordion` component from `@mui/material`. See [Accordion examples](/components/accordion/) for reference.
 
+- For a [caption](https://itwinui.bentley.com/docs/expandableblock#with-caption), render `ListItemText` with `primary` and `secondary` text inside `AccordionSummary`.
+- To recreate an [accordion of blocks](https://itwinui.bentley.com/docs/expandableblock#accordion), render adjacent `Accordion` components. If only one should be open at a time, control their `expanded` props with shared state.
+- MUI `Accordion` has no [status](https://itwinui.bentley.com/docs/expandableblock#with-status) prop. Place a status `Icon` in `AccordionSummary` to convey status.
+- MUI `Accordion` has no [`size`](https://itwinui.bentley.com/docs/expandableblock#small) prop; its default size matches iTwinUI's `size="small"`.
+- Replace [`styleType="borderless"`](https://itwinui.bentley.com/docs/expandableblock#borderless) with `variant="elevation"` to remove the outlined border.
+
 ### Fieldset
 
 No StrataKit equivalent, use native [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset) element.

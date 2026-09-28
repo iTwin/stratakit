@@ -687,6 +687,12 @@ Replace [`DatePicker` from `@itwin/itwinui-react`](https://itwinui.bentley.com/d
 
 Replace the [`Dialog` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/dialog) with the `Dialog` component from `@mui/material`. See [Dialog examples](/components/dialog/) for reference.
 
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`isDismissible`](https://itwinui.bentley.com/docs/dialog#dismissible) prop. Add a close `IconButton` when dismissal is allowed; otherwise, omit it, set `disableEscapeKeyDown`, and ignore `"backdropClick"` in `onClose`.
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`isDraggable`](https://itwinui.bentley.com/docs/dialog#draggable) prop. Implement dragging with [`react-draggable`](https://github.com/react-grid-layout/react-draggable) or another third-party library.
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`isResizable`](https://itwinui.bentley.com/docs/dialog#draggable) prop. To allow resizing, apply CSS `resize: both` and `overflow: auto` to the dialog paper using `slotProps.paper.className`, and set appropriate size limits.
+- Replace iTwinUI `Dialog`'s [`styleType="fullPage"`](https://itwinui.bentley.com/docs/dialog#full-page) with the `fullScreen` prop on MUI `Dialog`.
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`placement`](https://itwinui.bentley.com/docs/dialog#placement) prop. Instead set `position: absolute`.
+
 ### Divider
 
 Replace the [`Divider` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/divider) with the `Divider` component from `@mui/material`. See [Divider examples](/components/divider/) for reference.

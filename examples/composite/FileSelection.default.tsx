@@ -37,7 +37,7 @@ export default () => {
 				/>
 			</Button>
 			{selectedFiles.length > 0 && (
-				<Typography role="status">
+				<Typography>
 					<span style={visuallyHidden}>{selectedFiles.length} selected: </span>
 					{selectedFiles.map((file) => file.name).join(", ")}
 				</Typography>

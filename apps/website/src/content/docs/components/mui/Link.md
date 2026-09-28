@@ -25,7 +25,7 @@ Make sure the **Link** is suitable for your use case. There may be other, more a
 
 ## Examples
 
-### External facing
+### External
 
 Indicate when a **Link** opens a site outside your application. Add a visible external-link marker and visually hidden text so screen reader users receive the same context.
 

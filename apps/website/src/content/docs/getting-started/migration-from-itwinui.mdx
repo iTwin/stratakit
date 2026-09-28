@@ -859,7 +859,7 @@ Replace the [`Table` component from `@itwin/itwinui-react`](https://itwinui.bent
 
 Replace the [`Tabs` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tabs) with the `Tabs` component from `@mui/material`. See [Tabs examples](/components/tabs/) for reference.
 
-- Replace `Tabs.Panel` with `TabPanel`.
+- Replace `Tabs.Panel` with `<div role="tabpanel">`. See the [Tabs example implementation](https://github.com/iTwin/stratakit/blob/main/examples/mui/Tabs.default.tsx) for details about display and labeling.
 - `type` should be removed. Stratakit uses a single appearance for tabs does not have an equivalient to `"borderless"` or `"pills"`.
 - `color` should be replaced by using `textColor`. See [Tabs color example](components/tabs/#colors).
 - For tabs with labels and descriptions, replace `Tab.Label` and `Tab.Description` with `ListItemText` as the`Tab` content.

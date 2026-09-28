@@ -6,16 +6,20 @@ import * as React from "react";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
+import Popover from "@mui/material/Popover";
+import Typography from "@mui/material/Typography";
 import { svgMoreHorizontal } from "@stratakit/icons/more-horizontal";
 import { Icon } from "@stratakit/mui";
 
-export default function CondensedWithMenu() {
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-	const open = Boolean(anchorEl);
+import styles from "./Breadcrumbs.menu.module.css";
+
+export default function CondensedWithPopover() {
+	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+		null,
+	);
+	const [open, setOpen] = React.useState(false);
 	const handleClose = () => {
-		setAnchorEl(null);
+		setOpen(false);
 	};
 
 	return (
@@ -23,10 +27,11 @@ export default function CondensedWithMenu() {
 			<Breadcrumbs aria-label="breadcrumbs">
 				<Link href="#">Breadcrumb 1</Link>
 				<IconButton
-					aria-haspopup="true"
-					aria-expanded={open ? "true" : "false"}
+					aria-haspopup="dialog"
+					aria-expanded={open}
 					label="Show hidden breadcrumbs"
-					onClick={(event) => setAnchorEl(event.currentTarget)}
+					onClick={() => setOpen(true)}
+					ref={setAnchorEl}
 				>
 					<Icon href={svgMoreHorizontal} />
 				</IconButton>
@@ -35,11 +40,39 @@ export default function CondensedWithMenu() {
 					Breadcrumb 6
 				</Link>
 			</Breadcrumbs>
-			<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-				<MenuItem onClick={handleClose}>Breadcrumb 2</MenuItem>
-				<MenuItem onClick={handleClose}>Breadcrumb 3</MenuItem>
-				<MenuItem onClick={handleClose}>Breadcrumb 4</MenuItem>
-			</Menu>
+			<Popover
+				open={open}
+				anchorEl={anchorEl}
+				onClose={handleClose}
+				anchorOrigin={{
+					vertical: "bottom",
+					horizontal: "left",
+				}}
+				slotProps={{
+					paper: {
+						className: styles.popover,
+						"aria-label": "Hidden breadcrumbs",
+					},
+				}}
+			>
+				<Breadcrumbs aria-label="hidden breadcrumbs">
+					<Typography aria-current="true" color="textSecondary">
+						…
+					</Typography>
+					<Link href="#" onClick={handleClose}>
+						Breadcrumb 2
+					</Link>
+					<Link href="#" onClick={handleClose}>
+						Breadcrumb 3
+					</Link>
+					<Link href="#" onClick={handleClose}>
+						Breadcrumb 4
+					</Link>
+					<Typography aria-current="true" color="textSecondary">
+						…
+					</Typography>
+				</Breadcrumbs>
+			</Popover>
 		</>
 	);
 }

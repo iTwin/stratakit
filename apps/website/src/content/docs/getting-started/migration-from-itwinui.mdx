@@ -831,6 +831,12 @@ The [`Root` component from `@stratakit/mui`](/components/root/) replaces the [`T
 
 Replace the [`Tile` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tile) with the `Card` component from `@mui/material`. See [Card examples](/components/card/) for reference.
 
+- Replace the main action set by `Tile.Action` with `CardActionArea`.
+- Replace `Tile.Buttons` with `CardActions`.
+- Replace `Tile.ThumbnailPicture` with `CardMedia`.
+- For avatars, use [`Avatar` with a large size](https://mui.com/material-ui/react-avatar/#sizes) as the child of `CardMedia` with custom CSS to center it.
+- The visual aspect of `TileWrapper.isSelected` can be replaced by setting the [`data-active` prop](https://mui.com/material-ui/react-card/#active-state-styles).
+
 ### Toast
 
 Replace the [`Toast` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/toast) with the `Snackbar` component from `@mui/material`. See [Snackbar examples](/components/snackbar/) for reference.

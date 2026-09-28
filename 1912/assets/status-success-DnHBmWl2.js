@@ -1,0 +1,1 @@
+import{t as e}from"./status-success-DZQ8rB_T.js";var t=`${e}#icon`;`${e}`;export{t};

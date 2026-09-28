@@ -761,6 +761,11 @@ Replace [`InputWithDecorations`](https://itwinui.bentley.com/docs/inputwithdecor
 
 ### InputGrid
 
+There is no direct replacement for [`InputGrid`](https://itwinui.bentley.com/docs/inputgrid), which groups a label, field, and message.
+
+- For a text input, use `TextField` with `label` and `helperText`; it handles the layout without a separate wrapper.
+- For other fields, compose `FormControl` with the appropriate label, input, and `FormHelperText`. Use `InputLabel` with MUI `Select` and `FormLabel` with fields that need a separate label.
+
 ### InputGroup
 
 Replace the [`InputGroup` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputgroup) with the [`FormControl` component from `@mui/material`](https://mui.com/material-ui/api/form-control/).

@@ -8,9 +8,8 @@ import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { svgMoreHorizontal } from "@stratakit/icons/more-horizontal";
 import { Icon } from "@stratakit/mui";
-
-import svgMore from "@stratakit/icons/more-horizontal.svg";
 
 export default function CondensedWithMenu() {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -29,7 +28,7 @@ export default function CondensedWithMenu() {
 					label="Show hidden breadcrumbs"
 					onClick={(event) => setAnchorEl(event.currentTarget)}
 				>
-					<Icon href={svgMore} />
+					<Icon href={svgMoreHorizontal} />
 				</IconButton>
 				<Link href="#">Breadcrumb 5</Link>
 				<Link aria-current="true" color="textSecondary">

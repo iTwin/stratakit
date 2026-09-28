@@ -746,6 +746,11 @@ Replace the [`InformationPanel` component from `@itwin/itwinui-react`](https://i
 
 Replace the [`Input` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/input) with the `Input` or `TextField` components from `@mui/material`. See [TextField examples](/components/textfield/) for reference.
 
+- For [size](https://itwinui.bentley.com/docs/input#sizes), use `size="small"` or the default `size="medium"` on MUI `TextField` or `Input`. There is no `size="large"`.
+- For a [negative status](https://itwinui.bentley.com/docs/input#status), use `TextField`'s `error` and `helperText` props. Warning and positive statuses have no built-in equivalent.
+- To replicate [inline labels](https://itwinui.bentley.com/docs/input#inline), arrange `FormLabel` and `Input` side by side with CSS. StrataKit `TextField` displays its label above the input.
+- For an [input paired with a button](https://itwinui.bentley.com/docs/input#with-other-inputs), put an `IconButton` inside `InputAdornment` in `TextField`'s `slotProps.input.endAdornment`.
+
 #### With decorations
 
 ### InputGrid

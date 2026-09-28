@@ -818,6 +818,22 @@ Replace the [`SideNavigation` component from `@itwin/itwinui-react`](https://itw
 
 Replace the [`Slider` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/slider) with the `Slider` component from `@mui/material`. See [Slider examples](/components/slider/) for reference.
 
+:::note
+The MUI supports showing more than two values to adjust, however, it will only do range highlighting between the first and last value.
+:::
+
+- Update the `values` (plural) prop to `value` (singular) or `defaultValue`. Pass a single `number` for a single value, or [`[number, number]` for a range](/components/slider/#range).
+- Replace `trackDisplayMode="none"` with `track={false}`.
+- Replace `trackDisplayMode="even-segments"` with `track="inverted"`;
+- Replace `trackDisplayMode="even-segments"` with `track="inverted"`;
+- Remove `trackDisplayMode="odd-segments"` or replace with `track="normal'`.
+- Evaluate use of `trackDisplayMode="auto"` and determine if length of `values` varies and logic is needed to alternate between `track="inverted"` and `track="normal"` or if it can be removed.
+- Replace `tickLabels`
+  - Use `marks={true}` to place a mark at every step
+  - Use `marks={array}` to provide a custom set of values and lables for marks. See [Slider marks exmaple](/components/slider/#marks)
+- Replace with `tooltipProps` with [`valueLabelDisplay`](https://mui.com/material-ui/api/slider/#slider-prop-valueLabelDisplay). Set to `"off"` to always hide the tooltip if the value is being displayed elsewhere.
+- Remove `minLabel` and `maxLabel` and replace with a `Stack` that wraps the labels and `Slider`. See [example of using min and max labels](/components/slider/#tooltip)
+
 ### StatusMessage
 
 Depending on the use case of `StatusMessage` it may be replaced with one of the following components:

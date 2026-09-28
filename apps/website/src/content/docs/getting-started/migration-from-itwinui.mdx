@@ -739,6 +739,9 @@ No StrataKit equivalent, use native [`<header>`](https://developer.mozilla.org/e
 
 Replace the [`InformationPanel` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/informationpanel) with the `Drawer` component from `@mui/material`. See [Drawer examples](/components/drawer/) for reference.
 
+- Replace iTwinUI `InformationPanel`'s `orientation="vertical"` with `anchor="right"`. For [horizontal orientation](https://itwinui.bentley.com/docs/informationpanel#horizontal-orientation), use `anchor="bottom"` instead.
+- MUI `Drawer` has no equivalent to iTwinUI `InformationPanel`'s [`resizable` prop](https://itwinui.bentley.com/docs/informationpanel#props). To retain resizing, add a drag handle to the drawer paper and manage its width or height with appropriate limits.
+
 ### Input
 
 Replace the [`Input` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/input) with the `Input` or `TextField` components from `@mui/material`. See [TextField examples](/components/textfield/) for reference.

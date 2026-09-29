@@ -1,5 +1,136 @@
 # Changelog
 
+## 0.4.5
+
+- [#1863](https://github.com/iTwin/stratakit/pull/1863): Added typed named exports for every icon, available from subpaths without the `.svg` extension. These provide complete URLs for all icon variations, without having to manually manage SVG symbol fragments. Example usage:
+
+  ```tsx
+  import { svgPlaceholder, svgPlaceholderLarge } from "@stratakit/icons/placeholder";
+
+  <Icon href={svgPlaceholder} />;
+  <Icon href={svgPlaceholderLarge} size="large" />;
+  ```
+
+  Existing default imports from `.svg` subpaths remain supported and unchanged, but the new named exports are the recommended way to use icons going forward.
+
+  <details>
+  <summary>Migration examples</summary>
+
+  If the default import name differs from the new named exports, update the name as needed.
+
+  ```diff
+  - import placeholderIcon from "@stratakit/icons/placeholder.svg";
+  + import { svgPlaceholder } from "@stratakit/icons/placeholder";
+
+  - <Icon href={placeholderIcon} />
+  + <Icon href={svgPlaceholder} />
+  ```
+
+  Aliases can be used to maintain previous import names for convenience.
+
+  ```diff
+  - import placeholderIcon from "@stratakit/icons/placeholder.svg";
+  + import { svgPlaceholder as placeholderIcon } from "@stratakit/icons/placeholder";
+
+  <Icon href={svgPlaceholder} />
+  ```
+
+  Any manually appended symbol fragments will need to be removed, as they are now included in the complete URLs provided by the named exports.
+
+  ```diff
+  - import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+  + import { svgPlaceholder, svgPlaceholderLarge } from "@stratakit/icons/placeholder";
+
+  - <Icon href={`${svgPlaceholder}#icon`} />
+  + <Icon href={svgPlaceholder} />
+
+  - <Icon href={`${svgPlaceholder}#icon-large`} size="large" />
+  + <Icon href={svgPlaceholderLarge} size="large" />
+  ```
+
+  </details>
+
+  **Note:** The new modules import SVG files internally and therefore still require bundler configuration to load SVGs as asset URLs.
+
+- [#1899](https://github.com/iTwin/stratakit/pull/1899): Updated `lock-unlocked.svg` spacing.
+- [#1880](https://github.com/iTwin/stratakit/pull/1880): Added `#filled` and `#filled-large` variations of the following icons:
+
+  - `filter.svg` (`svgFilterFilled` and `svgFilterFilledLarge`)
+  - `star.svg` (`svgStarFilled` and `svgStarFilledLarge`)
+  - `brand-bentley-systems.svg` (`svgBrandBentleySystemsFilled` and `svgBrandBentleySystemsFilledLarge`)
+
+- [#1899](https://github.com/iTwin/stratakit/pull/1899): Added new icons:
+
+  - `ai-tokens.svg`
+  - `access-inherited.svg`
+
+## 0.4.4
+
+- [#1826](https://github.com/iTwin/stratakit/pull/1826), [#1844](https://github.com/iTwin/stratakit/pull/1844): Added new icons:
+
+  - `commit-changes.svg`
+  - `date-time-picker.svg`
+  - `numberbox.svg`
+  - `paragraph.svg`
+  - `photo-drop.svg`
+  - `radio-buttons.svg`
+  - `signature.svg`
+  - `textbox.svg`
+  - `dropdown.svg`
+
+- [#1844](https://github.com/iTwin/stratakit/pull/1844): Updated icons:
+
+  - `apply-down.svg`
+  - `asset-copy.svg`
+  - `axis-lock.svg`
+  - `beam.svg`
+  - `brace.svg`
+  - `column.svg`
+  - `cone.svg`
+  - `construction-line.svg`
+  - `construction-point.svg`
+  - `cylinder.svg`
+  - `drop-cap.svg`
+  - `footing-combined.svg`
+  - `footing-isolated.svg`
+  - `footing-mat.svg`
+  - `footing-pilecap.svg`
+  - `grid-lines.svg`
+  - `ice.svg`
+  - `load-area.svg`
+  - `load-case.svg`
+  - `load-combination.svg`
+  - `load-linear.svg`
+  - `load-perimeter.svg`
+  - `load-point.svg`
+  - `mass-area.svg`
+  - `mass-excitation.svg`
+  - `mass-linear.svg`
+  - `mass-perimeter.svg`
+  - `mass.svg`
+  - `production-sheet.svg`
+  - `project-copy.svg`
+  - `reality-capture.svg`
+  - `seismic.svg`
+  - `slab.svg`
+  - `slice.svg`
+  - `snap-grid.svg`
+  - `snap-orthogonal.svg`
+  - `snap-point.svg`
+  - `snowflake.svg`
+  - `spring-area.svg`
+  - `spring-linear.svg`
+  - `spring-point.svg`
+  - `support-linear.svg`
+  - `support-point.svg`
+  - `temperature.svg`
+  - `templates-copy.svg`
+  - `templates-create.svg`
+  - `templates.svg`
+  - `tower-crane.svg`
+  - `truck.svg`
+  - `wind.svg`
+
 ## 0.4.3
 
 - [#1682](https://github.com/iTwin/stratakit/pull/1682): Added new icons:

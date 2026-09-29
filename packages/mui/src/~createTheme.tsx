@@ -99,6 +99,9 @@ function createTheme() {
 
 	return createMuiTheme({
 		spacing: 4,
+		motion: {
+			reducedMotion: "system",
+		},
 		focusVisible: {
 			outline: "var(--🥝focus-outline)",
 			outlineOffset: "var(--🥝focus-outline-offset)",
@@ -311,8 +314,8 @@ function createTheme() {
 					component: Role.div,
 					slotProps: {
 						title: {
-							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
-							component: MuiCardHeaderTitle as any,
+							variant: "headline-sm" as never,
+							component: MuiCardHeaderTitle as never,
 						},
 					},
 				},
@@ -440,6 +443,7 @@ function createTheme() {
 			},
 			MuiInput: {
 				defaultProps: {
+					classes: { root: "🥝MuiInput" },
 					disableUnderline: true,
 				},
 			},

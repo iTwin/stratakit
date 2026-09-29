@@ -15,6 +15,7 @@ import type { ButtonProps } from "@mui/material/Button";
 import type { ButtonBaseProps } from "@mui/material/ButtonBase";
 import type { ButtonGroupProps } from "@mui/material/ButtonGroup";
 import type { CardProps } from "@mui/material/Card";
+import type { CardHeaderProps as MuiCardHeaderProps } from "@mui/material/CardHeader";
 import type { CheckboxProps } from "@mui/material/Checkbox";
 import type { CssBaselineProps } from "@mui/material/CssBaseline";
 import type { DrawerProps } from "@mui/material/Drawer";
@@ -232,18 +233,23 @@ declare module "@mui/material/Badge" {
 		primary: false;
 	}
 
+	interface BadgePropsVariantOverrides {
+		inline: true;
+	}
+
 	interface BadgeOwnProps {
 		/**
-		 * When `true`, the badge is rendered in normal document flow,
-		 * instead of being positioned relative to its child based on `anchorOrigin` and `overlap` props.
+		 * The badge variant to use.
 		 *
-		 * @default false
+		 * - `"standard"`: Displays the badge with its content.
+		 * - `"dot"`: Displays the badge without content.
+		 * - `"inline"`: Displays the badge in normal document flow instead of positioning it relative to its child.
 		 */
-		inline?: boolean;
+		variant?: BadgeProps["variant"];
 		/**
 		 * The size of the badge.
 		 *
-		 * This prop can only be applied when `inline` is `true`.
+		 * This prop can only be applied when `variant` is `"inline"`.
 		 *
 		 * @default 'medium'
 		 */
@@ -257,7 +263,7 @@ declare module "@mui/material/Badge" {
 		/**
 		 * The visual type of the badge styling.
 		 *
-		 * This prop can only be applied when `inline` is `true`.
+		 * This prop can only be applied when `variant` is `"inline"`.
 		 *
 		 * @default 'strong'
 		 */
@@ -398,7 +404,21 @@ declare module "@mui/material/CardActionArea" {
 	}
 }
 
+// Redeclare CardHeaderProps to fix heading variants in `slotProps.title.variant`
+interface CardHeaderProps extends Omit<MuiCardHeaderProps, "slotProps"> {
+	slotProps: Omit<NonNullable<MuiCardHeaderProps["slotProps"]>, "title"> & {
+		title: Omit<TypographyProps, "variant"> & {
+			variant: TypographyHeadingVariantProps["variant"];
+		};
+	};
+}
+
 declare module "@mui/material/CardHeader" {
+	interface OverridableCardHeader {
+		// biome-ignore lint/style/useShorthandFunctionType: Interface with call signature is necessary when overriding.
+		(props: CardHeaderProps): React.JSX.Element;
+	}
+
 	interface CardHeaderOwnProps {
 		/** @deprecated StrataKit does not support this prop. */
 		disableTypography?: CardHeaderOwnProps["disableTypography"];
@@ -754,6 +774,13 @@ declare module "@mui/material/IconButton" {
 		 * @default 'top'
 		 */
 		labelPlacement?: TooltipProps["placement"];
+
+		/**
+		 * The variant to use.
+		 *
+		 * @default 'icon'
+		 */
+		variant?: "icon" | "outlined";
 	}
 }
 

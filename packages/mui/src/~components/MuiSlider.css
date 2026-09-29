@@ -182,12 +182,6 @@
 	}
 }
 
-@media (prefers-reduced-motion: reduce) {
-	:is(.MuiSlider-track, .MuiSlider-thumb) {
-		transition: none;
-	}
-}
-
 .MuiSlider-valueLabel {
 	--✨gap: var(--stratakit-space-100);
 

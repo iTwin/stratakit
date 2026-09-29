@@ -3,9 +3,12 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import {
+	svgMeasureHeight,
+	svgMeasureHeightLarge,
+} from "@stratakit/icons/measure-height";
 import { Icon } from "@stratakit/mui";
 
-import svgMeasureHeight from "@stratakit/icons/measure-height.svg";
 import styles from "./Icon.sizes.module.css";
 
 export default () => {
@@ -16,7 +19,7 @@ export default () => {
 				Regular
 			</li>
 			<li className={styles.listItem}>
-				<Icon href={`${svgMeasureHeight}#icon-large`} size="large" />
+				<Icon href={svgMeasureHeightLarge} size="large" />
 				Large
 			</li>
 		</ul>

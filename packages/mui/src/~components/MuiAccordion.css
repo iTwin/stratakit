@@ -133,9 +133,3 @@
 	padding: var(--_MuiAccordion-padding);
 	padding-inline-start: var(--_MuiAccordion-details-indent, var(--✨indent));
 }
-
-.MuiCollapse-root {
-	@media (prefers-reduced-motion: reduce) {
-		transition: none;
-	}
-}

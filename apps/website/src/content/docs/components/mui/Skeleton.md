@@ -3,7 +3,7 @@ title: Skeleton
 description: Skeleton loaders are used to show placeholder content for a loading state.
 links:
   muiDocs: https://mui.com/material-ui/react-skeleton/
-  apiReference: https://mui.com/material-ui/api/skeleton/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Skeleton.default" min-width="300px"}
@@ -43,3 +43,7 @@ Accurately representing the shape and structure of a loading interface is a case
 
 - Don't use **Skeleton** where the size and shape of the content and functionality being loaded is not known.
 - Don't use **Skeleton** to indicate the progress of any process except loading. For indicating the progress of calculations and other processes within a loaded interface, use [**CircularProgress**](/components/circularprogress) or [**LinearProgress**](/components/linearprogress).
+
+## API reference
+
+- [`Skeleton`](https://mui.com/material-ui/api/skeleton/)

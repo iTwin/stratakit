@@ -37,9 +37,13 @@ export default () => {
 				/>
 			</Button>
 			{selectedFiles.length > 0 && (
-				<Typography>
-					<span style={visuallyHidden}>{selectedFiles.length} selected: </span>
-					{selectedFiles.map((file) => file.name).join(", ")}
+				<Typography
+					render={<ul role="list" />}
+					aria-label={`${selectedFiles.length} selected files`}
+				>
+					{selectedFiles.map((file) => (
+						<li key={file.name}>{file.name}</li>
+					))}
 				</Typography>
 			)}
 		</Stack>

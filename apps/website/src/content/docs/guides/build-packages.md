@@ -30,6 +30,10 @@ To use StrataKit, add `@stratakit/mui` to your `peerDependencies`. Additionally,
 }
 ```
 
+:::note
+Packages don't need to render the [**Root**](/components/root) component themselves - the host application is responsible for [setting up the Root](/getting-started/develop/#quick-start).
+:::
+
 ### `@stratakit/icons`
 
 To use StrataKit icons in your package, add `@stratakit/icons` to your `peerDependencies`, then display them as described in the [development guide](/getting-started/develop/#quick-start).

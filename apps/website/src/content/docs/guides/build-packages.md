@@ -42,10 +42,6 @@ Define the `peerDependencies` in your `package.json`:
 
 To use StrataKit icons in your package, add `@stratakit/icons` to your `peerDependencies`:
 
-```console
-npm add @stratakit/icons --save-peer
-```
-
 Use StrataKit icons as described in the [development guide](/getting-started/develop/#quick-start).
 
 :::note
@@ -54,17 +50,9 @@ Packages don't configure the bundler themselves - the host application is respon
 
 If you are using StrataKit CSS variables or other foundations in your package, add `@stratakit/foundations` to your `peerDependencies` to explicitly control the package version:
 
-```console
-npm add @stratakit/foundations --save-peer
-```
-
 ## Define dependencies
 
-To use StrataKit structures in your package, add `@stratakit/structures` to your `dependencies`:
-
-```console
-npm add @stratakit/structures
-```
+To use StrataKit structures in your package, add `@stratakit/structures` to your `dependencies`.
 
 ## Set up TypeScript types
 

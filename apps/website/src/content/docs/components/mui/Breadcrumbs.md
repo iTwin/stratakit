@@ -22,13 +22,13 @@ Breadcrumb items are typically rendered as links. If a breadcrumb item triggers 
 
 ### Truncation
 
-When the full hierarchy does not fit, hide intermediate breadcrumb items and use a [**Menu**](/components/menu) to provide access to them.
+When the full hierarchy does not fit, hide intermediate breadcrumb items and use a [**Popover**](/components/popover) to provide access to them.
 
-::example{src="mui/Breadcrumbs.menu"}
+::example{src="mui/Breadcrumbs.truncation"}
 
 ## API reference
 
 - [`Breadcrumbs`](https://mui.com/material-ui/api/breadcrumbs/)
 - [`Link`](https://mui.com/material-ui/api/link/)
 - [`Button`](https://mui.com/material-ui/api/button/)
-- [`Menu`](https://mui.com/material-ui/api/menu/)
+- [`Popover`](https://mui.com/material-ui/api/popover/)

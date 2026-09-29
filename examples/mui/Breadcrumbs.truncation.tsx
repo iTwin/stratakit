@@ -11,7 +11,7 @@ import Typography from "@mui/material/Typography";
 import { svgMoreHorizontal } from "@stratakit/icons/more-horizontal";
 import { Icon } from "@stratakit/mui";
 
-import styles from "./Breadcrumbs.menu.module.css";
+import styles from "./Breadcrumbs.truncation.module.css";
 
 export default () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
@@ -75,4 +75,4 @@ export default () => {
 			</Popover>
 		</>
 	);
-}
+};

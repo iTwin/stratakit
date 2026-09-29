@@ -13,6 +13,7 @@ List packages that are expected to be installed at most once in the host applica
 
 :::caution
 Version ranges of peer dependencies should be carefully managed to ensure compatibility across all packages in the project.
+It is important to keep your package compatible with the [latest versions of StrataKit](https://github.com/iTwin/stratakit/blob/main/notes/SUPPORT_POLICY.md#version-support-status) to allow downstream consumers to upgrade their dependencies as needed.
 :::
 
 ### `@stratakit/mui`

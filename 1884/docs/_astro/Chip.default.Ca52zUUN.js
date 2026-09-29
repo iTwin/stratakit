@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{t}from"./Chip.Dy8u4tT3.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{className:`flex`,children:[(0,n.jsx)(t,{label:`HTML`}),(0,n.jsx)(t,{label:`CSS`}),(0,n.jsx)(t,{label:`JS`})]});export{r as default};

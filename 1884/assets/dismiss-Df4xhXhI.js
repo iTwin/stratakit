@@ -1,1 +1,0 @@
-import{t as e}from"./dismiss-UyaY-R4u.js";var t=`${e}#icon`;`${e}`;export{t};

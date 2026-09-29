@@ -125,4 +125,4 @@ These block upgrades to newer minor or patch versions, or require a new major ve
 
 Consider releasing a new major version of your package when adding support for StrataKit. Otherwise, you may introduce breaking changes for users who are still using iTwinUI without setting up StrataKit.
 
-See [Migrating from iTwinUI](/getting-started/develop/#migrating-from-itwinui) for more information.
+See [Migrating from iTwinUI](/getting-started/migration-from-itwinui) for more information.

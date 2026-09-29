@@ -513,70 +513,70 @@ Replace [iTwinUI icons](https://itwin.github.io/iTwinUI-icons/) with their [Stra
 
 Replace [iTwinUI components](https://itwinui.bentley.com/docs/components) component usage with their [MUI counterparts](https://mui.com/material-ui/all-components/), [StrataKit counterparts](/components/overview/), or code suggestions.
 
-| iTwinUI component                                                                 | Suggested replacement                                                |
-| --------------------------------------------------------------------------------- | -------------------------------------------------------------------- |
-| [`Anchor`](https://itwinui.bentley.com/docs/anchor)                               | [MUI `Link`](#anchor)                                                |
-| [`Alert`](https://itwinui.bentley.com/docs/alert)                                 | [MUI `Alert`](#alert)                                                |
-| [`Avatar`](https://itwinui.bentley.com/docs/avatar)                               | [MUI `Avatar`](#avatar)                                              |
-| [`AvatarGroup`](https://itwinui.bentley.com/docs/avatar#avatargroup)              | [MUI `AvatarGroup`](#avatargroup)                                    |
-| [`Badge`](https://itwinui.bentley.com/docs/badge)                                 | [MUI `Badge`](#badge)                                                |
-| [`Blockquote`](https://itwinui.bentley.com/docs/blockquote)                       | [Native `<blockquote>`](#blockquote)                                 |
-| [`Breadcrumbs`](https://itwinui.bentley.com/docs/breadcrumbs)                     | [MUI `Breadcrumbs`](#breadcrumbs)                                    |
-| [`Button`](https://itwinui.bentley.com/docs/button)                               | [MUI `Button`](#button)                                              |
-| [`ButtonGroup`](https://itwinui.bentley.com/docs/buttongroup)                     | [MUI `ButtonGroup`](#buttongroup)                                    |
-| [`Carousel`](https://itwinui.bentley.com/docs/carousel)                           | [No direct replacement](#carousel)                                   |
-| [`Checkbox`](https://itwinui.bentley.com/docs/checkbox)                           | [MUI `Checkbox`](#checkbox)                                          |
-| [`Code`](https://itwinui.bentley.com/docs/code)                                   | [Native `<code>`](#code)                                             |
-| [`ColorPicker`](https://itwinui.bentley.com/docs/colorpicker)                     | [Composite color picker](#colorpicker)                               |
-| [`ComboBox`](https://itwinui.bentley.com/docs/combobox)                           | [MUI `Autocomplete`](#combobox)                                      |
-| [`DatePicker`](https://itwinui.bentley.com/docs/datepicker)                       | [MUI `DatePicker` or MUI `DateCalendar`](#datepicker)                |
-| [`Dialog`](https://itwinui.bentley.com/docs/dialog)                               | [MUI `Dialog`](#dialog)                                              |
-| [`Divider`](https://itwinui.bentley.com/docs/divider)                             | [MUI `Divider`](#divider)                                            |
-| [`DropdownMenu`](https://itwinui.bentley.com/docs/dropdownmenu)                   | [MUI `Menu`](#dropdownmenu)                                          |
-| [`ExpandableBlock`](https://itwinui.bentley.com/docs/expandableblock)             | [MUI `Accordion`](#expandableblock)                                  |
-| [`Fieldset`](https://itwinui.bentley.com/docs/fieldset)                           | [Native `<fieldset>`](#fieldset)                                     |
-| [`FileUpload`](https://itwinui.bentley.com/docs/fileupload)                       | [Composite file upload](#fileupload)                                 |
-| [`Flex`](https://itwinui.bentley.com/docs/flex)                                   | [MUI `Stack`](#flex)                                                 |
-| [`Footer`](https://itwinui.bentley.com/docs/footer)                               | [Native `<footer>`](#footer)                                         |
-| [`Header`](https://itwinui.bentley.com/docs/header)                               | [Native `<header>`](#header)                                         |
-| [`InformationPanel`](https://itwinui.bentley.com/docs/informationpanel)           | [MUI `Drawer`](#informationpanel)                                    |
-| [`Input`](https://itwinui.bentley.com/docs/input)                                 | [MUI `TextField` or MUI `Input`](#input)                             |
-| [`InputGrid`](https://itwinui.bentley.com/docs/inputgrid)                         | [No direct replacement](#inputgrid)                                  |
-| [`InputGroup`](https://itwinui.bentley.com/docs/inputgroup)                       | [MUI `FormControl`](#inputgroup)                                     |
-| [`Input with decorations`](https://itwinui.bentley.com/docs/inputwithdecorations) | [MUI `TextField` or MUI `Input`](#input)                             |
-| [`Kbd`](https://itwinui.bentley.com/docs/kbd)                                     | [Native `<kbd>`](#kbd)                                               |
-| [`Label`](https://itwinui.bentley.com/docs/label)                                 | [MUI `FormLabel` or MUI `Typography`](#label)                        |
-| [`LinkAction`](https://itwinui.bentley.com/docs/linkaction)                       | [No direct replacement](#linkaction)                                 |
-| [`List`](https://itwinui.bentley.com/docs/list)                                   | [MUI `List`](#list)                                                  |
-| [`MiddleTextTruncation`](https://itwinui.bentley.com/docs/middletexttruncation)   | [No direct replacement](#middletexttruncation)                       |
-| [`NonIdealState`](https://itwinui.bentley.com/docs/nonidealstate)                 | [No direct replacement](#nonidealstate)                              |
-| [`NotificationMarker`](https://itwinui.bentley.com/docs/notificationmarker)       | [MUI `Badge`](#notificationmarker)                                   |
-| [`Overlay`](https://itwinui.bentley.com/docs/overlay)                             | [MUI `Backdrop`](#overlay)                                           |
-| [`Panels`](https://itwinui.bentley.com/docs/panels)                               | [No direct replacement](#panels)                                     |
-| [`Popover`](https://itwinui.bentley.com/docs/popover)                             | [MUI `Popover`](#popover)                                            |
-| [`ProgressIndicator`](https://itwinui.bentley.com/docs/progressindicator)         | [MUI `CircularProgress` or MUI `LinearProgress`](#progressindicator) |
-| [`Radio`](https://itwinui.bentley.com/docs/radio)                                 | [MUI `Radio`](#radio)                                                |
-| [`RadioTile`](https://itwinui.bentley.com/docs/radiotile)                         | [Composite radio tile](#radiotile)                                   |
-| [`SearchBox`](https://itwinui.bentley.com/docs/searchbox)                         | [MUI `Autocomplete` or MUI `TextField` or MUI `Input`](#searchbox)   |
-| [`Select`](https://itwinui.bentley.com/docs/select)                               | [MUI `Select` or MUI `NativeSelect`](#select)                        |
-| [`SideNavigation`](https://itwinui.bentley.com/docs/sidenavigation)               | [StrataKit `NavigationRail`](#sidenavigation)                        |
-| [`SkipToContentLink`](https://itwinui.bentley.com/docs/skiptocontentlink)         | [No direct replacement](#skiptocontentlink)                          |
-| [`Slider`](https://itwinui.bentley.com/docs/slider)                               | [MUI `Slider`](#slider)                                              |
-| [`StatusMessage`](https://itwinui.bentley.com/docs/statusmessage)                 | [No direct replacement](#statusmessage)                              |
-| [`Stepper`](https://itwinui.bentley.com/docs/stepper)                             | [MUI `Stepper`](#stepper)                                            |
-| [`Surface`](https://itwinui.bentley.com/docs/surface)                             | [MUI `Paper`](#surface)                                              |
-| [`Table`](https://itwinui.bentley.com/docs/table)                                 | [MUI `Table`](#table)                                                |
-| [`Tabs`](https://itwinui.bentley.com/docs/tabs)                                   | [MUI `Tabs`](#tabs)                                                  |
-| [`Tag`](https://itwinui.bentley.com/docs/tag)                                     | [MUI `Chip`](#tag)                                                   |
-| [`Text`](https://itwinui.bentley.com/docs/text)                                   | [MUI `Typography`](#text)                                            |
-| [`Textarea`](https://itwinui.bentley.com/docs/textarea)                           | [MUI `TextField`](#textarea)                                         |
-| [`Tile`](https://itwinui.bentley.com/docs/tile)                                   | [MUI `Card`](#tile)                                                  |
-| [`Toast`](https://itwinui.bentley.com/docs/toast)                                 | [MUI `Snackbar`](#toast)                                             |
-| [`ToggleSwitch`](https://itwinui.bentley.com/docs/toggleswitch)                   | [MUI `Switch`](#toggleswitch)                                        |
-| [`Tooltip`](https://itwinui.bentley.com/docs/tooltip)                             | [MUI `Tooltip`](#tooltip)                                            |
-| [`TransferList`](https://itwinui.bentley.com/docs/transferlist)                   | [Composite transfer list](#transferlist)                             |
-| [`Tree`](https://itwinui.bentley.com/docs/tree)                                   | [StrataKit `Tree`](#tree)                                            |
-| [`VisuallyHidden`](https://itwinui.bentley.com/docs/visuallyhidden)               | [MUI `visuallyHidden` utility](#visuallyhidden)                      |
+| iTwinUI component                                                                 | Suggested replacement                                                               |
+| --------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [`Anchor`](https://itwinui.bentley.com/docs/anchor)                               | [MUI `Link`](#anchor)                                                               |
+| [`Alert`](https://itwinui.bentley.com/docs/alert)                                 | [MUI `Alert`](#alert)                                                               |
+| [`Avatar`](https://itwinui.bentley.com/docs/avatar)                               | [MUI `Avatar`](#avatar)                                                             |
+| [`AvatarGroup`](https://itwinui.bentley.com/docs/avatar#avatargroup)              | [MUI `AvatarGroup`](#avatargroup)                                                   |
+| [`Badge`](https://itwinui.bentley.com/docs/badge)                                 | [MUI `Badge`](#badge)                                                               |
+| [`Blockquote`](https://itwinui.bentley.com/docs/blockquote)                       | [Native `<blockquote>`](#blockquote)                                                |
+| [`Breadcrumbs`](https://itwinui.bentley.com/docs/breadcrumbs)                     | [MUI `Breadcrumbs`](#breadcrumbs)                                                   |
+| [`Button`](https://itwinui.bentley.com/docs/button)                               | [MUI `Button`](#button)                                                             |
+| [`ButtonGroup`](https://itwinui.bentley.com/docs/buttongroup)                     | [MUI `ButtonGroup` or MUI `ToggleButtonGroup` or StrataKit `Toolbar`](#buttongroup) |
+| [`Carousel`](https://itwinui.bentley.com/docs/carousel)                           | [No direct replacement](#carousel)                                                  |
+| [`Checkbox`](https://itwinui.bentley.com/docs/checkbox)                           | [MUI `Checkbox`](#checkbox)                                                         |
+| [`Code`](https://itwinui.bentley.com/docs/code)                                   | [Native `<code>`](#code)                                                            |
+| [`ColorPicker`](https://itwinui.bentley.com/docs/colorpicker)                     | [Composite color picker](#colorpicker)                                              |
+| [`ComboBox`](https://itwinui.bentley.com/docs/combobox)                           | [MUI `Autocomplete`](#combobox)                                                     |
+| [`DatePicker`](https://itwinui.bentley.com/docs/datepicker)                       | [MUI `DatePicker` or MUI `DateCalendar`](#datepicker)                               |
+| [`Dialog`](https://itwinui.bentley.com/docs/dialog)                               | [MUI `Dialog`](#dialog)                                                             |
+| [`Divider`](https://itwinui.bentley.com/docs/divider)                             | [MUI `Divider`](#divider)                                                           |
+| [`DropdownMenu`](https://itwinui.bentley.com/docs/dropdownmenu)                   | [MUI `Menu`](#dropdownmenu)                                                         |
+| [`ExpandableBlock`](https://itwinui.bentley.com/docs/expandableblock)             | [MUI `Accordion`](#expandableblock)                                                 |
+| [`Fieldset`](https://itwinui.bentley.com/docs/fieldset)                           | [Native `<fieldset>`](#fieldset)                                                    |
+| [`FileUpload`](https://itwinui.bentley.com/docs/fileupload)                       | [Composite file upload](#fileupload)                                                |
+| [`Flex`](https://itwinui.bentley.com/docs/flex)                                   | [MUI `Stack`](#flex)                                                                |
+| [`Footer`](https://itwinui.bentley.com/docs/footer)                               | [Native `<footer>`](#footer)                                                        |
+| [`Header`](https://itwinui.bentley.com/docs/header)                               | [Native `<header>`](#header)                                                        |
+| [`InformationPanel`](https://itwinui.bentley.com/docs/informationpanel)           | [MUI `Drawer`](#informationpanel)                                                   |
+| [`Input`](https://itwinui.bentley.com/docs/input)                                 | [MUI `TextField` or MUI `Input`](#input)                                            |
+| [`InputGrid`](https://itwinui.bentley.com/docs/inputgrid)                         | [No direct replacement](#inputgrid)                                                 |
+| [`InputGroup`](https://itwinui.bentley.com/docs/inputgroup)                       | [MUI `FormControl`](#inputgroup)                                                    |
+| [`Input with decorations`](https://itwinui.bentley.com/docs/inputwithdecorations) | [MUI `TextField` or MUI `Input`](#input)                                            |
+| [`Kbd`](https://itwinui.bentley.com/docs/kbd)                                     | [Native `<kbd>`](#kbd)                                                              |
+| [`Label`](https://itwinui.bentley.com/docs/label)                                 | [MUI `FormLabel` or MUI `Typography`](#label)                                       |
+| [`LinkAction`](https://itwinui.bentley.com/docs/linkaction)                       | [No direct replacement](#linkaction)                                                |
+| [`List`](https://itwinui.bentley.com/docs/list)                                   | [MUI `List`](#list)                                                                 |
+| [`MiddleTextTruncation`](https://itwinui.bentley.com/docs/middletexttruncation)   | [No direct replacement](#middletexttruncation)                                      |
+| [`NonIdealState`](https://itwinui.bentley.com/docs/nonidealstate)                 | [No direct replacement](#nonidealstate)                                             |
+| [`NotificationMarker`](https://itwinui.bentley.com/docs/notificationmarker)       | [MUI `Badge`](#notificationmarker)                                                  |
+| [`Overlay`](https://itwinui.bentley.com/docs/overlay)                             | [MUI `Backdrop`](#overlay)                                                          |
+| [`Panels`](https://itwinui.bentley.com/docs/panels)                               | [No direct replacement](#panels)                                                    |
+| [`Popover`](https://itwinui.bentley.com/docs/popover)                             | [MUI `Popover`](#popover)                                                           |
+| [`ProgressIndicator`](https://itwinui.bentley.com/docs/progressindicator)         | [MUI `CircularProgress` or MUI `LinearProgress`](#progressindicator)                |
+| [`Radio`](https://itwinui.bentley.com/docs/radio)                                 | [MUI `Radio`](#radio)                                                               |
+| [`RadioTile`](https://itwinui.bentley.com/docs/radiotile)                         | [Composite radio tile](#radiotile)                                                  |
+| [`SearchBox`](https://itwinui.bentley.com/docs/searchbox)                         | [MUI `Autocomplete` or MUI `TextField` or MUI `Input`](#searchbox)                  |
+| [`Select`](https://itwinui.bentley.com/docs/select)                               | [MUI `Select` or MUI `NativeSelect`](#select)                                       |
+| [`SideNavigation`](https://itwinui.bentley.com/docs/sidenavigation)               | [StrataKit `NavigationRail`](#sidenavigation)                                       |
+| [`SkipToContentLink`](https://itwinui.bentley.com/docs/skiptocontentlink)         | [No direct replacement](#skiptocontentlink)                                         |
+| [`Slider`](https://itwinui.bentley.com/docs/slider)                               | [MUI `Slider`](#slider)                                                             |
+| [`StatusMessage`](https://itwinui.bentley.com/docs/statusmessage)                 | [No direct replacement](#statusmessage)                                             |
+| [`Stepper`](https://itwinui.bentley.com/docs/stepper)                             | [MUI `Stepper`](#stepper)                                                           |
+| [`Surface`](https://itwinui.bentley.com/docs/surface)                             | [MUI `Paper`](#surface)                                                             |
+| [`Table`](https://itwinui.bentley.com/docs/table)                                 | [MUI `Table`](#table)                                                               |
+| [`Tabs`](https://itwinui.bentley.com/docs/tabs)                                   | [MUI `Tabs`](#tabs)                                                                 |
+| [`Tag`](https://itwinui.bentley.com/docs/tag)                                     | [MUI `Chip`](#tag)                                                                  |
+| [`Text`](https://itwinui.bentley.com/docs/text)                                   | [MUI `Typography`](#text)                                                           |
+| [`Textarea`](https://itwinui.bentley.com/docs/textarea)                           | [MUI `TextField`](#textarea)                                                        |
+| [`Tile`](https://itwinui.bentley.com/docs/tile)                                   | [MUI `Card`](#tile)                                                                 |
+| [`Toast`](https://itwinui.bentley.com/docs/toast)                                 | [MUI `Snackbar`](#toast)                                                            |
+| [`ToggleSwitch`](https://itwinui.bentley.com/docs/toggleswitch)                   | [MUI `Switch`](#toggleswitch)                                                       |
+| [`Tooltip`](https://itwinui.bentley.com/docs/tooltip)                             | [MUI `Tooltip`](#tooltip)                                                           |
+| [`TransferList`](https://itwinui.bentley.com/docs/transferlist)                   | [Composite transfer list](#transferlist)                                            |
+| [`Tree`](https://itwinui.bentley.com/docs/tree)                                   | [StrataKit `Tree`](#tree)                                                           |
+| [`VisuallyHidden`](https://itwinui.bentley.com/docs/visuallyhidden)               | [MUI `visuallyHidden` utility](#visuallyhidden)                                     |
 
 :::tip
 Read additional [StrataKit component documentation](/components/overview/) for more details on usage and customization.
@@ -645,7 +645,7 @@ Replace the [`Button` component from `@itwin/itwinui-react`](https://itwinui.ben
 
 Replace the [`ButtonGroup` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/buttongroup) with the `ButtonGroup` component from `@mui/material`. See [ButtonGroup examples](/components/buttongroup/) for reference.
 
-- Replace `<ButtonGroup role="toolbar">` with [`Toolbar` from `@stratakit/structures`](/components/toolbar/)
+- Replace `<ButtonGroup role="toolbar">` with [`Toolbar` from `@stratakit/structures`](/components/toolbar/) for grouped commands, or use MUI [`ToggleButtonGroup`](/components/togglebutton/) when the buttons select an option.
 - Instead of `ButtonGroup` and `Input` use `TextField` from `@material/mui` with `startAdornment` or `endAdornment` props.
 
 ### Carousel

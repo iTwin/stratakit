@@ -7,27 +7,17 @@ sidebar:
 
 This guide is for **package** developers. It supplements the general [development guide](/getting-started/develop) with additional instructions to build a package on top of StrataKit.
 
-## Define peer dependencies
+## Define dependencies
 
-List packages that are expected to be installed at most once in the host application as [`peerDependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies). The installed instances of peer dependencies should be shared across the whole application and its packages.
-
-StrataKit packages that should be listed as peer dependencies:
-
-- `@stratakit/mui`
-- `@stratakit/foundations` (optional)
-- `@stratakit/icons` (optional)
-
-Other packages that should be listed as peer dependencies:
-
-- `@mui/material`
-- `react`
-- `react-dom`
+List packages that are expected to be installed at most once in the host application as [`peerDependencies`](https://docs.npmjs.com/cli/v12/configuring-npm/package-json#peerdependencies). The installed instances of peer dependencies are shared across the whole application and its packages.
 
 :::caution
 Version ranges of peer dependencies should be carefully managed to ensure compatibility across all packages in the project.
 :::
 
-Define the `peerDependencies` in your `package.json`:
+### `@stratakit/mui`
+
+To use StrataKit, add `@stratakit/mui` to your `peerDependencies`. Additionally, list other non-StrataKit peer dependencies, such as `@mui/material`, `react`, and `react-dom`.
 
 ```json
 {
@@ -40,17 +30,19 @@ Define the `peerDependencies` in your `package.json`:
 }
 ```
 
-To use StrataKit icons in your package, add `@stratakit/icons` to your `peerDependencies`:
+### `@stratakit/icons`
 
-Use StrataKit icons as described in the [development guide](/getting-started/develop/#quick-start).
+To use StrataKit icons in your package, add `@stratakit/icons` to your `peerDependencies`, then display them as described in the [development guide](/getting-started/develop/#quick-start).
 
 :::note
 Packages don't configure the bundler themselves - the host application is responsible for [serving StrataKit icons as external SVG files](/getting-started/develop/#bundler-configuration).
 :::
 
-If you are using StrataKit CSS variables or other foundations in your package, add `@stratakit/foundations` to your `peerDependencies` to explicitly control the package version:
+### `@stratakit/foundations`
 
-## Define dependencies
+If you are using StrataKit CSS variables or other foundations in your package, add `@stratakit/foundations` to your `peerDependencies` to explicitly control the package version.
+
+### `@stratakit/structures`
 
 To use StrataKit structures in your package, add `@stratakit/structures` to your `dependencies`.
 
@@ -64,7 +56,7 @@ Follow [semantic versioning](https://semver.org/) when releasing new versions of
 
 ### Transitive peer dependencies
 
-[Peer dependencies](#define-peer-dependencies) introduce additional challenges when managing dependencies, especially when dealing with transitive peer dependencies. Package developers should consider the full dependency graph.
+Peer dependencies introduce additional challenges when managing dependency versions, especially when dealing with transitive peer dependencies. Package developers should consider the full dependency graph.
 
 For example, since `@stratakit/foundations` is a peer dependency of `@stratakit/structures`, a version bump of `@stratakit/structures` can transitively require a newer `@stratakit/foundations` in the host application - even when the change looks internal from your package's perspective.
 

@@ -25,7 +25,7 @@ export default () => {
 	return (
 		<>
 			<Breadcrumbs aria-label="breadcrumbs">
-				<Link href="#">Breadcrumb 1</Link>
+				<Link href="#">Workspace</Link>
 				<IconButton
 					aria-haspopup="dialog"
 					aria-expanded={open}
@@ -35,9 +35,9 @@ export default () => {
 				>
 					<Icon href={svgMoreHorizontal} />
 				</IconButton>
-				<Link href="#">Breadcrumb 5</Link>
+				<Link href="#">Navigation</Link>
 				<Link aria-current="true" color="textSecondary">
-					Breadcrumb 6
+					Breadcrumbs
 				</Link>
 			</Breadcrumbs>
 			<Popover
@@ -57,13 +57,13 @@ export default () => {
 			>
 				<Breadcrumbs render={<div />}>
 					<Link href="#" onClick={handleClose}>
-						Breadcrumb 2
+						Projects
 					</Link>
 					<Link href="#" onClick={handleClose}>
-						Breadcrumb 3
+						Design System
 					</Link>
 					<Link href="#" onClick={handleClose}>
-						Breadcrumb 4
+						Components
 					</Link>
 				</Breadcrumbs>
 			</Popover>

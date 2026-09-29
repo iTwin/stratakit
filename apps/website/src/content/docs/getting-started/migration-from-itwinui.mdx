@@ -826,6 +826,13 @@ Replace the [`Radio` component from `@itwin/itwinui-react`](https://itwinui.bent
 
 Replace the [`Select` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/select) with the `Select` or `NativeSelect` components from `@mui/material`. See [Select examples](/components/divider/) for reference.
 
+- Move `options` to children and convert to `MenuItem`.
+  - Set `value` as a prop of `MenuItem`.
+  - For items without icons set the `label` as the direct child of `MenuItem`
+  - For options with an icon, use `ListItemText and `ListItemIcon`. See the [Select icon example](https://github.com/iTwin/stratakit/blob/main/examples/mui/Select.icon.tsx).
+- `status="negative"` can be replaced by wrapping the `Select` in `<FormControl error>` and including a `FormHelperText` hat contains the error.
+- Convert the `placeholder` prop to a disabled menu item. See [MUI Select placeholder example](https://mui.com/material-ui/react-select/#placeholder).
+
 ### SideNavigation
 
 Replace the [`SideNavigation` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/sidenavigation) with the `NavigationRail` component from `@stratakit/structures`. See [NavigationRail examples](/components/navigationrail/) for reference.
@@ -835,6 +842,7 @@ Replace the [`SideNavigation` component from `@itwin/itwinui-react`](https://itw
 - Remove `expanderPlacement`, Stratakit only supports a single location for the expansion
 - Replace `isExpanded` with `expanded` if explicitly managing the expanded state.
 - Replace `onExpandedClick` with [`setExpanded`](/reference/structures/NavigationRail/#NavigationRail.Root.setExpanded) if explicitly managing the expanded state.
+- Remove `styleType="borderless"`. This visual is not suppporte by Stratakit.
 
 ### SkipToContentLink
 

@@ -11,6 +11,8 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 import { svgUpload } from "@stratakit/icons/upload";
 import { Icon } from "@stratakit/mui";
 
+import styles from "./FileSelection.default.module.css";
+
 export default () => {
 	const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
 
@@ -39,10 +41,13 @@ export default () => {
 			{selectedFiles.length > 0 && (
 				<Typography
 					render={<ul role="list" />}
-					aria-label={`${selectedFiles.length} selected files`}
+					className={styles.files}
+					aria-label="selected files"
 				>
 					{selectedFiles.map((file) => (
-						<li key={file.name}>{file.name}</li>
+						<li key={file.name} className={styles.fileItem}>
+							{file.name}
+						</li>
 					))}
 				</Typography>
 			)}

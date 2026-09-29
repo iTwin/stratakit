@@ -24,10 +24,21 @@ import styles from "./FileSelection.drag-and-drop.module.css";
 export default () => {
 	const [selectedFiles, setSelectedFiles] = React.useState<File[]>([]);
 	const [isDragActive, setIsDragActive] = React.useState(false);
+	const headingRef = React.useRef<HTMLHeadingElement>(null);
+	const browseInputRef = React.useRef<HTMLInputElement>(null);
+	const focusTarget = React.useRef<"heading" | "browse" | null>(null);
 
 	const selectFiles = (files: FileList | null) => {
-		setSelectedFiles(Array.from(files ?? []));
+		const fileArray = Array.from(files ?? []);
+		if (fileArray.length) focusTarget.current = "heading";
+		setSelectedFiles(fileArray);
 	};
+
+	React.useEffect(() => {
+		if (focusTarget.current === "heading") headingRef.current?.focus();
+		if (focusTarget.current === "browse") browseInputRef.current?.focus();
+		focusTarget.current = null;
+	});
 
 	return (
 		<Paper
@@ -52,44 +63,65 @@ export default () => {
 			}}
 		>
 			{selectedFiles.length ? (
-				<List aria-live="polite">
-					{selectedFiles.map((file, index) => (
-						<ListItem
-							key={`${file.name}-${file.lastModified}`}
-							className={styles.fileItem}
-							secondaryAction={
-								<IconButton
-									label={`Remove ${file.name}`}
-									onClick={() => {
-										setSelectedFiles((files) =>
-											files.filter((_, fileIndex) => fileIndex !== index),
-										);
-									}}
-								>
-									<Icon href={svgDismiss} />
-								</IconButton>
-							}
-						>
-							<ListItemIcon>
-								<Icon href={svgDocument} size="large" />
-							</ListItemIcon>
-							<ListItemText
-								primary={file.name}
-								secondary={
-									<Typography variant="caption-lg" color="textSecondary">
-										{formatBytes(file.size)}
-									</Typography>
+				<>
+					<Typography
+						variant="subtitle-md"
+						render={<h2 />}
+						ref={headingRef}
+						tabIndex={-1}
+						className={styles.heading}
+					>
+						{selectedFiles.length === 1
+							? "1 file selected"
+							: `${selectedFiles.length} files selected`}
+					</Typography>
+					<List aria-label="Files selected">
+						{selectedFiles.map((file, index) => (
+							<ListItem
+								key={`${file.name}-${file.lastModified}`}
+								className={styles.fileItem}
+								secondaryAction={
+									<IconButton
+										label={`Remove ${file.name}`}
+										onClick={() => {
+											if (selectedFiles.length === 1) {
+												focusTarget.current = "browse";
+											}
+											setSelectedFiles((files) =>
+												files.filter((_, fileIndex) => fileIndex !== index),
+											);
+										}}
+									>
+										<Icon href={svgDismiss} />
+									</IconButton>
 								}
-							/>
-						</ListItem>
-					))}
-				</List>
+							>
+								<ListItemIcon>
+									<Icon href={svgDocument} size="large" />
+								</ListItemIcon>
+								<ListItemText
+									primary={file.name}
+									secondary={
+										<Typography variant="caption-lg" color="textSecondary">
+											{formatBytes(file.size)}
+										</Typography>
+									}
+								/>
+							</ListItem>
+						))}
+					</List>
+				</>
 			) : (
 				<Stack direction="row" spacing={2} className={styles.emptyState}>
 					<Icon href={svgUpload} />
 					<Typography>
 						Drag &amp; drop files here to select them or&nbsp;
-						<FilePicker label="browse files" onFilesChange={selectFiles} />.
+						<FilePicker
+							label="browse files"
+							onFilesChange={selectFiles}
+							inputRef={browseInputRef}
+						/>
+						.
 					</Typography>
 				</Stack>
 			)}
@@ -100,12 +132,14 @@ export default () => {
 interface FilePickerProps {
 	label: string;
 	onFilesChange: (files: FileList | null) => void;
+	inputRef?: React.Ref<HTMLInputElement>;
 }
 
-function FilePicker({ label, onFilesChange }: FilePickerProps) {
+function FilePicker({ label, onFilesChange, inputRef }: FilePickerProps) {
 	return (
 		<Link render={<label />} color="primary" className={`${styles.link}`}>
 			<input
+				ref={inputRef}
 				type="file"
 				multiple
 				style={visuallyHidden}

@@ -26,6 +26,11 @@
 	padding-inline: var(--stratakit-space-200);
 }
 
+.heading {
+	padding-block-start: var(--stratakit-space-200);
+	padding-inline: var(--stratakit-space-300);
+}
+
 .fileItem {
 	padding-inline-end: calc(
 		var(--stratakit-size-control-field-height-medium) +

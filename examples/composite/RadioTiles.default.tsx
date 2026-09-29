@@ -18,6 +18,46 @@ import buildingSvg from "@stratakit/icons/building.svg";
 import iTwinSvg from "@stratakit/icons/itwin.svg";
 import styles from "./RadioTiles.default.module.css";
 
+export default () => {
+	return (
+		<FormControl render={<fieldset />} role="radiogroup">
+			<FormLabel render={<legend />}>Design system</FormLabel>
+			<RadioGroup name="design-system-tiles" role={undefined}>
+				<RadioTile
+					value="iTwinUI"
+					label="iTwinUI"
+					description="Legacy design system"
+					icon={<Icon href={iTwinSvg} />}
+				/>
+				<RadioTile
+					value="stratakit"
+					label="StrataKit"
+					icon={<Icon href={bentleySvg} />}
+				/>
+				<RadioTile
+					value="material"
+					label="Material"
+					description="Google's design system"
+					icon={<Icon href={androidSvg} />}
+				/>
+				<RadioTile
+					value="hig"
+					label="Human Interface Guidelines"
+					description="Design system for Mac and iOS"
+					icon={<Icon href={appleSvg} />}
+				/>
+				<RadioTile
+					value="flori"
+					label="Flori"
+					description="SAP's design system"
+					disabled
+					icon={<Icon href={buildingSvg} />}
+				/>
+			</RadioGroup>
+		</FormControl>
+	);
+};
+
 interface RadioTileProps
 	extends Omit<
 		React.ComponentProps<typeof Radio>,
@@ -60,43 +100,3 @@ function RadioTile(props: RadioTileProps) {
 		</div>
 	);
 }
-
-export default () => {
-	return (
-		<FormControl render={<fieldset />} role="radiogroup">
-			<FormLabel render={<legend />}>Design system</FormLabel>
-			<RadioGroup name="design-system-tiles" role={undefined}>
-				<RadioTile
-					value="iTwinUI"
-					label="iTwinUI"
-					description="Legacy design system"
-					icon={<Icon href={iTwinSvg} />}
-				/>
-				<RadioTile
-					value="stratakit"
-					label="StrataKit"
-					icon={<Icon href={bentleySvg} />}
-				/>
-				<RadioTile
-					value="material"
-					label="Material"
-					description="Google's design system"
-					icon={<Icon href={androidSvg} />}
-				/>
-				<RadioTile
-					value="hig"
-					label="Human Interface Guidelines"
-					description="Design system for Mac and iOS"
-					icon={<Icon href={appleSvg} />}
-				/>
-				<RadioTile
-					value="flori"
-					label="Flori"
-					description="SAP's design system"
-					disabled
-					icon={<Icon href={buildingSvg} />}
-				/>
-			</RadioGroup>
-		</FormControl>
-	);
-};

@@ -52,6 +52,7 @@
 	}
 
 	&:where(.MuiPaper-outlined) {
-		border: 1px solid var(--stratakit-color-border-neutral-base);
+		border: 1px solid var(--stratakit-color-border-page-base);
+		background: transparent;
 	}
 }

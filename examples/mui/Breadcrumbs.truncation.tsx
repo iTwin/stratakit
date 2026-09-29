@@ -7,7 +7,6 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Popover from "@mui/material/Popover";
-import Typography from "@mui/material/Typography";
 import { svgMoreHorizontal } from "@stratakit/icons/more-horizontal";
 import { Icon } from "@stratakit/mui";
 

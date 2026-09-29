@@ -6,6 +6,7 @@
 import React from "react";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
+import Paper from "@mui/material/Paper";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Typography from "@mui/material/Typography";
@@ -74,7 +75,7 @@ function RadioTile(props: RadioTileProps) {
 	const descriptionId = React.useId();
 
 	return (
-		<div className={styles.tile}>
+		<Paper className={styles.tile} variant="outlined">
 			{icon}
 			<Typography
 				variant="body-md"
@@ -97,6 +98,6 @@ function RadioTile(props: RadioTileProps) {
 				className={styles.radio}
 				slotProps={{ input: { "aria-describedby": descriptionId } }}
 			/>
-		</div>
+		</Paper>
 	);
 }

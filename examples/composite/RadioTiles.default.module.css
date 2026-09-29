@@ -6,7 +6,7 @@
 	--_RadioTile-label-color: var(--stratakit-color-text-neutral-primary);
 	--_RadioTile-description-color: var(--stratakit-color-text-neutral-secondary);
 	--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-base);
-	--_RadioTile-border-color: var(--stratakit-color-border-neutral-muted);
+	--_RadioTile-border-color: unset;
 
 	position: relative;
 	display: grid;
@@ -17,8 +17,7 @@
 	margin-block-end: var(--stratakit-space-100);
 
 	padding: var(--stratakit-space-300);
-	border-radius: var(--stratakit-radius-md);
-	border: 1px solid var(--_RadioTile-border-color);
+	border-color: var(--_RadioTile-border-color);
 	color: var(--_RadioTile-icon-color);
 
 	@media (any-hover: hover) {

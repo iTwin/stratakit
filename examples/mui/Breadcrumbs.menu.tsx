@@ -13,7 +13,7 @@ import { Icon } from "@stratakit/mui";
 
 import styles from "./Breadcrumbs.menu.module.css";
 
-export default function CondensedWithPopover() {
+export default () => {
 	const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
 		null,
 	);

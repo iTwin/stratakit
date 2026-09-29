@@ -786,23 +786,54 @@ There is no general-purpose replacement for iTwinUI's [`LinkBox` and `LinkAction
 
 Replace the [`List` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/list) with the `List` component from `@mui/material`. See [List examples](/components/list/) for reference.
 
+- Replace `ListItem` with MUI `ListItem`. For [start icons](https://itwinui.bentley.com/docs/list#with-subcomponents), place an `Icon` inside `ListItemIcon`; for end icons, place the icon after `ListItemText` and align it to the end.
+- Replace `ListItem.Content` and `ListItem.Description` with `ListItemText`'s `primary` and `secondary` props. MUI `ListItem` has no `size="large"` prop; use CSS to keep rows without descriptions the same height when needed.
+- Replace [`actionable` and `ListItem.Action`](https://itwinui.bentley.com/docs/list#with-listitemaction) with `ListItemButton` inside `ListItem`. Render it as a link for navigation or keep it as a button for an in-page action. Put independent controls in `ListItem`'s `secondaryAction` prop rather than inside the primary action.
+- Map visual [`active` and `disabled` states](https://itwinui.bentley.com/docs/list#interactive-states) to `ListItemButton`'s `selected` and `disabled` props. Provide semantics separately, such as `aria-current` for navigation or `role="option"` with `aria-selected` for a listbox; `selected` alone does not express either meaning.
+
 ### MiddleTextTruncation
 
+There is no direct replacement for [`MiddleTextTruncation`](https://itwinui.bentley.com/docs/middletexttruncation).
+
 ### NonIdealState
+
+There is no direct replacement for [`NonIdealState`](https://itwinui.bentley.com/docs/nonidealstate).
+
+- Replace `heading` with `Typography` rendered as the appropriate heading level.
+- Replace `svg` with an image or illustration appropriate to the error.
+- Replace `actions` with `Button` or `Link` components.
 
 ### NotificationMarker
 
 Replace the [`NotificationMarker` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/notificationmarker) with the `Badge` component from `@mui/material`. See [Badge examples](/components/badge/) for reference.
 
+- Wrap the same icon or control in `Badge` and set `variant="dot"` for a direct replacement or `variant="default"` to show a marker with a count.
+- Replace [`enabled={false}`](https://itwinui.bentley.com/docs/notificationmarker#conditional-rendering) with `invisible={true}` to hide the dot without removing the wrapped content.
+- For [`status`](https://itwinui.bentley.com/docs/notificationmarker#status), set the `color` prop. There is no direct equivalent for `status="white"`.
+- MUI `Badge` has no [`pulsing`](https://itwinui.bentley.com/docs/notificationmarker#pulsing) prop.
+
 ### Overlay
 
 Replace the [`Overlay` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/overlay) with the `Backdrop` component from `@mui/material`. See [Backdrop examples](/components/backdrop/) for reference.
 
+- Control visibility with `Backdrop`'s `open` prop. Render the loading message or `CircularProgress`/`LinearProgress` as its children instead of passing `content`.
+- iTwinUI `Overlay` blurs and makes its children inert. MUI `Backdrop` only covers them visually; set `inert` on the underlying content while the overlay is shown, and add a blur with CSS if needed. Keep the backdrop outside the inert subtree.
+- For an overlay limited to a section, use a positioned wrapper and CSS to position the backdrop over that section; MUI `Backdrop` is fixed to the viewport by default.
+- If the overlay represents a loading state, indicate that state in accessible text and set `aria-busy` on the affected region. Use a `Dialog` instead if the foreground requires modal interaction and focus management.
+
 ### Panels
+
+There is no direct replacement for [`Panels`](https://itwinui.bentley.com/docs/panels). Recreate multi-panel navigation by tracking the active panel in state and rendering only that panel.
 
 ### Popover
 
 Replace the [`Popover` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/popover) with the `Popover` component from `@mui/material`. See [Popover examples](/components/popover/) for reference.
+
+- MUI `Popover` does not wrap its trigger. Render the trigger button separately, store it as `anchorEl`, and toggle `open` from its `onClick`. Set `aria-haspopup="dialog"` and `aria-expanded` on the trigger.
+- Move `content` to `Popover`'s children.
+- Replace `visible` and `onVisibleChange` with `open` and `onClose`.
+- Replace [`placement`](https://itwinui.bentley.com/docs/popover#positioning) with `anchorOrigin` and `transformOrigin`.
+- Replace `positionReference` with `anchorEl` set to the reference element.
 
 ### ProgressIndicator
 
@@ -810,13 +841,30 @@ Replace the [`Popover` component from `@itwin/itwinui-react`](https://itwinui.be
 
 Replace the [`ProgressLinear` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/progressindicator) with the `LinearProgress` component from `@mui/material`. See [LinearProgress examples](/components/linearprogress/) for reference.
 
+- MUI `LinearProgress` is indeterminate by default. When passing [`value`](https://itwinui.bentley.com/docs/progressindicator#value), also set `variant="determinate"`.
+- MUI `LinearProgress` has no `isAnimated` prop. The progress indicator is animated by default.
+- Replace [`status`](https://itwinui.bentley.com/docs/progressindicator#status) with the `color` prop.
+- Replace [`labels`](https://itwinui.bentley.com/docs/progressindicator#label) with `Typography`.
+- iTwinUI adds a visually hidden "Loading" label automatically. With MUI, label the bar with `aria-labelledby` pointing to the visible label, or `aria-label`.
+
 #### Radial
 
 Replace the [`ProgressRadial` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/progressindicator) with the `CircularProgress` component from `@mui/material`. See [CircularProgress examples](/components/circularprogress/) for reference.
 
+- MUI `CircularProgress` is indeterminate by default. When passing [`value`](https://itwinui.bentley.com/docs/progressindicator#value), also set `variant="determinate"`.
+- Replace [`status`](https://itwinui.bentley.com/docs/progressindicator#status) with the `color` prop.
+- Replace [`size`](https://itwinui.bentley.com/docs/progressindicator#size) with the `size` prop, which accepts a pixel value.
+- MUI `CircularProgress` does not accept [children](https://itwinui.bentley.com/docs/progressindicator#content). Position content over it with CSS. See the [determinate example](/components/circularprogress/#determinate).
+- iTwinUI adds a visually hidden "Loading" label automatically. With MUI, label the indicator with `aria-labelledby` pointing to the visible label, or `aria-label`.
+
 ### Radio
 
 Replace the [`Radio` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/radio) with the `Radio` component from `@mui/material`. See [Radio examples](/components/radio/) for reference.
+
+- MUI `Radio` has no `label` prop. Wrap it in `FormControlLabel` and pass the text to `label`.
+- Replace `labelProps` with `FormControlLabel`'s `slotProps.typography`, and `wrapperProps` with props on `FormControlLabel`.
+- Group radios in `RadioGroup` inside `<FormControl render={<fieldset />} role="radiogroup">` with a `FormLabel` rendered as `<legend>`. Move `name` to `RadioGroup`.
+- Replace [`status="negative"`](https://itwinui.bentley.com/docs/radio#statuses) with `error` on `FormControl` and a `FormHelperText` message. See the [Radio error example](/components/radio/#error). There is no equivalent for `"positive"` or `"warning"`.
 
 ### RadioTile
 

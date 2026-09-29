@@ -98,7 +98,7 @@ These widen the accepted range or bump the minimum version of a range to a newer
 <details>
 <summary>Breaking changes</summary>
 
-These narrow the accepted range or require a new major version:
+These block upgrades to newer minor or patch versions, or require a new major version:
 
 ```diff
 {

@@ -55,10 +55,7 @@ export default () => {
 					},
 				}}
 			>
-				<Breadcrumbs aria-label="collapsed breadcrumbs">
-					<Typography aria-current="true" color="textSecondary">
-						…
-					</Typography>
+				<Breadcrumbs render={<div />}>
 					<Link href="#" onClick={handleClose}>
 						Breadcrumb 2
 					</Link>
@@ -68,9 +65,6 @@ export default () => {
 					<Link href="#" onClick={handleClose}>
 						Breadcrumb 4
 					</Link>
-					<Typography aria-current="true" color="textSecondary">
-						…
-					</Typography>
 				</Breadcrumbs>
 			</Popover>
 		</>

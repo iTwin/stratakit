@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import * as ReactDOM from "react-dom";
 import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import List from "@mui/material/List";
@@ -26,19 +27,12 @@ export default () => {
 	const [isDragActive, setIsDragActive] = React.useState(false);
 	const headingRef = React.useRef<HTMLHeadingElement>(null);
 	const browseInputRef = React.useRef<HTMLInputElement>(null);
-	const focusTarget = React.useRef<"heading" | "browse" | null>(null);
 
 	const selectFiles = (files: FileList | null) => {
 		const fileArray = Array.from(files ?? []);
-		if (fileArray.length) focusTarget.current = "heading";
-		setSelectedFiles(fileArray);
+		ReactDOM.flushSync(() => setSelectedFiles(fileArray));
+		if (fileArray.length === 0) headingRef.current?.focus();
 	};
-
-	React.useEffect(() => {
-		if (focusTarget.current === "heading") headingRef.current?.focus();
-		if (focusTarget.current === "browse") browseInputRef.current?.focus();
-		focusTarget.current = null;
-	});
 
 	return (
 		<Paper
@@ -84,12 +78,14 @@ export default () => {
 									<IconButton
 										label={`Remove ${file.name}`}
 										onClick={() => {
-											if (selectedFiles.length === 1) {
-												focusTarget.current = "browse";
+											ReactDOM.flushSync(() => {
+												setSelectedFiles((files) =>
+													files.filter((_, fileIndex) => fileIndex !== index),
+												);
+											});
+											if (selectedFiles.length === 0) {
+												browseInputRef.current?.focus();
 											}
-											setSelectedFiles((files) =>
-												files.filter((_, fileIndex) => fileIndex !== index),
-											);
 										}}
 									>
 										<Icon href={svgDismiss} />

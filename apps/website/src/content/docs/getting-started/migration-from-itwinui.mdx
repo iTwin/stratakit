@@ -870,6 +870,11 @@ Replace the [`Radio` component from `@itwin/itwinui-react`](https://itwinui.bent
 
 ### SearchBox
 
+Replace the [`SearchBox` component from`@itwin/itwinui-react`](https://itwinui.bentley.com/docs/searchbox) with a `Textfield` component from `@mui/material`. The `TextField` should have `type="search"` and a start input adornment. See [Textfield icon example](components/textfield/#icon)
+
+- For `Searchbox` with `expandable` set you will need to create an `IconButton` that will be replaced with the `Input` on when activated.
+- `status="negative"` for errors can be replaced with `<TextField error helperText="">`, see the [Textfield error example](/components/textfield/#error).
+
 ### Select
 
 Replace the [`Select` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/select) with the `Select` or `NativeSelect` components from `@mui/material`. See [Select examples](/components/divider/) for reference.

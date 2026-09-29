@@ -18,19 +18,18 @@ import buildingSvg from "@stratakit/icons/building.svg";
 import iTwinSvg from "@stratakit/icons/itwin.svg";
 import styles from "./RadioTiles.default.module.css";
 
-function RadioTile({
-	label,
-	description,
-	value,
-	icon,
-	disabled,
-}: {
+interface RadioTileProps
+	extends Omit<
+		React.ComponentProps<typeof Radio>,
+		"id" | "className" | "slotProps" | "slots"
+	> {
 	label: string;
 	description?: string;
-	value: string;
 	icon?: React.ReactNode;
-	disabled?: boolean;
-}) {
+}
+
+function RadioTile(props: RadioTileProps) {
+	const { label, description, icon, ...rest } = props;
 	const id = React.useId();
 	const descriptionId = React.useId();
 
@@ -53,10 +52,9 @@ function RadioTile({
 				</Typography>
 			)}
 			<Radio
+				{...rest}
 				id={id}
-				value={value}
 				className={styles.radio}
-				disabled={disabled}
 				slotProps={{ input: { "aria-describedby": descriptionId } }}
 			/>
 		</div>

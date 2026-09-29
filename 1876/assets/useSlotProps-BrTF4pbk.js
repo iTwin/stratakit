@@ -1,0 +1,1 @@
+import{t as e}from"./useForkRef-CMKnaisB.js";import{a as t,n,o as r}from"./useSlot-1Df75swb.js";function i(i){let{elementType:a,externalSlotProps:o,ownerState:s,skipResolvingSlotProps:c=!1,...l}=i,u=c?{}:t(o,s),{props:d,internalRef:f}=n({...l,externalSlotProps:u}),p=e(f,u?.ref,i.additionalProps?.ref);return r(a,{...d,ref:p},s)}export{i as t};

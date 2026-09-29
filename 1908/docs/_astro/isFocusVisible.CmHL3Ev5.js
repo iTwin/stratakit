@@ -1,1 +1,0 @@
-function e(e){try{return e.matches(`:focus-visible`)}catch{}return!1}export{e as t};

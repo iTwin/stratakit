@@ -9,6 +9,6 @@ test("adds padding for secondary action", async ({ page }) => {
 		"/showcase?path=mui/List.showcase&export=SecondaryActionPadding",
 	);
 
-	const list = page.getByTestId("list").first();
+	const list = page.getByRole("list");
 	await expect(list).toHaveScreenshot();
 });

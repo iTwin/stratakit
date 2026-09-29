@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.DLTI_obd.js";var t=`${e}#icon`;`${e}`;export{t};

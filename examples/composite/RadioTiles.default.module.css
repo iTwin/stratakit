@@ -7,6 +7,7 @@
 	--_RadioTile-description-color: var(--stratakit-color-text-neutral-secondary);
 	--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-base);
 	--_RadioTile-border-color: unset;
+	--_RadioTile-background: unset;
 
 	position: relative;
 	display: grid;
@@ -19,29 +20,30 @@
 	padding: var(--stratakit-space-300);
 	border-color: var(--_RadioTile-border-color);
 	color: var(--_RadioTile-icon-color);
+	background: var(--_RadioTile-background);
 
 	@media (any-hover: hover) {
 		&:hover:not(:has(input:disabled)) {
 			--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-base);
 			--_RadioTile-border-color: var(--stratakit-color-border-neutral-muted);
-			background: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+			--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 		}
 	}
 
 	&:has(input:active):not(:has(input:disabled)) {
 		--_RadioTile-border-color: var(--stratakit-color-border-neutral-muted);
-		background: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+		--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	}
 
 	&:has(input:checked) {
 		--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-hover);
 		--_RadioTile-border-color: var(--stratakit-color-border-accent-strong);
-		background: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		--_RadioTile-backgroundd: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 
 		@media (any-hover: hover) {
 			&:hover {
 				--_RadioTile-border-color: var(--stratakit-color-border-accent-strong);
-				background: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+				--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
 			}
 		}
 	}

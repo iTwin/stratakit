@@ -104,7 +104,7 @@ interface FilePickerProps {
 
 function FilePicker({ label, onFilesChange }: FilePickerProps) {
 	return (
-		<Link render={<label />} color="primary">
+		<Link render={<label />} color="primary" className={`${styles.link}`}>
 			<input
 				type="file"
 				multiple

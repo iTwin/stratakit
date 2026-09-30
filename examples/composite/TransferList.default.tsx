@@ -38,7 +38,7 @@ function intersection(a: readonly number[], b: readonly number[]) {
 }
 
 type CustomListProps = {
-	"aria-label": string;
+	label: string;
 	items: readonly number[];
 	selected: readonly number[];
 	handleToggle: (value: number) => () => void;
@@ -48,12 +48,12 @@ const CustomList = React.forwardRef(function CustomList(
 	props: CustomListProps,
 	ref: React.Ref<HTMLDivElement & { focus: () => void }>,
 ) {
-	const { "aria-label": ariaLabel, items, selected, handleToggle } = props;
+	const { label, items, selected, handleToggle } = props;
 	const id = React.useId();
 
 	return (
 		<div>
-			<Typography id={id}>{ariaLabel}</Typography>
+			<Typography id={id}>{label}</Typography>
 			<Paper className={style.paper} variant="outlined">
 				<MenuList
 					aria-labelledby={id}
@@ -145,7 +145,7 @@ export default function TransferList() {
 	return (
 		<Grid container spacing={2} className={style.grid}>
 			<CustomList
-				aria-label="Steel"
+				label="Steel"
 				ref={leftListRef}
 				items={left}
 				selected={selected}
@@ -190,7 +190,7 @@ export default function TransferList() {
 				</Button>
 			</Stack>
 			<CustomList
-				aria-label="Concrete"
+				label="Concrete"
 				ref={rightListRef}
 				items={right}
 				selected={selected}

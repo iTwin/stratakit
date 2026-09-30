@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
@@ -152,42 +152,42 @@ export default function TransferList() {
 				handleToggle={handleToggle}
 			/>
 			<Stack spacing={1}>
-				<Button
+				<IconButton
 					variant="outlined"
 					size="small"
 					onClick={handleAllRight}
 					disabled={left.length === 0}
-					aria-label="move all right"
+					label="Move all right"
 				>
 					<Icon href={svgChevronRightDouble} />
-				</Button>
-				<Button
+				</IconButton>
+				<IconButton
 					variant="outlined"
 					size="small"
 					onClick={handleSelectedRight}
 					disabled={leftSelected.length === 0}
-					aria-label="move selected right"
+					label="Move selected right"
 				>
 					<Icon href={svgChevronRight} />
-				</Button>
-				<Button
+				</IconButton>
+				<IconButton
 					variant="outlined"
 					size="small"
 					onClick={handleSelectedLeft}
 					disabled={rightSelected.length === 0}
-					aria-label="move selected left"
+					label="Move selected left"
 				>
 					<Icon href={svgChevronLeft} />
-				</Button>
-				<Button
+				</IconButton>
+				<IconButton
 					variant="outlined"
 					size="small"
 					onClick={handleAllLeft}
 					disabled={right.length === 0}
-					aria-label="move all left"
+					label="Move all left"
 				>
 					<Icon href={svgChevronLeftDouble} />
-				</Button>
+				</IconButton>
 			</Stack>
 			<CustomList
 				label="Concrete"

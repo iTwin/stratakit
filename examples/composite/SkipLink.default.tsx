@@ -26,7 +26,7 @@ export default () => {
 				<Link href="#">Settings</Link>
 			</Stack>
 
-			<Typography id={mainId} tabIndex={-1}>
+			<Typography id={mainId}>
 				Click the top of this example, then press <kbd>Tab</kbd> to see the skip
 				link.
 			</Typography>

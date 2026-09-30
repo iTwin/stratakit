@@ -13,7 +13,7 @@ This documentation site has its own skip link. Reload the page and press <kbd>Ta
 
 A skip link needs two elements:
 
-- The target element to skip to, with an `id` and `tabindex="-1"` so it receives focus.
+- The target element to skip to, with an `id`.
 - The link pointing to that target, with its `href` set to the target's `id` (including the `#` prefix).
 
 ## ✅ Do
@@ -25,7 +25,7 @@ A skip link needs two elements:
 ## 🚫 Don't
 
 - Don't keep the skip link hidden when it has keyboard focus.
-- Don't point the skip link to an element that cannot receive focus.
+- Don't add `tabindex="-1"` to the target. Modern browsers move focus to in-page link targets without it, and on large containers it can make focus jump back to the target unexpectedly.
 
 ## API reference
 

@@ -641,6 +641,22 @@ Replace the [`Button` component from `@itwin/itwinui-react`](https://itwinui.ben
 - Replace `styleType="high-visibility"` with the default `Button`. If it is the main action of a dialog or page, use `color="primary"`.
 - The `size` and `loading` props require no changes.
 
+#### DropdownButton
+
+Replace the [`DropdownButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#dropdownbutton) with a `Button` that opens a `Menu`, both from `@mui/material`. See [Menu examples](/components/menu/) for reference.
+
+#### IconButton
+
+Replace the [`IconButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#iconbutton) with the `IconButton` component from `@mui/material`. See [IconButton examples](/components/iconbutton/) for reference.
+
+#### IdeasButton
+
+Replace the [`IdeasButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#ideasbutton) with the `Button` component from `@mui/material`, positioned with CSS.
+
+#### SplitButton
+
+Replace the [`SplitButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#splitbutton) with a `ButtonGroup` containing two `Button`s, both from `@mui/material`. The first runs the selected action; the second opens a `Menu` to change it.
+
 ### ButtonGroup
 
 Replace the [`ButtonGroup` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/buttongroup) with the `ButtonGroup` component from `@mui/material`. See [ButtonGroup examples](/components/buttongroup/) for reference.
@@ -697,10 +713,6 @@ Replace the [`Dialog` component from `@itwin/itwinui-react`](https://itwinui.ben
 
 Replace the [`Divider` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/divider) with the `Divider` component from `@mui/material`. See [Divider examples](/components/divider/) for reference.
 
-### DropdownButton
-
-Replace the [`DropdownButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#dropdownbutton) with a `Button` that opens a `Menu`, both from `@mui/material`. See [Menu examples](/components/menu/) for reference.
-
 ### DropdownMenu
 
 Replace the [`DropdownMenu` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/dropdownmenu) with the `Menu` component from `@mui/material`. See [Menu examples](/components/menu/) for reference.
@@ -740,14 +752,6 @@ Replace the [`Footer` component from `@itwin/itwinui-react`](https://itwinui.ben
 ### Header
 
 Replace the [`Header` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/header) with the native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/header) element.
-
-### IconButton
-
-Replace the [`IconButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#iconbutton) with the `IconButton` component from `@mui/material`. See [IconButton examples](/components/iconbutton/) for reference.
-
-### IdeasButton
-
-Replace the [`IdeasButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#ideasbutton) with the `Button` component from `@mui/material`, positioned with CSS.
 
 ### InformationPanel
 
@@ -936,10 +940,6 @@ MUI `Slider` supports more than two values, but only highlights the range betwee
   - Use `marks={array}` to provide custom values and labels.
 - Replace `tooltipProps` with [`valueLabelDisplay`](https://mui.com/material-ui/api/slider/#slider-prop-valueLabelDisplay). Set it to `"off"` to hide the value label when the value is displayed elsewhere.
 - Replace `minLabel` and `maxLabel` with a `Stack` that wraps the labels and `Slider`. See the [Slider tooltip example](/components/slider/#tooltip).
-
-### SplitButton
-
-Replace the [`SplitButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#splitbutton) with a `ButtonGroup` containing two `Button`s, both from `@mui/material`. The first runs the selected action; the second opens a `Menu` to change it.
 
 ### StatusMessage
 

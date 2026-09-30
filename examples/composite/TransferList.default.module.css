@@ -10,8 +10,8 @@
 	padding-right: var(--stratakit-space-100);
 
 	&:has(div.list:focus-visible) {
-		outline: var(--🥝focus-outline);
-		outline-offset: var(--🥝focus-outline-offset);
+		outline: var(--stratakit-space-50) solid var(--stratakit-color-border-accent-strong);
+		outline-offset: var(--stratakit-space-50);
 	}
 }
 

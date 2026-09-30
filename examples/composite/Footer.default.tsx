@@ -14,26 +14,31 @@ export default () => {
 			<Typography variant="caption-lg" color="textSecondary">
 				© {new Date().getFullYear()} Bentley Systems, Incorporated
 			</Typography>
-			<Typography
-				variant="caption-lg"
-				color="textSecondary"
-				render={<ul />}
-				className={styles.list}
-			>
+			<Typography variant="caption-lg" render={<ul />} className={styles.list}>
 				<li>
-					<Link href="#">Terms of service</Link>
+					<Link color="textSecondary" href="#">
+						Terms of service
+					</Link>
 				</li>
 				<li>
-					<Link href="#">Privacy</Link>
+					<Link color="textSecondary" href="#">
+						Privacy
+					</Link>
 				</li>
 				<li>
-					<Link href="#">Terms of use</Link>
+					<Link color="textSecondary" href="#">
+						Terms of use
+					</Link>
 				</li>
 				<li>
-					<Link href="#">Cookies</Link>
+					<Link color="textSecondary" href="#">
+						Cookies
+					</Link>
 				</li>
 				<li>
-					<Link href="#">Legal notices</Link>
+					<Link color="textSecondary" href="#">
+						Legal notices
+					</Link>
 				</li>
 			</Typography>
 		</footer>

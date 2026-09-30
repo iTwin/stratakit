@@ -8,7 +8,7 @@ links:
 
 ::example{src="composite/TransferList.default"}
 
-This example is taken from the [MUI documentation for TransferList](https://mui.com/material-ui/react-transfer-list/) with only minor modifications.
+This example is adapted from the [MUI documentation for TransferList](https://mui.com/material-ui/react-transfer-list/) with minor modifications.
 
 ## StrataKit modifications
 

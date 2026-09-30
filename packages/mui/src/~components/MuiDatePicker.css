@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiYearCalendar-button {
+:is(.MuiYearCalendar-button, .MuiMonthCalendar-button) {
 	text-align: center;
 }
 

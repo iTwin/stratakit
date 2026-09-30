@@ -5,9 +5,8 @@
 
 import * as React from "react";
 import ToggleButton from "@mui/material/ToggleButton";
+import { svgEdit } from "@stratakit/icons/edit";
 import { Icon } from "@stratakit/mui";
-
-import svgEdit from "@stratakit/icons/edit.svg";
 
 export default () => {
 	const [selected, setSelected] = React.useState(false);

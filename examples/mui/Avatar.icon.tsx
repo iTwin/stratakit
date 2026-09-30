@@ -4,9 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Avatar from "@mui/material/Avatar";
+import { svgUser } from "@stratakit/icons/user";
 import { Icon } from "@stratakit/mui";
-
-import svgUser from "@stratakit/icons/user.svg";
 
 export default () => {
 	return (

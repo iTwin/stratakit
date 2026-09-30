@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { IconButton } from "@stratakit/bricks";
+import { svgScript } from "@stratakit/icons/script";
+import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { Root } from "@stratakit/mui";
 import { useColorScheme } from "./~utils.ts";
 
-import svgScript from "@stratakit/icons/script.svg";
-import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./ExamplePreview.module.css";
 
 // ----------------------------------------------------------------------------

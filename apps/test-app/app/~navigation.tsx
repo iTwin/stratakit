@@ -7,14 +7,14 @@ import * as React from "react";
 import { useHref, useLocation } from "react-router";
 import { Button, Divider, IconButton } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { svgComponentsLarge } from "@stratakit/icons/components";
+import { svgDocumentationLarge } from "@stratakit/icons/documentation";
+import { svgSettingsLarge } from "@stratakit/icons/settings";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 import { SettingsDialog } from "./~settings.tsx";
 import { isProduction, useIsWideScreen, useLocalStorage } from "./~utils.tsx";
 import { SvgStrataKitLogo } from "./assets/SvgStrataKitLogo.tsx";
 
-import svgComponents from "@stratakit/icons/components.svg";
-import svgDocumentation from "@stratakit/icons/documentation.svg";
-import svgSettings from "@stratakit/icons/settings.svg";
 import styles from "./~navigation.module.css";
 import svgIcons from "./assets/icons.svg";
 import svgMui from "./assets/mui.svg";
@@ -32,7 +32,7 @@ const navItems = [
 		{
 			path: "/tests",
 			label: "StrataKit components",
-			icon: `${svgComponents}#icon`,
+			icon: svgComponentsLarge,
 			startingPath: "/tests/anchor", // Use first component starting path to avoid landing on empty page
 		},
 		{ path: "/sandbox", label: "Sandbox", icon: `${svgSandbox}#icon` },
@@ -41,7 +41,7 @@ const navItems = [
 		isProduction && {
 			path: "/docs",
 			label: "Documentation",
-			icon: `${svgDocumentation}#icon-large`,
+			icon: svgDocumentationLarge,
 		},
 	].filter(Boolean),
 ] as {
@@ -135,7 +135,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 						<Divider />
 						<NavigationRail.Button
 							label="Settings"
-							icon={svgSettings}
+							icon={svgSettingsLarge}
 							onClick={() => setOpen(true)}
 						/>
 						<SettingsDialog open={open} onClose={() => setOpen(false)} />

@@ -14,45 +14,6 @@ import visuallyHidden from "@mui/utils/visuallyHidden";
 
 import styles from "./Stepper.long.module.css";
 
-function LongStep({ children, ...rest }: React.ComponentProps<typeof Step>) {
-	return (
-		<Step {...rest}>
-			<StepLabel
-				slotProps={{
-					label: {
-						style: visuallyHidden,
-					},
-				}}
-				classes={{
-					completed: styles.labelCompleted,
-				}}
-			>
-				{children}
-				<span className={styles.completed}> (completed)</span>
-			</StepLabel>
-		</Step>
-	);
-}
-
-function StepperTitle({
-	index,
-	stepNames,
-}: {
-	index: number;
-	stepNames: string[];
-}) {
-	return (
-		<div className={styles.stepperTitle}>
-			<Typography aria-hidden render={<span />} color="textSecondary">
-				Step {index + 1} of {stepNames.length}:{" "}
-			</Typography>{" "}
-			<Typography render={<span />} color="textPrimary">
-				{stepNames[index]}
-			</Typography>
-		</div>
-	);
-}
-
 export default () => {
 	const [activeStep, setActiveStep] = React.useState(2);
 	const total = 4;
@@ -95,3 +56,37 @@ export default () => {
 		</Stack>
 	);
 };
+
+function LongStep({ children, ...rest }: React.ComponentProps<typeof Step>) {
+	return (
+		<Step {...rest}>
+			<StepLabel
+				slotProps={{
+					label: {
+						style: visuallyHidden,
+					},
+				}}
+				classes={{
+					completed: styles.labelCompleted,
+				}}
+			>
+				{children}
+				<span className={styles.completed}> (completed)</span>
+			</StepLabel>
+		</Step>
+	);
+}
+
+function StepperTitle(props: { index: number; stepNames: string[] }) {
+	const { index, stepNames } = props;
+	return (
+		<div className={styles.stepperTitle}>
+			<Typography aria-hidden render={<span />} color="textSecondary">
+				Step {index + 1} of {stepNames.length}:{" "}
+			</Typography>{" "}
+			<Typography render={<span />} color="textPrimary">
+				{stepNames[index]}
+			</Typography>
+		</div>
+	);
+}

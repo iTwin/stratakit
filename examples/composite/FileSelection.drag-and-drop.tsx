@@ -78,12 +78,13 @@ export default () => {
 									<IconButton
 										label={`Remove ${file.name}`}
 										onClick={() => {
+											const newSelectedFiles = selectedFiles.filter(
+												(_, fileIndex) => fileIndex !== index,
+											);
 											ReactDOM.flushSync(() => {
-												setSelectedFiles((files) =>
-													files.filter((_, fileIndex) => fileIndex !== index),
-												);
+												setSelectedFiles(newSelectedFiles);
 											});
-											if (selectedFiles.length === 0) {
+											if (newSelectedFiles.length === 0) {
 												browseInputRef.current?.focus();
 											}
 										}}

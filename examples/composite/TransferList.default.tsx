@@ -12,11 +12,11 @@ import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/foundations";
+import { svgChevronLeft } from "@stratakit/icons/chevron-left";
+import { svgChevronLeftDouble } from "@stratakit/icons/chevron-left-double";
+import { svgChevronRight } from "@stratakit/icons/chevron-right";
+import { svgChevronRightDouble } from "@stratakit/icons/chevron-right-double";
 
-import cheveronLeft from "@stratakit/icons/chevron-left.svg";
-import cheveronLeftDouble from "@stratakit/icons/chevron-left-double.svg";
-import cheveronRight from "@stratakit/icons/chevron-right.svg";
-import cheveronRightDouble from "@stratakit/icons/chevron-right-double.svg";
 import style from "./TransferList.default.module.css";
 
 const itemNames = [
@@ -159,7 +159,7 @@ export default function TransferList() {
 					disabled={left.length === 0}
 					aria-label="move all right"
 				>
-					<Icon href={cheveronRightDouble} />
+					<Icon href={svgChevronRightDouble} />
 				</Button>
 				<Button
 					variant="outlined"
@@ -168,7 +168,7 @@ export default function TransferList() {
 					disabled={leftSelected.length === 0}
 					aria-label="move selected right"
 				>
-					<Icon href={cheveronRight} />
+					<Icon href={svgChevronRight} />
 				</Button>
 				<Button
 					variant="outlined"
@@ -177,7 +177,7 @@ export default function TransferList() {
 					disabled={rightSelected.length === 0}
 					aria-label="move selected left"
 				>
-					<Icon href={cheveronLeft} />
+					<Icon href={svgChevronLeft} />
 				</Button>
 				<Button
 					variant="outlined"
@@ -186,7 +186,7 @@ export default function TransferList() {
 					disabled={right.length === 0}
 					aria-label="move all left"
 				>
-					<Icon href={cheveronLeftDouble} />
+					<Icon href={svgChevronLeftDouble} />
 				</Button>
 			</Stack>
 			<CustomList

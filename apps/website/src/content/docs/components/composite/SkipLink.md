@@ -1,9 +1,9 @@
 ---
-title: Skip to content
+title: Skip link
 description: A skip link lets keyboard users bypass repeated navigation and jump straight to the main content.
 ---
 
-::example{src="composite/SkipToContent.default"}
+::example{src="composite/SkipLink.default"}
 
 Large applications often have many navigation links and other focusable elements before the main content. A skip link lets keyboard users bypass them. It is visually hidden until it receives keyboard focus, so users typically reach it by pressing <kbd>Tab</kbd> at the start of the page.
 

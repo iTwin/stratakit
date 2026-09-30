@@ -52,12 +52,14 @@ html:where([data-color-scheme="dark"]),
 
 	--stratakit-shadow-surface-md:
 		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.16"),
 		0px 1px 1px -0.5px --primitive("color.black.16"),
 		0px 3px 3px -1.5px --primitive("color.black.16"),
 		0px 6px 6px -3px --primitive("color.black.16");
 
 	--stratakit-shadow-surface-lg:
 		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.48"),
 		0px 1px 1px -0.5px --primitive("color.black.16"),
 		0px 3px 3px -1.5px --primitive("color.black.16"),
 		0px 6px 6px -3px --primitive("color.black.16"),
@@ -65,6 +67,7 @@ html:where([data-color-scheme="dark"]),
 
 	--stratakit-shadow-surface-xl:
 		0px 1px 0px 0px --primitive("color.black.8"),
+		0px 0px 0px 1px --primitive("color.black.80"),
 		0px 1px 1px -0.5px --primitive("color.black.16"),
 		0px 3px 3px -1.5px --primitive("color.black.16"),
 		0px 6px 6px -3px --primitive("color.black.16"),

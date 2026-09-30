@@ -1,0 +1,1 @@
+import{t as e}from"./clock-MtOND9Sr.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

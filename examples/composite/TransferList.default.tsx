@@ -54,7 +54,7 @@ const CustomList = React.forwardRef(function CustomList(
 	return (
 		<div>
 			<Typography id={id}>{ariaLabel}</Typography>
-			<Paper className={style.paper} elevation={2}>
+			<Paper className={style.paper} variant="outlined">
 				<MenuList
 					aria-labelledby={id}
 					aria-multiselectable="true"

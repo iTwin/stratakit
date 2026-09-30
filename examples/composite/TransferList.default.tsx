@@ -11,11 +11,11 @@ import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@stratakit/foundations";
 import { svgChevronLeft } from "@stratakit/icons/chevron-left";
 import { svgChevronLeftDouble } from "@stratakit/icons/chevron-left-double";
 import { svgChevronRight } from "@stratakit/icons/chevron-right";
 import { svgChevronRightDouble } from "@stratakit/icons/chevron-right-double";
+import { Icon } from "@stratakit/mui";
 
 import style from "./TransferList.default.module.css";
 

@@ -40,18 +40,26 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		iconMetaEntries.map(([iconName, meta]) => {
 			return (
 				<div role="listitem" class="icon">
-					<svg width="16" height="16" data-size="regular">
-						{meta.symbols.map((symbol) => {
-							return (
-								<use
-									href={`${getIconHref(iconName)}#${symbol}`}
-									data-symbol={symbol}
-									display={symbol === defaultSymbol ? undefined : "none"}
-								/>
-							);
-						})}
-					</svg>
-					{iconName}
+					<button
+						command="show-modal"
+						commandfor="icon-dialog"
+						data-icon-name={iconName}
+						data-aliases={JSON.stringify(meta.aliases)}
+						data-symbols={JSON.stringify(meta.symbols)}
+					>
+						<svg width="16" height="16" data-size="regular">
+							{meta.symbols.map((symbol) => {
+								return (
+									<use
+										href={`${getIconHref(iconName)}#${symbol}`}
+										data-symbol={symbol}
+										display={symbol === defaultSymbol ? undefined : "none"}
+									/>
+								);
+							})}
+						</svg>
+						{iconName}
+					</button>
 				</div>
 			);
 		})
@@ -62,6 +70,22 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	<div class="cover-it" role="none"></div>
 	<div class="cover-it" role="none"></div>
 </div>
+
+<dialog id="icon-dialog">
+	<h2 data-name></h2>
+	<h3>Symbols</h3>
+	<ul data-symbols></ul>
+	<h3>Aliases</h3>
+	<ul data-aliases></ul>
+	<button commandfor="icon-dialog" command="close">Close</button>
+
+	<template data-alias-item>
+		<li></li>
+	</template>
+	<template data-symbol-item>
+		<li></li>
+	</template>
+</dialog>
 
 <style>
 	@layer page {
@@ -125,6 +149,19 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 				inline-size: 1.5rem;
 			}
 		}
+
+		dialog {
+			box-shadow: var(--stratakit-shadow-surface-xl);
+			border: 1px solid var(--stratakit-color-border-page-base);
+			border-radius: var(--stratakit-radius-md);
+			background-color: var(--stratakit-color-bg-elevation-level-1);
+			inset: 0;
+			place-self: center;
+
+			&::backdrop {
+				background-color: var(--stratakit-color-bg-elevation-overlay);
+			}
+		}
 	}
 </style>
 
@@ -134,6 +171,58 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	);
 	for (const symbolInput of symbolInputs) {
 		symbolInput.addEventListener("change", filter);
+	}
+
+	const iconDialog = document.querySelector<HTMLDialogElement>("#icon-dialog")!;
+	iconDialog.addEventListener("click", (e) => {
+		if (e.target !== e.currentTarget) return;
+		iconDialog.close();
+	});
+	iconDialog.addEventListener("command", (e) => {
+		if (!(e instanceof CommandEvent)) return;
+		if (e.command !== "show-modal") return;
+
+		const source = e.source;
+		if (!(source instanceof HTMLElement)) return;
+
+		const iconName = source.getAttribute("data-icon-name");
+		if (!iconName) return;
+
+		updateIconDialog(iconName);
+	});
+
+	function updateIconDialog(iconName: string) {
+		const iconButton = document.querySelector<HTMLButtonElement>(`[data-icon-name="${iconName}"]`);
+		if (!iconButton) return;
+
+		const heading = iconDialog.querySelector("[data-name]")!;
+		heading.textContent = iconName;
+
+		const symbols = JSON.parse(iconButton.getAttribute("data-symbols")!) as string[];
+		const symbolItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
+			"template[data-symbol-item]",
+		)!;
+		const symbolsElement = iconDialog.querySelector<HTMLUListElement>("[data-symbols]")!;
+		symbolsElement.replaceChildren(
+			...symbols.map((symbol) => {
+				const symbolItem = symbolItemTemplate.content.cloneNode(true) as DocumentFragment;
+				symbolItem.querySelector("li")!.textContent = symbol;
+				return symbolItem;
+			}),
+		);
+
+		const aliases = JSON.parse(iconButton.getAttribute("data-aliases")!) as string[];
+		const aliasItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
+			"template[data-alias-item]",
+		)!;
+		const aliasesElement = iconDialog.querySelector<HTMLUListElement>("[data-aliases]")!;
+		aliasesElement.replaceChildren(
+			...aliases.map((alias) => {
+				const aliasItem = aliasItemTemplate.content.cloneNode(true) as DocumentFragment;
+				aliasItem.querySelector("li")!.textContent = alias;
+				return aliasItem;
+			}),
+		);
 	}
 
 	const icons = Array.from(document.querySelectorAll<HTMLElement>(".icon"));

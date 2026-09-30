@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M8 1.5a6.5 6.5 0 1 1 0 13 6.5 6.5 0 0 1 0-13m0 1a5.5 5.5 0 1 0 0 11 5.5 5.5 0 0 0 0-11m0 1c.28 0 .5.22.5.5v.5h2a.5.5 0 0 1 0 1h-2v2h1a2 2 0 0 1 0 4h-1v.5a.5.5 0 0 1-1 0v-.5h-2a.5.5 0 0 1 0-1h2v-2h-1a2 2 0 1 1 0-4h1V4c0-.28.22-.5.5-.5m.5 7h1a1 1 0 0 0 0-2h-1zm-2-5a1 1 0 1 0 0 2h1v-2z"/></symbol>
+  <symbol id="icon-large" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2a10 10 0 1 1 0 20 10 10 0 0 1 0-20m0 1a9 9 0 1 0 0 18 9 9 0 0 0 0-18m0 2.1c.28 0 .5.22.5.5v1.1H16a.5.5 0 0 1 0 1h-3.5v3.8h1.9a2.9 2.9 0 0 1 0 5.8h-1.9v1.1a.5.5 0 0 1-1 0v-1.1H8a.5.5 0 0 1 0-1h3.5v-3.8H9.6a2.9 2.9 0 0 1 0-5.8h1.9V5.6c0-.28.23-.5.5-.5m.5 11.2h1.9a1.9 1.9 0 0 0 0-3.8h-1.9zM9.6 7.7a1.9 1.9 0 1 0 0 3.8h1.9V7.7z"/></symbol>
+  <use href="#icon"/>
+</svg>

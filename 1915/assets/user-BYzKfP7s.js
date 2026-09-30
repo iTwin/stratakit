@@ -1,0 +1,1 @@
+import{t as e}from"./user-CGdogMdZ.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

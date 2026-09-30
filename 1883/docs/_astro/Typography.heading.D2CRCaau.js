@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{g as t}from"./_utils.BO6__2_J.js";var n=e(),r=()=>(0,n.jsx)(t,{variant:`headline-md`,render:(0,n.jsx)(`h2`,{}),children:`Heading text`});export{r as default};

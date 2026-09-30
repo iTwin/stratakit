@@ -28,6 +28,11 @@
 	padding-inline-end: var(--stratakit-space-300);
 	gap: var(--stratakit-space-200);
 
+	&:where(.MuiListSubheader-sticky) {
+		background-color: var(--stratakit-color-bg-page-base);
+		border-block-end: 1px solid var(--stratakit-color-border-page-base);
+	}
+
 	:where(.MuiList-root.MuiList-dense) & {
 		min-block-size: var(--stratakit-size-control-listitem-height-small);
 		@apply --typography("body-sm");

@@ -4,21 +4,31 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import Button from "@mui/material/Button";
-import Checkbox from "@mui/material/Checkbox";
 import Grid from "@mui/material/Grid";
-import List from "@mui/material/List";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import MenuItem from "@mui/material/MenuItem";
+import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
+import Typography from "@mui/material/Typography";
 import { Icon } from "@stratakit/foundations";
 
 import cheveronLeft from "@stratakit/icons/chevron-left.svg";
 import cheveronLeftDouble from "@stratakit/icons/chevron-left-double.svg";
 import cheveronRight from "@stratakit/icons/chevron-right.svg";
 import cheveronRightDouble from "@stratakit/icons/chevron-right-double.svg";
+import style from "./TransferList.default.module.css";
 
+const itemNames = [
+	"Roof trusses",
+	"Mezzanine beams",
+	"Perimeter columns",
+	"Bracing",
+	"Ground floor slab",
+	"Core walls",
+	"Retaining walls",
+	"Transfer beams",
+];
 function not(a: readonly number[], b: readonly number[]) {
 	return a.filter((value) => !b.includes(value));
 }
@@ -27,85 +37,123 @@ function intersection(a: readonly number[], b: readonly number[]) {
 	return a.filter((value) => b.includes(value));
 }
 
+type CustomListProps = {
+	"aria-label": string;
+	items: readonly number[];
+	selected: readonly number[];
+	handleToggle: (value: number) => () => void;
+};
+
+const CustomList = React.forwardRef(function CustomList(
+	props: CustomListProps,
+	ref: React.Ref<HTMLElement & { focus: () => void }>,
+) {
+	const { "aria-label": ariaLabel, items, selected, handleToggle } = props;
+	const id = React.useId();
+
+	return (
+		<div>
+			<Typography id={id}>{ariaLabel}</Typography>
+			<Paper className={style.paper} elevation={2}>
+				<MenuList
+					aria-labelledby={id}
+					aria-multiselectable="true"
+					role="listbox"
+					dense
+					className={style.list}
+					render={<div />}
+					ref={
+						ref as React.Ref<HTMLUListElement> /* MenuList expects an UL ref */
+					}
+				>
+					{items.map((value: number) => {
+						const labelId = `transfer-list-item-${value}-label`;
+						const isSelected = selected.includes(value);
+
+						return (
+							<MenuItem
+								render={<div />}
+								key={value}
+								role="option"
+								aria-selected={isSelected}
+								aria-labelledby={labelId}
+								onClick={handleToggle(value)}
+							>
+								<ListItemText id={labelId} primary={itemNames[value]} />
+							</MenuItem>
+						);
+					})}
+				</MenuList>
+			</Paper>
+		</div>
+	);
+});
+
 export default function TransferList() {
-	const [checked, setChecked] = React.useState<readonly number[]>([]);
+	const [selected, setSelected] = React.useState<readonly number[]>([]);
 	const [left, setLeft] = React.useState<readonly number[]>([0, 1, 2, 3]);
 	const [right, setRight] = React.useState<readonly number[]>([4, 5, 6, 7]);
 
-	const leftChecked = intersection(checked, left);
-	const rightChecked = intersection(checked, right);
+	const leftSelected = intersection(selected, left);
+	const rightSelected = intersection(selected, right);
+
+	const leftListRef = React.useRef<HTMLDivElement & { focus: () => void }>(
+		null,
+	);
+	const rightListRef = React.useRef<HTMLDivElement & { focus: () => void }>(
+		null,
+	);
 
 	const handleToggle = (value: number) => () => {
-		const currentIndex = checked.indexOf(value);
-		const newChecked = [...checked];
+		const currentIndex = selected.indexOf(value);
+		const newSelected = [...selected];
 
 		if (currentIndex === -1) {
-			newChecked.push(value);
+			newSelected.push(value);
 		} else {
-			newChecked.splice(currentIndex, 1);
+			newSelected.splice(currentIndex, 1);
 		}
 
-		setChecked(newChecked);
+		setSelected(newSelected);
 	};
 
 	const handleAllRight = () => {
 		setRight(right.concat(left));
 		setLeft([]);
+		setSelected(not(selected, left));
+		rightListRef.current?.focus();
 	};
 
-	const handleCheckedRight = () => {
-		setRight(right.concat(leftChecked));
-		setLeft(not(left, leftChecked));
-		setChecked(not(checked, leftChecked));
+	const handleSelectedRight = () => {
+		setRight(right.concat(leftSelected));
+		setLeft(not(left, leftSelected));
+		setSelected(not(selected, leftSelected));
+		rightListRef.current?.focus();
 	};
 
-	const handleCheckedLeft = () => {
-		setLeft(left.concat(rightChecked));
-		setRight(not(right, rightChecked));
-		setChecked(not(checked, rightChecked));
+	const handleSelectedLeft = () => {
+		setLeft(left.concat(rightSelected));
+		setRight(not(right, rightSelected));
+		setSelected(not(selected, rightSelected));
+		leftListRef.current?.focus();
 	};
 
 	const handleAllLeft = () => {
 		setLeft(left.concat(right));
 		setRight([]);
+		setSelected(not(selected, right));
+		leftListRef.current?.focus();
 	};
 
-	const customList = (items: readonly number[]) => (
-		<Paper sx={{ width: 200, height: 230, overflow: "auto" }} elevation={4}>
-			<List dense render={<div />} role="list">
-				{items.map((value: number) => {
-					const labelId = `transfer-list-item-${value}-label`;
-
-					return (
-						<ListItemButton
-							key={value}
-							role="listitem"
-							onClick={handleToggle(value)}
-						>
-							<ListItemIcon>
-								<Checkbox
-									checked={checked.includes(value)}
-									tabIndex={-1}
-									slotProps={{
-										input: { "aria-labelledby": labelId },
-									}}
-								/>
-							</ListItemIcon>
-							<ListItemText id={labelId} primary={`List item ${value + 1}`} />
-						</ListItemButton>
-					);
-				})}
-			</List>
-		</Paper>
-	);
-
 	return (
-		<Grid
-			container
-			spacing={2}
-			sx={{ justifyContent: "center", alignItems: "center" }}
-		>
-			<Grid>{customList(left)}</Grid>
+		<Grid container spacing={2} className={style.grid}>
+			<CustomList
+				aria-label="Steel"
+				ref={leftListRef}
+				items={left}
+				selected={selected}
+				handleToggle={handleToggle}
+			/>
 			<Stack spacing={1}>
 				<Button
 					variant="outlined"
@@ -119,8 +167,8 @@ export default function TransferList() {
 				<Button
 					variant="outlined"
 					size="small"
-					onClick={handleCheckedRight}
-					disabled={leftChecked.length === 0}
+					onClick={handleSelectedRight}
+					disabled={leftSelected.length === 0}
 					aria-label="move selected right"
 				>
 					<Icon href={cheveronRight} />
@@ -128,8 +176,8 @@ export default function TransferList() {
 				<Button
 					variant="outlined"
 					size="small"
-					onClick={handleCheckedLeft}
-					disabled={rightChecked.length === 0}
+					onClick={handleSelectedLeft}
+					disabled={rightSelected.length === 0}
 					aria-label="move selected left"
 				>
 					<Icon href={cheveronLeft} />
@@ -144,7 +192,13 @@ export default function TransferList() {
 					<Icon href={cheveronLeftDouble} />
 				</Button>
 			</Stack>
-			<Grid>{customList(right)}</Grid>
+			<CustomList
+				aria-label="Concrete"
+				ref={rightListRef}
+				items={right}
+				selected={selected}
+				handleToggle={handleToggle}
+			/>
 		</Grid>
 	);
 }

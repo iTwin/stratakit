@@ -1,0 +1,26 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.paper {
+	width: 200px;
+	height: 230px;
+	overflow: auto;
+	padding-left: var(--stratakit-space-100);
+	padding-right: var(--stratakit-space-100);
+
+	&:has(div.list:focus-visible) {
+		outline: var(--🥝focus-outline);
+		outline-offset: var(--🥝focus-outline-offset);
+	}
+}
+
+/* Override the !important rules from @stratakit/foundations because .paper is taking the focus outline instead of .list */
+.list:focus-visible:not(#a#b) {
+	outline: none !important;
+}
+
+.grid {
+	justify-content: center;
+	align-items: center;
+}

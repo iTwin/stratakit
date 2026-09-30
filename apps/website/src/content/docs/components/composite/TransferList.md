@@ -32,7 +32,6 @@ A Transfer list consists of:
 - Two lists representing two non-overlapping sets.
 - Buttons to move the selected items in one set to the other set.
 
-It may also include buttons to move all items from one set to the other set if that is a typical action the user may do.
 
 ## API Reference
 

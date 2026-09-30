@@ -46,7 +46,7 @@ type CustomListProps = {
 
 const CustomList = React.forwardRef(function CustomList(
 	props: CustomListProps,
-	ref: React.Ref<HTMLElement & { focus: () => void }>,
+	ref: React.Ref<HTMLDivElement & { focus: () => void }>,
 ) {
 	const { "aria-label": ariaLabel, items, selected, handleToggle } = props;
 	const id = React.useId();
@@ -61,10 +61,7 @@ const CustomList = React.forwardRef(function CustomList(
 					role="listbox"
 					dense
 					className={style.list}
-					render={<div />}
-					ref={
-						ref as React.Ref<HTMLUListElement> /* MenuList expects an UL ref */
-					}
+					render={<div ref={ref} />}
 				>
 					{items.map((value: number) => {
 						const labelId = `transfer-list-item-${value}-label`;

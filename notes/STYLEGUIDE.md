@@ -12,9 +12,9 @@ Although they are very similar, use `interface` for consistency and [better dete
 
 Use the `forwardRef` utility from [packages/internal-utils](./packages/internal-utils/src/react.ts) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.
 
-### Declare main export first
+### Declare the main focus first.
 
-Declare the main export of the file at the top.
+Declare the main component or function of the file at the top of the file. Helper or utility functions used in the main component can follow after.
 
 ### Define an interface for prop types if there are more than one or two props
 

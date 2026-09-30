@@ -1,0 +1,510 @@
+---
+title: Migrating from iTwinUI
+description: Learn how to migrate from iTwinUI to StrataKit
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+This guide provides the necessary steps for migrating from [iTwinUI](https://itwinui.bentley.com/) to StrataKit.
+
+:::note
+Migration to StrataKit can be done gradually, since iTwinUI can coexist in the same application by utilizing the [StrataKit theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).
+:::
+
+## Migration steps
+
+<Steps>
+
+1. **Set up StrataKit**
+
+   Follow the [set up StrataKit guide](/getting-started/develop/) to install the necessary dependencies and set up your project.
+
+2. **Enable the StrataKit theme bridge**
+
+   Pass the StrataKit [**Root**](/components/root) into the `as` prop of the iTwinUI [**ThemeProvider**](https://itwinui.bentley.com/docs/themeprovider) to render a single DOM element.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+   +  as={Root}
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+   Specify the `Root` props directly on the `ThemeProvider` component.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+      as={Root}
+   +  colorScheme={theme}
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+   Finally, activate the `themeBridge` future flag.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+      as={Root}
+      colorScheme={theme}
+   +  future={{ themeBridge: true }} // or future={true}
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+   :::note
+   If StrataKit's accent color is not compatible with your existing UI, see [visual transition](#visual-transition).
+   :::
+
+3. **Replace `@itwin/itwinui-icons-react` with `@stratakit/icons`**
+
+   Replace the usage of iTwinUI icons from `@itwin/itwinui-icons-react` with their StrataKit counterparts. Refer to the [use StrataKit icons](#use-stratakit-icons) section below for the full icon mapping.
+
+   ```diff
+   - import { SvgAdd } from '@itwin/itwinui-icons-react';
+   - <SvgAdd />
+
+   + import { Icon } from "@stratakit/mui";
+   + import { svgAdd } from "@stratakit/icons/add";
+   + <Icon href={svgAdd} />
+   ```
+
+   Once all usage of `@itwin/itwinui-icons-react` has been replaced, it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @itwin/itwinui-icons-react
+   ```
+
+4. **Replace usage of `@itwin/itwinui-react`**
+
+   Replace the usage of components from `@itwin/itwinui-react` with their [StrataKit counterparts](/components/overview/). Some components are provided by `@mui/material`, while others live in `@stratakit/structures`.
+
+   Once all usage of `@itwin/itwinui-react` has been replaced, it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @itwin/itwinui-react
+   ```
+
+</Steps>
+
+## Visual transition
+
+By default, StrataKit uses its preferred **"aurora"** green [accent color](/components/root/#accent-color). Some legacy applications rely on a blue accent color, especially when parts of the UI are not implemented with up-to-date iTwinUI components. In these cases, the aurora accent color can clash with the existing UI or require significant adjustments to it.
+
+To ease the visual transition, use StrataKit's **"cobalt"** accent color, which is designed for better compatibility with iTwinUI's color palette. Set the `unstable_accentColor` prop on the [**Root**](/components/root) component to apply the accent color to all StrataKit components.
+
+```diff
+ <ThemeProvider
+   theme={theme}
+   as={Root}
+   colorScheme={theme}
+   future={true}
++  unstable_accentColor="cobalt"
+ >
+   {/* … */}
+ </ThemeProvider>
+```
+
+Once the visual transition is complete, remove the `unstable_accentColor` prop to continue using StrataKit's preferred accent color.
+
+## Use StrataKit icons
+
+Replace [iTwinUI icons](https://itwin.github.io/iTwinUI-icons/) with their [StrataKit counterparts](/icons) using the mapping below.
+
+| iTwinUI icon                  | StrataKit icon                |
+| ----------------------------- | ----------------------------- |
+| 2d                            | 2d                            |
+| 3d                            | 3d                            |
+| activity                      | activity                      |
+| add-circular                  | add-circle                    |
+| add                           | add                           |
+| airplane                      | airplane                      |
+| align-bottom                  | align-bottom                  |
+| align-center-horizontal       | align-center-horizontal       |
+| align-center-vertical         | align-center-vertical         |
+| align-left                    | align-left                    |
+| align-right                   | align-right                   |
+| align-top                     | align-top                     |
+| android                       | brand-android                 |
+| annotation                    | annotation                    |
+| apple                         | brand-apple                   |
+| archive                       | archive                       |
+| arrow-down                    | arrow-down                    |
+| arrow-left                    | arrow-left                    |
+| arrow-right                   | arrow-right                   |
+| arrow-up                      | arrow-up                      |
+| attach                        | attach                        |
+| automatic                     | automagic                     |
+| away                          | user-away                     |
+| basket                        | basket                        |
+| bentley-systems               | brand-bentley-systems         |
+| blank                         | -                             |
+| bolt                          | bolt                          |
+| bookmark                      | bookmark                      |
+| calendar                      | calendar                      |
+| camera-animation-disabled     | camera-video-disabled         |
+| camera-animation              | camera-video                  |
+| camera-retake                 | camera-retake                 |
+| camera                        | camera                        |
+| caret-down-small              | caret-down                    |
+| caret-down                    | caret-down                    |
+| caret-left-small              | caret-left                    |
+| caret-left                    | caret-left                    |
+| caret-right-small             | caret-right                   |
+| caret-right                   | caret-right                   |
+| caret-up-small                | caret-up                      |
+| caret-up                      | caret-up                      |
+| charts                        | chart-bar                     |
+| chat                          | chat                          |
+| checkbox-deselect             | checkbox-deselect             |
+| checkbox-select               | checkbox-select               |
+| checkmark-small               | checkmark                     |
+| checkmark                     | checkmark                     |
+| chevron-down                  | chevron-down                  |
+| chevron-left-double           | chevron-left-double           |
+| chevron-left                  | chevron-left                  |
+| chevron-right-double          | chevron-right-double          |
+| chevron-right-small           | chevron-right                 |
+| chevron-right                 | chevron-right                 |
+| chevron-up                    | chevron-up                    |
+| circle                        | circle                        |
+| clash                         | clash                         |
+| clipboard                     | clipboard                     |
+| clock                         | clock                         |
+| close-circular                | dismiss-circle                |
+| close-small                   | dismiss                       |
+| close                         | dismiss                       |
+| cloud-download                | cloud-download                |
+| cloud-upload                  | cloud-upload                  |
+| cloud                         | cloud                         |
+| collapse-all                  | collapse-rows-all             |
+| collapse                      | collapse-rows                 |
+| column-manager                | column-manage                 |
+| compare                       | compare                       |
+| computer                      | computer                      |
+| configuration                 | configuration                 |
+| copy                          | copy                          |
+| crop                          | crop                          |
+| crown                         | crown                         |
+| cursor-click                  | cursor-click                  |
+| cursor                        | cursor                        |
+| cut                           | cut                           |
+| database                      | database                      |
+| delete                        | delete                        |
+| details                       | details                       |
+| developer                     | developer                     |
+| disconnect                    | disconnect                    |
+| distribute-bottom             | -                             |
+| distribute-center-horizontal  | distribute-center-horizontal  |
+| distribute-center-vertical    | distribute-center-vertical    |
+| distribute-left               | distribute-left               |
+| distribute-right              | distribute-right              |
+| distribute-top                | distribute-top                |
+| dock-bottom                   | dock-bottom                   |
+| dock-left                     | dock-left                     |
+| dock-right                    | dock-right                    |
+| dock-top                      | dock-top                      |
+| document-lock                 | document-locked               |
+| document-reference            | document-reference            |
+| document                      | document-blank                |
+| documentation                 | documentation                 |
+| download                      | download                      |
+| drag-handle-vertical          | drag-handle-vertical          |
+| drag-handle                   | drag-handle-horizontal        |
+| draw                          | draw                          |
+| duplicate                     | duplicate                     |
+| edit-all                      | edit-all                      |
+| edit                          | edit                          |
+| ellipse                       | ellipse                       |
+| email-at                      | email-at                      |
+| email                         | email                         |
+| exit                          | exit                          |
+| expand-all                    | expand-rows-all               |
+| expand                        | expand-rows                   |
+| export                        | export                        |
+| eyedropper-drop               | eyedropper-drop               |
+| eyedropper-filled             | eyedropper-filled             |
+| eyedropper                    | eyedropper                    |
+| fast-backward                 | fast-backward                 |
+| fast-forward                  | fast-forward                  |
+| feedback                      | feedback                      |
+| filter-hollow                 | filter                        |
+| filter                        | filter                        |
+| find                          | find                          |
+| fire-extinguisher             | fire-extinguisher             |
+| fit-to-view                   | fit-to-view                   |
+| flag                          | flag                          |
+| folder-add                    | folder-add                    |
+| folder-browse                 | folder-browse                 |
+| folder-chevron-down           | folder-chevron-down           |
+| folder-chevron-up             | folder-chevron-up             |
+| folder-export                 | folder-export                 |
+| folder-import                 | folder-import                 |
+| folder-lock                   | folder-lock                   |
+| folder-minimize               | -                             |
+| folder-opened                 | folder-open                   |
+| folder-remove                 | folder-remove                 |
+| folder-shortcut               | folder-shortcut               |
+| folder                        | folder                        |
+| font-bold                     | font-bold                     |
+| font-color                    | font-color                    |
+| font-italic                   | font-italic                   |
+| font-size                     | font-size                     |
+| forms                         | form                          |
+| frame-backward                | frame-backward                |
+| frame-forward                 | frame-forward                 |
+| function                      | function                      |
+| geosearch                     | geolocate                     |
+| gesture-one-finger-drag       | gesture-one-finger-drag       |
+| gesture-one-finger-tap-double | gesture-one-finger-double-tap |
+| gesture-one-finger-tap        | gesture-one-finger-tap        |
+| gesture-pinch                 | gesture-pinch                 |
+| gesture-touch                 | gesture-touch                 |
+| gesture-two-finger-drag       | gesture-two-finger-drag       |
+| gesture-two-finger-tap        | gesture-two-finger-tap        |
+| gesture-two-finger            | gesture-two-finger            |
+| globe                         | globe                         |
+| go-to-end                     | go-to-end                     |
+| go-to-start                   | go-to-start                   |
+| graph-bar                     | chart-bar                     |
+| graph-pie-chart               | chart-pie                     |
+| graph-scatter-chart           | graph-scatter-chart           |
+| graph                         | chart-line                    |
+| grid                          | grid                          |
+| group-ungroup                 | ungroup                       |
+| group                         | group                         |
+| hand                          | hand                          |
+| heart                         | heart                         |
+| help-circular-hollow          | help                          |
+| help-circular                 | help                          |
+| hide-manually-suppressed      | -                             |
+| hide-rule-suppressed          | -                             |
+| hierarchy-tree                | hierarchy-tree                |
+| history                       | history                       |
+| home                          | home                          |
+| hourglass                     | hourglass                     |
+| i-beam                        | i-beam                        |
+| image-frame                   | image                         |
+| image                         | image                         |
+| imodel-hollow                 | imodel                        |
+| imodel                        | imodel                        |
+| import                        | import                        |
+| important-small               | important                     |
+| important-very                | important-very                |
+| important                     | important                     |
+| info-circular-hollow          | info                          |
+| info-circular                 | info                          |
+| info                          | info                          |
+| install                       | install                       |
+| isolate                       | isolate                       |
+| issue-report                  | issue                         |
+| item                          | -                             |
+| itwin                         | itwin                         |
+| key                           | key                           |
+| label                         | label                         |
+| layers                        | layers                        |
+| lightbulb-hollow              | lightbulb                     |
+| lightbulb                     | lightbulb                     |
+| line                          | line                          |
+| link                          | link                          |
+| list                          | list                          |
+| location                      | location                      |
+| lock-unlocked                 | lock-unlocked                 |
+| lock                          | lock                          |
+| loop                          | loop                          |
+| maintenance                   | maintenance                   |
+| manager                       | manager                       |
+| map-info                      | map-info                      |
+| map                           | map                           |
+| measure                       | measure                       |
+| menu                          | menu                          |
+| merge                         | merge                         |
+| minimize                      | minus                         |
+| model                         | model                         |
+| moon                          | moon                          |
+| more-circular                 | more-horizontal-circle        |
+| more-small                    | more-horizontal-circle        |
+| more-vertical-circular        | more-vertical-circle          |
+| more-vertical-small           | more-vertical-circle          |
+| more-vertical                 | more-vertical                 |
+| more                          | more-horizontal               |
+| mouse-click-left              | mouse-click-left              |
+| mouse-click-right             | mouse-click-right             |
+| mouse-click-wheel             | mouse-click-middle            |
+| mouse-click                   | mouse-click                   |
+| move                          | move                          |
+| named-version-add             | add                           |
+| network                       | network                       |
+| new                           | new                           |
+| news                          | news                          |
+| notification-settings         | notifications-settings        |
+| notification                  | notifications                 |
+| object-move                   | object-move                   |
+| object-rotate                 | object-rotate                 |
+| object-scale                  | object-scale                  |
+| offline                       | cloud-offline                 |
+| paintbrush                    | paint-brush                   |
+| palette                       | palette                       |
+| panorama-model                | panorama-model                |
+| panorama                      | panorama                      |
+| paste-hollow                  | clipboard                     |
+| paste                         | clipboard                     |
+| pause-circular                | pause-circle                  |
+| pause                         | pause                         |
+| perspective                   | perspective                   |
+| pin-hollow                    | pin                           |
+| pin-unpin                     | pin-unpin                     |
+| pin                           | pin                           |
+| placeholder                   | placeholder                   |
+| play-backward                 | play-backward                 |
+| play-circular                 | play-circle                   |
+| play                          | play                          |
+| plugin                        | plugins                       |
+| polygon                       | polygon                       |
+| print-preview                 | print-preview                 |
+| print-settings                | print-settings                |
+| print                         | print                         |
+| process                       | process                       |
+| progress-backward-circular    | chevron-left                  |
+| progress-backward             | chevron-left                  |
+| progress-forward-circular     | chevron-right                 |
+| progress-forward              | chevron-right                 |
+| project                       | project                       |
+| properties-list               | settings                      |
+| properties                    | properties                    |
+| puzzle                        | puzzle                        |
+| re-center                     | re-center                     |
+| read-only                     | read-only                     |
+| reality-mesh                  | reality-mesh                  |
+| record                        | record                        |
+| records                       | records                       |
+| rectangle                     | rectangle                     |
+| redo                          | redo                          |
+| refresh                       | refresh                       |
+| remove                        | dismiss                       |
+| rename                        | rename                        |
+| reorder                       | reorder                       |
+| replace                       | replace                       |
+| reports                       | report                        |
+| road                          | road                          |
+| rotate-left                   | rotate-left                   |
+| rotate-right                  | rotate-right                  |
+| save-as                       | save-as                       |
+| save-settings                 | save-settings                 |
+| save-update                   | -                             |
+| save                          | save                          |
+| saved-view                    | saved-views                   |
+| scale                         | object-scale                  |
+| screenshare-stop              | screenshare-stop              |
+| screenshare                   | screenshare                   |
+| script-run                    | script-run                    |
+| script-status                 | script-status                 |
+| script                        | script                        |
+| search                        | search                        |
+| selection-clear               | selection-clear               |
+| selection                     | selection                     |
+| send                          | send                          |
+| settings                      | settings                      |
+| setup                         | setup                         |
+| share                         | share                         |
+| smartphone                    | smartphone                    |
+| smiley-happy-hollow           | smiley-happy                  |
+| smiley-happy-very-hollow      | smiley-very-happy             |
+| smiley-happy-very             | smiley-very-happy             |
+| smiley-happy                  | smiley-happy                  |
+| smiley-neutral-hollow         | smiley-neutral                |
+| smiley-neutral                | smiley-neutral                |
+| smiley-sad-hollow             | smiley-sad                    |
+| smiley-sad-very-hollow        | smiley-very-sad               |
+| smiley-sad-very               | smiley-very-sad               |
+| smiley-sad                    | smiley-sad                    |
+| sort-down                     | sort-ascending                |
+| sort-menu                     | sorting                       |
+| sort-up                       | sort-descending               |
+| sound-loud                    | sound-loud                    |
+| sound-mute                    | sound-mute                    |
+| sound-quiet                   | sound-quiet                   |
+| spin                          | spin                          |
+| star-hollow                   | star                          |
+| star                          | star                          |
+| status-draft                  | status-draft                  |
+| status-error-hollow           | status-error                  |
+| status-error                  | status-error                  |
+| status-pending-hollow         | status-pending                |
+| status-pending                | status-pending                |
+| status-rejected-hollow        | status-rejected               |
+| status-rejected               | status-rejected               |
+| status-running                | status-running                |
+| status-success-hollow         | status-success                |
+| status-success                | status-success                |
+| status-update                 | status-update                 |
+| status-warning                | status-warning                |
+| stop-circular                 | stop-circle                   |
+| stop                          | stop                          |
+| sun                           | sun                           |
+| suppress-manually             | suppress                      |
+| swap                          | swap                          |
+| sync-disabled                 | cloud-offline                 |
+| sync                          | loop                          |
+| table-of-contents             | table-of-contents             |
+| table                         | table                         |
+| tag                           | tag                           |
+| technical-preview-badge-bw    | technical-preview-badge       |
+| technical-preview-bw          | technical-preview             |
+| technical-preview-mini-bw     | technical-preview             |
+| text-align-center             | text-align-center             |
+| text-align-justify            | text-align-justify            |
+| text-align-left               | text-align-left               |
+| text-align-right              | text-align-right              |
+| text-medium                   | text                          |
+| text-small                    | text                          |
+| text                          | text                          |
+| thumbnails                    | -                             |
+| timer                         | timer                         |
+| transparency                  | transparency                  |
+| tree-navigate-down            | -                             |
+| tree-navigate-up              | -                             |
+| underline                     | font-underline                |
+| undo                          | undo                          |
+| unlink                        | unlink                        |
+| upgrade                       | update                        |
+| upload-to-cloud               | cloud-upload                  |
+| upload                        | upload                        |
+| user-add                      | user-add                      |
+| user-restricted               | user-restricted               |
+| user                          | user                          |
+| users                         | users                         |
+| validate                      | validate                      |
+| visibility-emphasize          | visibility-emphasis           |
+| visibility-half               | visibility-partial            |
+| visibility-hide               | visibility-hide               |
+| visibility-show               | visibility-show               |
+| walk                          | walk                          |
+| wifi-disabled                 | wifi-disabled                 |
+| wifi                          | wifi                          |
+| window-add                    | window-add                    |
+| window-area                   | window-area                   |
+| window-backward               | window-back                   |
+| window-collapse               | window-collapse               |
+| window-forward                | window-forward                |
+| window-full-screen            | window-expand                 |
+| window-maximize               | window-maximize               |
+| window-minimize               | window-minimize               |
+| window-popout                 | window-popout                 |
+| window-settings               | window-settings               |
+| window-split-horizontal       | window-split-horizontal       |
+| window-split-vertical         | window-split-vertical         |
+| window-zoom-in                | window-zoom-in                |
+| window-zoom-out               | window-zoom-out               |
+| window                        | window                        |
+| windows                       | brand-windows                 |
+| zoom-in-circular              | zoom-in-circle                |
+| zoom-in                       | zoom-in-magnifier             |
+| zoom-out-circular             | zoom-out-circle               |
+| zoom-out                      | zoom-out-magnifier            |
+| zoom-search                   | search                        |

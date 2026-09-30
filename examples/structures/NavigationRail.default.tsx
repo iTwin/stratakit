@@ -4,15 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Divider from "@mui/material/Divider";
+import { svgBrandBentleySystemsLarge } from "@stratakit/icons/brand-bentley-systems";
+import { svgDisconnectLarge } from "@stratakit/icons/disconnect";
+import { svgInspectionLarge } from "@stratakit/icons/inspection";
+import { svgReportLarge } from "@stratakit/icons/report";
+import { svgSettingsLarge } from "@stratakit/icons/settings";
+import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { Icon } from "@stratakit/mui";
 import { unstable_NavigationRail as NavigationRail } from "@stratakit/structures";
 
-import svgBentley from "@stratakit/icons/brand-bentley-systems.svg";
-import svgDisconnect from "@stratakit/icons/disconnect.svg";
-import svgInspection from "@stratakit/icons/inspection.svg";
-import svgReport from "@stratakit/icons/report.svg";
-import svgSettings from "@stratakit/icons/settings.svg";
-import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./NavigationRail.comprehensive.module.css";
 
 export default () => {
@@ -20,7 +20,11 @@ export default () => {
 		<div className={styles.container}>
 			<NavigationRail.Root>
 				<NavigationRail.Header>
-					<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+					<Icon
+						alt="Acme app"
+						href={svgBrandBentleySystemsLarge}
+						size="large"
+					/>
 					<NavigationRail.ToggleButton />
 				</NavigationRail.Header>
 
@@ -29,7 +33,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={`${svgReport}#icon-large`}
+								icon={svgReportLarge}
 								label="Reports"
 								active
 							/>
@@ -37,7 +41,7 @@ export default () => {
 						<NavigationRail.ListItem>
 							<NavigationRail.Anchor
 								href="#"
-								icon={`${svgInspection}#icon-large`}
+								icon={svgInspectionLarge}
 								label="Logs"
 							/>
 						</NavigationRail.ListItem>
@@ -45,16 +49,13 @@ export default () => {
 					<Divider role="presentation" margin />
 					<NavigationRail.Anchor
 						href="#"
-						icon={`${svgDisconnect}#icon-large`}
+						icon={svgDisconnectLarge}
 						label="Integrations"
 						suffix={<Icon href={svgWindowPopout} alt="(opens in new tab)" />}
 					/>
 					<NavigationRail.Footer>
 						<Divider margin />
-						<NavigationRail.Button
-							icon={`${svgSettings}#icon-large`}
-							label="Settings"
-						/>
+						<NavigationRail.Button icon={svgSettingsLarge} label="Settings" />
 					</NavigationRail.Footer>
 				</NavigationRail.Content>
 			</NavigationRail.Root>

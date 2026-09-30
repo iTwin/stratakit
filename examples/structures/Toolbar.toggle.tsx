@@ -6,12 +6,11 @@
 import * as React from "react";
 import IconButton from "@mui/material/IconButton";
 import ToggleButton from "@mui/material/ToggleButton";
+import { svgAddLarge } from "@stratakit/icons/add";
+import { svgEditLarge } from "@stratakit/icons/edit";
+import { svgSaveSettingsLarge } from "@stratakit/icons/save-settings";
 import { Icon } from "@stratakit/mui";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
-
-import svgAdd from "@stratakit/icons/add.svg";
-import svgEdit from "@stratakit/icons/edit.svg";
-import svgSaveSettings from "@stratakit/icons/save-settings.svg";
 
 export default () => {
 	const [autoSave, setAutoSave] = React.useState(true);
@@ -20,14 +19,14 @@ export default () => {
 			<Toolbar.Item
 				render={
 					<IconButton label="Add">
-						<Icon href={`${svgAdd}#icon-large`} size="large" />
+						<Icon href={svgAddLarge} size="large" />
 					</IconButton>
 				}
 			/>
 			<Toolbar.Item
 				render={
 					<IconButton label="Edit">
-						<Icon href={`${svgEdit}#icon-large`} size="large" />
+						<Icon href={svgEditLarge} size="large" />
 					</IconButton>
 				}
 			/>
@@ -39,7 +38,7 @@ export default () => {
 						selected={autoSave}
 						onChange={() => setAutoSave((prev) => !prev)}
 					>
-						<Icon href={`${svgSaveSettings}#icon-large`} size="large" />
+						<Icon href={svgSaveSettingsLarge} size="large" />
 					</ToggleButton>
 				}
 			/>

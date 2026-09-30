@@ -1,0 +1,9 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.popover {
+	padding-block: var(--stratakit-space-300);
+	padding-inline: var(--stratakit-space-500);
+}

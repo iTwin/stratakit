@@ -1,0 +1,1 @@
+import{t as e}from"./info-CIRP1HzB.js";var t=`${e}#icon`;`${e}`;export{t};

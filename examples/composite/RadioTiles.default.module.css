@@ -2,47 +2,45 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+.group {
+	gap: var(--stratakit-space-200);
+}
+
 .tile {
 	--_RadioTile-label-color: var(--stratakit-color-text-neutral-primary);
 	--_RadioTile-description-color: var(--stratakit-color-text-neutral-secondary);
 	--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-base);
-	--_RadioTile-border-color: unset;
-	--_RadioTile-background: unset;
 
 	position: relative;
 	display: grid;
 	grid-template-columns: max-content 1fr min-content;
-	grid-column-gap: var(--stratakit-space-100);
-	grid-row-gap: var(--stratakit-space-100);
+	grid-template-areas: "icon label radio";
+	grid-gap: var(--stratakit-space-100);
 	align-items: start;
-	margin-block-end: var(--stratakit-space-100);
 
 	padding: var(--stratakit-space-300);
 	border-color: var(--_RadioTile-border-color);
 	color: var(--_RadioTile-icon-color);
-	background: var(--_RadioTile-background);
+	background-color: var(--_RadioTile-background);
 
 	@media (any-hover: hover) {
 		&:hover:not(:has(input:disabled)) {
 			--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-base);
-			--_RadioTile-border-color: var(--stratakit-color-border-neutral-muted);
 			--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 		}
 	}
 
 	&:has(input:active):not(:has(input:disabled)) {
-		--_RadioTile-border-color: var(--stratakit-color-border-neutral-muted);
 		--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
 	}
 
 	&:has(input:checked) {
-		--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-hover);
+		--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-primary);
 		--_RadioTile-border-color: var(--stratakit-color-border-accent-strong);
-		--_RadioTile-backgroundd: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+		--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 
 		@media (any-hover: hover) {
 			&:hover {
-				--_RadioTile-border-color: var(--stratakit-color-border-accent-strong);
 				--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
 			}
 		}
@@ -64,22 +62,19 @@
 }
 
 .label {
-	grid-column: 2 / 3;
+	grid-area: label;
 	color: var(--_RadioTile-label-color);
-	line-height: var(--stratakit-space-400);
 	/* Add 1 padding space + 1 gap space = 2 space called for in Figma */
 	padding-inline-end: var(--stratakit-space-100);
 
 	/* 
-		Use pointer because clicking anywhere on the tile will select the radio (not
-		just on the radio area).
+		Expand the label to cover the entire tile. A click anywhere on the card will
+		hit the label and active the radio button.
 
-		The label gets cursor instead of the tile because of the invisible ::before
-		element that covers the entire tile causing label to  wins on the hit test
+		The label gets cursor instead of the tile because it wins on the hit test
 		when determine what cursor is shown.
 	*/
 	cursor: pointer;
-
 	&::before {
 		content: "";
 		position: absolute;
@@ -92,12 +87,12 @@
 }
 
 .description {
+	grid-area: label;
 	grid-row: 2 / 3;
-	grid-column: 2 / 3;
 
 	color: var(--_RadioTile-description-color);
 }
 
 .radio {
-	grid-column: 3 / 4;
+	grid-area: radio;
 }

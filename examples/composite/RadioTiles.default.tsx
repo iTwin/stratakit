@@ -3,56 +3,61 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import React from "react";
+import * as React from "react";
 import FormControl from "@mui/material/FormControl";
 import FormLabel from "@mui/material/FormLabel";
 import Paper from "@mui/material/Paper";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@stratakit/foundations";
+import { svgBrandAndroid } from "@stratakit/icons/brand-android";
+import { svgBrandApple } from "@stratakit/icons/brand-apple";
+import { svgBrandBentleySystems } from "@stratakit/icons/brand-bentley-systems";
+import { svgBuilding } from "@stratakit/icons/building";
+import { svgITwin } from "@stratakit/icons/itwin";
+import { Icon } from "@stratakit/mui";
 
-import androidSvg from "@stratakit/icons/brand-android.svg";
-import appleSvg from "@stratakit/icons/brand-apple.svg";
-import bentleySvg from "@stratakit/icons/brand-bentley-systems.svg";
-import buildingSvg from "@stratakit/icons/building.svg";
-import iTwinSvg from "@stratakit/icons/itwin.svg";
 import styles from "./RadioTiles.default.module.css";
 
 export default () => {
 	return (
 		<FormControl render={<fieldset />} role="radiogroup">
 			<FormLabel render={<legend />}>Design system</FormLabel>
-			<RadioGroup name="design-system-tiles" role={undefined}>
+			<RadioGroup
+				name="design-system-tiles"
+				role={undefined}
+				className={styles.group}
+				defaultValue="stratakit"
+			>
 				<RadioTile
 					value="iTwinUI"
 					label="iTwinUI"
 					description="Legacy design system"
-					icon={<Icon href={iTwinSvg} />}
+					icon={<Icon href={svgITwin} />}
 				/>
 				<RadioTile
 					value="stratakit"
 					label="StrataKit"
-					icon={<Icon href={bentleySvg} />}
+					icon={<Icon href={svgBrandBentleySystems} />}
 				/>
 				<RadioTile
 					value="material"
 					label="Material"
 					description="Google's design system"
-					icon={<Icon href={androidSvg} />}
+					icon={<Icon href={svgBrandAndroid} />}
 				/>
 				<RadioTile
 					value="hig"
 					label="Human Interface Guidelines"
 					description="Design system for Mac and iOS"
-					icon={<Icon href={appleSvg} />}
+					icon={<Icon href={svgBrandApple} />}
 				/>
 				<RadioTile
 					value="flori"
 					label="Flori"
 					description="SAP's design system"
 					disabled
-					icon={<Icon href={buildingSvg} />}
+					icon={<Icon href={svgBuilding} />}
 				/>
 			</RadioGroup>
 		</FormControl>

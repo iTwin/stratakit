@@ -8,6 +8,10 @@
 	margin-bottom: var(--stratakit-space-400);
 }
 
+.iconContainer {
+	padding-inline-end: 0;
+}
+
 .completed {
 	display: none;
 

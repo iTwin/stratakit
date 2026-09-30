@@ -68,6 +68,7 @@ function LongStep({ children, ...rest }: React.ComponentProps<typeof Step>) {
 				}}
 				classes={{
 					completed: styles.labelCompleted,
+					iconContainer: styles.iconContainer,
 				}}
 			>
 				{children}

@@ -31,7 +31,7 @@ export default () => {
 	const selectFiles = (files: FileList | null) => {
 		const fileArray = Array.from(files ?? []);
 		ReactDOM.flushSync(() => setSelectedFiles(fileArray));
-		if (fileArray.length === 0) headingRef.current?.focus();
+		if (fileArray.length > 0) headingRef.current?.focus();
 	};
 
 	return (

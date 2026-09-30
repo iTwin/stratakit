@@ -27,7 +27,7 @@ A **transfer list** consists of:
 
 ## API reference
 
-- [`Button`](https://mui.com/material-ui/api/button/)
+- [`IconButton`](https://mui.com/material-ui/api/icon-button/)
 - [`Grid`](https://mui.com/material-ui/api/grid)
 - [`ListItemText`](https://mui.com/material-ui/api/list-item-text/)
 - [`MenuItem`](https://mui.com/material-ui/api/menu-item/)

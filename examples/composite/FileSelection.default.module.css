@@ -3,12 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiSnackbarContent-root:is(.MuiPaper-root) {
-	background-color: var(--stratakit-color-bg-elevation-emphasis);
+.files {
+	display: inline;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
-:is(.MuiSnackbarContent-action) .MuiIconButton-root {
-	&:where(:not(.Mui-disabled)) {
-		color: var(--stratakit-color-icon-neutral-emphasis);
+.fileItem {
+	display: inline;
+
+	+ .fileItem::before {
+		content: ", ";
 	}
 }

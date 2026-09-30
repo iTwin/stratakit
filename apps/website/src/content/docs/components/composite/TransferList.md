@@ -11,7 +11,7 @@ This example is adapted from the [MUI documentation for TransferList](https://mu
 
 ## Use cases
 
-A Transfer list enables the user to move one or more list items between lists.
+A **transfer list** enables the user to move one or more list items between lists.
 
 | Use case                                                   | Transfer List | Single list with checkboxes |
 | ---------------------------------------------------------- | ------------- | --------------------------- |
@@ -20,7 +20,7 @@ A Transfer list enables the user to move one or more list items between lists.
 
 ## Structure
 
-A Transfer list consists of:
+A **transfer list** consists of:
 
 - Two [listboxes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listbox_role) representing two non-overlapping sets.
 - A group of buttons to move the selected items in one set to the other set.

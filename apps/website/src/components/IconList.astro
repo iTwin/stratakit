@@ -1,5 +1,5 @@
 ---
-import iconsList from "@stratakit/icons/icons-list.json";
+import iconsMeta from "@stratakit/icons/icons-meta.json";
 
 const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", {
 	query: "?url",
@@ -7,18 +7,49 @@ const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", 
 });
 
 function getIconHref(iconName: string) {
-	const module = allIcons[`/node_modules/@stratakit/icons/icons/${iconName}`];
-	return (module as { default: string })?.default;
+	const module = allIcons[`/node_modules/@stratakit/icons/icons/${iconName}.svg`];
+	return (module as unknown as { default: string })?.default;
 }
+
+const iconMetaEntries = Object.entries(iconsMeta);
+
+const defaultSymbol = "icon";
+const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbols))];
 ---
 
+<fieldset data-symbol-filter>
+	<legend>Filter by symbol</legend>
+	<div>
+		{
+			allSymbols.map((symbol) => (
+				<label>
+					<input
+						type="radio"
+						name="symbol"
+						value={symbol}
+						checked={symbol === defaultSymbol ? true : undefined}
+					/>
+					<span>{symbol}</span>
+				</label>
+			))
+		}
+	</div>
+</fieldset>
 <div role="list" class="icons-grid not-content">
 	{
-		iconsList.map((iconName) => {
+		iconMetaEntries.map(([iconName, meta]) => {
 			return (
 				<div role="listitem" class="icon">
-					<svg width="24" height="24">
-						<use href={`${getIconHref(iconName)}#icon-large`} />
+					<svg width="16" height="16" data-size="regular">
+						{meta.symbols.map((symbol) => {
+							return (
+								<use
+									href={`${getIconHref(iconName)}#${symbol}`}
+									data-symbol={symbol}
+									display={symbol === defaultSymbol ? undefined : "none"}
+								/>
+							);
+						})}
 					</svg>
 					{iconName}
 				</div>
@@ -83,9 +114,51 @@ function getIconHref(iconName: string) {
 
 		svg {
 			display: block;
-			inline-size: 1.5rem;
 			aspect-ratio: 1;
 			color: var(--stratakit-color-icon-neutral-primary);
+
+			&[data-size="regular"] {
+				inline-size: 1rem;
+			}
+
+			&[data-size="large"] {
+				inline-size: 1.5rem;
+			}
 		}
 	}
 </style>
+
+<script>
+	const symbolInputs = document.querySelectorAll<HTMLInputElement>(
+		"[data-symbol-filter] input[type='radio']",
+	);
+	for (const symbolInput of symbolInputs) {
+		symbolInput.addEventListener("change", filter);
+	}
+
+	const icons = Array.from(document.querySelectorAll<HTMLElement>(".icon"));
+
+	function filter() {
+		const selectedSymbol =
+			document.querySelector<HTMLInputElement>("[data-symbol-filter] input:checked")?.value ??
+			"icon";
+		const isLarge = selectedSymbol.includes("-large");
+		const size = isLarge ? "24px" : "16px";
+
+		for (const icon of icons) {
+			const symbolElements = icon.querySelectorAll<SVGElement>("[data-symbol]");
+			const selectedSymbolElement = Array.from(symbolElements).find(
+				(el) => el.getAttribute("data-symbol") === selectedSymbol,
+			);
+			icon.hidden = !selectedSymbolElement;
+
+			const svg = icon.querySelector<SVGElement>("svg")!;
+			svg.setAttribute("width", size);
+			svg.setAttribute("height", size);
+			svg.setAttribute("data-size", isLarge ? "large" : "regular");
+
+			symbolElements.forEach((el) => el.setAttribute("display", "none"));
+			selectedSymbolElement?.removeAttribute("display");
+		}
+	}
+</script>

@@ -115,6 +115,10 @@
 
 /* Thumb styling */
 .MuiSwitch-thumb {
+	--✨icon-checked-color: var(--stratakit-color-bg-accent-base);
+	--✨icon-disabled-color: var(--stratakit-color-bg-neutral-inverse);
+	--✨svg-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M10.67 5.47a.75.75 0 0 1 1.06 1.06l-4.4 4.4a.75.75 0 0 1-1.06 0l-2-2a.75.75 0 0 1 1.06-1.06L6.8 9.34z"/></svg>'); /* SVG from Figma switch, different from checkmark.svg */
+
 	aspect-ratio: inherit; /* Inherited from `.MuiSwitch-switchBase` */
 	background-color: var(--_MuiSwitch-thumb-background-color);
 	box-shadow: var(--_MuiSwitch-thumb-box-shadow);
@@ -124,10 +128,51 @@
 	inline-size: 100%;
 	transform: var(--_MuiSwitch-thumb-stretch-transform);
 
+	/* This pseudo-element displays a checkmark for selected menu items */
+	&::before {
+		content: "";
+		opacity: 0;
+		display: block;
+		aspect-ratio: 1;
+		width: 100%;
+		height: 100%;
+		background-color: var(--✨icon-checked-color);
+		mask-image: var(--✨svg-checked);
+		mask-size: 16px 16px;
+		mask-position: center;
+		mask-repeat: no-repeat;
+		transition-duration: 0; /* Hide immediately when going from on->off to avoid getting moved or stretched by the thumb transform */
+	}
+
+	:where(.MuiSwitch-switchBase.Mui-disabled) &::before {
+		background-color: var(--✨icon-disabled-color);
+	}
+
+	:where(.MuiSwitch-switchBase.Mui-checked) &::before {
+		opacity: 1;
+		/* Fade in after the thumb has completed its animation when going from off->on */
+		transition-delay: 150ms;
+		transition-duration: 100ms;
+	}
+
+	:where(.MuiSwitch-switchBase:has(.MuiSwitch-input:active)) &::before {
+		/* 
+			Hide it immediately when pressed to avoid showing it in the stretched
+			button. Use display instead of transition-duration to avoid having to add
+			more complication to those rules which already vary by on/off 
+		*/
+		display: none;
+	}
+
 	@media (prefers-reduced-motion: no-preference) {
 		transition: all 150ms ease-out;
 		transition-property: border-radius, transform;
 		will-change: border-radius, transform;
+
+		&::before {
+			transition-timing-function: ease-out;
+			transition-property: opacity;
+		}
 	}
 }
 

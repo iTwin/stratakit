@@ -18,6 +18,8 @@ Use the `forwardRef` utility from [packages/internal-utils](./packages/internal-
 
 [Nest CSS rules](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Nesting/Using) under the main subject (i.e. selector to identify the DOM element). If there are multiple DOM elements (e.g. tab list and tabs), use multiple groups.
 
+One exception is with rules involving pseudo elements. These must be written out independently and cannot be nested because [nesting only matches at the element level](https://www.w3.org/TR/css-nesting-1/#nest-selector)
+
 **✅ Do**
 
 ```css

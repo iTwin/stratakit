@@ -2,19 +2,12 @@
 title: Transfer List
 description: Enables the user to move one or more list items between lists.
 links:
-  apiReference: "#api-reference"
   muiDocs: https://mui.com/material-ui/react-transfer-list/
 ---
 
 ::example{src="composite/TransferList.default"}
 
 This example is adapted from the [MUI documentation for TransferList](https://mui.com/material-ui/react-transfer-list/) with minor modifications.
-
-## StrataKit modifications
-
-- Removed non-supported props.
-- Replaced text chevrons with StrataKit icons.
-- Added `elevation` to `Paper` to provide explicit visual grouping.
 
 ## Use cases
 
@@ -25,21 +18,20 @@ A Transfer list enables the user to move one or more list items between lists.
 | Identifying which items should be included in a single set | ❌            | ✅                          |
 | Classifying items as one of two possible named sets        | ✅            | ❌                          |
 
-## Anatomy
+## Structure
 
 A Transfer list consists of:
 
-- Two lists representing two non-overlapping sets.
-- Buttons to move the selected items in one set to the other set.
+- Two [listboxes](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listbox_role) representing two non-overlapping sets.
+- A group of buttons to move the selected items in one set to the other set.
 
+## API reference
 
-## API Reference
-
-- [`Button`](/components/button)
+- [`Button`](https://mui.com/material-ui/api/button/)
 - [`Grid`](https://mui.com/material-ui/api/grid)
 - [`ListItemText`](https://mui.com/material-ui/api/list-item-text/)
 - [`MenuItem`](https://mui.com/material-ui/api/menu-item/)
 - [`MenuList`](https://mui.com/material-ui/api/menu-list/)
-- [`Paper`](/components/paper)
+- [`Paper`](https://mui.com/material-ui/api/paper/)
 - [`Stack`](https://mui.com/material-ui/api/stack/)
-- [`Typography`](/components/typography)
+- [`Typography`](https://mui.com/material-ui/api/typography)

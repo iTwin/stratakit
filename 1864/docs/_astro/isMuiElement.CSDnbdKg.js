@@ -1,0 +1,1 @@
+import{i as e,n as t}from"./jsx-runtime.Cltr0gcK.js";var n=e(t(),1);function r(e,t){return n.isValidElement(e)&&t.indexOf(e.type.muiName??e.type?._payload?.value?.muiName)!==-1}export{r as t};

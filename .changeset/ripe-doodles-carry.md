@@ -20,7 +20,7 @@ Added new icons:
 - `filetype-sketchup.svg`
 - `filetype-system.svg`
 - `filetype-text.svg`
-- `filetype-txt_2.svg`
+- `filetype-txt-2.svg`
 - `filetype-unknown.svg`
 - `filetype-vector.svg`
 - `filetype-visio.svg`

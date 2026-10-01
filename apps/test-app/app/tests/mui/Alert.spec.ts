@@ -2,13 +2,16 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { test } from "#playwright";
-import { generateVisualTests } from "~/generateVisualTests.ts";
+import { expect, test } from "#playwright";
+import { colorSchemes } from "~/ColorSchemes.ts";
+import { SCREENSHOT_TEST_ID } from "~/ScreenShotTestId.ts";
 
 test.describe("@visual", () => {
-	for (const args of generateVisualTests(
-		"/showcase?path=mui/Alert.showcase&export=VisualTest",
-	)) {
-		test(...args);
+	for (const scheme of colorSchemes) {
+		test(scheme.name, async ({ page }) => {
+			await page.emulateMedia(scheme.media);
+			await page.goto("/showcase?path=mui/Alert.showcase&export=VisualTest");
+			await expect(page.getByTestId(SCREENSHOT_TEST_ID)).toHaveScreenshot();
+		});
 	}
 });

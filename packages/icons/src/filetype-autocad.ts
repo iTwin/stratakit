@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-autocad.svg";
 
-export const svgFiletypeAutocad = `${url}#icon`;
-export const svgFiletypeAutocadLarge = `${url}#icon-large`;
+export const svgFiletypeAutoCAD = `${url}#icon`;
+export const svgFiletypeAutoCADLarge = `${url}#icon-large`;

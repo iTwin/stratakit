@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-pdfmarkup.svg";
 
-export const svgFiletypePdfmarkup = `${url}#icon`;
-export const svgFiletypePdfmarkupLarge = `${url}#icon-large`;
+export const svgFiletypePDFMarkup = `${url}#icon`;
+export const svgFiletypePDFMarkupLarge = `${url}#icon-large`;

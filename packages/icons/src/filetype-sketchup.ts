@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-sketchup.svg";
 
-export const svgFiletypeSketchup = `${url}#icon`;
-export const svgFiletypeSketchupLarge = `${url}#icon-large`;
+export const svgFiletypeSketchUp = `${url}#icon`;
+export const svgFiletypeSketchUpLarge = `${url}#icon-large`;

@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-imodel.svg";
 
-export const svgFiletypeImodel = `${url}#icon`;
-export const svgFiletypeImodelLarge = `${url}#icon-large`;
+export const svgFiletypeIModel = `${url}#icon`;
+export const svgFiletypeIModelLarge = `${url}#icon-large`;

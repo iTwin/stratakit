@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-ppt.svg";
 
-export const svgFiletypePpt = `${url}#icon`;
-export const svgFiletypePptLarge = `${url}#icon-large`;
+export const svgFiletypePPT = `${url}#icon`;
+export const svgFiletypePPTLarge = `${url}#icon-large`;

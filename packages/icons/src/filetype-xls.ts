@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-xls.svg";
 
-export const svgFiletypeXls = `${url}#icon`;
-export const svgFiletypeXlsLarge = `${url}#icon-large`;
+export const svgFiletypeXLS = `${url}#icon`;
+export const svgFiletypeXLSLarge = `${url}#icon-large`;

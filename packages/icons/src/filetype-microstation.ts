@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-microstation.svg";
 
-export const svgFiletypeMicrostation = `${url}#icon`;
-export const svgFiletypeMicrostationLarge = `${url}#icon-large`;
+export const svgFiletypeMicroStation = `${url}#icon`;
+export const svgFiletypeMicroStationLarge = `${url}#icon-large`;

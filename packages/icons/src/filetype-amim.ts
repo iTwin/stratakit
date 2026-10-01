@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-amim.svg";
 
-export const svgFiletypeAmim = `${url}#icon`;
-export const svgFiletypeAmimLarge = `${url}#icon-large`;
+export const svgFiletypeAMIM = `${url}#icon`;
+export const svgFiletypeAMIMLarge = `${url}#icon-large`;

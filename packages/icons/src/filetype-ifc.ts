@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-ifc.svg";
 
-export const svgFiletypeIfc = `${url}#icon`;
-export const svgFiletypeIfcLarge = `${url}#icon-large`;
+export const svgFiletypeIFC = `${url}#icon`;
+export const svgFiletypeIFCLarge = `${url}#icon-large`;

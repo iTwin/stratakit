@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-dgn-cloud.svg";
 
-export const svgFiletypeDgnCloud = `${url}#icon`;
-export const svgFiletypeDgnCloudLarge = `${url}#icon-large`;
+export const svgFiletypeDGNCloud = `${url}#icon`;
+export const svgFiletypeDGNCloudLarge = `${url}#icon-large`;

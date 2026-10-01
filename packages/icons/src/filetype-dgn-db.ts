@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-dgn-db.svg";
 
-export const svgFiletypeDgnDb = `${url}#icon`;
-export const svgFiletypeDgnDbLarge = `${url}#icon-large`;
+export const svgFiletypeDGNDb = `${url}#icon`;
+export const svgFiletypeDGNDbLarge = `${url}#icon-large`;

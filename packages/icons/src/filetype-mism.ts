@@ -5,5 +5,5 @@
 
 import url from "../icons/filetype-mism.svg";
 
-export const svgFiletypeMism = `${url}#icon`;
-export const svgFiletypeMismLarge = `${url}#icon-large`;
+export const svgFiletypeMISM = `${url}#icon`;
+export const svgFiletypeMISMLarge = `${url}#icon-large`;

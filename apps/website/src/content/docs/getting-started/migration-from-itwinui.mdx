@@ -571,7 +571,7 @@ Have questions or feedback about a suggested replacement? Join the [iTwinUI feat
 | [`SkipToContentLink`](https://itwinui.bentley.com/docs/skiptocontentlink)       | [No direct replacement](#skiptocontentlink)                                         |
 | [`Slider`](https://itwinui.bentley.com/docs/slider)                             | [MUI `Slider`](#slider)                                                             |
 | [`SplitButton`](https://itwinui.bentley.com/docs/button#splitbutton)            | [MUI `ButtonGroup` and MUI `Menu`](#splitbutton)                                    |
-| [`StatusMessage`](https://itwinui.bentley.com/docs/statusmessage)               | [No direct replacement](#statusmessage)                                             |
+| [`StatusMessage`](https://itwinui.bentley.com/docs/statusmessage)               | [MUI `FormHelperText`and MUI `Typography`](#statusmessage)                          |
 | [`Stepper`](https://itwinui.bentley.com/docs/stepper)                           | [MUI `Stepper`](#stepper)                                                           |
 | [`Surface`](https://itwinui.bentley.com/docs/surface)                           | [MUI `Paper`](#surface)                                                             |
 | [`Table`](https://itwinui.bentley.com/docs/table)                               | [MUI `Table`](#table)                                                               |
@@ -752,7 +752,7 @@ Replace the [`IconButton` component from `@itwin/itwinui-react`](https://itwinui
 
 ### IdeasButton
 
-Replace the [`IdeasButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#ideasbutton) with the `Button` component from `@mui/material`, positioned with CSS.
+Replace the [`IdeasButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#ideasbutton) with the `Button` component from `@mui/material`, positioned with CSS. See [Button examples](/components/button/) for reference.
 
 ### InformationPanel
 
@@ -774,8 +774,8 @@ Replace the [`Input` component from `@itwin/itwinui-react`](https://itwinui.bent
 
 There is no direct replacement for the [`InputGrid` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputgrid), which groups a label, field, and message.
 
-- For a text input, use `TextField` with `label` and `helperText`. It handles the layout without a separate wrapper.
-- For other fields, compose `FormControl` with the appropriate label, input, and `FormHelperText`. Use `InputLabel` with MUI `Select` and `FormLabel` with fields that need a separate label.
+- For a text input, use [`TextField`](/components/textfield/) with `label` and `helperText`. It handles the layout without a separate wrapper.
+- For other fields, compose [`FormControl`](https://mui.com/material-ui/api/form-control/) with the appropriate label, input, and `FormHelperText`. Use `InputLabel` with MUI `Select` and `FormLabel` with fields that need a separate label.
 
 ### InputGroup
 
@@ -783,7 +783,7 @@ Replace the [`InputGroup` component from `@itwin/itwinui-react`](https://itwinui
 
 ### InputWithDecorations
 
-Replace the [`InputWithDecorations` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputwithdecorations) with the `Input` or `TextField` components from `@mui/material`. Use `InputAdornment` for content alongside the input, passed through `slotProps.input` on `TextField` or directly as props on `Input`.
+Replace the [`InputWithDecorations` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputwithdecorations) with the `Input` or `TextField` components from `@mui/material`. Use [`InputAdornment`](https://mui.com/material-ui/api/input-adornment/) for content alongside the input, passed through `slotProps.input` on `TextField` or directly as props on `Input`.
 
 - Replace `InputWithDecorations.Icon` with an `Icon` inside `InputAdornment` in `startAdornment` or `endAdornment`.
 - Replace `InputWithDecorations.Button` with an `IconButton` inside an end `InputAdornment`. Additional text, dividers, and actions can be composed in the same adornment with custom layout styling.
@@ -819,9 +819,9 @@ There is no direct replacement for the [`MiddleTextTruncation` component from `@
 
 There is no direct replacement for the [`NonIdealState` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/nonidealstate).
 
-- Replace `heading` with `Typography` rendered as the appropriate heading level.
+- Replace `heading` with [`Typography`](/components/typography/) rendered as the appropriate heading level.
 - Replace `svg` with an image or illustration appropriate to the error.
-- Replace `actions` with `Button` or `Link` components.
+- Replace `actions` with [`Button`](/components/button/) or [`Link`](/components/link/) components.
 
 ### NotificationMarker
 
@@ -942,14 +942,11 @@ MUI `Slider` supports more than two values, but only highlights the range betwee
 
 ### SplitButton
 
-Replace the [`SplitButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#splitbutton) with a `ButtonGroup` containing two `Button`s, both from `@mui/material`. The first runs the selected action; the second opens a `Menu` to change it.
+Replace the [`SplitButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#splitbutton) with a [`ButtonGroup`](/components/buttongroup/) containing two [`Button`s](/components/button/), both from `@mui/material`. The first runs the selected action; the second opens a [`Menu`](/components/menu/) to change it.
 
 ### StatusMessage
 
-There is no direct replacement for the [`StatusMessage` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/statusmessage). Depending on the use case, replace it with one of the following:
-
-- [`Alert`](/components/alert/) when the message is a longer explanation.
-- [`Badge` with an icon and color](/components/badge/#colors) when the message is a short status indicator.
+Replace the [`StatusMessage` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/statusmessage) with a [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) and [`Typography`](/components/typography/) components from `@mui/material`.
 
 ### Stepper
 

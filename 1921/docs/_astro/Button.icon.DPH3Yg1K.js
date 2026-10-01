@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{I as t}from"./_utils.B70j2T7Y.js";import{t as n}from"./Button.8XxhotLs.js";import{t as r}from"./arrow-right.CAGODWsz.js";var i=e(),a=()=>(0,i.jsxs)(n,{onClick:()=>{},children:[`Create new`,(0,i.jsx)(t,{href:r})]});export{a as default};

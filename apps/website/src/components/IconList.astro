@@ -18,6 +18,7 @@ const defaultSymbol = "icon";
 const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbols))];
 ---
 
+<input id="icon-search-input" type="search" placeholder="Search by name or alias" />
 <fieldset data-symbol-filter>
 	<legend>Filter by symbol</legend>
 	<div>
@@ -88,6 +89,14 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 <style>
 	@layer page {
+		input[type="search"] {
+			inline-size: 100%;
+			min-block-size: var(--stratakit-size-control-field-height-medium);
+			padding-inline: var(--stratakit-space-300);
+			border: 1px solid var(--stratakit-color-border-page-base);
+			border-radius: var(--stratakit-radius-sm);
+		}
+
 		.icons-grid {
 			--_grid-bg: var(--stratakit-color-bg-page-depth);
 			--_grid-line: var(--stratakit-color-border-neutral-muted);
@@ -184,6 +193,9 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		symbolInput.addEventListener("change", filter);
 	}
 
+	const searchInput = document.querySelector<HTMLInputElement>("input[type='search']")!;
+	searchInput.addEventListener("input", debounce(filter, 200));
+
 	const iconDialog = document.querySelector<HTMLDialogElement>("#icon-dialog")!;
 	iconDialog.addEventListener("click", (e) => {
 		if (e.target !== e.currentTarget) return;
@@ -277,22 +289,36 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	const icons = Array.from(document.querySelectorAll<HTMLElement>("[data-icon]"));
 
 	function filter() {
+		const query = searchInput.value;
 		const selectedSymbol =
 			document.querySelector<HTMLInputElement>("[data-symbol-filter] input:checked")?.value ??
 			"icon";
 		const size = getSize(selectedSymbol);
 
 		for (const icon of icons) {
+			const iconName = icon.getAttribute("data-icon")!;
 			const symbols = JSON.parse(icon.getAttribute("data-symbols")!) as string[];
+			const aliases = JSON.parse(icon.getAttribute("data-aliases")!) as string[];
 			const hasSymbol = symbols.includes(selectedSymbol);
-			icon.hidden = !hasSymbol;
+			const matchesQuery = matchQuery(query, iconName, aliases);
+			const visible = matchesQuery && hasSymbol;
+			icon.hidden = !visible;
 
-			if (!hasSymbol) continue;
+			if (!visible) continue;
 
 			const svg = icon.querySelector<SVGElement>("svg")!;
 			const href = icon.getAttribute("data-href")!;
 			updateIcon(svg, `${href}#${selectedSymbol}`, size);
 		}
+	}
+
+	function matchQuery(query: string, iconName: string, aliases: string[]) {
+		query = query.trim().toLowerCase();
+		iconName = iconName.toLowerCase();
+
+		if (!query) return true;
+		if (iconName.includes(query)) return true;
+		return aliases.some((alias) => alias.toLowerCase().includes(query));
 	}
 
 	function getSize(symbol: string) {
@@ -308,5 +334,13 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 		const use = svg.querySelector<SVGUseElement>("use")!;
 		use.setAttribute("href", href);
+	}
+
+	function debounce<Args extends unknown[]>(fn: (...args: Args) => void, delay: number) {
+		let timeout: ReturnType<typeof setTimeout>;
+		return (...args: Args) => {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => fn(...args), delay);
+		};
 	}
 </script>

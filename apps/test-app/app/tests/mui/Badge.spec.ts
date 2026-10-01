@@ -7,7 +7,9 @@ import { test } from "#playwright";
 import { generateVisualTests } from "~/generateVisualTests.ts";
 
 test.describe("@visual", () => {
-	for (const args of generateVisualTests("/tests/mui/Badge/Visual")) {
+	for (const args of generateVisualTests(
+		"/showcase?path=mui/Badge.showcase&export=VisualTest",
+	)) {
 		test(...args);
 	}
 });

@@ -14,7 +14,7 @@ import styles from "./ScreenShotWrapper.module.css";
  */
 export function ScreenShotWrapper({ children }: React.PropsWithChildren) {
 	return (
-		<div data-testid={SCREENSHOT_TEST_ID} className={styles.shrinkWrap}>
+		<div data-testid={SCREENSHOT_TEST_ID} className={styles.screenshot}>
 			{children}
 		</div>
 	);

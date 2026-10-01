@@ -5,23 +5,28 @@
 
 import * as React from "react";
 import Alert from "@mui/material/Alert";
+import Stack from "@mui/material/Stack";
 
 export default () => {
-	return (["outlined", "filled"] as const).map((variant) => (
-		<React.Fragment key={variant}>
-			<Alert>This is the default Alert.</Alert>
-			<Alert severity="success" variant={variant}>
-				This is a success Alert.
-			</Alert>
-			<Alert severity="info" variant={variant}>
-				This is an info Alert.
-			</Alert>
-			<Alert severity="warning" variant={variant}>
-				This is a warning Alert.
-			</Alert>
-			<Alert severity="error" variant={variant}>
-				This is an error Alert.
-			</Alert>
-		</React.Fragment>
-	));
+	return (
+		<Stack spacing={1}>
+			{(["outlined", "filled"] as const).map((variant) => (
+				<React.Fragment key={variant}>
+					<Alert>This is the default Alert.</Alert>
+					<Alert severity="success" variant={variant}>
+						This is a success Alert.
+					</Alert>
+					<Alert severity="info" variant={variant}>
+						This is an info Alert.
+					</Alert>
+					<Alert severity="warning" variant={variant}>
+						This is a warning Alert.
+					</Alert>
+					<Alert severity="error" variant={variant}>
+						This is an error Alert.
+					</Alert>
+				</React.Fragment>
+			))}
+		</Stack>
+	);
 };

@@ -1,5 +1,6 @@
 ---
 import iconsMeta from "@stratakit/icons/icons-meta.json";
+import { svgDismiss } from "@stratakit/icons/dismiss";
 
 const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", {
 	query: "?url",
@@ -38,25 +39,19 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 <div role="list" class="icons-grid not-content">
 	{
 		iconMetaEntries.map(([iconName, meta]) => {
+			const href = getIconHref(iconName);
 			return (
-				<div role="listitem" class="icon">
-					<button
-						command="show-modal"
-						commandfor="icon-dialog"
-						data-icon-name={iconName}
-						data-aliases={JSON.stringify(meta.aliases)}
-						data-symbols={JSON.stringify(meta.symbols)}
-					>
+				<div
+					role="listitem"
+					class="icon"
+					data-icon={iconName}
+					data-aliases={JSON.stringify(meta.aliases)}
+					data-symbols={JSON.stringify(meta.symbols)}
+					data-href={href}
+				>
+					<button command="show-modal" commandfor="icon-dialog">
 						<svg width="16" height="16" data-size="regular">
-							{meta.symbols.map((symbol) => {
-								return (
-									<use
-										href={`${getIconHref(iconName)}#${symbol}`}
-										data-symbol={symbol}
-										display={symbol === defaultSymbol ? undefined : "none"}
-									/>
-								);
-							})}
+							<use href={`${href}#${defaultSymbol}`} />
 						</svg>
 						{iconName}
 					</button>
@@ -73,16 +68,20 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 <dialog id="icon-dialog">
 	<h2 data-name></h2>
+	<button commandfor="icon-dialog" command="close" aria-label="Dismiss">
+		<svg width="16" height="16" data-size="regular">
+			<use href={svgDismiss}></use>
+		</svg>
+	</button>
 	<h3>Symbols</h3>
 	<ul data-symbols></ul>
 	<h3>Aliases</h3>
 	<ul data-aliases></ul>
-	<button commandfor="icon-dialog" command="close">Close</button>
 
-	<template data-alias-item>
-		<li></li>
-	</template>
 	<template data-symbol-item>
+		<li><svg><use></use></svg><span></span></li>
+	</template>
+	<template data-alias-item>
 		<li></li>
 	</template>
 </dialog>
@@ -185,7 +184,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		const source = e.source;
 		if (!(source instanceof HTMLElement)) return;
 
-		const iconName = source.getAttribute("data-icon-name");
+		const iconName = source.parentElement?.getAttribute("data-icon");
 		if (!iconName) return;
 
 		updateIconDialog(iconName);
@@ -226,13 +225,14 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	}
 
 	function updateIconDialog(iconName: string) {
-		const iconButton = document.querySelector<HTMLButtonElement>(`[data-icon-name="${iconName}"]`);
-		if (!iconButton) return;
+		const icon = document.querySelector<HTMLElement>(`[data-icon="${iconName}"]`);
+		if (!icon) return;
 
 		const heading = iconDialog.querySelector("[data-name]")!;
 		heading.textContent = iconName;
 
-		const symbols = JSON.parse(iconButton.getAttribute("data-symbols")!) as string[];
+		const symbols = JSON.parse(icon.getAttribute("data-symbols")!) as string[];
+		const href = icon.getAttribute("data-href")!;
 		const symbolItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
 			"template[data-symbol-item]",
 		)!;
@@ -240,12 +240,15 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		symbolsElement.replaceChildren(
 			...symbols.map((symbol) => {
 				const symbolItem = symbolItemTemplate.content.cloneNode(true) as DocumentFragment;
-				symbolItem.querySelector("li")!.textContent = symbol;
+				const svg = symbolItem.querySelector("svg")!;
+				const size = getSize(symbol);
+				updateIcon(svg, `${href}#${symbol}`, size);
+				symbolItem.querySelector("span")!.textContent = symbol;
 				return symbolItem;
 			}),
 		);
 
-		const aliases = JSON.parse(iconButton.getAttribute("data-aliases")!) as string[];
+		const aliases = JSON.parse(icon.getAttribute("data-aliases")!) as string[];
 		const aliasItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
 			"template[data-alias-item]",
 		)!;
@@ -259,29 +262,39 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		);
 	}
 
-	const icons = Array.from(document.querySelectorAll<HTMLElement>(".icon"));
+	const icons = Array.from(document.querySelectorAll<HTMLElement>("[data-icon]"));
 
 	function filter() {
 		const selectedSymbol =
 			document.querySelector<HTMLInputElement>("[data-symbol-filter] input:checked")?.value ??
 			"icon";
-		const isLarge = selectedSymbol.includes("-large");
-		const size = isLarge ? "24px" : "16px";
+		const size = getSize(selectedSymbol);
 
 		for (const icon of icons) {
-			const symbolElements = icon.querySelectorAll<SVGElement>("[data-symbol]");
-			const selectedSymbolElement = Array.from(symbolElements).find(
-				(el) => el.getAttribute("data-symbol") === selectedSymbol,
-			);
-			icon.hidden = !selectedSymbolElement;
+			const symbols = JSON.parse(icon.getAttribute("data-symbols")!) as string[];
+			const hasSymbol = symbols.includes(selectedSymbol);
+			icon.hidden = !hasSymbol;
+
+			if (!hasSymbol) continue;
 
 			const svg = icon.querySelector<SVGElement>("svg")!;
-			svg.setAttribute("width", size);
-			svg.setAttribute("height", size);
-			svg.setAttribute("data-size", isLarge ? "large" : "regular");
-
-			symbolElements.forEach((el) => el.setAttribute("display", "none"));
-			selectedSymbolElement?.removeAttribute("display");
+			const href = icon.getAttribute("data-href")!;
+			updateIcon(svg, `${href}#${selectedSymbol}`, size);
 		}
+	}
+
+	function getSize(symbol: string) {
+		return symbol.includes("-large") ? "large" : "regular";
+	}
+
+	function updateIcon(svg: SVGElement, href: string, size: "regular" | "large") {
+		const width = size === "large" ? "24px" : "16px";
+
+		svg.setAttribute("width", width);
+		svg.setAttribute("height", width);
+		svg.setAttribute("data-size", size);
+
+		const use = svg.querySelector<SVGUseElement>("use")!;
+		use.setAttribute("href", href);
 	}
 </script>

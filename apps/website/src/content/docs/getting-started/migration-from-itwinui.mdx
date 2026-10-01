@@ -534,7 +534,7 @@ Have questions or feedback about a suggested replacement? Join the [iTwinUI feat
 | [`ColorPicker`](https://itwinui.bentley.com/docs/colorpicker)                   | [Composite color picker](#colorpicker)                                              |
 | [`ComboBox`](https://itwinui.bentley.com/docs/combobox)                         | [MUI `Autocomplete`](#combobox)                                                     |
 | [`DatePicker`](https://itwinui.bentley.com/docs/datepicker)                     | [MUI `DatePicker` or MUI `DateCalendar`](#datepicker)                               |
-| [`Dialog`](https://itwinui.bentley.com/docs/dialog)                             | [MUI `Dialog`](#dialog)                                                             |
+| [`Dialog` and `Modal`](https://itwinui.bentley.com/docs/dialog)                 | [MUI `Dialog`](#dialog)                                                             |
 | [`Divider`](https://itwinui.bentley.com/docs/divider)                           | [MUI `Divider`](#divider)                                                           |
 | [`DropdownButton`](https://itwinui.bentley.com/docs/button#dropdownbutton)      | [MUI `Button` and MUI `Menu`](#dropdownbutton)                                      |
 | [`DropdownMenu`](https://itwinui.bentley.com/docs/dropdownmenu)                 | [MUI `Menu`](#dropdownmenu)                                                         |
@@ -697,6 +697,7 @@ Replace the [`Dialog` component from `@itwin/itwinui-react`](https://itwinui.ben
 - MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`isResizable`](https://itwinui.bentley.com/docs/dialog#draggable) prop. To allow resizing, apply CSS `resize: both` and `overflow: auto` to the dialog paper using `slotProps.paper.className`, and set appropriate size limits.
 - Replace [`styleType="fullPage"`](https://itwinui.bentley.com/docs/dialog#full-page) with the `fullScreen` prop.
 - MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`placement`](https://itwinui.bentley.com/docs/dialog#placement) prop. Position the dialog paper with CSS `position: absolute` instead.
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s non-modal behavior. See [MUI's non-modal dialog guidance](https://mui.com/material-ui/react-dialog/#non-modal-dialog).
 
 ### Divider
 

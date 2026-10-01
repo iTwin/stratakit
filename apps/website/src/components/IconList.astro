@@ -50,7 +50,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 					data-href={href}
 				>
 					<button command="show-modal" commandfor="icon-dialog">
-						<svg width="16" height="16" data-size="regular">
+						<svg width="16" height="16">
 							<use href={`${href}#${defaultSymbol}`} />
 						</svg>
 						{iconName}
@@ -68,8 +68,8 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 <dialog id="icon-dialog">
 	<h2 data-name></h2>
-	<button commandfor="icon-dialog" command="close" aria-label="Dismiss">
-		<svg width="16" height="16" data-size="regular">
+	<button commandfor="icon-dialog" command="close" aria-label="Dismiss" class="icon-button">
+		<svg width="16" height="16">
 			<use href={svgDismiss}></use>
 		</svg>
 	</button>
@@ -139,10 +139,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			display: block;
 			aspect-ratio: 1;
 			color: var(--stratakit-color-icon-neutral-primary);
-
-			&[data-size="regular"] {
-				inline-size: 1rem;
-			}
+			inline-size: 1rem;
 
 			&[data-size="large"] {
 				inline-size: 1.5rem;
@@ -159,6 +156,21 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 			&::backdrop {
 				background-color: var(--stratakit-color-bg-elevation-overlay);
+			}
+		}
+
+		.icon-button {
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-inline-size: var(--stratakit-size-control-field-height-small);
+			min-block-size: var(--stratakit-size-control-field-height-small);
+			color: var(--stratakit-color-icon-neutral-base);
+			border-radius: var(--stratakit-radius-sm);
+
+			&:hover {
+				color: var(--stratakit-color-icon-neutral-primary);
+				background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 			}
 		}
 	}

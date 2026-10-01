@@ -1,0 +1,1 @@
+import{t as e}from"./info-PPn8e5_U.js";var t=`${e}#icon`;`${e}`;export{t};

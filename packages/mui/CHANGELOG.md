@@ -12,7 +12,7 @@
 
 - [#1915](https://github.com/iTwin/stratakit/pull/1915): Updated colors in `ListSubheader` and `BottomNavigation`.
 - [#1889](https://github.com/iTwin/stratakit/pull/1889): Fixed `variant="outlined"` styling on `Paper`.
-- [#1882](https://github.com/iTwin/stratakit/pull/1882): When `Link` has no `href`, its font weight matches regular text.
+- [#1882](https://github.com/iTwin/stratakit/pull/1882): Updated `Link` font weight to match regular text when it has no `href`.
 - [#1890](https://github.com/iTwin/stratakit/pull/1890): Fixed the `variant` prop of `CardHeader`'s `slotProps.title`.
 - [#1903](https://github.com/iTwin/stratakit/pull/1903): Fixed text alignment for month buttons in `DatePicker`.
 - [#1915](https://github.com/iTwin/stratakit/pull/1915): Updated the value of `--stratakit-mui-palette-background-paper`.

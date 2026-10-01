@@ -2,8 +2,6 @@
 
 ## 0.4.6
 
-### Patch Changes
-
 - [#1922](https://github.com/iTwin/stratakit/pull/1922): Added new icons:
 
   - `filetype-amim.svg`
@@ -302,8 +300,6 @@
 - [#1474](https://github.com/iTwin/stratakit/pull/1474): Updated `brand-bentley-systems.svg`.
 
 ## 0.3.1
-
-### Patch Changes
 
 - [#1325](https://github.com/iTwin/stratakit/pull/1325): Added new icons:
   - `asset-infrastructure.svg`

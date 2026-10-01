@@ -227,15 +227,17 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 </style>
 
 <script>
+	const debouncedFilter = debounce(filter, 200);
+
 	const symbolInputs = document.querySelectorAll<HTMLInputElement>(
 		"#icon-symbol-filter input[type='radio']",
 	);
 	for (const symbolInput of symbolInputs) {
-		symbolInput.addEventListener("change", filter);
+		symbolInput.addEventListener("change", debouncedFilter);
 	}
 
 	const searchInput = document.querySelector<HTMLInputElement>("input[type='search']")!;
-	searchInput.addEventListener("input", debounce(filter, 200));
+	searchInput.addEventListener("input", debouncedFilter);
 
 	const iconDialog = document.querySelector<HTMLDialogElement>("#icon-dialog")!;
 	iconDialog.addEventListener("click", (e) => {

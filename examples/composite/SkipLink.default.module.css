@@ -6,9 +6,6 @@
 .skipLink {
 	position: fixed;
 	z-index: 9999;
-	inset-inline: 0;
-	margin-inline: auto;
-	inline-size: max-content;
 
 	@media (prefers-reduced-motion: no-preference) {
 		transition:

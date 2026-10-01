@@ -18,25 +18,30 @@ const defaultSymbol = "icon";
 const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbols))];
 ---
 
-<input id="icon-search-input" type="search" placeholder="Search by name or alias" />
-<fieldset data-symbol-filter>
-	<legend>Filter by symbol</legend>
-	<div>
-		{
-			allSymbols.map((symbol) => (
-				<label>
-					<input
-						type="radio"
-						name="symbol"
-						value={symbol}
-						checked={symbol === defaultSymbol ? true : undefined}
-					/>
-					<span>{symbol}</span>
-				</label>
-			))
-		}
-	</div>
-</fieldset>
+<div>
+	<input id="icon-search-input" type="search" placeholder="Search by name or alias" />
+</div>
+<div>
+	<fieldset id="icon-symbol-filter">
+		<legend>Filter by symbol</legend>
+		<div class="chips">
+			{
+				allSymbols.map((symbol) => (
+					<label>
+						<input
+							type="radio"
+							name="symbol"
+							value={symbol}
+							checked={symbol === defaultSymbol ? true : undefined}
+						/>
+						<span>{symbol}</span>
+					</label>
+				))
+			}
+		</div>
+	</fieldset>
+</div>
+
 <div role="list" class="icons-grid not-content">
 	{
 		iconMetaEntries.map(([iconName, meta]) => {
@@ -95,6 +100,39 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			padding-inline: var(--stratakit-space-300);
 			border: 1px solid var(--stratakit-color-border-page-base);
 			border-radius: var(--stratakit-radius-sm);
+		}
+
+		fieldset {
+			label {
+				margin-top: 0;
+				display: inline-flex;
+				align-items: center;
+				gap: var(--stratakit-space-100);
+				min-block-size: var(--stratakit-size-control-field-height-small);
+				padding-inline: var(--stratakit-space-200);
+				border: 1px solid var(--stratakit-color-border-neutral-base);
+				border-radius: 999px;
+				cursor: pointer;
+
+				&:hover {
+					background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+				}
+
+				&:has(input:focus-visible) {
+					outline: 2px solid var(--stratakit-color-border-accent-strong);
+					outline-offset: 1px;
+				}
+
+				input[type="radio"]:focus-visible:not(#a#b) {
+					outline: unset !important;
+				}
+			}
+
+			.chips {
+				display: flex;
+				gap: var(--stratakit-space-200);
+				margin-top: var(--stratakit-space-50);
+			}
 		}
 
 		.icons-grid {
@@ -187,7 +225,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 <script>
 	const symbolInputs = document.querySelectorAll<HTMLInputElement>(
-		"[data-symbol-filter] input[type='radio']",
+		"#icon-symbol-filter input[type='radio']",
 	);
 	for (const symbolInput of symbolInputs) {
 		symbolInput.addEventListener("change", filter);
@@ -291,7 +329,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	function filter() {
 		const query = searchInput.value;
 		const selectedSymbol =
-			document.querySelector<HTMLInputElement>("[data-symbol-filter] input:checked")?.value ??
+			document.querySelector<HTMLInputElement>("#icon-symbol-filter input:checked")?.value ??
 			"icon";
 		const size = getSize(selectedSymbol);
 

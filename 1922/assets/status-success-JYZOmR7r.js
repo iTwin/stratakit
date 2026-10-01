@@ -1,0 +1,1 @@
+import{t as e}from"./status-success-CpFf8mcL.js";var t=`${e}#icon`;`${e}`;export{t};

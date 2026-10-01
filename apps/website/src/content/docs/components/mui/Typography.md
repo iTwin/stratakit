@@ -36,12 +36,6 @@ The following custom **Typography** `variant`s are available:
 
 All of the stock MUI **Typography** `variant`s are also available for backwards compatibility, but not recommended for use.
 
-### Semantic elements
-
-The `render` prop selects semantic HTML independently from the visual `variant`. StrataKit applies key and inline-code styles to `<kbd>` and `<code>` elements. These styles add decoration only; font size and line height come from the selected `variant`.
-
-::example{src="mui/Typography.semantic-elements"}
-
 ### Heading
 
 StrataKit decouples the visual presentation of **Typography** from its semantic meaning. Any visual `variant` can be rendered as any HTML element using the `render` prop. This allows for maximum flexibility without compromising accessibility.
@@ -79,6 +73,12 @@ The following color are available for the `color` prop:
 - `"warning"`
 
 ::example{src="mui/Typography.colors"}
+
+### Semantic elements
+
+The `render` prop selects semantic HTML independently from the visual `variant`. StrataKit applies key and inline-code styles to `<kbd>` and `<code>` elements. These styles add decoration only; font size and line height come from the selected `variant`.
+
+::example{src="mui/Typography.semantic-elements"}
 
 ## ✅ Do
 

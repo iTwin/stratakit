@@ -22,8 +22,9 @@ export default () => {
 			<Link href="#">This link will be skipped</Link>
 
 			<Typography id={mainId}>
-				Click the top of this example, then press <kbd>Tab</kbd> to see the skip
-				link.
+				Click the top of this example, then press <kbd>Tab</kbd> to reveal the
+				skip link. Press <kbd>Enter</kbd> to activate it and move focus past the
+				link above.
 			</Typography>
 		</>
 	);

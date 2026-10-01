@@ -75,8 +75,8 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	<div class="cover-it" role="none"></div>
 </div>
 
-<dialog id="icon-dialog">
-	<h2 data-name></h2>
+<dialog id="icon-dialog" aria-labelledby="icon-dialog-title">
+	<h2 id="icon-dialog-title"></h2>
 	<button commandfor="icon-dialog" command="close" aria-label="Dismiss" class="icon-button">
 		<svg width="16" height="16">
 			<use href={svgDismiss}></use>
@@ -299,8 +299,8 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		const icon = document.querySelector<HTMLElement>(`[data-icon="${iconName}"]`);
 		if (!icon) return;
 
-		const heading = iconDialog.querySelector("[data-name]")!;
-		heading.textContent = iconName;
+		const heading = iconDialog.querySelector("#icon-dialog-title")!;
+		heading.textContent = `${iconName} icon`;
 
 		const symbols = JSON.parse(icon.getAttribute("data-symbols")!) as string[];
 		const href = icon.getAttribute("data-href")!;

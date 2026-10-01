@@ -121,6 +121,7 @@
 		border-inline-start: var(--stratakit-space-100) solid
 			var(--stratakit-color-border-neutral-muted);
 		border-radius: var(--stratakit-radius-sm);
+		inline-size: 100%;
 		padding: var(--stratakit-space-300);
 		padding-inline-end: var(--stratakit-space-400);
 	}

@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{s as t}from"./disclosure-store.C2OOYZbC.js";import{i as n}from"./dialog.BVFE4h2M.js";var r=e();function i(e={}){return(0,r.jsx)(t,{value:n(e),children:e.children})}export{i as t};

@@ -169,20 +169,24 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 		.icon {
 			margin: 0;
-			padding: var(--stratakit-space-400);
 
+			display: grid;
 			text-align: center;
 			font-size: var(--stratakit-font-size-body-sm);
 			overflow-wrap: anywhere;
 			hyphens: auto;
 
-			display: grid;
-			justify-items: center;
-			justify-content: center;
-			align-content: start;
-			gap: var(--stratakit-space-200);
-
 			background-color: var(--_grid-bg);
+
+			button {
+				padding: var(--stratakit-space-400);
+				display: grid;
+				justify-items: center;
+				justify-content: center;
+				align-content: start;
+				gap: var(--stratakit-space-200);
+				outline-offset: -2px;
+			}
 		}
 
 		svg {

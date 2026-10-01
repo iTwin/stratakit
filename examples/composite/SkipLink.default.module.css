@@ -4,20 +4,28 @@
  *--------------------------------------------------------------------------------------------*/
 
 .skipLink {
-	position: absolute;
+	position: fixed;
 	z-index: 9999;
+	inset-inline: 0;
+	margin-inline: auto;
+	inline-size: max-content;
 
-	/* Mirrors MUI's `visuallyHidden` utility, but only while not focused. */
-	&:not(:focus-visible) {
-		border: 0;
+	@media (prefers-reduced-motion: no-preference) {
+		transition:
+			opacity 150ms ease-in-out,
+			transform 150ms ease-in-out;
+	}
+
+	&:not(:active, :focus-visible) {
+		opacity: 0;
+		transform: translateY(-170%);
+
+		/* #region Visually hidden */
 		clip-path: inset(50%);
-		block-size: 1px;
-		min-block-size: 0;
-		inline-size: 1px;
-		min-inline-size: 0;
-		margin: -1px;
 		overflow: hidden;
-		padding: 0;
 		white-space: nowrap;
+		block-size: 1px;
+		inline-size: 1px;
+		/* #endregion Visually hidden */
 	}
 }

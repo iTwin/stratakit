@@ -1,1 +1,0 @@
-import{J as e}from"./jsx-runtime-C7ynoptP.js";var t=e({default:()=>n}),n=`/1679/assets/email-at-BYClD7Uv.svg`;export{t as n,n as t};

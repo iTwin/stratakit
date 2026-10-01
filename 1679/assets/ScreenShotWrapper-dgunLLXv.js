@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CHTBqLa3.js";import{Q as t}from"./DefaultPropsProvider-CttC6f9u.js";var n=t(),r=`screenshot`,i={screenshot:`_screenshot_j6gtb_5`},a=e();function o(e){let t=(0,n.c)(2),{children:o}=e,s;return t[0]===o?s=t[1]:(s=(0,a.jsx)(`div`,{"data-testid":r,className:i.screenshot,children:o}),t[0]=o,t[1]=s),s}export{o as t};

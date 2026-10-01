@@ -104,7 +104,6 @@
 		border-radius: var(--stratakit-radius-sm);
 		padding-block: var(--stratakit-space-50);
 		padding-inline: var(--stratakit-space-100);
-		text-transform: uppercase;
 		white-space: nowrap;
 	}
 

@@ -28,4 +28,8 @@ RUN --mount=type=cache,uid=${UID},gid=${GID},target=/home/ubuntu/.local/share/pn
 
 # Copy other files in that the tests need that don't affect pnpm install.  The
 # build directory for the server is mounted so it does not need to be copied.    
-COPY --chown=ubuntu:ubuntu apps/test-app/playwright.config.ts apps/test-app/
+COPY --chown=ubuntu:ubuntu --parents \
+    apps/test-app/playwright.config.ts \
+    apps/test-app/tsconfig.json \
+    internal/tsconfig.json \
+    ./

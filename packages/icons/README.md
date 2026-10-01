@@ -25,7 +25,7 @@ npm add @stratakit/icons
 
 > [!NOTE]
 >
-> As `@stratakit/icons` requires [bundler configuration](#bundler-configuration), consider making it a _peer_ dependency if you're building a package that uses `@stratakit/icons`.
+> As `@stratakit/icons` requires [bundler configuration](#bundler-configuration), add it as a _peer_ dependency if you're building a package that uses `@stratakit/icons`.
 
 ## Usage
 

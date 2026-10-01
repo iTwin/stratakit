@@ -4,13 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import Alert from "@mui/material/Alert";
 import Button from "@mui/material/Button";
 import CircularProgress from "@mui/material/CircularProgress";
 import Snackbar from "@mui/material/Snackbar";
 import SnackbarContent from "@mui/material/SnackbarContent";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
+import { svgStatusSuccess } from "@stratakit/icons/status-success";
+import { Icon } from "@stratakit/mui";
 
 export default () => {
 	const [status, setStatus] = React.useState<
@@ -30,39 +31,42 @@ export default () => {
 		};
 	}, [status]);
 
-	const anchorOrigin = {
-		vertical: "top" as const,
-		horizontal: "center" as const,
-	};
-
 	return (
 		<>
 			<Button onClick={() => setStatus("processing")}>Start process</Button>
-			<Snackbar open={status === "processing"} anchorOrigin={anchorOrigin}>
+			<Snackbar open={status === "processing"}>
 				<SnackbarContent
 					message={
 						<Stack
 							direction="row"
-							spacing={1}
+							spacing={2}
 							sx={{
 								justifyContent: "center",
 								alignItems: "center",
 							}}
 						>
-							<CircularProgress size={16} />
+							<CircularProgress size={16} color="secondary" />
 							<Typography>Your process is in progress...</Typography>
 						</Stack>
 					}
 				/>
 			</Snackbar>
-			<Snackbar
-				open={status === "complete"}
-				message="Process complete"
-				anchorOrigin={anchorOrigin}
-			>
-				<Alert severity="success" onClose={() => setStatus("idle")}>
-					Process complete
-				</Alert>
+			<Snackbar open={status === "complete"}>
+				<SnackbarContent
+					message={
+						<Stack
+							direction="row"
+							spacing={2}
+							sx={{
+								justifyContent: "center",
+								alignItems: "center",
+							}}
+						>
+							<Icon href={svgStatusSuccess} />
+							<Typography>Process complete</Typography>
+						</Stack>
+					}
+				/>
 			</Snackbar>
 		</>
 	);

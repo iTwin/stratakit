@@ -1,5 +1,40 @@
 # Changelog
 
+## 0.4.6
+
+### Patch Changes
+
+- [#1922](https://github.com/iTwin/stratakit/pull/1922): Added new icons:
+
+  - `filetype-amim.svg`
+  - `filetype-autocad.svg`
+  - `filetype-compressed.svg`
+  - `filetype-dgn-cloud.svg`
+  - `filetype-dgn-db.svg`
+  - `filetype-ifc.svg`
+  - `filetype-imodel.svg`
+  - `filetype-microstation.svg`
+  - `filetype-mism.svg`
+  - `filetype-pdfmarkup.svg`
+  - `filetype-ppt.svg`
+  - `filetype-raster.svg`
+  - `filetype-revit.svg`
+  - `filetype-sketchup.svg`
+  - `filetype-system.svg`
+  - `filetype-text.svg`
+  - `filetype-txt-2.svg`
+  - `filetype-unknown.svg`
+  - `filetype-vector.svg`
+  - `filetype-visio.svg`
+  - `filetype-vue.svg`
+  - `filetype-word.svg`
+  - `filetype-xls.svg`
+  - `forms-shared-help.svg`
+  - `forms-shared-success.svg`
+  - `forms-shared.svg`
+  - `forms-unshared-help.svg`
+  - `forms-unshared-success.svg`
+
 ## 0.4.5
 
 - [#1863](https://github.com/iTwin/stratakit/pull/1863): Added typed named exports for every icon, available from subpaths without the `.svg` extension. These provide complete URLs for all icon variations, without having to manually manage SVG symbol fragments. Example usage:

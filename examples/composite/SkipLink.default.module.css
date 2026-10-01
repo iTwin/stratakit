@@ -10,12 +10,16 @@
 	@media (prefers-reduced-motion: no-preference) {
 		transition:
 			opacity 150ms ease-in-out,
-			transform 150ms ease-in-out;
+			transform 150ms ease-in-out,
+			block-size 0s allow-discrete,
+			inline-size 0s allow-discrete,
+			clip-path 0s allow-discrete;
 	}
 
 	&:not(:active, :focus-visible) {
 		opacity: 0;
 		transform: translateY(-170%);
+		transition-delay: 0s, 0s, 150ms, 150ms, 150ms;
 
 		/* #region Visually hidden */
 		clip-path: inset(50%);

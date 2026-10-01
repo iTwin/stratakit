@@ -1,0 +1,4564 @@
+{
+	"2d": {
+		"aliases": ["view", "model", "visualize", "dimension", "two"]
+	},
+	"3d-object": {
+		"aliases": ["render", "model", "three", "element"]
+	},
+	"3d": {
+		"aliases": ["view", "model", "visualize", "dimension", "three"]
+	},
+	"4d": {
+		"aliases": [
+			"simulate",
+			"model",
+			"analyze",
+			"timeline",
+			"sequence",
+			"view",
+			"time",
+			"four"
+		]
+	},
+	"access-inherited": {
+		"aliases": [
+			"access",
+			"inherit",
+			"permission",
+			"role",
+			"security",
+			"cascade",
+			"parent",
+			"group",
+			"privilege",
+			"rights",
+			"lock"
+		]
+	},
+	"action-script": {
+		"aliases": [
+			"automate",
+			"code",
+			"command",
+			"execute",
+			"macro",
+			"operate",
+			"perform",
+			"process",
+			"program",
+			"run",
+			"task"
+		]
+	},
+	"activity": {
+		"aliases": ["monitor", "track", "measure", "analyze", "report", "pulse"]
+	},
+	"add-circle": {
+		"aliases": ["create", "insert", "new", "attach", "plus", "+"]
+	},
+	"add-region": {
+		"aliases": [
+			"area",
+			"zone",
+			"territory",
+			"boundary",
+			"polygon",
+			"select",
+			"add",
+			"create",
+			"bounding-box",
+			"sector",
+			"division",
+			"volume",
+			"space"
+		]
+	},
+	"add-square": {
+		"aliases": ["create", "insert", "new", "attach", "plus", "+"]
+	},
+	"add": {
+		"aliases": ["create", "insert", "new", "attach", "plus", "+"]
+	},
+	"ai-chat-add": {
+		"aliases": ["assistant", "bot", "conversation", "new"]
+	},
+	"ai-chat": {
+		"aliases": [
+			"artificial",
+			"assistant",
+			"bot",
+			"conversation",
+			"intelligence"
+		]
+	},
+	"ai-sparkle": {
+		"aliases": [
+			"enhance",
+			"automate",
+			"assist",
+			"improve",
+			"optimize",
+			"process",
+			"generate"
+		]
+	},
+	"ai-tokens": {
+		"aliases": [
+			"ai",
+			"token",
+			"coin",
+			"credit",
+			"usage",
+			"cost",
+			"spend",
+			"value",
+			"model",
+			"artificial intelligence"
+		]
+	},
+	"airplane": {
+		"aliases": ["transport", "dispatch", "travel", "fly", "flight"]
+	},
+	"align-bottom": {
+		"aliases": [
+			"position",
+			"arrange",
+			"order",
+			"align",
+			"place",
+			"organize",
+			"structure",
+			"format",
+			"layout"
+		]
+	},
+	"align-center-horizontal": {
+		"aliases": [
+			"center",
+			"arrange",
+			"position",
+			"align",
+			"balance",
+			"format",
+			"layout",
+			"organize",
+			"structure"
+		]
+	},
+	"align-center-vertical": {
+		"aliases": [
+			"center",
+			"arrange",
+			"position",
+			"align",
+			"balance",
+			"format",
+			"layout",
+			"organize",
+			"structure"
+		]
+	},
+	"align-left": {
+		"aliases": [
+			"position",
+			"arrange",
+			"order",
+			"align",
+			"place",
+			"organize",
+			"structure",
+			"format",
+			"layout"
+		]
+	},
+	"align-right": {
+		"aliases": [
+			"position",
+			"arrange",
+			"order",
+			"align",
+			"place",
+			"organize",
+			"structure",
+			"format",
+			"layout"
+		]
+	},
+	"align-top": {
+		"aliases": [
+			"position",
+			"arrange",
+			"order",
+			"align",
+			"place",
+			"organize",
+			"structure",
+			"format",
+			"layout"
+		]
+	},
+	"annotate-balloon": {
+		"aliases": [
+			"callout",
+			"label",
+			"bubble",
+			"tag",
+			"leader",
+			"pointer",
+			"marker",
+			"flag",
+			"identifier",
+			"note",
+			"bill-of-materials",
+			"balloon-text"
+		]
+	},
+	"annotation": {
+		"aliases": [
+			"comment",
+			"mark",
+			"note",
+			"annotate",
+			"describe",
+			"label",
+			"explain",
+			"document",
+			"reference"
+		]
+	},
+	"apply-down": {
+		"aliases": [
+			"arrow-down",
+			"cascade",
+			"propagate",
+			"fill-down",
+			"copy-down",
+			"push-down",
+			"inherited",
+			"bulk-apply",
+			"cells"
+		]
+	},
+	"arc": {
+		"aliases": ["draw", "shape", "curve", "construct", "line", "path"]
+	},
+	"archive": {
+		"aliases": [
+			"store",
+			"compress",
+			"save",
+			"collect",
+			"organize",
+			"preserve",
+			"backup",
+			"consolidate",
+			"retain",
+			"box"
+		]
+	},
+	"area-building": {
+		"aliases": ["structure", "footprint", "region", "zone", "space"]
+	},
+	"area-island-traffic": {
+		"aliases": ["intersection", "median", "road", "safety"]
+	},
+	"area-pad": {
+		"aliases": ["platform", "foundation", "base", "surface", "zone"]
+	},
+	"area-parking": {
+		"aliases": ["garage", "lot", "space", "stall", "vehicle"]
+	},
+	"area-pond": {
+		"aliases": ["feature", "landscape", "reservoir", "water", "wetland"]
+	},
+	"arrow-down": {
+		"aliases": ["navigate", "direct", "move", "descend", "lower", "next"]
+	},
+	"arrow-left": {
+		"aliases": ["navigate", "direct", "move", "previous", "back", "return"]
+	},
+	"arrow-north": {
+		"aliases": ["up", "north", "direction", "compass", "top", "navigation"]
+	},
+	"arrow-right": {
+		"aliases": ["navigate", "direct", "move", "next", "forward", "advance"]
+	},
+	"arrow-up": {
+		"aliases": ["navigate", "direct", "move", "ascend", "raise", "previous"]
+	},
+	"assemble": {
+		"aliases": ["join", "combine", "build", "construct", "connect"]
+	},
+	"asset-copy": {
+		"aliases": [
+			"duplicate-asset",
+			"clone-object",
+			"copy-element",
+			"replicate-component",
+			"asset-multiply"
+		]
+	},
+	"asset-information": {
+		"aliases": [
+			"traffic",
+			"vehicles",
+			"cars",
+			"road",
+			"flow",
+			"route",
+			"movement",
+			"track",
+			"animation",
+			"simulation",
+			"direction",
+			"vector",
+			"path",
+			"move",
+			"travel",
+			"lane",
+			"street",
+			"transport"
+		]
+	},
+	"asset-infrastructure": {
+		"aliases": [
+			"asset",
+			"building",
+			"equipment",
+			"facility",
+			"management",
+			"network",
+			"property",
+			"resource",
+			"structure",
+			"system",
+			"utility"
+		]
+	},
+	"assign": {
+		"aliases": ["user", "add", "plus", "allocate", "member", "role", "person"]
+	},
+	"attach": {
+		"aliases": ["append", "clip", "add", "upload"]
+	},
+	"automagic": {
+		"aliases": [
+			"ai",
+			"automate",
+			"enhance",
+			"process",
+			"optimize",
+			"improve",
+			"transform",
+			"generate",
+			"wand",
+			"sparkle"
+		]
+	},
+	"axis-lock": {
+		"aliases": [
+			"constraint",
+			"restrict",
+			"fix",
+			"anchor",
+			"guide",
+			"direction",
+			"coordinate"
+		]
+	},
+	"bag": {
+		"aliases": ["store", "carry", "collect", "basket", "shop"]
+	},
+	"basket": {
+		"aliases": ["collect", "store", "contain", "bag", "shop"]
+	},
+	"beam": {
+		"aliases": [
+			"structure",
+			"support",
+			"joist",
+			"girder",
+			"structural",
+			"horizontal",
+			"frame"
+		]
+	},
+	"binder": {
+		"aliases": [
+			"binder",
+			"documents",
+			"files",
+			"folder",
+			"notebook",
+			"organize",
+			"papers",
+			"portfolio",
+			"manage",
+			"collection",
+			"work",
+			"manage"
+		]
+	},
+	"binoculars": {
+		"aliases": [
+			"discover",
+			"explore",
+			"find",
+			"forecast",
+			"look",
+			"observe",
+			"search",
+			"see",
+			"spot",
+			"survey",
+			"view",
+			"watch",
+			"zoom"
+		]
+	},
+	"bis-category-3d": {
+		"aliases": ["spatial", "model", "classification", "organize"]
+	},
+	"bis-category-subcategory": {
+		"aliases": ["group", "subset", "classification", "organize"]
+	},
+	"bis-class": {
+		"aliases": ["type", "category", "group", "classification", "set"]
+	},
+	"bis-definitions-container": {
+		"aliases": ["group", "collection", "set", "store", "hold"]
+	},
+	"bis-element": {
+		"aliases": ["component", "part", "object", "item", "unit"]
+	},
+	"bis-item-generic": {
+		"aliases": ["element", "object", "component", "part", "piece"]
+	},
+	"bis-subject": {
+		"aliases": ["topic", "category", "classification", "type", "group"]
+	},
+	"bolt": {
+		"aliases": [
+			"power",
+			"activate",
+			"energize",
+			"enable",
+			"charge",
+			"electrify",
+			"trigger",
+			"lightning"
+		]
+	},
+	"bookmark": {
+		"aliases": [
+			"save",
+			"mark",
+			"reference",
+			"flag",
+			"tag",
+			"remember",
+			"store",
+			"preserve"
+		]
+	},
+	"boolean": {
+		"aliases": [
+			"logic",
+			"operation",
+			"combine",
+			"modify",
+			"geometry",
+			"union",
+			"intersect",
+			"subtract"
+		]
+	},
+	"boundary-property": {
+		"aliases": ["area", "border", "land", "perimeter", "survey"]
+	},
+	"brace": {
+		"aliases": [
+			"support",
+			"diagonal",
+			"cross",
+			"stability",
+			"lateral",
+			"framing",
+			"truss"
+		]
+	},
+	"brain": {
+		"aliases": [
+			"cognitive",
+			"intelligence",
+			"mental",
+			"mind",
+			"neural",
+			"thinking"
+		]
+	},
+	"branch": {
+		"aliases": [
+			"code",
+			"develop",
+			"diverge",
+			"fork",
+			"git",
+			"merge",
+			"repository",
+			"source control",
+			"version",
+			"workflow"
+		]
+	},
+	"brand-android": {
+		"aliases": ["identify", "brand", "platform", "system", "mark", "google"]
+	},
+	"brand-apple": {
+		"aliases": [
+			"identify",
+			"brand",
+			"represent",
+			"platform",
+			"system",
+			"mark",
+			"steve"
+		]
+	},
+	"brand-bentley-systems": {
+		"aliases": [
+			"identify",
+			"brand",
+			"company",
+			"mark",
+			"reference",
+			"corporate",
+			"infrastructure"
+		]
+	},
+	"brand-windows": {
+		"aliases": [
+			"identify",
+			"brand",
+			"represent",
+			"system",
+			"platform",
+			"pc",
+			"bill"
+		]
+	},
+	"building": {
+		"aliases": [
+			"structure",
+			"architecture",
+			"construction",
+			"facility",
+			"edifice"
+		]
+	},
+	"bulldozer": {
+		"aliases": ["construction", "equipment", "vehicle", "earthwork", "machine"]
+	},
+	"calendar": {
+		"aliases": [
+			"schedule",
+			"plan",
+			"organize",
+			"date",
+			"time",
+			"arrange",
+			"coordinate",
+			"track"
+		]
+	},
+	"camera-retake": {
+		"aliases": [
+			"recapture",
+			"redo",
+			"reshoot",
+			"adjust",
+			"correct",
+			"repeat",
+			"update"
+		]
+	},
+	"camera-video-disabled": {
+		"aliases": [
+			"record",
+			"film",
+			"capture",
+			"video",
+			"stream",
+			"record",
+			"broadcast",
+			"view",
+			"stop",
+			"disable",
+			"prevent",
+			"block",
+			"halt",
+			"cease",
+			"deactivate"
+		]
+	},
+	"camera-video": {
+		"aliases": [
+			"record",
+			"film",
+			"capture",
+			"video",
+			"stream",
+			"record",
+			"broadcast",
+			"view"
+		]
+	},
+	"camera": {
+		"aliases": ["capture", "photograph", "record", "shoot", "image", "snapshot"]
+	},
+	"caret-down": {
+		"aliases": [
+			"indicate",
+			"expand",
+			"reveal",
+			"show",
+			"open",
+			"display",
+			"select",
+			"dropdown"
+		]
+	},
+	"caret-left": {
+		"aliases": ["indicate"]
+	},
+	"caret-right": {
+		"aliases": ["indicate"]
+	},
+	"caret-up": {
+		"aliases": [
+			"indicate",
+			"collapse",
+			"hide",
+			"close",
+			"minimize",
+			"select",
+			"dropdown"
+		]
+	},
+	"carets-up-down": {
+		"aliases": ["arrows", "direction", "navigation", "select", "vertical"]
+	},
+	"cart": {
+		"aliases": ["collect", "purchase", "store", "shop", "buy", "gather"]
+	},
+	"catchment": {
+		"aliases": ["water", "collection", "drainage", "area", "basin"]
+	},
+	"category": {
+		"aliases": [
+			"organize",
+			"classify",
+			"group",
+			"sort",
+			"arrange",
+			"structure",
+			"label",
+			"tag"
+		]
+	},
+	"cesium": {
+		"aliases": ["3d", "globe", "map", "world", "visualization"]
+	},
+	"chart-bar": {
+		"aliases": [
+			"compare",
+			"measure",
+			"analyze",
+			"visualize",
+			"display",
+			"track",
+			"quantify",
+			"evaluate"
+		]
+	},
+	"chart-line": {
+		"aliases": [
+			"trend",
+			"track",
+			"analyze",
+			"monitor",
+			"measure",
+			"visualize",
+			"plot",
+			"graph"
+		]
+	},
+	"chart-pie": {
+		"aliases": [
+			"distribute",
+			"portion",
+			"analyze",
+			"divide",
+			"compare",
+			"visualize",
+			"segment",
+			"allocate"
+		]
+	},
+	"chart": {
+		"aliases": [
+			"visualize",
+			"analyze",
+			"display",
+			"compare",
+			"track",
+			"measure",
+			"plot",
+			"present",
+			"report",
+			"graph"
+		]
+	},
+	"chat": {
+		"aliases": [
+			"communicate",
+			"message",
+			"discuss",
+			"converse",
+			"talk",
+			"exchange",
+			"interact",
+			"connect"
+		]
+	},
+	"checkbox-deselect": {
+		"aliases": [
+			"checkbox",
+			"box",
+			"cancel",
+			"clear",
+			"deselect",
+			"disable",
+			"empty",
+			"remove",
+			"reset",
+			"toggle",
+			"uncheck"
+		]
+	},
+	"checkbox-select": {
+		"aliases": [
+			"checkbox",
+			"accept",
+			"approve",
+			"box",
+			"check",
+			"choose",
+			"complete",
+			"confirm",
+			"select",
+			"tick",
+			"toggle",
+			"validate"
+		]
+	},
+	"checkmark": {
+		"aliases": [
+			"confirm",
+			"verify",
+			"complete",
+			"approve",
+			"validate",
+			"accept",
+			"check",
+			"tick"
+		]
+	},
+	"chevron-down": {
+		"aliases": ["collapse", "navigate", "direct", "indicate", "close", "hide"]
+	},
+	"chevron-left-double": {
+		"aliases": []
+	},
+	"chevron-left": {
+		"aliases": [
+			"navigate",
+			"move",
+			"direct",
+			"previous",
+			"back",
+			"return",
+			"indicate"
+		]
+	},
+	"chevron-right-double": {
+		"aliases": []
+	},
+	"chevron-right": {
+		"aliases": [
+			"navigate",
+			"move",
+			"direct",
+			"next",
+			"forward",
+			"advance",
+			"guide",
+			"indicate",
+			"expand",
+			"open",
+			"reveal"
+		]
+	},
+	"chevron-up": {
+		"aliases": [
+			"collapse",
+			"navigate",
+			"direct",
+			"close",
+			"hide",
+			"minimize",
+			"reduce",
+			"conceal"
+		]
+	},
+	"circle": {
+		"aliases": ["draw", "shape", "form", "outline", "enclose"]
+	},
+	"clash": {
+		"aliases": [
+			"detect",
+			"identify",
+			"warn",
+			"conflict",
+			"interfere",
+			"collide",
+			"overlap",
+			"intersect"
+		]
+	},
+	"clipboard": {
+		"aliases": ["copy", "store", "paste", "collect", "gather"]
+	},
+	"clock": {
+		"aliases": [
+			"watch",
+			"measure",
+			"track",
+			"time",
+			"schedule",
+			"monitor",
+			"hours",
+			"minutes",
+			"seconds"
+		]
+	},
+	"cloud-download": {
+		"aliases": [
+			"retrieve",
+			"fetch",
+			"access",
+			"download",
+			"get",
+			"obtain",
+			"receive",
+			"sync"
+		]
+	},
+	"cloud-lightning": {
+		"aliases": ["weather", "storm", "alert", "warning", "forecast"]
+	},
+	"cloud-offline": {
+		"aliases": [
+			"disconnect",
+			"warn",
+			"offline",
+			"unavailable",
+			"status",
+			"state"
+		]
+	},
+	"cloud-sync-disabled": {
+		"aliases": [
+			"store",
+			"access",
+			"connect",
+			"sync",
+			"network",
+			"online",
+			"remote",
+			"host",
+			"save",
+			"prevent",
+			"indicate",
+			"block",
+			"disable",
+			"cease",
+			"halt"
+		]
+	},
+	"cloud-sync": {
+		"aliases": ["update", "synchronize", "refresh", "sync", "save"]
+	},
+	"cloud-upload": {
+		"aliases": [
+			"send",
+			"store",
+			"transfer",
+			"upload",
+			"sync",
+			"save",
+			"transmit",
+			"backup"
+		]
+	},
+	"cloud": {
+		"aliases": [
+			"store",
+			"access",
+			"connect",
+			"sync",
+			"network",
+			"online",
+			"remote",
+			"host",
+			"save"
+		]
+	},
+	"collapse-rows-all": {
+		"aliases": []
+	},
+	"collapse-rows": {
+		"aliases": []
+	},
+	"column-manage": {
+		"aliases": [
+			"organize",
+			"arrange",
+			"control",
+			"structure",
+			"order",
+			"adjust",
+			"configure",
+			"settings",
+			"prefences"
+		]
+	},
+	"column": {
+		"aliases": ["structure", "support", "pillar", "post", "vertical", "frame"]
+	},
+	"commit-changes": {
+		"aliases": [
+			"save",
+			"update",
+			"version",
+			"history",
+			"change",
+			"record",
+			"git",
+			"source control"
+		]
+	},
+	"compare": {
+		"aliases": [
+			"analyze",
+			"contrast",
+			"evaluate",
+			"examine",
+			"assess",
+			"differentiate",
+			"review"
+		]
+	},
+	"compass": {
+		"aliases": ["direction", "navigate", "orientation", "bearing", "tool"]
+	},
+	"components": {
+		"aliases": [
+			"UI",
+			"elements",
+			"modules",
+			"library",
+			"design system",
+			"building blocks",
+			"widgets",
+			"interface",
+			"reusable",
+			"section"
+		]
+	},
+	"computer": {
+		"aliases": [
+			"access",
+			"display",
+			"work",
+			"compute",
+			"process",
+			"operate",
+			"interact",
+			"machine"
+		]
+	},
+	"cone": {
+		"aliases": ["shape", "geometry", "primitive", "tapered", "conical"]
+	},
+	"configuration": {
+		"aliases": [
+			"adjust",
+			"setup",
+			"modify",
+			"configure",
+			"customize",
+			"wrench",
+			"set",
+			"arrange",
+			"tune",
+			"preferences"
+		]
+	},
+	"construction-area": {
+		"aliases": [
+			"guide",
+			"reference",
+			"temporary",
+			"draft",
+			"helper",
+			"region",
+			"zone"
+		]
+	},
+	"construction-line": {
+		"aliases": [
+			"guide",
+			"reference",
+			"temporary",
+			"draft",
+			"helper",
+			"edge",
+			"axis"
+		]
+	},
+	"construction-point": {
+		"aliases": ["guide", "reference", "temporary", "draft", "helper", "node"]
+	},
+	"control-line-add": {
+		"aliases": [
+			"control-line",
+			"add",
+			"create",
+			"new",
+			"draw",
+			"path",
+			"spline",
+			"bezier",
+			"curve",
+			"geometry",
+			"vector"
+		]
+	},
+	"control-line": {
+		"aliases": [
+			"control-line",
+			"convert",
+			"edit",
+			"modify",
+			"transform",
+			"path",
+			"spline",
+			"bezier",
+			"curve",
+			"adjust",
+			"geometry",
+			"vector"
+		]
+	},
+	"controller": {
+		"aliases": ["controller", "gamepad", "buttons", "interact"]
+	},
+	"copy": {
+		"aliases": [
+			"duplicate",
+			"replicate",
+			"clone",
+			"reproduce",
+			"copy",
+			"mirror",
+			"repeat",
+			"paste"
+		]
+	},
+	"corner": {
+		"aliases": [
+			"vertex",
+			"angle",
+			"intersection",
+			"joint",
+			"bend",
+			"elbow",
+			"node",
+			"edge",
+			"junction",
+			"fillet",
+			"sharp",
+			"point",
+			"corner-mark"
+		]
+	},
+	"cost-configuration": {
+		"aliases": ["price", "setup", "settings", "budget", "finance"]
+	},
+	"crop": {
+		"aliases": [
+			"trim",
+			"adjust",
+			"resize",
+			"cut",
+			"frame",
+			"shape",
+			"modify",
+			"edit"
+		]
+	},
+	"cross-section-perpendicular": {
+		"aliases": ["right angle", "cut", "view", "plane", "section"]
+	},
+	"cross-section-profile": {
+		"aliases": ["elevation", "view", "cut", "drawing", "plane"]
+	},
+	"cross-section-three-point": {
+		"aliases": ["cut", "view", "profile", "slice", "plane"]
+	},
+	"cross-section-two-point": {
+		"aliases": ["cut", "view", "profile", "slice", "plane"]
+	},
+	"cross-section": {
+		"aliases": ["cut", "view", "profile", "slice", "section"]
+	},
+	"crown": {
+		"aliases": [
+			"highlight",
+			"feature",
+			"promote",
+			"premium",
+			"special",
+			"important",
+			"emphasize",
+			"royal"
+		]
+	},
+	"cursor-box": {
+		"aliases": [
+			"point",
+			"select",
+			"indicate",
+			"locate",
+			"choose",
+			"identify",
+			"highlight",
+			"mark",
+			"area",
+			"region"
+		]
+	},
+	"cursor-click": {
+		"aliases": [
+			"interact",
+			"select",
+			"activate",
+			"choose",
+			"press",
+			"trigger",
+			"engage"
+		]
+	},
+	"cursor-select": {
+		"aliases": [
+			"choose",
+			"highlight",
+			"select",
+			"pick",
+			"indicate",
+			"identify",
+			"direct"
+		]
+	},
+	"cursor": {
+		"aliases": ["point", "select", "indicate", "locate", "choose", "identify"]
+	},
+	"curve": {
+		"aliases": [
+			"draw",
+			"shape",
+			"bend",
+			"form",
+			"design",
+			"outline",
+			"sketch",
+			"line"
+		]
+	},
+	"cut": {
+		"aliases": ["divide", "separate", "split", "slice", "copy", "paste", "trim"]
+	},
+	"cylinder": {
+		"aliases": [
+			"shape",
+			"geometry",
+			"primitive",
+			"round",
+			"tube",
+			"pipe",
+			"column"
+		]
+	},
+	"dashboard": {
+		"aliases": [
+			"analytics",
+			"control",
+			"metrics",
+			"monitor",
+			"overview",
+			"panel"
+		]
+	},
+	"database": {
+		"aliases": [
+			"store",
+			"manage",
+			"organize",
+			"data",
+			"collect",
+			"maintain",
+			"structure",
+			"audit"
+		]
+	},
+	"date-time-picker": {
+		"aliases": [
+			"picker",
+			"calendar",
+			"clock",
+			"schedule",
+			"form",
+			"input",
+			"select",
+			"time"
+		]
+	},
+	"define-region-size": {
+		"aliases": [
+			"dimension",
+			"scale",
+			"crop-size",
+			"viewport-bounds",
+			"resize",
+			"frame-dimensions",
+			"area-scale",
+			"boundary-size",
+			"extent",
+			"layout-measure",
+			"footprint-dimensions"
+		]
+	},
+	"delete-columns": {
+		"aliases": ["columns", "delete", "remove", "table"]
+	},
+	"delete-rows": {
+		"aliases": ["rows", "delete", "remove", "table"]
+	},
+	"delete-table": {
+		"aliases": ["delete", "remove", "table"]
+	},
+	"delete": {
+		"aliases": [
+			"remove",
+			"erase",
+			"eliminate",
+			"destroy",
+			"clear",
+			"delete",
+			"purge",
+			"trash",
+			"bin",
+			"waste"
+		]
+	},
+	"deliverables": {
+		"aliases": ["output", "product", "result", "submission", "delivery"]
+	},
+	"details": {
+		"aliases": ["list", "information", "items"]
+	},
+	"developer": {
+		"aliases": [
+			"code",
+			"program",
+			"build",
+			"develop",
+			"create",
+			"construct",
+			"implement"
+		]
+	},
+	"dimension-angle": {
+		"aliases": ["degree", "inclination", "measurement", "rotation", "technical"]
+	},
+	"dimension-linear": {
+		"aliases": ["distance", "length", "measurement", "straight", "technical"]
+	},
+	"dimension-ordinate": {
+		"aliases": [
+			"coordinate",
+			"location",
+			"measurement",
+			"position",
+			"technical"
+		]
+	},
+	"dimension-radial": {
+		"aliases": ["circular", "measurement", "radius", "round", "technical"]
+	},
+	"disconnect": {
+		"aliases": [
+			"separate",
+			"detach",
+			"break",
+			"split",
+			"sever",
+			"unplug",
+			"isolate",
+			"connect",
+			"plug"
+		]
+	},
+	"dismiss-circle": {
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase", "minus"]
+	},
+	"dismiss-square": {
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase", "minus"]
+	},
+	"dismiss": {
+		"aliases": [
+			"hide",
+			"exit",
+			"cancel",
+			"close",
+			"end",
+			"terminate",
+			"clear",
+			"cross",
+			"x"
+		]
+	},
+	"distribute-center-horizontal": {
+		"aliases": ["space", "arrange", "align", "distribute", "order", "position"]
+	},
+	"distribute-center-vertical": {
+		"aliases": ["space", "arrange", "align", "distribute", "order", "position"]
+	},
+	"distribute-left": {
+		"aliases": ["align", "arrange", "position", "even", "layout", "space"]
+	},
+	"distribute-right": {
+		"aliases": ["align", "arrange", "position", "even", "layout", "space"]
+	},
+	"distribute-top": {
+		"aliases": ["align", "arrange", "position", "even", "layout", "space"]
+	},
+	"ditch": {
+		"aliases": [
+			"ditch",
+			"trench",
+			"channel",
+			"drain",
+			"watercourse",
+			"excavation",
+			"irrigation",
+			"agriculture",
+			"landform",
+			"survey"
+		]
+	},
+	"dock-bottom": {
+		"aliases": [
+			"position",
+			"attach",
+			"align",
+			"place",
+			"fix",
+			"secure",
+			"anchor",
+			"pin"
+		]
+	},
+	"dock-left": {
+		"aliases": [
+			"position",
+			"attach",
+			"align",
+			"place",
+			"fix",
+			"secure",
+			"anchor",
+			"pin"
+		]
+	},
+	"dock-right": {
+		"aliases": [
+			"position",
+			"attach",
+			"align",
+			"place",
+			"fix",
+			"secure",
+			"anchor",
+			"pin"
+		]
+	},
+	"dock-top": {
+		"aliases": [
+			"position",
+			"attach",
+			"align",
+			"place",
+			"fix",
+			"secure",
+			"anchor",
+			"pin"
+		]
+	},
+	"document-blank": {
+		"aliases": ["file", "page", "sheet", "write", "compose", "draft", "author"]
+	},
+	"document-locked": {
+		"aliases": [
+			"file",
+			"page",
+			"sheet",
+			"protect",
+			"secure",
+			"restrict",
+			"lock",
+			"safeguard",
+			"prevent"
+		]
+	},
+	"document-migration": {
+		"aliases": ["transfer", "move", "convert", "file", "migrate"]
+	},
+	"document-pdf": {
+		"aliases": ["file", "format", "adobe", "read", "document"]
+	},
+	"document-reference": {
+		"aliases": [
+			"file",
+			"page",
+			"sheet",
+			"link",
+			"cite",
+			"connect",
+			"reference",
+			"relate",
+			"associate"
+		]
+	},
+	"document": {
+		"aliases": ["file", "paper", "content", "record", "page"]
+	},
+	"documentation": {
+		"aliases": [
+			"inform",
+			"guide",
+			"explain",
+			"describe",
+			"instruct",
+			"detail",
+			"how",
+			"help",
+			"support"
+		]
+	},
+	"download": {
+		"aliases": [
+			"retrieve",
+			"save",
+			"obtain",
+			"fetch",
+			"transfer",
+			"acquire",
+			"receive",
+			"export"
+		]
+	},
+	"downloads-view": {
+		"aliases": ["archive", "browser", "files", "history", "list"]
+	},
+	"drag-handle-horizontal": {
+		"aliases": ["move", "reorder", "grip", "arrange", "shift", "position"]
+	},
+	"drag-handle-vertical": {
+		"aliases": ["move", "reorder", "grip", "arrange", "shift", "position"]
+	},
+	"drainage-tools": {
+		"aliases": ["cleanout", "drain", "pipes", "plumbing", "sewer", "tools"]
+	},
+	"drainage": {
+		"aliases": ["water", "flow", "system", "runoff", "pipe"]
+	},
+	"draw": {
+		"aliases": [
+			"create",
+			"sketch",
+			"illustrate",
+			"design",
+			"compose",
+			"draft",
+			"render"
+		]
+	},
+	"drawing-view-create": {
+		"aliases": ["blueprint", "design", "engineering", "technical"]
+	},
+	"drone": {
+		"aliases": [
+			"aerial",
+			"device",
+			"fly",
+			"remote",
+			"control",
+			"survey",
+			"capture"
+		]
+	},
+	"drop-cap": {
+		"aliases": [
+			"column",
+			"capital",
+			"shear",
+			"punching",
+			"slab",
+			"support",
+			"mushroom"
+		]
+	},
+	"drop": {
+		"aliases": ["separate", "break", "split", "expand", "scatter"]
+	},
+	"dropdown": {
+		"aliases": [
+			"select",
+			"menu",
+			"list",
+			"option",
+			"choice",
+			"form",
+			"input",
+			"arrow",
+			"collapse",
+			"expand",
+			"combobox"
+		]
+	},
+	"duplicate": {
+		"aliases": ["copy", "clone", "replicate", "reproduce", "mirror", "repeat"]
+	},
+	"edit-all": {
+		"aliases": [
+			"modify",
+			"change",
+			"revise",
+			"alter",
+			"adjust",
+			"update",
+			"amend",
+			"bulk"
+		]
+	},
+	"edit": {
+		"aliases": [
+			"modify",
+			"change",
+			"revise",
+			"alter",
+			"adjust",
+			"update",
+			"amend",
+			"pencil"
+		]
+	},
+	"ellipse": {
+		"aliases": ["draw", "shape", "form", "outline"]
+	},
+	"email-at": {
+		"aliases": ["address", "identify", "locate", "contact", "specify", "target"]
+	},
+	"email": {
+		"aliases": [
+			"send",
+			"message",
+			"communicate",
+			"contact",
+			"write",
+			"correspond",
+			"envelope"
+		]
+	},
+	"environment": {
+		"aliases": [
+			"adjust",
+			"customize",
+			"setup",
+			"modify",
+			"cloud",
+			"sun",
+			"weather",
+			"sky"
+		]
+	},
+	"equals": {
+		"aliases": [
+			"balance",
+			"compare",
+			"equal",
+			"equation",
+			"match",
+			"math",
+			"same"
+		]
+	},
+	"eraser": {
+		"aliases": ["clean", "clear", "delete", "edit", "remove", "tool", "wipe"]
+	},
+	"error": {
+		"aliases": ["problem", "issue", "alert", "failure", "fault", "invalid"]
+	},
+	"exit": {
+		"aliases": [
+			"leave",
+			"close",
+			"depart",
+			"quit",
+			"escape",
+			"abandon",
+			"end",
+			"log out"
+		]
+	},
+	"expand-rows-all": {
+		"aliases": []
+	},
+	"expand-rows": {
+		"aliases": []
+	},
+	"explode": {
+		"aliases": ["separate", "break", "split", "expand", "scatter"]
+	},
+	"export": {
+		"aliases": [
+			"send",
+			"transfer",
+			"output",
+			"extract",
+			"save",
+			"download",
+			"move"
+		]
+	},
+	"eyedropper-drop": {
+		"aliases": ["sample", "pick", "select", "choose", "collect", "color"]
+	},
+	"eyedropper-filled": {
+		"aliases": ["sample", "pick", "select", "choose", "collect", "color"]
+	},
+	"eyedropper": {
+		"aliases": ["sample", "pick", "select", "choose", "collect", "color"]
+	},
+	"fast-backward": {
+		"aliases": ["rewind", "reverse", "speed", "previous", "back", "return"]
+	},
+	"fast-forward": {
+		"aliases": ["advance", "speed", "accelerate", "next", "forward", "progress"]
+	},
+	"feedback": {
+		"aliases": ["comment", "suggest", "respond", "review", "evaluate"]
+	},
+	"filter": {
+		"aliases": [
+			"refine",
+			"sort",
+			"exclude",
+			"separate",
+			"strain",
+			"sift",
+			"isolate"
+		]
+	},
+	"find": {
+		"aliases": [
+			"search",
+			"locate",
+			"discover",
+			"seek",
+			"explore",
+			"hunt",
+			"detect"
+		]
+	},
+	"fire-extinguisher": {
+		"aliases": ["safety", "protect", "suppress", "prevent", "secure", "control"]
+	},
+	"fire": {
+		"aliases": [
+			"flame",
+			"warn",
+			"danger",
+			"alert",
+			"caution",
+			"hazard",
+			"emergency",
+			"urgent"
+		]
+	},
+	"fit-to-view": {
+		"aliases": [
+			"adjust",
+			"scale",
+			"center",
+			"resize",
+			"frame",
+			"align",
+			"position"
+		]
+	},
+	"flag": {
+		"aliases": [
+			"mark",
+			"indicate",
+			"signal",
+			"tag",
+			"highlight",
+			"identify",
+			"note"
+		]
+	},
+	"folder-add": {
+		"aliases": ["create", "store", "organize", "new", "generate", "make", "+"]
+	},
+	"folder-browse": {
+		"aliases": ["explore", "search", "view", "examine", "look", "inspect"]
+	},
+	"folder-chevron-down": {
+		"aliases": ["expand", "open", "reveal", "show", "display", "unfold"]
+	},
+	"folder-chevron-up": {
+		"aliases": ["collapse", "close", "hide", "conceal", "fold", "minimize"]
+	},
+	"folder-export": {
+		"aliases": ["send", "move", "transfer", "download", "export"]
+	},
+	"folder-import": {
+		"aliases": ["receive", "move", "transfer", "upload"]
+	},
+	"folder-lock": {
+		"aliases": ["secure", "protect", "restrict", "safeguard", "prevent"]
+	},
+	"folder-maximize": {
+		"aliases": [
+			"close",
+			"collapse",
+			"conceal",
+			"contract",
+			"directory",
+			"fold",
+			"hide",
+			"reduce",
+			"shrink"
+		]
+	},
+	"folder-open": {
+		"aliases": ["access", "view", "reveal", "show", "display", "examine"]
+	},
+	"folder-remove": {
+		"aliases": [
+			"delete",
+			"trash",
+			"clear",
+			"erase",
+			"document",
+			"file",
+			"directory"
+		]
+	},
+	"folder-shortcut": {
+		"aliases": ["link", "reference", "access", "connect", "quick", "fast"]
+	},
+	"folder": {
+		"aliases": [
+			"store",
+			"organize",
+			"contain",
+			"collect",
+			"group",
+			"arrange",
+			"hold"
+		]
+	},
+	"font-bold": {
+		"aliases": [
+			"emphasize",
+			"strengthen",
+			"highlight",
+			"enhance",
+			"stress",
+			"text style",
+			"font"
+		]
+	},
+	"font-color": {
+		"aliases": [
+			"style",
+			"tint",
+			"shade",
+			"color",
+			"customize",
+			"modify",
+			"text style",
+			"font"
+		]
+	},
+	"font-italic": {
+		"aliases": [
+			"emphasize",
+			"style",
+			"slant",
+			"angle",
+			"tilt",
+			"customize",
+			"text style",
+			"font"
+		]
+	},
+	"font-size": {
+		"aliases": [
+			"adjust",
+			"scale",
+			"resize",
+			"modify",
+			"change",
+			"alter",
+			"text style",
+			"font"
+		]
+	},
+	"font-strikethrough": {
+		"aliases": [
+			"cancel",
+			"remove",
+			"cross",
+			"delete",
+			"mark",
+			"negate",
+			"text style",
+			"font"
+		]
+	},
+	"font-underline": {
+		"aliases": [
+			"emphasize",
+			"mark",
+			"highlight",
+			"stress",
+			"underscore",
+			"text style",
+			"font"
+		]
+	},
+	"footing-combined": {
+		"aliases": [
+			"foundation",
+			"base",
+			"connected",
+			"multiple",
+			"support",
+			"structure"
+		]
+	},
+	"footing-isolated": {
+		"aliases": ["foundation", "base", "pad", "column", "support", "structure"]
+	},
+	"footing-mat": {
+		"aliases": ["foundation", "base", "raft", "slab", "support", "structure"]
+	},
+	"footing-pilecap": {
+		"aliases": ["foundation", "deep", "piles", "support", "structure", "cap"]
+	},
+	"form": {
+		"aliases": ["input", "data", "entry", "fields"]
+	},
+	"format": {
+		"aliases": [
+			"arrange",
+			"design",
+			"layout",
+			"organize",
+			"presentation",
+			"structure",
+			"style",
+			"template"
+		]
+	},
+	"frame-backward": {
+		"aliases": ["navigate", "reverse", "previous", "return", "back"]
+	},
+	"frame-forward": {
+		"aliases": ["navigate", "advance", "next", "proceed", "continue"]
+	},
+	"function": {
+		"aliases": [
+			"calculate",
+			"process",
+			"compute",
+			"solve",
+			"evaluate",
+			"determine"
+		]
+	},
+	"geolocate": {
+		"aliases": ["find", "position", "locate", "place", "spot", "identify"]
+	},
+	"geospatial-connection": {
+		"aliases": [
+			"connect",
+			"link",
+			"network",
+			"spatial",
+			"map",
+			"location",
+			"integrate",
+			"join"
+		]
+	},
+	"geospatial-features": {
+		"aliases": [
+			"attribute",
+			"element",
+			"geometry",
+			"layer",
+			"map",
+			"point",
+			"polygon",
+			"spatial"
+		]
+	},
+	"gesture-one-finger-double-tap": {
+		"aliases": ["touch", "interact", "tap", "press", "click"]
+	},
+	"gesture-one-finger-drag": {
+		"aliases": ["move", "slide", "swipe", "shift", "relocate"]
+	},
+	"gesture-one-finger-tap": {
+		"aliases": ["touch", "press", "select", "activate", "interact", "click"]
+	},
+	"gesture-pinch": {
+		"aliases": [
+			"zoom",
+			"scale",
+			"adjust",
+			"resize",
+			"modify",
+			"interact",
+			"change"
+		]
+	},
+	"gesture-touch": {
+		"aliases": [
+			"interact",
+			"press",
+			"contact",
+			"touch",
+			"tap",
+			"handle",
+			"finger"
+		]
+	},
+	"gesture-two-finger-drag": {
+		"aliases": ["move", "slide", "swipe", "shift", "interact", "relocate"]
+	},
+	"gesture-two-finger-tap": {
+		"aliases": ["touch", "press", "select", "activate", "interact", "click"]
+	},
+	"gesture-two-finger": {
+		"aliases": ["interact", "press", "touch", "handle", "manipulate"]
+	},
+	"git-branch": {
+		"aliases": [
+			"code",
+			"commit",
+			"develop",
+			"diverge",
+			"fork",
+			"repository",
+			"source control",
+			"version control"
+		]
+	},
+	"git-merge": {
+		"aliases": [
+			"combine",
+			"commit",
+			"join",
+			"repository",
+			"resolve",
+			"source control",
+			"unite",
+			"version control"
+		]
+	},
+	"globe": {
+		"aliases": ["explore", "navigate", "world", "travel", "country", "map"]
+	},
+	"go-to-end": {
+		"aliases": [
+			"navigate",
+			"jump",
+			"finish",
+			"complete",
+			"conclude",
+			"end",
+			"last"
+		]
+	},
+	"go-to-start": {
+		"aliases": [
+			"navigate",
+			"jump",
+			"begin",
+			"start",
+			"initiate",
+			"commence",
+			"first"
+		]
+	},
+	"grading-area": {
+		"aliases": ["terrain", "surface", "region", "elevation", "zone"]
+	},
+	"grading-constraints": {
+		"aliases": ["civil", "construction", "engineering", "limits", "terrain"]
+	},
+	"grading-direction": {
+		"aliases": ["terrain", "flow", "slope", "arrow", "elevation"]
+	},
+	"grading-limit": {
+		"aliases": ["terrain", "boundary", "elevation", "extent", "slope"]
+	},
+	"graph-scatter-chart": {
+		"aliases": ["plot", "chart", "data", "statistics", "analysis", "points"]
+	},
+	"grid-lines": {
+		"aliases": [
+			"layout",
+			"guide",
+			"axis",
+			"reference",
+			"structure",
+			"column-lines"
+		]
+	},
+	"grid": {
+		"aliases": [
+			"display",
+			"arrange",
+			"organize",
+			"structure",
+			"order",
+			"align",
+			"view"
+		]
+	},
+	"group": {
+		"aliases": [
+			"combine",
+			"collect",
+			"gather",
+			"unite",
+			"merge",
+			"assemble",
+			"objects",
+			"elements"
+		]
+	},
+	"hand": {
+		"aliases": [
+			"interact",
+			"grab",
+			"touch",
+			"hold",
+			"manipulate",
+			"handle",
+			"move",
+			"pan"
+		]
+	},
+	"hardhat": {
+		"aliases": [
+			"safety",
+			"construction",
+			"helmet",
+			"protection",
+			"worker",
+			"site",
+			"engineering"
+		]
+	},
+	"hatch": {
+		"aliases": [
+			"pattern",
+			"fill",
+			"crosshatch",
+			"shade",
+			"texture",
+			"area-fill",
+			"lining",
+			"shading",
+			"drafting-pattern",
+			"material-indicator"
+		]
+	},
+	"heart": {
+		"aliases": [
+			"like",
+			"favorite",
+			"save",
+			"prefer",
+			"bookmark",
+			"mark",
+			"love"
+		]
+	},
+	"help": {
+		"aliases": ["assist", "guide", "support", "aid", "explain", "inform", "?"]
+	},
+	"hierarchy-tree": {
+		"aliases": ["organize", "structure", "relate", "arrange", "order"]
+	},
+	"history": {
+		"aliases": [
+			"track",
+			"record",
+			"review",
+			"log",
+			"monitor",
+			"previous",
+			"time"
+		]
+	},
+	"home": {
+		"aliases": [
+			"navigate",
+			"return",
+			"start",
+			"begin",
+			"main",
+			"primary",
+			"house"
+		]
+	},
+	"hourglass": {
+		"aliases": [
+			"wait",
+			"process",
+			"measure",
+			"time",
+			"duration",
+			"period",
+			"progress",
+			"loading"
+		]
+	},
+	"i-beam": {
+		"aliases": ["beam", "steel", "structure"]
+	},
+	"ice": {
+		"aliases": [
+			"load",
+			"environmental",
+			"weather",
+			"climate",
+			"cold",
+			"freezing",
+			"snow"
+		]
+	},
+	"image": {
+		"aliases": [
+			"display",
+			"show",
+			"picture",
+			"visual",
+			"photo",
+			"graphic",
+			"file"
+		]
+	},
+	"imodel": {
+		"aliases": [
+			"model",
+			"design",
+			"structure",
+			"build",
+			"create",
+			"construct",
+			"bentley",
+			"project",
+			"file"
+		]
+	},
+	"import": {
+		"aliases": ["receive", "transfer", "input", "upload", "get"]
+	},
+	"important-very": {
+		"aliases": [
+			"mark",
+			"highlight",
+			"prioritize",
+			"emphasize",
+			"stress",
+			"exclaim",
+			"warn",
+			"alert",
+			"critical",
+			"urgent"
+		]
+	},
+	"important": {
+		"aliases": [
+			"mark",
+			"highlight",
+			"prioritize",
+			"emphasize",
+			"stress",
+			"exclaim"
+		]
+	},
+	"inbox": {
+		"aliases": ["email", "collect", "store", "gather", "tray"]
+	},
+	"info": {
+		"aliases": [
+			"inform",
+			"explain",
+			"detail",
+			"describe",
+			"clarify",
+			"information"
+		]
+	},
+	"inlet": {
+		"aliases": ["drainage", "water", "entry", "flow", "pipe"]
+	},
+	"inspection": {
+		"aliases": ["check", "review", "examine", "assess", "validate"]
+	},
+	"install": {
+		"aliases": ["setup", "add", "implement", "deploy", "integrate", "update"]
+	},
+	"isolate": {
+		"aliases": [
+			"separate",
+			"focus",
+			"extract",
+			"isolate",
+			"detach",
+			"layer",
+			"view"
+		]
+	},
+	"issue-report": {
+		"aliases": ["notify", "alert", "report", "inform", "support", "bug"]
+	},
+	"issue": {
+		"aliases": ["error", "alert", "support", "bug"]
+	},
+	"itwin": {
+		"aliases": [
+			"model",
+			"design",
+			"structure",
+			"build",
+			"create",
+			"construct",
+			"bentley",
+			"project",
+			"file",
+			"digital twin"
+		]
+	},
+	"key": {
+		"aliases": [
+			"secure",
+			"access",
+			"unlock",
+			"open",
+			"authorize",
+			"lock",
+			"api"
+		]
+	},
+	"keyboard": {
+		"aliases": ["type", "input", "enter", "write", "compose", "kbd"]
+	},
+	"label": {
+		"aliases": ["identify", "tag", "mark", "name", "designate", "annotate"]
+	},
+	"layers": {
+		"aliases": [
+			"stack",
+			"arrange",
+			"organize",
+			"order",
+			"structure",
+			"objects",
+			"elements",
+			"items"
+		]
+	},
+	"layout-parking": {
+		"aliases": ["vehicle", "area", "plan", "design", "space"]
+	},
+	"layout-pond": {
+		"aliases": ["water", "design", "area", "landscape", "plan"]
+	},
+	"layout": {
+		"aliases": ["arrange", "organize", "structure", "plan", "format"]
+	},
+	"library": {
+		"aliases": ["collect", "store", "organize", "gather", "archive", "items"]
+	},
+	"license-add": {
+		"aliases": ["grant", "issue", "new", "permission", "software"]
+	},
+	"license-check-in": {
+		"aliases": [
+			"check-in",
+			"permission",
+			"redeem",
+			"restore",
+			"return",
+			"software"
+		]
+	},
+	"license-check-out": {
+		"aliases": [
+			"allocate",
+			"assign",
+			"borrow",
+			"check-out",
+			"permission",
+			"software"
+		]
+	},
+	"license-download": {
+		"aliases": ["acquire", "get", "obtain", "permission", "software"]
+	},
+	"license-minus": {
+		"aliases": []
+	},
+	"lightbulb": {
+		"aliases": ["ideate", "suggest", "inspire", "create", "think"]
+	},
+	"line": {
+		"aliases": ["draw", "connect", "path", "shape"]
+	},
+	"link": {
+		"aliases": ["connect", "join", "relate", "associate", "bind", "url", "www"]
+	},
+	"list": {
+		"aliases": [
+			"organize",
+			"order",
+			"itemize",
+			"arrange",
+			"structure",
+			"items",
+			"view"
+		]
+	},
+	"load-area": {
+		"aliases": [
+			"force",
+			"pressure",
+			"weight",
+			"structural-zone",
+			"distribution",
+			"live-load",
+			"dead-load",
+			"stress-region"
+		]
+	},
+	"load-case": {
+		"aliases": [
+			"scenario",
+			"analysis",
+			"combination",
+			"set",
+			"condition",
+			"group"
+		]
+	},
+	"load-combination": {
+		"aliases": ["add", "sum", "group", "analysis", "design", "factors", "case"]
+	},
+	"load-linear": {
+		"aliases": [
+			"force",
+			"distributed",
+			"pressure",
+			"line",
+			"edge",
+			"uniform",
+			"trapezoidal"
+		]
+	},
+	"load-perimeter": {
+		"aliases": [
+			"linear-load",
+			"line-force",
+			"wall-load",
+			"boundary-weight",
+			"edge-force",
+			"stress-line",
+			"perimeter-distribution"
+		]
+	},
+	"load-point": {
+		"aliases": ["force", "moment", "torque", "concentrated", "apply", "node"]
+	},
+	"location": {
+		"aliases": ["mark", "position", "place", "locate", "pin", "map"]
+	},
+	"lock-unlocked": {
+		"aliases": ["access", "permit", "allow", "enable"]
+	},
+	"lock": {
+		"aliases": [
+			"secure",
+			"protect",
+			"restrict",
+			"safeguard",
+			"prevent",
+			"block"
+		]
+	},
+	"loop": {
+		"aliases": ["repeat", "cycle", "circulate", "revolve"]
+	},
+	"magnet": {
+		"aliases": ["attract", "connect", "pull", "snap", "point"]
+	},
+	"maintenance": {
+		"aliases": ["repair", "update", "service", "maintain", "fix", "configure"]
+	},
+	"manager": {
+		"aliases": [
+			"control",
+			"oversee",
+			"supervise",
+			"direct",
+			"admin",
+			"briefcase",
+			"business"
+		]
+	},
+	"manhole-sewer": {
+		"aliases": [
+			"access",
+			"utility",
+			"infrastructure",
+			"underground",
+			"drain",
+			"cover"
+		]
+	},
+	"map-google": {
+		"aliases": [
+			"navigate",
+			"locate",
+			"view",
+			"explore",
+			"find",
+			"google",
+			"pin"
+		]
+	},
+	"map-info": {
+		"aliases": [
+			"navigate",
+			"locate",
+			"view",
+			"explore",
+			"find",
+			"world",
+			"inform",
+			"detail",
+			"describe",
+			"explain",
+			"specify"
+		]
+	},
+	"map": {
+		"aliases": ["navigate", "locate", "view", "explore", "find", "world"]
+	},
+	"mass-area": {
+		"aliases": [
+			"geometry",
+			"volume",
+			"footprint",
+			"region",
+			"zone",
+			"block",
+			"space",
+			"solid"
+		]
+	},
+	"mass-excitation": {
+		"aliases": [
+			"vibration",
+			"frequency",
+			"dynamic",
+			"resonance",
+			"harmonic",
+			"force"
+		]
+	},
+	"mass-linear": {
+		"aliases": [
+			"weight",
+			"inertia",
+			"distributed",
+			"line",
+			"dynamic",
+			"gravity"
+		]
+	},
+	"mass-perimeter": {
+		"aliases": [
+			"boundary",
+			"edge",
+			"border",
+			"outline",
+			"circumference",
+			"silhouette",
+			"limit",
+			"exterior"
+		]
+	},
+	"mass": {
+		"aliases": [
+			"weight",
+			"inertia",
+			"gravity",
+			"dead-load",
+			"dynamic",
+			"seismic"
+		]
+	},
+	"mcp-server": {
+		"aliases": [
+			"application",
+			"cloud",
+			"compute",
+			"host",
+			"network",
+			"process",
+			"service",
+			"storage"
+		]
+	},
+	"measure-angle": {
+		"aliases": ["degree", "geometry", "rotation", "protractor", "angle"]
+	},
+	"measure-area": {
+		"aliases": ["surface", "space", "size", "coverage", "dimension"]
+	},
+	"measure-distance": {
+		"aliases": ["length", "span", "dimension", "measurement", "size"]
+	},
+	"measure-height": {
+		"aliases": ["dimension", "elevation", "height", "measure", "size"]
+	},
+	"measure-location": {
+		"aliases": ["position", "place", "coordinate", "point", "spot"]
+	},
+	"measure-perpendicular-distance": {
+		"aliases": ["spacing", "right angle", "geometry"]
+	},
+	"measure-radius": {
+		"aliases": ["dimension", "circle", "distance", "geometry", "size"]
+	},
+	"measure-slope": {
+		"aliases": [
+			"slope",
+			"gradient",
+			"angle",
+			"incline",
+			"pitch",
+			"grade",
+			"dimension",
+			"measurement"
+		]
+	},
+	"measure": {
+		"aliases": [
+			"calculate",
+			"size",
+			"distance",
+			"ruler",
+			"dimensions",
+			"width",
+			"height",
+			"depth",
+			"length"
+		]
+	},
+	"measurements": {
+		"aliases": [
+			"calculate",
+			"distance",
+			"dimension",
+			"size",
+			"scale",
+			"measure",
+			"ruler",
+			"width",
+			"height",
+			"depth",
+			"length"
+		]
+	},
+	"menu": {
+		"aliases": ["select", "choose", "list", "pick", "options", "hamburger"]
+	},
+	"merge-cells": {
+		"aliases": ["cells", "combine", "join", "merge", "table"]
+	},
+	"merge": {
+		"aliases": ["combine", "join", "unite", "fuse", "integrate", "mix"]
+	},
+	"mesh-surface": {
+		"aliases": ["topology", "network", "grid", "structure", "wireframe"]
+	},
+	"mesh": {
+		"aliases": ["network", "grid", "structure", "web", "wireframe", "points"]
+	},
+	"microphone": {
+		"aliases": [
+			"audio",
+			"capture",
+			"input",
+			"record",
+			"sound",
+			"speak",
+			"voice"
+		]
+	},
+	"minimize": {
+		"aliases": ["reduce", "shrink", "collapse", "decrease", "contract", "hide"]
+	},
+	"minus-circle": {
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"]
+	},
+	"minus-square": {
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"]
+	},
+	"minus": {
+		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"]
+	},
+	"model-cube": {
+		"aliases": ["display", "rotate", "view", "3d", "shape", "sides"]
+	},
+	"model-sphere": {
+		"aliases": ["display", "rotate", "view", "3d", "shape"]
+	},
+	"model": {
+		"aliases": [
+			"3d",
+			"assemble",
+			"build",
+			"design",
+			"digital twin",
+			"representation",
+			"BIM",
+			"structure",
+			"view",
+			"visualize"
+		]
+	},
+	"moon": {
+		"aliases": ["switch", "darken", "toggle", "night", "mode", "sky", "planet"]
+	},
+	"more-horizontal-circle": {
+		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"]
+	},
+	"more-horizontal": {
+		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"]
+	},
+	"more-vertical-circle": {
+		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"]
+	},
+	"more-vertical": {
+		"aliases": ["show", "options", "additional", "extra", "overflow", "menu"]
+	},
+	"mouse-click-left": {
+		"aliases": ["interact", "select", "press", "activate", "trigger"]
+	},
+	"mouse-click-middle": {
+		"aliases": [
+			"interact",
+			"select",
+			"press",
+			"activate",
+			"trigger",
+			"scroll wheel"
+		]
+	},
+	"mouse-click-right": {
+		"aliases": ["interact", "select", "press", "activate", "trigger"]
+	},
+	"mouse-click": {
+		"aliases": ["interact", "select", "press", "activate", "trigger"]
+	},
+	"move-to-group": {
+		"aliases": [
+			"arrange",
+			"organize",
+			"position",
+			"relocate",
+			"group",
+			"combine",
+			"join"
+		]
+	},
+	"move": {
+		"aliases": ["relocate", "drag", "position", "shift", "arrows"]
+	},
+	"network": {
+		"aliases": ["web", "link", "globe", "internet", "ball"]
+	},
+	"new": {
+		"aliases": ["release", "update", "badge", "sparkle", "focus"]
+	},
+	"news": {
+		"aliases": [
+			"inform",
+			"announce",
+			"notify",
+			"story",
+			"journal",
+			"paper",
+			"blog",
+			"post"
+		]
+	},
+	"notifications-settings": {
+		"aliases": [
+			"alert",
+			"inform",
+			"notify",
+			"announce",
+			"signal",
+			"bell",
+			"configure",
+			"adjust",
+			"set",
+			"customize",
+			"modify"
+		]
+	},
+	"notifications": {
+		"aliases": ["alert", "inform", "notify", "announce", "signal", "bell"]
+	},
+	"numberbox": {
+		"aliases": [
+			"input",
+			"form",
+			"field",
+			"quantity",
+			"value",
+			"numeric",
+			"data"
+		]
+	},
+	"object-array": {
+		"aliases": [
+			"pattern",
+			"repeat",
+			"multiply",
+			"arrange",
+			"sequence",
+			"instance"
+		]
+	},
+	"object-copy": {
+		"aliases": ["duplicate", "clone", "replicate", "create"]
+	},
+	"object-edit": {
+		"aliases": ["modify", "change", "update", "adjust", "transform"]
+	},
+	"object-mirror": {
+		"aliases": ["reflect", "duplicate", "copy", "flip", "transform"]
+	},
+	"object-move": {
+		"aliases": ["relocate", "drag", "position", "shift", "transform"]
+	},
+	"object-offset": {
+		"aliases": ["position", "move", "adjust", "distance", "space"]
+	},
+	"object-rotate": {
+		"aliases": [
+			"turn",
+			"pivot",
+			"revolve",
+			"twist",
+			"clockwise",
+			"anti",
+			"transform"
+		]
+	},
+	"object-scale": {
+		"aliases": ["resize", "adjust", "transform", "modify", "scale"]
+	},
+	"object-transform": {
+		"aliases": ["modify", "change", "adjust", "edit", "convert"]
+	},
+	"object-zoom-to": {
+		"aliases": ["focus", "view", "magnify", "target", "center"]
+	},
+	"outfall": {
+		"aliases": ["drainage", "water", "exit", "discharge", "outlet"]
+	},
+	"outlet-pond": {
+		"aliases": ["water", "drainage", "exit", "flow", "discharge"]
+	},
+	"paint-brush": {
+		"aliases": ["draw", "color", "colour", "paint", "create", "design"]
+	},
+	"palette": {
+		"aliases": ["choose", "color", "colour", "select", "pick", "options"]
+	},
+	"panel-collapse-left": {
+		"aliases": ["close", "hide", "minimize", "conceal", "reduce"]
+	},
+	"panel-collapse-right": {
+		"aliases": ["close", "hide", "minimize", "conceal", "reduce"]
+	},
+	"panel-expand-left": {
+		"aliases": ["open", "reveal", "extend", "show", "maximize"]
+	},
+	"panel-expand-right": {
+		"aliases": ["open", "reveal", "extend", "show", "maximize"]
+	},
+	"panorama-model": {
+		"aliases": [
+			"view",
+			"scan",
+			"rotate",
+			"examine",
+			"inspect",
+			"object",
+			"element"
+		]
+	},
+	"panorama": {
+		"aliases": ["view", "scan", "rotate", "examine", "inspect"]
+	},
+	"paragraph": {
+		"aliases": [
+			"text",
+			"body",
+			"content",
+			"copy",
+			"document",
+			"editor",
+			"format",
+			"write"
+		]
+	},
+	"parking-row": {
+		"aliases": ["alignment", "line", "space", "stalls", "vehicle"]
+	},
+	"parking": {
+		"aliases": ["vehicle", "car", "space", "lot", "area"]
+	},
+	"password-reset": {
+		"aliases": ["authentication", "change", "recover", "restore", "security"]
+	},
+	"path-animation-crowd": {
+		"aliases": [
+			"crowd",
+			"mass",
+			"people",
+			"pedestrian",
+			"flow",
+			"group",
+			"path",
+			"animation",
+			"simulation",
+			"route",
+			"movement",
+			"track",
+			"vector",
+			"direction",
+			"density",
+			"walk",
+			"travel"
+		]
+	},
+	"path-animation-single": {
+		"aliases": [
+			"route",
+			"trajectory",
+			"movement",
+			"track",
+			"single",
+			"one",
+			"flow",
+			"path",
+			"move",
+			"travel",
+			"animation",
+			"direction",
+			"vector",
+			"simulation"
+		]
+	},
+	"path-animation-traffic": {
+		"aliases": [
+			"traffic",
+			"vehicles",
+			"cars",
+			"road",
+			"flow",
+			"route",
+			"movement",
+			"track",
+			"animation",
+			"simulation",
+			"direction",
+			"vector",
+			"path",
+			"move",
+			"travel",
+			"lane",
+			"street",
+			"transport"
+		]
+	},
+	"path-break": {
+		"aliases": ["disconnect", "split", "separate", "divide", "segment"]
+	},
+	"path-driveway": {
+		"aliases": ["vehicle", "access", "route", "road", "entry"]
+	},
+	"path-extend": {
+		"aliases": ["lengthen", "line", "continue", "geometry", "stretch"]
+	},
+	"path-fillet": {
+		"aliases": ["round", "corner", "curve", "smooth", "radius"]
+	},
+	"path-sidewalk": {
+		"aliases": ["walkway", "pedestrian", "route", "path", "way"]
+	},
+	"path-trim": {
+		"aliases": ["cut", "adjust", "line", "modify", "shorten"]
+	},
+	"pause-circle": {
+		"aliases": ["stop", "wait", "hold", "suspend", "interrupt"]
+	},
+	"pause": {
+		"aliases": ["stop", "wait", "hold", "suspend", "interrupt"]
+	},
+	"perspective": {
+		"aliases": [
+			"view",
+			"angle",
+			"orient",
+			"position",
+			"align",
+			"3d",
+			"isometric"
+		]
+	},
+	"photo-drop": {
+		"aliases": ["image", "picture", "upload", "add", "drag", "drop", "file"]
+	},
+	"pin-unpin": {
+		"aliases": ["detach", "release", "free", "remove", "disconnect"]
+	},
+	"pin": {
+		"aliases": ["mark", "attach", "fix", "secure", "fasten"]
+	},
+	"pipe-sewer": {
+		"aliases": ["drain", "waste", "utility", "infrastructure", "disposal"]
+	},
+	"pipe-water": {
+		"aliases": ["utility", "plumbing", "infrastructure", "flow", "supply"]
+	},
+	"pipes": {
+		"aliases": ["conduit", "pipe", "pipeline", "plumbing", "tube"]
+	},
+	"placeholder": {
+		"aliases": ["empty"]
+	},
+	"play-backward": {
+		"aliases": [
+			"rewind",
+			"previous",
+			"skip back",
+			"reverse",
+			"media",
+			"audio",
+			"video"
+		]
+	},
+	"play-circle": {
+		"aliases": ["start", "begin", "initiate", "launch", "run"]
+	},
+	"play": {
+		"aliases": ["start", "begin", "initiate", "launch", "run"]
+	},
+	"plugins": {
+		"aliases": ["extend", "add", "integrate", "enhance"]
+	},
+	"point-parking-aisle": {
+		"aliases": ["lane", "path", "way", "access", "route"]
+	},
+	"point-parking-bay": {
+		"aliases": ["area", "spot", "section", "vehicle", "space"]
+	},
+	"point-parking-direction": {
+		"aliases": ["flow", "arrow", "traffic", "movement", "sign"]
+	},
+	"point-parking-island": {
+		"aliases": ["divider", "median", "traffic", "vehicle", "area"]
+	},
+	"point-parking-space": {
+		"aliases": ["spot", "location", "car", "vehicle", "park"]
+	},
+	"polygon": {
+		"aliases": ["draw", "shape", "path", "line", "form"]
+	},
+	"pond-layout": {
+		"aliases": [
+			"area",
+			"civil",
+			"design",
+			"landscape",
+			"plan",
+			"reservoir",
+			"site",
+			"water"
+		]
+	},
+	"portable-water-pipes": {
+		"aliases": []
+	},
+	"portal-connect": {
+		"aliases": ["access", "bridge", "gateway", "link", "tunnel"]
+	},
+	"power-bi": {
+		"aliases": ["analytics", "data", "report", "microsoft", "business"]
+	},
+	"prefab": {
+		"aliases": [
+			"template",
+			"block",
+			"component",
+			"bricks",
+			"build",
+			"3D",
+			"asset"
+		]
+	},
+	"print-preview": {
+		"aliases": [
+			"output",
+			"document",
+			"page",
+			"view",
+			"check",
+			"prepare",
+			"examine",
+			"inspect"
+		]
+	},
+	"print-settings": {
+		"aliases": [
+			"output",
+			"document",
+			"page",
+			"configure",
+			"adjust",
+			"set",
+			"customize",
+			"modify"
+		]
+	},
+	"print": {
+		"aliases": ["output", "document", "page"]
+	},
+	"process": {
+		"aliases": ["execute", "run", "perform", "operate", "conduct", "chip"]
+	},
+	"production-drawing": {
+		"aliases": [
+			"blueprint",
+			"engineering",
+			"fabrication",
+			"manufacturing",
+			"technical"
+		]
+	},
+	"production-sheet": {
+		"aliases": [
+			"blueprint",
+			"cad",
+			"design",
+			"drawing",
+			"engineering",
+			"manufacturing",
+			"plan"
+		]
+	},
+	"products": {
+		"aliases": [
+			"applications",
+			"catalog",
+			"goods",
+			"inventory",
+			"items",
+			"merchandise",
+			"stock"
+		]
+	},
+	"profile": {
+		"aliases": []
+	},
+	"project-copy": {
+		"aliases": [
+			"duplicate-project",
+			"clone-project",
+			"copy-structure",
+			"replicate-workspace",
+			"project-multiply"
+		]
+	},
+	"project": {
+		"aliases": [
+			"organize",
+			"plan",
+			"manage",
+			"coordinate",
+			"create",
+			"new",
+			"blueprint",
+			"sheet"
+		]
+	},
+	"properties": {
+		"aliases": [
+			"settings",
+			"attributes",
+			"controls",
+			"edit",
+			"configure",
+			"modify",
+			"adjust",
+			"configure",
+			"details"
+		]
+	},
+	"puzzle": {
+		"aliases": [
+			"solve",
+			"connect",
+			"integrate",
+			"join",
+			"fit",
+			"piece",
+			"jigsaw"
+		]
+	},
+	"quality-custom": {
+		"aliases": [
+			"manual",
+			"settings",
+			"configure",
+			"personal",
+			"adjust",
+			"option",
+			"slider",
+			"gear",
+			"user-defined",
+			"custom",
+			"bespoke",
+			"advanced"
+		]
+	},
+	"quality-high": {
+		"aliases": [
+			"best",
+			"excellent",
+			"premium",
+			"resolution",
+			"HD",
+			"high-definition",
+			"detail",
+			"max",
+			"supreme",
+			"fidelity",
+			"heavy",
+			"dense",
+			"detailed"
+		]
+	},
+	"quality-low": {
+		"aliases": [
+			"basic",
+			"fast",
+			"draft",
+			"poor",
+			"low",
+			"minimum",
+			"min",
+			"standard",
+			"speed",
+			"light",
+			"pixelated",
+			"performance",
+			"draft-mode"
+		]
+	},
+	"quality-mid": {
+		"aliases": [
+			"medium",
+			"moderate",
+			"average",
+			"normal",
+			"standard",
+			"balance",
+			"mid",
+			"resolution",
+			"intermediate",
+			"balanced"
+		]
+	},
+	"radio-buttons": {
+		"aliases": [
+			"choice",
+			"form",
+			"input",
+			"option",
+			"select",
+			"toggle",
+			"multiple choice"
+		]
+	},
+	"re-center": {
+		"aliases": [
+			"recenter",
+			"align",
+			"position",
+			"center",
+			"adjust",
+			"place",
+			"map"
+		]
+	},
+	"reaction-add": {
+		"aliases": [
+			"add-support",
+			"spring-load",
+			"structural-force",
+			"plus-reaction",
+			"load-point",
+			"reaction-point",
+			"node-action"
+		]
+	},
+	"read-only": {
+		"aliases": ["view", "restrict", "protect", "limit", "prevent"]
+	},
+	"reality-capture": {
+		"aliases": [
+			"photogrammetry",
+			"point-cloud",
+			"laser-scan",
+			"3d-mesh",
+			"drone-survey",
+			"site-scan",
+			"reality-mesh",
+			"digital-twin",
+			"spatial-data",
+			"contextcapture"
+		]
+	},
+	"reality-mesh": {
+		"aliases": ["model", "object", "represent", "capture", "data"]
+	},
+	"reassign": {
+		"aliases": ["change", "delegate", "move", "redirect", "transfer"]
+	},
+	"record": {
+		"aliases": ["capture", "save", "store", "preserve", "start"]
+	},
+	"recording": {
+		"aliases": ["capture", "save", "store", "preserve", "stop"]
+	},
+	"records": {
+		"aliases": [
+			"store",
+			"organize",
+			"archive",
+			"maintain",
+			"manage",
+			"documents"
+		]
+	},
+	"rectangle": {
+		"aliases": ["draw", "shape", "contain", "create", "form"]
+	},
+	"redo": {
+		"aliases": ["repeat", "restore", "reapply", "recreate", "reinstate"]
+	},
+	"refresh": {
+		"aliases": [
+			"update",
+			"reload",
+			"renew",
+			"regenerate",
+			"restore",
+			"clockwise"
+		]
+	},
+	"regenerate": {
+		"aliases": ["renew", "update", "recreate", "rebuild", "generate"]
+	},
+	"rename": {
+		"aliases": ["edit", "change", "modify", "alter", "update", "name", "text"]
+	},
+	"reorder": {
+		"aliases": ["arrange", "sort", "move", "organize", "sequence"]
+	},
+	"replace": {
+		"aliases": [
+			"swap",
+			"exchange",
+			"substitute",
+			"switch",
+			"change",
+			"selection"
+		]
+	},
+	"report": {
+		"aliases": ["document", "analyze", "present", "inform", "detail", "data"]
+	},
+	"reschedule": {
+		"aliases": [
+			"update",
+			"plan",
+			"calendar",
+			"time",
+			"modify",
+			"change",
+			"appointment"
+		]
+	},
+	"retry": {
+		"aliases": ["repeat", "attempt", "again", "restart"]
+	},
+	"road": {
+		"aliases": ["navigate", "travel", "direct", "guide", "drive", "way"]
+	},
+	"rotate-left": {
+		"aliases": [
+			"turn",
+			"spin",
+			"pivot",
+			"revolve",
+			"twist",
+			"object",
+			"anti-clockwise"
+		]
+	},
+	"rotate-point": {
+		"aliases": [
+			"pivot",
+			"spin",
+			"turn",
+			"angle",
+			"rotate",
+			"axis",
+			"center",
+			"orientation",
+			"revolve",
+			"swivel",
+			"coordinate",
+			"origin",
+			"transform"
+		]
+	},
+	"rotate-right": {
+		"aliases": [
+			"turn",
+			"spin",
+			"pivot",
+			"revolve",
+			"twist",
+			"object",
+			"clockwise"
+		]
+	},
+	"rule-delta-create": {
+		"aliases": ["change", "difference", "geometry", "variation"]
+	},
+	"rule-ditch": {
+		"aliases": [
+			"rule-ditch",
+			"rule",
+			"ditch",
+			"guideline",
+			"excavation",
+			"boundary",
+			"survey",
+			"layout",
+			"path",
+			"channel",
+			"water management",
+			"land planning"
+		]
+	},
+	"rule-slope-create": {
+		"aliases": ["angle", "constraint", "geometry", "gradient"]
+	},
+	"rule": {
+		"aliases": [
+			"rule",
+			"line",
+			"guideline",
+			"measure",
+			"distance",
+			"path",
+			"boundary",
+			"survey line",
+			"straightedge"
+		]
+	},
+	"save-as": {
+		"aliases": [
+			"store",
+			"keep",
+			"retain",
+			"remember",
+			"floppy disk",
+			"copy",
+			"duplicate"
+		]
+	},
+	"save-settings": {
+		"aliases": [
+			"store",
+			"keep",
+			"retain",
+			"remember",
+			"floppy disk",
+			"configure",
+			"customize",
+			"maintain"
+		]
+	},
+	"save": {
+		"aliases": ["store", "keep", "retain", "remember", "floppy disk"]
+	},
+	"saved-views": {
+		"aliases": ["store", "preserve", "arrange", "organize", "memory", "camera"]
+	},
+	"scene": {
+		"aliases": [
+			"angle",
+			"camera",
+			"environment",
+			"model",
+			"perspective",
+			"setting",
+			"shot",
+			"stage",
+			"view"
+		]
+	},
+	"screenshare-stop": {
+		"aliases": [
+			"broadcast",
+			"display",
+			"present",
+			"stream",
+			"end",
+			"halt",
+			"cease",
+			"terminate",
+			"stop"
+		]
+	},
+	"screenshare": {
+		"aliases": ["broadcast", "display", "present", "stream"]
+	},
+	"script-run": {
+		"aliases": [
+			"code",
+			"program",
+			"automate",
+			"write",
+			"execute",
+			"start",
+			"process",
+			"operate",
+			"perform"
+		]
+	},
+	"script-status": {
+		"aliases": [
+			"code",
+			"program",
+			"automate",
+			"write",
+			"monitor",
+			"check",
+			"verify",
+			"examine",
+			"track"
+		]
+	},
+	"script": {
+		"aliases": ["code", "program", "automate", "write"]
+	},
+	"search": {
+		"aliases": [
+			"find",
+			"locate",
+			"discover",
+			"seek",
+			"explore",
+			"magnifying glass"
+		]
+	},
+	"seismic": {
+		"aliases": [
+			"load",
+			"earthquake",
+			"vibration",
+			"dynamic",
+			"lateral",
+			"ground-motion"
+		]
+	},
+	"selection-all": {
+		"aliases": ["choose", "group", "highlight", "pick", "select"]
+	},
+	"selection-children": {
+		"aliases": ["group", "nested", "items", "subset", "hierarchy"]
+	},
+	"selection-clear": {
+		"aliases": ["deselect", "unselect", "remove selection", "cancel", "wipe"]
+	},
+	"selection": {
+		"aliases": ["choose", "highlight", "pick", "select"]
+	},
+	"send": {
+		"aliases": ["transmit", "dispatch", "deliver", "forward", "transfer"]
+	},
+	"settings": {
+		"aliases": [
+			"configure",
+			"adjust",
+			"modify",
+			"customize",
+			"setup",
+			"preferences",
+			"cog",
+			"change",
+			"setup"
+		]
+	},
+	"setup": {
+		"aliases": [
+			"configure",
+			"prepare",
+			"initialize",
+			"establish",
+			"arrange",
+			"adjust",
+			"modify",
+			"customize",
+			"setup",
+			"preferences"
+		]
+	},
+	"sewage-pipes": {
+		"aliases": []
+	},
+	"share": {
+		"aliases": ["distribute", "give", "spread", "allocate", "export", "publish"]
+	},
+	"sheet-defined-region": {
+		"aliases": [
+			"boundary",
+			"viewport",
+			"clip-volume",
+			"border",
+			"layout-box",
+			"sheet-boundary",
+			"crop-region",
+			"frame",
+			"print-area",
+			"plot-window",
+			"definition-box"
+		]
+	},
+	"sheet": {
+		"aliases": ["document", "file", "page", "paper", "spreadsheet", "worksheet"]
+	},
+	"shield": {
+		"aliases": ["protect", "secure", "defend", "guard", "safeguard"]
+	},
+	"signature": {
+		"aliases": [
+			"sign",
+			"approve",
+			"authorize",
+			"contract",
+			"document",
+			"verify",
+			"input"
+		]
+	},
+	"slab-opening": {
+		"aliases": [
+			"hole",
+			"void",
+			"cutout",
+			"aperture",
+			"penetration",
+			"floor",
+			"structure"
+		]
+	},
+	"slab-region": {
+		"aliases": ["area", "zone", "partial", "section", "floor", "concrete"]
+	},
+	"slab": {
+		"aliases": [
+			"floor",
+			"deck",
+			"concrete",
+			"plate",
+			"surface",
+			"horizontal",
+			"structure"
+		]
+	},
+	"slice": {
+		"aliases": [
+			"cut",
+			"divide",
+			"split",
+			"knife",
+			"tool",
+			"portion",
+			"pie",
+			"graph"
+		]
+	},
+	"smartphone": {
+		"aliases": [
+			"access",
+			"view",
+			"interact",
+			"mobile",
+			"connect",
+			"device",
+			"phone",
+			"apple",
+			"iphone",
+			"steve"
+		]
+	},
+	"smiley-happy": {
+		"aliases": [
+			"express",
+			"emote",
+			"react",
+			"indicate",
+			"show",
+			"rate",
+			"rating",
+			"smile"
+		]
+	},
+	"smiley-neutral": {
+		"aliases": [
+			"express",
+			"emote",
+			"react",
+			"indicate",
+			"show",
+			"rate",
+			"rating"
+		]
+	},
+	"smiley-sad": {
+		"aliases": [
+			"express",
+			"emote",
+			"react",
+			"indicate",
+			"show",
+			"rate",
+			"rating"
+		]
+	},
+	"smiley-very-happy": {
+		"aliases": [
+			"express",
+			"emote",
+			"react",
+			"indicate",
+			"show",
+			"rate",
+			"rating",
+			"smile"
+		]
+	},
+	"smiley-very-sad": {
+		"aliases": [
+			"express",
+			"emote",
+			"react",
+			"indicate",
+			"show",
+			"rate",
+			"rating"
+		]
+	},
+	"snap-bisector": {
+		"aliases": ["divide", "angle", "line", "geometry", "half"]
+	},
+	"snap-center": {
+		"aliases": ["middle", "circle", "point", "geometry", "origin"]
+	},
+	"snap-endpoint": {
+		"aliases": ["terminate", "end", "point", "geometry", "finish"]
+	},
+	"snap-extension": {
+		"aliases": ["continue", "line", "geometry", "extend", "project"]
+	},
+	"snap-grid": {
+		"aliases": [
+			"align",
+			"guide",
+			"layout",
+			"structure",
+			"matrix",
+			"pattern",
+			"precision"
+		]
+	},
+	"snap-intersection": {
+		"aliases": ["cross", "meet", "point", "geometry", "overlap"]
+	},
+	"snap-keypoint": {
+		"aliases": ["significant", "node", "geometry", "vertex", "point"]
+	},
+	"snap-midpoint": {
+		"aliases": ["center", "half", "point", "geometry", "middle"]
+	},
+	"snap-nearest": {
+		"aliases": ["close", "point", "geometry", "proximity", "location"]
+	},
+	"snap-origin": {
+		"aliases": ["start", "base", "point", "geometry", "center"]
+	},
+	"snap-orthogonal": {
+		"aliases": [
+			"align",
+			"right-angle",
+			"perpendicular",
+			"guide",
+			"constraint",
+			"ortho",
+			"precision"
+		]
+	},
+	"snap-parallel": {
+		"aliases": ["align", "equal", "distance", "geometry", "line"]
+	},
+	"snap-perpendicular": {
+		"aliases": ["right angle", "normal", "geometry", "line"]
+	},
+	"snap-point": {
+		"aliases": [
+			"align",
+			"attach",
+			"connect",
+			"anchor",
+			"node",
+			"vertex",
+			"guide",
+			"precision"
+		]
+	},
+	"snap-quadrant": {
+		"aliases": ["quarter", "circle", "point", "geometry", "arc"]
+	},
+	"snap-tangent": {
+		"aliases": ["touch", "curve", "point", "geometry", "line"]
+	},
+	"snowflake": {
+		"aliases": ["load", "snow", "environmental", "weather", "climate", "roof"]
+	},
+	"sort-ascending": {
+		"aliases": [
+			"arrange",
+			"order",
+			"sequence",
+			"organize",
+			"sort",
+			"sorting",
+			"a-z"
+		]
+	},
+	"sort-descending": {
+		"aliases": [
+			"arrange",
+			"order",
+			"sequence",
+			"organize",
+			"sort",
+			"sorting",
+			"z-a"
+		]
+	},
+	"sorting": {
+		"aliases": ["arrange", "order", "sequence", "organize", "sort", "arrows"]
+	},
+	"sound-loud": {
+		"aliases": [
+			"amplify",
+			"project",
+			"broadcast",
+			"increase",
+			"volume",
+			"speaker"
+		]
+	},
+	"sound-mute": {
+		"aliases": [
+			"silence",
+			"quiet",
+			"disable",
+			"mute",
+			"stop",
+			"volume",
+			"speaker"
+		]
+	},
+	"sound-quiet": {
+		"aliases": ["reduce", "soften", "decrease", "lower", "volume", "speaker"]
+	},
+	"spin": {
+		"aliases": ["rotate", "turn", "space", "revolve", "twist", "3d", "move"]
+	},
+	"split-cells": {
+		"aliases": ["cells", "divide", "separate", "split", "table"]
+	},
+	"spring-area": {
+		"aliases": []
+	},
+	"spring-linear": {
+		"aliases": [
+			"support",
+			"flexible",
+			"elastic",
+			"line",
+			"wall",
+			"connection",
+			"edge"
+		]
+	},
+	"spring-point": {
+		"aliases": [
+			"support",
+			"flexible",
+			"elastic",
+			"connection",
+			"vibration",
+			"damper",
+			"node"
+		]
+	},
+	"star": {
+		"aliases": ["mark", "rate", "favorite", "favourite", "highlight", "feature"]
+	},
+	"state-inherited-dot": {
+		"aliases": ["indicate", "mark", "status", "inherit", "derive"]
+	},
+	"status-draft": {
+		"aliases": ["indicate", "mark", "draft", "prepare"]
+	},
+	"status-error": {
+		"aliases": ["warn", "indicate", "error", "fail", "!"]
+	},
+	"status-pending": {
+		"aliases": ["wait", "indicate", "pending", "process"]
+	},
+	"status-rejected": {
+		"aliases": ["deny", "indicate", "reject", "decline"]
+	},
+	"status-running": {
+		"aliases": ["process", "indicate", "execute", "operate", "progress"]
+	},
+	"status-stop": {
+		"aliases": ["halt", "indicate", "stop", "cease"]
+	},
+	"status-success": {
+		"aliases": ["confirm", "indicate", "succeed", "complete", "check"]
+	},
+	"status-update": {
+		"aliases": ["change", "indicate", "show", "refresh"]
+	},
+	"status-warning": {
+		"aliases": ["caution", "indicate", "warn", "alert", "!"]
+	},
+	"stop-circle": {
+		"aliases": ["halt", "cease", "end", "terminate", "stop"]
+	},
+	"stop": {
+		"aliases": ["halt", "cease", "end", "terminate", "stop"]
+	},
+	"stopwatch": {
+		"aliases": ["time", "measure", "track", "monitor", "record", "clock"]
+	},
+	"storm-water-pipes": {
+		"aliases": []
+	},
+	"subscriptions": {
+		"aliases": [
+			"billing",
+			"membership",
+			"plan",
+			"recurring",
+			"renewal",
+			"service"
+		]
+	},
+	"sun": {
+		"aliases": ["switch", "brighten", "toggle", "light", "mode", "planet"]
+	},
+	"supply-chain": {
+		"aliases": [
+			"arrange",
+			"design",
+			"layout",
+			"organize",
+			"presentation",
+			"structure",
+			"style",
+			"template"
+		]
+	},
+	"support-linear": {
+		"aliases": [
+			"foundation",
+			"wall",
+			"line",
+			"reaction",
+			"load",
+			"continuous",
+			"edge"
+		]
+	},
+	"support-point": {
+		"aliases": [
+			"foundation",
+			"base",
+			"anchor",
+			"load",
+			"reaction",
+			"pin",
+			"fixed",
+			"node"
+		]
+	},
+	"support": {
+		"aliases": ["aid", "assistance", "customer", "guidance", "help", "service"]
+	},
+	"suppress": {
+		"aliases": ["hide", "remove", "eliminate", "conceal", "gavel"]
+	},
+	"swap": {
+		"aliases": ["exchange", "switch", "trade", "alternate", "interchange"]
+	},
+	"swatch": {
+		"aliases": ["select", "sample", "choose", "pick", "color"]
+	},
+	"table-column-insert-right": {
+		"aliases": ["add", "data", "new"]
+	},
+	"table-of-contents": {
+		"aliases": [
+			"list",
+			"organize",
+			"index",
+			"structure",
+			"outline",
+			"items",
+			"bullets",
+			"toc"
+		]
+	},
+	"table-row-insert-below": {
+		"aliases": ["add", "data", "new"]
+	},
+	"table-rows-comfortable": {
+		"aliases": ["data", "generous", "relaxed", "spacing"]
+	},
+	"table-rows-compact": {
+		"aliases": ["condensed", "data", "dense", "tight"]
+	},
+	"table": {
+		"aliases": [
+			"organize",
+			"display",
+			"structure",
+			"arrange",
+			"present",
+			"view",
+			"data",
+			"column",
+			"row",
+			"cell"
+		]
+	},
+	"tag": {
+		"aliases": ["label", "mark", "identify", "categorize", "classify"]
+	},
+	"technical-preview-badge": {
+		"aliases": ["mark", "indicate", "preview", "demonstrate"]
+	},
+	"technical-preview": {
+		"aliases": ["mark", "indicate", "preview", "demonstrate"]
+	},
+	"temperature": {
+		"aliases": [
+			"load",
+			"thermal",
+			"expansion",
+			"contraction",
+			"climate",
+			"stress"
+		]
+	},
+	"templates-copy": {
+		"aliases": [
+			"duplicate-template",
+			"clone-layout",
+			"copy-sheet",
+			"replicate-framework",
+			"template-multiply"
+		]
+	},
+	"templates-create": {
+		"aliases": [
+			"add-template",
+			"new-layout",
+			"create-framework",
+			"plus-template",
+			"template-builder",
+			"blank-canvas"
+		]
+	},
+	"templates": {
+		"aliases": [
+			"layouts",
+			"master-sheets",
+			"blueprints",
+			"frameworks",
+			"models",
+			"patterns",
+			"formats",
+			"guides"
+		]
+	},
+	"text-align-center": {
+		"aliases": [
+			"font",
+			"typeface",
+			"typography",
+			"align",
+			"position",
+			"arrange",
+			"center",
+			"format",
+			"middle"
+		]
+	},
+	"text-align-justify": {
+		"aliases": [
+			"font",
+			"typeface",
+			"typography",
+			"align",
+			"position",
+			"arrange",
+			"justify",
+			"format"
+		]
+	},
+	"text-align-left": {
+		"aliases": [
+			"font",
+			"typeface",
+			"typography",
+			"align",
+			"position",
+			"arrange",
+			"left",
+			"format",
+			"start"
+		]
+	},
+	"text-align-right": {
+		"aliases": [
+			"font",
+			"typeface",
+			"typography",
+			"align",
+			"position",
+			"arrange",
+			"right",
+			"format",
+			"end"
+		]
+	},
+	"text-rotate-right": {
+		"aliases": ["format", "rotate", "text", "turn"]
+	},
+	"text": {
+		"aliases": [
+			"write",
+			"type",
+			"compose",
+			"create",
+			"font",
+			"typeface",
+			"typography"
+		]
+	},
+	"textbox": {
+		"aliases": ["input", "form", "field", "text", "entry", "data", "write"]
+	},
+	"thumbs-down": {
+		"aliases": [
+			"bad",
+			"disapprove",
+			"dislike",
+			"negative",
+			"no",
+			"reject",
+			"vote"
+		]
+	},
+	"thumbs-up": {
+		"aliases": [
+			"approve",
+			"good",
+			"like",
+			"positive",
+			"recommend",
+			"vote",
+			"yes"
+		]
+	},
+	"timeline": {
+		"aliases": ["schedule", "sequence", "order", "arrange", "plan", "gant"]
+	},
+	"timer": {
+		"aliases": ["measure", "count", "track", "time", "monitor", "clock"]
+	},
+	"toilet": {
+		"aliases": ["restroom", "bathroom", "facility", "amenity", "washroom"]
+	},
+	"tower-crane": {
+		"aliases": ["load", "construction", "temporary", "equipment", "hoisting"]
+	},
+	"transparency": {
+		"aliases": ["adjust", "fade", "opacity", "transparent", "clear"]
+	},
+	"tree-item-locked": {
+		"aliases": ["secure", "restricted", "protected", "hierarchy", "node"]
+	},
+	"tree-item-unlocked": {
+		"aliases": ["open", "access", "available", "hierarchy", "node"]
+	},
+	"truck": {
+		"aliases": ["load", "vehicle", "moving", "live-load", "traffic", "highway"]
+	},
+	"unassign": {
+		"aliases": ["user", "remove", "minus", "deallocate", "person", "clear"]
+	},
+	"underground-storage": {
+		"aliases": ["subsurface", "tank", "container", "below", "utility"]
+	},
+	"undo": {
+		"aliases": ["reverse", "revert", "cancel", "restore", "return"]
+	},
+	"ungroup": {
+		"aliases": [
+			"break",
+			"detach",
+			"disassemble",
+			"separate",
+			"split",
+			"unlink",
+			"divide"
+		]
+	},
+	"unlink": {
+		"aliases": [
+			"disconnect",
+			"separate",
+			"break",
+			"detach",
+			"remove",
+			"url",
+			"web",
+			"www"
+		]
+	},
+	"update": {
+		"aliases": ["refresh", "change", "modify", "revise", "renew"]
+	},
+	"upload": {
+		"aliases": ["send", "transfer", "submit", "transmit", "deliver", "import"]
+	},
+	"user-active": {
+		"aliases": ["account", "available", "logged-in", "online", "status"]
+	},
+	"user-add": {
+		"aliases": [
+			"identify",
+			"represent",
+			"profile",
+			"person",
+			"account",
+			"add",
+			"invite",
+			"include",
+			"create",
+			"new",
+			"+"
+		]
+	},
+	"user-away": {
+		"aliases": [
+			"identify",
+			"represent",
+			"profile",
+			"person",
+			"account",
+			"indicate",
+			"status",
+			"absent",
+			"unavailable",
+			"away",
+			"AFK"
+		]
+	},
+	"user-edit": {
+		"aliases": ["account", "change", "modify", "profile", "update"]
+	},
+	"user-restricted": {
+		"aliases": [
+			"identify",
+			"represent",
+			"profile",
+			"person",
+			"account",
+			"limit",
+			"block",
+			"restrict",
+			"constrain",
+			"prevent"
+		]
+	},
+	"user-settings": {
+		"aliases": [
+			"account",
+			"configuration",
+			"controls",
+			"options",
+			"preferences"
+		]
+	},
+	"user": {
+		"aliases": ["identify", "represent", "profile", "person", "account"]
+	},
+	"users": {
+		"aliases": [
+			"identify",
+			"represent",
+			"profile",
+			"person",
+			"account",
+			"group",
+			"collect",
+			"represent",
+			"people",
+			"accounts"
+		]
+	},
+	"validate": {
+		"aliases": ["check", "verify", "confirm", "authenticate", "approve"]
+	},
+	"vertex-add": {
+		"aliases": ["create", "point", "node", "new", "geometry"]
+	},
+	"vertex-control-direction": {
+		"aliases": ["bearing", "geometry", "orientation", "point", "vector"]
+	},
+	"vertex-control-slope": {
+		"aliases": ["angle", "geometry", "gradient", "incline", "point"]
+	},
+	"vertex-edit": {
+		"aliases": ["modify", "point", "node", "adjust", "geometry"]
+	},
+	"vertex-mesh-add": {
+		"aliases": ["3d", "create", "geometry", "new", "point"]
+	},
+	"vertex-mesh-control": {
+		"aliases": ["3d", "edit", "geometry", "manipulate", "point"]
+	},
+	"vertex-remove": {
+		"aliases": ["delete", "point", "node", "remove", "geometry"]
+	},
+	"vertex": {
+		"aliases": [
+			"vertex",
+			"point",
+			"node",
+			"coordinate",
+			"geometry",
+			"edit",
+			"control point",
+			"survey point",
+			"location"
+		]
+	},
+	"visibility-disabled": {
+		"aliases": ["hide", "show", "hidden", "view", "toggle"]
+	},
+	"visibility-emphasis": {
+		"aliases": [
+			"highlight",
+			"show",
+			"emphasize",
+			"stress",
+			"accent",
+			"visible",
+			"eye"
+		]
+	},
+	"visibility-hide": {
+		"aliases": [
+			"conceal",
+			"remove",
+			"hide",
+			"suppress",
+			"mask",
+			"invisible",
+			"eye"
+		]
+	},
+	"visibility-invert": {
+		"aliases": ["reverse", "toggle", "switch", "display", "view"]
+	},
+	"visibility-partial": {
+		"aliases": ["show", "hide", "display", "view", "opacity"]
+	},
+	"visibility-show": {
+		"aliases": [
+			"display",
+			"reveal",
+			"show",
+			"expose",
+			"present",
+			"visible",
+			"eye"
+		]
+	},
+	"walk": {
+		"aliases": ["move", "navigate", "tour", "traverse", "progress"]
+	},
+	"wall-retaining": {
+		"aliases": [
+			"barrier",
+			"boundary",
+			"brace",
+			"civil",
+			"construction",
+			"earthwork",
+			"engineering",
+			"erosion",
+			"hold",
+			"landscape",
+			"structure",
+			"support",
+			"terrain",
+			"wall"
+		]
+	},
+	"warning": {
+		"aliases": [
+			"alert",
+			"caution",
+			"notice",
+			"attention",
+			"hazard",
+			"important"
+		]
+	},
+	"wifi-disabled": {
+		"aliases": [
+			"connect",
+			"network",
+			"wireless",
+			"communicate",
+			"internet",
+			"disconnect",
+			"disable",
+			"offline",
+			"deactivate",
+			"block"
+		]
+	},
+	"wifi": {
+		"aliases": ["connect", "network", "wireless", "communicate", "link"]
+	},
+	"wind": {
+		"aliases": [
+			"load",
+			"environmental",
+			"lateral",
+			"pressure",
+			"gust",
+			"aerodynamic"
+		]
+	},
+	"window-add": {
+		"aliases": ["create", "open", "add", "new", "generate", "+"]
+	},
+	"window-area": {
+		"aliases": ["select", "define", "mark", "specify", "determine"]
+	},
+	"window-back": {
+		"aliases": ["move", "order", "arrange", "position", "shift", "previous"]
+	},
+	"window-collapse": {
+		"aliases": ["minimize", "reduce", "shrink", "contract", "decrease"]
+	},
+	"window-expand": {
+		"aliases": [
+			"maximize",
+			"enlarge",
+			"grow",
+			"increase",
+			"extend",
+			"full screen"
+		]
+	},
+	"window-forward": {
+		"aliases": ["move", "order", "arrange", "position", "shift", "next"]
+	},
+	"window-maximize": {
+		"aliases": ["enlarge", "expand", "full", "grow", "increase"]
+	},
+	"window-minimize": {
+		"aliases": ["reduce", "shrink", "small", "contract", "decrease"]
+	},
+	"window-popout": {
+		"aliases": ["open", "separate", "detach", "float", "isolate", "extract"]
+	},
+	"window-popover": {
+		"aliases": [
+			"window-popover",
+			"dialog",
+			"dropdown",
+			"flyout",
+			"modal",
+			"overlay",
+			"popup",
+			"view"
+		]
+	},
+	"window-settings": {
+		"aliases": [
+			"view",
+			"display",
+			"contain",
+			"show",
+			"present",
+			"configure",
+			"adjust",
+			"set",
+			"customize",
+			"modify"
+		]
+	},
+	"window-split-horizontal": {
+		"aliases": ["divide", "separate", "split", "partition", "section"]
+	},
+	"window-split-vertical": {
+		"aliases": ["divide", "separate", "split", "partition", "section"]
+	},
+	"window-zoom-in": {
+		"aliases": ["enlarge", "magnify", "expand", "increase", "grow"]
+	},
+	"window-zoom-out": {
+		"aliases": ["reduce", "shrink", "minimize", "decrease", "contract"]
+	},
+	"window": {
+		"aliases": ["view", "display", "contain", "show", "present"]
+	},
+	"workflow": {
+		"aliases": [
+			"arrange",
+			"automate",
+			"business",
+			"flow",
+			"operation",
+			"process",
+			"procedure",
+			"sequence",
+			"steps"
+		]
+	},
+	"zoom-in-circle": {
+		"aliases": ["enlarge", "magnify", "expand", "increase", "grow"]
+	},
+	"zoom-in-magnifier": {
+		"aliases": ["enlarge", "magnify", "expand", "increase", "grow"]
+	},
+	"zoom-out-circle": {
+		"aliases": ["reduce", "shrink", "minimize", "decrease", "contract"]
+	},
+	"zoom-out-magnifier": {
+		"aliases": ["reduce", "shrink", "minimize", "decrease", "contract"]
+	}
+}

@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-OtBDD4mr.js";var t=`${e}#icon`;`${e}`;export{t};

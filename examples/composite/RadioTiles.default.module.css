@@ -25,7 +25,6 @@
 
 	@media (any-hover: hover) {
 		&:hover:not(:has(input:disabled)) {
-			--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-base);
 			--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 		}
 	}

@@ -2,12 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 import iconsList from "../icons-list.json" with { type: "json" };
 
 const ROOT_DIR = join(import.meta.dirname, "..");
+const SVG_ICONS_DIR = join(ROOT_DIR, "icons");
 const ICONS_META_PATH = join(ROOT_DIR, "icons-meta.json");
 
 const FIGMA_FILE_KEY = process.env.FIGMA_FILE_KEY;
@@ -26,34 +27,42 @@ if (!FIGMA_TOKEN) {
 
 interface IconMeta {
 	aliases: string[];
+	symbols: string[];
 }
 
 interface Meta {
 	[key: string]: IconMeta;
 }
 
+const componentSets = await fetchComponentSets();
+
 const meta: Meta = iconsList.reduce((acc, icon) => {
 	const iconName = icon.replace(/\.svg$/, "");
-	acc[iconName] = { aliases: [] };
+	const aliases = getAliases(iconName);
+	const symbols = getSymbols(iconName);
+	acc[iconName] = { aliases, symbols };
 	return acc;
 }, {} as Meta);
 
-const componentSets = await fetchComponentSets();
-for (const icon of iconsList) {
-	const iconName = icon.replace(/\.svg$/, "");
+writeFileSync(ICONS_META_PATH, JSON.stringify(meta, null, "\t"));
+
+function getAliases(iconName: string) {
 	const componentSet = componentSets.meta.component_sets.find(
 		(cs) => cs.name === iconName,
 	);
 	if (!componentSet) {
 		console.warn(`Figma component_set not found for icon: ${iconName}`);
-		continue;
+		return [];
 	}
 
-	const aliases = parseAliases(componentSet.description);
-	meta[iconName].aliases = aliases;
+	return parseAliases(componentSet.description);
 }
 
-writeFileSync(ICONS_META_PATH, JSON.stringify(meta, null, "\t"));
+function getSymbols(iconName: string) {
+	const iconPath = join(SVG_ICONS_DIR, `${iconName}.svg`);
+	const svg = readFileSync(iconPath, "utf8");
+	return parseSymbols(svg);
+}
 
 /**
  * Fetches component sets. See https://developers.figma.com/docs/rest-api/component-endpoints/#get-file-component-sets-endpoint
@@ -91,4 +100,15 @@ function parseAliases(description: string): string[] {
 		.split(",")
 		.map((alias) => alias.trim())
 		.filter(Boolean);
+}
+
+/**
+ * Parses `<symbol>` ids from an SVG file. E.g. `["icon", "icon-large"]`
+ */
+function parseSymbols(svg: string) {
+	const matches = [...svg.matchAll(/<symbol\b[^>]*\bid="(?<id>[^"]*)"/g)];
+	const symbolIds = matches
+		.map((match) => match.groups?.id)
+		.filter((id): id is string => Boolean(id));
+	return symbolIds;
 }

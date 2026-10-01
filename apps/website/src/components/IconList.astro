@@ -189,7 +189,41 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		if (!iconName) return;
 
 		updateIconDialog(iconName);
+		setIconParam(iconName);
 	});
+	iconDialog.addEventListener("close", () => {
+		setIconParam(null);
+	});
+
+	window.addEventListener("popstate", syncIconParam);
+
+	syncIconParam();
+
+	function syncIconParam() {
+		const iconName = new URLSearchParams(location.search).get("icon");
+
+		if (iconName) {
+			updateIconDialog(iconName);
+			iconDialog.showModal();
+			return;
+		}
+
+		iconDialog.close();
+	}
+
+	function setIconParam(iconName: string | null) {
+		const url = new URL(location.href);
+		const iconParam = url.searchParams.get("icon");
+		if (iconParam === iconName) return;
+
+		if (iconName) {
+			url.searchParams.set("icon", iconName);
+		} else {
+			url.searchParams.delete("icon");
+		}
+
+		history.pushState(null, "", url);
+	}
 
 	function updateIconDialog(iconName: string) {
 		const iconButton = document.querySelector<HTMLButtonElement>(`[data-icon-name="${iconName}"]`);

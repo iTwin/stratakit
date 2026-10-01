@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{g as t}from"./_utils.B0c7z2Gm.js";var n=e(),r=()=>(0,n.jsx)(t,{children:`Basic text`});export{r as default};

@@ -721,7 +721,7 @@ Replace the [`DropdownMenu` component from `@itwin/itwinui-react`](https://itwin
 
 Replace the [`ExpandableBlock` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/expandableblock) with the `Accordion` component from `@mui/material`. See [Accordion examples](/components/accordion/) for reference.
 
-- Replace a [caption](https://itwinui.bentley.com/docs/expandableblock#with-caption) with `ListItemText`'s `primary` and `secondary` props inside `AccordionSummary`.
+- Replace a [caption](https://itwinui.bentley.com/docs/expandableblock#with-caption) with two [`Typography`](/components/typography/) elements inside `AccordionSummary`.
 - Replace an [accordion of blocks](https://itwinui.bentley.com/docs/expandableblock#accordion) with adjacent `Accordion` components. If only one should be open at a time, control their `expanded` props with shared state.
 - MUI `Accordion` has no equivalent to iTwinUI `ExpandableBlock`'s [`status`](https://itwinui.bentley.com/docs/expandableblock#with-status) prop. Place a status `Icon` in `AccordionSummary` instead.
 - MUI `Accordion` has no equivalent to iTwinUI `ExpandableBlock`'s [`size`](https://itwinui.bentley.com/docs/expandableblock#small) prop. Its default size matches iTwinUI's `size="small"`.
@@ -989,7 +989,7 @@ Replace the [`Tabs` component from `@itwin/itwinui-react`](https://itwinui.bentl
 - Replace `Tabs.Panel` with `<div role="tabpanel">`. See the [Tabs example implementation](https://github.com/iTwin/stratakit/blob/main/examples/mui/Tabs.default.tsx) for display and labeling details.
 - Remove `type`. StrataKit uses a single tab appearance and has no equivalent to `"borderless"` or `"pills"`.
 - Replace `color` with `textColor`. See the [Tabs colors example](/components/tabs/#colors).
-- Replace `Tab.Label` and `Tab.Description` with `ListItemText` as the `Tab` content.
+- Replace `Tab.Label` and `Tab.Description` with two [`Typography`](/components/typography/) elements as the `Tab` content.
 
 ### Tag
 

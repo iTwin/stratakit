@@ -1,0 +1,1 @@
+import{t as e}from"./info-D75o_rt_.js";var t=`${e}#icon`;`${e}`;export{t};

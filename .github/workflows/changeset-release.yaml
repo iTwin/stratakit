@@ -8,7 +8,7 @@ on:
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 env:
-  NPM_CONFIG_PROVENANCE: true
+  PNPM_CONFIG_PROVENANCE: true
 
 jobs:
   release:

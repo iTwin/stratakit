@@ -5,7 +5,7 @@ description: A skip link lets keyboard users bypass repeated navigation and jump
 
 ::example{src="composite/SkipLink.default"}
 
-Large applications often have many navigation links and other focusable elements before the main content. A skip link lets keyboard users bypass them. It is visually hidden until it receives keyboard focus, so users typically reach it by pressing <kbd>Tab</kbd> at the start of the page.
+Large applications often have many navigation links and other focusable elements before the main content. A [skip link](/guides/structure/#skip-link) lets keyboard users bypass them. It is [visually hidden](https://www.scottohara.me/blog/2017/04/14/inclusively-hidden.html#hiding-content-visually) until it receives keyboard focus, so users typically reach it by pressing <kbd>Tab</kbd> at the start of the page.
 
 :::note
 This documentation site has its own skip link. Reload the page and press <kbd>Tab</kbd> to see "Skip to content" appear in the top corner.

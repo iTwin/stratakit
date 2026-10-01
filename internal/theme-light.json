@@ -276,7 +276,7 @@
 				},
 				"disabled": {
 					"$type": "color",
-					"$value": "{p-color.gray.200}"
+					"$value": "{p-color.gray.400}"
 				},
 				"emphasis": {
 					"$type": "color",
@@ -638,7 +638,7 @@
 				},
 				"disabled": {
 					"$type": "color",
-					"$value": "{p-color.gray.200}"
+					"$value": "{p-color.gray.400}"
 				},
 				"placeholder": {
 					"$type": "color",

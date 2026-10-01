@@ -6,7 +6,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
-import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
 
 import styles from "./SkipLink.default.module.css";
@@ -20,11 +19,7 @@ export default () => {
 				Skip to main content
 			</Button>
 
-			<Stack direction="row" spacing={2}>
-				<Link href="#">Home</Link>
-				<Link href="#">Projects</Link>
-				<Link href="#">Settings</Link>
-			</Stack>
+			<Link href="#">This link will be skipped</Link>
 
 			<Typography id={mainId}>
 				Click the top of this example, then press <kbd>Tab</kbd> to see the skip

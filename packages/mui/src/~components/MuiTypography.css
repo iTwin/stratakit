@@ -111,7 +111,7 @@
 		background-color: var(--stratakit-color-bg-mono-muted);
 		border-radius: var(--stratakit-radius-sm);
 		font-family: var(--stratakit-font-family-mono);
-		padding-block: var(--stratakit-space-50);
-		padding-inline: var(--stratakit-space-100);
+		padding-inline-start: var(--stratakit-space-100);
+		padding-inline-end: var(--stratakit-space-100);
 	}
 }

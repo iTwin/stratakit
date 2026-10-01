@@ -1,0 +1,1 @@
+function e(e){return e&&e.ownerDocument||document}export{e as t};

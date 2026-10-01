@@ -42,6 +42,9 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	</fieldset>
 </div>
 
+<div id="icon-count" aria-live="polite" aria-atomic="true">
+	Showing {iconMetaEntries.length} icons
+</div>
 <div role="list" class="icons-grid not-content">
 	{
 		iconMetaEntries.map(([iconName, meta]) => {
@@ -333,6 +336,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			"icon";
 		const size = getSize(selectedSymbol);
 
+		let visibleIcons = 0;
 		for (const icon of icons) {
 			const iconName = icon.getAttribute("data-icon")!;
 			const symbols = JSON.parse(icon.getAttribute("data-symbols")!) as string[];
@@ -344,10 +348,14 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 			if (!visible) continue;
 
+			visibleIcons++;
 			const svg = icon.querySelector<SVGElement>("svg")!;
 			const href = icon.getAttribute("data-href")!;
 			updateIcon(svg, `${href}#${selectedSymbol}`, size);
 		}
+
+		const countElement = document.getElementById("icon-count")!;
+		countElement.textContent = `Showing ${visibleIcons} icons`;
 	}
 
 	function matchQuery(query: string, iconName: string, aliases: string[]) {

@@ -14,4 +14,16 @@ test.describe("@visual", () => {
 			await expect(page.getByTestId(SCREENSHOT_TEST_ID)).toHaveScreenshot();
 		});
 	}
+
+	test("hover", async ({ page }) => {
+		await page.goto("/showcase?path=mui/Checkbox.showcase&export=Basic");
+		await page.getByRole("checkbox").hover();
+		await expect(page.getByTestId(SCREENSHOT_TEST_ID)).toHaveScreenshot();
+	});
+
+	test("focus ring", async ({ page }) => {
+		await page.goto("/showcase?path=mui/Checkbox.showcase&export=Basic");
+		await page.getByRole("checkbox").focus();
+		await expect(page.getByTestId(SCREENSHOT_TEST_ID)).toHaveScreenshot();
+	});
 });

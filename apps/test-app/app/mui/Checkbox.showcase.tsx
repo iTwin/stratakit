@@ -24,6 +24,15 @@ export default function CheckboxExamples() {
 		</>
 	);
 }
+
+export function Basic() {
+	return (
+		<ScreenShotWrapper>
+			<CheckboxDefault />
+		</ScreenShotWrapper>
+	);
+}
+
 export function VisualTest() {
 	return (
 		<ScreenShotWrapper>

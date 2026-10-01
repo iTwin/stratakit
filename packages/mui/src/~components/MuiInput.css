@@ -11,6 +11,7 @@
 
 	@apply --typography("body-md");
 	padding: 0;
+	margin: 0;
 	border: 1px solid var(--_MuiInput-border-color);
 	border-radius: var(--stratakit-radius-sm);
 	background-color: var(--stratakit-color-bg-control-textbox);
@@ -62,6 +63,13 @@
 }
 
 .MuiInputBase-input {
+	--✨color-swatch-margin-block: var(--stratakit-space-100);
+	--✨color-swatch-size: calc(
+		var(--_MuiInput-block-size) -
+		(var(--✨color-swatch-margin-block) * 2) -
+		2px
+	);
+
 	height: unset;
 	min-block-size: calc(var(--_MuiInput-block-size) - 2px); /* Accommodate for border width */
 	padding-block: 0;
@@ -74,6 +82,31 @@
 			color: var(--stratakit-color-text-neutral-placeholder);
 			opacity: 1;
 			user-select: none;
+		}
+	}
+
+	&:where(input[type="color" i]) {
+		--_MuiInput-padding-inline: var(--stratakit-space-100);
+
+		min-inline-size: var(--_MuiInput-block-size);
+		max-inline-size: calc(var(--_MuiInput-block-size) * 2);
+		cursor: pointer;
+
+		&::-webkit-color-swatch-wrapper {
+			block-size: var(--✨color-swatch-size);
+			margin-block: var(--✨color-swatch-margin-block);
+			padding: 0;
+		}
+
+		&::-webkit-color-swatch {
+			border: 1px solid var(--stratakit-color-border-neutral-base);
+			border-radius: 1px;
+		}
+
+		&::-moz-color-swatch {
+			block-size: var(--✨color-swatch-size);
+			border: 1px solid var(--stratakit-color-border-neutral-base);
+			border-radius: 1px;
 		}
 	}
 

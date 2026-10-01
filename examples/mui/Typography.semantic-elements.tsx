@@ -15,9 +15,6 @@ export default () => {
 			<Typography variant="body-md" render={<code />}>
 				Code
 			</Typography>
-			<Typography variant="body-md" render={<blockquote />}>
-				Blockquote
-			</Typography>
 		</Stack>
 	);
 };

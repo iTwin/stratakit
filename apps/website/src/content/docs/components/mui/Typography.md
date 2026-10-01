@@ -38,7 +38,7 @@ All of the stock MUI **Typography** `variant`s are also available for backwards 
 
 ### Semantic elements
 
-The `render` prop selects semantic HTML independently from the visual `variant`. StrataKit applies key, inline-code, and quotation styles to `<kbd>`, `<code>`, and `<blockquote>` elements. These styles add decoration only; font size and line height come from the selected `variant`.
+The `render` prop selects semantic HTML independently from the visual `variant`. StrataKit applies key and inline-code styles to `<kbd>` and `<code>` elements. These styles add decoration only; font size and line height come from the selected `variant`.
 
 ::example{src="mui/Typography.semantic-elements"}
 

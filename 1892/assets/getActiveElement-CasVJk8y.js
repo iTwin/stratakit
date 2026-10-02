@@ -1,0 +1,1 @@
+import{t as e}from"./ownerDocument-Zu5Vm1vv.js";import{t}from"./getActiveElement-DreILhHN.js";function n(e,t=166){let n;function r(...r){clearTimeout(n),n=setTimeout(()=>{e.apply(this,r)},t)}return r.clear=()=>{clearTimeout(n)},r}function r(t){return e(t).defaultView||window}var i=e,a=t;export{n as i,i as n,r,a as t};

@@ -247,7 +247,7 @@ function CodeView({
 			break;
 		case "error":
 			content = (
-				<Alert severity="error">
+				<Alert severity="error" className={styles.error}>
 					There was a problem loading the source code
 				</Alert>
 			);
@@ -301,7 +301,7 @@ export function ExampleEmbed({ src }: { src: string }) {
 			</div>
 
 			<Paper className={styles.toolbar} square elevation={3}>
-				<Fade in={codeView === "minimal" && status !== "loading"}>
+				<Fade in={codeView === "minimal" && status === "complete"}>
 					<Button
 						variant="text"
 						size="small"

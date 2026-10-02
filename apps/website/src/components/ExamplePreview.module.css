@@ -35,6 +35,13 @@
 		border-bottom-left-radius: var(--stratakit-radius-md);
 	}
 
+	.error {
+		justify-content: center;
+		border: 0;
+		border-top-right-radius: 0;
+		border-top-left-radius: 0;
+	}
+
 	.code {
 		overflow: auto;
 		max-block-size: 20rem;

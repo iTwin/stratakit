@@ -81,7 +81,7 @@ interface IconButtonProps
  * ```tsx
  * <IconButton
  *   label="Reveal full content"
- *   icon={new URL("@stratakit/icons/arrow.svg", import.meta.url).href}
+ *   icon={svgArrow}
  * />
  * ```
  *

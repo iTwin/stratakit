@@ -48,7 +48,7 @@ This is for the application branding and [`NavigationRail.ToggleButton`](/refere
 
 ```jsx
 <NavigationRail.Header>
-	<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+	<Icon alt="Acme app" href={svgBrandBentleySystemsLarge} size="large" />
 	<NavigationRail.ToggleButton />
 </NavigationRail.Header>
 ```
@@ -96,10 +96,10 @@ Any supplementary items, such as settings or account preferences, should be plac
 <NavigationRail.Footer>
 	<NavigationRail.List>
 		<NavigationRail.ListItem>
-			<NavigationRail.Button icon={`${svgSettings}#icon-large`} label="Settings" />
+			<NavigationRail.Button icon={svgSettingsLarge} label="Settings" />
 		</NavigationRail.ListItem>
 		<NavigationRail.ListItem>
-			<NavigationRail.Anchor icon={`${svgAccount}#icon-large`} label="Account" />
+			<NavigationRail.Anchor icon={svgAccountLarge} label="Account" />
 		</NavigationRail.ListItem>
 	</NavigationRail.List>
 </NavigationRail.Footer>

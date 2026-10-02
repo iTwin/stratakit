@@ -14,9 +14,9 @@ import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import Typography from "@mui/material/Typography";
+import { svgMoreVertical } from "@stratakit/icons/more-vertical";
 import { Icon } from "@stratakit/mui";
 
-import svgMore from "@stratakit/icons/more-vertical.svg";
 import styles from "./Card.menu.module.css";
 
 export default () => {
@@ -65,7 +65,7 @@ function ActionsMenu() {
 				aria-expanded={open ? "true" : "false"}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
 			>
-				<Icon href={svgMore} />
+				<Icon href={svgMoreVertical} />
 			</IconButton>
 			<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
 				<MenuItem onClick={handleClose}>Favorite</MenuItem>

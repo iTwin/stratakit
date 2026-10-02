@@ -5,6 +5,6 @@
 
 import Button from "@mui/material/Button";
 
-export default () => {
-	return <Button>Create new</Button>;
+export default (props: React.ComponentProps<typeof Button>) => {
+	return <Button {...props}>Create new</Button>;
 };

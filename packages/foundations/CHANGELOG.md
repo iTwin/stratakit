@@ -1,5 +1,17 @@
 # Changelog
 
+## 1.0.2
+
+### Patch Changes
+
+- [#1921](https://github.com/iTwin/stratakit/pull/1921): Improved color contrast for `--stratakit-color-icon-neutral-*` tokens.
+
+## 1.0.1
+
+### Patch Changes
+
+- [#1842](https://github.com/iTwin/stratakit/pull/1842): Updated the value of `--stratakit-color-bg-elevation-overlay`.
+
 ## 1.0.0
 
 `@stratakit/foundations@1.0.0` is the first stable 1.0 release of the package. This release includes a number of ⚠️ **breaking** changes to the design tokens (CSS variables). If your code relies on any of the removed or renamed CSS variables, you will need to update your code to use one of the other variables.

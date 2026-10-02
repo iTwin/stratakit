@@ -7,11 +7,11 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import Tab from "@mui/material/Tab";
 import Tabs from "@mui/material/Tabs";
+import { svgChat } from "@stratakit/icons/chat";
+import { svgHeart } from "@stratakit/icons/heart";
+import { svgLocation } from "@stratakit/icons/location";
 import { Icon } from "@stratakit/mui";
 
-import svgChat from "@stratakit/icons/chat.svg";
-import svgHeart from "@stratakit/icons/heart.svg";
-import svgLocation from "@stratakit/icons/location.svg";
 import styles from "./Tabs.icon.module.css";
 
 export default () => {

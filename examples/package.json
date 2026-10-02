@@ -19,7 +19,8 @@
 		"date-fns": "^4.4.0"
 	},
 	"devDependencies": {
-		"@types/react": "catalog:"
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:"
 	},
 	"peerDependencies": {
 		"react": "catalog:",

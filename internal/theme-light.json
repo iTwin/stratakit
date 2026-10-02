@@ -268,11 +268,11 @@
 				},
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.gray.500}"
+					"$value": "{p-color.gray.700}"
 				},
 				"secondary": {
 					"$type": "color",
-					"$value": "{p-color.gray.400}"
+					"$value": "{p-color.gray.500}"
 				},
 				"disabled": {
 					"$type": "color",

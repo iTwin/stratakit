@@ -14,6 +14,7 @@ export default function ButtonExamples() {
 	return (
 		<>
 			<ButtonDefault />
+			<Loading />
 			<ButtonSizes />
 			<ButtonVariants />
 			<ButtonColors />
@@ -22,6 +23,8 @@ export default function ButtonExamples() {
 		</>
 	);
 }
+
+export const Loading = () => <ButtonDefault loading />;
 
 export const knobs = {
 	disabled: createKnob({

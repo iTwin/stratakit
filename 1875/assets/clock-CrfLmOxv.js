@@ -1,0 +1,1 @@
+import{t as e}from"./clock-Bmp82t37.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

@@ -21,7 +21,18 @@
 		align-items: center;
 		justify-content: end;
 		gap: 0.5rem;
-		border-radius: 0;
+		border-inline-start-width: 0;
+		border-inline-end-width: 0;
+
+		transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+		transition-duration: 300ms;
+		transition-property: border-bottom-color, border-bottom-left-radius, border-bottom-right-radius;
+	}
+
+	.toolbar:not(:has(+ .codeEntered)) {
+		border-bottom-color: transparent;
+		border-bottom-right-radius: var(--stratakit-radius-md);
+		border-bottom-left-radius: var(--stratakit-radius-md);
 	}
 
 	.code {

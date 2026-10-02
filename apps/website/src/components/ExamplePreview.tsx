@@ -10,12 +10,11 @@ import Collapse from "@mui/material/Collapse";
 import Fade from "@mui/material/Fade";
 import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
-import Skeleton from "@mui/material/Skeleton";
 import { visuallyHidden } from "@mui/utils";
 import { svgCopy } from "@stratakit/icons/copy";
 import { svgScript } from "@stratakit/icons/script";
-import { svgError } from "@stratakit/icons/status-error";
-import { svgSuccess } from "@stratakit/icons/status-success";
+import { svgStatusError } from "@stratakit/icons/status-error";
+import { svgStatusSuccess } from "@stratakit/icons/status-success";
 import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { Icon, Root } from "@stratakit/mui";
 import { useColorScheme } from "./~utils.ts";
@@ -206,7 +205,7 @@ function CopyButton({ valueToCopy }: { valueToCopy: string }) {
 				}}
 			>
 				<Icon
-					href={svgError}
+					href={svgStatusError}
 					className={styles.copyButtonIcon}
 					data-active={status === "error"}
 				/>
@@ -216,7 +215,7 @@ function CopyButton({ valueToCopy }: { valueToCopy: string }) {
 					data-active={status === "idle" || status === "loading"}
 				/>
 				<Icon
-					href={svgSuccess}
+					href={svgStatusSuccess}
 					className={styles.copyButtonIcon}
 					data-active={status === "complete"}
 				/>
@@ -243,9 +242,6 @@ function CodeView({
 }) {
 	let content: React.ReactNode;
 	switch (status) {
-		case "loading":
-			content = <CodeSkeleton />;
-			break;
 		case "complete":
 			content = <CodeBlock id={id} code={code} />;
 			break;
@@ -256,12 +252,17 @@ function CodeView({
 				</Alert>
 			);
 			break;
+		case "loading":
 		case "idle":
 			content = null;
 	}
 
 	return (
-		<Collapse in={view !== "none"} timeout={view === "full" ? 0 : undefined}>
+		<Collapse
+			in={view !== "none" && (status === "complete" || status === "error")}
+			timeout={view === "full" ? 0 : undefined}
+			classes={{ entered: styles.codeEntered }}
+		>
 			{content}
 		</Collapse>
 	);
@@ -299,8 +300,8 @@ export function ExampleEmbed({ src }: { src: string }) {
 				<ExamplePreview exampleName={exampleName} packageName={packageName} />
 			</div>
 
-			<Paper elevation={2} className={styles.toolbar}>
-				<Fade in={codeView === "minimal"}>
+			<Paper className={styles.toolbar} square elevation={3}>
+				<Fade in={codeView === "minimal" && status !== "loading"}>
 					<Button
 						variant="text"
 						size="small"
@@ -319,6 +320,7 @@ export function ExampleEmbed({ src }: { src: string }) {
 					size="small"
 					aria-expanded={expanded}
 					aria-controls={codeId}
+					loading={status === "loading"}
 					onClick={() => {
 						setCodeView(expanded ? "none" : "minimal");
 					}}
@@ -344,21 +346,8 @@ export function ExampleEmbed({ src }: { src: string }) {
 					<Icon href={svgScript} />
 				</IconButton>
 			</Paper>
-			<CodeView status={status} code={codeToShow} id={codeId} view={codeView} />
-		</div>
-	);
-}
 
-function CodeSkeleton({ ref }: { ref?: React.Ref<HTMLDivElement> }) {
-	return (
-		<div className={styles.code} ref={ref}>
-			<pre>
-				<Skeleton width="10rem" />
-				{/* <Skeleton sx={{ marginInlineStart: "1rem" }} width="50%" />
-				<Skeleton sx={{ marginInlineStart: "1rem" }} width="20%" /> */}
-				<Skeleton sx={{ marginInlineStart: "1rem" }} width="25%" />
-				<Skeleton width="1rem" />
-			</pre>
+			<CodeView status={status} code={codeToShow} id={codeId} view={codeView} />
 		</div>
 	);
 }

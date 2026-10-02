@@ -739,6 +739,10 @@ Replace the [`FileUpload` component from `@itwin/itwinui-react`](https://itwinui
 
 Replace the [`Flex` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/flex) with the [`Stack` component from `@mui/material`](https://mui.com/material-ui/api/stack/).
 
+- Replace `gap` prop with the `spacing` prop. Convert the value to a number representing the distance in Stratakit spacing units.
+- Replace the `flexDirection` property with the `direction` prop.
+- Remove `alignItems`, `justifyContent`, and `flexWrap`. Apply CSS styling that sets those properties.
+
 ### Footer
 
 Replace the [`Footer` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/footer) with the native [`<footer>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/footer) element.

@@ -323,8 +323,8 @@ function createTheme() {
 					component: Role.div,
 					slotProps: {
 						title: {
-							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
-							component: MuiCardHeaderTitle as any,
+							variant: "headline-sm" as never,
+							component: MuiCardHeaderTitle as never,
 						},
 					},
 				},
@@ -473,6 +473,7 @@ function createTheme() {
 			},
 			MuiInput: {
 				defaultProps: {
+					classes: { root: "🥝MuiInput" },
 					disableUnderline: true,
 				},
 			},

@@ -54,34 +54,32 @@ const CustomList = React.forwardRef(function CustomList(
 	return (
 		<div>
 			<Typography id={id}>{label}</Typography>
-			<Paper className={style.paper} variant="outlined">
-				<MenuList
-					aria-labelledby={id}
-					aria-multiselectable="true"
-					role="listbox"
-					dense
-					className={style.list}
-					render={<div ref={ref} />}
-				>
-					{items.map((value: number) => {
-						const labelId = `transfer-list-item-${value}-label`;
-						const isSelected = selected.includes(value);
+			<MenuList
+				aria-labelledby={id}
+				aria-multiselectable="true"
+				role="listbox"
+				dense
+				className={style.list}
+				render={<Paper ref={ref} variant="outlined" />}
+			>
+				{items.map((value: number) => {
+					const labelId = `transfer-list-item-${value}-label`;
+					const isSelected = selected.includes(value);
 
-						return (
-							<MenuItem
-								render={<div />}
-								key={value}
-								role="option"
-								aria-selected={isSelected}
-								aria-labelledby={labelId}
-								onClick={handleToggle(value)}
-							>
-								<ListItemText id={labelId} primary={itemNames[value]} />
-							</MenuItem>
-						);
-					})}
-				</MenuList>
-			</Paper>
+					return (
+						<MenuItem
+							render={<div />}
+							key={value}
+							role="option"
+							aria-selected={isSelected}
+							aria-labelledby={labelId}
+							onClick={handleToggle(value)}
+						>
+							<ListItemText id={labelId} primary={itemNames[value]} />
+						</MenuItem>
+					);
+				})}
+			</MenuList>
 		</div>
 	);
 });

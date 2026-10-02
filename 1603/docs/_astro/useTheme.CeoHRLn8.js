@@ -1,0 +1,1 @@
+import"./rolldown-runtime.hePW80VL.js";import{n as e}from"./jsx-runtime.BPK4hkxk.js";import{o as t}from"./DefaultPropsProvider.DDd6JBLw.js";import{t as n}from"./useTheme.Bvz8pCaG.js";e();function r(){let e=n(t);return e.$$material||e}export{r as t};

@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{t}from"./Badge.DdPhcF-7.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Pending`});export{r as default};

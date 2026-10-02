@@ -7,6 +7,7 @@ import DatePickerCalendar from "examples/mui/DatePicker.calendar.tsx";
 import DatePickerDefault from "examples/mui/DatePicker.default.tsx";
 import DatePickerSizes from "examples/mui/DatePicker.sizes.tsx";
 import DatePickerTime from "examples/mui/DatePicker.time.tsx";
+import { createKnob } from "~/~utils.tsx";
 
 export default function DatePickerExamples() {
 	return (
@@ -18,3 +19,16 @@ export default function DatePickerExamples() {
 		</>
 	);
 }
+
+export const knobs = {
+	monthSelector: createKnob({
+		props: {
+			MuiDatePicker: {
+				views: ["year", "month", "day"],
+			},
+			MuiDateCalendar: {
+				views: ["year", "month", "day"],
+			},
+		},
+	}),
+};

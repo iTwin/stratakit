@@ -3,7 +3,7 @@ title: IconButton
 description: Icon buttons are compact buttons used for toolbar and supplementary actions.
 links:
   muiDocs: https://mui.com/material-ui/react-button/#icon-button
-  apiReference: https://mui.com/material-ui/api/icon-button/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/IconButton.default"}
@@ -30,6 +30,7 @@ Make sure the **IconButton** is suitable for your use case. There may be other, 
 - A `label` prop has been added. When specified, it is used as the **IconButton's** accessible name and is also shown in a tooltip on hover and focus. This is the recommended way to set the accessible name and tooltip.
 - The `title` prop is automatically mapped to `label` as a fallback, providing better compatibility with external components that use the native `title` attribute.
 - A `labelPlacement` prop has been added to control the placement of a tooltip that is shown when the `label` prop is specified.
+- Added [`variant`](#variants) prop.
 
 ## Examples
 
@@ -49,6 +50,15 @@ Make sure to provide an accessible description in the form of a visually hidden 
 
 ::example{src="mui/IconButton.sizes"}
 
+### Variants
+
+The `variant` prop can be used to control the visual look of the `IconButton`.
+
+- **Icon:** Default variant, suitable for most cases.
+- **Outlined:** Adds a border for greater emphasis. Use when a standalone icon button needs more visual weight to clearly convey that it's interactive.
+
+::example{src="mui/IconButton.variants"}
+
 ## ✅ Do
 
 - Use the `label` prop to provide an accessible name and tooltip for the **IconButton**.
@@ -60,3 +70,8 @@ Make sure to provide an accessible description in the form of a visually hidden 
 - Don't use to replace buttons.
 - Don't use if an icon doesn't clearly convey the action. Use a [**Button**](/components/button) with a text label or a more suitable icon.
 - Don't set both `title` and `label` at the same time. Use only `label` instead.
+
+## API reference
+
+- [`IconButton`](https://mui.com/material-ui/api/icon-button/)
+- [`ButtonBase`](https://mui.com/material-ui/api/button-base/)

@@ -3,7 +3,7 @@ title: Badge
 description: Badges show notifications, counts, or status information.
 links:
   muiDocs: https://mui.com/material-ui/react-badge/
-  apiReference: https://mui.com/material-ui/api/badge/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Badge.default"}
@@ -81,3 +81,7 @@ Use the `type` prop to adjust the visual prominence of an [`"inline"` variant](#
 
 - Don't make **Badge** interactive. It is for indicating status, not controlling it.
 - Don't override colors set using `color` prop. These have been chosen carefully for their [contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
+
+## API reference
+
+- [`Badge`](https://mui.com/material-ui/api/badge/)

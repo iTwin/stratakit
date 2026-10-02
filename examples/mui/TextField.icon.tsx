@@ -5,9 +5,8 @@
 
 import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
+import { svgEmailAt } from "@stratakit/icons/email-at";
 import { Icon } from "@stratakit/mui";
-
-import svgEmailAt from "@stratakit/icons/email-at.svg";
 
 export default () => {
 	return (

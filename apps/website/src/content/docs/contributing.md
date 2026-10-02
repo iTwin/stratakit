@@ -102,14 +102,14 @@ title: Button
 description: Buttons are used to initiate actions.
 links:
   muiDocs: https://mui.com/material-ui/react-button/
-  apiReference: https://mui.com/material-ui/api/button/
+  apiReference: "#api-reference"
 ---
 ```
 
 - **title:** The main heading for the page ("Button" here)
 - **description:** The short description/strapline following the **title**
 - **status:** The current status of the component. See [component status](/components/overview/#component-status) for the accepted values and their meanings.
-- **links:** A list of key/value pairs. Use **muiDocs** to link the MUI component docs and **apiReference** to link the MUI or StrataKit API reference.
+- **links:** A list of key/value pairs. Use **muiDocs** to link the MUI component docs and **apiReference** to link the "API reference" section.
 
 ### Asides
 

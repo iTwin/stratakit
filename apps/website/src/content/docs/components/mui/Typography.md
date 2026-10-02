@@ -3,7 +3,7 @@ title: Typography
 description: Typography is for applying style to runs of text.
 links:
   muiDocs: https://mui.com/material-ui/react-typography/
-  apiReference: https://mui.com/material-ui/api/typography/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Typography.default"}
@@ -83,3 +83,7 @@ The following color are available for the `color` prop:
 
 - Don't use **Typography** to disrupt or flatten the visual hierarchy.
 - Don't render a heading element when you simply want to grab attention.
+
+## API reference
+
+- [`Typography`](https://mui.com/material-ui/api/typography/)

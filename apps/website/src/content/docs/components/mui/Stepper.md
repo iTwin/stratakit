@@ -3,7 +3,7 @@ title: Stepper
 description: Steppers are used to display progress through a sequence of steps.
 links:
   muiDocs: https://mui.com/material-ui/react-stepper/
-  apiReference: https://mui.com/material-ui/api/stepper/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Stepper.default"}
@@ -32,3 +32,19 @@ links:
 ### MobileStepper
 
 ::example{src="mui/MobileStepper.default" min-width="450px"}
+
+### Long
+
+In the long stepper, there are no labels underneath the step indicators to save space. Instead, the label for the step currently in progress appears under the diagram along with ‘Step X of X’. This allocates more space for longer step names, as well as allowing more step indicators to be contained within the diagram.
+
+::example{src="mui/Stepper.long" min-width="500px"}
+
+## API reference
+
+- [`Stepper`](https://mui.com/material-ui/api/stepper/)
+- [`MobileStepper`](https://mui.com/material-ui/api/mobile-stepper/)
+- [`Step`](https://mui.com/material-ui/api/step/)
+- [`StepLabel`](https://mui.com/material-ui/api/step-label/)
+- [`StepButton`](https://mui.com/material-ui/api/step-button/)
+- [`StepContent`](https://mui.com/material-ui/api/step-content/)
+- [`StepConnector`](https://mui.com/material-ui/api/step-connector/)

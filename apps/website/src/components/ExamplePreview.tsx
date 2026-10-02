@@ -12,16 +12,16 @@ import IconButton from "@mui/material/IconButton";
 import Paper from "@mui/material/Paper";
 import Skeleton from "@mui/material/Skeleton";
 import { visuallyHidden } from "@mui/utils";
+import { svgCopy } from "@stratakit/icons/copy";
+import { svgScript } from "@stratakit/icons/script";
+import { svgError } from "@stratakit/icons/status-error";
+import { svgSuccess } from "@stratakit/icons/status-success";
+import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { Icon, Root } from "@stratakit/mui";
 import { useColorScheme } from "./~utils.ts";
 
 import type { HighlighterCore } from "shiki/core";
 
-import svgCopy from "@stratakit/icons/copy.svg";
-import svgScript from "@stratakit/icons/script.svg";
-import svgError from "@stratakit/icons/status-error.svg";
-import svgSuccess from "@stratakit/icons/status-success.svg";
-import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./ExamplePreview.module.css";
 
 // ----------------------------------------------------------------------------
@@ -35,6 +35,7 @@ const exampleModules = {
 	bricks: import.meta.glob("/node_modules/examples/bricks/*.tsx"),
 	structures: import.meta.glob("/node_modules/examples/structures/*.tsx"),
 	mui: import.meta.glob("/node_modules/examples/mui/*.tsx"),
+	composite: import.meta.glob("/node_modules/examples/composite/*.tsx"),
 } as const;
 
 // Pre-calculate all example source files (raw text).

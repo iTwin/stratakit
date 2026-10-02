@@ -3,7 +3,7 @@ title: Root
 description: Root is the required wrapper for all StrataKit components.
 status: stable
 links:
-  apiReference: /reference/mui/Root
+  apiReference: "#api-reference"
 sidebar:
   order: 1
 ---
@@ -71,3 +71,7 @@ The **Root** component creates a separate [portal container](https://react.dev/r
 
 - Don't render multiple `<Root>` components in the same document or [shadow root](https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot).
 - Don't use MUI's `ThemeProvider`, `StyledEngineProvider`, or `CssBaseline` directly — **Root** handles all of that for you.
+
+## API reference
+
+- [`Root`](/reference/mui/Root)

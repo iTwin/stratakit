@@ -1,0 +1,1 @@
+import{t as e}from"./more-vertical-B41cyaF5.js";var t=`${e}#icon`;`${e}`;export{t};

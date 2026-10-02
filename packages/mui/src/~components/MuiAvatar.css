@@ -4,11 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiAvatar-root {
-	--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
 	--🥝Icon-size: 50%;
 
 	aspect-ratio: 1;
-	color: var(--stratakit-color-text-neutral-emphasis);
 	container-type: inline-size;
 	font-size: var(--stratakit-font-size-caption-md);
 	font-weight: 600;
@@ -19,6 +17,17 @@
 
 	> abbr {
 		font-size: calc(50cqw - 4px);
+	}
+
+	@supports not (color: contrast-color(var(--foo))) {
+		--🥝Icon-color: var(--stratakit-color-icon-neutral-emphasis);
+		background-color: var(--stratakit-color-bg-mono-base);
+		color: var(--stratakit-color-text-neutral-emphasis);
+	}
+
+	@supports (color: contrast-color(var(--foo))) {
+		--🥝Icon-color: contrast-color(var(--stratakit-mui-palette-Avatar-defaultBg));
+		color: contrast-color(var(--stratakit-mui-palette-Avatar-defaultBg));
 	}
 
 	&::after {

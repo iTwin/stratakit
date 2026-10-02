@@ -31,10 +31,19 @@ export default () => {
 		};
 	}, [status]);
 
+	const onClose = () => {
+		if (status === "complete") {
+			setStatus("idle");
+		}
+	};
+
 	return (
 		<>
 			<Button onClick={() => setStatus("processing")}>Start process</Button>
-			<Snackbar open={status === "processing"}>
+			<Snackbar
+				open={status === "processing" || status === "complete"}
+				onClose={onClose}
+			>
 				<SnackbarContent
 					message={
 						<Stack
@@ -45,25 +54,11 @@ export default () => {
 								alignItems: "center",
 							}}
 						>
-							<CircularProgress size={16} color="secondary" />
-							<Typography>Your process is in progress...</Typography>
-						</Stack>
-					}
-				/>
-			</Snackbar>
-			<Snackbar open={status === "complete"}>
-				<SnackbarContent
-					message={
-						<Stack
-							direction="row"
-							spacing={2}
-							sx={{
-								justifyContent: "center",
-								alignItems: "center",
-							}}
-						>
-							<Icon href={svgStatusSuccess} />
-							<Typography>Process complete</Typography>
+							{status === "processing" ? (
+								<InProgressMessage />
+							) : (
+								<CompleteMessage />
+							)}
 						</Stack>
 					}
 				/>
@@ -71,3 +66,21 @@ export default () => {
 		</>
 	);
 };
+
+function CompleteMessage() {
+	return (
+		<>
+			<Icon href={svgStatusSuccess} />
+			<Typography>Process complete</Typography>
+		</>
+	);
+}
+
+function InProgressMessage() {
+	return (
+		<>
+			<CircularProgress size={16} color="secondary" />
+			<Typography>Your process is in progress...</Typography>
+		</>
+	);
+}

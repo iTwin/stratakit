@@ -74,6 +74,20 @@ The following color are available for the `color` prop:
 
 ::example{src="mui/Typography.colors"}
 
+### Semantic elements
+
+The `render` prop selects semantic HTML independently from the visual `variant`. StrataKit applies key and inline-code styles to `<kbd>` and `<code>` elements rendered by Typography, as well as to these elements nested inside Typography. The styles add decoration only; font size and line height come from the selected `variant`.
+
+For example, nested `<code>` elements are styled automatically:
+
+```jsx
+<Typography>
+	The <code>code</code> element is styled automatically when placed inside <code>Typography</code>.
+</Typography>
+```
+
+::example{src="mui/Typography.semantic-elements"}
+
 ## ✅ Do
 
 - Use the `variant` prop of the **Typography** component to affect the visual presentation of the text.

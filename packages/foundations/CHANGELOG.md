@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.2
+
+### Patch Changes
+
+- [#1921](https://github.com/iTwin/stratakit/pull/1921): Improved color contrast for `--stratakit-color-icon-neutral-*` tokens.
+
 ## 1.0.1
 
 ### Patch Changes

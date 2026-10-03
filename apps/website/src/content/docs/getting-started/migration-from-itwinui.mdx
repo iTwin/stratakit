@@ -759,10 +759,10 @@ Replace the [`Header` component from `@itwin/itwinui-react`](https://itwinui.ben
 
 Replace the [`IconButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#iconbutton) with the `IconButton` component from `@mui/material`. See [IconButton examples](/components/iconbutton/) for reference.
 
-- Replace `<IconButton styleType="cta"/>` with `<Button variant="primary"/>` or `<IconButton color="primary/>`.
-- For `styleType="high-visibility"`, consider changing to a `Button` or using`<IconButton variant="outlined"/>`.
-- Replace `styleType=default"` with `variant="outlined"`.
-- Remove `styleType="borderless"` as this is now the default visual look.
+- Replace `styleType="cta"` with a text-labeled `<Button color="primary">`.
+- Replace `styleType="high-visibility"` with a text-labeled `<Button color="primary">`.
+- Replace `styleType="default"` with `<IconButton variant="outlined">`.
+- Remove `styleType="borderless"`; the default MUI `IconButton` appearance is borderless.
 
 ### IdeasButton
 

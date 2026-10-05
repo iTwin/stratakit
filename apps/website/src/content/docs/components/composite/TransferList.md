@@ -3,6 +3,7 @@ title: Transfer list
 description: Enables the user to move one or more list items between lists.
 links:
   muiDocs: https://mui.com/material-ui/react-transfer-list/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="composite/TransferList.default"}

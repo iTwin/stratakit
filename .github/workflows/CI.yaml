@@ -195,4 +195,3 @@ jobs:
     uses: "./.github/workflows/deploy-gh-pages.yaml"
     with:
       base: ${{ github.event.number || github.ref_name != 'main' && github.ref_name || '' }}
-      skip-docs: ${{ github.ref == 'refs/heads/main' }} # do not automatically deploy docs for every push to `main`

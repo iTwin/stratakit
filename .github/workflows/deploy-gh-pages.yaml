@@ -10,10 +10,6 @@ on:
 
   workflow_call:
     inputs:
-      skip-docs:
-        description: "Skip deploying the docs website"
-        type: boolean
-        default: false
       base:
         description: "Base path under which to deploy (defaults to `commit/<SHA>`)"
         type: string
@@ -43,30 +39,23 @@ jobs:
           result-encoding: string
           script: return new URL("${{ vars.GH_PAGES_URL }}").pathname.replace(/^\/|\/$/g, "") + "/";
 
-      - name: Print folders to preserve # (open PRs, "commit/", and "docs/" folders)
+      - name: Print folders to preserve # (open PRs and "commit/" folder)
         id: preserve_folders
         uses: actions/github-script@v9
         with:
           result-encoding: string
           script: |
-            const { data: openPRs } = await github.rest.pulls.list({
+            return ['commit', ...((await github.rest.pulls.list({
               owner: context.repo.owner,
               repo: context.repo.repo,
               state: 'open',
               per_page: 100
-            });
-            return ['commit', 'docs', ...openPRs.map(pr => pr.number)].join('\n');
+            })).data.map(pr => pr.number))].join('\n')
 
   deploy:
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     needs: paths
-
-    # allow multiple deployments to queue up without cancelling in-progress ones
-    concurrency:
-      group: gh-pages
-      cancel-in-progress: false
-      queue: max
 
     env:
       BASE_FOLDER: ${{ needs.paths.outputs.BASE_FOLDER }}
@@ -105,7 +94,6 @@ jobs:
           git-config-email: github-actions[bot]@users.noreply.github.com
 
       - name: Deploy docs website build output to gh-pages branch
-        if: ${{ !inputs.skip-docs }}
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           branch: gh-pages

@@ -19,71 +19,6 @@ import { Icon } from "@stratakit/mui";
 
 import style from "./TransferList.default.module.css";
 
-const itemNames = [
-	"Roof trusses",
-	"Mezzanine beams",
-	"Perimeter columns",
-	"Bracing",
-	"Ground floor slab",
-	"Core walls",
-	"Retaining walls",
-	"Transfer beams",
-];
-function not(a: readonly number[], b: readonly number[]) {
-	return a.filter((value) => !b.includes(value));
-}
-
-function intersection(a: readonly number[], b: readonly number[]) {
-	return a.filter((value) => b.includes(value));
-}
-
-type CustomListProps = {
-	label: string;
-	items: readonly number[];
-	selected: readonly number[];
-	handleToggle: (value: number) => () => void;
-};
-
-const CustomList = React.forwardRef(function CustomList(
-	props: CustomListProps,
-	ref: React.Ref<HTMLDivElement & { focus: () => void }>,
-) {
-	const { label, items, selected, handleToggle } = props;
-	const id = React.useId();
-
-	return (
-		<div>
-			<Typography id={id}>{label}</Typography>
-			<MenuList
-				aria-labelledby={id}
-				aria-multiselectable="true"
-				role="listbox"
-				dense
-				className={style.list}
-				render={<Paper ref={ref} variant="outlined" />}
-			>
-				{items.map((value: number) => {
-					const labelId = `transfer-list-item-${value}-label`;
-					const isSelected = selected.includes(value);
-
-					return (
-						<MenuItem
-							render={<div />}
-							key={value}
-							role="option"
-							aria-selected={isSelected}
-							aria-labelledby={labelId}
-							onClick={handleToggle(value)}
-						>
-							<ListItemText id={labelId} primary={itemNames[value]} />
-						</MenuItem>
-					);
-				})}
-			</MenuList>
-		</div>
-	);
-});
-
 export default function TransferList() {
 	const [selected, setSelected] = React.useState<readonly number[]>([]);
 	const [left, setLeft] = React.useState<readonly number[]>([0, 1, 2, 3]);
@@ -197,3 +132,68 @@ export default function TransferList() {
 		</Grid>
 	);
 }
+
+const itemNames = [
+	"Roof trusses",
+	"Mezzanine beams",
+	"Perimeter columns",
+	"Bracing",
+	"Ground floor slab",
+	"Core walls",
+	"Retaining walls",
+	"Transfer beams",
+];
+function not(a: readonly number[], b: readonly number[]) {
+	return a.filter((value) => !b.includes(value));
+}
+
+function intersection(a: readonly number[], b: readonly number[]) {
+	return a.filter((value) => b.includes(value));
+}
+
+type CustomListProps = {
+	label: string;
+	items: readonly number[];
+	selected: readonly number[];
+	handleToggle: (value: number) => () => void;
+};
+
+const CustomList = React.forwardRef(function CustomList(
+	props: CustomListProps,
+	ref: React.Ref<HTMLDivElement & { focus: () => void }>,
+) {
+	const { label, items, selected, handleToggle } = props;
+	const id = React.useId();
+
+	return (
+		<div>
+			<Typography id={id}>{label}</Typography>
+			<MenuList
+				aria-labelledby={id}
+				aria-multiselectable="true"
+				role="listbox"
+				dense
+				className={style.list}
+				render={<Paper ref={ref} variant="outlined" />}
+			>
+				{items.map((value: number) => {
+					const labelId = `transfer-list-item-${value}-label`;
+					const isSelected = selected.includes(value);
+
+					return (
+						<MenuItem
+							render={<div />}
+							key={value}
+							role="option"
+							aria-selected={isSelected}
+							aria-labelledby={labelId}
+							onClick={handleToggle(value)}
+						>
+							<ListItemText id={labelId} primary={itemNames[value]} />
+						</MenuItem>
+					);
+				})}
+			</MenuList>
+		</div>
+	);
+});

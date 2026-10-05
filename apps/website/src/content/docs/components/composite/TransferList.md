@@ -1,5 +1,5 @@
 ---
-title: Transfer List
+title: Transfer list
 description: Enables the user to move one or more list items between lists.
 links:
   muiDocs: https://mui.com/material-ui/react-transfer-list/
@@ -13,7 +13,7 @@ This example is adapted from the [MUI documentation for TransferList](https://mu
 
 A **transfer list** enables the user to move one or more list items between lists.
 
-| Use case                                            | Transfer List | Single list with checkboxes |
+| Use case                                            | Transfer list | Single list with checkboxes |
 | --------------------------------------------------- | ------------- | --------------------------- |
 | Identifying items that meet a yes/no criteria       | ❌            | ✅                          |
 | Classifying items as one of two possible named sets | ✅            | ❌                          |

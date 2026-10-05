@@ -1,0 +1,1 @@
+import{t as e}from"./clock-CS34osYx.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

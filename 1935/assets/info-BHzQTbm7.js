@@ -1,0 +1,1 @@
+import{t as e}from"./info-C0Sk-BUe.js";var t=`${e}#icon`;`${e}`;export{t};

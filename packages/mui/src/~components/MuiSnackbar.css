@@ -4,11 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiSnackbarContent-root:is(.MuiPaper-root) {
-	background-color: var(--stratakit-color-bg-elevation-emphasis);
-}
-
-:is(.MuiSnackbarContent-action) .MuiIconButton-root {
-	&:where(:not(.Mui-disabled)) {
-		color: var(--stratakit-color-icon-neutral-emphasis);
-	}
+	background-color: var(--stratakit-color-bg-elevation-base);
+	color: var(--stratakit-color-text-neutral);
 }

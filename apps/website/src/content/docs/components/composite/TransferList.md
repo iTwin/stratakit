@@ -13,10 +13,10 @@ This example is adapted from the [MUI documentation for TransferList](https://mu
 
 A **transfer list** enables the user to move one or more list items between lists.
 
-| Use case                                                   | Transfer List | Single list with checkboxes |
-| ---------------------------------------------------------- | ------------- | --------------------------- |
-| Identifying which items should be included in a single set | ❌            | ✅                          |
-| Classifying items as one of two possible named sets        | ✅            | ❌                          |
+| Use case                                            | Transfer List | Single list with checkboxes |
+| --------------------------------------------------- | ------------- | --------------------------- |
+| Identifying items that meet a yes/no criteria       | ❌            | ✅                          |
+| Classifying items as one of two possible named sets | ✅            | ❌                          |
 
 ## Structure
 

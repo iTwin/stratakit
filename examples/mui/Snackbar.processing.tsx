@@ -14,35 +14,14 @@ import { svgStatusSuccess } from "@stratakit/icons/status-success";
 import { Icon } from "@stratakit/mui";
 
 export default () => {
-	const [status, setStatus] = React.useState<
-		"idle" | "processing" | "complete"
-	>("idle");
-
-	React.useEffect(() => {
-		if (status !== "processing") {
-			return;
-		}
-		const id = window.setTimeout(() => {
-			setStatus("complete");
-		}, 2500);
-
-		return () => {
-			window.clearTimeout(id);
-		};
-	}, [status]);
-
-	const onClose = () => {
-		if (status === "complete") {
-			setStatus("idle");
-		}
-	};
+	const { status, start, reset } = useExternalProcess();
 
 	return (
 		<>
-			<Button onClick={() => setStatus("processing")}>Start process</Button>
+			<Button onClick={start}>Start process</Button>
 			<Snackbar
 				open={status === "processing" || status === "complete"}
-				onClose={onClose}
+				onClose={reset}
 			>
 				<SnackbarContent
 					message={
@@ -66,6 +45,63 @@ export default () => {
 		</>
 	);
 };
+
+class Process extends EventTarget {
+	#timeout: number | null = null;
+	#status: Status = "idle";
+
+	get status() {
+		return this.#status;
+	}
+
+	#setStatus(newStatus: Status) {
+		if (newStatus === this.#status) {
+			return;
+		}
+		this.#status = newStatus;
+		this.dispatchEvent(new Event("change"));
+	}
+
+	start() {
+		this.#setStatus("processing");
+		this.#timeout = window.setTimeout(() => {
+			this.#setStatus("complete");
+		}, 2_500);
+	}
+
+	stop() {
+		if (this.#timeout) {
+			window.clearTimeout(this.#timeout);
+			this.#timeout = null;
+		}
+		this.#setStatus("idle");
+	}
+}
+
+type Status = "idle" | "processing" | "complete";
+function useExternalProcess() {
+	const processRef = React.useRef(new Process());
+
+	const subscribe = React.useCallback((notify: () => void) => {
+		processRef.current.addEventListener("change", notify);
+		return () => {
+			processRef.current.removeEventListener("change", notify);
+			processRef.current.stop();
+		};
+	}, []);
+
+	const status = React.useSyncExternalStore(
+		subscribe,
+		() => processRef.current.status,
+		() => processRef.current.status,
+	);
+
+	return {
+		status,
+		start: () => processRef.current.start(),
+		reset: () => processRef.current.stop(),
+	};
+}
 
 function CompleteMessage() {
 	return (

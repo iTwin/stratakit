@@ -47,17 +47,10 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 </div>
 <div role="list" class="icons-grid not-content">
 	{
-		iconMetaEntries.map(([iconName, meta]) => {
+		iconMetaEntries.map(([iconName]) => {
 			const href = getIconHref(iconName);
 			return (
-				<div
-					role="listitem"
-					class="icon"
-					data-icon={iconName}
-					data-aliases={JSON.stringify(meta.aliases)}
-					data-symbols={JSON.stringify(meta.symbols)}
-					data-href={href}
-				>
+				<div role="listitem" class="icon" data-icon={iconName} data-href={href}>
 					<button command="show-modal" commandfor="icon-dialog">
 						<svg width="16" height="16">
 							<use href={`${href}#${defaultSymbol}`} />
@@ -274,6 +267,13 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 </style>
 
 <script>
+	import iconsMeta from "@stratakit/icons/icons-meta.json";
+
+	interface IconMeta {
+		symbols: string[];
+		aliases: string[];
+	}
+
 	const debouncedFilter = debounce(filter, 200);
 
 	const symbolInputs = document.querySelectorAll<HTMLInputElement>(
@@ -310,6 +310,8 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 	window.addEventListener("popstate", syncIconParam);
 
+	const countElement = document.querySelector<HTMLElement>("#icon-count")!;
+
 	syncIconParam();
 
 	function syncIconParam() {
@@ -342,17 +344,19 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		const icon = document.querySelector<HTMLElement>(`[data-icon="${iconName}"]`);
 		if (!icon) return;
 
+		const meta = iconsMeta[iconName] as IconMeta | undefined;
+		if (!meta) return;
+
 		const heading = iconDialog.querySelector("#icon-dialog-title")!;
 		heading.textContent = `Icon: ${iconName}.svg`;
 
-		const symbols = JSON.parse(icon.dataset.symbols!) as string[];
 		const href = icon.dataset.href!;
 		const symbolItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
 			"template[data-symbol-item]",
 		)!;
 		const symbolsElement = iconDialog.querySelector<HTMLUListElement>("#icon-dialog-symbols")!;
 		symbolsElement.replaceChildren(
-			...symbols.map((symbol) => {
+			...meta.symbols.map((symbol) => {
 				const symbolItem = symbolItemTemplate.content.cloneNode(true) as DocumentFragment;
 				const svg = symbolItem.querySelector("svg")!;
 				const size = getSize(symbol);
@@ -362,13 +366,12 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			}),
 		);
 
-		const aliases = JSON.parse(icon.dataset.aliases!) as string[];
 		const aliasItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
 			"template[data-alias-item]",
 		)!;
 		const aliasesElement = iconDialog.querySelector<HTMLUListElement>("#icon-dialog-aliases")!;
 		aliasesElement.replaceChildren(
-			...aliases.map((alias) => {
+			...meta.aliases.map((alias) => {
 				const aliasItem = aliasItemTemplate.content.cloneNode(true) as DocumentFragment;
 				aliasItem.querySelector("li")!.textContent = alias;
 				return aliasItem;
@@ -388,10 +391,11 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		let visibleIcons = 0;
 		for (const icon of icons) {
 			const iconName = icon.dataset.icon!;
-			const symbols = JSON.parse(icon.dataset.symbols!) as string[];
-			const aliases = JSON.parse(icon.dataset.aliases!) as string[];
-			const hasSymbol = symbols.includes(selectedSymbol);
-			const matchesQuery = matchQuery(query, iconName, aliases);
+			const meta = iconsMeta[iconName] as IconMeta | undefined;
+			if (!meta) continue;
+
+			const hasSymbol = meta.symbols.includes(selectedSymbol);
+			const matchesQuery = matchQuery(query, iconName, meta.aliases);
 			const visible = matchesQuery && hasSymbol;
 			icon.hidden = !visible;
 
@@ -403,7 +407,6 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			updateIcon(svg, `${href}#${selectedSymbol}`, size);
 		}
 
-		const countElement = document.querySelector<HTMLElement>("#icon-count")!;
 		countElement.textContent = `Showing ${visibleIcons} icons`;
 	}
 

@@ -160,7 +160,7 @@ type CustomListProps = {
 
 const CustomList = React.forwardRef(function CustomList(
 	props: CustomListProps,
-	ref: React.Ref<HTMLDivElement & { focus: () => void }>,
+	ref: React.Ref<HTMLDivElement>,
 ) {
 	const { label, items, selected, handleToggle } = props;
 	const id = React.useId();

@@ -46,13 +46,12 @@ body:
       description: Which package is affected by this bug?
       multiple: true
       options:
-        - "@stratakit/bricks"
-        - "@stratakit/foundations"
-        - "@stratakit/icons"
         - "@stratakit/mui"
+        - "@stratakit/icons"
         - "@stratakit/structures"
-    validations:
-      required: true
+        - "@stratakit/foundations"
+        - "@stratakit/bricks"
+        - "@stratakit/internal-utils"
   - type: textarea
     attributes:
       label: Environment and versions

@@ -1,0 +1,1 @@
+import{t as e}from"./info-Byn8Dly3.js";var t=`${e}#icon`;`${e}`;export{t};

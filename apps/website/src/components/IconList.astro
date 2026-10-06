@@ -76,16 +76,18 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 </div>
 
 <dialog id="icon-dialog" aria-labelledby="icon-dialog-title">
-	<h2 id="icon-dialog-title"></h2>
-	<button commandfor="icon-dialog" command="close" aria-label="Dismiss" class="icon-button">
-		<svg width="16" height="16">
-			<use href={svgDismiss}></use>
-		</svg>
-	</button>
+	<div class="dialog-header">
+		<h2 id="icon-dialog-title"></h2>
+		<button commandfor="icon-dialog" command="close" aria-label="Dismiss" class="icon-button">
+			<svg width="16" height="16">
+				<use href={svgDismiss}></use>
+			</svg>
+		</button>
+	</div>
 	<h3>Symbols</h3>
-	<ul data-symbols></ul>
+	<ul id="icon-dialog-symbols" class="not-content"></ul>
 	<h3>Aliases</h3>
-	<ul data-aliases></ul>
+	<ul id="icon-dialog-aliases"></ul>
 
 	<template data-symbol-item>
 		<li><svg><use></use></svg><span></span></li>
@@ -201,19 +203,60 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		}
 
 		dialog {
-			box-shadow: var(--stratakit-shadow-surface-xl);
-			border: 1px solid var(--stratakit-color-border-page-base);
-			border-radius: var(--stratakit-radius-md);
-			background-color: var(--stratakit-color-bg-elevation-level-1);
+			margin: 0;
 			inset: 0;
 			place-self: center;
+			background-color: var(--sl-color-gray-6);
+			border: 1px solid var(--sl-color-gray-5);
+			border-radius: var(--stratakit-radius-md);
+			box-shadow: var(--sl-shadow-lg);
+			padding: var(--stratakit-space-600);
+			min-inline-size: 66%;
+			max-inline-size: calc(100% - var(--stratakit-space-600));
+			max-block-size: calc(100% - var(--stratakit-space-600));
+			overflow: auto;
 
 			&::backdrop {
-				background-color: var(--stratakit-color-bg-elevation-overlay);
+				background-color: var(--sl-color-backdrop-overlay);
+				backdrop-filter: blur(0.25rem);
+			}
+
+			.dialog-header {
+				display: flex;
+				align-items: center;
+				gap: var(--stratakit-space-600);
+				justify-content: space-between;
+			}
+
+			h2 {
+				font-size: var(--sl-text-h4);
+			}
+
+			h3 {
+				font-size: var(--sl-text-h5);
+			}
+		}
+
+		#icon-dialog-symbols {
+			list-style-type: "";
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			gap: var(--stratakit-space-400);
+
+			li {
+				display: flex;
+				flex-direction: column;
+				justify-content: end;
+				align-items: center;
+				gap: var(--stratakit-space-200);
+
+				padding: var(--stratakit-space-400);
+				border: 1px solid var(--sl-color-gray-5);
 			}
 		}
 
 		.icon-button {
+			margin: 0;
 			display: inline-flex;
 			align-items: center;
 			justify-content: center;
@@ -234,13 +277,13 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	const debouncedFilter = debounce(filter, 200);
 
 	const symbolInputs = document.querySelectorAll<HTMLInputElement>(
-		"#icon-symbol-filter input[type='radio']",
+		`#icon-symbol-filter input[type="radio"]`,
 	);
 	for (const symbolInput of symbolInputs) {
 		symbolInput.addEventListener("change", debouncedFilter);
 	}
 
-	const searchInput = document.querySelector<HTMLInputElement>("input[type='search']")!;
+	const searchInput = document.querySelector<HTMLInputElement>("#icon-search-input")!;
 	searchInput.addEventListener("input", debouncedFilter);
 
 	const iconDialog = document.querySelector<HTMLDialogElement>("#icon-dialog")!;
@@ -255,7 +298,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		const source = e.source;
 		if (!(source instanceof HTMLElement)) return;
 
-		const iconName = source.parentElement?.getAttribute("data-icon");
+		const iconName = source.parentElement?.dataset.icon;
 		if (!iconName) return;
 
 		updateIconDialog(iconName);
@@ -300,14 +343,14 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		if (!icon) return;
 
 		const heading = iconDialog.querySelector("#icon-dialog-title")!;
-		heading.textContent = `${iconName} icon`;
+		heading.textContent = `Icon: ${iconName}.svg`;
 
-		const symbols = JSON.parse(icon.getAttribute("data-symbols")!) as string[];
-		const href = icon.getAttribute("data-href")!;
+		const symbols = JSON.parse(icon.dataset.symbols!) as string[];
+		const href = icon.dataset.href!;
 		const symbolItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
 			"template[data-symbol-item]",
 		)!;
-		const symbolsElement = iconDialog.querySelector<HTMLUListElement>("[data-symbols]")!;
+		const symbolsElement = iconDialog.querySelector<HTMLUListElement>("#icon-dialog-symbols")!;
 		symbolsElement.replaceChildren(
 			...symbols.map((symbol) => {
 				const symbolItem = symbolItemTemplate.content.cloneNode(true) as DocumentFragment;
@@ -319,11 +362,11 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			}),
 		);
 
-		const aliases = JSON.parse(icon.getAttribute("data-aliases")!) as string[];
+		const aliases = JSON.parse(icon.dataset.aliases!) as string[];
 		const aliasItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
 			"template[data-alias-item]",
 		)!;
-		const aliasesElement = iconDialog.querySelector<HTMLUListElement>("[data-aliases]")!;
+		const aliasesElement = iconDialog.querySelector<HTMLUListElement>("#icon-dialog-aliases")!;
 		aliasesElement.replaceChildren(
 			...aliases.map((alias) => {
 				const aliasItem = aliasItemTemplate.content.cloneNode(true) as DocumentFragment;
@@ -344,9 +387,9 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 		let visibleIcons = 0;
 		for (const icon of icons) {
-			const iconName = icon.getAttribute("data-icon")!;
-			const symbols = JSON.parse(icon.getAttribute("data-symbols")!) as string[];
-			const aliases = JSON.parse(icon.getAttribute("data-aliases")!) as string[];
+			const iconName = icon.dataset.icon!;
+			const symbols = JSON.parse(icon.dataset.symbols!) as string[];
+			const aliases = JSON.parse(icon.dataset.aliases!) as string[];
 			const hasSymbol = symbols.includes(selectedSymbol);
 			const matchesQuery = matchQuery(query, iconName, aliases);
 			const visible = matchesQuery && hasSymbol;
@@ -356,11 +399,11 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 			visibleIcons++;
 			const svg = icon.querySelector<SVGElement>("svg")!;
-			const href = icon.getAttribute("data-href")!;
+			const href = icon.dataset.href!;
 			updateIcon(svg, `${href}#${selectedSymbol}`, size);
 		}
 
-		const countElement = document.getElementById("icon-count")!;
+		const countElement = document.querySelector<HTMLElement>("#icon-count")!;
 		countElement.textContent = `Showing ${visibleIcons} icons`;
 	}
 
@@ -382,7 +425,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 		svg.setAttribute("width", width);
 		svg.setAttribute("height", width);
-		svg.setAttribute("data-size", size);
+		svg.dataset.size = size;
 
 		const use = svg.querySelector<SVGUseElement>("use")!;
 		use.setAttribute("href", href);

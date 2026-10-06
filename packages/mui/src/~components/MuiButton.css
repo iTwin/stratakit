@@ -73,7 +73,7 @@
 	}
 
 	&:where(.MuiButton-contained) {
-		box-shadow: var(--stratakit-shadow-control-button-base-drop);
+		box-shadow: var(--stratakit-shadow-surface-sm);
 
 		&:where(.MuiButton-colorSecondary) {
 			border: 1px solid;

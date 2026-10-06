@@ -5,13 +5,18 @@
 
 :where(.MuiPaper-root) {
 	--Paper-overlay: unset !important; /* Remove background-image overlay that MUI adds in dark mode */
+	background-color: transparent;
 
 	&:where(.MuiPaper-rounded) {
 		border-radius: var(--stratakit-radius-md);
 	}
 
 	&:where(.MuiPaper-elevation1) {
-		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-base);
+		background-color: var(--stratakit-color-bg-page-base);
+	}
+
+	&:where(.MuiPaper-elevation:not(.MuiPaper-elevation0, .MuiPaper-elevation1)) {
+		border: 1px solid var(--stratakit-color-border-page-base);
 	}
 
 	&:where(
@@ -22,7 +27,7 @@
 			.MuiPaper-elevation6,
 			.MuiPaper-elevation7
 		) {
-		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-base);
+		background-color: var(--stratakit-color-bg-elevation-base);
 	}
 
 	&:where(
@@ -44,6 +49,10 @@
 			.MuiPaper-elevation23,
 			.MuiPaper-elevation24
 		) {
-		--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-elevation-level-1);
+		background-color: var(--stratakit-color-bg-elevation-level-1);
+	}
+
+	&:where(.MuiPaper-outlined) {
+		border: 1px solid var(--stratakit-color-border-page-base);
 	}
 }

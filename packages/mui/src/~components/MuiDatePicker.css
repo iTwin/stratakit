@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-.MuiYearCalendar-button {
+:is(.MuiYearCalendar-button, .MuiMonthCalendar-button) {
 	text-align: center;
 }
 
@@ -46,6 +46,10 @@
 	&:where(:focus, :focus-visible) {
 		outline: none !important; /* Focus outline will be shown around the input picker instead */
 	}
+}
+
+.MuiDateCalendar-root {
+	margin: unset;
 }
 
 .MuiDayCalendar-root {
@@ -122,8 +126,7 @@
 		outline: unset;
 
 		&:where(.Mui-focusVisible) {
-			outline: var(--🥝focus-outline);
-			outline-offset: var(--🥝focus-outline-offset);
+			outline: var(--🥝focus-outline); /* Override MUI's `outline-color` */
 		}
 
 		&::after {

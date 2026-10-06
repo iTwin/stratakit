@@ -13,6 +13,7 @@
 @import "./~components/MuiAvatarGroup.css";
 @import "./~components/MuiBadge.css";
 @import "./~components/MuiBottomNavigation.css";
+@import "./~components/MuiBreadcrumbs.css";
 @import "./~components/MuiButton.css";
 @import "./~components/MuiCard.css";
 @import "./~components/MuiCheckbox.css";
@@ -32,6 +33,7 @@
 @import "./~components/MuiRating.css";
 @import "./~components/MuiSelect.css";
 @import "./~components/MuiSlider.css";
+@import "./~components/MuiSnackbar.css";
 @import "./~components/MuiStepper.css";
 @import "./~components/MuiSwitch.css";
 @import "./~components/MuiTable.css";
@@ -44,6 +46,7 @@
 .MuiAppBar-root {
 	background-color: var(--stratakit-color-bg-page-base);
 	box-shadow: none;
+	border: none;
 	border-block-end: 1px solid;
 	border-color: var(--stratakit-color-border-page-base);
 	color: var(--stratakit-color-text-neutral-primary);
@@ -51,6 +54,6 @@
 
 .MuiBackdrop-root {
 	&:where(:not(.MuiBackdrop-invisible)) {
-		background-color: oklch(from var(--stratakit-color-bg-elevation-overlay) l c h / 0.8);
+		background-color: var(--stratakit-color-bg-elevation-overlay);
 	}
 }

@@ -36,6 +36,10 @@ void (async () => {
 	// Create the test output folder mount point in case it does not exist
 	await mkdir(`${appDir}/test-results`, { recursive: true });
 
+	// Patches folder may not exist currently but want to keep working and
+	// applying those patches if it ever is needed.
+	await mkdir(`${repoDir}/patches`, { recursive: true });
+
 	// On Linux, pass the host UID/GID as build args so the image's ubuntu user
 	// is remapped to match — files written to bind-mounted directories are then
 	// owned by the correct host user. On macOS, Docker Desktop handles ownership
@@ -67,11 +71,11 @@ void (async () => {
 		"run",
 		"--init", // Use init process to handle zombie processes
 		"--rm", // Remove the container after run
-		"-v",
+		"-v", // Mount the .spec files
 		`${appDir}/app:${containerAppDir}/app`,
-		"-v", // Mount build directory from host to container
+		"-v", // Mount build directory with website code
 		`${appDir}/build:${containerAppDir}/build`,
-		"-v", // Mount results directory from host to container
+		"-v", // Mount results directory
 		`${appDir}/test-results:${containerAppDir}/test-results`,
 		"-w", // Set working directory
 		containerAppDir,

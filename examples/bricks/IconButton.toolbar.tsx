@@ -3,10 +3,9 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { IconButton } from "@stratakit/bricks";
+import { svgFontBoldLarge } from "@stratakit/icons/font-bold";
+import { svgFontItalicLarge } from "@stratakit/icons/font-italic";
 import { unstable_Toolbar as Toolbar } from "@stratakit/structures";
-
-import svgBold from "@stratakit/icons/font-bold.svg";
-import svgItalic from "@stratakit/icons/font-italic.svg";
 
 export default () => {
 	return (
@@ -15,7 +14,7 @@ export default () => {
 				render={
 					<IconButton
 						label="Bold"
-						icon={`${svgBold}#icon-large`}
+						icon={svgFontBoldLarge}
 						variant="ghost"
 						active
 					/>
@@ -25,7 +24,7 @@ export default () => {
 				render={
 					<IconButton
 						label="Italic"
-						icon={`${svgItalic}#icon-large`}
+						icon={svgFontItalicLarge}
 						variant="ghost"
 					/>
 				}

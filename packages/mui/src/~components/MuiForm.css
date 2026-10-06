@@ -90,3 +90,7 @@
 		color: var(--stratakit-color-text-neutral-disabled);
 	}
 }
+
+:is(.MuiFormLabel-asterisk, .MuiFormControlLabel-asterisk) {
+	color: var(--stratakit-color-text-critical-base);
+}

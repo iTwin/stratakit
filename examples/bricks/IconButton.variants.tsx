@@ -3,8 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { IconButton } from "@stratakit/bricks";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 
 export default () => {
 	return (

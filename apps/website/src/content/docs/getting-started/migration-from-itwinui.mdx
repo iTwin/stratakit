@@ -1,0 +1,1062 @@
+---
+title: Migrating from iTwinUI
+description: Learn how to migrate from iTwinUI to StrataKit
+---
+
+import { Steps } from "@astrojs/starlight/components";
+
+This guide provides the necessary steps for migrating from [iTwinUI](https://itwinui.bentley.com/) to StrataKit.
+
+:::note
+Migration to StrataKit can be done gradually, since iTwinUI can coexist in the same application by utilizing the [StrataKit theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).
+:::
+
+## Migration steps
+
+<Steps>
+
+1. **Set up StrataKit**
+
+   Follow the [set up StrataKit guide](/getting-started/develop/) to install the necessary dependencies and set up your project.
+
+2. **Enable the StrataKit theme bridge**
+
+   Pass the StrataKit [**Root**](/components/root) into the `as` prop of the iTwinUI [**ThemeProvider**](https://itwinui.bentley.com/docs/themeprovider) to render a single DOM element.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+   +  as={Root}
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+   Specify the `Root` props directly on the `ThemeProvider` component.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+      as={Root}
+   +  colorScheme={theme}
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+   Finally, activate the `themeBridge` future flag.
+
+   ```diff
+    <ThemeProvider
+      theme={theme}
+      as={Root}
+      colorScheme={theme}
+   +  future={{ themeBridge: true }} // or future={true}
+    >
+      {/* … */}
+    </ThemeProvider>
+   ```
+
+   :::note
+   If StrataKit's accent color is not compatible with your existing UI, see [visual transition](#visual-transition).
+   :::
+
+3. **Replace `@itwin/itwinui-icons-react` with `@stratakit/icons`**
+
+   Replace the usage of iTwinUI icons from `@itwin/itwinui-icons-react` with their StrataKit counterparts. Refer to the [use StrataKit icons](#use-stratakit-icons) section below for the full icon mapping.
+
+   ```diff
+   - import { SvgAdd } from '@itwin/itwinui-icons-react';
+   - <SvgAdd />
+
+   + import { Icon } from "@stratakit/mui";
+   + import { svgAdd } from "@stratakit/icons/add";
+   + <Icon href={svgAdd} />
+   ```
+
+   Once all usage of `@itwin/itwinui-icons-react` has been replaced, it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @itwin/itwinui-icons-react
+   ```
+
+4. **Replace usage of `@itwin/itwinui-react`**
+
+   Replace the usage of components from `@itwin/itwinui-react` with their [StrataKit counterparts](/components/overview/). Some components are provided by `@mui/material`, while others live in `@stratakit/structures`. Refer to the [use StrataKit components](#use-stratakit-components) section below for the full component mapping.
+
+   Once all usage of `@itwin/itwinui-react` has been replaced, it is safe to remove the dependency.
+
+   ```console
+   npm uninstall @itwin/itwinui-react
+   ```
+
+</Steps>
+
+## Visual transition
+
+By default, StrataKit uses its preferred **"aurora"** green [accent color](/components/root/#accent-color). Some legacy applications rely on a blue accent color, especially when parts of the UI are not implemented with up-to-date iTwinUI components. In these cases, the aurora accent color can clash with the existing UI or require significant adjustments to it.
+
+To ease the visual transition, use StrataKit's **"cobalt"** accent color, which is designed for better compatibility with iTwinUI's color palette. Set the `unstable_accentColor` prop on the [**Root**](/components/root) component to apply the accent color to all StrataKit components.
+
+```diff
+ <ThemeProvider
+   theme={theme}
+   as={Root}
+   colorScheme={theme}
+   future={true}
++  unstable_accentColor="cobalt"
+ >
+   {/* … */}
+ </ThemeProvider>
+```
+
+Once the visual transition is complete, remove the `unstable_accentColor` prop to continue using StrataKit's preferred accent color.
+
+## Use StrataKit icons
+
+Replace [iTwinUI icons](https://itwin.github.io/iTwinUI-icons/) with their [StrataKit counterparts](/icons) using the mapping below.
+
+| iTwinUI icon                  | StrataKit icon                |
+| ----------------------------- | ----------------------------- |
+| 2d                            | 2d                            |
+| 3d                            | 3d                            |
+| activity                      | activity                      |
+| add-circular                  | add-circle                    |
+| add                           | add                           |
+| airplane                      | airplane                      |
+| align-bottom                  | align-bottom                  |
+| align-center-horizontal       | align-center-horizontal       |
+| align-center-vertical         | align-center-vertical         |
+| align-left                    | align-left                    |
+| align-right                   | align-right                   |
+| align-top                     | align-top                     |
+| android                       | brand-android                 |
+| annotation                    | annotation                    |
+| apple                         | brand-apple                   |
+| archive                       | archive                       |
+| arrow-down                    | arrow-down                    |
+| arrow-left                    | arrow-left                    |
+| arrow-right                   | arrow-right                   |
+| arrow-up                      | arrow-up                      |
+| attach                        | attach                        |
+| automatic                     | automagic                     |
+| away                          | user-away                     |
+| basket                        | basket                        |
+| bentley-systems               | brand-bentley-systems         |
+| blank                         | -                             |
+| bolt                          | bolt                          |
+| bookmark                      | bookmark                      |
+| calendar                      | calendar                      |
+| camera-animation-disabled     | camera-video-disabled         |
+| camera-animation              | camera-video                  |
+| camera-retake                 | camera-retake                 |
+| camera                        | camera                        |
+| caret-down-small              | caret-down                    |
+| caret-down                    | caret-down                    |
+| caret-left-small              | caret-left                    |
+| caret-left                    | caret-left                    |
+| caret-right-small             | caret-right                   |
+| caret-right                   | caret-right                   |
+| caret-up-small                | caret-up                      |
+| caret-up                      | caret-up                      |
+| charts                        | chart-bar                     |
+| chat                          | chat                          |
+| checkbox-deselect             | checkbox-deselect             |
+| checkbox-select               | checkbox-select               |
+| checkmark-small               | checkmark                     |
+| checkmark                     | checkmark                     |
+| chevron-down                  | chevron-down                  |
+| chevron-left-double           | chevron-left-double           |
+| chevron-left                  | chevron-left                  |
+| chevron-right-double          | chevron-right-double          |
+| chevron-right-small           | chevron-right                 |
+| chevron-right                 | chevron-right                 |
+| chevron-up                    | chevron-up                    |
+| circle                        | circle                        |
+| clash                         | clash                         |
+| clipboard                     | clipboard                     |
+| clock                         | clock                         |
+| close-circular                | dismiss-circle                |
+| close-small                   | dismiss                       |
+| close                         | dismiss                       |
+| cloud-download                | cloud-download                |
+| cloud-upload                  | cloud-upload                  |
+| cloud                         | cloud                         |
+| collapse-all                  | collapse-rows-all             |
+| collapse                      | collapse-rows                 |
+| column-manager                | column-manage                 |
+| compare                       | compare                       |
+| computer                      | computer                      |
+| configuration                 | configuration                 |
+| copy                          | copy                          |
+| crop                          | crop                          |
+| crown                         | crown                         |
+| cursor-click                  | cursor-click                  |
+| cursor                        | cursor                        |
+| cut                           | cut                           |
+| database                      | database                      |
+| delete                        | delete                        |
+| details                       | details                       |
+| developer                     | developer                     |
+| disconnect                    | disconnect                    |
+| distribute-bottom             | -                             |
+| distribute-center-horizontal  | distribute-center-horizontal  |
+| distribute-center-vertical    | distribute-center-vertical    |
+| distribute-left               | distribute-left               |
+| distribute-right              | distribute-right              |
+| distribute-top                | distribute-top                |
+| dock-bottom                   | dock-bottom                   |
+| dock-left                     | dock-left                     |
+| dock-right                    | dock-right                    |
+| dock-top                      | dock-top                      |
+| document-lock                 | document-locked               |
+| document-reference            | document-reference            |
+| document                      | document-blank                |
+| documentation                 | documentation                 |
+| download                      | download                      |
+| drag-handle-vertical          | drag-handle-vertical          |
+| drag-handle                   | drag-handle-horizontal        |
+| draw                          | draw                          |
+| duplicate                     | duplicate                     |
+| edit-all                      | edit-all                      |
+| edit                          | edit                          |
+| ellipse                       | ellipse                       |
+| email-at                      | email-at                      |
+| email                         | email                         |
+| exit                          | exit                          |
+| expand-all                    | expand-rows-all               |
+| expand                        | expand-rows                   |
+| export                        | export                        |
+| eyedropper-drop               | eyedropper-drop               |
+| eyedropper-filled             | eyedropper-filled             |
+| eyedropper                    | eyedropper                    |
+| fast-backward                 | fast-backward                 |
+| fast-forward                  | fast-forward                  |
+| feedback                      | feedback                      |
+| filter-hollow                 | filter                        |
+| filter                        | filter                        |
+| find                          | find                          |
+| fire-extinguisher             | fire-extinguisher             |
+| fit-to-view                   | fit-to-view                   |
+| flag                          | flag                          |
+| folder-add                    | folder-add                    |
+| folder-browse                 | folder-browse                 |
+| folder-chevron-down           | folder-chevron-down           |
+| folder-chevron-up             | folder-chevron-up             |
+| folder-export                 | folder-export                 |
+| folder-import                 | folder-import                 |
+| folder-lock                   | folder-lock                   |
+| folder-minimize               | -                             |
+| folder-opened                 | folder-open                   |
+| folder-remove                 | folder-remove                 |
+| folder-shortcut               | folder-shortcut               |
+| folder                        | folder                        |
+| font-bold                     | font-bold                     |
+| font-color                    | font-color                    |
+| font-italic                   | font-italic                   |
+| font-size                     | font-size                     |
+| forms                         | form                          |
+| frame-backward                | frame-backward                |
+| frame-forward                 | frame-forward                 |
+| function                      | function                      |
+| geosearch                     | geolocate                     |
+| gesture-one-finger-drag       | gesture-one-finger-drag       |
+| gesture-one-finger-tap-double | gesture-one-finger-double-tap |
+| gesture-one-finger-tap        | gesture-one-finger-tap        |
+| gesture-pinch                 | gesture-pinch                 |
+| gesture-touch                 | gesture-touch                 |
+| gesture-two-finger-drag       | gesture-two-finger-drag       |
+| gesture-two-finger-tap        | gesture-two-finger-tap        |
+| gesture-two-finger            | gesture-two-finger            |
+| globe                         | globe                         |
+| go-to-end                     | go-to-end                     |
+| go-to-start                   | go-to-start                   |
+| graph-bar                     | chart-bar                     |
+| graph-pie-chart               | chart-pie                     |
+| graph-scatter-chart           | graph-scatter-chart           |
+| graph                         | chart-line                    |
+| grid                          | grid                          |
+| group-ungroup                 | ungroup                       |
+| group                         | group                         |
+| hand                          | hand                          |
+| heart                         | heart                         |
+| help-circular-hollow          | help                          |
+| help-circular                 | help                          |
+| hide-manually-suppressed      | -                             |
+| hide-rule-suppressed          | -                             |
+| hierarchy-tree                | hierarchy-tree                |
+| history                       | history                       |
+| home                          | home                          |
+| hourglass                     | hourglass                     |
+| i-beam                        | i-beam                        |
+| image-frame                   | image                         |
+| image                         | image                         |
+| imodel-hollow                 | imodel                        |
+| imodel                        | imodel                        |
+| import                        | import                        |
+| important-small               | important                     |
+| important-very                | important-very                |
+| important                     | important                     |
+| info-circular-hollow          | info                          |
+| info-circular                 | info                          |
+| info                          | info                          |
+| install                       | install                       |
+| isolate                       | isolate                       |
+| issue-report                  | issue                         |
+| item                          | -                             |
+| itwin                         | itwin                         |
+| key                           | key                           |
+| label                         | label                         |
+| layers                        | layers                        |
+| lightbulb-hollow              | lightbulb                     |
+| lightbulb                     | lightbulb                     |
+| line                          | line                          |
+| link                          | link                          |
+| list                          | list                          |
+| location                      | location                      |
+| lock-unlocked                 | lock-unlocked                 |
+| lock                          | lock                          |
+| loop                          | loop                          |
+| maintenance                   | maintenance                   |
+| manager                       | manager                       |
+| map-info                      | map-info                      |
+| map                           | map                           |
+| measure                       | measure                       |
+| menu                          | menu                          |
+| merge                         | merge                         |
+| minimize                      | minus                         |
+| model                         | model                         |
+| moon                          | moon                          |
+| more-circular                 | more-horizontal-circle        |
+| more-small                    | more-horizontal-circle        |
+| more-vertical-circular        | more-vertical-circle          |
+| more-vertical-small           | more-vertical-circle          |
+| more-vertical                 | more-vertical                 |
+| more                          | more-horizontal               |
+| mouse-click-left              | mouse-click-left              |
+| mouse-click-right             | mouse-click-right             |
+| mouse-click-wheel             | mouse-click-middle            |
+| mouse-click                   | mouse-click                   |
+| move                          | move                          |
+| named-version-add             | add                           |
+| network                       | network                       |
+| new                           | new                           |
+| news                          | news                          |
+| notification-settings         | notifications-settings        |
+| notification                  | notifications                 |
+| object-move                   | object-move                   |
+| object-rotate                 | object-rotate                 |
+| object-scale                  | object-scale                  |
+| offline                       | cloud-offline                 |
+| paintbrush                    | paint-brush                   |
+| palette                       | palette                       |
+| panorama-model                | panorama-model                |
+| panorama                      | panorama                      |
+| paste-hollow                  | clipboard                     |
+| paste                         | clipboard                     |
+| pause-circular                | pause-circle                  |
+| pause                         | pause                         |
+| perspective                   | perspective                   |
+| pin-hollow                    | pin                           |
+| pin-unpin                     | pin-unpin                     |
+| pin                           | pin                           |
+| placeholder                   | placeholder                   |
+| play-backward                 | play-backward                 |
+| play-circular                 | play-circle                   |
+| play                          | play                          |
+| plugin                        | plugins                       |
+| polygon                       | polygon                       |
+| print-preview                 | print-preview                 |
+| print-settings                | print-settings                |
+| print                         | print                         |
+| process                       | process                       |
+| progress-backward-circular    | chevron-left                  |
+| progress-backward             | chevron-left                  |
+| progress-forward-circular     | chevron-right                 |
+| progress-forward              | chevron-right                 |
+| project                       | project                       |
+| properties-list               | settings                      |
+| properties                    | properties                    |
+| puzzle                        | puzzle                        |
+| re-center                     | re-center                     |
+| read-only                     | read-only                     |
+| reality-mesh                  | reality-mesh                  |
+| record                        | record                        |
+| records                       | records                       |
+| rectangle                     | rectangle                     |
+| redo                          | redo                          |
+| refresh                       | refresh                       |
+| remove                        | dismiss                       |
+| rename                        | rename                        |
+| reorder                       | reorder                       |
+| replace                       | replace                       |
+| reports                       | report                        |
+| road                          | road                          |
+| rotate-left                   | rotate-left                   |
+| rotate-right                  | rotate-right                  |
+| save-as                       | save-as                       |
+| save-settings                 | save-settings                 |
+| save-update                   | -                             |
+| save                          | save                          |
+| saved-view                    | saved-views                   |
+| scale                         | object-scale                  |
+| screenshare-stop              | screenshare-stop              |
+| screenshare                   | screenshare                   |
+| script-run                    | script-run                    |
+| script-status                 | script-status                 |
+| script                        | script                        |
+| search                        | search                        |
+| selection-clear               | selection-clear               |
+| selection                     | selection                     |
+| send                          | send                          |
+| settings                      | settings                      |
+| setup                         | setup                         |
+| share                         | share                         |
+| smartphone                    | smartphone                    |
+| smiley-happy-hollow           | smiley-happy                  |
+| smiley-happy-very-hollow      | smiley-very-happy             |
+| smiley-happy-very             | smiley-very-happy             |
+| smiley-happy                  | smiley-happy                  |
+| smiley-neutral-hollow         | smiley-neutral                |
+| smiley-neutral                | smiley-neutral                |
+| smiley-sad-hollow             | smiley-sad                    |
+| smiley-sad-very-hollow        | smiley-very-sad               |
+| smiley-sad-very               | smiley-very-sad               |
+| smiley-sad                    | smiley-sad                    |
+| sort-down                     | sort-ascending                |
+| sort-menu                     | sorting                       |
+| sort-up                       | sort-descending               |
+| sound-loud                    | sound-loud                    |
+| sound-mute                    | sound-mute                    |
+| sound-quiet                   | sound-quiet                   |
+| spin                          | spin                          |
+| star-hollow                   | star                          |
+| star                          | star                          |
+| status-draft                  | status-draft                  |
+| status-error-hollow           | status-error                  |
+| status-error                  | status-error                  |
+| status-pending-hollow         | status-pending                |
+| status-pending                | status-pending                |
+| status-rejected-hollow        | status-rejected               |
+| status-rejected               | status-rejected               |
+| status-running                | status-running                |
+| status-success-hollow         | status-success                |
+| status-success                | status-success                |
+| status-update                 | status-update                 |
+| status-warning                | status-warning                |
+| stop-circular                 | stop-circle                   |
+| stop                          | stop                          |
+| sun                           | sun                           |
+| suppress-manually             | suppress                      |
+| swap                          | swap                          |
+| sync-disabled                 | cloud-offline                 |
+| sync                          | loop                          |
+| table-of-contents             | table-of-contents             |
+| table                         | table                         |
+| tag                           | tag                           |
+| technical-preview-badge-bw    | technical-preview-badge       |
+| technical-preview-bw          | technical-preview             |
+| technical-preview-mini-bw     | technical-preview             |
+| text-align-center             | text-align-center             |
+| text-align-justify            | text-align-justify            |
+| text-align-left               | text-align-left               |
+| text-align-right              | text-align-right              |
+| text-medium                   | text                          |
+| text-small                    | text                          |
+| text                          | text                          |
+| thumbnails                    | -                             |
+| timer                         | timer                         |
+| transparency                  | transparency                  |
+| tree-navigate-down            | -                             |
+| tree-navigate-up              | -                             |
+| underline                     | font-underline                |
+| undo                          | undo                          |
+| unlink                        | unlink                        |
+| upgrade                       | update                        |
+| upload-to-cloud               | cloud-upload                  |
+| upload                        | upload                        |
+| user-add                      | user-add                      |
+| user-restricted               | user-restricted               |
+| user                          | user                          |
+| users                         | users                         |
+| validate                      | validate                      |
+| visibility-emphasize          | visibility-emphasis           |
+| visibility-half               | visibility-partial            |
+| visibility-hide               | visibility-hide               |
+| visibility-show               | visibility-show               |
+| walk                          | walk                          |
+| wifi-disabled                 | wifi-disabled                 |
+| wifi                          | wifi                          |
+| window-add                    | window-add                    |
+| window-area                   | window-area                   |
+| window-backward               | window-back                   |
+| window-collapse               | window-collapse               |
+| window-forward                | window-forward                |
+| window-full-screen            | window-expand                 |
+| window-maximize               | window-maximize               |
+| window-minimize               | window-minimize               |
+| window-popout                 | window-popout                 |
+| window-settings               | window-settings               |
+| window-split-horizontal       | window-split-horizontal       |
+| window-split-vertical         | window-split-vertical         |
+| window-zoom-in                | window-zoom-in                |
+| window-zoom-out               | window-zoom-out               |
+| window                        | window                        |
+| windows                       | brand-windows                 |
+| zoom-in-circular              | zoom-in-circle                |
+| zoom-in                       | zoom-in-magnifier             |
+| zoom-out-circular             | zoom-out-circle               |
+| zoom-out                      | zoom-out-magnifier            |
+| zoom-search                   | search                        |
+
+## Use StrataKit components
+
+Replace [iTwinUI components](https://itwinui.bentley.com/docs/components) component usage with their [MUI counterparts](https://mui.com/material-ui/all-components/), [StrataKit counterparts](/components/overview/), or code suggestions.
+
+:::note
+Have questions or feedback about a suggested replacement? Join the [iTwinUI feature parity discussion](https://github.com/iTwin/stratakit/discussions/1898) on GitHub.
+:::
+
+| iTwinUI component                                                               | Suggested replacement                                                               |
+| ------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| [`Alert`](https://itwinui.bentley.com/docs/alert)                               | [MUI `Alert`](#alert)                                                               |
+| [`Anchor`](https://itwinui.bentley.com/docs/anchor)                             | [MUI `Link`](#anchor)                                                               |
+| [`Avatar`](https://itwinui.bentley.com/docs/avatar)                             | [MUI `Avatar`](#avatar)                                                             |
+| [`AvatarGroup`](https://itwinui.bentley.com/docs/avatar#avatargroup)            | [MUI `AvatarGroup`](#avatargroup)                                                   |
+| [`Badge`](https://itwinui.bentley.com/docs/badge)                               | [MUI `Badge`](#badge)                                                               |
+| [`Blockquote`](https://itwinui.bentley.com/docs/blockquote)                     | [Native `<blockquote>`](#blockquote)                                                |
+| [`Breadcrumbs`](https://itwinui.bentley.com/docs/breadcrumbs)                   | [MUI `Breadcrumbs`](#breadcrumbs)                                                   |
+| [`Button`](https://itwinui.bentley.com/docs/button)                             | [MUI `Button`](#button)                                                             |
+| [`ButtonGroup`](https://itwinui.bentley.com/docs/buttongroup)                   | [MUI `ButtonGroup` or MUI `ToggleButtonGroup` or StrataKit `Toolbar`](#buttongroup) |
+| [`Carousel`](https://itwinui.bentley.com/docs/carousel)                         | [No direct replacement](#carousel)                                                  |
+| [`Checkbox`](https://itwinui.bentley.com/docs/checkbox)                         | [MUI `Checkbox`](#checkbox)                                                         |
+| [`Code`](https://itwinui.bentley.com/docs/code)                                 | [Native `<code>`](#code)                                                            |
+| [`ColorPicker`](https://itwinui.bentley.com/docs/colorpicker)                   | [Composite color picker](#colorpicker)                                              |
+| [`ComboBox`](https://itwinui.bentley.com/docs/combobox)                         | [MUI `Autocomplete`](#combobox)                                                     |
+| [`DatePicker`](https://itwinui.bentley.com/docs/datepicker)                     | [MUI `DatePicker` or MUI `DateCalendar`](#datepicker)                               |
+| [`Dialog` and `Modal`](https://itwinui.bentley.com/docs/dialog)                 | [MUI `Dialog`](#dialog)                                                             |
+| [`Divider`](https://itwinui.bentley.com/docs/divider)                           | [MUI `Divider`](#divider)                                                           |
+| [`DropdownButton`](https://itwinui.bentley.com/docs/button#dropdownbutton)      | [MUI `Button` and MUI `Menu`](#dropdownbutton)                                      |
+| [`DropdownMenu`](https://itwinui.bentley.com/docs/dropdownmenu)                 | [MUI `Menu`](#dropdownmenu)                                                         |
+| [`ExpandableBlock`](https://itwinui.bentley.com/docs/expandableblock)           | [MUI `Accordion`](#expandableblock)                                                 |
+| [`Fieldset`](https://itwinui.bentley.com/docs/fieldset)                         | [Native `<fieldset>`](#fieldset)                                                    |
+| [`FileUpload`](https://itwinui.bentley.com/docs/fileupload)                     | [Composite file selection](#fileupload)                                             |
+| [`Flex`](https://itwinui.bentley.com/docs/flex)                                 | [MUI `Stack`](#flex)                                                                |
+| [`Footer`](https://itwinui.bentley.com/docs/footer)                             | [Native `<footer>`](#footer)                                                        |
+| [`Header`](https://itwinui.bentley.com/docs/header)                             | [Native `<header>`](#header)                                                        |
+| [`IconButton`](https://itwinui.bentley.com/docs/button#iconbutton)              | [MUI `IconButton`](#iconbutton)                                                     |
+| [`IdeasButton`](https://itwinui.bentley.com/docs/button#ideasbutton)            | [MUI `Button`](#ideasbutton)                                                        |
+| [`InformationPanel`](https://itwinui.bentley.com/docs/informationpanel)         | [MUI `Drawer`](#informationpanel)                                                   |
+| [`Input`](https://itwinui.bentley.com/docs/input)                               | [MUI `TextField` or MUI `Input`](#input)                                            |
+| [`InputGrid`](https://itwinui.bentley.com/docs/inputgrid)                       | [No direct replacement](#inputgrid)                                                 |
+| [`InputGroup`](https://itwinui.bentley.com/docs/inputgroup)                     | [MUI `FormControl`](#inputgroup)                                                    |
+| [`InputWithDecorations`](https://itwinui.bentley.com/docs/inputwithdecorations) | [MUI `TextField` or MUI `Input`](#inputwithdecorations)                             |
+| [`Kbd`](https://itwinui.bentley.com/docs/kbd)                                   | [Native `<kbd>`](#kbd)                                                              |
+| [`Label`](https://itwinui.bentley.com/docs/label)                               | [MUI `FormLabel` or MUI `Typography`](#label)                                       |
+| [`LinkAction`](https://itwinui.bentley.com/docs/linkaction)                     | [No direct replacement](#linkaction)                                                |
+| [`List`](https://itwinui.bentley.com/docs/list)                                 | [MUI `List`](#list)                                                                 |
+| [`MiddleTextTruncation`](https://itwinui.bentley.com/docs/middletexttruncation) | [No direct replacement](#middletexttruncation)                                      |
+| [`NonIdealState`](https://itwinui.bentley.com/docs/nonidealstate)               | [No direct replacement](#nonidealstate)                                             |
+| [`NotificationMarker`](https://itwinui.bentley.com/docs/notificationmarker)     | [MUI `Badge`](#notificationmarker)                                                  |
+| [`Overlay`](https://itwinui.bentley.com/docs/overlay)                           | [MUI `Backdrop`](#overlay)                                                          |
+| [`Panels`](https://itwinui.bentley.com/docs/panels)                             | [No direct replacement](#panels)                                                    |
+| [`Popover`](https://itwinui.bentley.com/docs/popover)                           | [MUI `Popover`](#popover)                                                           |
+| [`ProgressLinear`](https://itwinui.bentley.com/docs/progressindicator)          | [MUI `LinearProgress`](#progresslinear)                                             |
+| [`ProgressRadial`](https://itwinui.bentley.com/docs/progressindicator)          | [MUI `CircularProgress`](#progressradial)                                           |
+| [`Radio`](https://itwinui.bentley.com/docs/radio)                               | [MUI `Radio`](#radio)                                                               |
+| [`RadioTile`](https://itwinui.bentley.com/docs/radiotile)                       | [No direct replacement](#radiotile)                                                 |
+| [`SearchBox`](https://itwinui.bentley.com/docs/searchbox)                       | [MUI `Autocomplete` or MUI `TextField` or MUI `Input`](#searchbox)                  |
+| [`Select`](https://itwinui.bentley.com/docs/select)                             | [MUI `Select` or MUI `NativeSelect`](#select)                                       |
+| [`SideNavigation`](https://itwinui.bentley.com/docs/sidenavigation)             | [StrataKit `NavigationRail`](#sidenavigation)                                       |
+| [`SkipToContentLink`](https://itwinui.bentley.com/docs/skiptocontentlink)       | [Composite skip link](#skiptocontentlink)                                           |
+| [`Slider`](https://itwinui.bentley.com/docs/slider)                             | [MUI `Slider`](#slider)                                                             |
+| [`SplitButton`](https://itwinui.bentley.com/docs/button#splitbutton)            | [MUI `ButtonGroup` and MUI `Menu`](#splitbutton)                                    |
+| [`StatusMessage`](https://itwinui.bentley.com/docs/statusmessage)               | [MUI `FormHelperText` and MUI `Typography`](#statusmessage)                         |
+| [`Stepper`](https://itwinui.bentley.com/docs/stepper)                           | [MUI `Stepper`](#stepper)                                                           |
+| [`Surface`](https://itwinui.bentley.com/docs/surface)                           | [MUI `Paper`](#surface)                                                             |
+| [`Table`](https://itwinui.bentley.com/docs/table)                               | [MUI `Table`](#table)                                                               |
+| [`Tabs`](https://itwinui.bentley.com/docs/tabs)                                 | [MUI `Tabs`](#tabs)                                                                 |
+| [`Tag`](https://itwinui.bentley.com/docs/tag)                                   | [MUI `Chip`](#tag)                                                                  |
+| [`Text`](https://itwinui.bentley.com/docs/text)                                 | [MUI `Typography`](#text)                                                           |
+| [`Textarea`](https://itwinui.bentley.com/docs/textarea)                         | [MUI `TextField`](#textarea)                                                        |
+| [`Tile`](https://itwinui.bentley.com/docs/tile)                                 | [MUI `Card`](#tile)                                                                 |
+| [`Toast`](https://itwinui.bentley.com/docs/toast)                               | [MUI `Snackbar`](#toast)                                                            |
+| [`ToggleSwitch`](https://itwinui.bentley.com/docs/toggleswitch)                 | [MUI `Switch`](#toggleswitch)                                                       |
+| [`Tooltip`](https://itwinui.bentley.com/docs/tooltip)                           | [MUI `Tooltip`](#tooltip)                                                           |
+| [`TransferList`](https://itwinui.bentley.com/docs/transferlist)                 | [No direct replacement](#transferlist)                                              |
+| [`Tree`](https://itwinui.bentley.com/docs/tree)                                 | [StrataKit `Tree`](#tree)                                                           |
+| [`VisuallyHidden`](https://itwinui.bentley.com/docs/visuallyhidden)             | [MUI `visuallyHidden` utility](#visuallyhidden)                                     |
+
+:::tip
+Read additional [StrataKit component documentation](/components/overview/) for more details on usage and customization.
+:::
+
+### Alert
+
+Replace the [`Alert` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/alert) with the `Alert` component from `@mui/material`. See [Alert examples](/components/alert/) for reference.
+
+- Replace [`status`](https://itwinui.bentley.com/docs/alert#statuses) with the `severity` prop.
+- MUI `Alert` has no equivalent to iTwinUI `Alert`'s [`sticky`](https://itwinui.bentley.com/docs/alert#sticky-alert) prop. Set the CSS [`position`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/position) property to `sticky` instead.
+
+### Anchor
+
+Replace the [`Anchor` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/anchor) with the `Link` component from `@mui/material`. See [Link examples](/components/link/) for reference.
+
+- Replace [`external`](https://itwinui.bentley.com/docs/anchor#external-links) by following the [external `Link` example](/components/link/#external).
+- Remove [`underline`](https://itwinui.bentley.com/docs/anchor#underlines). StrataKit handles underlines automatically.
+
+### Avatar
+
+Replace the [`Avatar` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/avatar) with the `Avatar` component from `@mui/material`. See [Avatar examples](/components/avatar/) for reference.
+
+- Replace [`size`](https://itwinui.bentley.com/docs/avatar#sizes) with the CSS [`block-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/block-size) and [`inline-size`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/inline-size) properties.
+- Replace [`status`](https://itwinui.bentley.com/docs/avatar#status-indicators) by wrapping the `Avatar` in [`Badge`](/components/badge/).
+- MUI `Avatar` does not assign background colors automatically like iTwinUI.
+
+### AvatarGroup
+
+Replace the [`AvatarGroup` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/avatar#avatargroup) with the `AvatarGroup` component from `@mui/material`. See [AvatarGroup examples](/components/avatargroup/) for reference.
+
+- MUI `AvatarGroup` has no equivalent to iTwinUI `AvatarGroup`'s [`animated`](https://itwinui.bentley.com/docs/avatar#animated-stack) prop.
+- Replace [overflow](https://itwinui.bentley.com/docs/avatar#overflow) handling with the [`renderSurplus`](/components/avatargroup/#surplus) prop.
+
+### Badge
+
+Replace the [`Badge` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/badge) with the `Badge` component from `@mui/material`. See [Badge examples](/components/badge/) for reference.
+
+- Replace [status background colors](https://itwinui.bentley.com/docs/badge#statuses) with the [`color`](/components/badge/#colors) prop.
+- Replace [soft background colors](https://itwinui.bentley.com/docs/badge#soft-backgrounds) by omitting the `color` prop. StrataKit does not provide separate non-status badge colors.
+
+### Blockquote
+
+Replace the [`Blockquote` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/blockquote) with the native [`<blockquote>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/blockquote) element.
+
+### Breadcrumbs
+
+Replace the [`Breadcrumbs` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/breadcrumbs) with the `Breadcrumbs` component from `@mui/material`. See [Breadcrumbs examples](/components/breadcrumbs/) for reference.
+
+- Replace iTwinUI `Breadcrumbs`' [truncation](https://itwinui.bentley.com/docs/breadcrumbs#truncation) by following the [Breadcrumbs truncation example](/components/breadcrumbs/#truncation).
+
+### Button
+
+Replace the [`Button` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button) with the `Button` component from `@mui/material`. See [Button examples](/components/button/) for reference.
+
+- Replace `styleType="cta"` with `color="primary"`.
+- Replace `styleType="borderless"` with `variant="text"`.
+- Replace `styleType="high-visibility"` with the default `Button`. If it is the main action of a dialog or page, use `color="primary"`.
+- The `size` and `loading` props require no changes.
+
+### ButtonGroup
+
+Replace the [`ButtonGroup` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/buttongroup) with the `ButtonGroup` component from `@mui/material`. See [ButtonGroup examples](/components/buttongroup/) for reference.
+
+- Replace `<ButtonGroup role="toolbar">` with [`Toolbar` from `@stratakit/structures`](/components/toolbar/) for grouped commands, or with MUI [`ToggleButtonGroup`](/components/togglebutton/) when the buttons select an option.
+- Replace a `ButtonGroup` that combines buttons with an `Input` with `TextField` and its `startAdornment` or `endAdornment` props.
+
+### Carousel
+
+There is no direct replacement for the [`Carousel` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/carousel). StrataKit discourages the use of carousels.
+
+### Checkbox
+
+Replace the [`Checkbox` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/checkbox) with the `Checkbox` component from `@mui/material`. See [Checkbox examples](/components/checkbox/) for reference.
+
+- Replace `status="negative"` with `error` on a wrapping `FormControl` and a `FormHelperText` message. See the [Checkbox error example](/components/checkbox/#error).
+- MUI `Checkbox` has no equivalent to iTwinUI `Checkbox`'s `loading` prop. Render `CircularProgress` in place of the checkbox while loading.
+- MUI `Checkbox` has no equivalent to iTwinUI `Checkbox`'s `visibility` prop.
+
+### Code
+
+Replace the [`Code` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/code) with the native [`<code>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/code) element.
+
+### ColorPicker
+
+Replace the [`ColorPicker` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/colorpicker) with the [color picker composite component](/components/colorpicker/).
+
+- For a limited set of colors, use the `Select` component from `@mui/material` instead.
+
+### ComboBox
+
+Replace the [`ComboBox` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/combobox) with the `Autocomplete` component from `@mui/material`. See [Autocomplete examples](/components/autocomplete/) for reference.
+
+- Replace [`multiple`](https://itwinui.bentley.com/docs/combobox#multiselect) with MUI `Autocomplete`'s `multiple` prop.
+
+### DatePicker
+
+Replace the [`DatePicker` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/datepicker) with the `DatePicker` component from `@mui/x-date-pickers`. See [DatePicker examples](/components/datepicker/) for reference.
+
+- Replace `enableRangeSelect` with two `DatePicker`s, one for the start date and one for the end date.
+- For a standalone calendar, use the `DateCalendar` component from `@mui/x-date-pickers`.
+
+### Dialog
+
+Replace the [`Dialog` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/dialog) with the `Dialog` component from `@mui/material`. See [Dialog examples](/components/dialog/) for reference.
+
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`isDismissible`](https://itwinui.bentley.com/docs/dialog#dismissible) prop. Add a close `IconButton` when dismissal is allowed; otherwise, omit it, set `disableEscapeKeyDown`, and ignore `"backdropClick"` in `onClose`.
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`isDraggable`](https://itwinui.bentley.com/docs/dialog#draggable) prop. Implement dragging with [`react-draggable`](https://github.com/react-grid-layout/react-draggable) or another third-party library.
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`isResizable`](https://itwinui.bentley.com/docs/dialog#draggable) prop. To allow resizing, apply CSS `resize: both` and `overflow: auto` to the dialog paper using `slotProps.paper.className`, and set appropriate size limits.
+- Replace [`styleType="fullPage"`](https://itwinui.bentley.com/docs/dialog#full-page) with the `fullScreen` prop.
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s [`placement`](https://itwinui.bentley.com/docs/dialog#placement) prop. Position the dialog paper with CSS `position: absolute` instead.
+- MUI `Dialog` has no equivalent to iTwinUI `Dialog`'s non-modal behavior. See [MUI's non-modal dialog guidance](https://mui.com/material-ui/react-dialog/#non-modal-dialog).
+
+### Divider
+
+Replace the [`Divider` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/divider) with the `Divider` component from `@mui/material`. See [Divider examples](/components/divider/) for reference.
+
+### DropdownButton
+
+Replace the [`DropdownButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#dropdownbutton) with a `Button` that opens a `Menu`, both from `@mui/material`. See [Menu examples](/components/menu/) for reference.
+
+### DropdownMenu
+
+Replace the [`DropdownMenu` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/dropdownmenu) with the `Menu` component from `@mui/material`. See [Menu examples](/components/menu/) for reference.
+
+- Replace a [start icon](https://itwinui.bentley.com/docs/dropdownmenu#start-icon) with an `Icon` inside `ListItemIcon` before the text in `MenuItem`.
+- Replace an [end icon](https://itwinui.bentley.com/docs/dropdownmenu#end-icon) with an `Icon` after `ListItemText` in `MenuItem`, aligned to the end.
+- Replace a [sublabel](https://itwinui.bentley.com/docs/dropdownmenu#sublabel) with `ListItemText`'s `primary` and `secondary` props inside `MenuItem`.
+- MUI `MenuItem` has no equivalent to iTwinUI `MenuItem`'s [submenu](https://itwinui.bentley.com/docs/dropdownmenu#submenu) support.
+- Replace [`MenuDivider`](https://itwinui.bentley.com/docs/dropdownmenu#separator) with a `Divider` between `MenuItem` components.
+
+### ExpandableBlock
+
+Replace the [`ExpandableBlock` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/expandableblock) with the `Accordion` component from `@mui/material`. See [Accordion examples](/components/accordion/) for reference.
+
+- Replace a [caption](https://itwinui.bentley.com/docs/expandableblock#with-caption) with two [`Typography`](/components/typography/) elements inside `AccordionSummary`.
+- Replace an [accordion of blocks](https://itwinui.bentley.com/docs/expandableblock#accordion) with adjacent `Accordion` components. If only one should be open at a time, control their `expanded` props with shared state.
+- MUI `Accordion` has no equivalent to iTwinUI `ExpandableBlock`'s [`status`](https://itwinui.bentley.com/docs/expandableblock#with-status) prop. Place a status `Icon` in `AccordionSummary` instead.
+- MUI `Accordion` has no equivalent to iTwinUI `ExpandableBlock`'s [`size`](https://itwinui.bentley.com/docs/expandableblock#small) prop. Its default size matches iTwinUI's `size="small"`.
+- Replace [`styleType="borderless"`](https://itwinui.bentley.com/docs/expandableblock#borderless) with `variant="elevation"`.
+
+### Fieldset
+
+Replace the [`Fieldset` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/fieldset) with the native [`<fieldset>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/fieldset) element.
+
+### FileUpload
+
+Replace the [`FileUpload` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/fileupload) with the [file selection composite component](/components/fileselection/).
+
+### Flex
+
+Replace the [`Flex` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/flex) with the [`Stack` component from `@mui/material`](https://mui.com/material-ui/api/stack/).
+
+- Replace `gap` prop with the `spacing` prop. Convert the value to a number representing the distance in StrataKit spacing units.
+- Replace the `flexDirection` property with the `direction` prop.
+- Remove `alignItems`, `justifyContent`, and `flexWrap`. Apply CSS styling that sets those properties.
+
+### Footer
+
+Replace the [`Footer` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/footer) with the native [`<footer>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/footer) element.
+
+- Add any text or links that iTwinUI `Footer` provided automatically that are still relevant to your application.
+
+### Header
+
+Replace the [`Header` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/header) with the native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/header) element.
+
+- Add any needed content and functionality using MUI components such as `Breadcrumbs`, `IconButton`, or `Menu`.
+
+### IconButton
+
+Replace the [`IconButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#iconbutton) with the `IconButton` component from `@mui/material`. See [IconButton examples](/components/iconbutton/) for reference.
+
+- Replace `styleType="cta"` with a text-labeled `<Button color="primary">`.
+- Replace `styleType="high-visibility"` with a text-labeled `<Button color="primary">`.
+- Replace `styleType="default"` with `<IconButton variant="outlined">`.
+- Remove `styleType="borderless"`; the default MUI `IconButton` appearance is borderless.
+
+### IdeasButton
+
+Replace the [`IdeasButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#ideasbutton) with the `Button` component from `@mui/material`, positioned with CSS. See [Button examples](/components/button/) for reference.
+
+### InformationPanel
+
+Replace the [`InformationPanel` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/informationpanel) with the `Drawer` component from `@mui/material`. See [Drawer examples](/components/drawer/) for reference.
+
+- Replace `orientation="vertical"` with `anchor="right"`, and [`orientation="horizontal"`](https://itwinui.bentley.com/docs/informationpanel#horizontal-orientation) with `anchor="bottom"`.
+- MUI `Drawer` has no equivalent to iTwinUI `InformationPanel`'s [`resizable`](https://itwinui.bentley.com/docs/informationpanel#props) prop. To allow resizing, add a drag handle to the drawer paper and manage its width or height with appropriate limits.
+
+### Input
+
+Replace the [`Input` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/input) with the `Input` or `TextField` components from `@mui/material`. See [TextField examples](/components/textfield/) for reference.
+
+- Replace [`size`](https://itwinui.bentley.com/docs/input#sizes) with `size="small"` or the default `size="medium"`. There is no equivalent to `size="large"`.
+- Replace [`status="negative"`](https://itwinui.bentley.com/docs/input#status) with `TextField`'s `error` and `helperText` props. There is no equivalent for `"positive"` or `"warning"`.
+- Replace [inline labels](https://itwinui.bentley.com/docs/input#inline) by arranging `FormLabel` and `Input` side by side with CSS. StrataKit `TextField` displays its label above the input.
+- Replace an [input paired with a button](https://itwinui.bentley.com/docs/input#with-other-inputs) with an `IconButton` inside `InputAdornment` in `TextField`'s `slotProps.input.endAdornment`.
+
+### InputGrid
+
+There is no direct replacement for the [`InputGrid` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputgrid), which groups a label, field, and message.
+
+- For a text input, use [`TextField`](/components/textfield/) with `label` and `helperText`. It handles the layout without a separate wrapper.
+- For other fields, compose [`FormControl`](https://mui.com/material-ui/api/form-control/) with the appropriate label, input, and `FormHelperText`. Use `InputLabel` with MUI `Select` and `FormLabel` with fields that need a separate label.
+
+### InputGroup
+
+Replace the [`InputGroup` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputgroup) with the [`FormControl` component from `@mui/material`](https://mui.com/material-ui/api/form-control/).
+
+### InputWithDecorations
+
+Replace the [`InputWithDecorations` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputwithdecorations) with the `Input` or `TextField` components from `@mui/material`. Use [`InputAdornment`](https://mui.com/material-ui/api/input-adornment/) for content alongside the input, passed through `slotProps.input` on `TextField` or directly as props on `Input`.
+
+- Replace `InputWithDecorations.Icon` with an `Icon` inside `InputAdornment` in `startAdornment` or `endAdornment`.
+- Replace `InputWithDecorations.Button` with an `IconButton` inside an end `InputAdornment`. Additional text, dividers, and actions can be composed in the same adornment with custom layout styling.
+- Replace `isDisabled` with `disabled` on the input. Disable interactive adornments separately, since disabling the input does not disable their buttons.
+
+### Kbd
+
+Replace the [`Kbd` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/kbd) with the native [`<kbd>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/kbd) element.
+
+### Label
+
+Replace the [`Label` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/label) with the [`FormLabel` component from `@mui/material`](https://mui.com/material-ui/api/form-label/).
+
+### LinkAction
+
+There is no direct replacement for the [`LinkBox` and `LinkAction` components from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/linkaction).
+
+### List
+
+Replace the [`List` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/list) with the `List` component from `@mui/material`. See [List examples](/components/list/) for reference.
+
+- Replace `ListItem` with MUI `ListItem`. Replace [start icons](https://itwinui.bentley.com/docs/list#with-subcomponents) with an `Icon` inside `ListItemIcon`, and end icons with an `Icon` after `ListItemText`, aligned to the end.
+- Replace `ListItem.Content` and `ListItem.Description` with `ListItemText`'s `primary` and `secondary` props.
+- MUI `ListItem` has no equivalent to iTwinUI `ListItem`'s `size="large"` prop. Use CSS to keep rows without descriptions the same height when needed.
+- Replace [`actionable` and `ListItem.Action`](https://itwinui.bentley.com/docs/list#with-listitemaction) with `ListItemButton` inside `ListItem`. Render it as a link for navigation or keep it as a button for an in-page action. Put independent controls in `ListItem`'s `secondaryAction` prop rather than inside the primary action.
+- Replace [`active` and `disabled`](https://itwinui.bentley.com/docs/list#interactive-states) with `ListItemButton`'s `selected` and `disabled` props. `selected` is visual only; add semantics separately, such as `aria-current` for navigation or `role="option"` with `aria-selected` for a listbox.
+
+### MiddleTextTruncation
+
+There is no direct replacement for the [`MiddleTextTruncation` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/middletexttruncation).
+
+### NonIdealState
+
+There is no direct replacement for the [`NonIdealState` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/nonidealstate).
+
+- Replace `heading` with [`Typography`](/components/typography/) rendered as the appropriate heading level.
+- Replace `svg` with an image or illustration appropriate to the error.
+- Replace `actions` with [`Button`](/components/button/) or [`Link`](/components/link/) components.
+
+### NotificationMarker
+
+Replace the [`NotificationMarker` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/notificationmarker) with the `Badge` component from `@mui/material`. See [Badge examples](/components/badge/) for reference.
+
+- Replace the wrapped content by wrapping the same icon or control in `Badge`. Set `variant="dot"` for a direct replacement, or `variant="standard"` to show a count.
+- Replace [`enabled={false}`](https://itwinui.bentley.com/docs/notificationmarker#conditional-rendering) with `invisible`.
+- Replace [`status`](https://itwinui.bentley.com/docs/notificationmarker#status) with the `color` prop. There is no equivalent for `status="white"`.
+- MUI `Badge` has no equivalent to iTwinUI `NotificationMarker`'s [`pulsing`](https://itwinui.bentley.com/docs/notificationmarker#pulsing) prop.
+
+### Overlay
+
+Replace the [`Overlay` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/overlay) with the `Backdrop` component from `@mui/material`. See [Backdrop examples](/components/backdrop/) for reference.
+
+- Replace `content` with `Backdrop`'s children, such as a loading message or `CircularProgress`. Control visibility with the `open` prop.
+- iTwinUI `Overlay` blurs its children and makes them inert. MUI `Backdrop` only covers them visually. Set `inert` on the underlying content while the backdrop is shown, keep the backdrop outside the inert subtree, and add a blur with CSS if needed.
+- To cover only a section, place the backdrop in a positioned wrapper and position it with CSS. MUI `Backdrop` is fixed to the viewport by default.
+- For a loading state, describe it in accessible text and set `aria-busy` on the affected region. Use a `Dialog` instead if the foreground requires modal interaction and focus management.
+
+### Panels
+
+There is no direct replacement for the [`Panels` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/panels).
+
+### Popover
+
+Replace the [`Popover` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/popover) with the `Popover` component from `@mui/material`. See [Popover examples](/components/popover/) for reference.
+
+- MUI `Popover` does not wrap its trigger. Render the trigger button separately, store it as `anchorEl`, and toggle `open` from its `onClick`. Set `aria-haspopup="dialog"` and `aria-expanded` on the trigger.
+- Replace `content` with `Popover`'s children.
+- Replace `visible` and `onVisibleChange` with `open` and `onClose`.
+- Replace [`placement`](https://itwinui.bentley.com/docs/popover#positioning) with `anchorOrigin` and `transformOrigin`.
+- Replace `positionReference` with `anchorEl` set to the reference element.
+
+### ProgressLinear
+
+Replace the [`ProgressLinear` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/progressindicator) with the `LinearProgress` component from `@mui/material`. See [LinearProgress examples](/components/linearprogress/) for reference.
+
+- MUI `LinearProgress` is indeterminate by default. When passing [`value`](https://itwinui.bentley.com/docs/progressindicator#value), also set `variant="determinate"`.
+- Remove `isAnimated`. MUI `LinearProgress` animates value changes by default.
+- Replace [`status`](https://itwinui.bentley.com/docs/progressindicator#status) with the `color` prop.
+- Replace [`labels`](https://itwinui.bentley.com/docs/progressindicator#label) with `Typography`.
+- iTwinUI adds a visually hidden "Loading" label automatically. With MUI, label the bar with `aria-labelledby` pointing to the visible label, or `aria-label`.
+
+### ProgressRadial
+
+Replace the [`ProgressRadial` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/progressindicator) with the `CircularProgress` component from `@mui/material`. See [CircularProgress examples](/components/circularprogress/) for reference.
+
+- MUI `CircularProgress` is indeterminate by default. When passing [`value`](https://itwinui.bentley.com/docs/progressindicator#value), also set `variant="determinate"`.
+- Replace [`status`](https://itwinui.bentley.com/docs/progressindicator#status) with the `color` prop.
+- Replace [`size`](https://itwinui.bentley.com/docs/progressindicator#size) with the `size` prop, which accepts a pixel value.
+- MUI `CircularProgress` has no equivalent to iTwinUI `ProgressRadial`'s [children](https://itwinui.bentley.com/docs/progressindicator#content). Position content over it with CSS. See the [determinate example](/components/circularprogress/#determinate).
+- iTwinUI adds a visually hidden "Loading" label automatically. With MUI, label the indicator with `aria-labelledby` pointing to the visible label, or `aria-label`.
+
+### Radio
+
+Replace the [`Radio` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/radio) with the `Radio` component from `@mui/material`. See [Radio examples](/components/radio/) for reference.
+
+- Replace `label` by wrapping the `Radio` in `FormControlLabel` and passing the text to its `label` prop.
+- Replace `labelProps` with `FormControlLabel`'s `slotProps.typography`, and `wrapperProps` with props on `FormControlLabel`.
+- Group radios in `RadioGroup` inside `<FormControl render={<fieldset />} role="radiogroup">` with a `FormLabel` rendered as `<legend>`. Move `name` to `RadioGroup`.
+- Replace [`status="negative"`](https://itwinui.bentley.com/docs/radio#statuses) with `error` on `FormControl` and a `FormHelperText` message. See the [Radio error example](/components/radio/#error). There is no equivalent for `"positive"` or `"warning"`.
+
+### RadioTile
+
+There is no direct replacement for the [`RadioTile` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/radiotile).
+
+### SearchBox
+
+Replace the [`SearchBox` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/searchbox) with the `TextField` component from `@mui/material`. Set `type="search"` and add a start `InputAdornment`. See the [TextField icon example](/components/textfield/#icon) for reference.
+
+- MUI `TextField` has no equivalent to iTwinUI `SearchBox`'s `expandable` prop. Render an `IconButton` that is replaced by the `TextField` when activated.
+- Replace `status="negative"` with `TextField`'s `error` and `helperText` props. See the [TextField error example](/components/textfield/#error).
+
+### Select
+
+Replace the [`Select` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/select) with the `Select` or `NativeSelect` components from `@mui/material`. See [Select examples](/components/select/) for reference.
+
+- Replace `options` with `MenuItem` children.
+  - Replace each option's `value` with the `value` prop on `MenuItem`.
+  - For options without icons, pass the `label` as the direct child of `MenuItem`.
+  - For options with icons, use `ListItemIcon` and `ListItemText` inside `MenuItem`. See the [Select icon example](/components/select/#icon).
+- Replace `status="negative"` with `error` on a wrapping `FormControl` and a `FormHelperText` message.
+- Replace `placeholder` with a disabled `MenuItem`. See the [MUI Select placeholder example](https://mui.com/material-ui/react-select/#placeholder).
+
+### SideNavigation
+
+Replace the [`SideNavigation` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/sidenavigation) with the `NavigationRail` component from `@stratakit/structures`. See [NavigationRail examples](/components/navigationrail/) for reference.
+
+- Replace `items` with `NavigationRail.Anchor` or `NavigationRail.Button` children of `NavigationRail.Content`.
+- Replace `secondaryItems` with `NavigationRail.Anchor` or `NavigationRail.Button` children of `NavigationRail.Footer`.
+- Remove `expanderPlacement`. StrataKit supports a single expander location.
+- Replace `isExpanded` with `expanded` when managing the expanded state.
+- Replace `onExpandedClick` with [`setExpanded`](/reference/structures/NavigationRail/#NavigationRail.Root.setExpanded) when managing the expanded state.
+- Remove `styleType="borderless"`. StrataKit does not support this appearance.
+
+### SkipToContentLink
+
+Replace the [`SkipToContentLink` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/skiptocontentlink) with the [skip link composite component](/components/skiplink/).
+
+### Slider
+
+Replace the [`Slider` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/slider) with the `Slider` component from `@mui/material`. See [Slider examples](/components/slider/) for reference.
+
+:::note
+MUI `Slider` supports more than two values, but only highlights the range between the first and last value.
+:::
+
+- Replace `values` with `value` or `defaultValue`. Pass a single `number` for a single value, or [`[number, number]` for a range](/components/slider/#range).
+- Replace `trackDisplayMode="none"` with `track={false}`.
+- Replace `trackDisplayMode="even-segments"` with `track="inverted"`.
+- Replace `trackDisplayMode="odd-segments"` with `track="normal"`, or remove it.
+- Replace `trackDisplayMode="auto"` with `track="normal"` or `track="inverted"`. If the number of values varies, alternate between them based on the count.
+- Replace `tickLabels` with the `marks` prop. See the [Slider marks example](/components/slider/#marks).
+  - Use `marks={true}` to place a mark at every step.
+  - Use `marks={array}` to provide custom values and labels.
+- Replace `tooltipProps` with [`valueLabelDisplay`](https://mui.com/material-ui/api/slider/#slider-prop-valueLabelDisplay). Set it to `"off"` to hide the value label when the value is displayed elsewhere.
+- Replace `minLabel` and `maxLabel` with a `Stack` that wraps the labels and `Slider`. See the [Slider tooltip example](/components/slider/#tooltip).
+
+### SplitButton
+
+Replace the [`SplitButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#splitbutton) with a [`ButtonGroup`](/components/buttongroup/) containing two [`Button`s](/components/button/), both from `@mui/material`. The first runs the selected action; the second opens a [`Menu`](/components/menu/) to change it.
+
+### StatusMessage
+
+Replace the [`StatusMessage` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/statusmessage) with a [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) and [`Typography`](/components/typography/) components from `@mui/material`.
+
+### Stepper
+
+Replace the [`Stepper` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/stepper) with the `Stepper` component from `@mui/material`. See [Stepper examples](/components/stepper/) for reference.
+
+- The default `type` requires no changes.
+- Replace `type="long"` with a custom implementation based on the [long stepper example](/components/stepper/#long).
+- For smaller viewports, consider [`MobileStepper`](/components/stepper/#mobilestepper).
+
+### Surface
+
+Replace the [`Surface` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/surface) with the `Paper` component from `@mui/material`. See [Paper examples](/components/paper/) for reference.
+
+- Replace `elevation` using the table below. Both components have an `elevation` prop, but the scales differ.
+
+| Surface.elevation | Paper.elevation |
+| ----------------- | --------------- |
+| 0                 | 1               |
+| 1                 | 4               |
+| 2                 | 7               |
+| 3                 | 13              |
+| 4                 | 17              |
+| 5                 | 24              |
+
+- Replace `Surface.Header` with [`Card`](/components/card/), or with your own styling using [`Typography`](/components/typography/).
+
+### Table
+
+Replace the [`Table` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/table) with the `Table` component from `@mui/material`. See [Table examples](/components/table/) for reference.
+
+- For simple sorting, use [`TableSortLabel`](/components/table/#sorting).
+- For virtualization of large data sets and advanced sorting or filtering, consider [TanStack Table](https://tanstack.com/table/latest).
+- For cell editing and cell-level keyboard navigation, use [`DataGrid` from `@mui/x-data-grid`](https://mui.com/x/react-data-grid/).
+
+### Tabs
+
+Replace the [`Tabs` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tabs) with the `Tabs` component from `@mui/material`. See [Tabs examples](/components/tabs/) for reference.
+
+- Replace `Tabs.Panel` with `<div role="tabpanel">`. See the [Tabs example implementation](https://github.com/iTwin/stratakit/blob/main/examples/mui/Tabs.default.tsx) for display and labeling details.
+- Remove `type`. StrataKit uses a single tab appearance and has no equivalent to `"borderless"` or `"pills"`.
+- Replace `color` with `textColor`. See the [Tabs colors example](/components/tabs/#colors).
+- Replace `Tab.Label` and `Tab.Description` with two [`Typography`](/components/typography/) elements as the `Tab` content.
+
+### Tag
+
+Replace the [`Tag` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tag) with the `Chip` component from `@mui/material`. See [Chip examples](/components/chip/) for reference.
+
+### Text
+
+Replace the [`Text` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/text) with the `Typography` component from `@mui/material`. See [Typography examples](/components/typography/) for reference.
+
+- Replace `variant` with Typography's [`variant`](/components/typography/#variants) prop to control visual size.
+- Replace `as` with the `render` prop to control the semantic element.
+
+### Textarea
+
+Replace the [`Textarea` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/textarea) with the `TextField` component from `@mui/material` and set `multiline`. See the [TextField multiline example](/components/textfield/#multiline) for reference.
+
+- Replace `status="negative"` with `TextField`'s `error` and `helperText` props. See the [TextField error example](/components/textfield/#error).
+
+### Tile
+
+Replace the [`Tile` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tile) with the `Card` component from `@mui/material`. See [Card examples](/components/card/) for reference.
+
+- Replace `Tile.Action` with `CardActionArea`.
+- Replace `Tile.Buttons` with `CardActions`.
+- Replace `Tile.ThumbnailPicture` with `CardMedia`.
+- Replace a thumbnail avatar with a large [`Avatar`](https://mui.com/material-ui/react-avatar/#sizes) inside `CardMedia`, centered with CSS.
+
+### Toast
+
+Replace the [`Toast` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/toast) with the `Snackbar` component from `@mui/material`. See [Snackbar examples](/components/snackbar/) for reference.
+
+- MUI `Snackbar` shows one notification at a time. See MUI's examples for [consecutive snackbars](https://mui.com/material-ui/react-snackbar/#consecutive-snackbars) and [stacking alternatives](https://mui.com/material-ui/react-snackbar/#supplementary-components).
+- MUI `Snackbar` closes on the next click outside it, rather than after a timeout. This is preferred because it lets users control how long the notification stays visible.
+- Replace `type="persisting"` with a `Snackbar` that [ignores click-away](https://mui.com/material-ui/react-snackbar/#preventing-default-click-away-event), and provide a close button to dismiss it.
+- Replace `type="temporary"` (or an unset `type`) with a `Snackbar`. Leave `autoHideDuration` unset.
+- Replace `placement` with the [`anchorOrigin`](https://mui.com/material-ui/react-snackbar/#position) prop.
+- Replace `status` with a [wrapped `Alert`](https://mui.com/material-ui/react-snackbar/#use-with-alerts) and its `severity` prop.
+
+### ToggleSwitch
+
+Replace the [`ToggleSwitch` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/toggleswitch) with the `Switch` component from `@mui/material`. See [Switch examples](/components/switch/) for reference.
+
+### Tooltip
+
+Replace the [`Tooltip` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tooltip) with the `Tooltip` component from `@mui/material`. See [Tooltip examples](/components/tooltip/) for reference.
+
+### TransferList
+
+There is no direct replacement for the [`TransferList` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/transferlist).
+
+### Tree
+
+Replace the [`Tree` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/tree) with the `Tree` component from `@stratakit/structures`. See [Tree examples](/components/tree/) for reference.
+
+### VisuallyHidden
+
+Replace the [`VisuallyHidden` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/visuallyhidden) with the [`visuallyHidden`](https://mui.com/system/screen-readers/#visually-hidden-elements) style utility from `@mui/utils`.

@@ -13,8 +13,7 @@ const key = `${packageName}@${__VERSION__}`;
 
 /**
  * Internal hook that should be called by all structures.
- * Currently, it just validates that structures are used inside `Root` (from foundations)
- * and stores the package version in Context.
+ * It loads styles and validates that structures are used inside `Root`.
  *
  * @private
  */

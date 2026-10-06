@@ -4,9 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Button from "@mui/material/Button";
+import { svgAdd } from "@stratakit/icons/add";
 import { Icon } from "@stratakit/mui";
-
-import svgAdd from "@stratakit/icons/add.svg";
 
 export default () => {
 	return <Button endIcon={<Icon href={svgAdd} />}>Create new</Button>;

@@ -77,7 +77,6 @@ export default defineConfig({
 							label: "Overview",
 							slug: "components/overview",
 						},
-
 						{
 							label: "MUI components",
 							items: [{ autogenerate: { directory: "components/mui" } }],

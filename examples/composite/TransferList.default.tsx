@@ -3,91 +3,21 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid";
+import IconButton from "@mui/material/IconButton";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import MenuList from "@mui/material/MenuList";
 import Paper from "@mui/material/Paper";
 import Stack from "@mui/material/Stack";
 import Typography from "@mui/material/Typography";
-import { Icon } from "@stratakit/foundations";
+import { svgChevronLeft } from "@stratakit/icons/chevron-left";
+import { svgChevronLeftDouble } from "@stratakit/icons/chevron-left-double";
+import { svgChevronRight } from "@stratakit/icons/chevron-right";
+import { svgChevronRightDouble } from "@stratakit/icons/chevron-right-double";
+import { Icon } from "@stratakit/mui";
 
-import cheveronLeft from "@stratakit/icons/chevron-left.svg";
-import cheveronLeftDouble from "@stratakit/icons/chevron-left-double.svg";
-import cheveronRight from "@stratakit/icons/chevron-right.svg";
-import cheveronRightDouble from "@stratakit/icons/chevron-right-double.svg";
 import style from "./TransferList.default.module.css";
-
-const itemNames = [
-	"Roof trusses",
-	"Mezzanine beams",
-	"Perimeter columns",
-	"Bracing",
-	"Ground floor slab",
-	"Core walls",
-	"Retaining walls",
-	"Transfer beams",
-];
-function not(a: readonly number[], b: readonly number[]) {
-	return a.filter((value) => !b.includes(value));
-}
-
-function intersection(a: readonly number[], b: readonly number[]) {
-	return a.filter((value) => b.includes(value));
-}
-
-type CustomListProps = {
-	"aria-label": string;
-	items: readonly number[];
-	selected: readonly number[];
-	handleToggle: (value: number) => () => void;
-};
-
-const CustomList = React.forwardRef(function CustomList(
-	props: CustomListProps,
-	ref: React.Ref<HTMLElement & { focus: () => void }>,
-) {
-	const { "aria-label": ariaLabel, items, selected, handleToggle } = props;
-	const id = React.useId();
-
-	return (
-		<div>
-			<Typography id={id}>{ariaLabel}</Typography>
-			<Paper className={style.paper} elevation={2}>
-				<MenuList
-					aria-labelledby={id}
-					aria-multiselectable="true"
-					role="listbox"
-					dense
-					className={style.list}
-					render={<div />}
-					ref={
-						ref as React.Ref<HTMLUListElement> /* MenuList expects an UL ref */
-					}
-				>
-					{items.map((value: number) => {
-						const labelId = `transfer-list-item-${value}-label`;
-						const isSelected = selected.includes(value);
-
-						return (
-							<MenuItem
-								render={<div />}
-								key={value}
-								role="option"
-								aria-selected={isSelected}
-								aria-labelledby={labelId}
-								onClick={handleToggle(value)}
-							>
-								<ListItemText id={labelId} primary={itemNames[value]} />
-							</MenuItem>
-						);
-					})}
-				</MenuList>
-			</Paper>
-		</div>
-	);
-});
 
 export default function TransferList() {
 	const [selected, setSelected] = React.useState<readonly number[]>([]);
@@ -148,52 +78,52 @@ export default function TransferList() {
 	return (
 		<Grid container spacing={2} className={style.grid}>
 			<CustomList
-				aria-label="Steel"
+				label="Steel"
 				ref={leftListRef}
 				items={left}
 				selected={selected}
 				handleToggle={handleToggle}
 			/>
 			<Stack spacing={1}>
-				<Button
+				<IconButton
 					variant="outlined"
 					size="small"
 					onClick={handleAllRight}
 					disabled={left.length === 0}
-					aria-label="move all right"
+					label="Move all right"
 				>
-					<Icon href={cheveronRightDouble} />
-				</Button>
-				<Button
+					<Icon href={svgChevronRightDouble} />
+				</IconButton>
+				<IconButton
 					variant="outlined"
 					size="small"
 					onClick={handleSelectedRight}
 					disabled={leftSelected.length === 0}
-					aria-label="move selected right"
+					label="Move selected right"
 				>
-					<Icon href={cheveronRight} />
-				</Button>
-				<Button
+					<Icon href={svgChevronRight} />
+				</IconButton>
+				<IconButton
 					variant="outlined"
 					size="small"
 					onClick={handleSelectedLeft}
 					disabled={rightSelected.length === 0}
-					aria-label="move selected left"
+					label="Move selected left"
 				>
-					<Icon href={cheveronLeft} />
-				</Button>
-				<Button
+					<Icon href={svgChevronLeft} />
+				</IconButton>
+				<IconButton
 					variant="outlined"
 					size="small"
 					onClick={handleAllLeft}
 					disabled={right.length === 0}
-					aria-label="move all left"
+					label="Move all left"
 				>
-					<Icon href={cheveronLeftDouble} />
-				</Button>
+					<Icon href={svgChevronLeftDouble} />
+				</IconButton>
 			</Stack>
 			<CustomList
-				aria-label="Concrete"
+				label="Concrete"
 				ref={rightListRef}
 				items={right}
 				selected={selected}
@@ -202,3 +132,68 @@ export default function TransferList() {
 		</Grid>
 	);
 }
+
+const itemNames = [
+	"Roof trusses",
+	"Mezzanine beams",
+	"Perimeter columns",
+	"Bracing",
+	"Ground floor slab",
+	"Core walls",
+	"Retaining walls",
+	"Transfer beams",
+];
+function not(a: readonly number[], b: readonly number[]) {
+	return a.filter((value) => !b.includes(value));
+}
+
+function intersection(a: readonly number[], b: readonly number[]) {
+	return a.filter((value) => b.includes(value));
+}
+
+type CustomListProps = {
+	label: string;
+	items: readonly number[];
+	selected: readonly number[];
+	handleToggle: (value: number) => () => void;
+};
+
+const CustomList = React.forwardRef(function CustomList(
+	props: CustomListProps,
+	ref: React.Ref<HTMLDivElement>,
+) {
+	const { label, items, selected, handleToggle } = props;
+	const id = React.useId();
+
+	return (
+		<div>
+			<Typography id={id}>{label}</Typography>
+			<MenuList
+				aria-labelledby={id}
+				aria-multiselectable="true"
+				role="listbox"
+				dense
+				className={style.list}
+				render={<Paper ref={ref} variant="outlined" />}
+			>
+				{items.map((value: number) => {
+					const labelId = `transfer-list-item-${value}-label`;
+					const isSelected = selected.includes(value);
+
+					return (
+						<MenuItem
+							render={<div />}
+							key={value}
+							role="option"
+							aria-selected={isSelected}
+							aria-labelledby={labelId}
+							onClick={handleToggle(value)}
+						>
+							<ListItemText id={labelId} primary={itemNames[value]} />
+						</MenuItem>
+					);
+				})}
+			</MenuList>
+		</div>
+	);
+});

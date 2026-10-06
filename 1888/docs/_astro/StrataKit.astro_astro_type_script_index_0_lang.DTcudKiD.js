@@ -1,1 +1,0 @@
-import{n as e,t}from"./styles.internal.C0VBUVz6.js";var n=`@stratakit/foundations`;function r(r){r||=document;let{cleanup:i}=t(r,{css:e,key:`${n}@1.0.2`});return i}try{r()}catch{}delete document.documentElement.dataset.loading;

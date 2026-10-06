@@ -1,1 +1,0 @@
-import{t as e}from"./ownerDocument-Zu5Vm1vv.js";import{t}from"./getActiveElement-DreILhHN.js";function n(t){return e(t).defaultView||window}var r=t;export{n,r as t};

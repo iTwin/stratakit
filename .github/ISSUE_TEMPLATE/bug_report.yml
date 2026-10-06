@@ -60,10 +60,10 @@ body:
         Please provide version information and environment details.
         This helps us reproduce the issue.
       placeholder: |
-        - @stratakit/mui 1.0.0
-        - @mui/material 9.0.0
-        - react 18.0.0
-        - Browsers: Chrome 154, Safari 27
+        - @stratakit/mui 1.1.0
+        - @mui/material 9.4.0
+        - react 19.3.0
+        - Browsers: Chrome 156, Safari 27
     validations:
       required: false
   - type: textarea

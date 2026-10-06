@@ -1,5 +1,5 @@
 ---
-title: Radio Tiles
+title: Radio tiles
 description: A series of selectable tile components that behave like radio button.
 links:
   apiReference: "#api-reference"

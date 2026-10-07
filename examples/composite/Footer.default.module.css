@@ -6,18 +6,16 @@
 .footer {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
+	justify-content: space-between;
 	column-gap: var(--stratakit-space-400);
 	row-gap: var(--stratakit-space-100);
 	padding-block: var(--stratakit-space-200);
 	padding-inline: var(--stratakit-space-400);
-	text-align: center;
 }
 
 .list {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: center;
 	column-gap: var(--stratakit-space-400);
 	row-gap: var(--stratakit-space-100);
 	list-style: none;

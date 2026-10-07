@@ -16,29 +16,19 @@ export default () => {
 			</Typography>
 			<Typography variant="caption-lg" render={<ul />} className={styles.list}>
 				<li>
-					<Link color="textSecondary" href="#">
-						Terms of service
-					</Link>
+					<Link href="#">Terms of service</Link>
 				</li>
 				<li>
-					<Link color="textSecondary" href="#">
-						Privacy
-					</Link>
+					<Link href="#">Privacy</Link>
 				</li>
 				<li>
-					<Link color="textSecondary" href="#">
-						Terms of use
-					</Link>
+					<Link href="#">Terms of use</Link>
 				</li>
 				<li>
-					<Link color="textSecondary" href="#">
-						Cookies
-					</Link>
+					<Link href="#">Cookies</Link>
 				</li>
 				<li>
-					<Link color="textSecondary" href="#">
-						Legal notices
-					</Link>
+					<Link href="#">Legal notice</Link>
 				</li>
 			</Typography>
 		</footer>

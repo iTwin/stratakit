@@ -98,8 +98,7 @@
 		@apply --typography("mono-sm");
 	}
 
-	&:where(kbd),
-	:where(kbd) {
+	&:where(kbd) {
 		background-color: var(--stratakit-color-bg-neutral-base);
 		border: 1px solid var(--stratakit-color-border-neutral-base);
 		border-radius: var(--stratakit-radius-sm);
@@ -108,8 +107,7 @@
 		white-space: nowrap;
 	}
 
-	&:where(code),
-	:where(code) {
+	&:where(code) {
 		background-color: var(--stratakit-color-bg-mono-muted);
 		border-radius: var(--stratakit-radius-sm);
 		font-family: var(--stratakit-font-family-mono);

@@ -1,0 +1,1 @@
+import{t as e}from"./info-CXBOB_9u.js";var t=`${e}#icon`;`${e}`;export{t};

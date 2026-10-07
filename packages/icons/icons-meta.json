@@ -778,7 +778,17 @@
 		"aliases": ["collapse", "navigate", "direct", "indicate", "close", "hide"]
 	},
 	"chevron-left-double": {
-		"aliases": []
+		"aliases": [
+			"navigate",
+			"move",
+			"accelerate",
+			"fast",
+			"previous",
+			"back",
+			"return",
+			"quick",
+			"first"
+		]
 	},
 	"chevron-left": {
 		"aliases": [
@@ -792,7 +802,17 @@
 		]
 	},
 	"chevron-right-double": {
-		"aliases": []
+		"aliases": [
+			"navigate",
+			"move",
+			"accelerate",
+			"fast",
+			"next",
+			"forward",
+			"advance",
+			"quick",
+			"last"
+		]
 	},
 	"chevron-right": {
 		"aliases": [
@@ -925,10 +945,27 @@
 		]
 	},
 	"collapse-rows-all": {
-		"aliases": []
+		"aliases": [
+			"minimize",
+			"hide",
+			"compress",
+			"reduce",
+			"conceal",
+			"fold",
+			"contract",
+			"collapse"
+		]
 	},
 	"collapse-rows": {
-		"aliases": []
+		"aliases": [
+			"minimize",
+			"hide",
+			"compress",
+			"reduce",
+			"conceal",
+			"fold",
+			"contract"
+		]
 	},
 	"column-manage": {
 		"aliases": [
@@ -1644,10 +1681,26 @@
 		]
 	},
 	"expand-rows-all": {
-		"aliases": []
+		"aliases": [
+			"maximize",
+			"show",
+			"extend",
+			"reveal",
+			"open",
+			"display",
+			"unfold"
+		]
 	},
 	"expand-rows": {
-		"aliases": []
+		"aliases": [
+			"maximize",
+			"show",
+			"extend",
+			"reveal",
+			"open",
+			"display",
+			"unfold"
+		]
 	},
 	"explode": {
 		"aliases": ["separate", "break", "split", "expand", "scatter"]
@@ -1866,7 +1919,20 @@
 		]
 	},
 	"filetype-revit": {
-		"aliases": []
+		"aliases": [
+			"file",
+			"format",
+			"revit",
+			"bim",
+			"model",
+			"building",
+			"architecture",
+			"construction",
+			"engineering",
+			"rvt",
+			"family",
+			"project"
+		]
 	},
 	"filetype-sketchup": {
 		"aliases": [
@@ -1884,13 +1950,35 @@
 		]
 	},
 	"filetype-system": {
-		"aliases": []
+		"aliases": ["file", "format"]
 	},
 	"filetype-text": {
-		"aliases": []
+		"aliases": [
+			"file",
+			"format",
+			"txt",
+			"text",
+			"document",
+			"plain text",
+			"notes",
+			"writing",
+			"read",
+			"edit"
+		]
 	},
 	"filetype-txt-2": {
-		"aliases": []
+		"aliases": [
+			"file",
+			"format",
+			"txt",
+			"text",
+			"document",
+			"plain text",
+			"notes",
+			"writing",
+			"read",
+			"edit"
+		]
 	},
 	"filetype-unknown": {
 		"aliases": [
@@ -2731,7 +2819,7 @@
 		"aliases": ["acquire", "get", "obtain", "permission", "software"]
 	},
 	"license-minus": {
-		"aliases": []
+		"aliases": ["permission", "software"]
 	},
 	"lightbulb": {
 		"aliases": ["ideate", "suggest", "inspire", "create", "think"]
@@ -3430,7 +3518,7 @@
 		]
 	},
 	"portable-water-pipes": {
-		"aliases": []
+		"aliases": ["drinking", "pipes", "plumbing", "portable", "supply", "water"]
 	},
 	"portal-connect": {
 		"aliases": ["access", "bridge", "gateway", "link", "tunnel"]
@@ -3511,7 +3599,14 @@
 		]
 	},
 	"profile": {
-		"aliases": []
+		"aliases": [
+			"identify",
+			"personalize",
+			"user",
+			"customize",
+			"configure",
+			"preferences"
+		]
 	},
 	"project-copy": {
 		"aliases": [
@@ -3973,7 +4068,14 @@
 		]
 	},
 	"sewage-pipes": {
-		"aliases": []
+		"aliases": [
+			"drainage",
+			"pipes",
+			"plumbing",
+			"sanitation",
+			"sewer",
+			"wastewater"
+		]
 	},
 	"share": {
 		"aliases": ["distribute", "give", "spread", "allocate", "export", "publish"]
@@ -4250,7 +4352,15 @@
 		"aliases": ["cells", "divide", "separate", "split", "table"]
 	},
 	"spring-area": {
-		"aliases": []
+		"aliases": [
+			"support",
+			"flexible",
+			"elastic",
+			"surface",
+			"soil",
+			"foundation",
+			"mesh"
+		]
 	},
 	"spring-linear": {
 		"aliases": [
@@ -4317,7 +4427,7 @@
 		"aliases": ["time", "measure", "track", "monitor", "record", "clock"]
 	},
 	"storm-water-pipes": {
-		"aliases": []
+		"aliases": ["drainage", "pipes", "plumbing", "runoff", "storm", "water"]
 	},
 	"subscriptions": {
 		"aliases": [

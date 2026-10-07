@@ -24,6 +24,41 @@ if (!FIGMA_TOKEN) {
 	);
 }
 
+const iconNameToComponentSetName: { [key: string]: string } = {
+	"chevron-left-double": "chevrons-left",
+	"chevron-right-double": "chevrons-right",
+	"collapse-rows-all": "rows-collapse-all",
+	"collapse-rows": "rows-collapse",
+	"expand-rows-all": "rows-expand-all",
+	"expand-rows": "rows-expand",
+	"filetype-txt-2": "filetype-txt_2",
+	"portable-water-pipes": "pipes-water-portable",
+	profile: "user-profile",
+	"sewage-pipes": "pipes-sewage",
+	"storm-water-pipes": "pipes-water-storm",
+};
+
+const componentSetOverrides: FigmaComponentSet[] = [
+	{
+		name: "spring-area",
+		description:
+			"spring-area [support, flexible, elastic, surface, soil, foundation, mesh]",
+	},
+	{
+		name: "filetype-system",
+		description: "filetype-system [file, format]",
+	},
+	{
+		name: "filetype-text",
+		description:
+			"filetype-text [file, format, txt, text, document, plain text, notes, writing, read, edit]",
+	},
+	{
+		name: "license-minus",
+		description: "license-minus [permission, software]",
+	},
+];
+
 interface IconMeta {
 	aliases: string[];
 }
@@ -41,9 +76,11 @@ const meta: Meta = iconsList.reduce((acc, icon) => {
 const componentSets = await fetchComponentSets();
 for (const icon of iconsList) {
 	const iconName = icon.replace(/\.svg$/, "");
-	const componentSet = componentSets.meta.component_sets.find(
-		(cs) => cs.name === iconName,
-	);
+	const componentSetName = iconNameToComponentSetName[iconName] ?? iconName;
+	const componentSet = [
+		...componentSetOverrides,
+		...componentSets.meta.component_sets,
+	].find((cs) => cs.name === componentSetName && cs.description);
 	if (!componentSet) {
 		console.warn(`Figma component_set not found for icon: ${iconName}`);
 		continue;
@@ -55,15 +92,15 @@ for (const icon of iconsList) {
 
 writeFileSync(ICONS_META_PATH, JSON.stringify(meta, null, "\t"));
 
+interface FigmaComponentSet {
+	name: string;
+	description: string;
+}
+
 /**
  * Fetches component sets. See https://developers.figma.com/docs/rest-api/component-endpoints/#get-file-component-sets-endpoint
  */
 async function fetchComponentSets() {
-	interface FigmaComponentSet {
-		name: string;
-		description: string;
-	}
-
 	interface FigmaFileComponentSetsResponse {
 		meta: {
 			component_sets: FigmaComponentSet[];

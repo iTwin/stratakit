@@ -80,6 +80,12 @@ The `render` prop selects semantic HTML independently from the visual `variant`.
 
 ::example{src="mui/Typography.semantic-elements"}
 
+:::caution[Using color]
+
+The `<kbd>` and `<code>` elements inherit their parent's text color so they retain disabled styling when the parent is disabled. Outside disabled states, avoid applying text colors through the `color` prop or a parent element, as these colors may not provide sufficient contrast against the elements' backgrounds.
+
+:::
+
 ## ✅ Do
 
 - Use the `variant` prop of the **Typography** component to affect the visual presentation of the text.

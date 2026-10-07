@@ -3,7 +3,7 @@ title: Alert
 description: Alerts are used to highlight information without interrupting the user's workflow.
 links:
   muiDocs: https://mui.com/material-ui/react-alert/
-  apiReference: https://mui.com/material-ui/api/alert/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Alert.default"}
@@ -25,3 +25,8 @@ A close icon button can be included by using the [`onClose`](https://mui.com/mat
 ::example{src="mui/Alert.close"}
 
 For other types of actions, the [`action`](https://mui.com/material-ui/api/alert/#alert-prop-action) prop can be used instead. See [more examples in MUI docs](https://mui.com/material-ui/react-alert/#actions).
+
+## API reference
+
+- [`Alert`](https://mui.com/material-ui/api/alert/)
+- [`AlertTitle`](https://mui.com/material-ui/api/alert-title/)

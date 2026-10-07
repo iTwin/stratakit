@@ -2,26 +2,176 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.main {
-	padding: var(--stratakit-space-800);
+
+html:has(.page) {
+	background-color: var(--stratakit-color-bg-page-depth);
+	scrollbar-gutter: stable;
+}
+
+.page {
+	min-block-size: 100vb;
+
+	display: flex;
+	flex-direction: column;
+
 	font-size: var(--stratakit-font-size-body-md);
-	max-inline-size: min(1200px, 100%);
-	margin-inline: auto;
-}
+	line-height: var(--stratakit-line-height-body-md);
 
-.list {
-	padding-block: var(--stratakit-space-200);
-	list-style-type: "";
-}
+	--_padding-inline: var(--stratakit-space-800);
 
-.hgroup {
-	border-block-end: 1px solid var(--stratakit-color-border-neutral-base);
-
-	> * {
-		margin-block-end: var(--stratakit-space-200);
+	@media (max-width: 600px) {
+		--_padding-inline: var(--stratakit-space-400);
 	}
 }
 
-.h2 {
-	margin-block-start: var(--stratakit-space-400);
+.header {
+	min-block-size: 4rem;
+	padding-inline: var(--_padding-inline);
+
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+
+	border-block-end: 1px solid var(--stratakit-color-border-neutral-muted);
+}
+
+.main {
+	flex: 1;
+
+	display: grid;
+	gap: calc(var(--stratakit-space-900) * 2);
+	align-content: start;
+
+	padding-inline: var(--_padding-inline);
+	padding-block: calc(var(--stratakit-space-900) * 2);
+}
+
+.footer {
+	padding-inline: var(--_padding-inline);
+	padding-block: var(--stratakit-space-400);
+
+	color: var(--stratakit-color-text-neutral-tertiary);
+	font-size: var(--stratakit-font-size-caption-lg);
+	line-height: var(--stratakit-line-height-caption-lg);
+
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--stratakit-space-300);
+}
+
+.footerList {
+	list-style-type: "";
+
+	display: flex;
+	flex-wrap: wrap;
+	column-gap: var(--stratakit-space-200);
+}
+
+.footerLink {
+	font-weight: unset;
+}
+
+.contentWrapper {
+	inline-size: 100%;
+	max-inline-size: min(1200px, 100%);
+	margin-inline: auto;
+
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+}
+
+.skipLink {
+	position: fixed;
+	z-index: 1;
+
+	&:where(:not(:focus-within, :active)) {
+		clip-path: inset(50%) !important;
+		overflow: hidden !important;
+		white-space: nowrap !important;
+		block-size: 1px !important;
+		inline-size: 1px !important;
+	}
+}
+
+.logoLink {
+	display: flex;
+	align-items: center;
+	gap: var(--stratakit-space-300);
+
+	color: var(--stratakit-color-text-neutral-primary);
+	text-decoration: none;
+}
+
+.bentleyLogo {
+	height: 24px;
+	width: 100px;
+}
+
+.strataLogo {
+	filter: var(--stratakit-shadow-brand-logo-base);
+	width: 1em;
+	height: 1em;
+
+	margin-inline-start: -5px; /* visual alignment with left edge */
+}
+
+.section {
+	display: grid;
+	gap: var(--stratakit-space-600);
+}
+
+.heroText {
+	color: var(--stratakit-color-text-neutral-secondary);
+	max-inline-size: 45ch;
+
+	@media (max-width: 600px) {
+		font-size: var(--stratakit-font-size-headline-lg);
+		line-height: var(--stratakit-line-height-headline-lg);
+	}
+}
+
+.heroHeadingGroup {
+	display: grid;
+	gap: var(--stratakit-space-400);
+
+	letter-spacing: -0.02em;
+}
+
+.ctaList {
+	list-style-type: "";
+
+	display: flex;
+	flex-wrap: wrap;
+	gap: var(--stratakit-space-400);
+}
+
+.cardList {
+	list-style-type: "";
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+	gap: var(--stratakit-space-600);
+}
+
+.card {
+	block-size: 100%;
+}
+
+.cardIcon {
+	flex-shrink: 0;
+	align-self: flex-start;
+
+	display: inline-flex;
+	padding: var(--stratakit-space-150);
+
+	border-radius: var(--stratakit-radius-md);
+	background-color: var(--stratakit-color-bg-mono-transparent);
+	color: var(--stratakit-color-icon-neutral-base);
+}
+
+.semiBold {
+	font-weight: 600;
 }

@@ -3,7 +3,7 @@ title: NavigationRail
 description: Navigation rails are used for primary navigation in an app.
 status: unstable
 links:
-  apiReference: /reference/structures/NavigationRail
+  apiReference: "#api-reference"
 ---
 
 ::example{src="structures/NavigationRail.default" min-height="450px" min-width="450px" vertical-stretch}
@@ -48,7 +48,7 @@ This is for the application branding and [`NavigationRail.ToggleButton`](/refere
 
 ```jsx
 <NavigationRail.Header>
-	<Icon alt="Acme app" href={`${svgBentley}#icon-large`} size="large" />
+	<Icon alt="Acme app" href={svgBrandBentleySystemsLarge} size="large" />
 	<NavigationRail.ToggleButton />
 </NavigationRail.Header>
 ```
@@ -96,10 +96,10 @@ Any supplementary items, such as settings or account preferences, should be plac
 <NavigationRail.Footer>
 	<NavigationRail.List>
 		<NavigationRail.ListItem>
-			<NavigationRail.Button icon={`${svgSettings}#icon-large`} label="Settings" />
+			<NavigationRail.Button icon={svgSettingsLarge} label="Settings" />
 		</NavigationRail.ListItem>
 		<NavigationRail.ListItem>
-			<NavigationRail.Anchor icon={`${svgAccount}#icon-large`} label="Account" />
+			<NavigationRail.Anchor icon={svgAccountLarge} label="Account" />
 		</NavigationRail.ListItem>
 	</NavigationRail.List>
 </NavigationRail.Footer>
@@ -165,3 +165,15 @@ In the example below:
 - Don't insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
 - Don't place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer).
 - Don't make multiple [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor)s `active` at the same time.
+
+## API reference
+
+- [`NavigationRail.Root`](/reference/structures/NavigationRail/#NavigationRail.Root)
+- [`NavigationRail.Header`](/reference/structures/NavigationRail/#NavigationRail.Header)
+- [`NavigationRail.Content`](/reference/structures/NavigationRail/#NavigationRail.Content)
+- [`NavigationRail.Footer`](/reference/structures/NavigationRail/#NavigationRail.Footer)
+- [`NavigationRail.List`](/reference/structures/NavigationRail/#NavigationRail.List)
+- [`NavigationRail.ListItem`](/reference/structures/NavigationRail/#NavigationRail.ListItem)
+- [`NavigationRail.Anchor`](/reference/structures/NavigationRail/#NavigationRail.Anchor)
+- [`NavigationRail.Button`](/reference/structures/NavigationRail/#NavigationRail.Button)
+- [`NavigationRail.ToggleButton`](/reference/structures/NavigationRail/#NavigationRail.ToggleButton)

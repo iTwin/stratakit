@@ -1,1 +1,0 @@
-import{t as e}from"./info-CJ2Lzeik.js";var t=`${e}#icon`;`${e}`;export{t};

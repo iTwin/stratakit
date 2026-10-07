@@ -1,0 +1,1 @@
+import{t as e}from"./info-so8GYKMv.js";var t=`${e}#icon`;`${e}`;export{t};

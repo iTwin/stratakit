@@ -22,3 +22,11 @@ Once installed, the `stratakit-usage` skill is activated automatically whenever 
 
 - Mention "StrataKit" in your request, e.g. "Add a StrataKit button"
 - Explicitly invoke the skill using the [slash command](https://code.visualstudio.com/docs/agent-customization/agent-skills#_use-skills-as-slash-commands): `/stratakit-usage PROMPT`.
+
+## How to update
+
+To update the installed `stratakit-usage` skill, run:
+
+```
+gh skill update stratakit-usage
+```

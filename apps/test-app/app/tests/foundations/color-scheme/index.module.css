@@ -1,0 +1,28 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.themeTest {
+	background-color: var(--stratakit-color-bg-page-base);
+	color: var(--stratakit-color-text-neutral-primary);
+	padding: var(--stratakit-space-200);
+	margin-block: var(--stratakit-space-100);
+	border: 1px solid red;
+}
+
+.themeTest dt {
+	font-weight: bold;
+}
+
+.themeTest dd {
+	margin-inline-start: var(--stratakit-space-200);
+}
+
+.accentSwatch {
+	display: inline-block;
+	block-size: 0.5rem;
+	inline-size: 0.5rem;
+	border-radius: 50%;
+	background-color: var(--stratakit-color-text-accent-strong);
+	margin-inline: var(--stratakit-space-100);
+}

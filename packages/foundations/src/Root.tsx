@@ -18,6 +18,7 @@ import { useMergedRefs, useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import css from "./~styles.css.js";
+import { ColorScheme } from "./ColorScheme.js";
 import {
 	HtmlSanitizerContext,
 	RootContext,
@@ -204,10 +205,14 @@ const RootInternal = forwardRef<"div", RootInternalProps>(
 			<Role
 				{...rest}
 				className={cx("🥝Root", props.className)}
-				data-_sk-color-scheme={colorScheme}
-				data-_sk-accent-color={unstable_accentColor}
 				data-_sk-density={density}
 				ref={forwardedRef}
+				render={
+					<ColorScheme
+						scheme={colorScheme}
+						unstable_accentColor={unstable_accentColor}
+					/>
+				}
 			>
 				<RootNodeContext.Provider value={rootNode}>
 					{children}

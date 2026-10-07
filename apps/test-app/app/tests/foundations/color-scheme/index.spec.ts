@@ -2,9 +2,10 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-"use client";
+import { expect, test } from "#playwright";
 
-export { ColorScheme, useColorScheme } from "./ColorScheme.js";
-export { Icon } from "./Icon.js";
-export { PortalContext, Root } from "./Root.js";
-export { unstable_loadStyles } from "./styles.js";
+test("@visual", async ({ page }) => {
+	await page.goto("/tests/color-scheme");
+	const schemes = page.getByTestId("all");
+	await expect(schemes).toHaveScreenshot();
+});

@@ -4,20 +4,20 @@
  *--------------------------------------------------------------------------------------------*/
 html:where([data-color-scheme="light"]),
 :host(:where([data-color-scheme="light"])),
-.🥝Root:where([data-_sk-color-scheme="light"]) {
+.🥝ColorScheme:where([data-_sk-color-scheme="light"]) {
 	@apply --theme("light");
 	color-scheme: light;
 }
 
 html:where([data-color-scheme="dark"]),
 :host(:where([data-color-scheme="dark"])),
-.🥝Root:where([data-_sk-color-scheme="dark"]) {
+.🥝ColorScheme:where([data-_sk-color-scheme="dark"]) {
 	@apply --theme("dark");
 	color-scheme: dark;
 }
 
 html:where([data-_sk-accent-color="cobalt"]),
-.🥝Root:where([data-_sk-accent-color="cobalt"]) {
+.🥝ColorScheme:where([data-_sk-accent-color="cobalt"]) {
 	--_stratakit-accent-0: --primitive("color.cobalt.0");
 	--_stratakit-accent-50: --primitive("color.cobalt.50");
 	--_stratakit-accent-100: --primitive("color.cobalt.100");
@@ -29,4 +29,18 @@ html:where([data-_sk-accent-color="cobalt"]),
 	--_stratakit-accent-700: --primitive("color.cobalt.700");
 	--_stratakit-accent-800: --primitive("color.cobalt.800");
 	--_stratakit-accent-900: --primitive("color.cobalt.900");
+}
+
+.🥝ColorScheme:where([data-_sk-accent-color="aurora"]) {
+	--_stratakit-accent-0: --primitive("color.aurora.0");
+	--_stratakit-accent-50: --primitive("color.aurora.50");
+	--_stratakit-accent-100: --primitive("color.aurora.100");
+	--_stratakit-accent-200: --primitive("color.aurora.200");
+	--_stratakit-accent-300: --primitive("color.aurora.300");
+	--_stratakit-accent-400: --primitive("color.aurora.400");
+	--_stratakit-accent-500: --primitive("color.aurora.500");
+	--_stratakit-accent-600: --primitive("color.aurora.600");
+	--_stratakit-accent-700: --primitive("color.aurora.700");
+	--_stratakit-accent-800: --primitive("color.aurora.800");
+	--_stratakit-accent-900: --primitive("color.aurora.900");
 }

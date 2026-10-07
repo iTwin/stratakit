@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 export const components = {
-	foundations: ["Root", "Icon"],
+	foundations: ["Root", "Icon", "ColorScheme"],
 	bricks: [
 		"Anchor",
 		"Avatar",

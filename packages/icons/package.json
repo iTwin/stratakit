@@ -39,7 +39,6 @@
 	],
 	"scripts": {
 		"build": "wireit",
-		"extract-meta": "node --env-file-if-exists=.env scripts/icons-meta.ts",
 		"test": "node --test scripts/icons.test.js"
 	},
 	"devDependencies": {

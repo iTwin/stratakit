@@ -6,5 +6,5 @@
 import Button from "@mui/material/Button";
 
 export default () => {
-	return <Button>Create new</Button>;
+	return <Button loading>Create new</Button>;
 };

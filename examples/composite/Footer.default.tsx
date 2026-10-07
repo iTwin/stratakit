@@ -14,7 +14,7 @@ export default () => {
 			<Typography variant="caption-lg" color="textSecondary">
 				© {new Date().getFullYear()} Bentley Systems, Incorporated
 			</Typography>
-			<Typography variant="caption-lg" render={<ul />} className={styles.list}>
+			<ul className={styles.list}>
 				<li>
 					<Link href="#">Terms of service</Link>
 				</li>
@@ -30,7 +30,7 @@ export default () => {
 				<li>
 					<Link href="#">Legal notice</Link>
 				</li>
-			</Typography>
+			</ul>
 		</footer>
 	);
 };

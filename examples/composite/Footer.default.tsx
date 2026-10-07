@@ -16,19 +16,19 @@ export default () => {
 			</Typography>
 			<ul className={styles.list}>
 				<li>
-					<Link href="#">Terms of service</Link>
+					<Link href="https://www.bentley.com/en/legal/privacy-policy/">
+						Privacy statement
+					</Link>
 				</li>
 				<li>
-					<Link href="#">Privacy</Link>
+					<Link href="https://www.bentley.com/en/legal/web-properties-terms-of-use/">
+						Terms of use
+					</Link>
 				</li>
 				<li>
-					<Link href="#">Terms of use</Link>
-				</li>
-				<li>
-					<Link href="#">Cookies</Link>
-				</li>
-				<li>
-					<Link href="#">Legal notice</Link>
+					<Link href="https://www.bentley.com/en/legal/cookie-policy/">
+						Cookies
+					</Link>
 				</li>
 			</ul>
 		</footer>

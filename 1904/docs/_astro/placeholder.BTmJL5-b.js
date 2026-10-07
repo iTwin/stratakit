@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.D9LugaI5.js";var t=`${e}#icon`;`${e}`;export{t};

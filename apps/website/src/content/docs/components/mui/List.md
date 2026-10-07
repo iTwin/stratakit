@@ -27,6 +27,12 @@ links:
 
 ::example{src="mui/List.subheader" min-width="300px"}
 
+### List with mulitiple actions
+
+This example shows how you can have a `List` with a main action and secondary action. Clicking on the text triggers the main action. Clicking icon button triggers the secondary action.
+
+::example{src="mui/List.multiple-actions"}
+
 ## API reference
 
 - [`List`](https://mui.com/material-ui/api/list/)

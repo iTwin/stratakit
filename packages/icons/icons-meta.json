@@ -1681,6 +1681,304 @@
 	"feedback": {
 		"aliases": ["comment", "suggest", "respond", "review", "evaluate"]
 	},
+	"filetype-amim": {
+		"aliases": [
+			"file",
+			"format",
+			"amim",
+			"model",
+			"data",
+			"engineering",
+			"infrastructure",
+			"asset",
+			"information",
+			"exchange",
+			"bentley"
+		]
+	},
+	"filetype-autocad": {
+		"aliases": [
+			"file",
+			"format",
+			"autocad",
+			"cad",
+			"drawing",
+			"drafting",
+			"design",
+			"engineering",
+			"architecture",
+			"dwg",
+			"dxf"
+		]
+	},
+	"filetype-compressed": {
+		"aliases": [
+			"file",
+			"format",
+			"compressed",
+			"archive",
+			"zip",
+			"package",
+			"bundle",
+			"storage",
+			"extract",
+			"unzip",
+			"compression"
+		]
+	},
+	"filetype-dgn-cloud": {
+		"aliases": [
+			"file",
+			"format",
+			"dgn",
+			"cloud",
+			"design",
+			"model",
+			"storage",
+			"sync",
+			"collaboration",
+			"sharing",
+			"infrastructure",
+			"engineering"
+		]
+	},
+	"filetype-dgn-db": {
+		"aliases": [
+			"file",
+			"format",
+			"dgndb",
+			"database",
+			"dgn",
+			"design",
+			"model",
+			"imodel",
+			"microstation",
+			"bentley",
+			"infrastructure",
+			"engineering"
+		]
+	},
+	"filetype-ifc": {
+		"aliases": [
+			"file",
+			"format",
+			"ifc",
+			"bim",
+			"model",
+			"building",
+			"construction",
+			"exchange",
+			"interoperability",
+			"openbim"
+		]
+	},
+	"filetype-imodel": {
+		"aliases": [
+			"file",
+			"format",
+			"imodel",
+			"infrastructure",
+			"model",
+			"digital twin",
+			"bim",
+			"engineering",
+			"construction",
+			"design",
+			"collaboration",
+			"bentley"
+		]
+	},
+	"filetype-microstation": {
+		"aliases": [
+			"file",
+			"format",
+			"microstation",
+			"dgn",
+			"cad",
+			"design",
+			"drafting",
+			"model",
+			"infrastructure",
+			"engineering",
+			"architecture",
+			"bentley"
+		]
+	},
+	"filetype-mism": {
+		"aliases": [
+			"file",
+			"format",
+			"mism",
+			"building",
+			"structure",
+			"architecture",
+			"infrastructure",
+			"construction",
+			"model",
+			"engineering",
+			"facility",
+			"asset"
+		]
+	},
+	"filetype-pdfmarkup": {
+		"aliases": [
+			"file",
+			"format",
+			"pdf",
+			"markup",
+			"annotation",
+			"comment",
+			"review",
+			"redline",
+			"highlight",
+			"drawing",
+			"feedback",
+			"document"
+		]
+	},
+	"filetype-ppt": {
+		"aliases": [
+			"file",
+			"format",
+			"ppt",
+			"pptx",
+			"powerpoint",
+			"presentation",
+			"slide",
+			"slideshow",
+			"deck",
+			"microsoft"
+		]
+	},
+	"filetype-raster": {
+		"aliases": [
+			"file",
+			"format",
+			"raster",
+			"image",
+			"bitmap",
+			"pixel",
+			"photo",
+			"graphic",
+			"texture",
+			"scan",
+			"imagery"
+		]
+	},
+	"filetype-revit": {
+		"aliases": []
+	},
+	"filetype-sketchup": {
+		"aliases": [
+			"file",
+			"format",
+			"sketchup",
+			"skp",
+			"3d",
+			"model",
+			"design",
+			"architecture",
+			"building",
+			"construction",
+			"visualization"
+		]
+	},
+	"filetype-system": {
+		"aliases": []
+	},
+	"filetype-text": {
+		"aliases": []
+	},
+	"filetype-txt-2": {
+		"aliases": []
+	},
+	"filetype-unknown": {
+		"aliases": [
+			"file",
+			"format",
+			"unknown",
+			"unidentified",
+			"unsupported",
+			"generic",
+			"document",
+			"mystery",
+			"unrecognized"
+		]
+	},
+	"filetype-vector": {
+		"aliases": [
+			"file",
+			"format",
+			"vector",
+			"graphic",
+			"illustration",
+			"path",
+			"shape",
+			"scalable",
+			"drawing",
+			"artwork",
+			"svg"
+		]
+	},
+	"filetype-visio": {
+		"aliases": [
+			"file",
+			"format",
+			"visio",
+			"diagram",
+			"flowchart",
+			"process",
+			"workflow",
+			"chart",
+			"drawing",
+			"microsoft",
+			"vsd",
+			"vsdx"
+		]
+	},
+	"filetype-vue": {
+		"aliases": [
+			"file",
+			"format",
+			"vue",
+			"component",
+			"frontend",
+			"framework",
+			"javascript",
+			"interface",
+			"web",
+			"application"
+		]
+	},
+	"filetype-word": {
+		"aliases": [
+			"file",
+			"format",
+			"word",
+			"doc",
+			"docx",
+			"document",
+			"text",
+			"writing",
+			"report",
+			"microsoft"
+		]
+	},
+	"filetype-xls": {
+		"aliases": [
+			"file",
+			"format",
+			"xls",
+			"xlsx",
+			"excel",
+			"spreadsheet",
+			"workbook",
+			"table",
+			"data",
+			"calculation",
+			"microsoft"
+		]
+	},
 	"filter": {
 		"aliases": [
 			"refine",
@@ -1904,6 +2202,79 @@
 			"structure",
 			"style",
 			"template"
+		]
+	},
+	"forms-shared-help": {
+		"aliases": [
+			"form",
+			"forms",
+			"shared",
+			"help",
+			"support",
+			"question",
+			"assistance",
+			"guidance",
+			"information",
+			"collaboration"
+		]
+	},
+	"forms-shared-success": {
+		"aliases": [
+			"form",
+			"forms",
+			"shared",
+			"success",
+			"complete",
+			"completed",
+			"approved",
+			"confirmed",
+			"check",
+			"valid",
+			"collaboration"
+		]
+	},
+	"forms-shared": {
+		"aliases": [
+			"form",
+			"forms",
+			"shared",
+			"sharing",
+			"collaborate",
+			"collaboration",
+			"team",
+			"access",
+			"distribute",
+			"response",
+			"submission"
+		]
+	},
+	"forms-unshared-help": {
+		"aliases": [
+			"form",
+			"forms",
+			"unshared",
+			"private",
+			"help",
+			"support",
+			"question",
+			"assistance",
+			"guidance",
+			"information"
+		]
+	},
+	"forms-unshared-success": {
+		"aliases": [
+			"form",
+			"forms",
+			"unshared",
+			"private",
+			"success",
+			"complete",
+			"completed",
+			"approved",
+			"confirmed",
+			"check",
+			"valid"
 		]
 	},
 	"frame-backward": {

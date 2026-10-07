@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.D3LUaksB.js";var t=`${e}#icon`;`${e}`;export{t};

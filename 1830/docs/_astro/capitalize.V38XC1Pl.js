@@ -1,1 +1,0 @@
-import{j as e}from"./DefaultPropsProvider.CMQOYUA8.js";var t=e;export{t};

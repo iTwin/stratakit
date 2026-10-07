@@ -4,9 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Portal } from "@ariakit/react/portal";
-import { useColorScheme } from "@mui/material/styles";
+import { ColorScheme, useColorScheme } from "@stratakit/foundations";
 import { forwardRef } from "@stratakit/internal-utils/react";
-import classNames from "classnames";
 
 import type { BaseProps } from "@stratakit/internal-utils/props";
 
@@ -15,16 +14,13 @@ import type { BaseProps } from "@stratakit/internal-utils/props";
 const MuiSnackbar = forwardRef<"div", BaseProps<"div">>(
 	(props, forwardedRef) => {
 		const { children, ...rest } = props;
-		const { mode } = useColorScheme();
-		const scheme = mode === "light" ? "dark" : "light";
+		const { scheme: currentScheme } = useColorScheme();
+		const invertedScheme = currentScheme === "light" ? "dark" : "light";
 		return (
-			<Portal
-				{...rest}
-				ref={forwardedRef}
-				className={classNames("🥝Root", "🥝MuiRoot", props.className)}
-				data-_sk-color-scheme={scheme}
-			>
-				{children}
+			<Portal {...rest} ref={forwardedRef}>
+				<ColorScheme scheme={invertedScheme} data-color-scheme={invertedScheme}>
+					{children}
+				</ColorScheme>
 			</Portal>
 		);
 	},

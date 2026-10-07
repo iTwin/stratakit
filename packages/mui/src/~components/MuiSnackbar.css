@@ -5,5 +5,5 @@
 
 .MuiSnackbarContent-root:is(.MuiPaper-root) {
 	background-color: var(--stratakit-color-bg-elevation-base);
-	color: var(--stratakit-color-text-neutral);
+	color: var(--stratakit-color-text-neutral-primary);
 }

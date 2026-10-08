@@ -530,7 +530,7 @@ Have questions or feedback about a suggested replacement? Join the [iTwinUI feat
 | [`ButtonGroup`](https://itwinui.bentley.com/docs/buttongroup)                   | [MUI `ButtonGroup` or MUI `ToggleButtonGroup` or StrataKit `Toolbar`](#buttongroup) |
 | [`Carousel`](https://itwinui.bentley.com/docs/carousel)                         | [No direct replacement](#carousel)                                                  |
 | [`Checkbox`](https://itwinui.bentley.com/docs/checkbox)                         | [MUI `Checkbox`](#checkbox)                                                         |
-| [`Code`](https://itwinui.bentley.com/docs/code)                                 | [Native `<code>`](#code)                                                            |
+| [`Code`](https://itwinui.bentley.com/docs/code)                                 | [MUI `Typography` rendered as `<code>`](#code)                                      |
 | [`ColorPicker`](https://itwinui.bentley.com/docs/colorpicker)                   | [Composite color picker](#colorpicker)                                              |
 | [`ComboBox`](https://itwinui.bentley.com/docs/combobox)                         | [MUI `Autocomplete`](#combobox)                                                     |
 | [`DatePicker`](https://itwinui.bentley.com/docs/datepicker)                     | [MUI `DatePicker` or MUI `DateCalendar`](#datepicker)                               |
@@ -551,7 +551,7 @@ Have questions or feedback about a suggested replacement? Join the [iTwinUI feat
 | [`InputGrid`](https://itwinui.bentley.com/docs/inputgrid)                       | [No direct replacement](#inputgrid)                                                 |
 | [`InputGroup`](https://itwinui.bentley.com/docs/inputgroup)                     | [MUI `FormControl`](#inputgroup)                                                    |
 | [`InputWithDecorations`](https://itwinui.bentley.com/docs/inputwithdecorations) | [MUI `TextField` or MUI `Input`](#inputwithdecorations)                             |
-| [`Kbd`](https://itwinui.bentley.com/docs/kbd)                                   | [Native `<kbd>`](#kbd)                                                              |
+| [`Kbd`](https://itwinui.bentley.com/docs/kbd)                                   | [MUI `Typography` rendered as `<kbd>`](#kbd)                                        |
 | [`Label`](https://itwinui.bentley.com/docs/label)                               | [MUI `FormLabel` or MUI `Typography`](#label)                                       |
 | [`LinkAction`](https://itwinui.bentley.com/docs/linkaction)                     | [No direct replacement](#linkaction)                                                |
 | [`List`](https://itwinui.bentley.com/docs/list)                                 | [MUI `List`](#list)                                                                 |
@@ -583,7 +583,7 @@ Have questions or feedback about a suggested replacement? Join the [iTwinUI feat
 | [`Toast`](https://itwinui.bentley.com/docs/toast)                               | [MUI `Snackbar`](#toast)                                                            |
 | [`ToggleSwitch`](https://itwinui.bentley.com/docs/toggleswitch)                 | [MUI `Switch`](#toggleswitch)                                                       |
 | [`Tooltip`](https://itwinui.bentley.com/docs/tooltip)                           | [MUI `Tooltip`](#tooltip)                                                           |
-| [`TransferList`](https://itwinui.bentley.com/docs/transferlist)                 | [No direct replacement](#transferlist)                                              |
+| [`TransferList`](https://itwinui.bentley.com/docs/transferlist)                 | [Composite transfer list](#transferlist)                                            |
 | [`Tree`](https://itwinui.bentley.com/docs/tree)                                 | [StrataKit `Tree`](#tree)                                                           |
 | [`VisuallyHidden`](https://itwinui.bentley.com/docs/visuallyhidden)             | [MUI `visuallyHidden` utility](#visuallyhidden)                                     |
 
@@ -667,7 +667,7 @@ Replace the [`Checkbox` component from `@itwin/itwinui-react`](https://itwinui.b
 
 ### Code
 
-Replace the [`Code` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/code) with the native [`<code>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/code) element.
+Replace the [`Code` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/code) with the `Typography` component from `@mui/material` rendered as `<code>`. See [Typography examples](/components/typography/#semantic-elements) for reference.
 
 ### ColorPicker
 
@@ -759,9 +759,9 @@ Replace the [`Header` component from `@itwin/itwinui-react`](https://itwinui.ben
 
 Replace the [`IconButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#iconbutton) with the `IconButton` component from `@mui/material`. See [IconButton examples](/components/iconbutton/) for reference.
 
-- Replace `styleType="cta"` with a text-labeled `<Button color="primary">`.
-- Replace `styleType="high-visibility"` with a text-labeled `<Button color="primary">`.
-- Replace `styleType="default"` with `<IconButton variant="outlined">`.
+- Replace `styleType="cta"` with `color="primary"` and `variant="outlined"`.
+- Replace `styleType="high-visibility"` with `variant="outlined"`. If it is the key action, add `color="primary"`.
+- Replace `styleType="default"` with `variant="outlined"`.
 - Remove `styleType="borderless"`; the default MUI `IconButton` appearance is borderless.
 
 ### IdeasButton
@@ -805,7 +805,7 @@ Replace the [`InputWithDecorations` component from `@itwin/itwinui-react`](https
 
 ### Kbd
 
-Replace the [`Kbd` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/kbd) with the native [`<kbd>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/kbd) element.
+Replace the [`Kbd` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/kbd) with the `Typography` component from `@mui/material` rendered as `<kbd>`. See [Typography examples](/components/typography/#semantic-elements) for reference.
 
 ### Label
 
@@ -1051,7 +1051,7 @@ Replace the [`Tooltip` component from `@itwin/itwinui-react`](https://itwinui.be
 
 ### TransferList
 
-There is no direct replacement for the [`TransferList` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/transferlist).
+Replace the [`TransferList` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/transferlist) with the [transfer list composite component](/components/transferlist/).
 
 ### Tree
 

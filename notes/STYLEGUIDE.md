@@ -12,6 +12,60 @@ Although they are very similar, use `interface` for consistency and [better dete
 
 Use the `forwardRef` utility from [packages/internal-utils](./packages/internal-utils/src/react.ts) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.
 
+### Declare the main focus first.
+
+Declare the main component or function of the file at the top of the file. Helper or utility functions used in the main component can follow after.
+
+### Define an interface for prop types if there are more than one or two props
+
+**✅ Do**
+
+```tsx
+interface RadioTileProps = {
+{
+	label: string;
+	description?: string;
+	value: string;
+	icon?: React.ReactNode;
+	disabled?: boolean;
+};
+
+function RadioTiles(props: RadioTileProps) {
+	/* ... */
+ }
+```
+
+**❌ Don't**
+
+```tsx
+function RadioTile(props: {
+	label: string;
+	description?: string;
+	value: string;
+	icon?: React.ReactNode;
+	disabled?: boolean;
+}) {
+	/* ... */
+}
+```
+
+### Destructure props as the first line of the function instead of the function parameters
+
+```tsx
+function RadioTiles(props: RadioTileProps) {
+	const { label, description, value, icon, disabled } = props;
+	/* ... */
+}
+```
+
+**❌ Don't**
+
+```tsx
+function RadioTile({ label, description, value, icon, disabled }: RadioTileProps) {
+	/* ... */
+}
+```
+
 ## CSS
 
 ### Group CSS rules by target element

@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.1.1
+
+### Patch Changes
+
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Increased optimization with React compiler.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.3
+  - @stratakit/internal-utils@0.2.1
+
 ## 1.1.0
 
 ### Minor Changes

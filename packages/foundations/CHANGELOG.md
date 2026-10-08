@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.0.3
+
+### Patch Changes
+
+- [#1928](https://github.com/iTwin/stratakit/pull/1928): Improved color contrast for `--stratakit-color-text-neutral-disabled` and `--stratakit-color-icon-neutral-disabled` tokens.
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Increased optimization with React compiler.
+- Updated dependencies:
+  - @stratakit/internal-utils@0.2.1
+
 ## 1.0.2
 
 ### Patch Changes

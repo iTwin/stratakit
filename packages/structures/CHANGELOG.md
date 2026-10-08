@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.2
+
+### Patch Changes
+
+- [#1943](https://github.com/iTwin/stratakit/pull/1943): Sets a maximum height on the `DropdownMenu` so it does not extend beyond the viewport.
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Increased optimization with React compiler.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.3
+  - @stratakit/bricks@0.6.1
+  - @stratakit/internal-utils@0.2.1
+
 ## 0.6.1
 
 - [#1856](https://github.com/iTwin/stratakit/pull/1856): Fixed redundant borders in `Dialog`.

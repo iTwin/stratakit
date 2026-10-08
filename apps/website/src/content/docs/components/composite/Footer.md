@@ -10,13 +10,14 @@ Use a native [`<footer>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Refe
 ## ✅ Do
 
 - Place the footer at the bottom of the page, after the main content.
-- Keep the footer at the bottom of the screen, even when the page content is too short to fill it.
+- When page content is too short to fill the screen, use the page layout to keep the footer at the bottom while keeping it in normal document flow.
 - Keep link labels short and localized.
 - Append additional links to the end of the list.
 
 ## 🚫 Don't
 
 - Don't add more than one page-level `<footer>` to a page.
+- Don't use `position: sticky` to keep the footer visible while scrolling; let it follow the page content.
 - Don't add a footer to pages with infinite scrolling, since users can't reach it.
 - Don't add a footer inside widgets or deeper pages within an application.
 

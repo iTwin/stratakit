@@ -6,11 +6,14 @@
 .footer {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
 	column-gap: var(--stratakit-space-400);
 	row-gap: var(--stratakit-space-100);
 	padding-block: var(--stratakit-space-200);
 	padding-inline: var(--stratakit-space-400);
+}
+
+.copyright {
+	margin-inline-end: auto;
 }
 
 .list {

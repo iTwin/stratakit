@@ -11,7 +11,11 @@ import styles from "./Footer.default.module.css";
 export default () => {
 	return (
 		<footer className={styles.footer}>
-			<Typography variant="caption-lg" color="textSecondary">
+			<Typography
+				variant="caption-lg"
+				color="textSecondary"
+				className={styles.copyright}
+			>
 				© {new Date().getFullYear()} Bentley Systems, Incorporated
 			</Typography>
 			<ul className={styles.list}>

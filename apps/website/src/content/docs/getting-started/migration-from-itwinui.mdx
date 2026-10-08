@@ -788,8 +788,9 @@ Replace the [`Input` component from `@itwin/itwinui-react`](https://itwinui.bent
 
 There is no direct replacement for the [`InputGrid` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputgrid), which groups a label, field, and message. Compose an equivalent layout from MUI components instead.
 
-- For a text input, use [`TextField`](/components/textfield/) with `label` and `helperText`. It handles the layout without a separate wrapper.
-- For other fields, compose [`FormControl`](https://mui.com/material-ui/api/form-control/) with the appropriate label, input, and `FormHelperText`. Use `InputLabel` with MUI `Select` and `FormLabel` with fields that need a separate label.
+- For a text input, use [`TextField`](/components/textfield/) with `label` and `helperText`, such as `<TextField label="Name" helperText="Message" />`.
+- For other fields, compose [`FormControl`](https://mui.com/material-ui/api/form-control/) with the appropriate label and input, plus [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/) for the message. Use [`InputLabel`](https://mui.com/material-ui/api/input-label/) with MUI `Select` and [`FormLabel`](https://mui.com/material-ui/api/form-label/) with fields that need a separate label.
+- To preserve iTwinUI's `labelPlacement="inline"`, place the label and input side by side using [`Stack`](https://mui.com/material-ui/react-stack/) or custom layout. Neither `TextField` nor `FormControl` provides this layout by default.
 
 ### InputGroup
 

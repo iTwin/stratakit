@@ -1,0 +1,129 @@
+---
+import { svgDismiss } from "@stratakit/icons/dismiss";
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<icon-dialog>
+	<dialog id={id}>
+		<div class="header">
+			<h2>Icon dialog</h2>
+			<button commandfor={id} command="close" aria-label="Dismiss" class="icon-button">
+				<svg>
+					<use href={svgDismiss}></use>
+				</svg>
+			</button>
+		</div>
+		<h3>Symbols</h3>
+		<ul data-symbols></ul>
+		<h3>Aliases</h3>
+		<ul data-aliases></ul>
+
+		<template data-symbol>
+			<li><svg><use></use></svg><span></span></li>
+		</template>
+		<template data-alias>
+			<li></li>
+		</template>
+	</dialog>
+</icon-dialog>
+
+<style>
+	icon-dialog {
+		display: contents;
+	}
+
+	dialog {
+		margin: 0;
+		inset: 0;
+		place-self: center;
+		background-color: var(--sl-color-gray-6);
+		border: 1px solid var(--sl-color-gray-5);
+		border-radius: var(--stratakit-radius-md);
+		box-shadow: var(--sl-shadow-lg);
+		padding: var(--stratakit-space-600);
+		min-inline-size: 66%;
+		max-inline-size: calc(100% - var(--stratakit-space-600));
+		max-block-size: calc(100% - var(--stratakit-space-600));
+		overflow: auto;
+	}
+
+	dialog::backdrop {
+		background-color: var(--sl-color-backdrop-overlay);
+		backdrop-filter: blur(0.25rem);
+	}
+
+	.header {
+		display: flex;
+		align-items: center;
+		gap: var(--stratakit-space-600);
+		justify-content: space-between;
+	}
+
+	h2 {
+		font-size: var(--sl-text-h4);
+	}
+
+	h3 {
+		font-size: var(--sl-text-h5);
+	}
+
+	.icon-button {
+		margin: 0;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		min-inline-size: var(--stratakit-size-control-field-height-small);
+		min-block-size: var(--stratakit-size-control-field-height-small);
+		color: var(--stratakit-color-icon-neutral-base);
+		border-radius: var(--stratakit-radius-sm);
+
+		&:hover {
+			color: var(--stratakit-color-icon-neutral-primary);
+			background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+		}
+	}
+
+	[data-symbols] {
+		margin-inline-start: 0;
+
+		list-style-type: "";
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+		gap: var(--stratakit-space-400);
+
+		li {
+			margin-block-start: 0;
+
+			display: flex;
+			flex-direction: column;
+			justify-content: end;
+			align-items: center;
+			gap: var(--stratakit-space-200);
+
+			padding: var(--stratakit-space-400);
+			border: 1px solid var(--sl-color-gray-5);
+		}
+	}
+
+	svg {
+		display: block;
+		aspect-ratio: 1;
+		color: var(--stratakit-color-icon-neutral-primary);
+		inline-size: 1rem;
+
+		&[data-size="large"] {
+			inline-size: 1.5rem;
+		}
+	}
+</style>
+
+<script>
+	import { IconDialog } from "./IconDialog.ts";
+
+	customElements.define("icon-dialog", IconDialog);
+</script>

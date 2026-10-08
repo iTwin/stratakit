@@ -13,7 +13,12 @@
 	background: none;
 }
 
-.MuiDataGrid-columnHeaders > [role="row"] > * {
+/* 
+  Select all the cell elements in the column header row.  Both the normal colum
+  header cells and undocumented filler elements.
+*/
+.MuiDataGrid-columnHeader,
+.MuiDataGrid-columnHeaders > [role="row"] > [role="none"] {
 	border-bottom: none;
 	background: none;
 }

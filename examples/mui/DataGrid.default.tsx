@@ -45,6 +45,8 @@ export default function DefaultExample() {
 			showToolbar
 			rows={rows}
 			columns={columns}
+			disableRowSelectionOnClick
+			isRowSelectable={() => false}
 			initialState={{
 				pagination: {
 					paginationModel: {

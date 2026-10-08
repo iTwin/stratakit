@@ -1,1 +1,0 @@
-import{t as e}from"./arrow-down-p8C_ibMf.js";var t=`${e}#icon`;`${e}`;export{t};

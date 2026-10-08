@@ -78,6 +78,10 @@
 	*/
 	outline: none !important;
 
+	:where(.MuiDataGrid-row.Mui-selected + .MuiDataGrid-row > &) {
+		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
+	}
+
 	&:where(:focus-visible, :has(:focus-visible)) {
 		/* 
 			Use ::after with `border` instead of `outline` because the cell has a

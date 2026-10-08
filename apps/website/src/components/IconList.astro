@@ -213,6 +213,11 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		setIconParam(iconName);
 	});
 	iconDialog.dialog.addEventListener("close", () => {
+		const iconButton = document.querySelector<HTMLElement>(
+			`[data-icon="${iconDialog.iconName}"] button`,
+		);
+		iconButton?.focus();
+
 		setIconParam(null);
 	});
 
@@ -260,7 +265,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		if (!meta) return;
 
 		const href = icon.dataset.href!;
-		iconDialog.title = `Icon: ${iconName}.svg`;
+		iconDialog.iconName = iconName;
 		iconDialog.aliases = meta.aliases;
 		iconDialog.symbols = {
 			href,

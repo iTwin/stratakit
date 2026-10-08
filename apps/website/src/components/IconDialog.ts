@@ -7,12 +7,15 @@
 
 export class IconDialog extends HTMLElement {
 	#dialog!: HTMLDialogElement;
+	#dialogHeading!: HTMLHeadingElement;
+
+	#iconName = "placeholder";
 
 	connectedCallback() {
 		this.#dialog = this.querySelector("dialog")!;
-		const dialogHeading = this.querySelector("h2")!;
+		this.#dialogHeading = this.querySelector("h2")!;
 
-		this.#dialog.ariaLabelledByElements = [dialogHeading];
+		this.#dialog.ariaLabelledByElements = [this.#dialogHeading];
 
 		this.#dialog.addEventListener("click", this.#handleClose);
 	}
@@ -26,10 +29,13 @@ export class IconDialog extends HTMLElement {
 		return this.#dialog;
 	}
 
-	set title(title: string) {
-		const dialogHeading = this.querySelector("h2");
-		if (!dialogHeading) return;
-		dialogHeading.textContent = title;
+	get iconName() {
+		return this.#iconName;
+	}
+
+	set iconName(iconName: string) {
+		this.#iconName = iconName;
+		this.#dialogHeading.textContent = `Icon: ${iconName}.svg`;
 	}
 
 	set symbols(args: {

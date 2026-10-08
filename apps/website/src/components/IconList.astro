@@ -1,6 +1,6 @@
 ---
 import iconsMeta from "@stratakit/icons/icons-meta.json";
-import { svgDismiss } from "@stratakit/icons/dismiss";
+import IconDialog from "./IconDialog.astro";
 
 const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", {
 	query: "?url",
@@ -52,7 +52,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			return (
 				<div role="listitem" class="icon" data-icon={iconName} data-href={href}>
 					<button command="show-modal" commandfor="icon-dialog">
-						<svg width="16" height="16">
+						<svg>
 							<use href={`${href}#${defaultSymbol}`} />
 						</svg>
 						{iconName}
@@ -68,27 +68,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	<div class="cover-it" role="none"></div>
 </div>
 
-<dialog id="icon-dialog" aria-labelledby="icon-dialog-title">
-	<div class="dialog-header">
-		<h2 id="icon-dialog-title"></h2>
-		<button commandfor="icon-dialog" command="close" aria-label="Dismiss" class="icon-button">
-			<svg width="16" height="16">
-				<use href={svgDismiss}></use>
-			</svg>
-		</button>
-	</div>
-	<h3>Symbols</h3>
-	<ul id="icon-dialog-symbols" class="not-content"></ul>
-	<h3>Aliases</h3>
-	<ul id="icon-dialog-aliases"></ul>
-
-	<template data-symbol-item>
-		<li><svg><use></use></svg><span></span></li>
-	</template>
-	<template data-alias-item>
-		<li></li>
-	</template>
-</dialog>
+<IconDialog id="icon-dialog" />
 
 <style>
 	@layer page {
@@ -194,80 +174,12 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 				inline-size: 1.5rem;
 			}
 		}
-
-		dialog {
-			margin: 0;
-			inset: 0;
-			place-self: center;
-			background-color: var(--sl-color-gray-6);
-			border: 1px solid var(--sl-color-gray-5);
-			border-radius: var(--stratakit-radius-md);
-			box-shadow: var(--sl-shadow-lg);
-			padding: var(--stratakit-space-600);
-			min-inline-size: 66%;
-			max-inline-size: calc(100% - var(--stratakit-space-600));
-			max-block-size: calc(100% - var(--stratakit-space-600));
-			overflow: auto;
-
-			&::backdrop {
-				background-color: var(--sl-color-backdrop-overlay);
-				backdrop-filter: blur(0.25rem);
-			}
-
-			.dialog-header {
-				display: flex;
-				align-items: center;
-				gap: var(--stratakit-space-600);
-				justify-content: space-between;
-			}
-
-			h2 {
-				font-size: var(--sl-text-h4);
-			}
-
-			h3 {
-				font-size: var(--sl-text-h5);
-			}
-		}
-
-		#icon-dialog-symbols {
-			list-style-type: "";
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-			gap: var(--stratakit-space-400);
-
-			li {
-				display: flex;
-				flex-direction: column;
-				justify-content: end;
-				align-items: center;
-				gap: var(--stratakit-space-200);
-
-				padding: var(--stratakit-space-400);
-				border: 1px solid var(--sl-color-gray-5);
-			}
-		}
-
-		.icon-button {
-			margin: 0;
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			min-inline-size: var(--stratakit-size-control-field-height-small);
-			min-block-size: var(--stratakit-size-control-field-height-small);
-			color: var(--stratakit-color-icon-neutral-base);
-			border-radius: var(--stratakit-radius-sm);
-
-			&:hover {
-				color: var(--stratakit-color-icon-neutral-primary);
-				background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-			}
-		}
 	}
 </style>
 
 <script>
 	import iconsMeta from "@stratakit/icons/icons-meta.json";
+	import type { IconDialog } from "./IconDialog.ts";
 
 	interface IconMeta {
 		symbols: string[];
@@ -286,12 +198,8 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	const searchInput = document.querySelector<HTMLInputElement>("#icon-search-input")!;
 	searchInput.addEventListener("input", debouncedFilter);
 
-	const iconDialog = document.querySelector<HTMLDialogElement>("#icon-dialog")!;
-	iconDialog.addEventListener("click", (e) => {
-		if (e.target !== e.currentTarget) return;
-		iconDialog.close();
-	});
-	iconDialog.addEventListener("command", (e) => {
+	const iconDialog = document.querySelector<IconDialog>("icon-dialog")!;
+	iconDialog.dialog.addEventListener("command", (e) => {
 		if (!(e instanceof CommandEvent)) return;
 		if (e.command !== "show-modal") return;
 
@@ -304,7 +212,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		updateIconDialog(iconName);
 		setIconParam(iconName);
 	});
-	iconDialog.addEventListener("close", () => {
+	iconDialog.dialog.addEventListener("close", () => {
 		setIconParam(null);
 	});
 
@@ -319,11 +227,11 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 		if (iconName) {
 			updateIconDialog(iconName);
-			iconDialog.showModal();
+			iconDialog.dialog.showModal();
 			return;
 		}
 
-		iconDialog.close();
+		iconDialog.dialog.close();
 	}
 
 	function setIconParam(iconName: string | null) {
@@ -340,43 +248,24 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		history.pushState(null, "", url);
 	}
 
+	function getIconMeta(iconName: string) {
+		return (iconsMeta as { [key: string]: IconMeta | undefined })[iconName];
+	}
+
 	function updateIconDialog(iconName: string) {
 		const icon = document.querySelector<HTMLElement>(`[data-icon="${iconName}"]`);
 		if (!icon) return;
 
-		const meta = iconsMeta[iconName] as IconMeta | undefined;
+		const meta = getIconMeta(iconName);
 		if (!meta) return;
 
-		const heading = iconDialog.querySelector("#icon-dialog-title")!;
-		heading.textContent = `Icon: ${iconName}.svg`;
-
 		const href = icon.dataset.href!;
-		const symbolItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
-			"template[data-symbol-item]",
-		)!;
-		const symbolsElement = iconDialog.querySelector<HTMLUListElement>("#icon-dialog-symbols")!;
-		symbolsElement.replaceChildren(
-			...meta.symbols.map((symbol) => {
-				const symbolItem = symbolItemTemplate.content.cloneNode(true) as DocumentFragment;
-				const svg = symbolItem.querySelector("svg")!;
-				const size = getSize(symbol);
-				updateIcon(svg, `${href}#${symbol}`, size);
-				symbolItem.querySelector("span")!.textContent = symbol;
-				return symbolItem;
-			}),
-		);
-
-		const aliasItemTemplate = iconDialog.querySelector<HTMLTemplateElement>(
-			"template[data-alias-item]",
-		)!;
-		const aliasesElement = iconDialog.querySelector<HTMLUListElement>("#icon-dialog-aliases")!;
-		aliasesElement.replaceChildren(
-			...meta.aliases.map((alias) => {
-				const aliasItem = aliasItemTemplate.content.cloneNode(true) as DocumentFragment;
-				aliasItem.querySelector("li")!.textContent = alias;
-				return aliasItem;
-			}),
-		);
+		iconDialog.title = `Icon: ${iconName}.svg`;
+		iconDialog.aliases = meta.aliases;
+		iconDialog.symbols = {
+			href,
+			symbols: meta.symbols,
+		};
 	}
 
 	const icons = Array.from(document.querySelectorAll<HTMLElement>("[data-icon]"));
@@ -391,7 +280,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		let visibleIcons = 0;
 		for (const icon of icons) {
 			const iconName = icon.dataset.icon!;
-			const meta = iconsMeta[iconName] as IconMeta | undefined;
+			const meta = getIconMeta(iconName);
 			if (!meta) continue;
 
 			const hasSymbol = meta.symbols.includes(selectedSymbol);
@@ -424,10 +313,6 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	}
 
 	function updateIcon(svg: SVGElement, href: string, size: "regular" | "large") {
-		const width = size === "large" ? "24px" : "16px";
-
-		svg.setAttribute("width", width);
-		svg.setAttribute("height", width);
 		svg.dataset.size = size;
 
 		const use = svg.querySelector<SVGUseElement>("use")!;

@@ -1,1 +1,0 @@
-import{t as e}from"./star-Bkxd3-TK.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

@@ -2,9 +2,7 @@
 
 ## 0.2.1
 
-### Patch Changes
-
-- [#1830](https://github.com/iTwin/stratakit/pull/1830): Increased optimization with React compiler.
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Fixed React Compiler output to cover the entirety of the code.
 
 ## 0.2.0
 

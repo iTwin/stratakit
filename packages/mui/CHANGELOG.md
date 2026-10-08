@@ -4,7 +4,7 @@
 
 ### Patch Changes
 
-- [#1830](https://github.com/iTwin/stratakit/pull/1830): Increased optimization with React compiler.
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Fixed React Compiler output to cover the entirety of the code.
 - Updated dependencies:
   - @stratakit/foundations@1.0.3
   - @stratakit/internal-utils@0.2.1

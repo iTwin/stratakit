@@ -2,10 +2,8 @@
 
 ## 0.6.2
 
-### Patch Changes
-
-- [#1943](https://github.com/iTwin/stratakit/pull/1943): Sets a maximum height on the `DropdownMenu` so it does not extend beyond the viewport.
-- [#1830](https://github.com/iTwin/stratakit/pull/1830): Increased optimization with React compiler.
+- [#1943](https://github.com/iTwin/stratakit/pull/1943): Added a max-height on the `DropdownMenu` so it does not extend beyond the viewport.
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Fixed React Compiler output to cover the entirety of the code.
 - Updated dependencies:
   - @stratakit/foundations@1.0.3
   - @stratakit/bricks@0.6.1

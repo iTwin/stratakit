@@ -583,7 +583,7 @@ Have questions or feedback about a suggested replacement? Join the [iTwinUI feat
 | [`Toast`](https://itwinui.bentley.com/docs/toast)                               | [MUI `Snackbar`](#toast)                                                            |
 | [`ToggleSwitch`](https://itwinui.bentley.com/docs/toggleswitch)                 | [MUI `Switch`](#toggleswitch)                                                       |
 | [`Tooltip`](https://itwinui.bentley.com/docs/tooltip)                           | [MUI `Tooltip`](#tooltip)                                                           |
-| [`TransferList`](https://itwinui.bentley.com/docs/transferlist)                 | [No direct replacement](#transferlist)                                              |
+| [`TransferList`](https://itwinui.bentley.com/docs/transferlist)                 | [Composite transfer list](#transferlist)                                            |
 | [`Tree`](https://itwinui.bentley.com/docs/tree)                                 | [StrataKit `Tree`](#tree)                                                           |
 | [`VisuallyHidden`](https://itwinui.bentley.com/docs/visuallyhidden)             | [MUI `visuallyHidden` utility](#visuallyhidden)                                     |
 
@@ -759,9 +759,9 @@ Replace the [`Header` component from `@itwin/itwinui-react`](https://itwinui.ben
 
 Replace the [`IconButton` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/button#iconbutton) with the `IconButton` component from `@mui/material`. See [IconButton examples](/components/iconbutton/) for reference.
 
-- Replace `styleType="cta"` with a text-labeled `<Button color="primary">`.
-- Replace `styleType="high-visibility"` with a text-labeled `<Button color="primary">`.
-- Replace `styleType="default"` with `<IconButton variant="outlined">`.
+- Replace `styleType="cta"` with `color="primary"` and `variant="outlined"`.
+- Replace `styleType="high-visibility"` with `variant="outlined"`. If it is the key action, add `color="primary"`.
+- Replace `styleType="default"` with `variant="outlined"`.
 - Remove `styleType="borderless"`; the default MUI `IconButton` appearance is borderless.
 
 ### IdeasButton
@@ -1051,7 +1051,7 @@ Replace the [`Tooltip` component from `@itwin/itwinui-react`](https://itwinui.be
 
 ### TransferList
 
-There is no direct replacement for the [`TransferList` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/transferlist).
+Replace the [`TransferList` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/transferlist) with the [transfer list composite component](/components/transferlist/).
 
 ### Tree
 

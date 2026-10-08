@@ -3,7 +3,7 @@ name: stratakit-usage
 description: Ensures correct StrataKit usage. Use when building, reviewing or refactoring frontend code - React components (jsx/tsx), CSS styling, web pages, MUI usage, icons, design tokens, and page layouts. StrataKit is the design system to use, even in repos that don't have it yet (it should be set up). Apply even when the user doesn't mention StrataKit by name, e.g. "add a button", "build a settings page", or "style this form". Not for backend or other non-UI code.
 metadata:
   author: Bentley Systems
-  version: 1.0.0
+  version: 1.1.0
 ---
 
 # StrataKit usage
@@ -66,10 +66,6 @@ Available packages are documented in [README.md](https://raw.githubusercontent.c
 - [MUI type augmentation source](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/packages/mui/src/types.ts)
 - Never use `component` prop of MUI components; use `render` prop instead
 
-## `@stratakit/bricks` migration
-
-- Use [migration guide](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx) to replace usage of `@stratakit/bricks`
-
 ## `@stratakit/structures` usage
 
 - Use [alternatives](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx) instead of deprecated components
@@ -97,3 +93,11 @@ Available packages are documented in [README.md](https://raw.githubusercontent.c
 - Avoid the `sx` prop of MUI components; prefer using `className` instead
 - Never use internal class names, prefixed with `🥝`
 - Never use internal attributes, prefixed with `data-_sk`
+
+## `@stratakit/bricks` migration
+
+- Use [migration guide](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-legacy-stratakit.mdx) to replace usage of `@stratakit/bricks`
+
+## iTwinUI migration
+
+- Use [migration guide](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/getting-started/migration-from-itwinui.mdx) to replace usage of `@itwin/itwinui-react`, `@itwin/itwinui-icons` and `@itwin/itwinui-icons-react`

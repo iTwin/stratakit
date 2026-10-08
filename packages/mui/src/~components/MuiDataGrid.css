@@ -42,6 +42,27 @@
 	&:where(.Mui-selected) {
 		--_MuiDataGrid-row-background-color: var(--✨row-bg--active);
 		--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--active-hover);
+		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
+	}
+
+	/* 
+	  The MUI implementation does not set a border on the last row.  It gets its
+	  visible bottom border from one of two places:
+	    - The undocumented .MuiDataGrid-filler when the rows do not fill the full
+	      height
+	    - The top border of .MuiDataGrid-footerContainer when rows are scrolled to
+	      the bottom, or the height of all rows exactally matches the available
+	      space.
+
+	  The cells have overflow: hidden which hides any content rendered outside the
+	  bounds.
+
+		Use box shadow instead of a border to avoid making the scroll area larger.
+	  Border is included in the scroll area so it would causes a double border
+	  with the footer container when the row is scrolled to the bottom.
+	*/
+	&.MuiDataGrid-row--lastVisible {
+		box-shadow: 0 1px 0 0 var(--_MuiDataGrid-rowBorderColor);
 	}
 }
 
@@ -56,11 +77,6 @@
 		   :focus to avoid showing on mouse events.
 	*/
 	outline: none !important;
-
-	:where(.MuiDataGrid-row.Mui-selected > &),
-	:where(.MuiDataGrid-row.Mui-selected + .MuiDataGrid-row > &) {
-		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
-	}
 
 	&:where(:focus-visible, :has(:focus-visible)) {
 		/* 
@@ -93,11 +109,6 @@
 
 .MuiDataGrid-footerContainer {
 	border-top-color: var(--_MuiDataGrid-rowBorderColor);
-
-	/* Last selected row uses footer top as the bottom border */
-	:where(.MuiDataGrid-root:has(.Mui-selected.MuiDataGrid-row--lastVisible)) & {
-		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
-	}
 }
 
 .MuiDataGrid-menu {

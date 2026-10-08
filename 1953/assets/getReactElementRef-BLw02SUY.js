@@ -1,0 +1,1 @@
+import{q as e}from"./jsx-runtime-CH2oXoW8.js";e();function t(e){return e?.props?.ref||null}export{t};

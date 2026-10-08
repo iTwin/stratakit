@@ -1,0 +1,1 @@
+import{S as e}from"./DefaultPropsProvider-cHBAzCNI.js";import{n as t}from"./memoTheme-DKH8pINI.js";function n(t){return e(`MuiDivider`,t)}var r=t(`MuiDivider`,[`root`,`absolute`,`fullWidth`,`inset`,`middle`,`flexItem`,`vertical`,`withChildren`,`textAlignRight`,`textAlignLeft`,`wrapper`,`wrapperVertical`]);export{n,r as t};

@@ -8,6 +8,7 @@ import AlertRole from "examples/mui/Alert._role.tsx";
 import AlertClose from "examples/mui/Alert.close.tsx";
 import AlertDefault from "examples/mui/Alert.default.tsx";
 import { isProduction } from "~/~utils.tsx";
+import { ScreenShotWrapper } from "~/ScreenShotWrapper.tsx";
 
 export default function AlertExamples() {
 	return (
@@ -19,3 +20,9 @@ export default function AlertExamples() {
 		</Stack>
 	);
 }
+
+export const VisualTest = () => (
+	<ScreenShotWrapper>
+		<AlertPermutations_ />
+	</ScreenShotWrapper>
+);

@@ -7,11 +7,7 @@
 	--_MuiCircularProgress-track-thickness: 1px;
 	--_MuiCircularProgress-fill-thickness: 5px;
 
-	/*
-		 Set secondary color as the fallback in case there is a 3rd party component
-	   that used the unsupported "info" or "inherit".  Also covers the case where
-	   a non-Typescript consumer does something invalid like `color="polkadots"`
-	*/
+	/* Use secondary color by default. This handlescolors included in MUI but omitted by StrataKit. */
 	--_MuiCircularProgress-color: var(--stratakit-color-icon-neutral-base);
 
 	&:where(.MuiCircularProgress-colorPrimary) {

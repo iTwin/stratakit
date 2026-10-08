@@ -25,8 +25,6 @@ export default function ButtonExamples() {
 	);
 }
 
-export const Loading = () => <ButtonLoading />;
-
 export const knobs = {
 	disabled: createKnob({
 		props: {

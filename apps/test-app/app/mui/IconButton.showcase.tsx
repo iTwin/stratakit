@@ -3,8 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import Stack from "@mui/material/Stack";
-import IconButtonColors_ from "examples/mui/IconButton._colors.tsx";
 import IconButtonPlacements_ from "examples/mui/IconButton._placements.tsx";
+import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import IconButtonSizes from "examples/mui/IconButton.sizes.tsx";
 import IconButtonVariants from "examples/mui/IconButton.variants.tsx";
@@ -16,11 +16,7 @@ export default function IconButtonExamples() {
 			<IconButtonDefault />
 			<IconButtonSizes />
 			<IconButtonVariants />
-			{!isProduction && (
-				<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
-					<IconButtonColors_ />
-				</Stack>
-			)}
+			<IconButtonColors />
 			{!isProduction && (
 				<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
 					<IconButtonPlacements_ />

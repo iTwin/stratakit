@@ -25,6 +25,11 @@ It has row and cell selection and editing as first class concepts. The grid is a
 | Displaying data with multiple interactive components per row     | ✅       | ✅    |
 | Spreadsheet experience where the user adjust the values of cells | ✅       | ❌    |
 
+## StrataKit MUI modifications
+
+- Restyled using StrataKit's visual language.
+- Changed default for `checkboxSelection` to true.
+
 ## Examples
 
 ### Editing Data Types

@@ -1,1 +1,0 @@
-import{t as e}from"./clock-AJPXP9ac.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

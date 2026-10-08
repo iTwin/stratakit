@@ -1,5 +1,6 @@
 ---
-import iconsList from "@stratakit/icons/icons-list.json";
+import iconsMeta from "@stratakit/icons/icons-meta.json";
+import IconDialog from "./IconDialog.astro";
 
 const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", {
 	query: "?url",
@@ -7,20 +8,55 @@ const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", 
 });
 
 function getIconHref(iconName: string) {
-	const module = allIcons[`/node_modules/@stratakit/icons/icons/${iconName}`];
-	return (module as { default: string })?.default;
+	const module = allIcons[`/node_modules/@stratakit/icons/icons/${iconName}.svg`];
+	return (module as unknown as { default: string })?.default;
 }
+
+const iconMetaEntries = Object.entries(iconsMeta);
+
+const defaultSymbol = "icon";
+const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbols))];
 ---
 
+<div>
+	<input id="icon-search-input" type="search" placeholder="Search by name or alias" />
+</div>
+<div>
+	<fieldset id="icon-symbol-filter">
+		<legend>Filter by symbol</legend>
+		<div class="chips">
+			{
+				allSymbols.map((symbol) => (
+					<label>
+						<input
+							type="radio"
+							name="symbol"
+							value={symbol}
+							checked={symbol === defaultSymbol ? true : undefined}
+						/>
+						<span>{symbol}</span>
+					</label>
+				))
+			}
+		</div>
+	</fieldset>
+</div>
+
+<div id="icon-count" aria-live="polite" aria-atomic="true">
+	Showing {iconMetaEntries.length} icons
+</div>
 <div role="list" class="icons-grid not-content">
 	{
-		iconsList.map((iconName) => {
+		iconMetaEntries.map(([iconName]) => {
+			const href = getIconHref(iconName);
 			return (
-				<div role="listitem" class="icon">
-					<svg width="24" height="24">
-						<use href={`${getIconHref(iconName)}#icon-large`} />
-					</svg>
-					{iconName}
+				<div role="listitem" class="icon" data-icon={iconName} data-href={href}>
+					<button command="show-modal" commandfor="icon-dialog">
+						<svg>
+							<use href={`${href}#${defaultSymbol}`} />
+						</svg>
+						{iconName}
+					</button>
 				</div>
 			);
 		})
@@ -32,8 +68,51 @@ function getIconHref(iconName: string) {
 	<div class="cover-it" role="none"></div>
 </div>
 
+<IconDialog id="icon-dialog" />
+
 <style>
 	@layer page {
+		input[type="search"] {
+			inline-size: 100%;
+			min-block-size: var(--stratakit-size-control-field-height-medium);
+			padding-inline: var(--stratakit-space-300);
+			border: 1px solid var(--stratakit-color-border-page-base);
+			border-radius: var(--stratakit-radius-sm);
+		}
+
+		fieldset {
+			label {
+				margin-top: 0;
+				display: inline-flex;
+				align-items: center;
+				gap: var(--stratakit-space-100);
+				min-block-size: var(--stratakit-size-control-field-height-small);
+				padding-inline: var(--stratakit-space-200);
+				border: 1px solid var(--stratakit-color-border-neutral-base);
+				border-radius: 999px;
+				cursor: pointer;
+
+				&:hover {
+					background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+				}
+
+				&:has(input:focus-visible) {
+					outline: 2px solid var(--stratakit-color-border-accent-strong);
+					outline-offset: 1px;
+				}
+
+				input[type="radio"]:focus-visible:not(#a#b) {
+					outline: unset !important;
+				}
+			}
+
+			.chips {
+				display: flex;
+				gap: var(--stratakit-space-200);
+				margin-top: var(--stratakit-space-50);
+			}
+		}
+
 		.icons-grid {
 			--_grid-bg: var(--stratakit-color-bg-page-depth);
 			--_grid-line: var(--stratakit-color-border-neutral-muted);
@@ -65,27 +144,191 @@ function getIconHref(iconName: string) {
 
 		.icon {
 			margin: 0;
-			padding: var(--stratakit-space-400);
 
+			display: grid;
 			text-align: center;
 			font-size: var(--stratakit-font-size-body-sm);
 			overflow-wrap: anywhere;
 			hyphens: auto;
 
-			display: grid;
-			justify-items: center;
-			justify-content: center;
-			align-content: start;
-			gap: var(--stratakit-space-200);
-
 			background-color: var(--_grid-bg);
+
+			button {
+				padding: var(--stratakit-space-400);
+				display: grid;
+				justify-items: center;
+				justify-content: center;
+				align-content: start;
+				gap: var(--stratakit-space-200);
+				outline-offset: -2px;
+			}
 		}
 
 		svg {
 			display: block;
-			inline-size: 1.5rem;
 			aspect-ratio: 1;
 			color: var(--stratakit-color-icon-neutral-primary);
+			inline-size: 1rem;
+
+			&[data-size="large"] {
+				inline-size: 1.5rem;
+			}
 		}
 	}
 </style>
+
+<script>
+	import iconsMeta from "@stratakit/icons/icons-meta.json";
+	import type { IconDialog } from "./IconDialog.ts";
+
+	interface IconMeta {
+		symbols: string[];
+		aliases: string[];
+	}
+
+	const debouncedFilter = debounce(filter, 200);
+
+	const symbolInputs = document.querySelectorAll<HTMLInputElement>(
+		`#icon-symbol-filter input[type="radio"]`,
+	);
+	for (const symbolInput of symbolInputs) {
+		symbolInput.addEventListener("change", debouncedFilter);
+	}
+
+	const searchInput = document.querySelector<HTMLInputElement>("#icon-search-input")!;
+	searchInput.addEventListener("input", debouncedFilter);
+
+	const iconDialog = document.querySelector<IconDialog>("icon-dialog")!;
+	iconDialog.dialog.addEventListener("command", (e) => {
+		if (!(e instanceof CommandEvent)) return;
+		if (e.command !== "show-modal") return;
+
+		const source = e.source;
+		if (!(source instanceof HTMLElement)) return;
+
+		const iconName = source.parentElement?.dataset.icon;
+		if (!iconName) return;
+
+		updateIconDialog(iconName);
+		setIconParam(iconName);
+	});
+	iconDialog.dialog.addEventListener("close", () => {
+		const iconButton = document.querySelector<HTMLElement>(
+			`[data-icon="${iconDialog.iconName}"] button`,
+		);
+		iconButton?.focus();
+
+		setIconParam(null);
+	});
+
+	window.addEventListener("popstate", syncIconParam);
+
+	const countElement = document.querySelector<HTMLElement>("#icon-count")!;
+
+	syncIconParam();
+
+	function syncIconParam() {
+		const iconName = new URLSearchParams(location.search).get("icon");
+
+		if (iconName) {
+			updateIconDialog(iconName);
+			iconDialog.dialog.showModal();
+			return;
+		}
+
+		iconDialog.dialog.close();
+	}
+
+	function setIconParam(iconName: string | null) {
+		const url = new URL(location.href);
+		const iconParam = url.searchParams.get("icon");
+		if (iconParam === iconName) return;
+
+		if (iconName) {
+			url.searchParams.set("icon", iconName);
+		} else {
+			url.searchParams.delete("icon");
+		}
+
+		history.pushState(null, "", url);
+	}
+
+	function getIconMeta(iconName: string) {
+		return (iconsMeta as { [key: string]: IconMeta | undefined })[iconName];
+	}
+
+	function updateIconDialog(iconName: string) {
+		const icon = document.querySelector<HTMLElement>(`[data-icon="${iconName}"]`);
+		if (!icon) return;
+
+		const meta = getIconMeta(iconName);
+		if (!meta) return;
+
+		const href = icon.dataset.href!;
+		iconDialog.iconName = iconName;
+		iconDialog.aliases = meta.aliases;
+		iconDialog.symbols = {
+			href,
+			symbols: meta.symbols,
+		};
+	}
+
+	const icons = Array.from(document.querySelectorAll<HTMLElement>("[data-icon]"));
+
+	function filter() {
+		const query = searchInput.value;
+		const selectedSymbol =
+			document.querySelector<HTMLInputElement>("#icon-symbol-filter input:checked")?.value ??
+			"icon";
+		const size = getSize(selectedSymbol);
+
+		let visibleIcons = 0;
+		for (const icon of icons) {
+			const iconName = icon.dataset.icon!;
+			const meta = getIconMeta(iconName);
+			if (!meta) continue;
+
+			const hasSymbol = meta.symbols.includes(selectedSymbol);
+			const matchesQuery = matchQuery(query, iconName, meta.aliases);
+			const visible = matchesQuery && hasSymbol;
+			icon.hidden = !visible;
+
+			if (!visible) continue;
+
+			visibleIcons++;
+			const svg = icon.querySelector<SVGElement>("svg")!;
+			const href = icon.dataset.href!;
+			updateIcon(svg, `${href}#${selectedSymbol}`, size);
+		}
+
+		countElement.textContent = `Showing ${visibleIcons} icons`;
+	}
+
+	function matchQuery(query: string, iconName: string, aliases: string[]) {
+		query = query.trim().toLowerCase();
+		iconName = iconName.toLowerCase();
+
+		if (!query) return true;
+		if (iconName.includes(query)) return true;
+		return aliases.some((alias) => alias.toLowerCase().includes(query));
+	}
+
+	function getSize(symbol: string) {
+		return symbol.includes("-large") ? "large" : "regular";
+	}
+
+	function updateIcon(svg: SVGElement, href: string, size: "regular" | "large") {
+		svg.dataset.size = size;
+
+		const use = svg.querySelector<SVGUseElement>("use")!;
+		use.setAttribute("href", href);
+	}
+
+	function debounce<Args extends unknown[]>(fn: (...args: Args) => void, delay: number) {
+		let timeout: ReturnType<typeof setTimeout>;
+		return (...args: Args) => {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => fn(...args), delay);
+		};
+	}
+</script>

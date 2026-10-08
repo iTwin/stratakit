@@ -49,21 +49,26 @@
 .MuiDataGrid-columnHeader {
 	position: relative;
 	border-top-color: var(--_MuiDataGrid-rowBorderColor);
+	/* 
+		Remove the outline set by MUI because:
+		1. Stratakit uses the ::after element to show the focus indicator.
+		2. Stratakit only shows the focus indicator with :focus-visible instead of
+		   :focus to avoid showing on mouse events.
+	*/
+	outline: none !important;
 
 	:where(.MuiDataGrid-row.Mui-selected > &),
 	:where(.MuiDataGrid-row.Mui-selected + .MuiDataGrid-row > &) {
 		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
 	}
 
-	&:focus,
-	&:focus-within {
+	&:where(:focus-visible, :has(:focus-visible)) {
 		/* 
 			Use ::after with `border` instead of `outline` because the cell has a
 			border only on the bottom and `outline` takes this into consideration
 			resulting in an off center outline. ::after will appear entirely within
 			the cell borders.
 		*/
-		outline: none !important;
 		&::after {
 			pointer-events: none;
 			content: "";

@@ -786,7 +786,7 @@ Replace the [`Input` component from `@itwin/itwinui-react`](https://itwinui.bent
 
 ### InputGrid
 
-There is no direct replacement for the [`InputGrid` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputgrid), which groups a label, field, and message.
+There is no direct replacement for the [`InputGrid` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/inputgrid), which groups a label, field, and message. Compose an equivalent layout from MUI components instead.
 
 - For a text input, use [`TextField`](/components/textfield/) with `label` and `helperText`. It handles the layout without a separate wrapper.
 - For other fields, compose [`FormControl`](https://mui.com/material-ui/api/form-control/) with the appropriate label, input, and `FormHelperText`. Use `InputLabel` with MUI `Select` and `FormLabel` with fields that need a separate label.
@@ -813,7 +813,7 @@ Replace the [`Label` component from `@itwin/itwinui-react`](https://itwinui.bent
 
 ### LinkAction
 
-There is no direct replacement for the [`LinkBox` and `LinkAction` components from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/linkaction).
+There is no direct replacement for the [`LinkBox` and `LinkAction` components from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/linkaction). Use the [pseudo-content trick](https://inclusive-components.design/cards/#thepseudocontenttrick) to make the entire element clickable.
 
 ### List
 
@@ -827,11 +827,11 @@ Replace the [`List` component from `@itwin/itwinui-react`](https://itwinui.bentl
 
 ### MiddleTextTruncation
 
-There is no direct replacement for the [`MiddleTextTruncation` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/middletexttruncation).
+There is no direct replacement for the [`MiddleTextTruncation` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/middletexttruncation). Truncated text can make content harder to discover and read, particularly for people with low vision or cognitive disabilities. See [The accessibility pitfalls of truncating text](https://www.jamesjacobs.me/blog/the-accessibility-pitfalls-of-truncating-text/) for more detail. Prefer wrapping text onto multiple lines or allowing horizontal scrolling.
 
 ### NonIdealState
 
-There is no direct replacement for the [`NonIdealState` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/nonidealstate).
+There is no direct replacement for the [`NonIdealState` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/nonidealstate). Compose an equivalent layout from MUI components instead.
 
 - Replace `heading` with [`Typography`](/components/typography/) rendered as the appropriate heading level.
 - Replace `svg` with an image or illustration appropriate to the error.
@@ -857,7 +857,7 @@ Replace the [`Overlay` component from `@itwin/itwinui-react`](https://itwinui.be
 
 ### Panels
 
-There is no direct replacement for the [`Panels` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/panels).
+There is no direct replacement for the [`Panels` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/panels). iTwinUI marked `Panels` as unstable, so StrataKit does not currently provide a supported equivalent.
 
 ### Popover
 

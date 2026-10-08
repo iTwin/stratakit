@@ -377,6 +377,7 @@ function createTheme() {
 			},
 			MuiDataGrid: {
 				defaultProps: {
+					checkboxSelection: true,
 					slots: {
 						columnMenuIcon: MoreVerticalIcon,
 						columnMenuSortAscendingIcon: SortAscendingIcon,

@@ -7,6 +7,8 @@ import * as React from "react";
 import { useLocation } from "react-router";
 import Stack from "@mui/material/Stack";
 
+import type { Route } from "./+types/showcase.ts";
+
 import styles from "./showcase.module.css";
 
 // ----------------------------------------------------------------------------
@@ -54,6 +56,7 @@ export default function Showcase() {
 				{modulePath && (
 					<React.Suspense fallback={null}>
 						<ShowcaseRenderer
+							key={`${modulePath}#${exportName ?? "default"}`}
 							modulePath={modulePath}
 							exportName={exportName}
 							props={props}
@@ -91,6 +94,11 @@ function ShowcaseRenderer({
 
 // ----------------------------------------------------------------------------
 
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+	return <pre>{error instanceof Error ? error.message : String(error)}</pre>;
+}
+// ----------------------------------------------------------------------------
+
 /**
  * Loads (and caches) a showcase module, returning its default or named export.
  *
@@ -118,4 +126,70 @@ function loadModule(path: string, exportName?: string) {
 	modulePromises.set(cacheKey, promise);
 
 	return promise;
+}
+
+// ----------------------------------------------------------------------------
+
+// Playwright component testing requires exposing `window.mount` and `window.unmount` functions.
+// See https://playwright.dev/docs/api/class-fixtures#fixtures-mount
+
+declare global {
+	interface Window {
+		mount(params: MountParams): Promise<void>;
+		unmount(): Promise<void>;
+	}
+}
+type MountParams = {
+	story: string;
+	props?: Record<string, unknown>;
+};
+
+if (typeof window !== "undefined") {
+	// Updates the URL search params based on the `story` and `props`.
+	window.mount = async ({ story, props = {} }) => {
+		const [modulePath, exportName] = story.split("#");
+
+		const url = new URL(window.location.href);
+		url.search = new URLSearchParams({
+			path: modulePath,
+			props: JSON.stringify(props),
+			...(exportName && { export: exportName }),
+		}).toString();
+
+		await window.navigation.navigate(url.href, {
+			history: "replace",
+			info: "showcase",
+		}).finished;
+	};
+
+	// Clears the URL search params.
+	window.unmount = async () => {
+		const url = new URL(window.location.href);
+		url.search = "";
+
+		await window.navigation.navigate(url.href, {
+			history: "replace",
+			info: "showcase",
+		}).finished;
+	};
+
+	// Intercepts navigation events to handle client-side navigation.
+	const controller = new AbortController();
+	window.navigation.addEventListener(
+		"navigate",
+		(event) => {
+			if (event.info !== "showcase" || !event.canIntercept) return;
+
+			event.intercept({
+				handler: async () => {
+					// Dispatch a popstate event to notify react-router.
+					window.dispatchEvent(new PopStateEvent("popstate"));
+				},
+				focusReset: "manual",
+				scroll: "manual",
+			});
+		},
+		{ signal: controller.signal },
+	);
+	import.meta.hot?.dispose(() => controller.abort()); // HMR
 }

@@ -20,6 +20,13 @@
 	font-weight: unset;
 }
 
+/* Prevent clipping of the select all checkbox focus outline */
+.MuiDataGrid-columnHeaderTitleContainerContent {
+	:where(.MuiDataGrid-columnHeaderCheckbox) & {
+		overflow: visible;
+	}
+}
+
 .MuiDataGrid-columnSeparator {
 	color: var(--stratakit-color-border-neutral-base);
 

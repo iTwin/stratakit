@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.2.0
+
+### Minor Changes
+
+- [#1932](https://github.com/iTwin/stratakit/pull/1932): Add styling for semantic `<code>` and `<kbd>` elements rendered through `Typography`.
+
 ## 1.1.1
 
 ### Patch Changes

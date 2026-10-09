@@ -138,6 +138,7 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 				{...rest}
 				unmountOnHide={unmountOnHide}
 				className={cx("🥝Tooltip", props.className)}
+				data-color-scheme="dark" // force dark mode for all descendants
 				ref={forwardedRef}
 				id={id}
 				style={{ ...popoverProps.style, ...props.style }}

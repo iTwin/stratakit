@@ -28,6 +28,7 @@ const MuiTooltipPopper = forwardRef<"div", MuiTooltipPopperProps>(
 			<Popper
 				{...popoverProps}
 				{...props}
+				data-color-scheme="dark" // force dark mode for all descendants
 				style={{ ...popoverProps.style, ...props.style }}
 				ref={useMergedRefs(setPopoverElement, forwardedRef)}
 			/>

@@ -12,7 +12,13 @@ import type { BaseProps } from "@stratakit/internal-utils/props";
 
 const MuiSnackbar = forwardRef<"div", BaseProps<"div">>(
 	(props, forwardedRef) => {
-		return <Portal {...props} ref={forwardedRef} />;
+		return (
+			<Portal
+				{...props}
+				data-color-scheme="dark" // force dark mode for all descendants
+				ref={forwardedRef}
+			/>
+		);
 	},
 );
 DEV: MuiSnackbar.displayName = "MuiSnackbar";

@@ -1,0 +1,1 @@
+import{t as e}from"./status-success-BDz_SbpC.js";var t=`${e}#icon`;`${e}`;export{t};

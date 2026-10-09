@@ -7,6 +7,9 @@
 	--_MuiCircularProgress-track-thickness: 1px;
 	--_MuiCircularProgress-fill-thickness: 5px;
 
+	/* Use secondary color by default. This handlescolors included in MUI but omitted by StrataKit. */
+	--_MuiCircularProgress-color: var(--stratakit-color-icon-neutral-base);
+
 	&:where(.MuiCircularProgress-colorPrimary) {
 		--_MuiCircularProgress-color: var(--stratakit-color-icon-accent-strong);
 	}

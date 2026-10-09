@@ -80,6 +80,10 @@
 		border-color: GrayText;
 		color: GrayText;
 	}
+
+	&:where(.MuiButton-loading) {
+		color: Canvas;
+	}
 }
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {

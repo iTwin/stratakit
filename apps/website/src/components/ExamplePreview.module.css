@@ -17,7 +17,7 @@
 
 	.toolbar {
 		display: flex;
-		padding: 4px 2rem;
+		padding: var(--stratakit-space-100) var(--stratakit-space-400);
 		align-items: center;
 		justify-content: end;
 		gap: 0.5rem;
@@ -70,8 +70,15 @@
 	}
 	.codeBlockToolbar {
 		position: absolute;
-		bottom: 0;
-		right: 0;
+
+		bottom: var(--stratakit-space-100);
+		right: var(--stratakit-space-400);
+		display: flex;
+		align-items: center;
+		justify-content: end;
+		gap: 0.5rem;
+		border-inline-start-width: 0;
+		border-inline-end-width: 0;
 	}
 }
 

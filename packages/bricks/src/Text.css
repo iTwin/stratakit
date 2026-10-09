@@ -5,47 +5,61 @@
 .🥝Text {
 	@layer modifiers {
 		&:where([data-_sk-text-variant="display-lg"]) {
-			@apply --typography("display-lg");
+			font-size: var(--stratakit-font-size-display-lg);
+			line-height: var(--stratakit-line-height-display-lg);
 		}
 		&:where([data-_sk-text-variant="display-md"]) {
-			@apply --typography("display-md");
+			font-size: var(--stratakit-font-size-display-md);
+			line-height: var(--stratakit-line-height-display-md);
 		}
 		&:where([data-_sk-text-variant="display-sm"]) {
-			@apply --typography("display-sm");
+			font-size: var(--stratakit-font-size-display-sm);
+			line-height: var(--stratakit-line-height-display-sm);
 		}
 
 		&:where([data-_sk-text-variant="headline-lg"]) {
-			@apply --typography("headline-lg");
+			font-size: var(--stratakit-font-size-headline-lg);
+			line-height: var(--stratakit-line-height-headline-lg);
 		}
 		&:where([data-_sk-text-variant="headline-md"]) {
-			@apply --typography("headline-md");
+			font-size: var(--stratakit-font-size-headline-md);
+			line-height: var(--stratakit-line-height-headline-md);
 		}
 		&:where([data-_sk-text-variant="headline-sm"]) {
-			@apply --typography("headline-sm");
+			font-size: var(--stratakit-font-size-headline-sm);
+			line-height: var(--stratakit-line-height-headline-sm);
 		}
 
 		&:where([data-_sk-text-variant="body-lg"]) {
-			@apply --typography("body-lg");
+			font-size: var(--stratakit-font-size-body-lg);
+			line-height: var(--stratakit-line-height-body-lg);
 		}
 		&:where([data-_sk-text-variant="body-md"]) {
-			@apply --typography("body-md");
+			font-size: var(--stratakit-font-size-body-md);
+			line-height: var(--stratakit-line-height-body-md);
 		}
 		&:where([data-_sk-text-variant="body-sm"]) {
-			@apply --typography("body-sm");
+			font-size: var(--stratakit-font-size-body-sm);
+			line-height: var(--stratakit-line-height-body-sm);
 		}
 
 		&:where([data-_sk-text-variant="caption-lg"]) {
-			@apply --typography("caption-lg");
+			font-size: var(--stratakit-font-size-caption-lg);
+			line-height: var(--stratakit-line-height-caption-lg);
 		}
 		&:where([data-_sk-text-variant="caption-md"]) {
-			@apply --typography("caption-md");
+			font-size: var(--stratakit-font-size-caption-md);
+			line-height: var(--stratakit-line-height-caption-md);
 		}
 		&:where([data-_sk-text-variant="caption-sm"]) {
-			@apply --typography("caption-sm");
+			font-size: var(--stratakit-font-size-caption-sm);
+			line-height: var(--stratakit-line-height-caption-sm);
 		}
 
 		&:where([data-_sk-text-variant="mono-sm"]) {
-			@apply --typography("mono-sm");
+			font-family: var(--stratakit-font-family-mono);
+			font-size: var(--stratakit-font-size-mono-sm);
+			line-height: var(--stratakit-line-height-mono-sm);
 		}
 	}
 }

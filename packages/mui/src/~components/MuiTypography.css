@@ -5,97 +5,126 @@
 
 :where(.MuiTypography-root) {
 	&:where(.MuiTypography-body1) {
-		@apply --typography("body-lg");
+		font-size: var(--stratakit-font-size-body-lg);
+		line-height: var(--stratakit-line-height-body-lg);
 	}
 	&:where(.MuiTypography-body2) {
-		@apply --typography("body-md");
+		font-size: var(--stratakit-font-size-body-md);
+		line-height: var(--stratakit-line-height-body-md);
 	}
 
 	&:where(.MuiTypography-h1) {
-		@apply --typography("headline-md");
+		font-size: var(--stratakit-font-size-headline-md);
+		line-height: var(--stratakit-line-height-headline-md);
 	}
 	&:where(.MuiTypography-h2) {
-		@apply --typography("headline-sm");
+		font-size: var(--stratakit-font-size-headline-sm);
+		line-height: var(--stratakit-line-height-headline-sm);
 	}
 	&:where(.MuiTypography-h3) {
-		@apply --typography("subtitle-lg");
+		font-size: var(--stratakit-font-size-subtitle-lg);
+		line-height: var(--stratakit-line-height-subtitle-lg);
 	}
 	&:where(.MuiTypography-h4) {
-		@apply --typography("body-md");
+		font-size: var(--stratakit-font-size-body-md);
+		line-height: var(--stratakit-line-height-body-md);
 	}
 	&:where(.MuiTypography-h5) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 	&:where(.MuiTypography-h6) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 
 	&:where(.MuiTypography-caption) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 	&:where(.MuiTypography-overline) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 
 	&:where(.MuiTypography-subtitle1) {
-		@apply --typography("subtitle-lg");
+		font-size: var(--stratakit-font-size-subtitle-lg);
+		line-height: var(--stratakit-line-height-subtitle-lg);
 	}
 	&:where(.MuiTypography-subtitle2) {
-		@apply --typography("subtitle-md");
+		font-size: var(--stratakit-font-size-subtitle-md);
+		line-height: var(--stratakit-line-height-subtitle-md);
 	}
 
 	&:where(.MuiTypography-display-lg) {
-		@apply --typography("display-lg");
+		font-size: var(--stratakit-font-size-display-lg);
+		line-height: var(--stratakit-line-height-display-lg);
 	}
 	&:where(.MuiTypography-display-md) {
-		@apply --typography("display-md");
+		font-size: var(--stratakit-font-size-display-md);
+		line-height: var(--stratakit-line-height-display-md);
 	}
 	&:where(.MuiTypography-display-sm) {
-		@apply --typography("display-sm");
+		font-size: var(--stratakit-font-size-display-sm);
+		line-height: var(--stratakit-line-height-display-sm);
 	}
 
 	&:where(.MuiTypography-headline-lg) {
-		@apply --typography("headline-lg");
+		font-size: var(--stratakit-font-size-headline-lg);
+		line-height: var(--stratakit-line-height-headline-lg);
 	}
 	&:where(.MuiTypography-headline-md) {
-		@apply --typography("headline-md");
+		font-size: var(--stratakit-font-size-headline-md);
+		line-height: var(--stratakit-line-height-headline-md);
 	}
 	&:where(.MuiTypography-headline-sm) {
-		@apply --typography("headline-sm");
+		font-size: var(--stratakit-font-size-headline-sm);
+		line-height: var(--stratakit-line-height-headline-sm);
 	}
 
 	&:where(.MuiTypography-body-lg) {
-		@apply --typography("body-lg");
+		font-size: var(--stratakit-font-size-body-lg);
+		line-height: var(--stratakit-line-height-body-lg);
 	}
 	&:where(.MuiTypography-body-md) {
-		@apply --typography("body-md");
+		font-size: var(--stratakit-font-size-body-md);
+		line-height: var(--stratakit-line-height-body-md);
 	}
 	&:where(.MuiTypography-body-sm) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 
 	&:where(.MuiTypography-subtitle-lg) {
-		@apply --typography("subtitle-lg");
+		font-size: var(--stratakit-font-size-subtitle-lg);
+		line-height: var(--stratakit-line-height-subtitle-lg);
 	}
 	&:where(.MuiTypography-subtitle-md) {
-		@apply --typography("subtitle-md");
+		font-size: var(--stratakit-font-size-subtitle-md);
+		line-height: var(--stratakit-line-height-subtitle-md);
 	}
 	&:where(.MuiTypography-subtitle-sm) {
-		@apply --typography("subtitle-sm");
+		font-size: var(--stratakit-font-size-subtitle-sm);
+		line-height: var(--stratakit-line-height-subtitle-sm);
 	}
 
 	&:where(.MuiTypography-caption-lg) {
-		@apply --typography("caption-lg");
+		font-size: var(--stratakit-font-size-caption-lg);
+		line-height: var(--stratakit-line-height-caption-lg);
 	}
 	&:where(.MuiTypography-caption-md) {
-		@apply --typography("caption-md");
+		font-size: var(--stratakit-font-size-caption-md);
+		line-height: var(--stratakit-line-height-caption-md);
 	}
 	&:where(.MuiTypography-caption-sm) {
-		@apply --typography("caption-sm");
+		font-size: var(--stratakit-font-size-caption-sm);
+		line-height: var(--stratakit-line-height-caption-sm);
 	}
 
 	&:where(.MuiTypography-mono-sm) {
-		@apply --typography("mono-sm");
+		font-family: var(--stratakit-font-family-mono);
+		font-size: var(--stratakit-font-size-mono-sm);
+		line-height: var(--stratakit-line-height-mono-sm);
 	}
 
 	&:where(kbd) {

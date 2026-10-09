@@ -35,7 +35,8 @@
 
 	:where(.MuiList-root.MuiList-dense) & {
 		min-block-size: var(--stratakit-size-control-listitem-height-small);
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 
 	&:where(:has(~ .MuiListItem-secondaryAction)) {

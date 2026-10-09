@@ -9,7 +9,8 @@
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 	padding: 0;
 	margin: 0;
 	border: 1px solid var(--_MuiInput-border-color);
@@ -56,7 +57,8 @@
 	--_MuiInput-padding-inline: var(--stratakit-space-300);
 
 	&:where(.MuiInputBase-sizeSmall) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
 		--_MuiInput-padding-inline: var(--stratakit-space-200);
 	}

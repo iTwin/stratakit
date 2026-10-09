@@ -14,7 +14,6 @@ export default () => {
 	return (
 		<List>
 			<ListItem
-				disablePadding
 				secondaryAction={
 					<IconButton label="Rename">
 						<Icon href={svgRename} />
@@ -24,7 +23,6 @@ export default () => {
 				<ListItemText primary="Bldg 274_Architectural_0SY71309-293-31-24_RVT2022-rev2-final.rvt" />
 			</ListItem>
 			<ListItem
-				disablePadding
 				secondaryAction={
 					<IconButton label="Rename">
 						<Icon href={svgRename} />

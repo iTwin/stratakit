@@ -40,7 +40,8 @@
 }
 
 .MuiCardHeader-subheader {
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 }
 
 .MuiCardMedia-root {

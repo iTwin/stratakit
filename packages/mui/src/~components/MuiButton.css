@@ -20,21 +20,24 @@
 	padding-inline-end: var(--_MuiButton-padding-inline);
 
 	&:where(.MuiButton-sizeSmall) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		--_MuiButton-height: var(--stratakit-size-control-field-height-small);
 		--_MuiButton-padding-block: var(--stratakit-space-50);
 		--_MuiButton-padding-inline: var(--stratakit-space-200);
 	}
 
 	&:where(.MuiButton-sizeMedium) {
-		@apply --typography("body-md");
+		font-size: var(--stratakit-font-size-body-md);
+		line-height: var(--stratakit-line-height-body-md);
 		--_MuiButton-height: var(--stratakit-size-control-field-height-medium);
 		--_MuiButton-padding-block: var(--stratakit-space-100);
 		--_MuiButton-padding-inline: var(--stratakit-space-300);
 	}
 
 	&:where(.MuiButton-sizeLarge) {
-		@apply --typography("body-lg");
+		font-size: var(--stratakit-font-size-body-lg);
+		line-height: var(--stratakit-line-height-body-lg);
 		--_MuiButton-height: var(--stratakit-size-control-field-height-large);
 		--_MuiButton-padding-block: var(--stratakit-space-100);
 		--_MuiButton-padding-inline: var(--stratakit-space-400);

@@ -8,7 +8,8 @@
 	--✨padding-block: var(--stratakit-space-100);
 	--✨padding-inline: var(--stratakit-space-200);
 
-	@apply --typography("caption-lg");
+	font-size: var(--stratakit-font-size-caption-lg);
+	line-height: var(--stratakit-line-height-caption-lg);
 	overflow-wrap: anywhere;
 	hyphens: auto;
 

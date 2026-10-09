@@ -4,7 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 .🥝Badge {
 	@layer base {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 
 		display: inline-flex;
 		align-items: center;

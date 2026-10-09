@@ -4,6 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 @layer {
+	.exampleEmbedRoot {
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+	}
+
 	.examplePreviewWrapper {
 		margin-inline: auto;
 		padding: 2rem;

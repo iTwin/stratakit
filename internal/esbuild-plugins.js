@@ -7,6 +7,8 @@ import * as fs from "node:fs/promises";
 import * as path from "node:path";
 
 import * as babel from "@babel/core";
+import babelTypescriptPreset from "@babel/preset-typescript";
+import babelReactCompiler from "babel-plugin-react-compiler";
 import * as lightningcss from "lightningcss";
 import {
 	createVisitor,
@@ -95,11 +97,12 @@ export function reactCompilerPlugin() {
 		name: "react-compiler",
 
 		setup({ onLoad }) {
-			onLoad({ filter: /\.js$/ }, async (args) => {
+			onLoad({ filter: /\.[tj]sx?$/ }, async (args) => {
 				const source = await fs.readFile(args.path, "utf8");
 				const result = await babel.transformAsync(source, {
 					filename: args.path,
-					plugins: [["babel-plugin-react-compiler", { target: "18" }]],
+					presets: [babelTypescriptPreset],
+					plugins: [[babelReactCompiler, { target: "18" }]],
 					sourceMaps: false,
 					configFile: false,
 					babelrc: false,

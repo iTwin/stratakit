@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.1
+
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Fixed React Compiler output to cover the entirety of the code.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.3
+  - @stratakit/internal-utils@0.2.1
+
 ## 0.6.0
 
 - [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.

@@ -6,7 +6,7 @@
 [data-color-scheme],
 .🥝MuiRoot {
 	--stratakit-mui-palette-background-default: var(--stratakit-color-bg-page-depth);
-	--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-depth);
+	--stratakit-mui-palette-background-paper: var(--stratakit-color-bg-page-base);
 
 	--stratakit-mui-palette-divider: var(--stratakit-color-border-page-base);
 

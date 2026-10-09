@@ -11,7 +11,9 @@ import styles from "./showcase.module.css";
 
 // ----------------------------------------------------------------------------
 
-type ShowcaseModule = Record<string, unknown> & { default: React.FC };
+type ShowcaseModule = Record<string, unknown> & {
+	default: React.FC<Record<string, unknown>>;
+};
 
 /** Map of module paths to their respective dynamic import functions. */
 const moduleLoaders = new Map(
@@ -22,7 +24,10 @@ const moduleLoaders = new Map(
 		],
 	),
 );
-const modulePromises = new Map<string, Promise<React.FC>>();
+const modulePromises = new Map<
+	string,
+	Promise<React.FC<Record<string, unknown>>>
+>();
 
 // ----------------------------------------------------------------------------
 
@@ -31,6 +36,10 @@ export default function Showcase() {
 	const searchParams = new URLSearchParams(search);
 	const modulePath = searchParams.get("path") ?? "";
 	const exportName = searchParams.get("export") ?? undefined;
+	const props = JSON.parse(searchParams.get("props") ?? "{}") as Record<
+		string,
+		unknown
+	>;
 
 	const title = (() => {
 		if (!modulePath) return "Showcase";
@@ -44,7 +53,11 @@ export default function Showcase() {
 			<div id="root" className={styles.root}>
 				{modulePath && (
 					<React.Suspense fallback={null}>
-						<ShowcaseRenderer modulePath={modulePath} exportName={exportName} />
+						<ShowcaseRenderer
+							modulePath={modulePath}
+							exportName={exportName}
+							props={props}
+						/>
 					</React.Suspense>
 				)}
 			</div>
@@ -57,16 +70,21 @@ export default function Showcase() {
 interface ShowcaseRendererProps {
 	modulePath: string;
 	exportName?: string;
+	props: Record<string, unknown>;
 }
 
-function ShowcaseRenderer({ modulePath, exportName }: ShowcaseRendererProps) {
+function ShowcaseRenderer({
+	modulePath,
+	exportName,
+	props,
+}: ShowcaseRendererProps) {
 	const Showcase = React.use(loadModule(modulePath, exportName));
 
-	if (exportName) return <Showcase />;
+	if (exportName) return <Showcase {...props} />;
 
 	return (
 		<Stack spacing={4} sx={{ alignItems: "start" }}>
-			<Showcase />
+			<Showcase {...props} />
 		</Stack>
 	);
 }
@@ -81,7 +99,7 @@ function ShowcaseRenderer({ modulePath, exportName }: ShowcaseRendererProps) {
  *
  * @returns A promise that resolves to the React component representing the showcase. Can be used with `React.use()`.
  */
-function loadModule(path: string, exportName?: string): Promise<React.FC> {
+function loadModule(path: string, exportName?: string) {
 	exportName ??= "default";
 
 	const load = moduleLoaders.get(path);
@@ -95,7 +113,7 @@ function loadModule(path: string, exportName?: string): Promise<React.FC> {
 		const Showcase = module[exportName];
 		if (typeof Showcase !== "function")
 			throw new Error(`Unsupported export "${exportName}" in ${path}.tsx`);
-		return Showcase as React.FC;
+		return Showcase as React.FC<Record<string, unknown>>;
 	});
 	modulePromises.set(cacheKey, promise);
 

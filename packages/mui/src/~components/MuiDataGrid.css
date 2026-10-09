@@ -20,6 +20,16 @@
 	font-weight: unset;
 }
 
+.MuiDataGrid-columnSeparator {
+	color: var(--stratakit-color-border-neutral-base);
+
+	@media (any-hover: hover) {
+		&:where(.MuiDataGrid-columnSeparator--resizable) {
+			color: var(--stratakit-color-border-accent-strong);
+		}
+	}
+}
+
 .MuiDataGrid-row {
 	--✨row-bg--default: transparent;
 	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);

@@ -116,6 +116,8 @@
 		border: 1px solid var(--stratakit-color-border-page-base);
 	}
 
+	/* Update padding on both the export and column header menu.  Only the column
+	   header menu uses .MuiDataGrid-menuList, this selector catches both */
 	& :where(.MuiList-root) {
 		padding-inline: var(--stratakit-space-100);
 	}

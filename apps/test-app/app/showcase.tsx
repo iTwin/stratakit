@@ -4,8 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 import Stack from "@mui/material/Stack";
+
+import type { Route } from "./+types/showcase.ts";
 
 import styles from "./showcase.module.css";
 
@@ -32,6 +34,8 @@ const modulePromises = new Map<
 // ----------------------------------------------------------------------------
 
 export default function Showcase() {
+	usePlaywrightMount();
+
 	const { search } = useLocation();
 	const searchParams = new URLSearchParams(search);
 	const modulePath = searchParams.get("path") ?? "";
@@ -54,6 +58,7 @@ export default function Showcase() {
 				{modulePath && (
 					<React.Suspense fallback={null}>
 						<ShowcaseRenderer
+							key={`${modulePath}#${exportName ?? "default"}`}
 							modulePath={modulePath}
 							exportName={exportName}
 							props={props}
@@ -91,6 +96,13 @@ function ShowcaseRenderer({
 
 // ----------------------------------------------------------------------------
 
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+	usePlaywrightMount();
+
+	return <pre>{error instanceof Error ? error.message : String(error)}</pre>;
+}
+// ----------------------------------------------------------------------------
+
 /**
  * Loads (and caches) a showcase module, returning its default or named export.
  *
@@ -118,4 +130,56 @@ function loadModule(path: string, exportName?: string) {
 	modulePromises.set(cacheKey, promise);
 
 	return promise;
+}
+
+// ----------------------------------------------------------------------------
+
+declare global {
+	interface Window {
+		mount(params: MountParams): Promise<void>;
+		unmount(): Promise<void>;
+	}
+}
+type MountParams = {
+	story: string;
+	props?: Record<string, unknown>;
+};
+
+/**
+ * Exposes `window.mount` and `window.unmount` functions for Playwright component testing.
+ * These functions update the URL search params to reflect the mounted "story" and its props.
+ *
+ * @see https://playwright.dev/docs/api/class-fixtures#fixtures-mount
+ */
+function usePlaywrightMount() {
+	const navigate = useNavigate();
+
+	React.useEffect(
+		function exposeWindowMount() {
+			window.mount = async ({ story, props = {} }) => {
+				const [modulePath, exportName] = story.split("#"); // e.g. "mui/Button.showcase#Test"
+
+				const search = new URLSearchParams({
+					path: modulePath,
+					props: JSON.stringify(props),
+					...(exportName && { export: exportName }),
+				}).toString();
+
+				await navigate({ search }, { replace: true, preventScrollReset: true });
+			};
+
+			window.unmount = async () => {
+				await navigate(
+					{ search: "" },
+					{ replace: true, preventScrollReset: true },
+				);
+			};
+
+			return () => {
+				Reflect.deleteProperty(window, "mount");
+				Reflect.deleteProperty(window, "unmount");
+			};
+		},
+		[navigate],
+	);
 }

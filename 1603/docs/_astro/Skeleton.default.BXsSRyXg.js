@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{a as t}from"./ExamplePreview.CYVBxDxR.js";import{t as n}from"./Skeleton.Ys2bkBqj.js";var r=e(),i=()=>(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(n,{}),(0,r.jsx)(`div`,{style:t,children:`Loading...`})]});export{i as default};

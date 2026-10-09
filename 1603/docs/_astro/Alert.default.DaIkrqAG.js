@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{f as t}from"./ExamplePreview.CYVBxDxR.js";import{t as n}from"./AlertTitle.DHg-Fgwh.js";var r=e(),i=()=>(0,r.jsxs)(t,{severity:`info`,children:[(0,r.jsx)(n,{children:`Connect billing required`}),`An organization administrator must connect a billing account if you want to continue using this feature.`]});export{i as default};

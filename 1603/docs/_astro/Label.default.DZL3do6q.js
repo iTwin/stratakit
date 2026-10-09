@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime.hePW80VL.js";import{n as t,t as n}from"./jsx-runtime.BPK4hkxk.js";import{t as r}from"./Label.cbaHi5eP.js";import{t as i}from"./TextBox.LFgG4HTo.js";var a=e(t(),1),o=n(),s=()=>{let e=a.useId();return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(r,{htmlFor:e,children:`Name `}),(0,o.jsx)(i,{id:e})]})};export{s as default};

@@ -3,24 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .MuiDataGrid-root {
-	--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-neutral-muted);
-
+	--_MuiDataGrid-row-border-color: var(--stratakit-color-border-neutral-muted);
 	border: none;
-	background: none;
 }
-
-.MuiDataGrid-columnHeaders {
-	background: none;
-}
-
 /* 
   Select all the cell elements in the column header row.  Both the normal colum
   header cells and undocumented filler elements.
 */
 .MuiDataGrid-columnHeader,
 .MuiDataGrid-columnHeaders > [role="row"] > [role="none"] {
-	border-bottom: none;
-	background: none;
+	border-bottom-color: var(--_MuiDataGrid-row-border-color);
 }
 
 .MuiDataGrid-columnHeaderTitle {
@@ -33,48 +25,43 @@
 	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨row-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--✨row-bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+	--✨row-border-selected: var(--stratakit-color-border-accent-strong);
 
-	--_MuiDataGrid-row-background-color: var(--✨row-bg--default);
+	--_MuiDataGrid-row-background-color: var(--_MuiDataGrid-background-color);
 	--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--hover);
 
+	border-bottom: 1px solid var(--_MuiDataGrid-row-border-color);
 	background-color: var(--_MuiDataGrid-row-background-color);
+
 	@media (any-hover: hover) {
 		&:where(:hover) {
-			background-color: var(--_MuiDataGrid-row-background-color--hover);
+			--_MuiDataGrid-row-background-color: var(--_MuiDataGrid-row-background-color--hover);
 		}
 	}
 
 	&:where(.Mui-selected) {
 		--_MuiDataGrid-row-background-color: var(--✨row-bg--active);
 		--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--active-hover);
-		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
+		--_MuiDataGrid-row-border-color: var(--✨row-border-selected);
 	}
 
 	/* 
-	  The MUI implementation does not set a border on the last row.  It gets its
-	  visible bottom border from one of two places:
-	    - The undocumented .MuiDataGrid-filler when the rows do not fill the full
-	      height
-	    - The top border of .MuiDataGrid-footerContainer when rows are scrolled to
-	      the bottom, or the height of all rows exactally matches the available
-	      space.
-
-	  The cells have overflow: hidden which hides any content rendered outside the
-	  bounds.
-
-		Use box shadow instead of a border to avoid making the scroll area larger.
-	  Border is included in the scroll area so it would causes a double border
-	  with the footer container when the row is scrolled to the bottom.
+		Rows share a border and each one renders its bottom border, and uses its
+		previous sibiling for the top border.  If the next row is selected, this row
+		needs to adjust it's bottom border color to match the highlight.
 	*/
-	&.MuiDataGrid-row--lastVisible {
-		box-shadow: 0 1px 0 0 var(--_MuiDataGrid-rowBorderColor);
+	&:has(+ :where(.MuiDataGrid-row.Mui-selected)) {
+		border-bottom-color: var(--✨row-border-selected);
+	}
+
+	&:where(.MuiDataGrid-row--lastVisible) {
+		border-bottom-width: 0;
 	}
 }
 
 .MuiDataGrid-cell,
 .MuiDataGrid-columnHeader {
 	position: relative;
-	border-top-color: var(--_MuiDataGrid-rowBorderColor);
 	/* 
 		Remove the outline set by MUI because:
 		1. Stratakit uses the ::after element to show the focus indicator.
@@ -82,10 +69,6 @@
 		   :focus to avoid showing on mouse events.
 	*/
 	outline: none !important;
-
-	:where(.MuiDataGrid-row.Mui-selected + .MuiDataGrid-row > &) {
-		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
-	}
 
 	&:where(:focus-visible, :has(:focus-visible)) {
 		/* 
@@ -104,9 +87,15 @@
 	}
 }
 
-.MuiDataGrid-toolbar {
-	background: none;
+.MuiDataGrid-cell {
+	border: 0;
+	box-shadow: none;
+	background: var(--_MuiDataGrid-row-background-color);
 }
+
+/* .MuiDataGrid-toolbar {
+	background: none;
+} */
 
 .MuiDataGrid-filterFormDeleteIcon {
 	align-items: flex-end; /* Align with the input field when the label and input field are vertically stacked */
@@ -117,7 +106,7 @@
 }
 
 .MuiDataGrid-footerContainer {
-	border-top-color: var(--_MuiDataGrid-rowBorderColor);
+	border-top-color: var(--_MuiDataGrid-row-border-color);
 }
 
 .MuiDataGrid-menu {

@@ -27,6 +27,12 @@ links:
 
 ::example{src="mui/List.subheader" min-width="300px"}
 
+### List with secondary action
+
+This example shows how you can have a `List` with only a secondary action. Clicking icon button triggers the action. Clicking on the list item text does not trigger the action.
+
+::example{src="mui/List.secondary-action-only"}
+
 ## API reference
 
 - [`List`](https://mui.com/material-ui/api/list/)

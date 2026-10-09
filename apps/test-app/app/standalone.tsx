@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
 
 import type { Route } from "./+types/standalone.ts";
 
@@ -41,6 +41,8 @@ const modulePromises = new Map<
 // ----------------------------------------------------------------------------
 
 export default function Standalone() {
+	usePlaywrightMount();
+
 	const { search } = useLocation();
 	const searchParams = new URLSearchParams(search);
 	const modulePath = searchParams.get("path") ?? "";
@@ -98,6 +100,8 @@ function StandaloneRenderer({
 // ----------------------------------------------------------------------------
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+	usePlaywrightMount();
+
 	return <pre>{error instanceof Error ? error.message : String(error)}</pre>;
 }
 // ----------------------------------------------------------------------------
@@ -133,9 +137,6 @@ function loadModule(path: string, exportName?: string) {
 
 // ----------------------------------------------------------------------------
 
-// Playwright component testing requires exposing `window.mount` and `window.unmount` functions.
-// See https://playwright.dev/docs/api/class-fixtures#fixtures-mount
-
 declare global {
 	interface Window {
 		mount(params: MountParams): Promise<void>;
@@ -147,52 +148,41 @@ type MountParams = {
 	props?: Record<string, unknown>;
 };
 
-if (typeof window !== "undefined") {
-	// Updates the URL search params based on the `story` and `props`.
-	window.mount = async ({ story, props = {} }) => {
-		const [modulePath, exportName] = story.split("#");
+/**
+ * Exposes `window.mount` and `window.unmount` functions for Playwright component testing.
+ * These functions update the URL search params to reflect the mounted "story" and its props.
+ *
+ * @see https://playwright.dev/docs/api/class-fixtures#fixtures-mount
+ */
+function usePlaywrightMount() {
+	const navigate = useNavigate();
 
-		const url = new URL(window.location.href);
-		url.search = new URLSearchParams({
-			path: modulePath,
-			props: JSON.stringify(props),
-			...(exportName && { export: exportName }),
-		}).toString();
+	React.useEffect(
+		function exposeWindowMount() {
+			window.mount = async ({ story, props = {} }) => {
+				const [modulePath, exportName] = story.split("#"); // e.g. "mui/Button.showcase#Test"
 
-		await window.navigation.navigate(url.href, {
-			history: "replace",
-			info: "showcase",
-		}).finished;
-	};
+				const search = new URLSearchParams({
+					path: modulePath,
+					props: JSON.stringify(props),
+					...(exportName && { export: exportName }),
+				}).toString();
 
-	// Clears the URL search params.
-	window.unmount = async () => {
-		const url = new URL(window.location.href);
-		url.search = "";
+				await navigate({ search }, { replace: true, preventScrollReset: true });
+			};
 
-		await window.navigation.navigate(url.href, {
-			history: "replace",
-			info: "showcase",
-		}).finished;
-	};
+			window.unmount = async () => {
+				await navigate(
+					{ search: "" },
+					{ replace: true, preventScrollReset: true },
+				);
+			};
 
-	// Intercepts navigation events to handle client-side navigation.
-	const controller = new AbortController();
-	window.navigation.addEventListener(
-		"navigate",
-		(event) => {
-			if (event.info !== "showcase" || !event.canIntercept) return;
-
-			event.intercept({
-				handler: async () => {
-					// Dispatch a popstate event to notify react-router.
-					window.dispatchEvent(new PopStateEvent("popstate"));
-				},
-				focusReset: "manual",
-				scroll: "manual",
-			});
+			return () => {
+				Reflect.deleteProperty(window, "mount");
+				Reflect.deleteProperty(window, "unmount");
+			};
 		},
-		{ signal: controller.signal },
+		[navigate],
 	);
-	import.meta.hot?.dispose(() => controller.abort()); // HMR
 }

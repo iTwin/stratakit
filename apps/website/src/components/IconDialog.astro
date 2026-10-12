@@ -18,17 +18,24 @@ const { id } = Astro.props;
 				</svg>
 			</button>
 		</div>
-		<h3>Symbols</h3>
-		<ul data-symbols></ul>
-		<h3>Aliases</h3>
-		<ul data-aliases></ul>
 
-		<template data-symbol>
-			<li><svg><use></use></svg><span></span></li>
-		</template>
-		<template data-alias>
-			<li></li>
-		</template>
+		<h3>Symbols</h3>
+		<icon-symbols>
+			<ul></ul>
+
+			<template>
+				<li><svg><use></use></svg><span></span></li>
+			</template>
+		</icon-symbols>
+
+		<h3>Aliases</h3>
+		<icon-aliases>
+			<ul></ul>
+
+			<template>
+				<li></li>
+			</template>
+		</icon-aliases>
 	</dialog>
 </icon-dialog>
 
@@ -88,13 +95,17 @@ const { id } = Astro.props;
 		}
 	}
 
-	[data-symbols] {
-		margin-inline-start: 0;
+	icon-symbols {
+		display: contents;
+		ul {
+			margin-inline-start: 0;
+			margin-block-start: var(--sl-content-gap-y);
 
-		list-style-type: "";
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-		gap: var(--stratakit-space-400);
+			list-style-type: "";
+			display: grid;
+			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			gap: var(--stratakit-space-400);
+		}
 
 		li {
 			margin-block-start: 0;
@@ -120,10 +131,20 @@ const { id } = Astro.props;
 			inline-size: 1.5rem;
 		}
 	}
+
+	icon-aliases {
+		display: contents;
+
+		ul {
+			margin-block-start: var(--sl-content-gap-y);
+		}
+	}
 </style>
 
 <script>
-	import { IconDialog } from "./IconDialog.ts";
+	import { IconAliases, IconDialog, IconSymbols } from "./IconDialog.ts";
 
 	customElements.define("icon-dialog", IconDialog);
+	customElements.define("icon-symbols", IconSymbols);
+	customElements.define("icon-aliases", IconAliases);
 </script>

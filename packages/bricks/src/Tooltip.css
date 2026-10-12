@@ -8,7 +8,8 @@
 	--✨color: var(--stratakit-color-text-neutral-emphasis);
 
 	@layer base {
-		@apply --typography("caption-lg");
+		font-size: var(--stratakit-font-size-caption-lg);
+		line-height: var(--stratakit-line-height-caption-lg);
 		overflow-wrap: anywhere;
 		hyphens: auto;
 

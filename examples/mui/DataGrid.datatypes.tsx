@@ -302,6 +302,9 @@ export default function DataTypesExample() {
 			pageSizeOptions={[5]}
 			checkboxSelection
 			disableRowSelectionOnClick
+			slotProps={{
+				main: { "aria-label": "Device Inventory" },
+			}}
 		/>
 	);
 }

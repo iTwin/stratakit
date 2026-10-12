@@ -3,19 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 .MuiDataGrid-root {
-	--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-neutral-muted);
-
+	--_MuiDataGrid-row-border-color: var(--stratakit-color-border-neutral-muted);
 	border: none;
-	background: none;
 }
-
-.MuiDataGrid-columnHeaders {
-	background: none;
-}
-
-.MuiDataGrid-columnHeaders > [role="row"] > * {
-	border-bottom: none;
-	background: none;
+/* 
+  Select all the cell elements in the column header row.  Both the normal colum
+  header cells and undocumented filler elements.
+*/
+.MuiDataGrid-columnHeader,
+.MuiDataGrid-columnHeaders > [role="row"] > [role="none"] {
+	border-bottom-color: var(--_MuiDataGrid-row-border-color);
 }
 
 .MuiDataGrid-columnHeaderTitle {
@@ -23,48 +20,82 @@
 	font-weight: unset;
 }
 
+/* Prevent clipping of the select all checkbox focus outline */
+.MuiDataGrid-columnHeaderTitleContainerContent {
+	:where(.MuiDataGrid-columnHeaderCheckbox) & {
+		overflow: visible;
+	}
+}
+
+.MuiDataGrid-columnSeparator {
+	color: var(--stratakit-color-border-neutral-base);
+
+	@media (any-hover: hover) {
+		&:where(.MuiDataGrid-columnSeparator--resizable) {
+			color: var(--stratakit-color-border-accent-strong);
+		}
+	}
+}
+
 .MuiDataGrid-row {
 	--✨row-bg--default: transparent;
 	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨row-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 	--✨row-bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+	--✨row-border-selected: var(--stratakit-color-border-accent-strong);
 
-	--_MuiDataGrid-row-background-color: var(--✨row-bg--default);
+	--_MuiDataGrid-row-background-color: var(--_MuiDataGrid-background-color);
 	--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--hover);
 
+	border-bottom: 1px solid var(--_MuiDataGrid-row-border-color);
 	background-color: var(--_MuiDataGrid-row-background-color);
+
 	@media (any-hover: hover) {
 		&:where(:hover) {
-			background-color: var(--_MuiDataGrid-row-background-color--hover);
+			--_MuiDataGrid-row-background-color: var(--_MuiDataGrid-row-background-color--hover);
 		}
 	}
 
 	&:where(.Mui-selected) {
 		--_MuiDataGrid-row-background-color: var(--✨row-bg--active);
 		--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--active-hover);
+		--_MuiDataGrid-row-border-color: var(--✨row-border-selected);
+	}
+
+	/* 
+		Rows share a border and each one renders its bottom border, and uses its
+		previous sibiling for the top border.  If the next row is selected, this row
+		needs to adjust it's bottom border color to match the highlight.
+	*/
+	&:has(+ :where(.MuiDataGrid-row.Mui-selected)) {
+		border-bottom-color: var(--✨row-border-selected);
+	}
+
+	&:where(.MuiDataGrid-row--lastVisible) {
+		border-bottom-width: 0;
 	}
 }
 
 .MuiDataGrid-cell,
 .MuiDataGrid-columnHeader {
 	position: relative;
-	border-top-color: var(--_MuiDataGrid-rowBorderColor);
+	/* 
+		Remove the outline set by MUI because:
+		1. Stratakit uses the ::after element to show the focus indicator.
+		2. Stratakit only shows the focus indicator with :focus-visible instead of
+		   :focus to avoid showing on mouse events.
+	*/
+	outline: none !important;
 
-	:where(.MuiDataGrid-row.Mui-selected > &),
-	:where(.MuiDataGrid-row.Mui-selected + .MuiDataGrid-row > &) {
-		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
-	}
-
-	&:focus,
-	&:focus-within {
+	&:where(:focus-visible, :has(:focus-visible)) {
 		/* 
 			Use ::after with `border` instead of `outline` because the cell has a
 			border only on the bottom and `outline` takes this into consideration
 			resulting in an off center outline. ::after will appear entirely within
 			the cell borders.
 		*/
-		outline: none !important;
 		&::after {
+			pointer-events: none;
 			content: "";
 			position: absolute;
 			border: var(--🥝focus-outline);
@@ -73,9 +104,15 @@
 	}
 }
 
-.MuiDataGrid-toolbar {
-	background: none;
+.MuiDataGrid-cell {
+	border: 0;
+	box-shadow: none;
+	background: var(--_MuiDataGrid-row-background-color);
 }
+
+/* .MuiDataGrid-toolbar {
+	background: none;
+} */
 
 .MuiDataGrid-filterFormDeleteIcon {
 	align-items: flex-end; /* Align with the input field when the label and input field are vertically stacked */
@@ -86,10 +123,19 @@
 }
 
 .MuiDataGrid-footerContainer {
-	border-top-color: var(--_MuiDataGrid-rowBorderColor);
+	border-top-color: var(--_MuiDataGrid-row-border-color);
+}
 
-	/* Last selected row uses footer top as the bottom border */
-	:where(.MuiDataGrid-root:has(.Mui-selected.MuiDataGrid-row--lastVisible)) & {
-		--_MuiDataGrid-rowBorderColor: var(--stratakit-color-border-accent-strong);
+.MuiDataGrid-menu {
+	:where(.MuiPaper-root) {
+		/* Match styling from MuiMenu.css */
+		box-shadow: var(--stratakit-shadow-surface-lg);
+		border: 1px solid var(--stratakit-color-border-page-base);
+	}
+
+	/* Update padding on both the export and column header menu.  Only the column
+	   header menu uses .MuiDataGrid-menuList, this selector catches both */
+	:where(.MuiList-root) {
+		padding-inline: var(--stratakit-space-100);
 	}
 }

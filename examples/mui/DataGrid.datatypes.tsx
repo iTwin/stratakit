@@ -207,22 +207,6 @@ const rows: Asset[] = [
 	},
 ];
 
-function Swatch({ color = "transparent" }: { color?: string }) {
-	return (
-		<Box
-			sx={{
-				backgroundColor: color,
-				height: "16px",
-				width: "16px",
-				borderWidth: "1px",
-				borderStyle: "solid",
-				borderColor: `contrast-color(var(${color}))`,
-				borderRadius: "var(--stratakit-radius-sm)",
-			}}
-		/>
-	);
-}
-
 const costFormatter = new Intl.NumberFormat("en", {
 	style: "currency",
 	currency: "USD",
@@ -274,16 +258,6 @@ const columns: GridColDef<Asset>[] = [
 		field: "inService",
 		headerName: "In Service?",
 		type: "boolean",
-		editable: true,
-	},
-	{
-		field: "tagColor",
-		headerName: "Tag Color",
-		type: "custom",
-		cellClassName: style.color,
-		renderCell: (params: GridRenderCellParams<Asset, string>) => (
-			<Swatch color={params.value} />
-		),
 		editable: true,
 	},
 ];

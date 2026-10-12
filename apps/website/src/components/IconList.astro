@@ -266,8 +266,8 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 		const href = icon.dataset.href!;
 		iconDialog.iconName = iconName;
-		iconDialog.aliases = meta.aliases;
-		iconDialog.symbols = {
+		iconDialog.aliasesElement.aliases = meta.aliases;
+		iconDialog.symbolsElement.symbols = {
 			href,
 			symbols: meta.symbols,
 		};

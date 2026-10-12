@@ -8,6 +8,8 @@
 export class IconDialog extends HTMLElement {
 	#dialog!: HTMLDialogElement;
 	#dialogHeading!: HTMLHeadingElement;
+	#symbols!: IconSymbols;
+	#aliases!: IconAliases;
 
 	#iconName = "placeholder";
 
@@ -18,6 +20,9 @@ export class IconDialog extends HTMLElement {
 		this.#dialog.ariaLabelledByElements = [this.#dialogHeading];
 
 		this.#dialog.addEventListener("click", this.#handleClose);
+
+		this.#symbols = this.querySelector("icon-symbols")!;
+		this.#aliases = this.querySelector("icon-aliases")!;
 	}
 
 	#handleClose = (e: PointerEvent) => {
@@ -29,6 +34,14 @@ export class IconDialog extends HTMLElement {
 		return this.#dialog;
 	}
 
+	get symbolsElement() {
+		return this.#symbols;
+	}
+
+	get aliasesElement() {
+		return this.#aliases;
+	}
+
 	get iconName() {
 		return this.#iconName;
 	}
@@ -37,17 +50,15 @@ export class IconDialog extends HTMLElement {
 		this.#iconName = iconName;
 		this.#dialogHeading.textContent = `Icon: ${iconName}.svg`;
 	}
+}
 
-	set symbols(args: {
-		href: string;
-		symbols: string[];
-	}) {
+export class IconSymbols extends HTMLElement {
+	set symbols(args: { href: string; symbols: string[] }) {
 		const { href, symbols } = args;
 
-		const template = this.querySelector<HTMLTemplateElement>("[data-symbol]")!;
-		const symbolsElement =
-			this.querySelector<HTMLUListElement>("[data-symbols]")!;
-		symbolsElement.replaceChildren(
+		const template = this.querySelector<HTMLTemplateElement>("template")!;
+		const list = this.querySelector<HTMLUListElement>("ul")!;
+		list.replaceChildren(
 			...symbols.map((symbol) => {
 				const symbolItem = template.content.cloneNode(true) as DocumentFragment;
 
@@ -63,12 +74,13 @@ export class IconDialog extends HTMLElement {
 			}),
 		);
 	}
+}
 
+export class IconAliases extends HTMLElement {
 	set aliases(aliases: string[]) {
-		const template = this.querySelector<HTMLTemplateElement>("[data-alias]")!;
-		const aliasesElement =
-			this.querySelector<HTMLUListElement>("[data-aliases]")!;
-		aliasesElement.replaceChildren(
+		const template = this.querySelector<HTMLTemplateElement>("template")!;
+		const list = this.querySelector<HTMLUListElement>("ul")!;
+		list.replaceChildren(
 			...aliases.map((alias) => {
 				const aliasItem = template.content.cloneNode(true) as DocumentFragment;
 				aliasItem.querySelector("li")!.textContent = alias;

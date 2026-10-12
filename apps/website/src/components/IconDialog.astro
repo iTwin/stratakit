@@ -21,7 +21,7 @@ const { id } = Astro.props;
 
 		<h3>Symbols</h3>
 		<icon-symbols>
-			<ul></ul>
+			<ul class="not-content"></ul>
 
 			<template>
 				<li><svg><use></use></svg><span></span></li>
@@ -40,105 +40,106 @@ const { id } = Astro.props;
 </icon-dialog>
 
 <style>
-	icon-dialog {
-		display: contents;
-	}
-
-	dialog {
-		margin: 0;
-		inset: 0;
-		place-self: center;
-		background-color: var(--sl-color-gray-6);
-		border: 1px solid var(--sl-color-gray-5);
-		border-radius: var(--stratakit-radius-md);
-		box-shadow: var(--sl-shadow-lg);
-		padding: var(--stratakit-space-600);
-		min-inline-size: min(calc(100% - var(--stratakit-space-400)), 296px);
-		max-inline-size: calc(100% - var(--stratakit-space-600));
-		max-block-size: calc(100% - var(--stratakit-space-600));
-		overflow: auto;
-	}
-
-	dialog::backdrop {
-		background-color: var(--sl-color-backdrop-overlay);
-		backdrop-filter: blur(0.25rem);
-	}
-
-	.header {
-		display: flex;
-		align-items: center;
-		gap: var(--stratakit-space-600);
-		justify-content: space-between;
-	}
-
-	h2 {
-		font-size: var(--sl-text-h4);
-	}
-
-	h3 {
-		font-size: var(--sl-text-h5);
-	}
-
-	.icon-button {
-		margin: 0;
-		display: inline-flex;
-		align-items: center;
-		justify-content: center;
-		min-inline-size: var(--stratakit-size-control-field-height-small);
-		min-block-size: var(--stratakit-size-control-field-height-small);
-		color: var(--stratakit-color-icon-neutral-base);
-		border-radius: var(--stratakit-radius-sm);
-
-		&:hover {
-			color: var(--stratakit-color-icon-neutral-primary);
-			background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-		}
-	}
-
-	icon-symbols {
-		display: contents;
-
-		ul {
-			margin-inline-start: 0;
-			margin-block-start: var(--sl-content-gap-y);
-
-			list-style-type: "";
-			display: flex;
-			flex-wrap: wrap;
-			gap: var(--stratakit-space-400);
+	@layer page {
+		icon-dialog {
+			display: contents;
 		}
 
-		li {
-			margin-block-start: 0;
-			flex: 0 0 120px;
-
-			display: flex;
-			flex-direction: column;
-			justify-content: end;
-			align-items: center;
-			gap: var(--stratakit-space-200);
-
-			padding: var(--stratakit-space-400);
+		dialog {
+			margin: 0;
+			inset: 0;
+			place-self: center;
+			background-color: var(--sl-color-gray-6);
 			border: 1px solid var(--sl-color-gray-5);
+			border-radius: var(--stratakit-radius-md);
+			box-shadow: var(--sl-shadow-lg);
+			padding: var(--stratakit-space-600);
+			min-inline-size: min(calc(100% - var(--stratakit-space-400)), 296px);
+			max-inline-size: calc(100% - var(--stratakit-space-600));
+			max-block-size: calc(100% - var(--stratakit-space-600));
+			overflow: auto;
 		}
-	}
 
-	svg {
-		display: block;
-		aspect-ratio: 1;
-		color: var(--stratakit-color-icon-neutral-primary);
-		inline-size: 1rem;
-
-		&[data-size="large"] {
-			inline-size: 1.5rem;
+		dialog::backdrop {
+			background-color: var(--sl-color-backdrop-overlay);
+			backdrop-filter: blur(0.25rem);
 		}
-	}
 
-	icon-aliases {
-		display: contents;
+		.header {
+			display: flex;
+			align-items: center;
+			gap: var(--stratakit-space-600);
+			justify-content: space-between;
+		}
 
-		ul {
-			margin-block-start: var(--sl-content-gap-y);
+		h2 {
+			font-size: var(--sl-text-h4);
+		}
+
+		h3 {
+			font-size: var(--sl-text-h5);
+		}
+
+		.icon-button {
+			margin: 0;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-inline-size: var(--stratakit-size-control-field-height-small);
+			min-block-size: var(--stratakit-size-control-field-height-small);
+			color: var(--stratakit-color-icon-neutral-base);
+			border-radius: var(--stratakit-radius-sm);
+
+			&:hover {
+				color: var(--stratakit-color-icon-neutral-primary);
+				background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+			}
+		}
+
+		svg {
+			display: block;
+			aspect-ratio: 1;
+			color: var(--stratakit-color-icon-neutral-primary);
+			inline-size: 1rem;
+
+			&[data-size="large"] {
+				inline-size: 1.5rem;
+			}
+		}
+
+		icon-symbols {
+			display: contents;
+
+			ul {
+				margin-block-start: var(--sl-content-gap-y);
+
+				list-style-type: "";
+				display: flex;
+				flex-wrap: wrap;
+				gap: var(--stratakit-space-400);
+			}
+
+			li {
+				margin-block-start: 0;
+				flex: 0 0 120px;
+
+				display: flex;
+				flex-direction: column;
+				justify-content: end;
+				align-items: center;
+				gap: var(--stratakit-space-200);
+
+				padding: var(--stratakit-space-400);
+				border: 1px solid var(--sl-color-gray-5);
+			}
+		}
+
+		icon-aliases {
+			display: contents;
+
+			ul {
+				margin-block-start: var(--sl-content-gap-y);
+			}
 		}
 	}
 </style>

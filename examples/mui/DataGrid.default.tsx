@@ -53,6 +53,9 @@ export default function DefaultExample() {
 				},
 			}}
 			pageSizeOptions={[5]}
+			slotProps={{
+				main: { "aria-label": "Game of Thrones Characters" },
+			}}
 		/>
 	);
 }

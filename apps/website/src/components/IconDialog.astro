@@ -53,7 +53,7 @@ const { id } = Astro.props;
 		border-radius: var(--stratakit-radius-md);
 		box-shadow: var(--sl-shadow-lg);
 		padding: var(--stratakit-space-600);
-		min-inline-size: 66%;
+		min-inline-size: min(calc(100% - var(--stratakit-space-400)), 296px);
 		max-inline-size: calc(100% - var(--stratakit-space-600));
 		max-block-size: calc(100% - var(--stratakit-space-600));
 		overflow: auto;
@@ -97,18 +97,20 @@ const { id } = Astro.props;
 
 	icon-symbols {
 		display: contents;
+
 		ul {
 			margin-inline-start: 0;
 			margin-block-start: var(--sl-content-gap-y);
 
 			list-style-type: "";
-			display: grid;
-			grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+			display: flex;
+			flex-wrap: wrap;
 			gap: var(--stratakit-space-400);
 		}
 
 		li {
 			margin-block-start: 0;
+			flex: 0 0 120px;
 
 			display: flex;
 			flex-direction: column;

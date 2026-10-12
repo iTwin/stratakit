@@ -286,25 +286,29 @@ const columns: GridColDef<Asset>[] = [
 ];
 
 export default function DataTypesExample() {
+	const captionId = React.useId();
 	return (
-		<DataGrid
-			showToolbar
-			rows={rows}
-			columns={columns}
-			getRowId={(row) => row.assetId}
-			initialState={{
-				pagination: {
-					paginationModel: {
-						pageSize: 10,
+		<div role="group" aria-labelledby={captionId}>
+			<div id={captionId} style={visuallyHidden}>
+				Device Inventory
+			</div>
+			<DataGrid
+				showToolbar
+				rows={rows}
+				columns={columns}
+				getRowId={(row) => row.assetId}
+				initialState={{
+					pagination: {
+						paginationModel: {
+							pageSize: 10,
+						},
 					},
-				},
-			}}
-			pageSizeOptions={[5]}
-			checkboxSelection
-			disableRowSelectionOnClick
-			slotProps={{
-				main: { "aria-label": "Device Inventory" },
-			}}
-		/>
+				}}
+				pageSizeOptions={[5]}
+				checkboxSelection
+				disableRowSelectionOnClick
+				aria-labelledby={captionId}
+			/>
+		</div>
 	);
 }

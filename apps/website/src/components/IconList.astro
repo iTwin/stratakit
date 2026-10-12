@@ -202,6 +202,12 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	import iconsMeta from "@stratakit/icons/icons-meta.json";
 	import type { IconDialog } from "./IconDialog.ts";
 
+	declare global {
+		interface HTMLElementEventMap {
+			command: CommandEvent;
+		}
+	}
+
 	interface IconMeta {
 		symbols: string[];
 		aliases: string[];
@@ -221,13 +227,9 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 	const iconDialog = document.querySelector<IconDialog>("icon-dialog")!;
 	iconDialog.dialog.addEventListener("command", (e) => {
-		if (!(e instanceof CommandEvent)) return;
 		if (e.command !== "show-modal") return;
 
-		const source = e.source;
-		if (!(source instanceof HTMLElement)) return;
-
-		const iconName = source.parentElement?.dataset.icon;
+		const iconName = e.source?.parentElement?.dataset.icon;
 		if (!iconName) return;
 
 		updateIconDialog(iconName);

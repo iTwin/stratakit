@@ -40,4 +40,4 @@ This example shows how editing can work with multiple different types of data.
 
 ## ✅ Do
 
-- Set a descriptive label for the grid using `slotProps.main.aria-label` or another accessible method.
+- Wrap `DataGrid` in a `<div role="group" aria-labelledby={...}>` and provide a label as in the examples. This helps semantically connect the header toolbar and footer toolbar to the grid as well as insure that the grid has an accessible name.

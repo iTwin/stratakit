@@ -48,7 +48,7 @@ export class IconDialog extends HTMLElement {
 
 	set iconName(iconName: string) {
 		this.#iconName = iconName;
-		this.#dialogHeading.textContent = `Icon: ${iconName}.svg`;
+		this.#dialogHeading.textContent = `@stratakit/icons/${iconName}.svg`;
 	}
 }
 

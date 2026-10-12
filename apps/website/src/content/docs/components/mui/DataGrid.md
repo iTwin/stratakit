@@ -37,3 +37,7 @@ It has row and cell selection and editing as first class concepts. The grid is a
 This example shows how editing can work with multiple different types of data.
 
 ::example{src="mui/DataGrid.datatypes"}
+
+## ✅ Do
+
+- Set a descriptive label for the grid using `slotProps.main.aria-label` or another accessible method.

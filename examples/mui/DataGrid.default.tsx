@@ -2,6 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+
+import * as React from "react";
+import { visuallyHidden } from "@mui/utils";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 
 const columns: GridColDef<(typeof rows)[number]>[] = [
@@ -40,22 +43,26 @@ const rows = [
 ];
 
 export default function DefaultExample() {
+	const captionId = React.useId();
 	return (
-		<DataGrid
-			showToolbar
-			rows={rows}
-			columns={columns}
-			initialState={{
-				pagination: {
-					paginationModel: {
-						pageSize: 5,
+		<div role="group" aria-labelledby={captionId}>
+			<div id={captionId} style={visuallyHidden}>
+				Game of Thrones Characters
+			</div>
+			<DataGrid
+				showToolbar
+				rows={rows}
+				columns={columns}
+				initialState={{
+					pagination: {
+						paginationModel: {
+							pageSize: 5,
+						},
 					},
-				},
-			}}
-			pageSizeOptions={[5]}
-			slotProps={{
-				main: { "aria-label": "Game of Thrones Characters" },
-			}}
-		/>
+				}}
+				pageSizeOptions={[5]}
+				aria-labelledby={captionId}
+			/>
+		</div>
 	);
 }

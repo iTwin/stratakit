@@ -224,6 +224,9 @@ importers:
       examples:
         specifier: workspace:*
         version: link:../../examples
+      pagefind:
+        specifier: ^1.5.2
+        version: 1.5.2
       react:
         specifier: "catalog:"
         version: 19.2.8
@@ -348,10 +351,10 @@ importers:
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
         specifier: ^1.0.0
-        version: link:../foundations
+        version: 1.0.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/internal-utils":
         specifier: ^0.2.0
-        version: link:../internal-utils
+        version: 0.2.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -388,7 +391,7 @@ importers:
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/internal-utils":
         specifier: ^0.2.0
-        version: link:../internal-utils
+        version: 0.2.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -474,13 +477,13 @@ importers:
         version: 9.4.0(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react@19.2.8))(@types/react@19.2.18)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
         specifier: ^1.0.2
-        version: link:../foundations
+        version: 1.0.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/icons":
         specifier: ^0.4.6
         version: link:../icons
       "@stratakit/internal-utils":
         specifier: ^0.2.0
-        version: link:../internal-utils
+        version: 0.2.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -517,13 +520,13 @@ importers:
         version: 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/bricks":
         specifier: ^0.6.0
-        version: link:../bricks
+        version: 0.6.1(@stratakit/foundations@1.0.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/foundations":
         specifier: ^1.0.1
-        version: link:../foundations
+        version: 1.0.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       "@stratakit/internal-utils":
         specifier: ^0.2.0
-        version: link:../internal-utils
+        version: 0.2.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
       classnames:
         specifier: ^2.5.1
         version: 2.5.1
@@ -2587,6 +2590,39 @@ packages:
       {
         integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==,
       }
+
+  "@stratakit/bricks@0.6.1":
+    resolution:
+      {
+        integrity: sha512-ccEf1lZOkVGNPUYg07ecxc63nVsudxKy1VMYAExHGCZ6zOK5oc+e+8gJMDv6jN4In+neG7sw7i4/wpYUbEFO5A==,
+      }
+    peerDependencies:
+      "@stratakit/foundations": ^1.0.3
+      react: ^19.0.0
+      react-dom: ^19.0.0
+
+  "@stratakit/foundations@1.0.3":
+    resolution:
+      {
+        integrity: sha512-UYk6awNO+1CS2xzavKJQn1OGoccLyyGTPXXhfgEeibKmcUvPTphzye5MTJZfqgX8AxxYZWdENfM3kg/9BsmqiQ==,
+      }
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  "@stratakit/internal-utils@0.2.1":
+    resolution:
+      {
+        integrity: sha512-E8oDOJubxcB7Yr6zeb55PqKTvelJjsqjNHulcmOJr443wgZNvLEqEFmCUWZ7uW2xbMBRFgbVqoxdGtrkQkravQ==,
+      }
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
 
   "@tanstack/query-core@5.101.4":
     resolution:
@@ -7341,6 +7377,32 @@ snapshots:
       "@types/hast": 3.0.5
 
   "@shikijs/vscode-textmate@10.0.2": {}
+
+  "@stratakit/bricks@0.6.1(@stratakit/foundations@1.0.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8))(react-dom@19.2.8(react@19.2.8))(react@19.2.8)":
+    dependencies:
+      "@ariakit/react": 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      "@stratakit/foundations": 1.0.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      "@stratakit/internal-utils": 0.2.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      classnames: 2.5.1
+      react: 19.2.8
+      react-compiler-runtime: 1.0.0(react@19.2.8)
+      react-dom: 19.2.8(react@19.2.8)
+
+  "@stratakit/foundations@1.0.3(react-dom@19.2.8(react@19.2.8))(react@19.2.8)":
+    dependencies:
+      "@ariakit/react": 0.4.35(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      "@stratakit/internal-utils": 0.2.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      classnames: 2.5.1
+      react-compiler-runtime: 1.0.0(react@19.2.8)
+    optionalDependencies:
+      react: 19.2.8
+      react-dom: 19.2.8(react@19.2.8)
+
+  "@stratakit/internal-utils@0.2.1(react-dom@19.2.8(react@19.2.8))(react@19.2.8)":
+    dependencies:
+      react: 19.2.8
+      react-compiler-runtime: 1.0.0(react@19.2.8)
+      react-dom: 19.2.8(react@19.2.8)
 
   "@tanstack/query-core@5.101.4": {}
 

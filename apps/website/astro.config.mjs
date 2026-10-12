@@ -5,6 +5,7 @@ import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import remarkDirective from "remark-directive";
 import { visit } from "unist-util-visit";
+import starlightPagefindIcons from "./starlightPagefindIcons.ts";
 
 const BASE_URL = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/docs`
@@ -108,6 +109,18 @@ export default defineConfig({
 			expressiveCode: {
 				themes: ["github-dark", "github-light"],
 			},
+			pagefind: {
+				mergeIndex: [
+					{
+						bundlePath: `${base}/pagefind-icons`,
+						mergeFilter: {
+							resource: "Icons",
+						},
+						indexWeight: 0.0001,
+					},
+				],
+			},
+			plugins: [starlightPagefindIcons()],
 		}),
 	],
 	devToolbar: { enabled: false },
@@ -119,12 +132,34 @@ export default defineConfig({
 				return undefined;
 			},
 		},
-		plugins: [vitePluginFixAstroSvg()],
+		plugins: [
+			vitePluginFixAstroSvg(),
+			vitePluginPagefindUiConfig({
+				mergeFilter: { resource: "Docs" },
+				// showEmptyFilters: false,
+			}),
+		],
 	},
 	server: {
 		port: DEV_PORT,
 	},
 });
+
+/**
+ * Vite plugin that extends Starlight's generated PagefindUI config with extra options.
+ *
+ * @param {Record<string, unknown>} extraConfig
+ * @returns {NonNullable<import("astro").ViteUserConfig["plugins"]>[number]}
+ */
+function vitePluginPagefindUiConfig(extraConfig) {
+	return {
+		name: "vite-pagefind-ui-config",
+		transform(code, id) {
+			if (!id.includes("virtual:starlight/pagefind-config")) return;
+			return `${code}\nObject.assign(pagefindUserConfig, ${JSON.stringify(extraConfig)});`;
+		},
+	};
+}
 
 /**
  * Rehype plugin that makes tables responsive by wrapping them in a `<responsive-table>` element.

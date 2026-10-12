@@ -6,7 +6,7 @@
 	"scripts": {
 		"dev": "wireit",
 		"start": "astro dev",
-		"build": "wireit",
+		"build": "astro build",
 		"test": "wireit",
 		"preview": "astro preview",
 		"format": "prettier --write . && biome format . --fix",
@@ -72,6 +72,7 @@
 		"@stratakit/structures": "workspace:*",
 		"astro": "^7.3.2",
 		"examples": "workspace:*",
+		"pagefind": "^1.5.2",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"sharp": "^0.35.4"

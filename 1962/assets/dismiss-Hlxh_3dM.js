@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-B_NKxDye.js";var t=`${e}#icon`;`${e}`;export{t};

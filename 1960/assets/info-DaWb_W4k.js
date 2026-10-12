@@ -1,1 +1,0 @@
-import{t as e}from"./info-Sizr5Xie.js";var t=`${e}#icon`;`${e}`;export{t};

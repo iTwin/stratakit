@@ -1,1 +1,0 @@
-import{t as e}from"./dismiss-VOaxlDEY.js";var t=`${e}#icon`;`${e}`;export{t};

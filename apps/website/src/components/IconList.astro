@@ -19,7 +19,8 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 ---
 
 <div>
-	<input id="icon-search-input" type="search" placeholder="Search by name or alias" />
+	<label for="icon-search-input">Search by icon name or alias</label>
+	<input id="icon-search-input" type="search" />
 </div>
 <div>
 	<fieldset id="icon-symbol-filter">
@@ -79,6 +80,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			border: 1px solid var(--stratakit-color-border-page-base);
 			border-radius: var(--stratakit-radius-sm);
 			background-color: var(--stratakit-color-bg-control-textbox);
+			margin-block-start: var(--stratakit-space-50);
 		}
 
 		fieldset {
@@ -110,7 +112,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			.chips {
 				display: flex;
 				gap: var(--stratakit-space-200);
-				margin-top: var(--stratakit-space-50);
+				margin-block-start: var(--stratakit-space-50);
 			}
 		}
 

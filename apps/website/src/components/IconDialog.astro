@@ -30,7 +30,7 @@ const { id } = Astro.props;
 
 		<h3>Aliases</h3>
 		<icon-aliases>
-			<ul></ul>
+			<ul class="not-content"></ul>
 
 			<template>
 				<li></li>
@@ -139,6 +139,16 @@ const { id } = Astro.props;
 
 			ul {
 				margin-block-start: var(--sl-content-gap-y);
+
+				list-style-type: "";
+			}
+
+			li {
+				display: inline;
+
+				&:not(:last-child)::after {
+					content: ", " / "";
+				}
 			}
 		}
 	}

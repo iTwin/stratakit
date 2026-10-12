@@ -395,6 +395,12 @@ function createTheme() {
 						quickFilterClearIcon: DismissIcon,
 						openFilterButtonIcon: FilterIcon,
 					},
+					slotProps: {
+						// Work around https://github.com/mui/mui-x/issues/23848
+						basePopper: {
+							role: undefined,
+						},
+					},
 				},
 			},
 			MuiDatePicker: {

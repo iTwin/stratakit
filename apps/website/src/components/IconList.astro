@@ -80,6 +80,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 <style>
 	@layer page {
 		.text-field {
+			margin-block-start: 0;
 			display: flex;
 			align-items: center;
 			position: relative;
@@ -107,31 +108,13 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			label {
 				margin-top: 0;
 				display: inline-flex;
-				align-items: center;
 				gap: var(--stratakit-space-100);
-				min-block-size: var(--stratakit-size-control-field-height-small);
-				padding-inline: var(--stratakit-space-200);
-				border: 1px solid var(--stratakit-color-border-neutral-base);
-				border-radius: 999px;
 				cursor: pointer;
-
-				&:hover {
-					background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-				}
-
-				&:has(input:focus-visible) {
-					outline: 2px solid var(--stratakit-color-border-accent-strong);
-					outline-offset: 1px;
-				}
-
-				input[type="radio"]:focus-visible:not(#a#b) {
-					outline: unset !important;
-				}
 			}
 
 			.chips {
 				display: flex;
-				gap: var(--stratakit-space-200);
+				gap: var(--stratakit-space-600);
 				margin-block-start: var(--stratakit-space-50);
 			}
 		}

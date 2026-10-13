@@ -1,6 +1,7 @@
 ---
 import iconsMeta from "@stratakit/icons/icons-meta.json";
 import IconDialog from "./IconDialog.astro";
+import { svgSearch } from "@stratakit/icons/search";
 
 const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", {
 	query: "?url",
@@ -20,7 +21,12 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 <div class="icon-search-field">
 	<label for="icon-search-input">Search icons</label>
-	<input id="icon-search-input" type="search" />
+	<div class="text-field">
+		<svg>
+			<use href={svgSearch}></use>
+		</svg>
+		<input id="icon-search-input" type="search" />
+	</div>
 </div>
 <div>
 	<fieldset id="icon-symbol-filter">
@@ -73,10 +79,22 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 
 <style>
 	@layer page {
+		.text-field {
+			display: flex;
+			align-items: center;
+			position: relative;
+
+			svg {
+				position: absolute;
+				left: var(--stratakit-space-200);
+			}
+		}
+
 		input[type="search"] {
 			inline-size: 100%;
 			min-block-size: var(--stratakit-size-control-field-height-medium);
-			padding-inline: var(--stratakit-space-300);
+			padding-inline-start: calc(16px + var(--stratakit-space-300));
+			padding-inline-end: var(--stratakit-space-300);
 			border: 1px solid var(--stratakit-color-border-page-base);
 			border-radius: var(--stratakit-radius-sm);
 			background-color: var(--stratakit-color-bg-control-textbox);

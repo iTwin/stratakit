@@ -10,18 +10,26 @@ import styles from "./standalone.module.css";
 
 // ----------------------------------------------------------------------------
 
+export const handle = { density: "loose" } as const;
+
+// ----------------------------------------------------------------------------
+
 type ComponentModule = Record<string, unknown> & {
 	default: React.FC<Record<string, unknown>>;
 };
 
 /** Map of module paths to their respective dynamic import functions. */
 const moduleLoaders = new Map(
-	Object.entries(import.meta.glob<ComponentModule>("./mui/*.tsx")).map(
-		([path, loadModule]) => [
-			path.replace(/^\.\//, "").replace(/\.tsx$/, ""), // e.g. "mui/Button.showcase"
-			loadModule, // e.g. () => import("./mui/Button.showcase.tsx")
-		],
-	),
+	Object.entries({
+		...import.meta.glob<ComponentModule>("./**/*.showcase.tsx"), // all `.showcase` files within test-app
+		...import.meta.glob<ComponentModule>(
+			"./examples/*/*.{tsx,jsx}", // all files within the `examples` package
+			{ base: "../../../" },
+		),
+	}).map(([path, loadModule]) => [
+		path.replace("./", "").replace(/\.(tsx|jsx)$/, ""), // e.g. `./mui/Button.showcase.tsx` → `mui/Button.showcase`
+		loadModule, // e.g. () => import("./mui/Button.showcase.tsx")
+	]),
 );
 const modulePromises = new Map<
 	string,

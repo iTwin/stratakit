@@ -52,7 +52,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			const href = getIconHref(iconName);
 			return (
 				<div role="listitem" class="icon" data-icon={iconName} data-href={href}>
-					<button command="show-modal" commandfor="icon-dialog">
+					<button id={iconName} command="show-modal" commandfor="icon-dialog">
 						<svg>
 							<use href={`${href}#${defaultSymbol}`} />
 						</svg>
@@ -233,15 +233,13 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		if (!iconName) return;
 
 		updateIconDialog(iconName);
-		setIconParam(iconName);
+		setIconIdentifier(iconName);
 	});
 	iconDialog.dialog.addEventListener("close", () => {
 		const iconButton = document.querySelector<HTMLElement>(
 			`[data-icon="${iconDialog.iconName}"] button`,
 		);
 		iconButton?.focus();
-
-		setIconParam(null);
 	});
 
 	window.addEventListener("popstate", syncIconParam);
@@ -262,18 +260,10 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		iconDialog.dialog.close();
 	}
 
-	function setIconParam(iconName: string | null) {
+	function setIconIdentifier(iconName: string) {
 		const url = new URL(location.href);
-		const iconParam = url.searchParams.get("icon");
-		if (iconParam === iconName) return;
-
-		if (iconName) {
-			url.searchParams.set("icon", iconName);
-		} else {
-			url.searchParams.delete("icon");
-		}
-
-		history.pushState(null, "", url);
+		url.hash = iconName ?? "";
+		history.replaceState(null, "", url);
 	}
 
 	function getIconMeta(iconName: string) {

@@ -128,7 +128,7 @@
 
 .MuiDataGrid-menu {
 	:where(.MuiPaper-root) {
-		/* Match styling from MuiMenu.css */
+		/* Match styling from MuiMenu.css for column header menu and export menu*/
 		box-shadow: var(--stratakit-shadow-surface-lg);
 		border: 1px solid var(--stratakit-color-border-page-base);
 	}
@@ -138,4 +138,10 @@
 	:where(.MuiList-root) {
 		padding-inline: var(--stratakit-space-100);
 	}
+}
+
+/* Match styling from MuiMenu.css for column and filter dialogs */
+.MuiDataGrid-paper {
+	box-shadow: var(--stratakit-shadow-surface-lg);
+	border: 1px solid var(--stratakit-color-border-page-base);
 }

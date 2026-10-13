@@ -7,7 +7,7 @@
 	--_MuiCircularProgress-track-thickness: 1px;
 	--_MuiCircularProgress-fill-thickness: 5px;
 
-	/* Use secondary color by default. This handlescolors included in MUI but omitted by StrataKit. */
+	/* Use secondary color by default. This will be used as fallback for colors omitted by StrataKit. */
 	--_MuiCircularProgress-color: var(--stratakit-color-icon-neutral-base);
 
 	&:where(.MuiCircularProgress-colorPrimary) {
@@ -31,7 +31,7 @@
 	}
 
 	/* Special case to match the disabled text color on loading buttons */
-	:where(.MuiButton-loading) & {
+	:where(.MuiButton-root.MuiButton-loading) & {
 		--_MuiCircularProgress-color: var(--stratakit-color-text-neutral-disabled);
 	}
 }

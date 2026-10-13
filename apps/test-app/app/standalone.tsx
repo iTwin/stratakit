@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import { useLocation } from "react-router";
-import Stack from "@mui/material/Stack";
 
 import styles from "./standalone.module.css";
 
@@ -80,13 +79,7 @@ function StandaloneRenderer({
 }: StandaloneRendererProps) {
 	const Component = React.use(loadModule(modulePath, exportName));
 
-	if (exportName) return <Component {...props} />;
-
-	return (
-		<Stack spacing={4} sx={{ alignItems: "start" }}>
-			<Component {...props} />
-		</Stack>
-	);
+	return <Component {...props} />;
 }
 
 // ----------------------------------------------------------------------------

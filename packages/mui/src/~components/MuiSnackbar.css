@@ -3,6 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+.MuiSnackbarContent-root:is(.MuiPaper-root) {
+	background-color: var(--stratakit-color-bg-elevation-emphasis);
+}
+
 :is(.MuiSnackbarContent-action) .MuiIconButton-root {
 	&:where(:not(.Mui-disabled)) {
 		color: var(--stratakit-color-icon-neutral-emphasis);

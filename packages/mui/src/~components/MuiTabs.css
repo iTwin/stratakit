@@ -75,7 +75,8 @@
 	/* #endregion */
 
 	/* #region Structural */
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 	background-color: var(--_MuiTab-background-color);
 	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiTab-color);
@@ -94,7 +95,8 @@
 		color 150ms ease-out;
 
 	:where(.MuiTabs-root[data-_sk-size="small"]) & {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 
 	/* This pseudo-element increases tap target size */

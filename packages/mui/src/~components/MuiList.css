@@ -28,12 +28,18 @@
 	padding-inline-end: var(--stratakit-space-300);
 	gap: var(--stratakit-space-200);
 
-	:where(.MuiList-root.MuiList-dense) & {
-		min-block-size: var(--stratakit-size-control-listitem-height-small);
-		@apply --typography("body-sm");
+	&:where(.MuiListSubheader-sticky) {
+		background-color: var(--stratakit-color-bg-page-base);
+		border-block-end: 1px solid var(--stratakit-color-border-page-base);
 	}
 
-	&:where(:has(~ .MuiListItem-secondaryAction)) {
+	:where(.MuiList-root.MuiList-dense) & {
+		min-block-size: var(--stratakit-size-control-listitem-height-small);
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
+	}
+
+	&:where(:has(.MuiListItem-secondaryAction, ~ .MuiListItem-secondaryAction)) {
 		padding-inline-end: calc(
 			var(--stratakit-size-control-field-height-medium) +
 			var(--stratakit-space-300)

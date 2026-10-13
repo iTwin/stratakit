@@ -7,7 +7,8 @@
 	--✨shadow-border: 0px 0px 0px 1px var(--stratakit-color-border-neutral-base) inset;
 
 	@layer base {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		font-family: inherit;
 		font-weight: 500;
 		color: var(--stratakit-color-text-neutral-secondary);

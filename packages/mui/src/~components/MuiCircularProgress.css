@@ -29,6 +29,11 @@
 	&:where(.MuiCircularProgress-colorSuccess) {
 		--_MuiCircularProgress-color: var(--stratakit-color-icon-positive-base);
 	}
+
+	/* Special case to match the disabled text color on loading buttons */
+	:where(.MuiButton-loading) & {
+		--_MuiCircularProgress-color: var(--stratakit-color-text-neutral-disabled);
+	}
 }
 
 :is(.MuiCircularProgress-track, .MuiCircularProgress-circle) {

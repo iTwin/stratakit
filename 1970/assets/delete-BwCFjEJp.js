@@ -1,0 +1,1 @@
+import{t as e}from"./delete-CfdKx15_.js";`${e}`;var t=`${e}#icon-large`;export{t};

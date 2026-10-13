@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-CYlc1ahq.js";var t=`${e}#icon`;`${e}`;export{t};

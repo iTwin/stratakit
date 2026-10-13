@@ -19,12 +19,12 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 ---
 
 <div class="icon-search-field">
-	<label for="icon-search-input">Search by icon name or alias</label>
+	<label for="icon-search-input">Search icons</label>
 	<input id="icon-search-input" type="search" />
 </div>
 <div>
 	<fieldset id="icon-symbol-filter">
-		<legend>Filter by symbol</legend>
+		<legend>Symbol</legend>
 		<div class="chips">
 			{
 				allSymbols.map((symbol) => (

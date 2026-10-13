@@ -2,8 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
 /** biome-ignore-all lint/style/noNonNullAssertion: Non-null assertions are used in queries. */
+
+import iconsMeta from "@stratakit/icons/icons-meta.json";
 
 export class IconDialog extends HTMLElement {
 	#dialog!: HTMLDialogElement;
@@ -34,27 +35,31 @@ export class IconDialog extends HTMLElement {
 		return this.#dialog;
 	}
 
-	get symbolsElement() {
-		return this.#symbols;
-	}
-
-	get aliasesElement() {
-		return this.#aliases;
-	}
-
 	get iconName() {
 		return this.#iconName;
 	}
 
-	set iconName(iconName: string) {
+	renderIcon(args: { iconName: string; href: string }) {
+		const { iconName, href } = args;
+
+		const iconMeta = iconsMeta[iconName as keyof typeof iconsMeta];
+		if (!iconMeta) return;
+
 		this.#iconName = iconName;
 		this.#dialogHeading.textContent = `@stratakit/icons/${iconName}.svg`;
+
+		const { aliases, symbols } = iconMeta;
+		this.#aliases.renderAliases({ aliases });
+		this.#symbols.renderSymbols({
+			href,
+			symbols,
+		});
 	}
 }
 
 export class IconSymbols extends HTMLElement {
-	set symbols(args: { href: string; symbols: string[] }) {
-		const { href, symbols } = args;
+	renderSymbols(args: { symbols: string[]; href: string }) {
+		const { symbols, href } = args;
 
 		const template = this.querySelector<HTMLTemplateElement>("template")!;
 		const list = this.querySelector<HTMLUListElement>("ul")!;
@@ -77,7 +82,7 @@ export class IconSymbols extends HTMLElement {
 }
 
 export class IconAliases extends HTMLElement {
-	set aliases(aliases: string[]) {
+	renderAliases({ aliases }: { aliases: string[] }) {
 		const template = this.querySelector<HTMLTemplateElement>("template")!;
 		const list = this.querySelector<HTMLUListElement>("ul")!;
 		list.replaceChildren(

@@ -208,11 +208,6 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		}
 	}
 
-	interface IconMeta {
-		symbols: string[];
-		aliases: string[];
-	}
-
 	const debouncedFilter = debounce(filter, 200);
 
 	const symbolInputs = document.querySelectorAll<HTMLInputElement>(
@@ -232,8 +227,17 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		const iconName = e.source?.parentElement?.dataset.icon;
 		if (!iconName) return;
 
-		updateIconDialog(iconName);
-		setIconIdentifier(iconName);
+		const href = e.source?.parentElement?.dataset.href!;
+		if (!href) return;
+
+		iconDialog.renderIcon({
+			href,
+			iconName,
+		});
+
+		const url = new URL(location.href);
+		url.hash = iconName ?? "";
+		history.replaceState(null, "", url);
 	});
 	iconDialog.dialog.addEventListener("close", () => {
 		const iconButton = document.querySelector<HTMLElement>(
@@ -242,50 +246,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		iconButton?.focus();
 	});
 
-	window.addEventListener("popstate", syncIconParam);
-
 	const countElement = document.querySelector<HTMLElement>("#icon-count")!;
-
-	syncIconParam();
-
-	function syncIconParam() {
-		const iconName = new URLSearchParams(location.search).get("icon");
-
-		if (iconName) {
-			updateIconDialog(iconName);
-			iconDialog.dialog.showModal();
-			return;
-		}
-
-		iconDialog.dialog.close();
-	}
-
-	function setIconIdentifier(iconName: string) {
-		const url = new URL(location.href);
-		url.hash = iconName ?? "";
-		history.replaceState(null, "", url);
-	}
-
-	function getIconMeta(iconName: string) {
-		return (iconsMeta as { [key: string]: IconMeta | undefined })[iconName];
-	}
-
-	function updateIconDialog(iconName: string) {
-		const icon = document.querySelector<HTMLElement>(`[data-icon="${iconName}"]`);
-		if (!icon) return;
-
-		const meta = getIconMeta(iconName);
-		if (!meta) return;
-
-		const href = icon.dataset.href!;
-		iconDialog.iconName = iconName;
-		iconDialog.aliasesElement.aliases = meta.aliases;
-		iconDialog.symbolsElement.symbols = {
-			href,
-			symbols: meta.symbols,
-		};
-	}
-
 	const icons = Array.from(document.querySelectorAll<HTMLElement>("[data-icon]"));
 
 	function filter() {
@@ -298,7 +259,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 		let visibleIcons = 0;
 		for (const icon of icons) {
 			const iconName = icon.dataset.icon!;
-			const meta = getIconMeta(iconName);
+			const meta = iconsMeta[iconName as keyof typeof iconsMeta];
 			if (!meta) continue;
 
 			const hasSymbol = meta.symbols.includes(selectedSymbol);

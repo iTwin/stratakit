@@ -84,6 +84,7 @@ export default defineConfig({
 			...muiTestOptions,
 			use: {
 				...devices["Desktop Chrome"],
+				colorScheme: "light",
 			},
 		},
 		{

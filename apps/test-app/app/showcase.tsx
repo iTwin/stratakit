@@ -43,7 +43,9 @@ export default function Showcase() {
 			<title>{`${title} – StrataKit`}</title>
 			<div id="root" className={styles.root}>
 				{modulePath && (
-					<React.Suspense fallback={null}>
+					<React.Suspense
+						fallback={<div data-testid="showcase-loading">Loading...</div>}
+					>
 						<ShowcaseRenderer modulePath={modulePath} exportName={exportName} />
 					</React.Suspense>
 				)}

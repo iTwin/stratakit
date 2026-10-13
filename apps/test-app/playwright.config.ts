@@ -8,6 +8,12 @@ import { test as base, defineConfig, devices } from "@playwright/test";
 
 import type { Page } from "@playwright/test";
 
+const muiTestOptions = {
+	testMatch: "**/app/tests/mui/**",
+	snapshotPathTemplate:
+		"{testDir}/{testFileDir}/snapshots/{testFileBaseName}{-arg}{-projectName}{ext}",
+};
+
 /** See https://playwright.dev/docs/test-configuration. */
 export default defineConfig({
 	outputDir: "test-results/output",
@@ -58,12 +64,56 @@ export default defineConfig({
 	projects: [
 		{
 			name: "chromium",
+			testIgnore: "**/tests/mui/**",
 			use: { ...devices["Desktop Chrome"] },
 		},
-
 		{
 			name: "firefox",
+			testIgnore: "**/tests/mui/**",
 			use: { ...devices["Desktop Firefox"] },
+		},
+		{
+			name: "chromium-nonvisual",
+			grepInvert: /@visual/,
+			...muiTestOptions,
+			use: { ...devices["Desktop Chrome"] },
+		},
+		{
+			name: "chromium-light",
+			grep: /@visual/,
+			...muiTestOptions,
+			use: {
+				...devices["Desktop Chrome"],
+			},
+		},
+		{
+			name: "chromium-dark",
+			grep: /@visual/,
+			...muiTestOptions,
+			use: {
+				...devices["Desktop Chrome"],
+				colorScheme: "dark",
+			},
+		},
+		{
+			name: "chromium-forced-colors",
+			grep: /@visual/,
+			...muiTestOptions,
+			use: {
+				...devices["Desktop Chrome"],
+				contextOptions: {
+					forcedColors: "active",
+				},
+			},
+		},
+		{
+			name: "firefox-light",
+			grep: /@visual/,
+			...muiTestOptions,
+			use: {
+				...devices["Desktop Firefox"],
+				colorScheme: "light",
+			},
 		},
 	],
 	webServer: {
@@ -85,6 +135,9 @@ export const test = base.extend<{ page: Page }>({
 		page.goto = async (url, options) => {
 			const result = await _goto.call(page, url, options);
 			await page.waitForSelector("body[data-loaded]", { timeout: 5000 });
+			await page
+				.getByTestId("showcase-loading")
+				.waitFor({ state: "hidden", timeout: 5000 });
 			return result;
 		};
 		await use(page);

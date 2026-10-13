@@ -14,7 +14,8 @@
 }
 
 .MuiPickersCalendarHeader-labelContainer {
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 	align-self: stretch;
 	padding-inline-end: var(--stratakit-space-100);
 }
@@ -24,7 +25,8 @@
 	padding-inline-start: var(--stratakit-space-300);
 
 	&:where(.MuiPickersInputBase-inputSizeSmall) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		block-size: var(--stratakit-size-control-field-height-small);
 		padding-inline-start: var(--stratakit-space-200);
 	}

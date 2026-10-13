@@ -7,6 +7,7 @@ import TypographyMuiVariants_ from "examples/mui/Typography._mui-variants.tsx";
 import TypographyColors from "examples/mui/Typography.colors.tsx";
 import TypographyDefault from "examples/mui/Typography.default.tsx";
 import TypographyHeading from "examples/mui/Typography.heading.tsx";
+import TypographySemanticElements from "examples/mui/Typography.semantic-elements.tsx";
 import TypographyVariants from "examples/mui/Typography.variants.tsx";
 
 export default function TypographyExamples() {
@@ -15,6 +16,7 @@ export default function TypographyExamples() {
 			<TypographyDefault />
 			<TypographyHeading />
 			<TypographyVariants />
+			<TypographySemanticElements />
 			<TypographyMuiVariants_ />
 			<TypographyColors />
 		</>

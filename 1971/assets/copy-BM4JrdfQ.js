@@ -1,0 +1,1 @@
+import{t as e}from"./copy-BMnXX31d.js";`${e}`;var t=`${e}#icon-large`;export{t};

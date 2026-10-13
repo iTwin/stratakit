@@ -9,6 +9,7 @@
 	@layer base {
 		background-color: var(--✨bg);
 		overflow: auto;
+		max-block-size: var(--popover-available-height);
 
 		display: flex;
 		flex-direction: column;

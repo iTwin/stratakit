@@ -34,7 +34,6 @@ Indicate when a **Link** opens a site outside your application. Add a visible ex
 ## ✅ Do
 
 - Use **Link** to link between pages and page sections (fragments).
-- Add `tabindex="-1"` to the element representing the target section (fragment) to ensure it receives keyboard focus.
 - Provide a label that describes the purpose of the link. This label should still be understandable when removed from context.
 
 ## 🚫 Don't

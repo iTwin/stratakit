@@ -1,0 +1,1 @@
+import{N as e}from"./DefaultPropsProvider-C0YoTlXk.js";var t=e;export{t};

@@ -10,11 +10,10 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
+import { svgCircle } from "@stratakit/icons/circle";
+import { svgRectangle } from "@stratakit/icons/rectangle";
+import { svgStar } from "@stratakit/icons/star";
 import { Icon } from "@stratakit/mui";
-
-import svgCircle from "@stratakit/icons/circle.svg";
-import svgRectangle from "@stratakit/icons/rectangle.svg";
-import svgStar from "@stratakit/icons/star.svg";
 
 export default () => {
 	const labelId = React.useId();

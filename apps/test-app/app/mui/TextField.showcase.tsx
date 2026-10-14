@@ -12,7 +12,7 @@ import { createKnob } from "~/~utils.tsx";
 
 export default function TextFieldExamples() {
 	return (
-		<Stack spacing={1}>
+		<Stack spacing={2}>
 			<TextFieldDefault />
 			<TextFieldMultiline />
 			<TextFieldIcon />

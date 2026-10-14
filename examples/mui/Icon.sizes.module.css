@@ -6,11 +6,11 @@
 .list {
 	list-style: none;
 	display: flex;
-	gap: var(--stratakit-space-x4);
+	gap: var(--stratakit-space-400);
 }
 
 .listItem {
 	display: flex;
 	align-items: center;
-	gap: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-100);
 }

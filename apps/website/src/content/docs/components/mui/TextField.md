@@ -3,7 +3,7 @@ title: TextField
 description: Text fields are used to input single or multiple lines of text.
 links:
   muiDocs: https://mui.com/material-ui/react-text-field/
-  apiReference: https://mui.com/material-ui/api/text-field/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/TextField.default"}
@@ -21,8 +21,16 @@ Make sure the **TextField** is suitable for your use case. There may be other, m
 
 ## StrataKit MUI modifications
 
-- Only the `"outlined"` variant is supported. The `variant` prop is marked as deprecated.
-- The `color` prop is not supported.
+Modifications to `FormControl` (applies to all MUI components that extend `FormControl`):
+
+- The `color`, `focused`, `hiddenLabel` and `variant` props are not supported.
+- The `margin` prop is not supported. Use CSS grid, CSS flexbox, [`Grid`](https://mui.com/material-ui/react-grid/) , or [`Stack`](https://mui.com/material-ui/react-stack/) to handle spacing between form controls.
+
+Modifications specific to `TextField`:
+
+- The `select` prop is not supported.
+- The `color` prop is not supported. Color is applied automatically based on state (e.g., disabled, error).
+- The `variant` prop is not supported. Only the `"outlined"` variant is supported.
 - Removed the [floating label](https://mui.com/material-ui/react-text-field/#floating-label) behavior. The label is always displayed above the input.
 
 ## Examples
@@ -62,3 +70,9 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 - Don't place the label below or to the right of the input.
 - Don't resort to generic error messages.
 - Don't use the `placeholder` attribute for essential instructions.
+
+## API reference
+
+- [`TextField`](https://mui.com/material-ui/api/text-field/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`InputAdornment`](https://mui.com/material-ui/api/input-adornment/)

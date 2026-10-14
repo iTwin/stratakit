@@ -3,17 +3,26 @@ title: ToggleButton
 description: Toggle buttons are used to represent the pressed state.
 links:
   muiDocs: https://mui.com/material-ui/react-toggle-button/
-  apiReference: https://mui.com/material-ui/api/toggle-button/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/ToggleButton.default"}
 
 ## StrataKit MUI modifications
 
+Modifications to `ToggleButton`:
+
+- The `action`, `color` and `fullWidth` props are not supported.
+- The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
+- Ripple effect removed. The `centerRipple`, `disableFocusRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - A `label` prop has been added. When specified, it is used as the **ToggleButton's** accessible name and is also shown in a tooltip on hover and focus.
 - A `labelPlacement` prop has been added to control the placement of a tooltip that is shown when the `label` prop is specified.
 - **ToggleButtons** are styled to match the visual appearance of the [**IconButton**](/components/iconbutton) component. Borders are displayed only when the buttons are wrapped in a `ToggleButtonGroup`. [Standalone](#standalone) **ToggleButtons** do not have borders.
 - **ToggleButtons** can now be rendered as regular [**Buttons**](/components/button) to [display text](#text).
+
+Modifications specific to `ToggleButtonGroup`:
+
+- The `color` prop is not supported.
 
 ## Examples
 
@@ -53,3 +62,8 @@ In the example above, the [`exclusive`](https://mui.com/material-ui/api/toggle-b
 
 - Don't use to replace buttons.
 - Don't mix text and icon-only **ToggleButtons** in the same group.
+
+## API reference
+
+- [`ToggleButton`](https://mui.com/material-ui/api/toggle-button/)
+- [`ToggleButtonGroup`](https://mui.com/material-ui/api/toggle-button-group/)

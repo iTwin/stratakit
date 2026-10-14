@@ -3,7 +3,7 @@ title: Switch
 description: Switches are toggles for Boolean values.
 links:
   muiDocs: https://mui.com/material-ui/react-switch/
-  apiReference: https://mui.com/material-ui/api/switch/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Switch.default"}
@@ -22,8 +22,11 @@ Make sure the **Switch** is suitable for your use case. There may be other, more
 ## StrataKit MUI modifications
 
 - The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled).
+- The `action`, `checkedIcon`, `icon`, and `LinkComponent` props are not supported.
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
+- Added a checkmark on the thumb when checked to help further differentiate the checked and unchecked states.
 
 ## Examples
 
@@ -50,3 +53,9 @@ Use the `defaultChecked` prop to set the initial checked state. Alternatively, u
 - Don't use switches for mandatory actions. The checked state of a switch can never be _invalid_.
 - Don't use one switch to change multiple settings simultaneously.
 - Don't use switches inside a form that needs submission. Use [**Checkbox**](/components/checkbox) instead.
+
+## API reference
+
+- [`Switch`](https://mui.com/material-ui/api/switch/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/)

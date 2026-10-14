@@ -3,7 +3,7 @@ title: Select
 description: Selects are a form input offering a dropdown menu of predefined options.
 links:
   muiDocs: https://mui.com/material-ui/react-select/
-  apiReference: https://mui.com/material-ui/api/select/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Select.default"}
@@ -21,11 +21,21 @@ Make sure the **Select** is suitable for your use case. There may be other, more
 
 ## StrataKit MUI modifications
 
+Modifications to `NativeSelect`:
+
+- The `color` and `disableInjectingGlobalStyles` props are not supported via `InputBase`.
+- The `disableUnderline` prop is not supported via `Input`. Changed the default value to `true`.
+- The `variant` prop is not supported.
+- Restyled using StrataKit's visual language.
+
+Modifications to `Select`:
+
+- The `color`, `disableInjectingGlobalStyles`, `disableUnderline`, `IconComponent`, `notched` and `variant` props are not supported.
 - Restyled using StrataKit's visual language.
 - The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.
 - The `color` prop is not supported.
-- The default portal container is now the [root portal container](/components/root/#portal-container).
+- The default [`container`](https://mui.com/material-ui/api/popover/#popover-prop-container) of the [`MenuProps`](https://mui.com/material-ui/api/select/#select-prop-MenuProps) now resolves from StrataKit's portal context, [root portal container](/components/root/#portal-container).
 
 ## Examples
 
@@ -65,3 +75,12 @@ Use the [`NativeSelect`](https://mui.com/material-ui/api/native-select/) compone
 - Don't steal keyboard focus and move it away from the **Select** when an option is chosen.
 - Don't change application state without employing a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) to alert screen reader users of that change.
 - Don't make **Select** options behave like buttons/commands. Use the [**Menu**](/components/menu) component instead.
+
+## API reference
+
+- [`Select`](https://mui.com/material-ui/api/select/)
+- [`NativeSelect`](https://mui.com/material-ui/api/native-select/)
+- [`MenuItem`](https://mui.com/material-ui/api/menu-item/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`InputLabel`](https://mui.com/material-ui/api/input-label/)
+- [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/)

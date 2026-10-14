@@ -1,0 +1,19 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.appBarContent {
+	position: relative;
+	display: flex;
+	align-items: center;
+	padding-inline: var(--stratakit-space-400);
+	min-height: 56px;
+
+	@media (orientation: landscape) {
+		min-height: 48px;
+	}
+
+	@media (min-width: 600px) {
+		min-height: 64px;
+	}
+}

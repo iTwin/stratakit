@@ -7,7 +7,7 @@ import MobileStepperDefault from "examples/mui/MobileStepper.default.tsx";
 
 export default function MobileStepperExamples() {
 	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<MobileStepperDefault />
 		</Stack>
 	);

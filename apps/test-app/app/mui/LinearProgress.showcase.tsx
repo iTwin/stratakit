@@ -10,7 +10,7 @@ import LinearProgressDeterminate from "examples/mui/LinearProgress.determinate.t
 
 export default function LinearProgressExamples() {
 	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<LinearProgressDefault />
 			<LinearProgressColors />
 			<LinearProgressDeterminate />

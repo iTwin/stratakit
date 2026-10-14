@@ -5,16 +5,14 @@
 
 import Badge from "@mui/material/Badge";
 import Stack from "@mui/material/Stack";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { Icon } from "@stratakit/mui";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (
 		<Stack
-			spacing={1}
+			spacing={2}
 			direction="row"
-			useFlexGap
 			sx={{ alignItems: "center", flexWrap: "wrap" }}
 		>
 			<Badge
@@ -25,7 +23,7 @@ export default () => {
 					</>
 				}
 				size="small"
-				inline
+				variant="inline"
 			/>
 			<Badge
 				badgeContent={
@@ -35,7 +33,7 @@ export default () => {
 					</>
 				}
 				size="medium"
-				inline
+				variant="inline"
 			/>
 		</Stack>
 	);

@@ -3,7 +3,7 @@ title: Card
 description: A Card concisely introduces a subject and its related actions.
 links:
   muiDocs: https://mui.com/material-ui/react-card/
-  apiReference: https://mui.com/material-ui/api/card/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Card.default" min-height="325px"}
@@ -24,10 +24,23 @@ Make sure the **Card** is suitable for your use case. There may be other, more a
 
 ## StrataKit MUI modifications
 
-- `Card` is rendered as an [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article) element by default. This programmatically indicates the bounds of the **Card’s** contents.
-- `CardHeader`'s `title` is rendered as an `<h2>` by default.
-- `CardActionArea` has been redesigned to no longer wrap the entire card content. Instead, it should be used in the **Card's** title.
-- `Card` defaults to `variant="outlined"`.
+Modifications to `Card`:
+
+- The `elevation`, `raised` and `square` props are not supported.
+- Rendered as an [`<article>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/article) element by default. This programmatically indicates the bounds of the **Card’s** contents.
+- The `variant` prop defaults to `"outlined"`. The `variant` prop is not supported.
+
+Modifications to `CardHeader`:
+
+- The `disableTypography` prop is not supported.
+- The `title` is rendered as an `<h2>` by default.
+
+Modifications to `CardActionArea`:
+
+- The `action` prop is not supported.
+- The `LinkComponent` prop is not supported. Use the more flexible `render` prop instead.
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
+- Redesigned to no longer wrap the entire card content. Instead, it should be used in the **Card's** title.
 
 ## Examples
 
@@ -76,3 +89,12 @@ Use `slotProps` to give the [`CardHeader`](https://mui.com/material-ui/api/card-
 - Don’t use a **Card** to group unrelated content or actions.
 - Don’t use **Card** just to highlight some content belonging to a larger subject.
 - Don’t wrap the entire contents of the **Card** in a `CardActionArea`. Typically, it should be passed into the `CardHeader`'s `title`.
+
+## API reference
+
+- [`Card`](https://mui.com/material-ui/api/card/)
+- [`CardHeader`](https://mui.com/material-ui/api/card-header/)
+- [`CardActionArea`](https://mui.com/material-ui/api/card-action-area/)
+- [`CardMedia`](https://mui.com/material-ui/api/card-media/)
+- [`CardContent`](https://mui.com/material-ui/api/card-content/)
+- [`CardActions`](https://mui.com/material-ui/api/card-actions/)

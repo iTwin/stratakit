@@ -6,7 +6,7 @@
 .exampleHeader {
 	display: flex;
 	align-items: center;
-	gap: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-100);
 }
 
 .examplePermalink {
@@ -18,15 +18,15 @@
 .exampleContainer {
 	display: flex;
 	flex-direction: column;
-	gap: var(--stratakit-space-x2);
+	gap: var(--stratakit-space-200);
 	position: relative;
 
 	&:where(:not(:nth-last-child(1 of &))) {
-		margin-block-end: var(--stratakit-space-x10);
+		margin-block-end: var(--stratakit-space-1000);
 	}
 
 	&:where([data-highlight]) {
-		scroll-margin-block: var(--stratakit-space-x7);
+		scroll-margin-block: var(--stratakit-space-700);
 	}
 }
 
@@ -39,8 +39,8 @@
 	background-color: var(--stratakit-color-bg-page-base);
 	border: 1px solid var(--stratakit-color-border-neutral-muted);
 
-	padding: calc(var(--stratakit-size-control-field-height-small) / 2 + var(--stratakit-space-x3));
-	border-radius: 8px;
+	padding: calc(var(--stratakit-size-control-field-height-small) / 2 + var(--stratakit-space-300));
+	border-radius: var(--stratakit-radius-md);
 
 	:where(.exampleContainer[data-highlight]) &::before {
 		content: "";
@@ -66,7 +66,7 @@
 	inline-size: 24px;
 
 	color: var(--stratakit-color-icon-neutral-base);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	cursor: ew-resize;
 
 	&:where(
@@ -92,13 +92,13 @@
 	translate: 0 -50%; /* center vertically on top edge */
 
 	background-color: var(--stratakit-color-bg-page-base);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	border: 1px solid var(--stratakit-color-border-neutral-muted);
 }
 
 .exampleKnobsPopover {
-	padding-block: var(--stratakit-space-x2);
-	padding-inline: var(--stratakit-space-x3);
+	padding-block: var(--stratakit-space-200);
+	padding-inline: var(--stratakit-space-300);
 }
 
 .exampleKnobLabel {

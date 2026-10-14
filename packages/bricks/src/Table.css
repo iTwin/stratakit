@@ -30,9 +30,9 @@
 
 .🥝TableCaption,
 .🥝TableCell {
-	--✨cell-padding-block: var(--stratakit-space-x2);
-	--✨cell-padding-inline-start: var(--stratakit-space-x4);
-	--✨cell-padding-inline-end: var(--stratakit-space-x3);
+	--✨cell-padding-block: var(--stratakit-space-200);
+	--✨cell-padding-inline-start: var(--stratakit-space-400);
+	--✨cell-padding-inline-end: var(--stratakit-space-300);
 	--✨cell-height-min: 3rem;
 
 	@layer base {
@@ -82,7 +82,7 @@
 		position: relative;
 
 		&:where(:not(th, td)) {
-			column-gap: var(--stratakit-space-x2);
+			column-gap: var(--stratakit-space-200);
 			flex-grow: 1;
 			flex-basis: 4rem;
 		}

@@ -4,12 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 import LinkColors_ from "examples/mui/Link._colors.tsx";
 import LinkDefault from "examples/mui/Link.default.tsx";
+import LinkExternal from "examples/mui/Link.external.tsx";
 import { isProduction } from "~/~utils.tsx";
 
 export default function LinkExamples() {
 	return (
 		<>
 			<LinkDefault />
+			<LinkExternal />
 			{!isProduction && <LinkColors_ />}
 		</>
 	);

@@ -8,6 +8,7 @@ import { useSearchParams } from "react-router";
 import { useSettingsStore } from "./~settings.tsx";
 
 import type { ComponentsProps } from "@mui/material/styles";
+import type {} from "@mui/x-date-pickers/themeAugmentation";
 import type { Root } from "@stratakit/mui";
 
 // ----------------------------------------------------------------------------

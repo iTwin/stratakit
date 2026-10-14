@@ -10,13 +10,13 @@
 		align-items: center;
 		position: relative;
 
-		--🥝Chip-padding-inline: var(--stratakit-space-x2);
+		--🥝Chip-padding-inline: var(--stratakit-space-200);
 		padding-inline-start: var(--🥝Chip-padding-inline);
 		padding-inline-end: var(--🥝Chip-padding-inline);
 
 		min-block-size: 1.5rem;
 
-		border-radius: 9999px;
+		border-radius: var(--stratakit-radius-round);
 		border: none;
 	}
 

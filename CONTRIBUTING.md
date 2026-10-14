@@ -90,7 +90,7 @@ The `@stratakit/mui` package uses [themed components](https://mui.com/material-u
 
 ### Project code style and conventions
 
-Please review the [style guide](./STYLEGUIDE.md) for a list of project coventions and best practices to keep our coding style aligned and avoid bugs.
+Please review the [style guide](./notes/STYLEGUIDE.md) for a list of project conventions and best practices to keep our coding style aligned and avoid bugs.
 
 ### Development environment
 

@@ -9,7 +9,7 @@ import Stack from "@mui/material/Stack";
 
 export default () => {
 	return (
-		<Stack spacing={1} sx={{ alignItems: "center" }}>
+		<Stack spacing={2} sx={{ alignItems: "center" }}>
 			<ButtonGroup aria-label="File actions" size="small">
 				<Button>Edit</Button>
 				<Button>Move</Button>

@@ -12,7 +12,8 @@ npm add @stratakit/mui
 
 Additional setup/considerations:
 
-- `@stratakit/mui` has a direct dependency on [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations) and [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons), the latter of which requires [bundler configuration](https://github.com/iTwin/stratakit/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
+- `@stratakit/mui` has a peer dependency on [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations) (for tokens) and [`@mui/material`](https://www.npmjs.com/package/@mui/material) (for MUI components).
+- `@stratakit/mui` has a direct dependency on [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons), which requires [bundler configuration](https://github.com/iTwin/stratakit/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
 - You should ensure that [StrataKit fonts](#fonts) are loaded in your application.
 - [`/types.d.ts`](#typescript) must be included in your project to ensure that the module augmentation for MUI components is picked up by TypeScript.
 - If you are trying to use this package alongside iTwinUI, you will also need to set up the [theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).
@@ -44,7 +45,7 @@ Now you can use any components directly from `@mui/material`, and they will be a
 
 ```jsx
 import { Icon } from "@stratakit/mui";
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 
 <Icon href={svgPlaceholder} />;
 ```

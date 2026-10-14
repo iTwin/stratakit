@@ -4,11 +4,12 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiMenu-paper {
-	box-shadow: var(--stratakit-shadow-control-dropdown-base);
+	box-shadow: var(--stratakit-shadow-surface-lg);
+	border: 1px solid var(--stratakit-color-border-page-base);
 }
 
 .MuiMenu-list {
-	padding: var(--stratakit-space-x1);
+	padding: var(--stratakit-space-100);
 
 	&:where([role="menu"]) {
 		min-inline-size: min(95vi, 164px);
@@ -31,19 +32,20 @@
 	--✨color-text--selected: var(--stratakit-color-text-accent-strong);
 	--✨color-text--disabled: var(--stratakit-color-text-neutral-disabled);
 
-	--✨padding: var(--stratakit-space-x2);
+	--✨padding: var(--stratakit-space-200);
 	--✨size--small: var(--stratakit-size-control-listitem-height-small);
 	--✨size--medium: 2rem;
 
 	--✨svg-unchecked: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
 	--✨svg-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.607 4.191a.5.5 0 0 1 .787.617l-5.5 7a.503.503 0 0 1-.777.012l-2.5-3-.057-.084a.5.5 0 0 1 .752-.627l.072.07 2.105 2.526 5.118-6.514Z"/></svg>'); /* `checkmark.svg` default size */
 
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 	background-color: var(--_MuiMenuItem-background-color);
 	border: 1px solid var(--_MuiMenuItem-border-color, transparent);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiMenuItem-color);
-	column-gap: calc(var(--stratakit-space-x1) + var(--stratakit-space-x05));
+	column-gap: var(--stratakit-space-150);
 	min-block-size: var(--_MuiMenuItem-height);
 	padding-block: 0;
 	padding-inline-start: var(--✨padding);
@@ -56,7 +58,8 @@
 
 	:where(.MuiMenu-list.MuiList-dense) &,
 	&:where([data-_sk-dense]) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		--_MuiMenuItem-height: var(--✨size--small);
 	}
 

@@ -7,7 +7,7 @@ import AppBarDefault from "examples/mui/AppBar.default.tsx";
 
 export default function AppBarExamples() {
 	return (
-		<Stack spacing={1} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
 			<AppBarDefault />
 		</Stack>
 	);

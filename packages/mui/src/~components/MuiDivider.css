@@ -5,25 +5,25 @@
 .MuiDivider-root {
 	&:where(:not(.MuiDivider-vertical)) {
 		&:where([data-_sk-margin]) {
-			margin-block-start: var(--stratakit-space-x1);
-			margin-block-end: var(--stratakit-space-x1);
+			margin-block-start: var(--stratakit-space-100);
+			margin-block-end: var(--stratakit-space-100);
 		}
 
 		&:where(.MuiDivider-middle) {
-			margin-inline-start: var(--stratakit-space-x2);
-			margin-inline-end: var(--stratakit-space-x2);
+			margin-inline-start: var(--stratakit-space-200);
+			margin-inline-end: var(--stratakit-space-200);
 		}
 	}
 
 	&:where(.MuiDivider-vertical) {
 		&:where([data-_sk-margin]) {
-			margin-inline-start: var(--stratakit-space-x1);
-			margin-inline-end: var(--stratakit-space-x1);
+			margin-inline-start: var(--stratakit-space-100);
+			margin-inline-end: var(--stratakit-space-100);
 		}
 
 		&:where(.MuiDivider-middle) {
-			margin-block-start: var(--stratakit-space-x2);
-			margin-block-end: var(--stratakit-space-x2);
+			margin-block-start: var(--stratakit-space-200);
+			margin-block-end: var(--stratakit-space-200);
 		}
 	}
 }

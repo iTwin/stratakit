@@ -11,6 +11,9 @@ import Popover from "@mui/material/Popover";
 import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
 import visuallyHidden from "@mui/utils/visuallyHidden";
+import { svgConfiguration } from "@stratakit/icons/configuration";
+import { svgDragHandleVertical } from "@stratakit/icons/drag-handle-vertical";
+import { svgLink } from "@stratakit/icons/link";
 import { Icon } from "@stratakit/mui";
 import {
 	getResizeHandleElement,
@@ -22,9 +25,6 @@ import { createStore, useStore } from "zustand";
 
 import type { Knob } from "./~utils.tsx";
 
-import svgConfiguration from "@stratakit/icons/configuration.svg";
-import svgDragHandleVertical from "@stratakit/icons/drag-handle-vertical.svg";
-import svgLink from "@stratakit/icons/link.svg";
 import styles from "./~examples.module.css";
 
 // ----------------------------------------------------------------------------

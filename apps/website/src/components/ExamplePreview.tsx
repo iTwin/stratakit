@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { IconButton } from "@stratakit/bricks";
+import { svgScript } from "@stratakit/icons/script";
+import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { Root } from "@stratakit/mui";
 import { useColorScheme } from "./~utils.ts";
 
-import svgScript from "@stratakit/icons/script.svg";
-import svgWindowPopout from "@stratakit/icons/window-popout.svg";
 import styles from "./ExamplePreview.module.css";
 
 // ----------------------------------------------------------------------------
@@ -22,6 +22,7 @@ const exampleModules = {
 	bricks: import.meta.glob("/node_modules/examples/bricks/*.tsx"),
 	structures: import.meta.glob("/node_modules/examples/structures/*.tsx"),
 	mui: import.meta.glob("/node_modules/examples/mui/*.tsx"),
+	composite: import.meta.glob("/node_modules/examples/composite/*.tsx"),
 } as const;
 
 // ----------------------------------------------------------------------------

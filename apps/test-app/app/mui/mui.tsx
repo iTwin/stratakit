@@ -4,13 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { type MetaFunction, useLocation } from "react-router";
+import { type MetaFunction, useHref, useLocation } from "react-router";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
 import { ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import deepmerge from "@mui/utils/deepmerge";
+import { svgScript } from "@stratakit/icons/script";
+import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { Icon } from "@stratakit/mui";
 import * as NavigationList from "@stratakit/structures/unstable_NavigationList";
 import {
@@ -25,7 +27,6 @@ import { useIsWideScreen } from "~/~utils.tsx";
 import type { ComponentsProps, Theme } from "@mui/material/styles";
 import type { Knob } from "~/~utils.tsx";
 
-import svgScript from "@stratakit/icons/script.svg";
 import styles from "./mui.module.css";
 
 // ----------------------------------------------------------------------------
@@ -121,7 +122,7 @@ export default function Page() {
 					<Typography
 						variant="body1"
 						render={<h2 />}
-						sx={{ ml: 1, mb: 2, fontWeight: 500 }}
+						sx={{ ml: 2, mb: 4, fontWeight: 500 }}
 					>
 						MUI components
 					</Typography>
@@ -213,10 +214,18 @@ function ComponentExamples(props: ComponentExamplesProps) {
 						<Icon href={svgScript} />
 					</IconButton>
 					<KnobControlEntrypoint />
+					<IconButton
+						render={<a />}
+						href={useHref(`/showcase?path=mui/${name}.showcase`)}
+						label="Standalone showcase"
+						size="small"
+					>
+						<Icon href={svgWindowPopout} />
+					</IconButton>
 				</>
 			}
 		>
-			<Stack spacing={2} sx={{ alignItems: "start" }}>
+			<Stack spacing={4} sx={{ alignItems: "start" }}>
 				<ThemeProvider
 					theme={(outerTheme: Theme): Theme =>
 						deepmerge(outerTheme, {

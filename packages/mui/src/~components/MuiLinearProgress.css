@@ -9,7 +9,7 @@
 
 	background-color: transparent;
 	block-size: var(--_MuiLinearProgress-fill-thickness);
-	border-radius: calc(infinity * 1px);
+	border-radius: var(--stratakit-radius-round);
 
 	&:where(.MuiLinearProgress-colorPrimary) {
 		--_MuiLinearProgress-color: var(--stratakit-color-icon-accent-strong);
@@ -25,10 +25,6 @@
 
 	&:where(.MuiLinearProgress-colorWarning) {
 		--_MuiLinearProgress-color: var(--stratakit-color-icon-attention-base);
-	}
-
-	&:where(.MuiLinearProgress-colorInfo) {
-		--_MuiLinearProgress-color: var(--stratakit-color-icon-info-base);
 	}
 
 	&:where(.MuiLinearProgress-colorSuccess) {

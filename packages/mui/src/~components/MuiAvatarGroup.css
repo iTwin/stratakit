@@ -13,7 +13,7 @@
 }
 
 .🥝MuiAvatarGroupItem {
-	--✨mask-gap: var(--stratakit-space-x1);
+	--✨mask-gap: var(--stratakit-space-100);
 	--✨mask-size: calc(100% + var(--✨mask-gap));
 
 	&:where(:not(:nth-child(1 of &))) {

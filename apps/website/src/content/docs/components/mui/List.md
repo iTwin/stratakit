@@ -3,7 +3,7 @@ title: List
 description: Lists are used to display a collection of items.
 links:
   muiDocs: https://mui.com/material-ui/react-list/
-  apiReference: https://mui.com/material-ui/api/list/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/List.default" min-width="300px" min-height="200px"}
@@ -11,6 +11,11 @@ links:
 ## StrataKit MUI modifications
 
 - Spacing and sizing has been adjusted to better align with StrataKit's more compact visual design language.
+- The `ListSubheader` component renders as a `<div>` element by default.
+- The `subheader` props of `List` is not supported. Use the `ListSubheader` component instead.
+- The `color` prop of `ListSubheader` is not supported.
+- The `action` prop of `ListButtonItem` is not supported by StrataKit.
+- Ripple effect removed from `ListItemButton`. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 
 ## Examples
 
@@ -21,3 +26,19 @@ links:
 ### ListSubheader
 
 ::example{src="mui/List.subheader" min-width="300px"}
+
+### Secondary action
+
+The [`secondaryAction`](https://mui.com/material-ui/api/list-item/#list-item-prop-secondaryAction) prop can be used to show an [**IconButton**](/components/iconbutton), which can be triggered separately from the main `ListItemButton`. In the following example, clicking on the list item text does not trigger any action.
+
+::example{src="mui/List.secondary-action-only"}
+
+## API reference
+
+- [`List`](https://mui.com/material-ui/api/list/)
+- [`ListItem`](https://mui.com/material-ui/api/list-item/)
+- [`ListItemButton`](https://mui.com/material-ui/api/list-item-button/)
+- [`ListItemText`](https://mui.com/material-ui/api/list-item-text/)
+- [`ListItemIcon`](https://mui.com/material-ui/api/list-item-icon/)
+- [`ListItemAvatar`](https://mui.com/material-ui/api/list-item-avatar/)
+- [`ListSubheader`](https://mui.com/material-ui/api/list-subheader/)

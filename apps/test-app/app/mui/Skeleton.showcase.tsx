@@ -8,7 +8,7 @@ import SkeletonVariants from "examples/mui/Skeleton.variants.tsx";
 
 export default function SkeletonExamples() {
 	return (
-		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
+		<Stack spacing={4} sx={{ alignSelf: "stretch" }}>
 			<SkeletonDefault />
 			<SkeletonVariants />
 		</Stack>

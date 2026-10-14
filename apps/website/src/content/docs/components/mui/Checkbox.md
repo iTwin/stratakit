@@ -3,7 +3,7 @@ title: Checkbox
 description: Checkboxes are for confirming a predefined input.
 links:
   muiDocs: https://mui.com/material-ui/react-checkbox/
-  apiReference: https://mui.com/material-ui/api/checkbox/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Checkbox.default"}
@@ -21,9 +21,9 @@ Make sure the **Checkbox** is suitable for your use case. There may be other, mo
 
 ## StrataKit MUI modifications
 
+- The `action`, `checkedIcon`, `icon`, `indeterminateIcon`, `LinkComponent`, and `size` props are not supported.
 - The `color` prop is not supported. Color is determined automatically based on state (e.g., checked, disabled, error).
-- The `icon` prop is not supported.
-- The `size` prop defaults to `"medium"`, and does not support `"small"` or `"large"`.
+- Ripple effect removed. The `centerRipple`, `disableRipple`, `disableFocusRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps` and `touchRippleRef` props are not supported.
 - The checkbox implementation and styling differ from the default `svg` approach and use custom pseudo-elements.
 - The interactive hit area extends beyond the visual bounds of the checkbox. The additional hit area does not consume layout space, so be mindful when placing the checkbox next to adjacent elements or container boundaries.
 - Includes full `forced-colors` support.
@@ -65,3 +65,12 @@ Use the `error` prop on `FormControl` to display the `FormHelperText` in an erro
 - Don't omit a programmatically associated label.
 - Don't use the `checked` state of one **Checkbox** to alter the `checked` state of others (don't use **Checkboxes** as [**Radios**](/components/radio)).
 - Don't use a **Checkbox** when the effect of checking it is instantaneous (no confirmation or submission is required). Use [**Switch**](/components/switch) instead.
+
+## API reference
+
+- [`Checkbox`](https://mui.com/material-ui/api/checkbox/)
+- [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`FormControlLabel`](https://mui.com/material-ui/api/form-control-label/)
+- [`FormGroup`](https://mui.com/material-ui/api/form-group/)
+- [`FormLabel`](https://mui.com/material-ui/api/form-label/)
+- [`FormHelperText`](https://mui.com/material-ui/api/form-helper-text/)

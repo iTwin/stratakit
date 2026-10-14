@@ -1,0 +1,1 @@
+var e=`/1787/docs/_astro/rename.BvvUZl9x.svg`,t=`${e}#icon`;`${e}`;export{t};

@@ -141,13 +141,13 @@ const { id } = Astro.props;
 				margin-block-start: var(--sl-content-gap-y);
 
 				list-style-type: "";
+				display: flex;
 			}
 
 			li {
-				display: inline;
-
 				&:not(:last-child)::after {
 					content: ", " / "";
+					white-space: pre;
 				}
 			}
 		}

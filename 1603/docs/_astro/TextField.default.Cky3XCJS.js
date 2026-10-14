@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{t}from"./TextField.CKl_jepv.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Name`});export{r as default};

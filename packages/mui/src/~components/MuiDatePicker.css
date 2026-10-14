@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiYearCalendar-root {
-	--_MuiYearCalendar-fade-size: var(--stratakit-space-x2);
+	--_MuiYearCalendar-fade-size: var(--stratakit-space-200);
 
 	animation: --_MuiYearCalendar-fade-edges linear both;
 	animation-timeline: scroll(self block);
@@ -180,17 +180,17 @@
 				outline-offset: var(--🥝focus-outline-offset);
 			}
 
-      &::after {
-        content: "";
-        position: absolute;
-        inset-block-end: var(--stratakit-space-50);
-        aspect-ratio: 1;
-        background-color: var(--_MuiPickerDay-today-dot-background-color, var(--✨dot--default));
-        block-size: var(--stratakit-space-100);
-        inline-size: var(--stratakit-space-100);
-        border-radius: var(--stratakit-radius-round);
-        transition: background-color 150ms ease-out;
-      }
+			&::after {
+				content: "";
+				position: absolute;
+				inset-block-end: var(--stratakit-space-50);
+				aspect-ratio: 1;
+				background-color: var(--_MuiPickerDay-today-dot-background-color, var(--✨dot--default));
+				block-size: var(--stratakit-space-100);
+				inline-size: var(--stratakit-space-100);
+				border-radius: var(--stratakit-radius-round);
+				transition: background-color 150ms ease-out;
+			}
 
 			@media (any-hover: hover) {
 				&:where(:not(.Mui-disabled):hover) {

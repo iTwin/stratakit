@@ -245,6 +245,10 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			`[data-icon="${iconDialog.iconName}"] button`,
 		);
 		iconButton?.focus();
+
+		const url = new URL(location.href);
+		url.hash = "";
+		history.replaceState(null, "", url);
 	});
 
 	const countElement = document.querySelector<HTMLElement>("#icon-count")!;

@@ -1,1 +1,0 @@
-import{t as e}from"./info-B3h_V-Fg.js";var t=`${e}#icon`;`${e}`;export{t};

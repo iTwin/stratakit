@@ -81,6 +81,12 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button's*
 
 ::example{src="mui/Button.sizes"}
 
+### Loading
+
+Use the `loading` prop to indicate that user input has been accepted and is in the process of being responded to.
+
+::example{src="mui/Button.loading"}
+
 ## ✅ Do
 
 - Use **Button** for form submissions, modal confirmations, and other non-navigational calls-to-action.

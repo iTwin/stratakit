@@ -156,6 +156,7 @@
 	border: 1px solid var(--_MuiPickerDay-border-color, transparent);
 	border-radius: var(--stratakit-radius-sm);
 	color: var(--_MuiPickerDay-color, var(--✨color--default));
+	font-size: var(--stratakit-font-size-body-md);
 	margin: var(--_MuiDayCalendar-day-margin);
 	transition: all 150ms ease-out;
 	transition-property: background-color, border-color, color;

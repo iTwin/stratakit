@@ -1,0 +1,1 @@
+import{t as e}from"./info-DfacS2dZ.js";var t=`${e}#icon`;`${e}`;export{t};

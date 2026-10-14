@@ -20,14 +20,22 @@ export class IconDialog extends HTMLElement {
 
 		this.#dialog.ariaLabelledByElements = [this.#dialogHeading];
 
-		this.#dialog.addEventListener("click", this.#handleClose);
+		this.#dialog.addEventListener("click", this.#handleClick);
+
+		const dismissButton =
+			this.querySelector<HTMLButtonElement>(".header button")!;
+		dismissButton.addEventListener("click", this.#handleDismissClick);
 
 		this.#symbols = this.querySelector("icon-symbols")!;
 		this.#aliases = this.querySelector("icon-aliases")!;
 	}
 
-	#handleClose = (e: PointerEvent) => {
+	#handleClick = (e: PointerEvent) => {
 		if (e.target !== e.currentTarget) return;
+		this.#dialog.close();
+	};
+
+	#handleDismissClick = () => {
 		this.#dialog.close();
 	};
 

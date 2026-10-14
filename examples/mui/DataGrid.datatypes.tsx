@@ -4,15 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import Box from "@mui/material/Box";
 import { visuallyHidden } from "@mui/utils";
-import {
-	DataGrid,
-	type GridColDef,
-	type GridRenderCellParams,
-} from "@mui/x-data-grid";
-
-import style from "./DataGrid.datatypes.module.css";
+import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 
 interface Asset {
 	assetId: number;
@@ -21,7 +14,6 @@ interface Asset {
 	purchaseDate: string;
 	cost: number;
 	inService: boolean;
-	tagColor: string;
 }
 
 const rows: Asset[] = [
@@ -32,7 +24,6 @@ const rows: Asset[] = [
 		purchaseDate: "2024-03-15",
 		cost: 2899,
 		inService: true,
-		tagColor: "#2E7D32",
 	},
 	{
 		assetId: 1002,
@@ -41,7 +32,6 @@ const rows: Asset[] = [
 		purchaseDate: "2024-04-02",
 		cost: 899,
 		inService: true,
-		tagColor: "#1976D2",
 	},
 	{
 		assetId: 1003,
@@ -50,7 +40,6 @@ const rows: Asset[] = [
 		purchaseDate: "2025-01-10",
 		cost: 1599,
 		inService: true,
-		tagColor: "#1976D2",
 	},
 	{
 		assetId: 1004,
@@ -59,7 +48,6 @@ const rows: Asset[] = [
 		purchaseDate: "2022-06-21",
 		cost: 749,
 		inService: true,
-		tagColor: "#ED6C02",
 	},
 	{
 		assetId: 1005,
@@ -68,7 +56,6 @@ const rows: Asset[] = [
 		purchaseDate: "2025-02-18",
 		cost: 12499,
 		inService: true,
-		tagColor: "#2E7D32",
 	},
 	{
 		assetId: 1006,
@@ -77,7 +64,6 @@ const rows: Asset[] = [
 		purchaseDate: "2023-09-07",
 		cost: 18950,
 		inService: true,
-		tagColor: "#9C27B0",
 	},
 	{
 		assetId: 1007,
@@ -86,7 +72,6 @@ const rows: Asset[] = [
 		purchaseDate: "2025-05-14",
 		cost: 1299,
 		inService: true,
-		tagColor: "#1976D2",
 	},
 	{
 		assetId: 1008,
@@ -95,7 +80,6 @@ const rows: Asset[] = [
 		purchaseDate: "2023-11-29",
 		cost: 2549,
 		inService: true,
-		tagColor: "#2E7D32",
 	},
 	{
 		assetId: 1009,
@@ -104,7 +88,6 @@ const rows: Asset[] = [
 		purchaseDate: "2022-10-12",
 		cost: 649,
 		inService: true,
-		tagColor: "#ED6C02",
 	},
 	{
 		assetId: 1010,
@@ -113,7 +96,6 @@ const rows: Asset[] = [
 		purchaseDate: "2024-07-01",
 		cost: 3199,
 		inService: true,
-		tagColor: "#1976D2",
 	},
 	{
 		assetId: 1011,
@@ -122,7 +104,6 @@ const rows: Asset[] = [
 		purchaseDate: "2023-05-24",
 		cost: 4599,
 		inService: true,
-		tagColor: "#2E7D32",
 	},
 	{
 		assetId: 1012,
@@ -131,7 +112,6 @@ const rows: Asset[] = [
 		purchaseDate: "2025-03-21",
 		cost: 8749,
 		inService: true,
-		tagColor: "#9C27B0",
 	},
 	{
 		assetId: 1013,
@@ -140,7 +120,6 @@ const rows: Asset[] = [
 		purchaseDate: "2024-01-17",
 		cost: 3499,
 		inService: true,
-		tagColor: "#1976D2",
 	},
 	{
 		assetId: 1014,
@@ -149,7 +128,6 @@ const rows: Asset[] = [
 		purchaseDate: "2021-08-30",
 		cost: 5299,
 		inService: false,
-		tagColor: "#D32F2F",
 	},
 	{
 		assetId: 1015,
@@ -158,7 +136,6 @@ const rows: Asset[] = [
 		purchaseDate: "2025-04-08",
 		cost: 10999,
 		inService: true,
-		tagColor: "#9C27B0",
 	},
 	{
 		assetId: 1016,
@@ -167,7 +144,6 @@ const rows: Asset[] = [
 		purchaseDate: "2022-12-15",
 		cost: 4499,
 		inService: false,
-		tagColor: "#616161",
 	},
 	{
 		assetId: 1017,
@@ -176,7 +152,6 @@ const rows: Asset[] = [
 		purchaseDate: "2025-06-03",
 		cost: 1399,
 		inService: true,
-		tagColor: "#1976D2",
 	},
 	{
 		assetId: 1018,
@@ -185,7 +160,6 @@ const rows: Asset[] = [
 		purchaseDate: "2024-09-11",
 		cost: 1799,
 		inService: true,
-		tagColor: "#2E7D32",
 	},
 	{
 		assetId: 1019,
@@ -194,7 +168,6 @@ const rows: Asset[] = [
 		purchaseDate: "2023-02-27",
 		cost: 6899,
 		inService: true,
-		tagColor: "#ED6C02",
 	},
 	{
 		assetId: 1020,
@@ -203,25 +176,8 @@ const rows: Asset[] = [
 		purchaseDate: "2024-11-05",
 		cost: 24990,
 		inService: true,
-		tagColor: "#9C27B0",
 	},
 ];
-
-function Swatch({ color = "transparent" }: { color?: string }) {
-	return (
-		<Box
-			sx={{
-				backgroundColor: color,
-				height: "16px",
-				width: "16px",
-				borderWidth: "1px",
-				borderStyle: "solid",
-				borderColor: `contrast-color(var(${color}))`,
-				borderRadius: "var(--stratakit-radius-sm)",
-			}}
-		/>
-	);
-}
 
 const costFormatter = new Intl.NumberFormat("en", {
 	style: "currency",
@@ -274,16 +230,6 @@ const columns: GridColDef<Asset>[] = [
 		field: "inService",
 		headerName: "In Service?",
 		type: "boolean",
-		editable: true,
-	},
-	{
-		field: "tagColor",
-		headerName: "Tag Color",
-		type: "custom",
-		cellClassName: style.color,
-		renderCell: (params: GridRenderCellParams<Asset, string>) => (
-			<Swatch color={params.value} />
-		),
 		editable: true,
 	},
 ];

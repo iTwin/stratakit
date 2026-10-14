@@ -58,7 +58,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			const href = getIconHref(iconName);
 			return (
 				<div role="listitem" class="icon" data-icon={iconName} data-href={href}>
-					<button id={iconName} command="show-modal" commandfor="icon-dialog">
+					<button id={iconName} type="button">
 						<svg>
 							<use href={`${href}#${defaultSymbol}`} />
 						</svg>
@@ -203,12 +203,6 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	import iconsMeta from "@stratakit/icons/icons-meta.json";
 	import type { IconDialog } from "./IconDialog.ts";
 
-	declare global {
-		interface HTMLElementEventMap {
-			command: CommandEvent;
-		}
-	}
-
 	const debouncedFilter = debounce(filter, 200);
 
 	const symbolInputs = document.querySelectorAll<HTMLInputElement>(
@@ -221,25 +215,31 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	const searchInput = document.querySelector<HTMLInputElement>("#icon-search-input")!;
 	searchInput.addEventListener("input", debouncedFilter);
 
-	const iconDialog = document.querySelector<IconDialog>("icon-dialog")!;
-	iconDialog.dialog.addEventListener("command", (e) => {
-		if (e.command !== "show-modal") return;
+	const icons = document.querySelectorAll<HTMLElement>("[data-icon]");
+	for (const icon of icons) {
+		const iconButton = icon.querySelector<HTMLButtonElement>("button");
+		if (!iconButton) continue;
 
-		const iconName = e.source?.parentElement?.dataset.icon;
-		if (!iconName) return;
+		iconButton.addEventListener("click", () => {
+			const iconName = icon.dataset.icon;
+			if (!iconName) return;
 
-		const href = e.source?.parentElement?.dataset.href!;
-		if (!href) return;
+			const href = icon.dataset.href;
+			if (!href) return;
 
-		iconDialog.renderIcon({
-			href,
-			iconName,
+			iconDialog.renderIcon({
+				href,
+				iconName,
+			});
+			iconDialog.dialog.showModal();
+
+			const url = new URL(location.href);
+			url.hash = iconName;
+			history.replaceState(null, "", url);
 		});
+	}
 
-		const url = new URL(location.href);
-		url.hash = iconName ?? "";
-		history.replaceState(null, "", url);
-	});
+	const iconDialog = document.querySelector<IconDialog>("icon-dialog")!;
 	iconDialog.dialog.addEventListener("close", () => {
 		const iconButton = document.querySelector<HTMLElement>(
 			`[data-icon="${iconDialog.iconName}"] button`,
@@ -252,7 +252,6 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 	});
 
 	const countElement = document.querySelector<HTMLElement>("#icon-count")!;
-	const icons = Array.from(document.querySelectorAll<HTMLElement>("[data-icon]"));
 
 	function filter() {
 		const query = searchInput.value;

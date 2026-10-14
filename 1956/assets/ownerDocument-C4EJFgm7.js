@@ -1,0 +1,1 @@
+import{t as e}from"./ownerDocument-Zu5Vm1vv.js";function t(e,t=166){let n;function r(...r){clearTimeout(n),n=setTimeout(()=>{e.apply(this,r)},t)}return r.clear=()=>{clearTimeout(n)},r}var n=e;export{t as n,n as t};

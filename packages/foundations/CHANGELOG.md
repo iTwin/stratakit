@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.0.4
+
+### Patch Changes
+
+- [#1963](https://github.com/iTwin/stratakit/pull/1963): Removed leftover `-faded` variables from light mode. These variables were previously removed from dark mode as part of the `1.0.0` release.
+
 ## 1.0.3
 
 ### Patch Changes

@@ -5,7 +5,7 @@ description: Introduces a page and can contain its identity, breadcrumbs, and ac
 
 ::example{src="composite/Header.default"}
 
-Use a native [**`<header>`**](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) for introductory content at the top of a page. This example shows the application name with [**Breadcrumbs**](/components/breadcrumbs/).
+Use a native [**`<header>`**](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) for introductory content at the top of a page. This example shows the application name with the [**Breadcrumbs**](/components/breadcrumbs/) component.
 
 ## ✅ Do
 

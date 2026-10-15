@@ -49,10 +49,6 @@
 	}
 }
 
-:is(.MuiYearCalendar-button, .MuiMonthCalendar-button) {
-	text-align: center;
-}
-
 .MuiMultiSectionDigitalClockSection-item:is(.MuiMenuItem-root) {
 	&::before {
 		content: none;
@@ -148,6 +144,7 @@
 	color: var(--_MuiPickerDay-color, var(--✨color--default));
 	font-size: var(--stratakit-font-size-body-md);
 	margin: var(--_MuiDayCalendar-day-margin);
+	text-align: center;
 	transition: all 150ms ease-out;
 	transition-property: background-color, border-color, color;
 

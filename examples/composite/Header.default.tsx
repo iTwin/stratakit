@@ -16,9 +16,7 @@ import styles from "./Header.default.module.css";
 export default () => {
 	return (
 		<header className={styles.header}>
-			<Typography variant="body-md" render={<h1 />}>
-				StrataKit
-			</Typography>
+			<Typography variant="body-md">Acme app</Typography>
 
 			<Breadcrumbs aria-label="breadcrumb">
 				<Link href="#">Project</Link>

@@ -135,22 +135,15 @@
 	border-top-color: var(--_MuiDataGrid-row-border-color);
 }
 
-.MuiDataGrid-menu {
-	:where(.MuiPaper-root) {
-		/* Match styling from MuiMenu.css for column header menu and export menu*/
-		box-shadow: var(--stratakit-shadow-surface-lg);
-		border: 1px solid var(--stratakit-color-border-page-base);
-	}
-
-	/* Update padding on both the export and column header menu.  Only the column
-	   header menu uses .MuiDataGrid-menuList, this selector catches both */
-	:where(.MuiList-root) {
-		padding-inline: var(--stratakit-space-100);
-	}
+/* Update padding on both the export and column header menu.  Only the column
+	 header menu uses .MuiDataGrid-menuList, this selector catches both */
+.MuiDataGrid-menu .MuiList-root {
+	padding-inline: var(--stratakit-space-100);
 }
 
 /* Match styling from MuiMenu.css for column and filter dialogs */
-.MuiDataGrid-paper {
+.MuiDataGrid-paper,
+.MuiDataGrid-menu .MuiPaper-root {
 	box-shadow: var(--stratakit-shadow-surface-lg);
 	border: 1px solid var(--stratakit-color-border-page-base);
 }

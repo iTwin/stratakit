@@ -5,13 +5,14 @@ description: Introduces a page and can contain its identity, breadcrumbs, and ac
 
 ::example{src="composite/Header.default"}
 
-Use a native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) for introductory content at the top of a page. This example combines a page heading, project and model buttons grouped with MUI [`Breadcrumbs`](/components/breadcrumbs/), and utility actions.
+Use a native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) for introductory content at the top of a page. This example combines a page heading with MUI [`Breadcrumbs`](/components/breadcrumbs/).
 
 ## ✅ Do
 
 - Place the page-level header before the main content.
 - Give each navigation landmark a descriptive accessible name.
 - Use links for navigation and buttons for actions.
+- On narrow viewports, follow the [Breadcrumbs truncation example](/components/breadcrumbs/#truncation) to keep long trails compact and make hidden items available through a labeled control.
 
 ## 🚫 Don't
 
@@ -21,8 +22,6 @@ Use a native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Elem
 ## API reference
 
 - [`Breadcrumbs`](https://mui.com/material-ui/api/breadcrumbs/)
-- [`Icon`](/reference/mui/Icon)
-- [`IconButton`](https://mui.com/material-ui/api/icon-button/)
 - [`Link`](https://mui.com/material-ui/api/link/)
 - [`Typography`](https://mui.com/material-ui/api/typography/)
 - [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header)

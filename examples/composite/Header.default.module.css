@@ -4,11 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 .header {
-	--header-height: 56px;
-
 	background-color: var(--stratakit-color-bg-page-base);
 	border-block-end: 1px solid var(--stratakit-color-border-neutral-muted);
-	min-block-size: var(--header-height);
+	min-block-size: 56px;
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;

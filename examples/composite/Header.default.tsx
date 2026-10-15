@@ -25,19 +25,6 @@ export default () => {
 					Version
 				</Link>
 			</Breadcrumbs>
-
-			<ul className={styles.list}>
-				<li>
-					<IconButton label="Search">
-						<Icon href={svgSearch} />
-					</IconButton>
-				</li>
-				<li>
-					<IconButton label="More options">
-						<Icon href={svgMoreVertical} />
-					</IconButton>
-				</li>
-			</ul>
 		</header>
 	);
 };

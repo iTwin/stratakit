@@ -15,12 +15,3 @@
 	gap: var(--stratakit-space-300);
 	padding-inline: var(--stratakit-space-300);
 }
-
-.list {
-	display: flex;
-	flex-wrap: wrap;
-	list-style: none;
-	margin: 0;
-	margin-inline-start: auto;
-	padding: 0;
-}

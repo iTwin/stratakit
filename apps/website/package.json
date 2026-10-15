@@ -74,7 +74,7 @@
 		"examples": "workspace:*",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"sharp": "^0.35.4"
+		"sharp": "^0.35.5"
 	},
 	"devDependencies": {
 		"@axe-core/playwright": "^4.12.1",

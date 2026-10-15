@@ -46,7 +46,7 @@ export default function DefaultExample() {
 	const captionId = React.useId();
 	return (
 		<div role="group" aria-labelledby={captionId}>
-			<Typography variant="headline-sm" id={captionId}>
+			<Typography variant="headline-sm" id={captionId} render={<div />}>
 				Game of Thrones Characters
 			</Typography>
 			<DataGrid

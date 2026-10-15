@@ -7,7 +7,7 @@
 	border: none;
 }
 /* 
-  Select all the cell elements in the column header row.  Both the normal colum
+  Select all the cell elements in the column header row.  Both the normal column
   header cells and undocumented filler elements.
 */
 .MuiDataGrid-columnHeader,
@@ -77,7 +77,7 @@
 
 	/* 
 		Rows share a border and each one renders its bottom border, and uses its
-		previous sibiling for the top border.  If the next row is selected, this row
+		previous sibling for the top border.  If the next row is selected, this row
 		needs to adjust it's bottom border color to match the highlight.
 	*/
 	&:has(+ :where(.MuiDataGrid-row.Mui-selected)) {
@@ -122,10 +122,6 @@
 	box-shadow: none;
 	background: var(--_MuiDataGrid-row-background-color);
 }
-
-/* .MuiDataGrid-toolbar {
-	background: none;
-} */
 
 .MuiDataGrid-filterFormDeleteIcon {
 	align-items: flex-end; /* Align with the input field when the label and input field are vertically stacked */

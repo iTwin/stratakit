@@ -117,7 +117,7 @@
 	margin-inline: var(--_MuiDayCalendar-day-margin);
 }
 
-:is(.MuiPickerDay-root, .MuiYearCalendar-button) {
+:is(.MuiPickerDay-root, .MuiYearCalendar-button, .MuiMonthCalendar-button) {
 	/* #region Variables */
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 	--✨bg--selected: var(--stratakit-color-bg-glow-on-surface-accent-pressed);

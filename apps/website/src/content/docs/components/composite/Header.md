@@ -3,7 +3,7 @@ title: Header
 description: Introduces a page and can contain its identity, breadcrumbs, and actions.
 ---
 
-::example{src="composite/Header.default"}
+::example{src="composite/Header.default" min-width="450px"}
 
 Use the HTML [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) element for introductory content at the top of a page. This example shows the application name with the [**Breadcrumbs**](/components/breadcrumbs/) component.
 

@@ -13,3 +13,7 @@
 	gap: var(--stratakit-space-300);
 	padding-inline: var(--stratakit-space-300);
 }
+
+.divider {
+	block-size: 1rem;
+}

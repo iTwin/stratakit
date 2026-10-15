@@ -22,6 +22,7 @@ Use the HTML [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Elem
 ## API reference
 
 - [`Breadcrumbs`](https://mui.com/material-ui/api/breadcrumbs/)
+- [`Divider`](https://mui.com/material-ui/api/divider/)
 - [`Link`](https://mui.com/material-ui/api/link/)
 - [`Typography`](https://mui.com/material-ui/api/typography/)
 - [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header)

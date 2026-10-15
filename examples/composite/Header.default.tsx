@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Divider from "@mui/material/Divider";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 
@@ -13,6 +14,8 @@ export default () => {
 	return (
 		<header className={styles.header}>
 			<Typography variant="body-md">Acme app</Typography>
+
+			<Divider orientation="vertical" className={styles.divider} />
 
 			<Breadcrumbs aria-label="breadcrumb">
 				<Link href="#">Project</Link>

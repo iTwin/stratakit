@@ -4,12 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
-import IconButton from "@mui/material/IconButton";
 import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
-import { svgMoreVertical } from "@stratakit/icons/more-vertical";
-import { svgSearch } from "@stratakit/icons/search";
-import { Icon } from "@stratakit/mui";
 
 import styles from "./Header.default.module.css";
 

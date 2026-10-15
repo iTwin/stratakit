@@ -1,7 +1,5 @@
 ---
 "@stratakit/foundations": minor
-"@stratakit/structures": patch
-"@stratakit/mui": minor
 ---
 
-Removed rendering of Ariakit [`PortalContext`](https://ariakit.com/reference/portal-context) from portal provider. StrataKit components use `PortalContext` of `@stratakit/foundations`.
+Removed Ariakit's [`PortalContext`](https://ariakit.com/reference/portal-context) from the `Root` component. StrataKit components that were previously relying on this context now use the `PortalContext` from `@stratakit/foundations` instead.

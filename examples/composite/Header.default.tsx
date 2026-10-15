@@ -15,7 +15,11 @@ export default () => {
 		<header className={styles.header}>
 			<Typography variant="body-md">Acme app</Typography>
 
-			<Divider orientation="vertical" className={styles.divider} />
+			<Divider
+				orientation="vertical"
+				role="presentation"
+				className={styles.divider}
+			/>
 
 			<Breadcrumbs aria-label="breadcrumb">
 				<Link href="#">Project</Link>

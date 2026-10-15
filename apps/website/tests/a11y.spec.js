@@ -26,10 +26,7 @@ test.describe("Automated a11y scan", () => {
 				"scrollable-region-focusable": true, // This is the browser's responsibility
 
 				// aria-checked="mixed" is intentionally added to native checkbox. https://github.com/mui/material-ui/issues/20476
-				"aria-conditional-attr": [
-					"/docs/components/checkbox/",
-					"/docs/examples/mui/Checkbox.indeterminate/",
-				].includes(route),
+				"aria-conditional-attr": route === "/docs/components/checkbox/",
 			})
 				.filter(([, disable]) => disable)
 				.map(([rule]) => rule);

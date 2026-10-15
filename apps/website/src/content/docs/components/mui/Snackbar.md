@@ -12,6 +12,14 @@ links:
 
 - `Snackbar` is rendered using a [portal](https://react.dev/reference/react-dom/createPortal).
 
+## Examples
+
+### Processing
+
+You can use a `Snackbar` to provide updates while processing.
+
+::example{src="mui/Snackbar.processing"}
+
 ## API reference
 
 - [`Snackbar`](https://mui.com/material-ui/api/snackbar/)

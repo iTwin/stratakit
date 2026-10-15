@@ -1,0 +1,1 @@
+import{J as e}from"./jsx-runtime-CHTBqLa3.js";var t=e({default:()=>n}),n=`/assets/save-Brs3a-6s.svg`;export{t as n,n as t};

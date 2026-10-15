@@ -1,0 +1,1 @@
+import{t as e}from"./delete-CTy08hiw.js";`${e}`;var t=`${e}#icon-large`;export{t};

@@ -1,1 +1,0 @@
-import{r as e,t}from"./location-FZ5KK7hJ.js";var n=`${e}#icon`,r=`${e}#icon-large`,i=`${t}#icon`,a=`${t}#icon-large`;export{r as i,a as n,n as r,i as t};

@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { visuallyHidden } from "@mui/utils";
+import Typography from "@mui/material/Typography";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 
 interface Asset {
@@ -238,9 +238,9 @@ export default function DataTypesExample() {
 	const captionId = React.useId();
 	return (
 		<div role="group" aria-labelledby={captionId}>
-			<div id={captionId} style={visuallyHidden}>
+			<Typography variant="headline-sm" id={captionId}>
 				Device Inventory
-			</div>
+			</Typography>
 			<DataGrid
 				showToolbar
 				rows={rows}

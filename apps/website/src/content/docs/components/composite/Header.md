@@ -16,7 +16,7 @@ Use a native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Elem
 ## 🚫 Don't
 
 - Don't add more than one page-level `<header>` to a page.
-- Don't use a page-level header for a section or widget; use a heading element instead.
+- Don't use the page-level header for a section or widget.
 
 ## API reference
 

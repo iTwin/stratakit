@@ -20,9 +20,9 @@ Use a native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Elem
 
 ## API reference
 
-- [`Button`](https://mui.com/material-ui/api/button/)
 - [`Breadcrumbs`](https://mui.com/material-ui/api/breadcrumbs/)
 - [`Icon`](/reference/mui/Icon)
 - [`IconButton`](https://mui.com/material-ui/api/icon-button/)
+- [`Link`](https://mui.com/material-ui/api/link/)
 - [`Typography`](https://mui.com/material-ui/api/typography/)
 - [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header)

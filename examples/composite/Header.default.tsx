@@ -4,8 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
+import Link from "@mui/material/Link";
 import Typography from "@mui/material/Typography";
 import { svgMoreVertical } from "@stratakit/icons/more-vertical";
 import { svgSearch } from "@stratakit/icons/search";
@@ -21,11 +21,11 @@ export default () => {
 			</Typography>
 
 			<Breadcrumbs aria-label="breadcrumb">
-				<Button variant="text">Project</Button>
-				<Button variant="text">Model</Button>
-				<Typography aria-current="page" color="primary">
+				<Link href="#">Project</Link>
+				<Link href="#">Model</Link>
+				<Link aria-current="true" color="textSecondary">
 					Version
-				</Typography>
+				</Link>
 			</Breadcrumbs>
 
 			<ul className={styles.list}>

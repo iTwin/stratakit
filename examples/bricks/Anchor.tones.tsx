@@ -6,7 +6,7 @@ import { Anchor } from "@stratakit/bricks";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Anchor tone="accent" href="https://www.example.com/">
 				Accent
 			</Anchor>

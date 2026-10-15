@@ -30,6 +30,8 @@ import styles from "./mui.module.css";
 
 // ----------------------------------------------------------------------------
 
+export const handle = { density: "loose" } as const;
+
 export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit MUI theme" }];
 };

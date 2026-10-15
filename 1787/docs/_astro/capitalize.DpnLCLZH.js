@@ -1,0 +1,1 @@
+import{k as e}from"./styled.BVAkYyI-.js";var t=e;export{t};

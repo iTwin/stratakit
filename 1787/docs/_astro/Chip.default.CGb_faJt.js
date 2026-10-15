@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{t}from"./Chip.I1TKM055.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Default Chip`});export{r as default};

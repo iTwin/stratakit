@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{et as t,p as n}from"./useControlledValue.DinmzCLR.js";import{t as r}from"./DateCalendar.D79jLIyJ.js";var i=e(),a=()=>(0,i.jsx)(n,{dateAdapter:t,children:(0,i.jsx)(r,{})});export{a as default};

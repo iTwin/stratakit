@@ -120,12 +120,7 @@
 :is(.MuiPickerDay-root, .MuiYearCalendar-button) {
 	/* #region Variables */
 	--✨bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-	--✨bg--selected: var(--stratakit-color-bg-accent-base);
-	--✨bg--selected-hover: color-mix(
-		in oklch,
-		var(--✨bg--selected) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-strong-hover-\%)
-	);
+	--✨bg--selected: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
 
 	--✨border--today: var(--stratakit-color-border-neutral-base);
 	--✨border--today-hover: color-mix(
@@ -133,15 +128,10 @@
 		var(--✨border--today) 100%,
 		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-base-hover-\%)
 	);
-	--✨border--selected: var(--stratakit-color-border-accent-base);
-	--✨border--selected-hover: color-mix(
-		in oklch,
-		var(--✨border--selected) 100%,
-		var(--stratakit-color-glow-hue) var(--stratakit-color-border-glow-strong-hover-\%)
-	);
+	--✨border--selected: var(--stratakit-color-border-accent-strong);
 
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨color--selected: var(--stratakit-color-text-neutral-emphasis);
+	--✨color--selected: var(--stratakit-color-text-accent-strong);
 	--✨color--outside: var(--stratakit-color-text-neutral-disabled);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 
@@ -213,13 +203,6 @@
 		--_MuiPickerDay-color: var(--✨color--selected);
 
 		font-weight: 600;
-
-		@media (any-hover: hover) {
-			&:where(:not(.Mui-disabled):hover) {
-				--_MuiPickerDay-background-color: var(--✨bg--selected-hover);
-				--_MuiPickerDay-border-color: var(--✨border--selected-hover);
-			}
-		}
 	}
 
 	&:where(.Mui-disabled) {

@@ -396,9 +396,8 @@ function createTheme() {
 						openFilterButtonIcon: FilterIcon,
 					},
 					slotProps: {
-						// Work around https://github.com/mui/mui-x/issues/23848
 						basePopper: {
-							role: undefined,
+							role: undefined, // Work around https://github.com/mui/mui-x/issues/23848
 						},
 					},
 				},

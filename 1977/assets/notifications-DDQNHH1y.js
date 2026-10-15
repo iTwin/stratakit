@@ -1,0 +1,1 @@
+import{t as e}from"./notifications-cRCla6Fg.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

@@ -5,7 +5,7 @@ description: Introduces a page and can contain its identity, breadcrumbs, and ac
 
 ::example{src="composite/Header.default"}
 
-Use a native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) for introductory content at the top of a page. This example combines a page heading, project and model buttons grouped with MUI `Breadcrumbs`, and utility actions.
+Use a native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/header) for introductory content at the top of a page. This example combines a page heading, project and model buttons grouped with MUI [`Breadcrumbs`](/components/breadcrumbs/), and utility actions.
 
 ## ✅ Do
 

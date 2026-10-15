@@ -12,7 +12,7 @@ import { createKnob, isProduction } from "~/~utils.tsx";
 
 export default function ToggleButtonExamples() {
 	return (
-		<>
+		<Stack spacing={4} sx={{ alignItems: "start" }}>
 			<ToggleButtonDefault />
 			<ToggleButtonStandalone />
 			<ToggleButtonSizes />
@@ -22,7 +22,7 @@ export default function ToggleButtonExamples() {
 					<ToggleButtonPlacements_ />
 				</Stack>
 			)}
-		</>
+		</Stack>
 	);
 }
 

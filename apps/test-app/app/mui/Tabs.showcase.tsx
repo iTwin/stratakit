@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
+import Stack from "@mui/material/Stack";
 import TabsColors from "examples/mui/Tabs.colors.tsx";
 import TabsDefault from "examples/mui/Tabs.default.tsx";
 import TabsIcon from "examples/mui/Tabs.icon.tsx";
@@ -13,14 +13,14 @@ import { createKnob } from "~/~utils.tsx";
 
 export default function TabsExamples() {
 	return (
-		<>
+		<Stack spacing={4} sx={{ alignItems: "start" }}>
 			<TabsDefault />
 			<TabsSizes />
 			<TabsColors />
 			<TabsIcon />
 			<TabsIconOnly />
 			<TabsScrollable />
-		</>
+		</Stack>
 	);
 }
 

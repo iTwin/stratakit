@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{T as t,ut as n}from"./useReduceAnimations.B-_2FDdM.js";import{t as r}from"./DateCalendar.CaeNX9E6.js";var i=e(),a=()=>(0,i.jsx)(t,{dateAdapter:n,children:(0,i.jsx)(r,{})});export{a as default};

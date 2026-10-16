@@ -5,16 +5,15 @@
 
 @layer {
 	.exampleEmbedRoot {
-		display: flex;
-		flex-direction: column;
-		justify-content: flex-end;
+		display: grid;
 	}
 
 	.examplePreviewWrapper {
-		display: flex;
+		display: grid;
 		margin-inline: auto;
 		padding: 2rem;
 
+		align-items: var(--example-align-items, center);
 		min-block-size: var(--example-min-height, 125px);
 		min-inline-size: min(var(--example-min-width), 100%);
 		max-inline-size: 100%;
@@ -24,6 +23,7 @@
 
 	.toolbar {
 		display: flex;
+		width: 100%;
 		padding: var(--stratakit-space-100) var(--stratakit-space-400);
 		align-items: center;
 		justify-content: end;

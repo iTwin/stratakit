@@ -1,1 +1,0 @@
-import{i as e,n as t}from"./jsx-runtime.Dk72oS4N.js";import{g as n}from"./composeClasses.BT1Qq7qv.js";import{v as r}from"./DefaultPropsProvider.iWNKsiE-.js";var i=e(t(),1);function a(e){return Object.keys(e).length===0}function o(e=null){let t=i.useContext(n);return!t||a(t)?e:t}var s=r();function c(e=s){return o(e)}export{o as n,c as t};

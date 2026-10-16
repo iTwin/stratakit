@@ -1,1 +1,0 @@
-import{r as e}from"./composeClasses.BT1Qq7qv.js";import{t}from"./useTheme.CLeq0VeN.js";function n(t){let{theme:n,name:r,props:i}=t;return!n||!n.components||!n.components[r]||!n.components[r].defaultProps?i:e(n.components[r].defaultProps,i)}function r(e){let{props:r,name:i,defaultTheme:a,themeId:o}=e,s=t(a);return o&&(s=s[o]||s),n({theme:s,name:i,props:r})}export{n,r as t};

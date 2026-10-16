@@ -71,6 +71,10 @@ export default defineConfig({
 				},
 				{ label: "Guides", items: [{ autogenerate: { directory: "guides" } }] },
 				{
+					label: "Tokens",
+					items: [{ autogenerate: { directory: "tokens" } }],
+				},
+				{
 					label: "Components",
 					items: [
 						{

@@ -1,0 +1,1 @@
+import{t as e}from"./info-BpicxO8a.js";var t=`${e}#icon`;`${e}`;export{t};

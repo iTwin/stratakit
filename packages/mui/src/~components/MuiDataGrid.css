@@ -28,25 +28,21 @@
 }
 
 .MuiDataGrid-columnSeparator {
-	color: var(--stratakit-color-border-neutral-muted);
+	color: var(--stratakit-color-border-neutral-base);
 
-	&:where(.MuiDataGrid-columnSeparator--resizable) {
-		color: var(--stratakit-color-border-neutral-strong);
+	&:where(.MuiDataGrid-columnSeparator--resizable) :where(rect) {
+		transform-origin: center;
+		transform: scaleY(2.5);
 	}
 
 	@media (any-hover: hover) {
-		&:where(.MuiDataGrid-columnSeparator--resizable):hover {
+		&:where(.MuiDataGrid-columnSeparator--resizable:hover) {
 			color: var(--stratakit-color-border-accent-strong);
 		}
 	}
 
 	&:where(.MuiDataGrid-columnSeparator--resizing) {
 		color: var(--stratakit-color-border-accent-strong);
-	}
-
-	:where(rect) {
-		transform-origin: center;
-		transform: scaleY(3);
 	}
 }
 

@@ -1,1 +1,0 @@
-import{r as e,t}from"./window-popout-CKW58Y2P.js";var n=`${e}#icon`,r=`${e}#icon-large`,i=`${t}#icon`;`${t}`;export{n,r,i as t};

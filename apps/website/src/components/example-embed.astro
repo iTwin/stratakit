@@ -37,12 +37,9 @@
 	@layer page {
 		example-embed {
 			display: block;
-
-			&,
-			> * {
-				min-block-size: var(--example-min-height, 125px); /* Reduce layout shift */
-			}
-
+			
+			min-block-size: calc(var(--example-min-height, 125px) + 40px); /* Reduce layout shift */
+			
 			border-radius: var(--stratakit-radius-md);
 			outline: 1px solid var(--stratakit-color-border-neutral-muted);
 			background-color: var(--stratakit-color-bg-page-base);

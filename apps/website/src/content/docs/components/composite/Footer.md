@@ -16,7 +16,7 @@ Use the HTML [`<footer>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Refe
 
 ## 🚫 Don't
 
-- Don't add more than one page-level `<footer>` to a page.
+- Don't add more than one page-level **footer** to a page.
 - Don't use `position: sticky` to keep the **footer** visible while scrolling; let it follow the page content.
 - Don't add a **footer** to pages with infinite scrolling, since users can't reach it.
 - Don't add a **footer** inside widgets or deeper pages within an application.

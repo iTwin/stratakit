@@ -6,7 +6,7 @@ import { Button } from "@stratakit/bricks";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Button tone="accent">Accent</Button>
 			<Button tone="neutral">Neutral</Button>
 		</div>

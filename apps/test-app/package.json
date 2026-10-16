@@ -67,6 +67,7 @@
 			],
 			"files": [
 				"app",
+				"../../examples",
 				"vite.config.ts",
 				"react-router.config.ts"
 			],

@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.2.0
+
+### Minor Changes
+
+- [#1932](https://github.com/iTwin/stratakit/pull/1932): Add styling for semantic `<code>` and `<kbd>` elements rendered through `Typography`.
+
+### Patch Changes
+
+- [#1973](https://github.com/iTwin/stratakit/pull/1973): Fixed disabled `IconButton` displaying an outline in the default `variant`.
+- [#1909](https://github.com/iTwin/stratakit/pull/1909): Fixed padding on `ListItem` with `secondaryAction`.
+- [#1934](https://github.com/iTwin/stratakit/pull/1934): Fixed bug with `<Button loading/>` not having a visible progress indicator.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.4
+
 ## 1.1.1
 
 ### Patch Changes

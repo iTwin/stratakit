@@ -7,7 +7,6 @@ import * as React from "react";
 import { type MetaFunction, useHref, useLocation } from "react-router";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
-import Stack from "@mui/material/Stack";
 import { ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import deepmerge from "@mui/utils/deepmerge";
@@ -30,6 +29,8 @@ import type { Knob } from "~/~utils.tsx";
 import styles from "./mui.module.css";
 
 // ----------------------------------------------------------------------------
+
+export const handle = { density: "loose" } as const;
 
 export const meta: MetaFunction = () => {
 	return [{ title: "StrataKit MUI theme" }];
@@ -217,7 +218,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 					<KnobControlEntrypoint />
 					<IconButton
 						render={<a />}
-						href={useHref(`/showcase?path=mui/${name}.showcase`)}
+						href={useHref(`/standalone?path=mui/${name}.showcase`)}
 						label="Standalone showcase"
 						size="small"
 					>
@@ -226,24 +227,20 @@ function ComponentExamples(props: ComponentExamplesProps) {
 				</>
 			}
 		>
-			<Stack spacing={4} sx={{ alignItems: "start" }}>
-				<ThemeProvider
-					theme={(outerTheme: Theme): Theme =>
-						deepmerge(outerTheme, {
-							components: Object.fromEntries(
-								Object.entries(knobProps).map(
-									([componentName, defaultProps]) => [
-										componentName,
-										{ defaultProps },
-									],
-								),
-							),
-						})
-					}
-				>
-					{children}
-				</ThemeProvider>
-			</Stack>
+			<ThemeProvider
+				theme={(outerTheme: Theme): Theme =>
+					deepmerge(outerTheme, {
+						components: Object.fromEntries(
+							Object.entries(knobProps).map(([componentName, defaultProps]) => [
+								componentName,
+								{ defaultProps },
+							]),
+						),
+					})
+				}
+			>
+				{children}
+			</ThemeProvider>
 		</ExamplesShowcase>
 	);
 }

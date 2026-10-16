@@ -1,0 +1,1 @@
+import{t as e}from"./save-Wm574JBp.js";`${e}`;var t=`${e}#icon-large`;export{t};

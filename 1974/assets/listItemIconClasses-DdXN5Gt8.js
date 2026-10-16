@@ -1,1 +1,0 @@
-import{N as e,P as t}from"./DefaultPropsProvider-DXkyNpHp.js";function n(e){return t(`MuiListItemIcon`,e)}var r=e(`MuiListItemIcon`,[`root`,`alignItemsFlexStart`]);export{r as n,n as t};

@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-CHTBqLa3.js";import{t}from"./Icon-agMGDsOa.js";import{t as n}from"./Button-BwR449Pd.js";import{t as r}from"./add-Do3yT07N.js";var i=e(),a=()=>(0,i.jsx)(n,{endIcon:(0,i.jsx)(t,{href:r}),children:`Create new`});export{a as default};

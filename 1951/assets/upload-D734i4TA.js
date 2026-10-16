@@ -1,0 +1,1 @@
+import{t as e}from"./upload-Boi7XE3B.js";var t=`${e}#icon`;`${e}`;export{t};

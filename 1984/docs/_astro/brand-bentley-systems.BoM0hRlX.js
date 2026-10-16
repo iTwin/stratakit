@@ -1,0 +1,1 @@
+var e=`/1984/docs/_astro/brand-bentley-systems.DMOR13Wg.svg`,t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

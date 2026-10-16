@@ -1,1 +1,0 @@
-import{t as e}from"./arrow-down-C8TRT8tR.js";var t=`${e}#icon`;`${e}`;export{t};

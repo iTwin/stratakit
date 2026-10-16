@@ -12,7 +12,7 @@ import { createKnob, isProduction } from "~/~utils.tsx";
 
 export default function IconButtonExamples() {
 	return (
-		<>
+		<Stack spacing={4} sx={{ alignItems: "start" }}>
 			<IconButtonDefault />
 			<IconButtonSizes />
 			<IconButtonVariants />
@@ -22,7 +22,7 @@ export default function IconButtonExamples() {
 					<IconButtonPlacements_ />
 				</Stack>
 			)}
-		</>
+		</Stack>
 	);
 }
 

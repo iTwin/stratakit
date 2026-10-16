@@ -1,0 +1,1 @@
+import{t as e}from"./upload-DR7fg-vT.js";var t=`${e}#icon`;`${e}`;export{t};

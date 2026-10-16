@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-GiK9V3Xy.js";import{t}from"./Button-BM1bgZUA.js";import{t as n}from"./Tooltip-BtWkUW4S.js";var r=e(),i=()=>(0,r.jsx)(n,{title:`Save is disabled until you finish reading the documentation`,children:(0,r.jsx)(t,{disabled:!0,children:`Save`})});export{i as default};

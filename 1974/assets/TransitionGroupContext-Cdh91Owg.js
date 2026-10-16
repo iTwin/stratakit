@@ -1,0 +1,1 @@
+import{X as e,q as t}from"./jsx-runtime-GiK9V3Xy.js";import{n}from"./useEventCallback-CQ57wPqE.js";import{o as r}from"./useReducedMotion-BYa9D1LN.js";function i(e){let t=r(()=>a(e)).current;return t.next=e,n(t.effect),t}function a(e){let t={current:e,next:e,effect:()=>{t.current=t.next}};return t}var o=e(t()).createContext(null);export{i as n,o as t};

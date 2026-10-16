@@ -1,0 +1,1 @@
+import{N as e,P as t}from"./DefaultPropsProvider-DXkyNpHp.js";function n(e){return t(`MuiListItemText`,e)}var r=e(`MuiListItemText`,[`root`,`multiline`,`dense`,`inset`,`primary`,`secondary`]);export{r as n,n as t};

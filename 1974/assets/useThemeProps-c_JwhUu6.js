@@ -1,0 +1,1 @@
+import{M as e}from"./DefaultPropsProvider-DXkyNpHp.js";import{t}from"./useTheme-D-7OYzAN.js";function n(t){let{theme:n,name:r,props:i}=t;return!n||!n.components||!n.components[r]||!n.components[r].defaultProps?i:e(n.components[r].defaultProps,i)}function r(e){let{props:r,name:i,defaultTheme:a,themeId:o}=e,s=t(a);return o&&(s=s[o]||s),n({theme:s,name:i,props:r})}export{n,r as t};

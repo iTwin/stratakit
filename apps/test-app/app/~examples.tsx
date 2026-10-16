@@ -177,14 +177,14 @@ export function KnobControlEntrypoint(
 				}}
 			>
 				<Typography
-					variant="body-md"
+					variant="subtitle-sm"
 					render={<h2 />}
 					id={headingId}
-					gutterBottom
+					className={styles.exampleKnobsHeading}
 				>
 					Knobs
 				</Typography>
-				<FormGroup>
+				<FormGroup className={styles.exampleKnobsFormGroup}>
 					{[...knobs].map(([knobName, knob]) => (
 						<FormControlLabel
 							key={knobName}
@@ -196,8 +196,11 @@ export function KnobControlEntrypoint(
 							slotProps={{
 								typography: {
 									className: styles.exampleKnobLabel,
+									variant: "body-sm",
 								},
 							}}
+							labelPlacement="start"
+							className={styles.exampleKnobsField}
 						/>
 					))}
 				</FormGroup>

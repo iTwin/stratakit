@@ -1,0 +1,1 @@
+import{t as e}from"./window-popout-Cl1misxf.js";var t=`${e}#icon`;`${e}`;export{t};

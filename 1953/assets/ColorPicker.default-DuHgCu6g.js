@@ -1,0 +1,1 @@
+import{X as e,q as t,t as n}from"./jsx-runtime-CH2oXoW8.js";import{t as r}from"./Input-BikXfe5d.js";import{t as i}from"./FormControlLabel-Czhs18Uu.js";var a=e(t(),1),o=n(),s=()=>{let[e,t]=a.useState(`#188166`);return(0,o.jsx)(i,{label:`Color`,labelPlacement:`start`,control:(0,o.jsx)(r,{type:`color`,value:e,onChange:e=>t(e.target.value)})})};export{s as default};

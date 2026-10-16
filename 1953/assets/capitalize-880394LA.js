@@ -1,1 +1,0 @@
-import{M as e}from"./DefaultPropsProvider-cHBAzCNI.js";var t=e;export{t};

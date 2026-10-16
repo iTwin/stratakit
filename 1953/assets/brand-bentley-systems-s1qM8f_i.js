@@ -1,0 +1,1 @@
+import{t as e}from"./brand-bentley-systems-C443m4fX.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

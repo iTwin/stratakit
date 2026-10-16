@@ -1,0 +1,1 @@
+import{t as e}from"./rename-Ci75omff.js";var t=`${e}#icon`;`${e}`;export{t};

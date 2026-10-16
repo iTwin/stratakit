@@ -1,0 +1,1 @@
+import{t as e}from"./rename-Bn57gEBP.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./chat-KiSWHFfc.js";var t=`${e}#icon`;`${e}`;export{t};

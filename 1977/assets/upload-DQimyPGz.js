@@ -1,0 +1,1 @@
+import{t as e}from"./upload-D-ZcRRLy.js";var t=`${e}#icon`;`${e}`;export{t};

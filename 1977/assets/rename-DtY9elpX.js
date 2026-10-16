@@ -1,0 +1,1 @@
+import{t as e}from"./rename-DpYGAprx.js";var t=`${e}#icon`;`${e}`;export{t};

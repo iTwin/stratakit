@@ -50,8 +50,8 @@ importers:
         specifier: ^9.1.1
         version: 9.1.1
       "@biomejs/biome":
-        specifier: 2.5.15
-        version: 2.5.15
+        specifier: 2.5.6
+        version: 2.5.6
       "@playwright/test":
         specifier: "catalog:"
         version: 1.64.0
@@ -348,7 +348,7 @@ importers:
         version: 0.4.41(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       "@stratakit/foundations":
         specifier: ^1.0.3
-        version: link:../foundations
+        version: 1.0.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       "@stratakit/internal-utils":
         specifier: ^0.2.1
         version: link:../internal-utils
@@ -474,7 +474,7 @@ importers:
         version: 9.4.0(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0))(@types/react@19.3.0)(react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       "@stratakit/foundations":
         specifier: ^1.0.3
-        version: link:../foundations
+        version: 1.0.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       "@stratakit/icons":
         specifier: ^0.4.6
         version: link:../icons
@@ -520,7 +520,7 @@ importers:
         version: link:../bricks
       "@stratakit/foundations":
         specifier: ^1.0.3
-        version: link:../foundations
+        version: 1.0.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       "@stratakit/internal-utils":
         specifier: ^0.2.1
         version: link:../internal-utils
@@ -1047,85 +1047,85 @@ packages:
       "@types/react":
         optional: true
 
-  "@biomejs/biome@2.5.15":
+  "@biomejs/biome@2.5.6":
     resolution:
       {
-        integrity: sha512-WZTW4slm/pdkh92K6t/3aEN++44JD1PQ7squ7RCMLI1flHGl43DVOIGXvCjHiZgBMO1V4uYxoFNtqrIA4qGuIQ==,
+        integrity: sha512-lxVNjv7UF6KfhMJfL9gaUHbWdJdHbsAj6OSmwSYNdhRuG67NxNQ4Xdvh3TUxsSK9sBzJBQhEJj3AopmmNJ5pSA==,
       }
     engines: { node: ">=14.21.3" }
     hasBin: true
 
-  "@biomejs/cli-darwin-arm64@2.5.15":
+  "@biomejs/cli-darwin-arm64@2.5.6":
     resolution:
       {
-        integrity: sha512-BZVzFhJ/mUvTLMYbc9x6el0o2Uv5zP7bACYyhFb6fSc1giroXm7PL0a5KqMJ9F+/BnkYRjagD/ROSDVOZ6eapg==,
+        integrity: sha512-zMOLZP4oMrjh6m1zcSj1ud2awUPgTuMVbmQhYYWL7J8HwCnbHHBvTm7VBTRuY7epT5bez76IpKYQ11ZAqHFlnw==,
       }
     engines: { node: ">=14.21.3" }
     cpu: [arm64]
     os: [darwin]
 
-  "@biomejs/cli-darwin-x64@2.5.15":
+  "@biomejs/cli-darwin-x64@2.5.6":
     resolution:
       {
-        integrity: sha512-V5Kw63V+fVGNFhFrizDxMbGXAzZCh8kYzJpy3GI6gTapWDg7bZK9oYC9CbVgQSEdTnupz0U5Efz8Ev+5vdBBXw==,
+        integrity: sha512-JAC1VqzvO7Th5ZplU0G2uGfkZbxEe9uDDektPAhF0JLusoz1w+T4okp2bkykI0bbaO2vslKiRfj4gU43JaGreA==,
       }
     engines: { node: ">=14.21.3" }
     cpu: [x64]
     os: [darwin]
 
-  "@biomejs/cli-linux-arm64-musl@2.5.15":
+  "@biomejs/cli-linux-arm64-musl@2.5.6":
     resolution:
       {
-        integrity: sha512-tGzZUTcJCV7tj5Adh/Gn6nR4MycqA3iohq2LEcrarAgRBkU0h0OKd2UzCRkOsOYOuUGaUJb4YmqRqyy2feGGSw==,
+        integrity: sha512-eUa3jeeYvfMt19LBeh6E5PUZpxnTC4JqNWo+EDjTtQjAr2xLGnWaxACtVU1DQqmHYbvThlJzLX+ZsYgrqh2qVw==,
       }
     engines: { node: ">=14.21.3" }
     cpu: [arm64]
     os: [linux]
     libc: [musl]
 
-  "@biomejs/cli-linux-arm64@2.5.15":
+  "@biomejs/cli-linux-arm64@2.5.6":
     resolution:
       {
-        integrity: sha512-XaG7P7eeSLYETD3K9grfB0mQmpLQZjygdbsxekWBJAg4am79fGAtRpfRyNnTvXB2fZFNnJZG3nXm7HBat0+VUw==,
+        integrity: sha512-6XsYwCFkp5sMxl85ffhgeGpGgs6A7dRYFnkceZ7WVxvycuTnGdD5xa534Z3xfrBQ0JCMK/mujT6ZNPJoghedwg==,
       }
     engines: { node: ">=14.21.3" }
     cpu: [arm64]
     os: [linux]
     libc: [glibc]
 
-  "@biomejs/cli-linux-x64-musl@2.5.15":
+  "@biomejs/cli-linux-x64-musl@2.5.6":
     resolution:
       {
-        integrity: sha512-IlxUcyxilVGPsE008x13pWdkTbU3nQpP2i9b5UrbOYj6goBkKsRX1XB7yJLcV+O1H9LBchIIm4adOaVLZBX0ZQ==,
+        integrity: sha512-2Vp13QdKysH3HIWLaYLhUUwbK+jbZonJD1K+Lr0d0RO4wH7mkYd43vJixEDm8cUWrowoRz4UUHF1nm9Ae7ym8A==,
       }
     engines: { node: ">=14.21.3" }
     cpu: [x64]
     os: [linux]
     libc: [musl]
 
-  "@biomejs/cli-linux-x64@2.5.15":
+  "@biomejs/cli-linux-x64@2.5.6":
     resolution:
       {
-        integrity: sha512-xE4iEW/3LqlYj9GFgGrFsFSH51dEEpUbYWBfeOv0q87WkUDxK2o/HhreSb7qMJqck70RVM6Lg96hgedcAYcOkA==,
+        integrity: sha512-Pop9VXCFUhFTMfFefZ39S+u2rOPyNp5iHlxbZRwXGACHLy2r0jjiRgJHmaEKJzL3SyxlVeGShXhvvElvWowonA==,
       }
     engines: { node: ">=14.21.3" }
     cpu: [x64]
     os: [linux]
     libc: [glibc]
 
-  "@biomejs/cli-win32-arm64@2.5.15":
+  "@biomejs/cli-win32-arm64@2.5.6":
     resolution:
       {
-        integrity: sha512-2kPKzhNlm8C+Ru3GcO0Me2ODkCBLrVOUNuyi84RJyWDVKAA4+Kjj3jMjL938lF6BRfvltC4vB2nPY9SvN51Ovg==,
+        integrity: sha512-tDGshcm6BdkZOCGnTDX0Y8/U4IfBSlnUU7T56nNDuPEfed+aHg+u8G36NB43fJVl0Os6+QURXIE1yuD7AaEofA==,
       }
     engines: { node: ">=14.21.3" }
     cpu: [arm64]
     os: [win32]
 
-  "@biomejs/cli-win32-x64@2.5.15":
+  "@biomejs/cli-win32-x64@2.5.6":
     resolution:
       {
-        integrity: sha512-yAzh4UqEImV6Hcy0zjUqNfJAsUhoD64FBQCdTG8Md/Z2wQeVP/ZmJ3XRYAs1g8J9fjTFyl2fCtc5FB5til47+g==,
+        integrity: sha512-WN05KwXnTO/2J45RQPvzZMXf7tZUIofHoR35xIPfCo7pQ2RFidxI8sfb5mGsaTxdMmEOzHzOPRCdA5/fCpc7xQ==,
       }
     engines: { node: ">=14.21.3" }
     cpu: [x64]
@@ -2623,6 +2623,29 @@ packages:
       {
         integrity: sha512-83yeghZ2xxin3Nj8z1NMd/NCuca+gsYXswywDy5bHvwlWL8tpTQmzGeUuHd9FC3E/SBEMvzJRwWEOz5gGes9Qg==,
       }
+
+  "@stratakit/foundations@1.0.4":
+    resolution:
+      {
+        integrity: sha512-FSwg8qbpKSVGMDl6le4/+KtTTBicIOl9aDY306PDA+4c+pgwBHIVIr0q9iuVau0ST8pzE2aAvi6iGSlHeumWXw==,
+      }
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-dom:
+        optional: true
+
+  "@stratakit/internal-utils@0.2.1":
+    resolution:
+      {
+        integrity: sha512-E8oDOJubxcB7Yr6zeb55PqKTvelJjsqjNHulcmOJr443wgZNvLEqEFmCUWZ7uW2xbMBRFgbVqoxdGtrkQkravQ==,
+      }
+    peerDependencies:
+      react: ^19.0.0
+      react-dom: ^19.0.0
 
   "@tanstack/query-core@5.104.1":
     resolution:
@@ -6548,39 +6571,39 @@ snapshots:
     optionalDependencies:
       "@types/react": 19.3.0
 
-  "@biomejs/biome@2.5.15":
+  "@biomejs/biome@2.5.6":
     optionalDependencies:
-      "@biomejs/cli-darwin-arm64": 2.5.15
-      "@biomejs/cli-darwin-x64": 2.5.15
-      "@biomejs/cli-linux-arm64": 2.5.15
-      "@biomejs/cli-linux-arm64-musl": 2.5.15
-      "@biomejs/cli-linux-x64": 2.5.15
-      "@biomejs/cli-linux-x64-musl": 2.5.15
-      "@biomejs/cli-win32-arm64": 2.5.15
-      "@biomejs/cli-win32-x64": 2.5.15
+      "@biomejs/cli-darwin-arm64": 2.5.6
+      "@biomejs/cli-darwin-x64": 2.5.6
+      "@biomejs/cli-linux-arm64": 2.5.6
+      "@biomejs/cli-linux-arm64-musl": 2.5.6
+      "@biomejs/cli-linux-x64": 2.5.6
+      "@biomejs/cli-linux-x64-musl": 2.5.6
+      "@biomejs/cli-win32-arm64": 2.5.6
+      "@biomejs/cli-win32-x64": 2.5.6
 
-  "@biomejs/cli-darwin-arm64@2.5.15":
+  "@biomejs/cli-darwin-arm64@2.5.6":
     optional: true
 
-  "@biomejs/cli-darwin-x64@2.5.15":
+  "@biomejs/cli-darwin-x64@2.5.6":
     optional: true
 
-  "@biomejs/cli-linux-arm64-musl@2.5.15":
+  "@biomejs/cli-linux-arm64-musl@2.5.6":
     optional: true
 
-  "@biomejs/cli-linux-arm64@2.5.15":
+  "@biomejs/cli-linux-arm64@2.5.6":
     optional: true
 
-  "@biomejs/cli-linux-x64-musl@2.5.15":
+  "@biomejs/cli-linux-x64-musl@2.5.6":
     optional: true
 
-  "@biomejs/cli-linux-x64@2.5.15":
+  "@biomejs/cli-linux-x64@2.5.6":
     optional: true
 
-  "@biomejs/cli-win32-arm64@2.5.15":
+  "@biomejs/cli-win32-arm64@2.5.6":
     optional: true
 
-  "@biomejs/cli-win32-x64@2.5.15":
+  "@biomejs/cli-win32-x64@2.5.6":
     optional: true
 
   "@bruits/satteri-darwin-arm64@0.10.5":
@@ -7463,6 +7486,22 @@ snapshots:
       "@types/hast": 3.0.5
 
   "@shikijs/vscode-textmate@10.0.2": {}
+
+  "@stratakit/foundations@1.0.4(react-dom@19.3.0(react@19.3.0))(react@19.3.0)":
+    dependencies:
+      "@ariakit/react": 0.4.41(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      "@stratakit/internal-utils": 0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      classnames: 2.5.1
+      react-compiler-runtime: 1.0.0(react@19.3.0)
+    optionalDependencies:
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+
+  "@stratakit/internal-utils@0.2.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)":
+    dependencies:
+      react: 19.3.0
+      react-compiler-runtime: 1.0.0(react@19.3.0)
+      react-dom: 19.3.0(react@19.3.0)
 
   "@tanstack/query-core@5.104.1": {}
 

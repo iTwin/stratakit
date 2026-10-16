@@ -1,0 +1,1 @@
+import{t as e}from"./rename-CV_YrFkj.js";var t=`${e}#icon`;`${e}`;export{t};

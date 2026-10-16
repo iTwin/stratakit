@@ -43,7 +43,7 @@
 		"@axe-core/playwright": "^4.13.0",
 		"@playwright/test": "catalog:",
 		"@react-router/dev": "^8.4.0",
-		"@rolldown/plugin-babel": "^0.2.3",
+		"@rolldown/plugin-babel": "^0.2.4",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",

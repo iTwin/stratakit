@@ -1,0 +1,1 @@
+import{t as e}from"./error-CV-Zjsi9.js";var t=`${e}#icon`;`${e}`;export{t};

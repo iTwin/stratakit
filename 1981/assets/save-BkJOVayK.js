@@ -1,0 +1,1 @@
+import{t as e}from"./save-C540UTc1.js";`${e}`;var t=`${e}#icon-large`;export{t};

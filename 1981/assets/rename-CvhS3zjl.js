@@ -1,0 +1,1 @@
+import{t as e}from"./rename-BuGyw0wu.js";var t=`${e}#icon`;`${e}`;export{t};

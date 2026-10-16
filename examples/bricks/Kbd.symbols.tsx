@@ -6,7 +6,7 @@ import { Kbd } from "@stratakit/bricks";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Kbd symbol="Backspace" />
 			<Kbd symbol="Command" />
 			<Kbd symbol="Control" />

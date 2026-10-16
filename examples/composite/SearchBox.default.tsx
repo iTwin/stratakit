@@ -24,7 +24,6 @@ export default () => {
 			control={
 				<Input
 					type="search"
-					name="search"
 					placeholder="Search…"
 					value={query}
 					onChange={(event) => setQuery(event.target.value)}

@@ -23,7 +23,7 @@ To use StrataKit, add `@stratakit/mui` to your `peerDependencies`. Additionally,
 ```json
 {
 	"peerDependencies": {
-		"@mui/material": "^9.4.0",
+		"@mui/material": "^9.5.0",
 		"@stratakit/mui": "^1.0.0",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"

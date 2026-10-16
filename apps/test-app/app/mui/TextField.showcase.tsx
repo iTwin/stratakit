@@ -8,26 +8,26 @@ import TextFieldError from "examples/mui/TextField.error.tsx";
 import TextFieldIcon from "examples/mui/TextField.icon.tsx";
 import TextFieldMultiline from "examples/mui/TextField.multiline.tsx";
 import TextFieldSizes from "examples/mui/TextField.sizes.tsx";
-import { createKnob } from "~/~utils.tsx";
+import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
-export default function TextFieldExamples() {
+import type { KnobProps } from "~/~utils.tsx";
+
+export default function TextFieldExamples({
+	disabled,
+}: KnobProps<typeof knobs>) {
 	return (
-		<Stack spacing={2}>
-			<TextFieldDefault />
-			<TextFieldMultiline />
-			<TextFieldIcon />
-			<TextFieldError />
-			<TextFieldSizes />
-		</Stack>
+		<DefaultPropsProvider value={{ MuiTextField: { disabled } }}>
+			<Stack spacing={2}>
+				<TextFieldDefault />
+				<TextFieldMultiline />
+				<TextFieldIcon />
+				<TextFieldError />
+				<TextFieldSizes />
+			</Stack>
+		</DefaultPropsProvider>
 	);
 }
 
 export const knobs = {
-	disabled: createKnob({
-		props: {
-			MuiTextField: {
-				disabled: true,
-			},
-		},
-	}),
+	disabled: createKnob({ type: "boolean" }),
 };

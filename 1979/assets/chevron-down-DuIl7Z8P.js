@@ -1,0 +1,1 @@
+import{t as e}from"./chevron-down-DfW-M0Wh.js";var t=`${e}#icon`;`${e}`;export{t};

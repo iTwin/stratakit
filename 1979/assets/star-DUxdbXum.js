@@ -1,0 +1,1 @@
+import{t as e}from"./star-BVJ4yXL4.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

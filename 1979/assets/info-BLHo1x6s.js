@@ -1,0 +1,1 @@
+import{t as e}from"./info-B-2HINeC.js";var t=`${e}#icon`;`${e}`;export{t};

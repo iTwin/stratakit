@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{L as t}from"./_utils.6UACHAMe.js";import{t as n}from"./download.D1ia6enh.js";import{t as r}from"./IconButton.C08C9B4H.js";var i=`${n}#icon`;`${n}`;var a=e(),o=()=>(0,a.jsx)(r,{label:`Download`,children:(0,a.jsx)(t,{href:i})});export{o as default};

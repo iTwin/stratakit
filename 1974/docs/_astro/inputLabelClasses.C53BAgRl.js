@@ -1,0 +1,1 @@
+import{a as e,i as t}from"./composeClasses.BT1Qq7qv.js";function n(t){return e(`MuiInputLabel`,t)}var r=t(`MuiInputLabel`,[`root`,`focused`,`disabled`,`error`,`required`,`asterisk`,`formControl`,`sizeSmall`,`shrink`,`animated`,`standard`,`filled`,`outlined`]);export{r as n,n as t};

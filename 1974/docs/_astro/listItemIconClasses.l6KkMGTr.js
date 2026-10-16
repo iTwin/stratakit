@@ -1,0 +1,1 @@
+import{a as e,i as t}from"./composeClasses.BT1Qq7qv.js";function n(t){return e(`MuiListItemIcon`,t)}var r=t(`MuiListItemIcon`,[`root`,`alignItemsFlexStart`]);export{r as n,n as t};

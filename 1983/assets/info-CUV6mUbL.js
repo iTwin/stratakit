@@ -1,0 +1,1 @@
+import{t as e}from"./info-DeWso38u.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./upload-BLI1VO7a.js";var t=`${e}#icon`;`${e}`;export{t};

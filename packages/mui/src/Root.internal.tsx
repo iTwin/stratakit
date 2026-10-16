@@ -4,12 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { Role } from "@ariakit/react/role";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
-import { PortalContext } from "@stratakit/foundations";
-import { RootContext } from "@stratakit/foundations/secret-internals";
-import { useSafeContext } from "@stratakit/internal-utils/hooks";
 
 import type { StylisElement } from "@emotion/cache";
 
@@ -89,27 +85,5 @@ function hash(value: string, length: number) {
 				(value.charCodeAt(3) | 0)
 		: 0;
 }
-
-// ----------------------------------------------------------------------------
-
-type PortalContextValue = React.ContextType<typeof PortalContext>;
-
-/**
- * Provides the element that will contain the portal.
- */
-export function PortalProvider(
-	props: React.PropsWithChildren<PortalContextValue>,
-) {
-	const { children, container, unstable_getContainer } = props;
-
-	const { portalProvider } = useSafeContext(RootContext);
-
-	return (
-		<PortalContext.Provider value={{ container, unstable_getContainer }}>
-			<Role render={portalProvider ?? <React.Fragment />}>{children}</Role>
-		</PortalContext.Provider>
-	);
-}
-DEV: PortalProvider.displayName = "PortalProvider";
 
 // ----------------------------------------------------------------------------

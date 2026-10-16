@@ -39,6 +39,7 @@ export default () => {
 							<InputAdornment position="end">
 								<IconButton
 									label="Clear search"
+									size="small"
 									onClick={() => {
 										setQuery("");
 										inputRef.current?.focus();

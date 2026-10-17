@@ -11,12 +11,14 @@
 			"default": "./dist/*.js"
 		},
 		"./*.svg": "./icons/*.svg",
-		"./icons-list.json": "./icons-list.json"
+		"./icons-list.json": "./icons-list.json",
+		"./icons-meta.json": "./icons-meta.json"
 	},
 	"files": [
 		"dist",
 		"icons/*.svg",
 		"icons-list.json",
+		"icons-meta.json",
 		"LICENSE.md",
 		"CHANGELOG.md"
 	],

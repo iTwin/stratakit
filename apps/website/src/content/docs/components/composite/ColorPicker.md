@@ -23,6 +23,14 @@ Make sure the **color picker** is suitable for your use case. There may be other
 | Pick between a small number of predefined choices | ❌                                      | ✅                           | ❌                                 |
 | Enter a color code value                          | ❌                                      | ❌                           | ✅                                 |
 
+## Examples
+
+### Select
+
+Use a [**Select**](/components/select) when users need to choose from a set of predefined colors. Pair each color swatch with a descriptive name so users don't have to rely on color alone to identify an option.
+
+::example{src="composite/ColorPicker.select"}
+
 ## ✅ Do
 
 - Use a clear, descriptive label to explain what the color controls.

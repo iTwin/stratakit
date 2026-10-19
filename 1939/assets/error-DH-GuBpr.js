@@ -1,0 +1,1 @@
+import{t as e}from"./error-DO8DeB9e.js";var t=`${e}#icon`;`${e}`;export{t};

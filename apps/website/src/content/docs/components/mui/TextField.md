@@ -60,6 +60,12 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 
 ::example{src="mui/TextField.multiline" min-height="200px"}
 
+### Search
+
+Set `type="search"` and use a start adornment to create a search field. A clear button can appear after the user enters a query; give it an accessible name and return focus to the input when it is activated.
+
+::example{src="mui/TextField.search"}
+
 ## ✅ Do
 
 - Use descriptive labels and helpful error messages.
@@ -75,4 +81,5 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 
 - [`TextField`](https://mui.com/material-ui/api/text-field/)
 - [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`IconButton`](https://mui.com/material-ui/api/icon-button/)
 - [`InputAdornment`](https://mui.com/material-ui/api/input-adornment/)

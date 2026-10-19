@@ -4,10 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import IconButton from "@mui/material/IconButton";
-import Input from "@mui/material/Input";
 import InputAdornment from "@mui/material/InputAdornment";
+import TextField from "@mui/material/TextField";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 import { svgDismiss } from "@stratakit/icons/dismiss";
 import { svgSearch } from "@stratakit/icons/search";
@@ -18,39 +17,36 @@ export default () => {
 	const inputRef = React.useRef<HTMLInputElement>(null);
 
 	return (
-		<FormControlLabel
+		<TextField
 			label={<span style={visuallyHidden}>Search</span>}
-			labelPlacement="start"
-			control={
-				<Input
-					type="search"
-					placeholder="Search…"
-					value={query}
-					onChange={(event) => setQuery(event.target.value)}
-					inputRef={inputRef}
-					startAdornment={
+			placeholder="Search…"
+			value={query}
+			type="search"
+			onChange={(event) => setQuery(event.target.value)}
+			inputRef={inputRef}
+			slotProps={{
+				input: {
+					startAdornment: (
 						<InputAdornment position="start">
 							<Icon href={svgSearch} />
 						</InputAdornment>
-					}
-					endAdornment={
-						query.length > 0 && (
-							<InputAdornment position="end">
-								<IconButton
-									label="Clear search"
-									size="small"
-									onClick={() => {
-										setQuery("");
-										inputRef.current?.focus();
-									}}
-								>
-									<Icon href={svgDismiss} />
-								</IconButton>
-							</InputAdornment>
-						)
-					}
-				/>
-			}
+					),
+					endAdornment: query.length > 0 && (
+						<InputAdornment position="end">
+							<IconButton
+								label="Clear search"
+								size="small"
+								onClick={() => {
+									setQuery("");
+									inputRef.current?.focus();
+								}}
+							>
+								<Icon href={svgDismiss} />
+							</IconButton>
+						</InputAdornment>
+					),
+				},
+			}}
 		/>
 	);
 };

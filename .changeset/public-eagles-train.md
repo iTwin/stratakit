@@ -1,7 +1,5 @@
 ---
 "@stratakit/mui": minor
-"@stratakit/structures": patch
-"@stratakit/bricks": patch
 ---
 
-Replaced usage of `PortalContext` with the `PortalProvider` component.
+Added `PortalProvider` component that sets up `PortalContext` and MUI theme provider.

@@ -13,11 +13,10 @@ import {
 	isBrowser,
 	isDocument,
 } from "@stratakit/internal-utils/dom";
-import { useMergedRefs } from "@stratakit/internal-utils/hooks";
+import { useMergedRefs, useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import css from "./~styles.css.js";
-import { PortalProvider } from "./PortalProvider.js";
 import {
 	HtmlSanitizerContext,
 	RootContext,
@@ -273,6 +272,24 @@ function SynchronizeAccentColor({
 
 // ----------------------------------------------------------------------------
 
+const PortalContext = React.createContext<
+	| {
+			container: HTMLElement | null;
+			/**
+			 * Function that is lazily resolved by MUI when the portal mounts. Passing the
+			 * element directly requires the theme to be recreated once the element becomes available, which
+			 * leaves a one-commit window where portals fall back to `<body>`.
+			 *
+			 * Needed to workaround https://github.com/mui/material-ui/issues/48882
+			 */
+			unstable_getContainer?: () => HTMLElement | null;
+	  }
+	| undefined
+>(undefined);
+DEV: PortalContext.displayName = "PortalContext";
+
+// ----------------------------------------------------------------------------
+
 interface RootPortalProviderProps
 	extends Pick<RootProps, "colorScheme" | "unstable_accentColor" | "density"> {
 	children?: React.ReactNode;
@@ -280,22 +297,28 @@ interface RootPortalProviderProps
 }
 
 function RootPortalProvider(props: RootPortalProviderProps) {
+	const { portalProvider } = useSafeContext(RootContext);
+
 	const containerRef = React.useRef<HTMLDivElement>(null);
 	const [container, setContainer] = React.useState<HTMLElement | null>(null);
 
 	const getContainer = React.useCallback(() => containerRef.current, []);
 
 	return (
-		<PortalProvider container={container} unstable_getContainer={getContainer}>
-			<PortalContainer
-				colorScheme={props.colorScheme}
-				unstable_accentColor={props.unstable_accentColor}
-				density={props.density}
-				ref={useMergedRefs(containerRef, setContainer)}
-				render={props.portalContainerProp}
-			/>
-			{props.children}
-		</PortalProvider>
+		<PortalContext.Provider
+			value={{ container, unstable_getContainer: getContainer }}
+		>
+			<Role render={portalProvider ?? <React.Fragment />}>
+				<PortalContainer
+					colorScheme={props.colorScheme}
+					unstable_accentColor={props.unstable_accentColor}
+					density={props.density}
+					ref={useMergedRefs(containerRef, setContainer)}
+					render={props.portalContainerProp}
+				/>
+				{props.children}
+			</Role>
+		</PortalContext.Provider>
 	);
 }
 
@@ -489,4 +512,4 @@ function isShadow(node?: Node): node is ShadowRoot {
 
 // ----------------------------------------------------------------------------
 
-export { Root };
+export { PortalContext, Root };

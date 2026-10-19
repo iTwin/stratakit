@@ -5,10 +5,10 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
-import { PortalProvider } from "@stratakit/foundations";
 import { RootContext } from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
+import { PortalProvider } from "../PortalProvider.js";
 
 import type { BaseProps } from "@stratakit/internal-utils/props";
 

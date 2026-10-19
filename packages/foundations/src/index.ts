@@ -5,6 +5,5 @@
 "use client";
 
 export { Icon } from "./Icon.js";
-export { PortalContext, PortalProvider } from "./PortalProvider.js";
-export { Root } from "./Root.js";
+export { PortalContext, Root } from "./Root.js";
 export { unstable_loadStyles } from "./styles.js";

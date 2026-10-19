@@ -20,8 +20,9 @@ It has row and cell selection and editing as first class concepts. The grid is a
 
 | Use case                                                         | DataGrid | Table |
 | ---------------------------------------------------------------- | -------- | ----- |
-| Displaying data with no interactive components                   | ❌       | ✅    |
-| Selecting rows with no editing                                   | ❌       | ✅    |
+| Displaying data with no interactivity                            | ❌       | ✅    |
+| Selecting rows only                                              | ❌       | ✅    |
+| Filtering and sorting data                                       | ✅       | ✅    |
 | Displaying data with multiple interactive components per row     | ✅       | ✅    |
 | Spreadsheet experience where the user adjust the values of cells | ✅       | ❌    |
 

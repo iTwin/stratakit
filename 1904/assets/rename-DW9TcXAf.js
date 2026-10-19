@@ -1,1 +1,0 @@
-import{t as e}from"./rename-Df_-0avd.js";var t=`${e}#icon`;`${e}`;export{t};

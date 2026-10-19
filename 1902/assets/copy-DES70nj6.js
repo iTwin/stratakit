@@ -1,1 +1,0 @@
-import{t as e}from"./copy-BG9sLTe4.js";`${e}`;var t=`${e}#icon-large`;export{t};

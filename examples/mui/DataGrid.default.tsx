@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { visuallyHidden } from "@mui/utils";
+import Typography from "@mui/material/Typography";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 
 const columns: GridColDef<(typeof rows)[number]>[] = [
@@ -13,20 +13,17 @@ const columns: GridColDef<(typeof rows)[number]>[] = [
 		field: "firstName",
 		headerName: "First name",
 		width: 150,
-		editable: true,
 	},
 	{
 		field: "lastName",
 		headerName: "Last name",
 		width: 150,
-		editable: true,
 	},
 	{
 		field: "age",
 		headerName: "Age",
 		type: "number",
 		width: 110,
-		editable: true,
 	},
 ];
 
@@ -46,9 +43,9 @@ export default function DefaultExample() {
 	const captionId = React.useId();
 	return (
 		<div role="group" aria-labelledby={captionId}>
-			<div id={captionId} style={visuallyHidden}>
+			<Typography variant="headline-sm" id={captionId} render={<div />}>
 				Game of Thrones Characters
-			</div>
+			</Typography>
 			<DataGrid
 				showToolbar
 				rows={rows}

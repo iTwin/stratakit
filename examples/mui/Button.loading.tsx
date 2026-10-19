@@ -2,6 +2,9 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-.color {
-	align-content: center;
-}
+
+import Button from "@mui/material/Button";
+
+export default () => {
+	return <Button loading>Create new</Button>;
+};

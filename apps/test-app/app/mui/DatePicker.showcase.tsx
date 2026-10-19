@@ -2,7 +2,7 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
-
+import Stack from "@mui/material/Stack";
 import DatePickerCalendar from "examples/mui/DatePicker.calendar.tsx";
 import DatePickerDefault from "examples/mui/DatePicker.default.tsx";
 import DatePickerSizes from "examples/mui/DatePicker.sizes.tsx";
@@ -11,12 +11,12 @@ import { createKnob } from "~/~utils.tsx";
 
 export default function DatePickerExamples() {
 	return (
-		<>
+		<Stack spacing={4} sx={{ alignItems: "start" }}>
 			<DatePickerDefault />
 			<DatePickerSizes />
 			<DatePickerTime />
 			<DatePickerCalendar />
-		</>
+		</Stack>
 	);
 }
 

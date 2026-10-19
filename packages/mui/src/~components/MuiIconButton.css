@@ -77,6 +77,9 @@
 
 	&:where(.Mui-disabled) {
 		--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-disabled);
-		--_MuiIconButton-border-color: var(--stratakit-color-border-neutral-disabled);
+
+		&:where([data-_sk-variant="outlined"]) {
+			--_MuiIconButton-border-color: var(--stratakit-color-border-neutral-disabled);
+		}
 	}
 }

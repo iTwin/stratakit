@@ -12,6 +12,65 @@ Although they are very similar, use `interface` for consistency and [better dete
 
 Use the `forwardRef` utility from [packages/internal-utils](./packages/internal-utils/src/react.ts) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.
 
+### File structure
+
+- Declare the main component or function of the file near the top of the file.
+  - Helper or utility functions used in the main component can follow after.
+  - Static constants can still be declared before the main export.
+- Within `packages/`, place the `export` statement at the very bottom. This allows easier review of the API surface.
+- For React components, declare the props interface directly above the relevant component.
+- Improve the scannability of long files by grouping related code together and using separator comments to indicate different regions.
+
+### Define an interface for prop types if there are more than one or two props
+
+**✅ Do**
+
+```tsx
+interface RadioTileProps = {
+{
+	label: string;
+	description?: string;
+	value: string;
+	icon?: React.ReactNode;
+	disabled?: boolean;
+};
+
+function RadioTiles(props: RadioTileProps) {
+	/* ... */
+ }
+```
+
+**❌ Don't**
+
+```tsx
+function RadioTile(props: {
+	label: string;
+	description?: string;
+	value: string;
+	icon?: React.ReactNode;
+	disabled?: boolean;
+}) {
+	/* ... */
+}
+```
+
+### Destructure props as the first line of the function instead of the function parameters
+
+```tsx
+function RadioTiles(props: RadioTileProps) {
+	const { label, description, value, icon, disabled } = props;
+	/* ... */
+}
+```
+
+**❌ Don't**
+
+```tsx
+function RadioTile({ label, description, value, icon, disabled }: RadioTileProps) {
+	/* ... */
+}
+```
+
 ## CSS
 
 ### Group CSS rules by target element

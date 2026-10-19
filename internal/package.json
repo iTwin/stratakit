@@ -14,6 +14,6 @@
 		"lightningcss": "catalog:"
 	},
 	"scripts": {
-		"test": "node --test lightningcss.test.js"
+		"test": "node --test lightningcss.test.js theme.test.js"
 	}
 }

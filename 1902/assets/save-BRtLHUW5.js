@@ -1,0 +1,1 @@
+import{t as e}from"./save-BRDECilg.js";`${e}`;var t=`${e}#icon-large`;export{t};

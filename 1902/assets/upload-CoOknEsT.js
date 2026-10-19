@@ -1,0 +1,1 @@
+import{t as e}from"./upload-Ca95wGHd.js";var t=`${e}#icon`;`${e}`;export{t};

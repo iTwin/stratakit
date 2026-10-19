@@ -13,13 +13,15 @@ import { createKnob, isProduction } from "~/~utils.tsx";
 
 export default function ChipExamples() {
 	return (
-		<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
-			<ChipDefault />
-			<ChipOutlined />
-			<ChipClickable />
-			<ChipDeletable />
-			{!isProduction && <ChipInteractive_ />}
-			<ChipSizes />
+		<Stack spacing={4} sx={{ alignItems: "start" }}>
+			<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
+				<ChipDefault />
+				<ChipOutlined />
+				<ChipClickable />
+				<ChipDeletable />
+				{!isProduction && <ChipInteractive_ />}
+				<ChipSizes />
+			</Stack>
 		</Stack>
 	);
 }

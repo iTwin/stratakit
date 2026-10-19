@@ -15,13 +15,12 @@ import { svgCopy } from "@stratakit/icons/copy";
 import { svgScript } from "@stratakit/icons/script";
 import { svgStatusError } from "@stratakit/icons/status-error";
 import { svgStatusSuccess } from "@stratakit/icons/status-success";
-import { svgWindowPopout } from "@stratakit/icons/window-popout";
-import { Icon, Root } from "@stratakit/mui";
+import { Icon } from "@stratakit/mui";
 import { useColorScheme } from "./~utils.ts";
 
 import type { HighlighterCore } from "shiki/core";
 
-import styles from "./ExamplePreview.module.css";
+import styles from "./ExampleEmbed.module.css";
 
 // ----------------------------------------------------------------------------
 
@@ -330,15 +329,9 @@ export function ExampleEmbed({ src }: { src: string }) {
 
 				<IconButton
 					label="Open in new tab"
-					render={
-						<a
-							href={`${import.meta.env.BASE_URL}/examples/${src}`}
-							target="_blank"
-						/>
-					}
-				>
-					<Icon href={svgWindowPopout} />
-				</IconButton>
+					variant="ghost"
+					render={<a href={getStandaloneExampleUrl(src)} target="_blank" />}
+				/>
 				<IconButton
 					label="View source on GitHub"
 					render={<a href={`${examplesSrcUrl}${src}.tsx`} target="_blank" />}
@@ -436,14 +429,12 @@ function CodeBlock({
 
 // ----------------------------------------------------------------------------
 
-export function ExamplePreview({
+function ExamplePreview({
 	exampleName,
 	packageName,
-	withRoot,
 }: {
 	exampleName: string;
 	packageName: string;
-	withRoot?: boolean;
 }) {
 	const ExampleComponent = React.useMemo(() => {
 		const modules = exampleModules[packageName as keyof typeof exampleModules];
@@ -454,20 +445,10 @@ export function ExamplePreview({
 		return React.lazy(lazyImport);
 	}, [exampleName, packageName]);
 
-	const colorScheme = useColorScheme();
-
-	const content = (
+	return (
 		<React.Suspense>
 			<ExampleComponent />
 		</React.Suspense>
-	);
-
-	if (!withRoot) return content;
-
-	return (
-		<Root colorScheme={colorScheme} style={{ display: "contents" }}>
-			{content}
-		</Root>
 	);
 }
 
@@ -480,4 +461,20 @@ function parseSrc(src: string) {
 		throw new Error(`Invalid example src: ${src}`);
 	}
 	return { packageName, exampleName };
+}
+
+// ----------------------------------------------------------------------------
+
+/** Returns a URL to the standalone example page, using the test-app's [`/standalone` route](../../../test-app/app/standalone.tsx). */
+export function getStandaloneExampleUrl(src: string) {
+	const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+	// The `/standalone` route is hosted one level above the `/docs` base.
+	let url = new URL(`${base}/../standalone`, import.meta.env.SITE);
+	if (import.meta.env.DEV) {
+		url = new URL("http://localhost:1800/standalone"); // We use a separate dev server for `test-app`.
+	}
+	url.searchParams.set("path", `examples/${src}`);
+
+	return url.href;
 }

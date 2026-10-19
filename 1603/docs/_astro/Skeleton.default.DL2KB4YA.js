@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{t}from"./Skeleton.Ys2bkBqj.js";import{n}from"./example-embed.astro_astro_type_script_index_0_lang.Dc6Z3CFd.js";var r=e(),i=()=>(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(t,{}),(0,r.jsx)(`div`,{style:n,children:`Loading...`})]});export{i as default};

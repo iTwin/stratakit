@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{m as t}from"./StrataKitRoot.Cy8Sw0mN.js";import{i as n}from"./example-embed.astro_astro_type_script_index_0_lang.Dc6Z3CFd.js";var r=e(),i=()=>(0,r.jsx)(t,{title:`Save is disabled until you finish reading the documentation`,children:(0,r.jsx)(n,{disabled:!0,children:`Save`})});export{i as default};

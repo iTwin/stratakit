@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{i as t}from"./example-embed.astro_astro_type_script_index_0_lang.Dc6Z3CFd.js";var n=e(),r=()=>(0,n.jsx)(t,{children:`Create new`});export{r as default};

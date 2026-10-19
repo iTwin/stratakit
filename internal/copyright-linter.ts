@@ -16,15 +16,20 @@ if (pattern.length === 0) {
 	pattern = "**/*.{ts,tsx,js,jsx,css,html}";
 }
 
-const filePaths = fg.sync(pattern, {
-	dot: true,
-	ignore: [
-		"**/node_modules/**/*",
-		"**/build/**/*",
-		"**/dist/**/*",
-		"**/minimal-template/**/*",
-	],
-});
+let filePaths: string[] = [];
+
+if (import.meta.main) {
+	filePaths = fg.sync(pattern, {
+		dot: true,
+		ignore: [
+			"**/node_modules/**/*",
+			"**/build/**/*",
+			"**/dist/**/*",
+			"**/minimal-template/**/*",
+			"**/.wireit/**/*",
+		],
+	});
+}
 
 const copyrightLine1 =
 	"Copyright (c) Bentley Systems, Incorporated. All rights reserved.";

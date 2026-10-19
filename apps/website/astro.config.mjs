@@ -1,5 +1,7 @@
 // @ts-check
 
+import { readFileSync } from "node:fs";
+
 import { unified } from "@astrojs/markdown-remark";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
@@ -172,6 +174,18 @@ function remarkLiveExamples() {
 					return;
 				}
 
+				let rawSource;
+				try {
+					rawSource = readFileSync(
+						new URL(import.meta.resolve(`examples/${src}.tsx`)),
+						"utf8",
+					);
+				} catch {
+					file.fail(`Could not read example source: ${src}.tsx`, node);
+					return;
+				}
+				const trimmedSource = rawSource.split("\n").slice(4).join("\n").trim(); // Strip copyright header
+
 				node.data ||= {};
 
 				const verticalStretch =
@@ -189,7 +203,13 @@ function remarkLiveExamples() {
 					"data-src": src,
 					...(style ? { style } : {}),
 				};
-				node.children = [];
+				node.children = [
+					{
+						type: "code",
+						lang: "tsx",
+						value: trimmedSource,
+					},
+				];
 			}
 		});
 	};

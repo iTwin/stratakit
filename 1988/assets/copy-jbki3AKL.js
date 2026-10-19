@@ -1,0 +1,1 @@
+import{t as e}from"./copy-BR4VmDMP.js";`${e}`;var t=`${e}#icon-large`;export{t};

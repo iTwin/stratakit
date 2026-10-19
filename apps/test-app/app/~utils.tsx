@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { useSearchParams } from "react-router";
+import NativeSelect from "@mui/material/NativeSelect";
 import Switch from "@mui/material/Switch";
 import { ThemeProvider } from "@mui/material/styles";
 import deepmerge from "@mui/utils/deepmerge";
@@ -186,21 +187,32 @@ export function DefaultPropsProvider(
 
 // ----------------------------------------------------------------------------
 
-type KnobConfig = {
-	type: "boolean";
-};
+type KnobConfig =
+	| {
+			type: "boolean";
+	  }
+	| {
+			type: "select";
+			options: readonly string[];
+	  };
 
 type KnobControlProps = {
 	value: unknown;
 	onChange: (value: unknown) => void;
 };
 
-export type Knob = {
+export type Knob = KnobConfig & {
 	render: (props: KnobControlProps) => React.ReactElement;
 };
 
+type KnobValue<Config extends KnobConfig> = {
+	boolean: boolean;
+	select: Extract<Config, { type: "select" }>["options"][number];
+}[Config["type"]];
+
+/** Infers the prop types based on the defined knobs. */
 export type KnobProps<Knobs extends Record<string, Knob>> = {
-	[Name in keyof Knobs]?: boolean;
+	[Name in keyof Knobs]?: KnobValue<Knobs[Name]>;
 };
 
 /**
@@ -217,19 +229,40 @@ export type KnobProps<Knobs extends Record<string, Knob>> = {
  * ```
  *
  */
-export function createKnob(config: KnobConfig): Knob {
+export function createKnob<const Config extends KnobConfig>(config: Config) {
+	let render: Knob["render"];
+
 	switch (config.type) {
-		case "boolean":
-			return {
-				render: ({ value, onChange }) => (
-					<Switch
-						checked={value === true}
-						onChange={(_, checked) => onChange(checked)}
-						size="small"
-					/>
-				),
-			};
+		case "boolean": {
+			render = ({ value, onChange }) => (
+				<Switch
+					checked={value === true}
+					onChange={(_, checked) => onChange(checked)}
+					size="small"
+				/>
+			);
+			break;
+		}
+		case "select": {
+			render = ({ value, onChange }) => (
+				<NativeSelect
+					value={typeof value === "string" ? value : ""}
+					onChange={(event) => onChange(event.target.value || undefined)}
+					size="small"
+				>
+					<option value="">(default)</option>
+					{config.options.map((option) => (
+						<option key={option} value={option}>
+							{option}
+						</option>
+					))}
+				</NativeSelect>
+			);
+			break;
+		}
 	}
+
+	return { ...config, render };
 }
 
 // ----------------------------------------------------------------------------

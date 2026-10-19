@@ -10,9 +10,19 @@ import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
 import type { KnobProps } from "~/~utils.tsx";
 
-export default function SwitchExamples({ disabled }: KnobProps<typeof knobs>) {
+export default function SwitchExamples({
+	disabled,
+	labelPlacement,
+}: KnobProps<typeof knobs>) {
 	return (
-		<DefaultPropsProvider value={{ MuiFormControlLabel: { disabled } }}>
+		<DefaultPropsProvider
+			value={{
+				MuiFormControlLabel: {
+					disabled,
+					...(labelPlacement && { labelPlacement }),
+				},
+			}}
+		>
 			<Stack spacing={4} sx={{ alignItems: "start" }}>
 				<SwitchDefault />
 				<SwitchChecked />
@@ -24,4 +34,8 @@ export default function SwitchExamples({ disabled }: KnobProps<typeof knobs>) {
 
 export const knobs = {
 	disabled: createKnob({ type: "boolean" }),
+	labelPlacement: createKnob({
+		type: "select",
+		options: ["start", "end", "top", "bottom"],
+	}),
 };

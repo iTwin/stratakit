@@ -60,7 +60,7 @@ export default function Standalone() {
 			<div id="root" className={styles.root}>
 				{modulePath && (
 					<React.Suspense
-						fallback={<div data-testid="showcase-loading">Loading...</div>}
+						fallback={<div data-testid="showcase-loading">Loading…</div>}
 					>
 						<StandaloneRenderer
 							modulePath={modulePath}

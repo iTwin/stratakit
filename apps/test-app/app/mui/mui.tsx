@@ -183,6 +183,11 @@ function ComponentExamples(props: ComponentExamplesProps) {
 
 	const { values } = useKnobs();
 
+	const standaloneParams = new URLSearchParams({
+		path: `mui/${name}.showcase`,
+		props: JSON.stringify(values), // Knob values passed as serialized props into the `/standalone` route.
+	});
+
 	return (
 		<ExamplesShowcase
 			name={name}
@@ -201,7 +206,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 					<KnobControlEntrypoint />
 					<IconButton
 						render={<a />}
-						href={useHref(`/standalone?path=mui/${name}.showcase`)}
+						href={useHref(`/standalone?${standaloneParams}`)}
 						label="Standalone showcase"
 						size="small"
 					>

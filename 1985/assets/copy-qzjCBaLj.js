@@ -1,0 +1,1 @@
+import{t as e}from"./copy-DHQi6-59.js";`${e}`;var t=`${e}#icon-large`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./error-CIsKapgi.js";var t=`${e}#icon`;`${e}`;export{t};

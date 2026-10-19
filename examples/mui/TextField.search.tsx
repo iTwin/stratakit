@@ -9,7 +9,6 @@ import InputAdornment from "@mui/material/InputAdornment";
 import TextField from "@mui/material/TextField";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 import { svgDismiss } from "@stratakit/icons/dismiss";
-import { svgSearch } from "@stratakit/icons/search";
 import { Icon } from "@stratakit/mui";
 
 export default () => {
@@ -26,11 +25,6 @@ export default () => {
 			inputRef={inputRef}
 			slotProps={{
 				input: {
-					startAdornment: (
-						<InputAdornment position="start">
-							<Icon href={svgSearch} />
-						</InputAdornment>
-					),
 					endAdornment: query.length > 0 && (
 						<InputAdornment position="end">
 							<IconButton

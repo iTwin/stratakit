@@ -62,7 +62,7 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 
 ### Search
 
-Set `type="search"` and use a start adornment to create a search field. A clear button can appear after the user enters a query; give it an accessible name and return focus to the input when it is activated.
+Set `type="search"` to add a search icon automatically. A clear button can appear after the user enters a query; give it an accessible name and return focus to the input when it is activated.
 
 ::example{src="mui/TextField.search"}
 

@@ -225,6 +225,7 @@ export function createKnob(config: KnobConfig): Knob {
 					<Switch
 						checked={value === true}
 						onChange={(_, checked) => onChange(checked)}
+						size="small"
 					/>
 				),
 			};

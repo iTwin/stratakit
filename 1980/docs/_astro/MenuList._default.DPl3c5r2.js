@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{u as t}from"./_utils.CC32IjlV.js";import{t as n}from"./MenuItem.DlgS3K_7.js";var r=e(),i=()=>(0,r.jsxs)(t,{children:[(0,r.jsx)(n,{children:`Profile`}),(0,r.jsx)(n,{children:`My account`}),(0,r.jsx)(n,{children:`Logout`})]});export{i as default};

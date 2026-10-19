@@ -7,6 +7,7 @@ import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import remarkDirective from "remark-directive";
 import { visit } from "unist-util-visit";
+import { copyrightBannerJs } from "internal/copyright-linter.ts";
 
 const BASE_URL = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/docs`
@@ -184,7 +185,7 @@ function remarkLiveExamples() {
 					file.fail(`Could not read example source: ${src}.tsx`, node);
 					return;
 				}
-				const trimmedSource = rawSource.split("\n").slice(4).join("\n").trim(); // Strip copyright header
+				const trimmedSource = rawSource.replace(copyrightBannerJs, "").trim();
 
 				node.data ||= {};
 

@@ -57,6 +57,7 @@
 	.code pre {
 		background: unset !important; /* override the background color inline on the element */
 		padding: 2rem;
+		line-height: var(--ec-codeLineHt, 24.5px); /* Match line height of pre-rendered code */
 	}
 
 	.copyButtonIcon {
@@ -78,7 +79,7 @@
 	.codeBlockToolbar {
 		position: absolute;
 
-		bottom: var(--stratakit-space-100);
+		top: var(--stratakit-space-200);
 		right: var(--stratakit-space-400);
 		display: flex;
 		align-items: center;

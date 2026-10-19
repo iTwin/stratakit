@@ -190,6 +190,7 @@ function CopyButton({ valueToCopy }: { valueToCopy: string }) {
 			<IconButton
 				label="Copy"
 				color={color}
+				variant="outlined"
 				onClick={() => {
 					setStatus("loading");
 					navigator.clipboard

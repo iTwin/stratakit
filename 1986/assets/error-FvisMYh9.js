@@ -1,0 +1,1 @@
+import{t as e}from"./error-CNs5pYOz.js";var t=`${e}#icon`;`${e}`;export{t};

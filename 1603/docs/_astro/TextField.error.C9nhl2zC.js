@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.BPK4hkxk.js";import{n as t}from"./example-embed.astro_astro_type_script_index_0_lang.Dc6Z3CFd.js";import{t as n}from"./TextField.D321QFhQ.js";var r=e(),i=()=>(0,r.jsx)(n,{label:`Email`,error:!0,helperText:(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(`span`,{style:t,children:`Error: `}),`Invalid email address.`]})});export{i as default};

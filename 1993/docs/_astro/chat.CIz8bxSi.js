@@ -1,0 +1,1 @@
+var e=`/1993/docs/_astro/chat.VL0rLimQ.svg`,t=`${e}#icon`;`${e}`;export{t};

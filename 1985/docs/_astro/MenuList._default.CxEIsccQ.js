@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{o as t}from"./StrataKitRoot.DixiQBPh.js";import{t as n}from"./MenuItem.0FzylPcz.js";var r=e(),i=()=>(0,r.jsxs)(t,{children:[(0,r.jsx)(n,{children:`Profile`}),(0,r.jsx)(n,{children:`My account`}),(0,r.jsx)(n,{children:`Logout`})]});export{i as default};

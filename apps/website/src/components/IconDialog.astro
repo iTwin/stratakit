@@ -10,32 +10,34 @@ const { id } = Astro.props;
 
 <icon-dialog>
 	<dialog id={id}>
-		<div class="header">
-			<h2>Icon dialog</h2>
-			<button aria-label="Dismiss" class="icon-button">
-				<svg>
-					<use href={svgDismiss}></use>
-				</svg>
-			</button>
+		<div>
+			<div class="header">
+				<h2>Icon dialog</h2>
+				<button aria-label="Dismiss" class="icon-button">
+					<svg>
+						<use href={svgDismiss}></use>
+					</svg>
+				</button>
+			</div>
+
+			<h3>Symbols</h3>
+			<icon-symbols>
+				<ul class="not-content"></ul>
+
+				<template>
+					<li><svg><use></use></svg><span></span></li>
+				</template>
+			</icon-symbols>
+
+			<h3>Aliases</h3>
+			<icon-aliases>
+				<ul class="not-content"></ul>
+
+				<template>
+					<li></li>
+				</template>
+			</icon-aliases>
 		</div>
-
-		<h3>Symbols</h3>
-		<icon-symbols>
-			<ul class="not-content"></ul>
-
-			<template>
-				<li><svg><use></use></svg><span></span></li>
-			</template>
-		</icon-symbols>
-
-		<h3>Aliases</h3>
-		<icon-aliases>
-			<ul class="not-content"></ul>
-
-			<template>
-				<li></li>
-			</template>
-		</icon-aliases>
 	</dialog>
 </icon-dialog>
 
@@ -53,11 +55,14 @@ const { id } = Astro.props;
 			border: 1px solid var(--sl-color-gray-5);
 			border-radius: var(--stratakit-radius-md);
 			box-shadow: var(--sl-shadow-lg);
-			padding: var(--stratakit-space-600);
 			min-inline-size: min(calc(100% - var(--stratakit-space-400)), 296px);
 			max-inline-size: calc(100% - var(--stratakit-space-600));
 			max-block-size: calc(100% - var(--stratakit-space-600));
 			overflow: auto;
+		}
+
+		dialog > div {
+			padding: var(--stratakit-space-600);
 		}
 
 		dialog::backdrop {

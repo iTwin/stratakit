@@ -1,0 +1,1 @@
+import{t as e}from"./chevron-down-CPSu-h5z.js";var t=`${e}#icon`;`${e}`;export{t};

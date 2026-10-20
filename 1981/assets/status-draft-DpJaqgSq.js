@@ -1,1 +1,0 @@
-import{t as e}from"./status-draft-RV2wo1i9.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

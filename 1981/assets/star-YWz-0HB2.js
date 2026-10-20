@@ -1,0 +1,1 @@
+import{t as e}from"./star-5NA_F4PO.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

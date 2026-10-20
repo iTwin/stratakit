@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-CHTBqLa3.js";import{t}from"./Typography-hhJ-A9J4.js";var n=e(),r=()=>(0,n.jsx)(t,{variant:`headline-md`,render:(0,n.jsx)(`h2`,{}),children:`Heading text`});export{r as default};

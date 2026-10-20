@@ -19,6 +19,14 @@ interface PortalProviderProps
 
 /**
  * Provides the `PortalContext` to its children and sets up the MUI theme provider.
+ * All descendent floating elements from StrataKit and MUI will be portaled into the specified container.
+ *
+ * Example:
+ * ```tsx
+ * <PortalProvider container={container}>
+ *   <Content />
+ * </PortalProvider>
+ * ```
  */
 function PortalProvider(props: PortalProviderProps) {
 	return (

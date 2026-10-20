@@ -2,4 +2,4 @@
 "@stratakit/mui": minor
 ---
 
-Added styling support for `type="search"` rendered by `Input`.
+Added styling support for `type="search"` rendered by `TextField`.

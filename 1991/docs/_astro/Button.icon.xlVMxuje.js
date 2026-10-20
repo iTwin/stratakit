@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{L as t}from"./StrataKitRoot.CYdvSSgC.js";import{c as n}from"./example-embed.astro_astro_type_script_index_0_lang.B0UO2tNC.js";import{t as r}from"./arrow-right.B-ACtHcC.js";var i=e(),a=()=>(0,i.jsxs)(n,{onClick:()=>{},children:[`Create new`,(0,i.jsx)(t,{href:r})]});export{a as default};

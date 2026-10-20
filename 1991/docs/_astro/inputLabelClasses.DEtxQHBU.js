@@ -1,0 +1,1 @@
+import{C as e,S as t}from"./DefaultPropsProvider.CMtx5EYl.js";function n(t){return e(`MuiInputLabel`,t)}var r=t(`MuiInputLabel`,[`root`,`focused`,`disabled`,`error`,`required`,`asterisk`,`formControl`,`sizeSmall`,`shrink`,`animated`,`standard`,`filled`,`outlined`]);export{r as n,n as t};

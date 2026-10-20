@@ -1,0 +1,1 @@
+import{t as e}from"./status-warning-DaSOFQ2s.js";var t=`${e}#icon`;`${e}`;export{t};

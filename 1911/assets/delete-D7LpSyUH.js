@@ -1,0 +1,1 @@
+import{t as e}from"./delete-DipEIOc3.js";`${e}`;var t=`${e}#icon-large`;export{t};

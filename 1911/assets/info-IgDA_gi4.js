@@ -1,0 +1,1 @@
+import{t as e}from"./info-ClFMEk96.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,1 +1,0 @@
-import{t as e}from"./rename-DW1SS7Tm.js";var t=`${e}#icon`;`${e}`;export{t};

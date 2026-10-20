@@ -1,0 +1,1 @@
+import{t as e}from"./star-DgGPedsk.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

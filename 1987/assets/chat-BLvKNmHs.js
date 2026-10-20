@@ -1,0 +1,1 @@
+import{t as e}from"./chat-CvtpPciO.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,1 +1,0 @@
-import{t as e}from"./upload-BQLannU6.js";var t=`${e}#icon`;`${e}`;export{t};

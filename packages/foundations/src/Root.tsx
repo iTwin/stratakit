@@ -286,6 +286,7 @@ const PortalContext = React.createContext<
 	  }
 	| undefined
 >(undefined);
+DEV: PortalContext.displayName = "PortalContext";
 
 // ----------------------------------------------------------------------------
 

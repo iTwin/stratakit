@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-CPp0-AZz.js";var t=`${e}#icon`;`${e}`;export{t};

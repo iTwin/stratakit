@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-GiK9V3Xy.js";import{t}from"./Alert-BmyGgBrt.js";var n=e(),r=()=>(0,n.jsx)(t,{severity:`error`,onClose:()=>{},children:`The request was not approved.`});export{r as default};

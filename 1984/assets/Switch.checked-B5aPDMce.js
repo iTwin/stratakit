@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-CHTBqLa3.js";import{t}from"./FormControlLabel-CTNuECA8.js";import{t as n}from"./Switch-PD40LX5i.js";var r=e(),i=()=>(0,r.jsx)(t,{control:(0,r.jsx)(n,{defaultChecked:!0}),label:`Default checked`});export{i as default};

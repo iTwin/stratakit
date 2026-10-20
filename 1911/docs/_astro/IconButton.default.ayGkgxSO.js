@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{L as t,m as n}from"./StrataKitRoot.89lKcx_t.js";import{t as r}from"./download.DVD1U4Ur.js";var i=`${r}#icon`;`${r}`;var a=e(),o=()=>(0,a.jsx)(n,{label:`Download`,children:(0,a.jsx)(t,{href:i})});export{o as default};

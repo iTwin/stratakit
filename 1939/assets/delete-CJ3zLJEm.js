@@ -1,1 +1,0 @@
-import{t as e}from"./delete-vLorS5mq.js";`${e}`;var t=`${e}#icon-large`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./clock-Y8V7dTAR.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

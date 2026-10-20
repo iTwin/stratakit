@@ -1,0 +1,1 @@
+import{C as e,S as t}from"./DefaultPropsProvider-Dkcd0_01.js";function n(t){return e(`MuiListItemIcon`,t)}var r=t(`MuiListItemIcon`,[`root`,`alignItemsFlexStart`]);export{r as n,n as t};

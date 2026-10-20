@@ -1,0 +1,1 @@
+import{j as e}from"./DefaultPropsProvider-Dkcd0_01.js";var t=e;export{t};

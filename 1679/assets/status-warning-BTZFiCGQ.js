@@ -1,1 +1,0 @@
-import{t as e}from"./status-warning-CUNY20cu.js";var t=`${e}#icon`;`${e}`;export{t};

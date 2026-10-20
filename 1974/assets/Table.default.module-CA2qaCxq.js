@@ -1,1 +1,0 @@
-var e={table:`_table_1d2vl_6`};export{e as t};

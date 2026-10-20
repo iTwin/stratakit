@@ -1,1 +1,0 @@
-import{t as e}from"./brand-bentley-systems-C9o4heTE.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

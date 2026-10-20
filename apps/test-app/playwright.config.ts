@@ -11,7 +11,7 @@ import type { Page } from "@playwright/test";
 const muiTestOptions = {
 	testMatch: "**/app/tests/mui/**",
 	snapshotPathTemplate:
-		"{testDir}/{testFileDir}/snapshots/{testFileBaseName}{-arg}{-projectName}{ext}",
+		"{testDir}/{testFileDir}/snapshots/{testFileBaseName}{-arg}{-projectName}{-snapshotSuffix}{ext}",
 };
 
 /** See https://playwright.dev/docs/test-configuration. */

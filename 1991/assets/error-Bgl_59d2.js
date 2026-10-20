@@ -1,0 +1,1 @@
+import{t as e}from"./error-DbGC2ZsI.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-DTagU95H.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -23,9 +23,13 @@ interface PortalProviderProps
  *
  * Example:
  * ```tsx
- * <PortalProvider container={container}>
- *   <Content />
- * </PortalProvider>
+ * const [container, setContainer] = React.useState(null);
+ *
+ * <CustomDialog ref={setContainer}>
+ *   <PortalProvider container={container}>
+ *     …
+ *   </PortalProvider>
+ * </CustomDialog>
  * ```
  */
 function PortalProvider(props: PortalProviderProps) {

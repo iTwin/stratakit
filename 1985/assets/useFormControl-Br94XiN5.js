@@ -1,1 +1,0 @@
-import{K as e,Y as t}from"./jsx-runtime-CHTBqLa3.js";var n=t(e(),1),r=n.createContext(void 0);function i(){return n.useContext(r)}function a({props:e,states:t}){let i=n.useContext(r),a={};return t.forEach(t=>{let n=e[t];a[t]=n===void 0&&i?i[t]:n}),[a,i]}export{a as n,r,i as t};

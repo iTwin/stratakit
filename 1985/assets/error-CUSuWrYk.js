@@ -1,0 +1,1 @@
+import{t as e}from"./error-BuufJx19.js";var t=`${e}#icon`;`${e}`;export{t};

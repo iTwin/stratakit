@@ -1,0 +1,1 @@
+import{t as e}from"./info-CA_tBo6V.js";var t=`${e}#icon`;`${e}`;export{t};

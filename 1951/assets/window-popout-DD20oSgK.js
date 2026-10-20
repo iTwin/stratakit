@@ -1,1 +1,0 @@
-import{t as e}from"./window-popout-BPh_FKoe.js";var t=`${e}#icon`;`${e}`;export{t};

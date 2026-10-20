@@ -8,11 +8,10 @@ import { test as base, defineConfig, devices } from "@playwright/test";
 
 import type { Page } from "@playwright/test";
 
-const muiTestOptions = {
-	testMatch: "**/app/tests/mui/**",
-	snapshotPathTemplate:
-		"{testDir}/{testFileDir}/snapshots/{testFileBaseName}{-arg}{-projectName}{-snapshotSuffix}{ext}",
-};
+const snapshotsInOwnFolderTemplate =
+	"{testDir}/{testFileDir}/snapshots/{testFileBaseName}{-arg}{-projectName}{-snapshotSuffix}{ext}";
+const snapshotsNextToTestTemplate =
+	"{snapshotDir}/{testFileDir}/{testFileName}-snapshot.{arg}{-projectName}{-snapshotSuffix}{ext}";
 
 /** See https://playwright.dev/docs/test-configuration. */
 export default defineConfig({
@@ -56,32 +55,25 @@ export default defineConfig({
 			],
 		},
 	},
-	/* Keep snapshots in the same folder as the test file to nest the files. */
-	snapshotPathTemplate:
-		"{snapshotDir}/{testFileDir}/{testFileName}-snapshot.{arg}{-projectName}{-snapshotSuffix}{ext}",
 
 	/* Configure projects for major browsers */
 	projects: [
 		{
 			name: "chromium",
-			testIgnore: "**/tests/mui/**",
+			grepInvert: /@visual-2/,
+			snapshotPathTemplate: snapshotsNextToTestTemplate,
 			use: { ...devices["Desktop Chrome"] },
 		},
 		{
 			name: "firefox",
-			testIgnore: "**/tests/mui/**",
+			grepInvert: /@visual-2/,
+			snapshotPathTemplate: snapshotsNextToTestTemplate,
 			use: { ...devices["Desktop Firefox"] },
 		},
 		{
-			name: "chromium-nonvisual",
-			grepInvert: /@visual/,
-			...muiTestOptions,
-			use: { ...devices["Desktop Chrome"] },
-		},
-		{
 			name: "chromium-light",
-			grep: /@visual/,
-			...muiTestOptions,
+			grep: /@visual-2/,
+			snapshotPathTemplate: snapshotsInOwnFolderTemplate,
 			use: {
 				...devices["Desktop Chrome"],
 				colorScheme: "light",
@@ -89,8 +81,8 @@ export default defineConfig({
 		},
 		{
 			name: "chromium-dark",
-			grep: /@visual/,
-			...muiTestOptions,
+			grep: /@visual-2/,
+			snapshotPathTemplate: snapshotsInOwnFolderTemplate,
 			use: {
 				...devices["Desktop Chrome"],
 				colorScheme: "dark",
@@ -98,8 +90,8 @@ export default defineConfig({
 		},
 		{
 			name: "chromium-forced-colors",
-			grep: /@visual/,
-			...muiTestOptions,
+			grep: /@visual-2/,
+			snapshotPathTemplate: snapshotsInOwnFolderTemplate,
 			use: {
 				...devices["Desktop Chrome"],
 				contextOptions: {
@@ -109,8 +101,8 @@ export default defineConfig({
 		},
 		{
 			name: "firefox-light",
-			grep: /@visual/,
-			...muiTestOptions,
+			grep: /@visual-2/,
+			snapshotPathTemplate: snapshotsInOwnFolderTemplate,
 			use: {
 				...devices["Desktop Firefox"],
 				colorScheme: "light",

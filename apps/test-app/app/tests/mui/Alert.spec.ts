@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { expect, test } from "#playwright";
 
-test("showcase", { tag: "@visual" }, async ({ page }) => {
+test("showcase", { tag: "@visual-2" }, async ({ page }) => {
 	await page.goto("/standalone?path=mui/Alert.showcase");
 	await expect(page).toHaveScreenshot();
 });

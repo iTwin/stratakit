@@ -1,1 +1,0 @@
-import{t as e}from"./status-draft-BUY901rf.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

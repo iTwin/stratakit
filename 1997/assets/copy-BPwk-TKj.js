@@ -1,0 +1,1 @@
+import{t as e}from"./copy-BB__adv3.js";`${e}`;var t=`${e}#icon-large`;export{t};

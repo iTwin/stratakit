@@ -1,1 +1,0 @@
-import{j as e}from"./DefaultPropsProvider.CfRvWFaV.js";var t=e;export{t};

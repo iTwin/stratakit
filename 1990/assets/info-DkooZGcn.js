@@ -1,1 +1,0 @@
-import{t as e}from"./info-DpNUF-lN.js";var t=`${e}#icon`;`${e}`;export{t};

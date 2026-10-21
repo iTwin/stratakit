@@ -1,1 +1,0 @@
-import{t as e}from"./error-C_Qo3Kla.js";var t=`${e}#icon`;`${e}`;export{t};

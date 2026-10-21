@@ -1,1 +1,0 @@
-import{t as e}from"./copy-B_gpdM-a.js";`${e}`;var t=`${e}#icon-large`;export{t};

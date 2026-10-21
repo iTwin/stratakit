@@ -4,8 +4,10 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
 import * as AkTooltip from "@ariakit/react/tooltip";
+import { PortalContext } from "@stratakit/foundations";
 import {
 	useEventHandlers,
 	usePopoverApi,
@@ -83,6 +85,7 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 
 	const generatedId = React.useId();
 	const context = React.useContext(TooltipContext);
+	const { container } = React.useContext(PortalContext) ?? {};
 
 	const {
 		content,
@@ -107,45 +110,47 @@ const Tooltip = forwardRef<"div", TooltipProps>((props, forwardedRef) => {
 	});
 
 	return (
-		<AkTooltip.TooltipProvider
-			store={store}
-			defaultOpen={defaultOpenProp}
-			open={openProp}
-			setOpen={setOpenProp}
-			placement={placement}
-		>
-			<AkTooltip.TooltipAnchor
-				render={children}
-				onContextMenu={useEventHandlers(
-					(children.props as React.ComponentProps<"div">)?.onContextMenu,
-					(event) => {
-						// Show tooltip on long press for buttons
-						const isButton =
-							event.currentTarget.localName === "button" ||
-							event.currentTarget.role === "button";
-						if (!isButton) return;
-
-						event.preventDefault();
-						store.setOpen(true);
-					},
-				)}
-				data-has-popover-open={open || undefined}
-				{...(type === "description" && { "aria-describedby": id })}
-				{...(type === "label" && { "aria-labelledby": id })}
-			/>
-			<AkTooltip.Tooltip
-				portal
-				{...rest}
-				unmountOnHide={unmountOnHide}
-				className={cx("🥝Tooltip", props.className)}
-				ref={forwardedRef}
-				id={id}
-				style={{ ...popoverProps.style, ...props.style }}
-				wrapperProps={{ popover: popoverProps.popover }}
+		<AkPortalContext.Provider value={container ?? null}>
+			<AkTooltip.TooltipProvider
+				store={store}
+				defaultOpen={defaultOpenProp}
+				open={openProp}
+				setOpen={setOpenProp}
+				placement={placement}
 			>
-				{content}
-			</AkTooltip.Tooltip>
-		</AkTooltip.TooltipProvider>
+				<AkTooltip.TooltipAnchor
+					render={children}
+					onContextMenu={useEventHandlers(
+						(children.props as React.ComponentProps<"div">)?.onContextMenu,
+						(event) => {
+							// Show tooltip on long press for buttons
+							const isButton =
+								event.currentTarget.localName === "button" ||
+								event.currentTarget.role === "button";
+							if (!isButton) return;
+
+							event.preventDefault();
+							store.setOpen(true);
+						},
+					)}
+					data-has-popover-open={open || undefined}
+					{...(type === "description" && { "aria-describedby": id })}
+					{...(type === "label" && { "aria-labelledby": id })}
+				/>
+				<AkTooltip.Tooltip
+					portal
+					{...rest}
+					unmountOnHide={unmountOnHide}
+					className={cx("🥝Tooltip", props.className)}
+					ref={forwardedRef}
+					id={id}
+					style={{ ...popoverProps.style, ...props.style }}
+					wrapperProps={{ popover: popoverProps.popover }}
+				>
+					{content}
+				</AkTooltip.Tooltip>
+			</AkTooltip.TooltipProvider>
+		</AkPortalContext.Provider>
 	);
 });
 DEV: Tooltip.displayName = "Tooltip";

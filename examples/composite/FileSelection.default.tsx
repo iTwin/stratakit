@@ -25,7 +25,9 @@ export default () => {
 			<Button
 				variant="contained"
 				startIcon={<Icon href={svgUpload} />}
-				render={<label role={undefined} tabIndex={undefined} />}
+				render={(props) => (
+					<label {...props} role={undefined} tabIndex={undefined} />
+				)}
 				nativeButton={false}
 			>
 				Select files

@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{h as t}from"./StrataKitRoot.CU2qR_W8.js";var n=e(),r=()=>(0,n.jsx)(t,{children:`Basic text`});export{r as default};

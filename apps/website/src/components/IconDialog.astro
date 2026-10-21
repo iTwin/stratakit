@@ -1,0 +1,178 @@
+---
+import { svgDismiss } from "@stratakit/icons/dismiss";
+
+interface Props {
+	id: string;
+}
+
+const { id } = Astro.props;
+---
+
+<icon-dialog>
+	<dialog id={id}>
+		<div>
+			<div class="header">
+				<h2>
+					@stratakit/icons/
+					<span data-icon-name></span>
+				</h2>
+				<button aria-label="Dismiss" class="icon-button">
+					<svg>
+						<use href={svgDismiss}></use>
+					</svg>
+				</button>
+			</div>
+
+			<h3>Symbols</h3>
+			<icon-symbols>
+				<ul class="not-content"></ul>
+
+				<template>
+					<li><svg><use></use></svg><span></span></li>
+				</template>
+			</icon-symbols>
+
+			<h3>Aliases</h3>
+			<icon-aliases>
+				<ul class="not-content"></ul>
+
+				<template>
+					<li></li>
+				</template>
+			</icon-aliases>
+		</div>
+	</dialog>
+</icon-dialog>
+
+<style>
+	@layer page {
+		icon-dialog {
+			display: contents;
+		}
+
+		dialog {
+			margin: 0;
+			inset: 0;
+			place-self: center;
+			background-color: var(--sl-color-gray-6);
+			border: 1px solid var(--sl-color-gray-5);
+			border-radius: var(--stratakit-radius-md);
+			box-shadow: var(--sl-shadow-lg);
+			min-inline-size: min(calc(100% - var(--stratakit-space-400)), 296px);
+			max-inline-size: calc(100% - var(--stratakit-space-600));
+			max-block-size: calc(100% - var(--stratakit-space-600));
+			overflow: auto;
+		}
+
+		dialog > div {
+			padding: var(--stratakit-space-600);
+		}
+
+		dialog::backdrop {
+			background-color: var(--sl-color-backdrop-overlay);
+			backdrop-filter: blur(0.25rem);
+			user-select: none;
+		}
+
+		.header {
+			display: flex;
+			align-items: center;
+			gap: var(--stratakit-space-600);
+			justify-content: space-between;
+		}
+
+		h2 {
+			font-size: var(--sl-text-h4);
+			color: var(--stratakit-color-text-neutral-secondary);
+
+			[data-icon-name] {
+				color: var(--stratakit-color-text-neutral-primary);
+			}
+		}
+
+		h3 {
+			font-size: var(--sl-text-h5);
+		}
+
+		.icon-button {
+			margin: 0;
+			display: inline-flex;
+			align-items: center;
+			justify-content: center;
+			min-inline-size: var(--stratakit-size-control-field-height-small);
+			min-block-size: var(--stratakit-size-control-field-height-small);
+			color: var(--stratakit-color-icon-neutral-base);
+			border-radius: var(--stratakit-radius-sm);
+
+			&:hover {
+				color: var(--stratakit-color-icon-neutral-primary);
+				background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+			}
+		}
+
+		svg {
+			display: block;
+			aspect-ratio: 1;
+			color: var(--stratakit-color-icon-neutral-primary);
+			inline-size: 1rem;
+
+			&[data-size="large"] {
+				inline-size: 1.5rem;
+			}
+		}
+
+		icon-symbols {
+			display: contents;
+
+			ul {
+				margin-block-start: var(--sl-content-gap-y);
+
+				list-style-type: "";
+				display: flex;
+				flex-wrap: wrap;
+				gap: var(--stratakit-space-400);
+			}
+
+			li {
+				margin-block-start: 0;
+				flex: 0 0 120px;
+
+				display: flex;
+				flex-direction: column;
+				justify-content: end;
+				align-items: center;
+				gap: var(--stratakit-space-200);
+
+				padding: var(--stratakit-space-400);
+				border: 1px solid var(--sl-color-gray-5);
+			}
+		}
+
+		icon-aliases {
+			display: contents;
+
+			ul {
+				margin-block-start: var(--sl-content-gap-y);
+
+				list-style-type: "";
+				display: flex;
+				flex-wrap: wrap;
+			}
+
+			li {
+				&:not(:last-child)::after {
+					content: ", " / "";
+					white-space: pre;
+				}
+			}
+		}
+	}
+</style>
+
+<script>
+	import { IconAliases, IconDialog, IconSymbols } from "./IconDialog.ts";
+
+	customElements.define("icon-dialog", IconDialog);
+	customElements.define("icon-symbols", IconSymbols);
+	customElements.define("icon-aliases", IconAliases);
+</script>

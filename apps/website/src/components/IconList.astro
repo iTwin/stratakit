@@ -272,7 +272,7 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			updateIcon(svg, `${href}#${selectedSymbol}`, size);
 		}
 
-		countElement.textContent = `Showing ${visibleIcons} icons`;
+		countElement.textContent = `Showing ${visibleIcons} icon(s)`;
 	}
 
 	function matchQuery(query: string, iconName: string, aliases: string[]) {

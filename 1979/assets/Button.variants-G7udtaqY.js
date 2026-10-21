@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-CHTBqLa3.js";import{t}from"./Button-CSDplvwC.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{variant:`solid`,children:`Solid`}),(0,n.jsx)(t,{variant:`outline`,children:`Outline`}),(0,n.jsx)(t,{variant:`ghost`,children:`Ghost`})]});export{r as default};

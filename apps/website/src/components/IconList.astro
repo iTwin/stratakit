@@ -100,6 +100,10 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 			border-radius: var(--stratakit-radius-sm);
 			background-color: var(--stratakit-color-bg-control-textbox);
 			margin-block-start: var(--stratakit-space-50);
+
+			&::-webkit-search-cancel-button {
+				appearance: none;
+			}
 		}
 
 		fieldset {

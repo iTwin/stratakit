@@ -12,7 +12,10 @@ const { id } = Astro.props;
 	<dialog id={id}>
 		<div>
 			<div class="header">
-				<h2>Icon dialog</h2>
+				<h2>
+					@stratakit/icons/
+					<span data-icon-name></span>
+				</h2>
 				<button aria-label="Dismiss" class="icon-button">
 					<svg>
 						<use href={svgDismiss}></use>
@@ -80,6 +83,11 @@ const { id } = Astro.props;
 
 		h2 {
 			font-size: var(--sl-text-h4);
+			color: var(--stratakit-color-text-neutral-secondary);
+
+			[data-icon-name] {
+				color: var(--stratakit-color-text-neutral-primary);
+			}
 		}
 
 		h3 {

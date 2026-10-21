@@ -54,7 +54,9 @@ export class IconDialog extends HTMLElement {
 		if (!iconMeta) return;
 
 		this.#iconName = iconName;
-		this.#dialogHeading.textContent = `@stratakit/icons/${iconName}.svg`;
+		const headingIconName =
+			this.#dialogHeading.querySelector("[data-icon-name]");
+		if (headingIconName) headingIconName.textContent = `${iconName}.svg`;
 
 		const { aliases, symbols } = iconMeta;
 		this.#aliases.renderAliases({ aliases });

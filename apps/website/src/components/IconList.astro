@@ -171,18 +171,11 @@ const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbol
 				align-content: start;
 				gap: var(--stratakit-space-200);
 				outline-offset: -2px;
-
-				svg {
-					color: var(--stratakit-color-icon-neutral-base);
-				}
+				color: var(--stratakit-color-icon-neutral-base);
 
 				&:hover {
 					background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 					color: var(--stratakit-color-text-neutral-primary);
-
-					svg {
-						color: var(--stratakit-color-icon-neutral-primary);
-					}
 				}
 			}
 		}

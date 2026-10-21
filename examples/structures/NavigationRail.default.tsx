@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 import Divider from "@mui/material/Divider";
-import { svgBrandBentleySystemsLarge } from "@stratakit/icons/brand-bentley-systems";
+import { svgBrandBentleySystemsFilledLarge } from "@stratakit/icons/brand-bentley-systems";
 import { svgDisconnectLarge } from "@stratakit/icons/disconnect";
 import { svgInspectionLarge } from "@stratakit/icons/inspection";
 import { svgReportLarge } from "@stratakit/icons/report";
@@ -22,7 +22,7 @@ export default () => {
 				<NavigationRail.Header>
 					<Icon
 						alt="Acme app"
-						href={svgBrandBentleySystemsLarge}
+						href={svgBrandBentleySystemsFilledLarge}
 						size="large"
 					/>
 					<NavigationRail.ToggleButton />

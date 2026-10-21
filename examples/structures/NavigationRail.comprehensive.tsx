@@ -9,7 +9,7 @@ import Divider from "@mui/material/Divider";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import visuallyHidden from "@mui/utils/visuallyHidden";
-import { svgBrandBentleySystemsLarge } from "@stratakit/icons/brand-bentley-systems";
+import { svgBrandBentleySystemsFilledLarge } from "@stratakit/icons/brand-bentley-systems";
 import { svgDisconnectLarge } from "@stratakit/icons/disconnect";
 import { svgInspectionLarge } from "@stratakit/icons/inspection";
 import { svgNotificationsLarge } from "@stratakit/icons/notifications";
@@ -30,7 +30,7 @@ export default () => {
 				<NavigationRail.Header>
 					<Icon
 						alt="Acme app"
-						href={svgBrandBentleySystemsLarge}
+						href={svgBrandBentleySystemsFilledLarge}
 						size="large"
 					/>
 					<NavigationRail.ToggleButton />
@@ -105,6 +105,7 @@ function NotificationsButton({ expanded }: NotificationsButtonProps) {
 							badgeContent={notificationCount}
 							variant="inline"
 							color="error"
+							size="small"
 							aria-hidden="true" // The badge is hidden from assistive technologies
 						/>
 					)}

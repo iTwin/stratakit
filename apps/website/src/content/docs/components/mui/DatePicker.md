@@ -23,6 +23,12 @@ Use [`slotProps.textField`](https://mui.com/x/api/date-pickers/date-picker/#date
 
 ::example{src="mui/DatePicker.sizes"}
 
+### Calendar
+
+Use [`DateCalendar`](https://mui.com/x/api/date-pickers/date-calendar/) when users should select a date directly from an inline calendar without opening a text field.
+
+::example{src="mui/DatePicker.calendar"}
+
 ## API reference
 
 - [`DatePicker`](https://mui.com/x/api/date-pickers/date-picker/)

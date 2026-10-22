@@ -10,6 +10,8 @@ links:
 
 The **DataGrid** is a complex control with many options for editing, filtering, sorting, pagination, and virtualization. The [MUI DataGrid documentation](https://mui.com/x/react-data-grid/) contains numerous examples.
 
+**DataGrid** offers three different feature levels: community (free), pro (paid), and premium (paid). Consult the [DataGrid package list](https://mui.com/x/react-data-grid/#data-grid-packages) and [MUI X licensing plans](https://mui.com/x/introduction/licensing/#plans) to determine which plan is needed for the features you will use.
+
 ## Use cases
 
 Make sure the **DataGrid** is suitable for your use case. **DataGrid** and [**Table**](/components/table) are both capable of displaying tabular data.

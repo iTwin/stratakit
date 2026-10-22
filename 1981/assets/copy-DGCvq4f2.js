@@ -1,1 +1,0 @@
-import{t as e}from"./copy-CTC-RwSx.js";`${e}`;var t=`${e}#icon-large`;export{t};

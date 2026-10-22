@@ -41,10 +41,12 @@ This example shows how editing can work with multiple different types of data.
 
 ## ✅ Do
 
-- Wrap `DataGrid` in a `<div role="group" aria-labelledby={...}>` and provide a label as in the examples. This helps semantically connect the header toolbar and footer toolbar to the grid as well as insure that the grid has an accessible name.
+- Use a **DataGrid** to handle large amounts of editable data.
+- Wrap **DataGrid** in a `<div role="group" aria-labelledby={...}>` and provide a label as in the examples. This helps semantically connect the header toolbar and footer toolbar to the grid as well as insure that the grid has an accessible name.
 
 ## 🚫 Don't
 
+- Use **DataGrid** where a simpler **Table** would work.
 - Remove the selection checkbox without also removing the ability to select rows . The color contrast of the selected background is too low to indicate selection on its own. The checkbox is required to help identify selected rows. Use `isRowSelectable={() => false}` to insure that rows cannot be selected with the keyboard or pointer.
 
 ## API reference

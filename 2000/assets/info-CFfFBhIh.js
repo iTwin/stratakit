@@ -1,0 +1,1 @@
+import{t as e}from"./info-BiR_v0rn.js";var t=`${e}#icon`;`${e}`;export{t};

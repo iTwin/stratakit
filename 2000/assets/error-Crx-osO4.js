@@ -1,0 +1,1 @@
+import{t as e}from"./error-DFv7grrc.js";var t=`${e}#icon`;`${e}`;export{t};

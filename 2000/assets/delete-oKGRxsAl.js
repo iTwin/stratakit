@@ -1,0 +1,1 @@
+import{t as e}from"./delete-Ci766Mh3.js";`${e}`;var t=`${e}#icon-large`;export{t};

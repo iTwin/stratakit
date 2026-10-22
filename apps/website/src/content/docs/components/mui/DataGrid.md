@@ -3,6 +3,7 @@ title: DataGrid
 description: A fast and extensible React data table and React data grid, with filtering, sorting,   aggregation, and more.
 links:
   muiDocs: https://mui.com/x/react-data-grid/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/DataGrid.default"}
@@ -42,3 +43,7 @@ This example shows how editing can work with multiple different types of data.
 ## ✅ Do
 
 - Wrap `DataGrid` in a `<div role="group" aria-labelledby={...}>` and provide a label as in the examples. This helps semantically connect the header toolbar and footer toolbar to the grid as well as insure that the grid has an accessible name.
+
+## API reference
+
+- [`DataGrid`](https://mui.com/x/api/data-grid/data-grid/)

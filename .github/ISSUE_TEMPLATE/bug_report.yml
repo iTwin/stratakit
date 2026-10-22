@@ -59,8 +59,8 @@ body:
         Please provide version information and environment details.
         This helps us reproduce the issue.
       placeholder: |
-        - @stratakit/mui 1.1.0
-        - @mui/material 9.4.0
+        - @stratakit/mui 1.2.0
+        - @mui/material 9.5.0
         - react 19.3.0
         - Browsers: Chrome 156, Safari 27
     validations:

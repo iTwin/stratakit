@@ -8,7 +8,7 @@ import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import ToggleButtonSizes from "examples/mui/ToggleButton.sizes.tsx";
 import ToggleButtonStandalone from "examples/mui/ToggleButton.standalone.tsx";
 import ToggleButtonText from "examples/mui/ToggleButton.text.tsx";
-import { createKnob, DefaultPropsProvider, isProduction } from "~/~utils.tsx";
+import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
 import type { KnobProps } from "~/~utils.tsx";
 
@@ -27,11 +27,9 @@ export default function ToggleButtonExamples({
 				<ToggleButtonStandalone />
 				<ToggleButtonSizes />
 				<ToggleButtonText />
-				{!isProduction && (
-					<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
-						<ToggleButtonPlacements_ />
-					</Stack>
-				)}
+				<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
+					<ToggleButtonPlacements_ />
+				</Stack>
 			</Stack>
 		</DefaultPropsProvider>
 	);

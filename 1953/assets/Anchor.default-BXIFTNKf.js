@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-CH2oXoW8.js";import{i as t}from"./Anchor-2ifU3EX5.js";var n=e(),r=()=>(0,n.jsx)(t,{href:`/getting-started`,children:`Getting started`});export{r as default};

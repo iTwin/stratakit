@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-D_cWKu3M.js";import{t}from"./Divider-CksCXDd_.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as default};

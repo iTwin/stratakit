@@ -1,1 +1,0 @@
-import{X as e,q as t}from"./jsx-runtime-CH2oXoW8.js";var n=e(t(),1),r=typeof window<`u`?n.useLayoutEffect:n.useEffect;function i(e){let t=n.useRef(e);return r(()=>{t.current=e}),n.useRef((...e)=>(0,t.current)(...e)).current}export{r as n,i as t};

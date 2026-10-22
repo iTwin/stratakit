@@ -1,1 +1,0 @@
-import{t as e}from"./placeholder-NEckU4Bp.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

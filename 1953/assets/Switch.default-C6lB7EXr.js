@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-CH2oXoW8.js";import{a as t,i as n,t as r}from"./Field-pWjiFro6.js";import{t as i}from"./Switch-x-REPRTb.js";var a=e(),o=()=>(0,a.jsxs)(t,{children:[(0,a.jsx)(r,{render:(0,a.jsx)(i,{})}),(0,a.jsx)(n,{children:`Dark mode`})]});export{o as default};

@@ -1,1 +1,0 @@
-import{X as e,q as t}from"./jsx-runtime-CH2oXoW8.js";var n=e(t(),1);function r(e){let t=n.useRef({});return n.useEffect(()=>{t.current=e}),t.current}export{r as t};

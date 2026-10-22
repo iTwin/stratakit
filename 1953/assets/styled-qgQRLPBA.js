@@ -1,1 +1,0 @@
-import{b as e}from"./DefaultPropsProvider-C5DUKodx.js";var t=e();export{t};

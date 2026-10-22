@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime-D_cWKu3M.js";import{t}from"./Icon-ZzCQNBSG.js";import{t as n}from"./Avatar-BF9msmQk.js";import{t as r}from"./Link-BKJtrhvH.js";import{t as i}from"./user-juv-oJ4J.js";var a={link:`_link_g2exl_6`},o=e(),s=()=>(0,o.jsxs)(r,{className:a.link,href:`#profile`,children:[(0,o.jsx)(n,{children:(0,o.jsx)(t,{href:i})}),`Kit Stratan`]});export{s as default};

@@ -1,0 +1,1 @@
+import{j as e}from"./DefaultPropsProvider-0cRB_OHS.js";var t=e;export{t};

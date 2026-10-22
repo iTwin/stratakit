@@ -1,0 +1,1 @@
+import{J as e,Z as t}from"./jsx-runtime-D_cWKu3M.js";import{B as n,E as r}from"./DefaultPropsProvider-0cRB_OHS.js";var i=t(e(),1);function a(e){return Object.keys(e).length===0}function o(e=null){let t=i.useContext(n);return!t||a(t)?e:t}var s=r();function c(e=s){return o(e)}export{o as n,c as t};

@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-CH2oXoW8.js";import{t}from"./TextField-M5dUsFJh.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Name`});export{r as default};

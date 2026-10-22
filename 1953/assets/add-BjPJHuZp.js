@@ -1,0 +1,1 @@
+import{X as e}from"./jsx-runtime-D_cWKu3M.js";var t=e({default:()=>n}),n=`/1953/assets/add-5OH7uSHB.svg`;export{t as n,n as t};

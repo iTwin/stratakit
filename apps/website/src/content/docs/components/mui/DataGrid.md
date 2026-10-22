@@ -1,6 +1,6 @@
 ---
 title: DataGrid
-description: A fast and extensible React data table and React data grid, with filtering, sorting,   aggregation, and more.
+description: A fast and extensible React data table and React data grid, with filtering, sorting, aggregation, and more.
 links:
   muiDocs: https://mui.com/x/react-data-grid/
   apiReference: "#api-reference"

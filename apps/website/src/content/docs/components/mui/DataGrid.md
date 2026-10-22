@@ -23,7 +23,6 @@ It has row and cell selection and editing as first class concepts. The grid is a
 | ----------------------------------------------------------------- | -------- | ----- |
 | Displaying data with no interactivity                             | ❌       | ✅    |
 | Selecting rows only                                               | ❌       | ✅    |
-| Filtering and sorting data                                        | ✅       | ✅    |
 | Displaying data with multiple interactive components per row      | ✅       | ✅    |
 | Spreadsheet experience where the user adjusts the values of cells | ✅       | ❌    |
 

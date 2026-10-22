@@ -6,7 +6,7 @@ links:
   apiReference: "#api-reference"
 ---
 
-::example{src="mui/DataGrid.default"}
+::example{src="mui/DataGrid.default" min-height="509px"}
 
 The MUI DataGrid is a complex control with many options for editing, filtering, sorting, pagination, and virtualization. The [MUI DataGrid documentation](https://mui.com/x/react-data-grid/) contains numerous examples
 
@@ -38,7 +38,7 @@ It has row and cell selection and editing as first class concepts. The grid is a
 
 This example shows how editing can work with multiple different types of data.
 
-::example{src="mui/DataGrid.datatypes"}
+::example{src="mui/DataGrid.datatypes" min-height="720px"}
 
 ## ✅ Do
 

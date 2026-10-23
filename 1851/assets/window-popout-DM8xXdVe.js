@@ -1,1 +1,0 @@
-import{t as e}from"./window-popout-Cs6Royn6.js";var t=`${e}#icon`;`${e}`;export{t};

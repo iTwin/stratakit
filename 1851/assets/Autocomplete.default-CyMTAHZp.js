@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-CHTBqLa3.js";import{t}from"./Autocomplete-DF3_RGGt.js";import{t as n}from"./TextField-DiiJPy_b.js";var r=e(),i=()=>(0,r.jsx)(t,{options:[`Badge`,`Button`,`Checkbox`,`Dialog`,`Divider`,`Progress`,`Rating`,`Select`,`Switch`,`TextField`],renderInput:e=>(0,r.jsx)(n,{...e,label:`Favorite component`})});export{i as default};

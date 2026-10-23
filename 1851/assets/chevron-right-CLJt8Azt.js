@@ -1,0 +1,1 @@
+import{r as e,t}from"./chevron-right-gVnNQ1-x.js";var n=`${e}#icon`;`${e}`;var r=`${t}#icon`;`${t}`;export{n,r as t};

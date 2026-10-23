@@ -1,1 +1,0 @@
-import{K as e,Y as t,t as n}from"./jsx-runtime-CHTBqLa3.js";import{t as r}from"./Input-Cvs9rcHt.js";import{t as i}from"./FormControlLabel-ikHtSZ_U.js";var a=t(e(),1),o=n(),s=()=>{let[e,t]=a.useState(`#188166`);return(0,o.jsx)(i,{label:`Color`,labelPlacement:`start`,control:(0,o.jsx)(r,{type:`color`,value:e,onChange:e=>t(e.target.value)})})};export{s as default};

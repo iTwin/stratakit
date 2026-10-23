@@ -1,1 +1,0 @@
-import{t as e}from"./upload-DG8rE-Nq.js";var t=`${e}#icon`;`${e}`;export{t};

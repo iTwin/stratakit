@@ -95,7 +95,6 @@ export default defineConfig({
 					],
 				},
 				{ label: "Icons", slug: "icons" },
-				{ label: "Examples", link: "/examples" },
 				{ label: "API Reference", link: "/reference" },
 				{ label: "Changelog", slug: "changelog" },
 				{ label: "Contributing", slug: "contributing" },

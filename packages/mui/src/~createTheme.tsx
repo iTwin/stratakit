@@ -36,6 +36,7 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiDataGridFooter } from "./~components/MuiDataGrid.js";
 import { MuiDialogPaper } from "./~components/MuiDialog.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiDrawerPaper } from "./~components/MuiDrawer.js";
@@ -379,6 +380,7 @@ function createTheme() {
 				defaultProps: {
 					checkboxSelection: true,
 					slots: {
+						footer: MuiDataGridFooter,
 						columnMenuIcon: MoreVerticalIcon,
 						columnMenuSortAscendingIcon: SortAscendingIcon,
 						columnMenuSortDescendingIcon: SortDescendingIcon,

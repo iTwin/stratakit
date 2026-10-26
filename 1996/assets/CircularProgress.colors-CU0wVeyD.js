@@ -1,1 +1,0 @@
-import{X as e,q as t,t as n}from"./jsx-runtime-GiK9V3Xy.js";import{t as r}from"./Typography--_F-fENS.js";import{t as i}from"./CircularProgress-DsCyubes.js";var a=e(t(),1),o=n(),s=()=>{let e=a.useId();return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(i,{color:`secondary`,"aria-labelledby":e}),(0,o.jsx)(r,{id:e,children:`Analyzing results…`})]})};export{s as default};

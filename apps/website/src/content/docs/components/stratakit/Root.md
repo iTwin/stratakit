@@ -59,7 +59,9 @@ The prop is marked unstable, as we finalize its API. If you have feedback or use
 
 ## Portal container
 
-The **Root** component creates a separate [portal container](https://react.dev/reference/react-dom/createPortal#usage-notes) element for components that need to render outside of the normal React tree. This includes `Autocomplete`, `Dialog`, `Drawer`, `Menu`, `Modal`, `Popover`, `Popper`, `Select`, `Snackbar`, `SwipeableDrawer`, and `Tooltip`.
+The **Root** component creates a separate [portal container](https://react.dev/reference/react-dom/createPortal#usage-notes) element for components that need to render outside of the normal React tree. This includes [**Autocomplete**](/components/autocomplete), [**Dialog**](/components/dialog), [**Drawer**](/components/drawer), [**Menu**](/components/menu), `Modal`, [**Popover**](/components/popover), `Popper`, [**Select**](/components/select), [**Snackbar**](/components/snackbar), [**SwipeableDrawer**](/components/drawer/#swipeabledrawer), and [**Tooltip**](/components/tooltip).
+
+The portal container can be adjusted for a sub-tree of the application by using the [**PortalProvider**](/components/portalprovider).
 
 ## ✅ Do
 

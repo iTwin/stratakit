@@ -12,40 +12,40 @@ import AccordionMarkerPlacement from "examples/mui/Accordion.marker-placement.ts
 import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
 import AccordionResponsive from "examples/mui/Accordion.responsive.tsx";
 import AccordionVariants from "examples/mui/Accordion.variants.tsx";
-import { createKnob, isProduction } from "~/~utils.tsx";
+import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
-export default function AccordionExamples() {
+import type { KnobProps } from "~/~utils.tsx";
+
+export default function AccordionExamples({
+	disabled,
+}: KnobProps<typeof knobs>) {
 	return (
-		<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
-			<div>
-				<AccordionDefault />
-			</div>
-			<div>
-				<AccordionExpanded />
-			</div>
-			<AccordionResponsive />
-			<div>
-				<AccordionMarkerPlacement />
-			</div>
-			<div>
-				<AccordionDecoration />
-			</div>
-			<div>
-				<AccordionActions />
-			</div>
-			<AccordionMultiple />
-			{!isProduction && <AccordionMultipleOutlined_ />}
-			<AccordionVariants />
-		</Stack>
+		<DefaultPropsProvider value={{ MuiAccordion: { disabled } }}>
+			<Stack spacing={2} sx={{ alignSelf: "stretch" }}>
+				<div>
+					<AccordionDefault />
+				</div>
+				<div>
+					<AccordionExpanded />
+				</div>
+				<AccordionResponsive />
+				<div>
+					<AccordionMarkerPlacement />
+				</div>
+				<div>
+					<AccordionDecoration />
+				</div>
+				<div>
+					<AccordionActions />
+				</div>
+				<AccordionMultiple />
+				<AccordionMultipleOutlined_ />
+				<AccordionVariants />
+			</Stack>
+		</DefaultPropsProvider>
 	);
 }
 
 export const knobs = {
-	disabled: createKnob({
-		props: {
-			MuiAccordion: {
-				disabled: true,
-			},
-		},
-	}),
+	disabled: createKnob({ type: "boolean" }),
 };

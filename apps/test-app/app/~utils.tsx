@@ -5,9 +5,13 @@
 
 import * as React from "react";
 import { useSearchParams } from "react-router";
+import NativeSelect from "@mui/material/NativeSelect";
+import Switch from "@mui/material/Switch";
+import { ThemeProvider } from "@mui/material/styles";
+import deepmerge from "@mui/utils/deepmerge";
 import { useSettingsStore } from "./~settings.tsx";
 
-import type { ComponentsProps } from "@mui/material/styles";
+import type { ComponentsProps, Theme } from "@mui/material/styles";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 import type { Root } from "@stratakit/mui";
 
@@ -158,40 +162,107 @@ function SyncVariants({ variants }: { variants: Variant[] }) {
 
 // ---------------------------------------------------------------------------->;
 
-export type Knob = {
-	props?: ComponentsProps;
+export function DefaultPropsProvider(
+	props: React.PropsWithChildren<{ value: ComponentsProps }>,
+) {
+	const { value, children } = props;
+
+	return (
+		<ThemeProvider
+			theme={(outerTheme: Theme): Theme =>
+				deepmerge(outerTheme, {
+					components: Object.fromEntries(
+						Object.entries(value).map(([componentName, defaultProps]) => [
+							componentName,
+							{ defaultProps },
+						]),
+					),
+				})
+			}
+		>
+			{children}
+		</ThemeProvider>
+	);
+}
+
+// ----------------------------------------------------------------------------
+
+type KnobConfig =
+	| {
+			type: "boolean";
+	  }
+	| {
+			type: "select";
+			options: readonly string[];
+	  };
+
+type KnobControlProps = {
+	value: unknown;
+	onChange: (value: unknown) => void;
 };
 
-type KnobConfig = {
-	type?: "default-props";
-	props?: ComponentsProps;
+export type Knob = KnobConfig & {
+	render: (props: KnobControlProps) => React.ReactElement;
+};
+
+type KnobValue<Config extends KnobConfig> = {
+	boolean: boolean;
+	select: Extract<Config, { type: "select" }>["options"][number];
+}[Config["type"]];
+
+/** Infers the prop types based on the defined knobs. */
+export type KnobProps<Knobs extends Record<string, Knob>> = {
+	[Name in keyof Knobs]?: KnobValue<Knobs[Name]>;
 };
 
 /**
- * Helper for defining a "knob" that can be used for passing information (e.g. default props) to the examples showcase.
+ * Defines a "knob" whose current state is passed to the showcase as a prop.
+ *
+ * The return value of this function can be used to render the knob control in the UI.
  *
  * Example usage:
  *
  * ```tsx
  * export const knobs = {
- *   disabled: createKnob({
- *     props: {
- *       MuiButton: { disabled: true }
- *     },
- *   }),
+ *   disabled: createKnob({ type: "boolean" }),
  * };
  * ```
  *
- * The returned object can be used to adjust the rendering of the examples.
  */
-export function createKnob(config: KnobConfig): Knob {
-	const { type = "default-props", props } = config;
+export function createKnob<const Config extends KnobConfig>(config: Config) {
+	let render: Knob["render"];
 
-	if (type === "default-props") {
-		return { props };
+	switch (config.type) {
+		case "boolean": {
+			render = ({ value, onChange }) => (
+				<Switch
+					checked={value === true}
+					onChange={(_, checked) => onChange(checked)}
+					size="small"
+				/>
+			);
+			break;
+		}
+		case "select": {
+			render = ({ value, onChange }) => (
+				<NativeSelect
+					value={typeof value === "string" ? value : ""}
+					onChange={(event) => onChange(event.target.value || undefined)}
+					size="small"
+				>
+					<option value="">(default)</option>
+					{config.options.map((option) => (
+						<option key={option} value={option}>
+							{option}
+						</option>
+					))}
+				</NativeSelect>
+			);
+			break;
+		}
 	}
 
-	throw new Error(`Unsupported knob type: ${type}`);
+	return { ...config, render };
 }
 
 // ----------------------------------------------------------------------------

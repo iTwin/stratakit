@@ -8,30 +8,28 @@ import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import IconButtonSizes from "examples/mui/IconButton.sizes.tsx";
 import IconButtonVariants from "examples/mui/IconButton.variants.tsx";
-import { createKnob, isProduction } from "~/~utils.tsx";
+import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
-export default function IconButtonExamples() {
+import type { KnobProps } from "~/~utils.tsx";
+
+export default function IconButtonExamples({
+	disabled,
+}: KnobProps<typeof knobs>) {
 	return (
-		<Stack spacing={4} sx={{ alignItems: "start" }}>
-			<IconButtonDefault />
-			<IconButtonSizes />
-			<IconButtonVariants />
-			<IconButtonColors />
-			{!isProduction && (
+		<DefaultPropsProvider value={{ MuiIconButton: { disabled } }}>
+			<Stack spacing={4} sx={{ alignItems: "start" }}>
+				<IconButtonDefault />
+				<IconButtonSizes />
+				<IconButtonVariants />
+				<IconButtonColors />
 				<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
 					<IconButtonPlacements_ />
 				</Stack>
-			)}
-		</Stack>
+			</Stack>
+		</DefaultPropsProvider>
 	);
 }
 
 export const knobs = {
-	disabled: createKnob({
-		props: {
-			MuiIconButton: {
-				disabled: true,
-			},
-		},
-	}),
+	disabled: createKnob({ type: "boolean" }),
 };

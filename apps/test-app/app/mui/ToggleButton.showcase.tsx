@@ -8,33 +8,33 @@ import ToggleButtonDefault from "examples/mui/ToggleButton.default.tsx";
 import ToggleButtonSizes from "examples/mui/ToggleButton.sizes.tsx";
 import ToggleButtonStandalone from "examples/mui/ToggleButton.standalone.tsx";
 import ToggleButtonText from "examples/mui/ToggleButton.text.tsx";
-import { createKnob, isProduction } from "~/~utils.tsx";
+import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
-export default function ToggleButtonExamples() {
+import type { KnobProps } from "~/~utils.tsx";
+
+export default function ToggleButtonExamples({
+	disabled,
+}: KnobProps<typeof knobs>) {
 	return (
-		<Stack spacing={4} sx={{ alignItems: "start" }}>
-			<ToggleButtonDefault />
-			<ToggleButtonStandalone />
-			<ToggleButtonSizes />
-			<ToggleButtonText />
-			{!isProduction && (
+		<DefaultPropsProvider
+			value={{
+				MuiToggleButtonGroup: { disabled },
+				MuiToggleButton: { disabled },
+			}}
+		>
+			<Stack spacing={4} sx={{ alignItems: "start" }}>
+				<ToggleButtonDefault />
+				<ToggleButtonStandalone />
+				<ToggleButtonSizes />
+				<ToggleButtonText />
 				<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
 					<ToggleButtonPlacements_ />
 				</Stack>
-			)}
-		</Stack>
+			</Stack>
+		</DefaultPropsProvider>
 	);
 }
 
 export const knobs = {
-	disabled: createKnob({
-		props: {
-			MuiToggleButtonGroup: {
-				disabled: true,
-			},
-			MuiToggleButton: {
-				disabled: true,
-			},
-		},
-	}),
+	disabled: createKnob({ type: "boolean" }),
 };

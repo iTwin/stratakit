@@ -8,5 +8,5 @@ import { Icon } from "@stratakit/mui";
 import localSvg from "./Icon.localSvg.svg";
 
 export default () => {
-	return <Icon href={localSvg} alt="Filled Circle" />;
+	return <Icon href={`${localSvg}#icon`} alt="Filled Circle" />;
 };

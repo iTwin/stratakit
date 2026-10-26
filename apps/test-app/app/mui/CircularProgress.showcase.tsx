@@ -10,11 +10,11 @@ import CircularProgressDeterminate from "examples/mui/CircularProgress.determina
 
 export default function CircularProgressExamples() {
 	return (
-		<>
+		<Stack spacing={4} sx={{ alignItems: "start" }}>
 			<CircularProgressDefault />
 			<CircularProgressColors />
 			<CircularProgressDeterminate />
-		</>
+		</Stack>
 	);
 }
 

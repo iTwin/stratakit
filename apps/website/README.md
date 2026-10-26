@@ -18,3 +18,5 @@ All the following commands are run from the `apps/website` directory:
 | `pnpm astro -- --help` | Get help using the Astro CLI                     |
 
 When running commands from the root of the repo, use `pnpm --filter @stratakit/website <command>`. There is also a `pnpm run docs` script available for convenience.
+
+Standalone example popouts open in the [`test-app`](../test-app/) which is built separately and requires running its own development server (`pnpm run dev` from the root).

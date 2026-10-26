@@ -81,7 +81,7 @@
 		color: GrayText;
 	}
 
-	&:where(.MuiButton-loading) {
+	&:where(.MuiButton-loadingPositionCenter) {
 		color: Canvas;
 	}
 }

@@ -1,0 +1,1 @@
+import{t as e}from"./delete-4nStICaS.js";`${e}`;var t=`${e}#icon-large`;export{t};

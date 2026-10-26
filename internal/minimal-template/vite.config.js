@@ -6,5 +6,5 @@ export default defineConfig({
 	build: {
 		assetsInlineLimit: (filePath) => !filePath.endsWith(".svg"),
 	},
-	plugins: [react({ compiler: true })],
+	plugins: [react()],
 });

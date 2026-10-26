@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.2.1
+
+### Patch Changes
+
+- [#1951](https://github.com/iTwin/stratakit/pull/1951): Updated border and shadow in `Snackbar`.
+- [#1993](https://github.com/iTwin/stratakit/pull/1993): Fixed an issue where the `Root` component was injecting styles into the wrong document when using the `rootNode` prop.
+- [#1984](https://github.com/iTwin/stratakit/pull/1984): Updated background color of `Alert` and `Card` in light mode.
+- [#1911](https://github.com/iTwin/stratakit/pull/1911): Adjusted the appearance of _shadows_ across various components.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.5
+
 ## 1.2.0
 
 ### Minor Changes

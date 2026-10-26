@@ -5,8 +5,21 @@
 
 import { Icon } from "@stratakit/mui";
 
-import localSvg from "./Icon.localSvg.svg";
-
 export default () => {
-	return <Icon href={`${localSvg}#icon`} alt="Filled Circle" />;
+	return (
+		<Icon
+			render={
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">
+					<circle
+						cx="8"
+						cy="8"
+						r="7"
+						strokeWidth="2"
+						fill="none"
+						stroke="currentColor"
+					/>
+				</svg>
+			}
+		/>
+	);
 };

@@ -6,11 +6,11 @@
 import { expect, test } from "#playwright";
 
 test("renders secondary color for unsupported colors", {
-	tag: "@visual",
+	tag: "@visual-2",
 }, async ({ page }) => {
 	await page.emulateMedia({ reducedMotion: "reduce" });
 	await page.goto(
-		"/showcase?path=mui/CircularProgress.showcase&export=UnsupportedColors",
+		"/standalone?path=mui/CircularProgress.showcase&export=UnsupportedColors",
 	);
 	await expect(page.getByTestId("unsupported-colors")).toHaveScreenshot();
 });

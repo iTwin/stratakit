@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-Ww52Szm-.js";var t=`${e}#icon`;`${e}`;export{t};

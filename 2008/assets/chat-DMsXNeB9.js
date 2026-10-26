@@ -1,0 +1,1 @@
+import{t as e}from"./chat-GI-WT75X.js";var t=`${e}#icon`;`${e}`;export{t};

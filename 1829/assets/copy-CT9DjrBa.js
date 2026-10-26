@@ -1,1 +1,0 @@
-import{t as e}from"./copy-C1b_EWdf.js";`${e}`;var t=`${e}#icon-large`;export{t};

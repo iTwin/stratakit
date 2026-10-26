@@ -1,1 +1,0 @@
-import{t as e}from"./clock-CYJ-0-Xz.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

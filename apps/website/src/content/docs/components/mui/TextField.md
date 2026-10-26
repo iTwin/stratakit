@@ -32,7 +32,7 @@ Modifications specific to `TextField`:
 - The `color` prop is not supported. Color is applied automatically based on state (e.g., disabled, error).
 - The `variant` prop is not supported. Only the `"outlined"` variant is supported.
 - Removed the [floating label](https://mui.com/material-ui/react-text-field/#floating-label) behavior. The label is always displayed above the input.
-- A search icon is automatically added when `type="search"` is set.
+- A search icon is automatically added when [`type="search"`](#search) is set.
 
 ## Examples
 

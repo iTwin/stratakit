@@ -1,0 +1,1 @@
+import{t as e}from"./info-N_BMPs_Z.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -42,7 +42,7 @@
 		outline-offset: var(--🥝focus-outline-offset);
 	}
 
-	&:where(:has(input:autofill, input:-webkit-autofill)) {
+	&:where(:has(input:autofill), :has(input:-webkit-autofill)) {
 		--_MuiInput-background-color: var(--✨bg--autofill);
 	}
 

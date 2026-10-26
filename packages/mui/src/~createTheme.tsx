@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
@@ -67,6 +68,7 @@ import {
 	DismissIcon,
 	ErrorIcon,
 	InfoIcon,
+	SearchIcon,
 	SuccessIcon,
 	WarningIcon,
 } from "./Icon.js";
@@ -314,8 +316,8 @@ function createTheme() {
 					component: Role.div,
 					slotProps: {
 						title: {
-							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
-							component: MuiCardHeaderTitle as any,
+							variant: "headline-sm" as never,
+							component: MuiCardHeaderTitle as never,
 						},
 					},
 				},
@@ -443,6 +445,7 @@ function createTheme() {
 			},
 			MuiInput: {
 				defaultProps: {
+					classes: { root: "🥝MuiInput" },
 					disableUnderline: true,
 				},
 			},
@@ -653,7 +656,21 @@ function createTheme() {
 					},
 				},
 			},
-			MuiTextField: { defaultProps: { component: Role.div } },
+			MuiTextField: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						input: ({ type }) => ({
+							startAdornment:
+								type === "search" ? (
+									<InputAdornment position="start">
+										<SearchIcon />
+									</InputAdornment>
+								) : undefined,
+						}),
+					},
+				},
+			},
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {

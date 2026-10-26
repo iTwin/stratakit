@@ -9,10 +9,9 @@ import FormLabel from "@mui/material/FormLabel";
 import Slider from "@mui/material/Slider";
 import Stack from "@mui/material/Stack";
 import { visuallyHidden } from "@mui/utils";
+import { svgSoundLoud } from "@stratakit/icons/sound-loud";
+import { svgSoundQuiet } from "@stratakit/icons/sound-quiet";
 import { Icon } from "@stratakit/mui";
-
-import svgSoundLoud from "@stratakit/icons/sound-loud.svg";
-import svgSoundQuiet from "@stratakit/icons/sound-quiet.svg";
 
 export default () => {
 	const id = React.useId();

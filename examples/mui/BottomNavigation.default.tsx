@@ -6,11 +6,10 @@
 import * as React from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
+import { svgClockLarge } from "@stratakit/icons/clock";
+import { svgHeartLarge } from "@stratakit/icons/heart";
+import { svgLocationLarge } from "@stratakit/icons/location";
 import { Icon } from "@stratakit/mui";
-
-import svgClock from "@stratakit/icons/clock.svg";
-import svgHeart from "@stratakit/icons/heart.svg";
-import svgLocation from "@stratakit/icons/location.svg";
 
 export default () => {
 	const [value, setValue] = React.useState(0);
@@ -23,15 +22,15 @@ export default () => {
 		>
 			<BottomNavigationAction
 				label="Recents"
-				icon={<Icon href={`${svgClock}#icon-large`} size="large" />}
+				icon={<Icon href={svgClockLarge} size="large" />}
 			/>
 			<BottomNavigationAction
 				label="Favorites"
-				icon={<Icon href={`${svgHeart}#icon-large`} size="large" />}
+				icon={<Icon href={svgHeartLarge} size="large" />}
 			/>
 			<BottomNavigationAction
 				label="Nearby"
-				icon={<Icon href={`${svgLocation}#icon-large`} size="large" />}
+				icon={<Icon href={svgLocationLarge} size="large" />}
 			/>
 		</BottomNavigation>
 	);

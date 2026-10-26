@@ -80,6 +80,10 @@
 		border-color: GrayText;
 		color: GrayText;
 	}
+
+	&:where(.MuiButton-loadingPositionCenter) {
+		color: Canvas;
+	}
 }
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
@@ -265,6 +269,10 @@
 		--_MuiSwitch-thumb-background-color: SelectedItemText;
 
 		+ .MuiSwitch-track {
+			background-color: SelectedItem;
+		}
+
+		:where(.MuiSwitch-thumb)::before {
 			background-color: SelectedItem;
 		}
 	}

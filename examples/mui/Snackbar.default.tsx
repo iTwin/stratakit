@@ -7,9 +7,8 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import IconButton from "@mui/material/IconButton";
 import Snackbar from "@mui/material/Snackbar";
+import { svgDismiss } from "@stratakit/icons/dismiss";
 import { Icon } from "@stratakit/mui";
-
-import svgDismiss from "@stratakit/icons/dismiss.svg";
 
 export default () => {
 	const [open, setOpen] = React.useState(false);

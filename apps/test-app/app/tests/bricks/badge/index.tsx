@@ -4,9 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Badge } from "@stratakit/bricks";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { definePage } from "~/~utils.tsx";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Badge" };
 

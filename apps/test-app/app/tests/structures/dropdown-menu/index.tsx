@@ -3,12 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { DropdownMenu } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "DropdownMenu" };
 

@@ -39,7 +39,8 @@
 	--✨svg-unchecked: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
 	--✨svg-checked: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M11.607 4.191a.5.5 0 0 1 .787.617l-5.5 7a.503.503 0 0 1-.777.012l-2.5-3-.057-.084a.5.5 0 0 1 .752-.627l.072.07 2.105 2.526 5.118-6.514Z"/></svg>'); /* `checkmark.svg` default size */
 
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 	background-color: var(--_MuiMenuItem-background-color);
 	border: 1px solid var(--_MuiMenuItem-border-color, transparent);
 	border-radius: var(--stratakit-radius-sm);
@@ -57,7 +58,8 @@
 
 	:where(.MuiMenu-list.MuiList-dense) &,
 	&:where([data-_sk-dense]) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		--_MuiMenuItem-height: var(--✨size--small);
 	}
 

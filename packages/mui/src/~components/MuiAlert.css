@@ -12,17 +12,25 @@
 		background-color: var(--stratakit-color-bg-elevation-base);
 	}
 
+	&:where(.MuiAlert-filled) {
+		background-color: var(--_MuiAlert-filled-background, revert-layer);
+	}
+
 	&:where(.MuiAlert-colorSuccess) {
 		border-color: var(--stratakit-color-border-positive-base);
+		--_MuiAlert-filled-background: var(--stratakit-color-bg-positive-transparent);
 	}
 	&:where(.MuiAlert-colorInfo) {
 		border-color: var(--stratakit-color-border-info-base);
+		--_MuiAlert-filled-background: var(--stratakit-color-bg-info-transparent);
 	}
 	&:where(.MuiAlert-colorWarning) {
 		border-color: var(--stratakit-color-border-attention-base);
+		--_MuiAlert-filled-background: var(--stratakit-color-bg-attention-transparent);
 	}
 	&:where(.MuiAlert-colorError) {
 		border-color: var(--stratakit-color-border-critical-base);
+		---_MuiAlert-filled-background: var(--stratakit-color-bg-critical-transparent);
 	}
 }
 

@@ -1,0 +1,102 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.group {
+	gap: var(--stratakit-space-200);
+}
+
+.tile {
+	--_RadioTile-label-color: var(--stratakit-color-text-neutral-primary);
+	--_RadioTile-description-color: var(--stratakit-color-text-neutral-secondary);
+	--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-base);
+
+	position: relative;
+	max-inline-size: 300px;
+
+	display: grid;
+	grid-template-areas: "icon label radio";
+	grid-template-columns: auto minmax(0, 1fr) auto;
+	grid-gap: var(--stratakit-space-100);
+	align-items: center;
+
+	&:has(> .description) {
+		grid-template-areas:
+			"icon label radio"
+			". description .";
+	}
+
+	padding: var(--stratakit-space-300);
+	border-color: var(--_RadioTile-border-color, revert-layer);
+	color: var(--_RadioTile-icon-color);
+	background-color: var(--_RadioTile-background, revert-layer);
+
+	@media (any-hover: hover) {
+		&:hover {
+			--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+		}
+	}
+
+	&:has(input:active) {
+		--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-neutral-pressed);
+	}
+
+	&:has(input:checked) {
+		--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-primary);
+		--_RadioTile-border-color: var(--stratakit-color-border-accent-strong);
+		--_RadioTile-background: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	}
+
+	&:has(input:disabled) {
+		--_RadioTile-icon-color: var(--stratakit-color-icon-neutral-disabled);
+		--_RadioTile-label-color: var(--stratakit-color-text-neutral-disabled);
+		--_RadioTile-description-color: var(--stratakit-color-text-neutral-disabled);
+		--_RadioTile-border-color: var(--stratakit-color-border-glow-on-surface-disabled);
+		--_RadioTile-background: transparent;
+
+		@media (forced-colors: active) {
+			--_RadioTile-icon-color: GrayText;
+			--_RadioTile-label-color: GrayText;
+			--_RadioTile-description-color: GrayText;
+			--_RadioTile-border-color: GrayText;
+		}
+	}
+}
+
+.label {
+	grid-area: label;
+	align-self: start;
+
+	color: var(--_RadioTile-label-color);
+	/* Add 1 padding space + 1 gap space = 2 space called for in Figma */
+	padding-inline-end: var(--stratakit-space-100);
+
+	/* 
+		Expand the label to cover the entire tile. A click anywhere on the card will
+		hit the label and active the radio button.
+
+		The label gets cursor instead of the tile because it wins on the hit test
+		when determine what cursor is shown.
+	*/
+	cursor: pointer;
+	&::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+	}
+
+	.tile:has(input:disabled) & {
+		cursor: not-allowed;
+	}
+}
+
+.description {
+	grid-area: description;
+	align-self: start;
+
+	color: var(--_RadioTile-description-color);
+}
+
+.radio {
+	grid-area: radio;
+}

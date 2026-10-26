@@ -50,13 +50,14 @@ interface RootProps
  * ```
  */
 const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
-	const { children, colorScheme, unstable_accentColor, ...rest } = props;
+	const { children, colorScheme, unstable_accentColor, rootNode, ...rest } =
+		props;
 
 	// The container is passed as a function so that MUI resolves it lazily (inside `Portal`'s layout
 	// effect), by which point the ref is guaranteed to be attached.
 	const theme = React.useMemo(() => createTheme(), []);
 	return (
-		<StyledEngineProvider>
+		<StyledEngineProvider rootNode={rootNode}>
 			<ThemeProvider
 				theme={theme}
 				defaultMode={colorScheme}
@@ -69,6 +70,7 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 					{...rest}
 					colorScheme={colorScheme}
 					unstable_accentColor={unstable_accentColor}
+					rootNode={rootNode}
 					ref={forwardedRef}
 				>
 					<Styles />

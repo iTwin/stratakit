@@ -19,7 +19,7 @@ body:
   - type: textarea
     attributes:
       label: Steps to reproduce
-      description: Detailed steps to reproduce the behavior
+      description: Detailed steps to reproduce the behavior.
       placeholder: |
         1. …
         2. …
@@ -29,7 +29,7 @@ body:
   - type: textarea
     attributes:
       label: Expected behavior
-      description: A clear description of what you expected to happen
+      description: A clear description of what you expected to happen.
     validations:
       required: true
   - type: input
@@ -40,6 +40,18 @@ body:
         Fork [this StackBlitz template](https://stackblitz.com/github/iTwin/stratakit/tree/main/internal/minimal-template?file=src%2FApp.tsx) and reproduce the issue.
     validations:
       required: true
+  - type: dropdown
+    attributes:
+      label: Affected package
+      description: Which package is affected by this bug?
+      multiple: true
+      options:
+        - "@stratakit/mui"
+        - "@stratakit/icons"
+        - "@stratakit/structures"
+        - "@stratakit/foundations"
+        - "@stratakit/bricks"
+        - "@stratakit/internal-utils"
   - type: textarea
     attributes:
       label: Environment and versions
@@ -47,10 +59,10 @@ body:
         Please provide version information and environment details.
         This helps us reproduce the issue.
       placeholder: |
-        - @stratakit/mui 0.2.1
-        - @mui/material 9.0.0
-        - react 19.2.0
-        - Browsers: Chrome 147, Safari 26.2
+        - @stratakit/mui 1.1.0
+        - @mui/material 9.4.0
+        - react 19.3.0
+        - Browsers: Chrome 156, Safari 27
     validations:
       required: false
   - type: textarea

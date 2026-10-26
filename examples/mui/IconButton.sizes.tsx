@@ -5,9 +5,8 @@
 
 import IconButton from "@mui/material/IconButton";
 import Stack from "@mui/material/Stack";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { Icon } from "@stratakit/mui";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default () => {
 	return (

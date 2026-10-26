@@ -1,5 +1,39 @@
 # Changelog
 
+## 1.0.5
+
+### Patch Changes
+
+- [#1984](https://github.com/iTwin/stratakit/pull/1984): Updated the value of `--stratakit-color-bg-elevation-base` in light mode.
+- [#1911](https://github.com/iTwin/stratakit/pull/1911): Updated the values of all `--stratakit-shadow-*` tokens.
+
+## 1.0.4
+
+### Patch Changes
+
+- [#1963](https://github.com/iTwin/stratakit/pull/1963): Removed leftover `-faded` variables from light mode. These variables were previously removed from dark mode as part of the `1.0.0` release.
+
+## 1.0.3
+
+### Patch Changes
+
+- [#1928](https://github.com/iTwin/stratakit/pull/1928): Improved color contrast for `--stratakit-color-text-neutral-disabled` and `--stratakit-color-icon-neutral-disabled` tokens.
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Fixed React Compiler output to cover the entirety of the code.
+- Updated dependencies:
+  - @stratakit/internal-utils@0.2.1
+
+## 1.0.2
+
+### Patch Changes
+
+- [#1921](https://github.com/iTwin/stratakit/pull/1921): Improved color contrast for `--stratakit-color-icon-neutral-*` tokens.
+
+## 1.0.1
+
+### Patch Changes
+
+- [#1842](https://github.com/iTwin/stratakit/pull/1842): Updated the value of `--stratakit-color-bg-elevation-overlay`.
+
 ## 1.0.0
 
 `@stratakit/foundations@1.0.0` is the first stable 1.0 release of the package. This release includes a number of ⚠️ **breaking** changes to the design tokens (CSS variables). If your code relies on any of the removed or renamed CSS variables, you will need to update your code to use one of the other variables.

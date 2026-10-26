@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.6.2
+
+- [#1943](https://github.com/iTwin/stratakit/pull/1943): Added a max-height on the `DropdownMenu` so it does not extend beyond the viewport.
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Fixed React Compiler output to cover the entirety of the code.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.3
+  - @stratakit/bricks@0.6.1
+  - @stratakit/internal-utils@0.2.1
+
+## 0.6.1
+
+- [#1856](https://github.com/iTwin/stratakit/pull/1856): Fixed redundant borders in `Dialog`.
+- [#1842](https://github.com/iTwin/stratakit/pull/1842): Updated some colors in `Dialog`.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.1
+
 ## 0.6.0
 
 - [#1791](https://github.com/iTwin/stratakit/pull/1791): Moved `@stratakit/foundations` from direct `dependencies` to `peerDependencies`. Applications should install the `@stratakit/foundations` package manually.

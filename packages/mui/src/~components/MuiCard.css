@@ -28,18 +28,20 @@
 }
 
 .MuiCardHeader-root {
+	padding: var(--stratakit-space-400);
+
 	&:where(:has(+ .MuiCardContent-root, + .MuiCardActions-root)) {
 		padding-block-end: 0;
 	}
 }
 
 .MuiCardHeader-title {
-	@apply --typography("headline-sm");
 	font-weight: 500;
 }
 
 .MuiCardHeader-subheader {
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 }
 
 .MuiCardMedia-root {
@@ -52,6 +54,7 @@
 
 .MuiCardContent-root {
 	color: var(--stratakit-color-text-neutral-secondary);
+	padding: var(--stratakit-space-400);
 
 	&:where(:has(+ .MuiCardActions-root)) {
 		padding-block-end: 0;

@@ -5,12 +5,11 @@
 
 import Badge from "@mui/material/Badge";
 import Stack from "@mui/material/Stack";
+import { svgStatusRejected } from "@stratakit/icons/status-rejected";
+import { svgStatusRunning } from "@stratakit/icons/status-running";
+import { svgStatusSuccess } from "@stratakit/icons/status-success";
+import { svgStatusWarning } from "@stratakit/icons/status-warning";
 import { Icon } from "@stratakit/mui";
-
-import svgRejected from "@stratakit/icons/status-rejected.svg";
-import svgRunning from "@stratakit/icons/status-running.svg";
-import svgSuccess from "@stratakit/icons/status-success.svg";
-import svgWarning from "@stratakit/icons/status-warning.svg";
 
 export default () => {
 	return (
@@ -18,7 +17,7 @@ export default () => {
 			<Badge
 				badgeContent={
 					<>
-						<Icon href={svgRunning} />
+						<Icon href={svgStatusRunning} />
 						Running
 					</>
 				}
@@ -28,7 +27,7 @@ export default () => {
 			<Badge
 				badgeContent={
 					<>
-						<Icon href={svgSuccess} />
+						<Icon href={svgStatusSuccess} />
 						Approved
 					</>
 				}
@@ -38,7 +37,7 @@ export default () => {
 			<Badge
 				badgeContent={
 					<>
-						<Icon href={svgWarning} />
+						<Icon href={svgStatusWarning} />
 						Unstable
 					</>
 				}
@@ -48,7 +47,7 @@ export default () => {
 			<Badge
 				badgeContent={
 					<>
-						<Icon href={svgRejected} />
+						<Icon href={svgStatusRejected} />
 						Rejected
 					</>
 				}

@@ -12,7 +12,23 @@ links:
 
 - Updated the examples to use [`aria-current`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-current) on the current breadcrumb for improved accessibility.
 
+## Examples
+
+### Buttons
+
+Breadcrumb items are typically rendered as links. If a breadcrumb item triggers in-page navigation without changing the URL, the [**Button**](/components/button) style may be more appropriate.
+
+::example{src="mui/Breadcrumbs.button"}
+
+### Truncation
+
+When the full hierarchy does not fit, hide intermediate breadcrumb items and use a [**Popover**](/components/popover) to provide access to them.
+
+::example{src="mui/Breadcrumbs.truncation"}
+
 ## API reference
 
 - [`Breadcrumbs`](https://mui.com/material-ui/api/breadcrumbs/)
 - [`Link`](https://mui.com/material-ui/api/link/)
+- [`Button`](https://mui.com/material-ui/api/button/)
+- [`Popover`](https://mui.com/material-ui/api/popover/)

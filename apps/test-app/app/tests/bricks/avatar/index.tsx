@@ -5,9 +5,8 @@
 
 import { Avatar } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { svgUser } from "@stratakit/icons/user";
 import { definePage } from "~/~utils.tsx";
-
-import svgUser from "@stratakit/icons/user.svg";
 
 export const handle = { title: "Avatar" };
 

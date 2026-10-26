@@ -31,6 +31,7 @@ export default [
 			),
 		),
 	]),
+	route("standalone", "./standalone.tsx"),
 ] satisfies RouteConfig;
 
 // ----------------------------------------------------------------------------

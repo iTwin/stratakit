@@ -8,7 +8,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import FormGroup from "@mui/material/FormGroup";
 import IconButton from "@mui/material/IconButton";
 import Popover from "@mui/material/Popover";
-import Switch from "@mui/material/Switch";
 import Typography from "@mui/material/Typography";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 import { svgConfiguration } from "@stratakit/icons/configuration";
@@ -143,7 +142,7 @@ function Resizable(props: ResizableProps) {
 export function KnobControlEntrypoint(
 	props: React.ComponentProps<typeof IconButton>,
 ) {
-	const { knobs, enabled: enabledKnobs, toggle } = useKnobs();
+	const { knobs, values, setValue } = useKnobs();
 
 	const headingId = React.useId();
 	const [anchorEl, setAnchorEl] = React.useState<HTMLElement | null>(null);
@@ -178,29 +177,30 @@ export function KnobControlEntrypoint(
 				}}
 			>
 				<Typography
-					variant="body-md"
+					variant="subtitle-sm"
 					render={<h2 />}
 					id={headingId}
-					gutterBottom
+					className={styles.exampleKnobsHeading}
 				>
 					Knobs
 				</Typography>
-				<FormGroup>
-					{[...knobs].map(([knobName]) => (
+				<FormGroup className={styles.exampleKnobsFormGroup}>
+					{[...knobs].map(([knobName, knob]) => (
 						<FormControlLabel
 							key={knobName}
 							label={knobName}
-							control={
-								<Switch
-									checked={!!enabledKnobs[knobName]}
-									onChange={() => toggle(knobName)}
-								/>
-							}
+							control={knob.render({
+								value: values[knobName],
+								onChange: (value) => setValue(knobName, value),
+							})}
 							slotProps={{
 								typography: {
 									className: styles.exampleKnobLabel,
+									variant: "body-sm",
 								},
 							}}
+							labelPlacement="start"
+							className={styles.exampleKnobsField}
 						/>
 					))}
 				</FormGroup>
@@ -212,20 +212,20 @@ export function KnobControlEntrypoint(
 // ----------------------------------------------------------------------------
 
 type KnobsState = {
-	/** Currently enabled knobs */
-	enabled: Record<string, boolean>;
+	/** Current state of knobs */
+	values: Record<string, unknown>;
 	/** Change the state of a knob */
-	toggle: (knobName: string, enabled?: boolean) => void;
+	setValue: (knobName: string, value: unknown) => void;
 };
 
 function createKnobsStore() {
 	return createStore<KnobsState>((set) => ({
-		enabled: {},
-		toggle: (knobName, enabled) => {
+		values: {},
+		setValue: (knobName, value) => {
 			set((state) => ({
-				enabled: {
-					...state.enabled,
-					[knobName]: enabled ?? !state.enabled[knobName],
+				values: {
+					...state.values,
+					[knobName]: value,
 				},
 			}));
 		},
@@ -234,7 +234,7 @@ function createKnobsStore() {
 
 const KnobsContext = React.createContext<
 	| {
-			knobs: Map<string, Knob>;
+			knobs: Map<string, Knobs[string]>;
 			store: ReturnType<typeof createKnobsStore>;
 	  }
 	| undefined
@@ -260,8 +260,7 @@ export function useKnobs() {
 	if (!context) throw new Error("useKnobs must be used within a KnobsProvider");
 
 	const { knobs, store } = context;
-	const enabled = useStore(store, (state) => state.enabled);
-	const toggle = useStore(store, (state) => state.toggle);
+	const { values, setValue } = useStore(store);
 
-	return { knobs, enabled, toggle };
+	return { knobs, values, setValue };
 }

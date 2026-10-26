@@ -19,6 +19,7 @@ import { svgDismiss } from "@stratakit/icons/dismiss";
 import { svgDismissCircle } from "@stratakit/icons/dismiss-circle";
 import { svgError } from "@stratakit/icons/error";
 import { svgInfo } from "@stratakit/icons/info";
+import { svgSearch } from "@stratakit/icons/search";
 import { svgSortAscending } from "@stratakit/icons/sort-ascending";
 import { svgSortDescending } from "@stratakit/icons/sort-descending";
 import { svgStatusSuccess } from "@stratakit/icons/status-success";
@@ -62,6 +63,8 @@ const WarningIcon = createIconComponent(svgWarning);
 const SortAscendingIcon = createIconComponent(svgSortAscending);
 const SortDescendingIcon = createIconComponent(svgSortDescending);
 
+const SearchIcon = createIconComponent(svgSearch);
+
 // ----------------------------------------------------------------------------
 
 export {
@@ -80,6 +83,7 @@ export {
 	ErrorIcon,
 	Icon,
 	InfoIcon,
+	SearchIcon,
 	SortAscendingIcon,
 	SortDescendingIcon,
 	SuccessIcon,

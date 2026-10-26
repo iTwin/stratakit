@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.7
+
+- [#1904](https://github.com/iTwin/stratakit/pull/1904): Added `icons-meta.json` file that contains metadata for each SVG icon. Use the icon name (without the `.svg` extension) as the key to access the corresponding metadata object.
+
+  Each metadata object contains:
+
+  - `aliases` - array of search keywords associated with the icon.
+  - `symbols` - array of available symbol ids in the icon.
+
 ## 0.4.6
 
 - [#1922](https://github.com/iTwin/stratakit/pull/1922): Added new icons:

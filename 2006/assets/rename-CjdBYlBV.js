@@ -1,0 +1,1 @@
+import{t as e}from"./rename-B-FReCQG.js";var t=`${e}#icon`;`${e}`;export{t};

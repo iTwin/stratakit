@@ -1,0 +1,1 @@
+import{t as e}from"./rename-CDwdIfVD.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -272,8 +272,14 @@ function SynchronizeAccentColor({
 
 // ----------------------------------------------------------------------------
 
+/**
+ * Context to configure the portal behavior used by descendant components.
+ */
 const PortalContext = React.createContext<
 	| {
+			/**
+			 * The element to which all portals will be rendered.
+			 */
 			container: HTMLElement | null;
 			/**
 			 * Function that is lazily resolved by MUI when the portal mounts. Passing the

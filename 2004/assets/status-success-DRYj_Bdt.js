@@ -1,1 +1,0 @@
-import{t as e}from"./status-success-3g6e-EGv.js";var t=`${e}#icon`;`${e}`;export{t};

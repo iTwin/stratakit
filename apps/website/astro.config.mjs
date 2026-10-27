@@ -1,10 +1,13 @@
 // @ts-check
 
+import { readFileSync } from "node:fs";
+
 import { unified } from "@astrojs/markdown-remark";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import remarkDirective from "remark-directive";
 import { visit } from "unist-util-visit";
+import { copyrightBannerJs } from "internal/copyright-linter.ts";
 
 const BASE_URL = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/docs`
@@ -172,6 +175,18 @@ function remarkLiveExamples() {
 					return;
 				}
 
+				let rawSource;
+				try {
+					rawSource = readFileSync(
+						new URL(import.meta.resolve(`examples/${src}.tsx`)),
+						"utf8",
+					);
+				} catch {
+					file.fail(`Could not read example source: ${src}.tsx`, node);
+					return;
+				}
+				const trimmedSource = rawSource.replace(copyrightBannerJs, "").trim();
+
 				node.data ||= {};
 
 				const verticalStretch =
@@ -189,7 +204,13 @@ function remarkLiveExamples() {
 					"data-src": src,
 					...(style ? { style } : {}),
 				};
-				node.children = [];
+				node.children = [
+					{
+						type: "code",
+						lang: "tsx",
+						value: trimmedSource,
+					},
+				];
 			}
 		});
 	};

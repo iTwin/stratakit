@@ -689,6 +689,7 @@ function createTheme() {
 				defaultProps: {
 					placement: "top",
 					describeChild: true,
+					enterDelay: 500,
 					slotProps: {
 						tooltip: {
 							className: "🥝MuiTooltip",

@@ -363,11 +363,13 @@ function getComponent({
 		symbol,
 		baseTypeDeclarations,
 	});
-	const baseProps = baseProperties.map((bp) => {
-		const typeName = bp.baseTypeDeclaration?.getNameNode().getText();
-		const propertyName = bp.property.getName();
-		return `${typeName}.${propertyName}`;
-	});
+	const baseProps = baseProperties
+		.map((bp) => {
+			const typeName = bp.baseTypeDeclaration?.getNameNode().getText();
+			const propertyName = bp.property.getName();
+			return `${typeName}.${propertyName}`;
+		})
+		.sort();
 	const props = getComponentProps({
 		symbol,
 		baseProperties: baseProperties.map((bp) => bp.property),

@@ -48,6 +48,16 @@ This example is adapted from the [MUI Table Sorting example](https://mui.com/mat
 
 ::example{src="mui/Table.sort"}
 
+### Number Alignment
+
+When creating a table that has number values it is often desirable for the user to be able to quickly compare numbers by scanning down the columns of the table.
+
+- Right align the columns with numbers.
+- Set the CSS property `font-variant-numeric: tabular-nums` on the column with numbers. This ensure each digit takes up the same width and the place values align across rows.
+- Use an instance of [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) to format the numbers. Set `minimumFractionDigits` and `maximumFractionDigits` set to the same value to insure that all numbers have the same number of fractional digits and the place values align.
+
+::example{src="mui/Table.numberAlignment"}
+
 ## API reference
 
 - [`Table`](https://mui.com/material-ui/api/table/)

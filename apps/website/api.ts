@@ -30,7 +30,7 @@ const packageNames = [
 ];
 
 const baseTypeNames = ["BaseProps", "FocusableProps"];
-const utilityFunctions = ["loadFoundationsStyles"];
+const utilityFunctions = ["loadFoundationsStyles", "PortalContext"];
 
 type Api = Api.Package[];
 

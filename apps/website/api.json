@@ -120,13 +120,6 @@
 				"name": "Root",
 				"composition": [
 					{
-						"name": "PortalContext",
-						"baseProps": [],
-						"props": [],
-						"jsdoc": "Context to configure the portal behavior used by descendant components.",
-						"barrelName": "PortalContext"
-					},
-					{
 						"name": "Root",
 						"baseProps": ["BaseProps.render"],
 						"props": [

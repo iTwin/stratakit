@@ -42,7 +42,7 @@
 		outline-offset: var(--🥝focus-outline-offset);
 	}
 
-	&:where(:has(input:autofill), :has(input:-webkit-autofill)) {
+	&:where(:has(:is(input, textarea):is(:autofill, :-webkit-autofill))) {
 		--_MuiInput-background-color: var(--✨bg--autofill);
 	}
 
@@ -89,13 +89,11 @@
 	padding-inline-end: var(--_MuiInput-padding-inline);
 	align-content: center;
 
-	&:where(input) {
-		&:where(:autofill, :-webkit-autofill) {
-			box-shadow: 0 0 0 var(--_MuiInput-block-size) var(--_MuiInput-background-color) inset;
-		}
-	}
-
 	&:where(input, textarea) {
+		&:where(:autofill, :-webkit-autofill) {
+			box-shadow: 0 0 0 calc(infinity * 1px) var(--_MuiInput-background-color) inset;
+		}
+
 		&::placeholder {
 			color: var(--stratakit-color-text-neutral-placeholder);
 			opacity: 1;

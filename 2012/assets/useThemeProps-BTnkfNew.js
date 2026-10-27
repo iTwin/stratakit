@@ -1,0 +1,1 @@
+import{T as e,y as t}from"./DefaultPropsProvider-CttC6f9u.js";import{t as n}from"./getThemeProps-DacBiiEN.js";var r=t();function i(t){let{props:r,name:i,defaultTheme:a,themeId:o}=t,s=e(a);return o&&(s=s[o]||s),n({theme:s,name:i,props:r})}export{r as n,i as t};

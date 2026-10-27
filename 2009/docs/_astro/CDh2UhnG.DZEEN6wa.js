@@ -1,0 +1,1 @@
+import{lt as e}from"./Root.internal.BAx8EcFT.js";var t=new WeakMap;function n(n,i,a){let{KeyboardEvent:o}=e(n),s=new o(i.type,a);return t.set(s,r(i)),n.dispatchEvent(s)}function r(e){return t.get(e)??e}export{r as n,n as t};

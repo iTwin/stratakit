@@ -1,0 +1,1 @@
+import{t as e}from"./status-warning-CsPymn_7.js";var t=`${e}#icon`;`${e}`;export{t};

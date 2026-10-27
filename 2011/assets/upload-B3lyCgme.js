@@ -1,0 +1,1 @@
+import{t as e}from"./upload-DWYmuaDX.js";var t=`${e}#icon`;`${e}`;export{t};

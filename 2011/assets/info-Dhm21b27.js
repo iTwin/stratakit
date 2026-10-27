@@ -1,0 +1,1 @@
+import{t as e}from"./info-CTRHD9Ag.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./delete-PaRvIZjy.js";`${e}`;var t=`${e}#icon-large`;export{t};

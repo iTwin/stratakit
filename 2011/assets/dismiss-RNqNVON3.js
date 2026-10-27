@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-UODuL8-l.js";var t=`${e}#icon`;`${e}`;export{t};

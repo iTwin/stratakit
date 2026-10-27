@@ -1,1 +1,0 @@
-import{t as e}from"./script-84_2gnhh.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

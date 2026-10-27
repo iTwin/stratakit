@@ -1,1 +1,0 @@
-import{t as e}from"./star-v3-zVkx2.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

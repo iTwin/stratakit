@@ -3,7 +3,7 @@ title: ErrorRegion
 description: Error regions collate errors generated from an interactive dataset.
 status: unstable
 links:
-  apiReference: /reference/structures/ErrorRegion
+  apiReference: "#api-reference"
 ---
 
 ::example{src="structures/ErrorRegion.default" min-height="250px" min-width="450px" vertical-stretch}
@@ -84,3 +84,8 @@ Collocate errors raised from a `Tree` component in an **ErrorRegion**. In the ex
 
 - Don't use **ErrorRegion** for form errors or generic status messages.
 - Don't steal focus and direct it to the **ErrorRegion** when an error occurs.
+
+## API reference
+
+- [`ErrorRegion.Root`](/reference/structures/ErrorRegion/#ErrorRegion.Root)
+- [`ErrorRegion.Item`](/reference/structures/ErrorRegion/#ErrorRegion.Item)

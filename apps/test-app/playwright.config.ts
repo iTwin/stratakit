@@ -8,8 +8,14 @@ import { test as base, defineConfig, devices } from "@playwright/test";
 
 import type { Page } from "@playwright/test";
 
+const snapshotsInOwnFolderTemplate =
+	"{testDir}/{testFileDir}/snapshots/{testFileBaseName}{-arg}{-projectName}{-snapshotSuffix}{ext}";
+const snapshotsNextToTestTemplate =
+	"{snapshotDir}/{testFileDir}/{testFileName}-snapshot.{arg}{-projectName}{-snapshotSuffix}{ext}";
+
 /** See https://playwright.dev/docs/test-configuration. */
 export default defineConfig({
+	outputDir: "test-results/output",
 	/* Run tests in files in parallel */
 	fullyParallel: true,
 	/* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -21,7 +27,7 @@ export default defineConfig({
 	/* Opt out of parallel tests on CI. */
 	workers: process.env.CI ? 1 : undefined,
 	/* Reporter to use. See https://playwright.dev/docs/test-reporters */
-	reporter: [["html", { open: "never" }]],
+	reporter: [["html", { open: "never", outputFolder: "test-results/report" }]],
 	/* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
 	use: {
 		/* Base URL to use in actions like `await page.goto('/')`. */
@@ -49,20 +55,58 @@ export default defineConfig({
 			],
 		},
 	},
-	/* Keep snapshots in the same folder as the test file to nest the files. */
-	snapshotPathTemplate:
-		"{snapshotDir}/{testFileDir}/{testFileName}-snapshot.{arg}{-projectName}{-snapshotSuffix}{ext}",
 
 	/* Configure projects for major browsers */
 	projects: [
 		{
 			name: "chromium",
+			grepInvert: /@visual-2/,
+			snapshotPathTemplate: snapshotsNextToTestTemplate,
 			use: { ...devices["Desktop Chrome"] },
 		},
-
 		{
 			name: "firefox",
+			grepInvert: /@visual-2/,
+			snapshotPathTemplate: snapshotsNextToTestTemplate,
 			use: { ...devices["Desktop Firefox"] },
+		},
+		{
+			name: "chromium-light",
+			grep: /@visual-2/,
+			snapshotPathTemplate: snapshotsInOwnFolderTemplate,
+			use: {
+				...devices["Desktop Chrome"],
+				colorScheme: "light",
+			},
+		},
+		{
+			name: "chromium-dark",
+			grep: /@visual-2/,
+			snapshotPathTemplate: snapshotsInOwnFolderTemplate,
+			use: {
+				...devices["Desktop Chrome"],
+				colorScheme: "dark",
+			},
+		},
+		{
+			name: "chromium-forced-colors",
+			grep: /@visual-2/,
+			snapshotPathTemplate: snapshotsInOwnFolderTemplate,
+			use: {
+				...devices["Desktop Chrome"],
+				contextOptions: {
+					forcedColors: "active",
+				},
+			},
+		},
+		{
+			name: "firefox-light",
+			grep: /@visual-2/,
+			snapshotPathTemplate: snapshotsInOwnFolderTemplate,
+			use: {
+				...devices["Desktop Firefox"],
+				colorScheme: "light",
+			},
 		},
 	],
 	webServer: {
@@ -84,6 +128,9 @@ export const test = base.extend<{ page: Page }>({
 		page.goto = async (url, options) => {
 			const result = await _goto.call(page, url, options);
 			await page.waitForSelector("body[data-loaded]", { timeout: 5000 });
+			await page
+				.getByTestId("showcase-loading")
+				.waitFor({ state: "hidden", timeout: 5000 });
 			return result;
 		};
 		await use(page);

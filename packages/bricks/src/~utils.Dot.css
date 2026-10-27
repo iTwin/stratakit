@@ -8,7 +8,7 @@
 		inline-size: var(--🥝Dot-size, 4px);
 		block-size: var(--🥝Dot-size, 4px);
 
-		border-radius: 9999px;
+		border-radius: var(--stratakit-radius-round);
 		background-color: var(--stratakit-color-bg-accent-base);
 		border: 1px solid var(--stratakit-color-border-glow-strong-default);
 	}

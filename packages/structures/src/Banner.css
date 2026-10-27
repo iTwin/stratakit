@@ -9,8 +9,8 @@
 		grid-template-columns: [start] auto [content] minmax(0, 1fr) [end] auto;
 		background-color: var(--🥝Banner-color-background);
 		border: 1px solid var(--🥝Banner-color-border);
-		border-radius: 8px;
-		padding: var(--stratakit-space-x3);
+		border-radius: var(--stratakit-radius-md);
+		padding: var(--stratakit-space-300);
 		align-items: center;
 		inline-size: 100%;
 	}
@@ -51,7 +51,7 @@
 		grid-column: start;
 		grid-row: 1;
 		align-self: start;
-		margin-inline-end: var(--stratakit-space-x2);
+		margin-inline-end: var(--stratakit-space-200);
 	}
 }
 
@@ -60,7 +60,7 @@
 		grid-column: content;
 		font-weight: 500;
 		align-self: start;
-		margin-block-end: var(--stratakit-space-x1);
+		margin-block-end: var(--stratakit-space-100);
 	}
 }
 
@@ -80,8 +80,8 @@
 		display: flex;
 		flex-wrap: wrap;
 		align-items: baseline;
-		gap: var(--stratakit-space-x2);
-		margin-block-start: var(--stratakit-space-x3);
+		gap: var(--stratakit-space-200);
+		margin-block-start: var(--stratakit-space-300);
 	}
 }
 
@@ -90,7 +90,7 @@
 		grid-column: end;
 		grid-row: 1;
 		align-self: start;
-		margin-inline-start: var(--stratakit-space-x3);
+		margin-inline-start: var(--stratakit-space-300);
 	}
 }
 

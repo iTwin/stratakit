@@ -3,7 +3,7 @@ title: Autocomplete
 description: Autocomplete inputs are used to provide suggestions while users type.
 links:
   muiDocs: https://mui.com/material-ui/react-autocomplete/
-  apiReference: https://mui.com/material-ui/api/autocomplete/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Autocomplete.default"}
@@ -16,7 +16,7 @@ links:
 - Added [`role="group"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/group_role) to the root element.
 - Added [`role="list"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/list_role) and [`role="listitem"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/listitem_role) semantics to [**Chips**](/components/chip) ("tags") used in [multiple selection](#multiple-values).
 - Tags are now focusable. Input is the first focusable element, followed by tags in the order they were added.
-- The default portal container is now the [root portal container](/components/root/#portal-container).
+- The default [`container`](https://mui.com/material-ui/api/popper/#popper-prop-container) of the [`slotProps.popper`](https://mui.com/material-ui/api/autocomplete/#autocomplete-prop-slotProps) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
 - The icons are not customizable. `clearIcon`, `popupIcon` and `forcePopupIcon` are not supported.
 
 ## Examples
@@ -31,3 +31,7 @@ links:
 - **Medium:** Default size, suitable for most use cases.
 
 ::example{src="mui/Autocomplete.sizes"}
+
+## API reference
+
+- [`Autocomplete`](https://mui.com/material-ui/api/autocomplete/)

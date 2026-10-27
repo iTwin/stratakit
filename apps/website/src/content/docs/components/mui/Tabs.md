@@ -3,7 +3,7 @@ title: Tabs
 description: Tabs are used to alternate between views.
 links:
   muiDocs: https://mui.com/material-ui/react-tabs/
-  apiReference: https://mui.com/material-ui/api/tabs/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Tabs.default"}
@@ -54,3 +54,8 @@ When there are too many tabs, the tab list becomes scrollable. A fade indicates 
 - **Medium:** Default size, suitable for most use cases.
 
 ::example{src="mui/Tabs.sizes"}
+
+## API reference
+
+- [`Tabs`](https://mui.com/material-ui/api/tabs/)
+- [`Tab`](https://mui.com/material-ui/api/tab/)

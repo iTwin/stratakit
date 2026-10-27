@@ -3,12 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { IconButton } from "@stratakit/bricks";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<IconButton variant="solid" label="Solid" icon={svgPlaceholder} />
 			<IconButton variant="outline" label="Outline" icon={svgPlaceholder} />
 			<IconButton variant="ghost" label="Ghost" icon={svgPlaceholder} />

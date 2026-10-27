@@ -9,7 +9,7 @@
 
 	@layer base {
 		display: grid;
-		gap: var(--stratakit-space-x1);
+		gap: var(--stratakit-space-100);
 		align-items: center;
 		justify-content: start;
 

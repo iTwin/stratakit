@@ -10,13 +10,11 @@ import {
 	Outlet,
 	Scripts,
 	ScrollRestoration,
-	useLocation,
 	useMatches,
 } from "react-router";
 import { Root as StrataKitRoot } from "@stratakit/foundations";
 import { Root as StrataKitMuiRoot } from "@stratakit/mui";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { AppNavigationRail } from "./~navigation.tsx";
 import { useSettingsStore } from "./~settings.tsx";
 import { isProduction, useColorScheme } from "./~utils.tsx";
 
@@ -25,9 +23,7 @@ import type { LinksFunction } from "react-router";
 import interVariable from "./assets/InterVariable.woff2?url";
 import interVariableItalic from "./assets/InterVariable-Italic.woff2?url";
 
-const queryClient = new QueryClient({
-	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental
-});
+const queryClient = new QueryClient();
 
 export const links: LinksFunction = () => {
 	const faviconHref = isProduction ? "/favicon.svg" : "/favicon-dev.svg";
@@ -75,8 +71,8 @@ function LayoutInner({ children }: { children: React.ReactNode }) {
 export default function App() {
 	const colorScheme = useColorScheme();
 	const accentColor = useSettingsStore((state) => state.accentColor);
-	const location = useLocation();
 	const isRootTest = useIsRootTest();
+	const handle = useMatches().at(-1)?.handle as { density?: string };
 
 	React.useEffect(function signalPageLoad() {
 		document.body.dataset.loaded = "true";
@@ -85,10 +81,8 @@ export default function App() {
 	return (
 		<QueryClientProvider client={queryClient}>
 			{(() => {
-				// MUI theme uses a looser density, whereas StrataKit components need the `"dense"` density to preserve the original look and feel.
-				const density = location.pathname.startsWith("/mui")
-					? undefined
-					: "dense";
+				// Use `density="dense"` for all routes except those explicitly marked as "loose".
+				const density = handle?.density === "loose" ? undefined : "dense";
 
 				// Use the `@stratakit/foundations` Root when testing the Root itself.
 				// Use `@stratakit/mui` for everything else.
@@ -103,7 +97,7 @@ export default function App() {
 						synchronizeColorScheme={false}
 						style={{ display: "contents" }}
 					>
-						<AppNavigationRail mainContent={<Outlet />} />
+						<Outlet />
 					</Root>
 				);
 			})()}
@@ -128,7 +122,8 @@ export function HydrateFallback() {
 }
 
 function useIsRootTest() {
-	type RootTestHandle = typeof import("~/tests/root/index.tsx").handle;
+	type RootTestHandle =
+		typeof import("~/tests/foundations/root/index.tsx").handle;
 	return !!(useMatches()?.at(-1)?.handle as RootTestHandle)?.rootTest;
 }
 

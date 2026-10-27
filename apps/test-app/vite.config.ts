@@ -4,21 +4,16 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { reactRouter } from "@react-router/dev/vite";
+import babel from "@rolldown/plugin-babel";
+import { reactCompilerPreset } from "@vitejs/plugin-react";
 import * as lightningcss from "lightningcss";
 import {
 	defaultClientConditions,
 	defaultServerConditions,
 	defineConfig,
 } from "vite";
-import babel from "vite-plugin-babel";
 import devtoolsJson from "vite-plugin-devtools-json";
-import tsconfigPaths from "vite-tsconfig-paths";
-import {
-	createVisitor,
-	customAtRules,
-	resolver,
-	targets,
-} from "internal/lightningcss.js";
+import { createVisitor, resolver, targets } from "internal/lightningcss.js";
 
 import type { Config as ReactRouterConfig } from "@react-router/dev/config";
 import type { Plugin } from "vite";
@@ -55,13 +50,9 @@ export default defineConfig({
 	plugins: [
 		reactRouter(),
 		babel({
-			filter: /\.[jt]sx?$/,
-			babelConfig: {
-				presets: ["@babel/preset-typescript"],
-				plugins: [["babel-plugin-react-compiler", {}]],
-			},
+			include: /\.[jt]sx?$/,
+			presets: [reactCompilerPreset()],
 		}),
-		tsconfigPaths(),
 		bundleCssPlugin(),
 		devtoolsJson(),
 	],
@@ -72,15 +63,18 @@ export default defineConfig({
 		},
 		// assetsDir must not start with "/".
 		assetsDir: basename ? `${basename.replace(/^\//, "")}/assets` : "assets",
+		cssMinify: "esbuild",
 	},
 	server: {
 		port: 1800, // dev server port
 		warmup: { clientFiles: ["./app/root.tsx"] }, // https://github.com/remix-run/react-router/issues/12786#issuecomment-2634033513
 	},
 	preview: {
+		host: "127.0.0.1", // https://github.com/remix-run/react-router/issues/15255
 		port: 1800, // prod server port
 	},
 	resolve: {
+		tsconfigPaths: true,
 		conditions: [customConditions, defaultClientConditions].flat(),
 	},
 	ssr: {
@@ -113,7 +107,6 @@ function bundleCssPlugin() {
 			const { code: intermediateCode } = await lightningcss.bundleAsync({
 				filename,
 				visitor: createVisitor(),
-				customAtRules,
 				resolver,
 				exclude: lightningcss.Features.Colors,
 			});
@@ -122,7 +115,6 @@ function bundleCssPlugin() {
 				filename,
 				code: intermediateCode,
 				minify: true,
-				customAtRules,
 				targets,
 				visitor: createVisitor(),
 				exclude: lightningcss.Features.Colors,

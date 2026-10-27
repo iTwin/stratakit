@@ -3,14 +3,15 @@ title: CircularProgress
 description: Progress indicators are used to display a loading state or visualize the progress of an operation.
 links:
   muiDocs: https://mui.com/material-ui/react-progress/
-  apiReference: https://mui.com/material-ui/api/circular-progress/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/CircularProgress.default"}
 
 ## StrataKit MUI modifications
 
-- The `enableTrackSlot` prop defaults to true.
+- The `color` prop does not support `"inherit"` or `"info"`.
+- The `disableShrink`, `enableTrackSlot`, and `thickness` props are not supported.
 - Restyled using StrataKit's visual language.
 - Includes full `forced-colors` support.
 
@@ -28,3 +29,7 @@ links:
 Set the `variant` prop to `"determinate"` when the completion percentage is known.
 
 ::example{src="mui/CircularProgress.determinate"}
+
+## API reference
+
+- [`CircularProgress`](https://mui.com/material-ui/api/circular-progress/)

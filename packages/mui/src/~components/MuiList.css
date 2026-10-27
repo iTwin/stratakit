@@ -5,8 +5,8 @@
 
 .MuiList-root {
 	&:where(.MuiList-padding) {
-		padding-block-start: var(--stratakit-space-x1);
-		padding-block-end: var(--stratakit-space-x1);
+		padding-block-start: var(--stratakit-space-100);
+		padding-block-end: var(--stratakit-space-100);
 	}
 }
 
@@ -22,21 +22,27 @@
 	border-block: 1px solid transparent;
 	margin-block-end: -1px; /* prevent double border */
 
-	padding-block-start: var(--stratakit-space-x1);
-	padding-block-end: var(--stratakit-space-x1);
-	padding-inline-start: var(--stratakit-space-x3);
-	padding-inline-end: var(--stratakit-space-x3);
-	gap: var(--stratakit-space-x2);
+	padding-block-start: var(--stratakit-space-100);
+	padding-block-end: var(--stratakit-space-100);
+	padding-inline-start: var(--stratakit-space-300);
+	padding-inline-end: var(--stratakit-space-300);
+	gap: var(--stratakit-space-200);
+
+	&:where(.MuiListSubheader-sticky) {
+		background-color: var(--stratakit-color-bg-page-base);
+		border-block-end: 1px solid var(--stratakit-color-border-page-base);
+	}
 
 	:where(.MuiList-root.MuiList-dense) & {
 		min-block-size: var(--stratakit-size-control-listitem-height-small);
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 
-	&:where(:has(~ .MuiListItem-secondaryAction)) {
+	&:where(:has(.MuiListItem-secondaryAction, ~ .MuiListItem-secondaryAction)) {
 		padding-inline-end: calc(
 			var(--stratakit-size-control-field-height-medium) +
-			var(--stratakit-space-x3)
+			var(--stratakit-space-300)
 		);
 	}
 
@@ -54,9 +60,9 @@
 
 .MuiListItemText-root {
 	margin: 0;
-	gap: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-100);
 }
 
 .MuiListItem-secondaryAction {
-	inset-inline-end: var(--stratakit-space-x3);
+	inset-inline-end: var(--stratakit-space-300);
 }

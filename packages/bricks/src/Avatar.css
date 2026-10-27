@@ -40,25 +40,25 @@
 	@layer modifiers {
 		&:where([data-_sk-size="small"]) {
 			--🥝Avatar-size: 1rem;
-			--🥝Avatar-font-size: var(--stratakit-font-size-8);
+			--🥝Avatar-font-size: 0.5rem; /* TODO: use an existing token */
 			--🥝Icon-size: 0.75rem;
 		}
 
 		&:where([data-_sk-size="medium"]) {
 			--🥝Avatar-size: 1.5rem;
-			--🥝Avatar-font-size: var(--stratakit-font-size-10);
+			--🥝Avatar-font-size: var(--stratakit-font-size-caption-sm);
 			--🥝Icon-size: 1rem;
 		}
 
 		&:where([data-_sk-size="large"]) {
 			--🥝Avatar-size: 2rem;
-			--🥝Avatar-font-size: var(--stratakit-font-size-12);
+			--🥝Avatar-font-size: var(--stratakit-font-size-caption-lg);
 			--🥝Icon-size: 1rem;
 		}
 
 		&:where([data-_sk-size="xlarge"]) {
 			--🥝Avatar-size: 3rem;
-			--🥝Avatar-font-size: var(--stratakit-font-size-16);
+			--🥝Avatar-font-size: var(--stratakit-font-size-body-lg);
 			--🥝Icon-size: 1.5rem;
 		}
 	}

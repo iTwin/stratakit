@@ -3,14 +3,14 @@ title: Icon
 description: Icons are used to visually represent actions or information.
 status: stable
 links:
-  apiReference: /reference/mui/Icon/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Icon.default"}
 
 The **Icon** component ensures a consistent visual style for icons throughout the user interface. It is optimized for use with [StrataKit icons](/icons/), but it also supports [custom icons](#custom).
 
-Use the [`href`](/reference/mui/Icon/#Icon.Icon.href) prop to specify the icon you want to display. This prop should be set to a URL to an `.svg` from the [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons?activeTab=versions) package, or a [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment) pointing to a [`<symbol>` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/symbol) inside an SVG. All StrataKit icons include two symbols with different levels of detail: `#icon` (the default) and `#icon-large`.
+Use the [`href`](/reference/mui/Icon/#Icon.Icon.href) prop to specify the icon you want to display. It accepts a [URI reference](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment) that resolves to an SVG or one of its [`<symbol>` elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/symbol). Named exports from [`@stratakit/icons`](/icons/) work out-of-the-box.
 
 ## Examples
 
@@ -22,12 +22,6 @@ Use the [`size`](/reference/mui/Icon/#Icon.Icon.size) prop to adjust the **Icon'
 - **Large:** Increased size, use in larger spaces.
 
 ::example{src="mui/Icon.sizes"}
-
-:::note[Increase detail]
-
-In the example above, the `#icon-large` symbol is applied to the large icon to display a more detailed icon.
-
-:::
 
 ### Decorative
 
@@ -47,9 +41,13 @@ By default, the **Icon** component inherits the ancestor's color. Use the [`colo
 
 The `href` prop can point to any valid `<symbol>` or `<svg>` that has an `id`. This is the recommended way to use custom icons.
 
-Alternatively, the `render` prop can be used to display an inlined SVG, as in the example below. This can be useful when you need to target the individual elements inside the SVG (e.g. for styling or animation purposes).
-
 ::example{src="mui/Icon.custom"}
+
+### Inline
+
+The `render` prop can be used to display an inlined SVG, as in the example below. This can be useful when you need to target the individual elements inside the SVG (e.g. for styling or animation purposes).
+
+::example{src="mui/Icon.inline"}
 
 ## ✅ Do
 
@@ -62,3 +60,7 @@ Alternatively, the `render` prop can be used to display an inlined SVG, as in th
 - Don't use custom icons when a standard icon is available in `@stratakit/icons`.
 - Don't use non-standard icons from `@mui/icons-material`.
 - Don't use the `SvgIcon` or `Icon` component from `@mui/material`.
+
+## API reference
+
+- [`Icon`](/reference/mui/Icon)

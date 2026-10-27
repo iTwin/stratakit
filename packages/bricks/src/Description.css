@@ -31,7 +31,7 @@
 				background-image: var(--_❗);
 				background-repeat: no-repeat;
 
-				margin-inline-end: var(--stratakit-space-x1);
+				margin-inline-end: var(--stratakit-space-100);
 			}
 
 			&::after {

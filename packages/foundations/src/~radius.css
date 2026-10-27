@@ -1,0 +1,12 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+html,
+:host,
+.🥝Root {
+	--stratakit-radius-sm: 4px;
+	--stratakit-radius-md: 8px;
+	--stratakit-radius-lg: 12px;
+	--stratakit-radius-round: 9999px;
+}

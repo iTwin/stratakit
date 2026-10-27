@@ -3,7 +3,7 @@ title: Badge
 description: Badges show notifications, counts, or status information.
 links:
   muiDocs: https://mui.com/material-ui/react-badge/
-  apiReference: https://mui.com/material-ui/api/badge/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Badge.default"}
@@ -20,7 +20,7 @@ Make sure the **Badge** is suitable for your use case. There may be other, more 
 ## StrataKit MUI modifications
 
 - Added [`type`](#type) prop.
-- Added [`inline`](#inline) prop.
+- Added an [`"inline"` variant](#inline).
 - Added [`size`](#sizes) prop.
 - The `"default"` and `"primary"` colors have been removed. The default color is now `"secondary"`.
 
@@ -34,13 +34,13 @@ Use `variant="dot"` to display the badge without a count inside.
 
 ### Inline
 
-Set the `inline` prop to display the badge in normal document flow instead of positioned relative to its child.
+Set `variant="inline"` to display the badge in normal document flow instead of positioned relative to its child.
 
 ::example{src="mui/Badge.inline"}
 
 ### Sizes
 
-The `size` prop can only be set when [`inline`](#inline).
+The `size` prop can only be set when using the [`"inline"` variant](#inline).
 
 - **Small:** Use in compact interfaces where space is limited.
 - **Medium:** Default size, suitable for most use cases.
@@ -63,7 +63,7 @@ In most cases, you should supplement the `color` with iconography so that color 
 
 ### Type
 
-Use the `type` prop to adjust the visual prominence of an [`inline`](#inline) **Badge**.
+Use the `type` prop to adjust the visual prominence of an [`"inline"` variant](#inline) **Badge**.
 
 - **Strong:** The default, use when you need the strongest emphasis.
 - **Muted:** Use when you want a balanced level of emphasis.
@@ -81,3 +81,7 @@ Use the `type` prop to adjust the visual prominence of an [`inline`](#inline) **
 
 - Don't make **Badge** interactive. It is for indicating status, not controlling it.
 - Don't override colors set using `color` prop. These have been chosen carefully for their [contrast](https://www.w3.org/WAI/WCAG22/Understanding/contrast-minimum.html).
+
+## API reference
+
+- [`Badge`](https://mui.com/material-ui/api/badge/)

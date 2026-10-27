@@ -20,23 +20,26 @@
 	--✨border--invalid: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
 	--✨color--default: var(--stratakit-color-text-neutral-primary);
-	--✨color--placeholder: var(--stratakit-color-text-neutral-secondary);
+	--✨color--placeholder: var(--stratakit-color-text-neutral-placeholder);
 	--✨color--disabled: var(--stratakit-color-text-neutral-disabled);
 	--✨height: 1.5rem;
-	--✨padding-inline: var(--stratakit-space-x2);
+	--✨padding-inline: var(--stratakit-space-200);
 	/* Dynamically adjust the padding to avoid issues with baseline alignment */
-	--✨padding-block: max(0px, (var(--✨height) - var(--stratakit-space-x05) - 1lh) / 2);
-	--✨gap: var(--stratakit-space-x1);
+	--✨padding-block: max(0px, (var(--✨height) - var(--stratakit-space-50) - 1lh) / 2);
+	--✨gap: var(--stratakit-space-100);
+	--✨shadow:
+		inset 0px 1px 2px 0px light-dark(--primitive("color.black.4"), --primitive("color.black.16")),
+		inset 0px 2px 4px 0px light-dark(--primitive("color.black.4"), --primitive("color.black.16"));
 
 	@layer base {
 		cursor: var(--🥝TextBox-cursor);
-		font-size: var(--stratakit-font-size-12);
+		font-size: var(--stratakit-font-size-body-sm);
 		min-inline-size: 0;
 
 		min-block-size: var(--✨height);
 		padding-inline-start: var(--✨padding-inline);
 		padding-inline-end: var(--✨padding-inline);
-		border-radius: 4px;
+		border-radius: var(--stratakit-radius-sm);
 
 		background-color: var(--🥝TextBox-background-color);
 		color: var(--✨color--default);
@@ -51,12 +54,8 @@
 		--🥝TextBox-border-color: var(--🌀TextBox-state--default, var(--✨border--default))
 			var(--🌀TextBox-state--hover, var(--✨border--hover))
 			var(--🌀TextBox-state--disabled, var(--✨border--disabled));
-		--🥝TextBox-box-shadow: var(
-				--🌀TextBox-state--default,
-				var(--stratakit-shadow-control-input-base)
-			)
-			var(--🌀TextBox-state--hover, var(--stratakit-shadow-control-input-base))
-			var(--🌀TextBox-state--disabled, none);
+		--🥝TextBox-box-shadow: var(--🌀TextBox-state--default, var(--✨shadow))
+			var(--🌀TextBox-state--hover, var(--✨shadow)) var(--🌀TextBox-state--disabled, none);
 
 		/* Styles specific to wrapper ("root") */
 		&:where(:not(input, textarea)) {

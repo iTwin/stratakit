@@ -31,7 +31,7 @@
 	@layer modifiers {
 		&:where([data-_sk-variant="text"]) {
 			--🥝Skeleton-width: 100%;
-			--🥝Skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
+			--🥝Skeleton-border-radius: var(--stratakit-radius-sm);
 
 			&:where([data-_sk-size="xsmall"]) {
 				--🥝Skeleton-height: 0.75rem;
@@ -55,32 +55,29 @@
 		}
 
 		&:where([data-_sk-variant="object"]) {
+			--🥝Skeleton-border-radius: var(--stratakit-radius-sm);
+
 			&:where([data-_sk-size="xsmall"]) {
-				--🥝Skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
 				--🥝Skeleton-height: 0.75rem;
 				--🥝Skeleton-width: 0.75rem;
 			}
 
 			&:where([data-_sk-size="small"]) {
-				--🥝Skeleton-border-radius: 2px /* radius(in progress)/xsmall */;
 				--🥝Skeleton-height: 1rem;
 				--🥝Skeleton-width: 1rem;
 			}
 
 			&:where([data-_sk-size="medium"]) {
-				--🥝Skeleton-border-radius: 4px /* radius(in progress)/small */;
 				--🥝Skeleton-height: 1.5rem;
 				--🥝Skeleton-width: 1.5rem;
 			}
 
 			&:where([data-_sk-size="large"]) {
-				--🥝Skeleton-border-radius: 4px /* radius(in progress)/small */;
 				--🥝Skeleton-height: 2rem;
 				--🥝Skeleton-width: 2rem;
 			}
 
 			&:where([data-_sk-size="xlarge"]) {
-				--🥝Skeleton-border-radius: 4px /* radius(in progress)/small */;
 				--🥝Skeleton-height: 3rem;
 				--🥝Skeleton-width: 3rem;
 			}

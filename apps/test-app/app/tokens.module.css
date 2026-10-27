@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 
 .main {
-	padding: var(--stratakit-space-x9);
+	padding: var(--stratakit-space-900);
 
 	:where(html:has(&)) {
 		scrollbar-gutter: stable;
@@ -13,12 +13,12 @@
 
 .h2 {
 	font-weight: 500;
-	margin-block-start: var(--stratakit-space-x6);
-	margin-block-end: var(--stratakit-space-x2);
+	margin-block-start: var(--stratakit-space-600);
+	margin-block-end: var(--stratakit-space-200);
 }
 
 :is(.h1, .h2) {
-	padding-inline-start: var(--stratakit-space-x4); /* visual alignment */
+	padding-inline-start: var(--stratakit-space-400); /* visual alignment */
 }
 
 .swatch {
@@ -26,7 +26,7 @@
 
 	inline-size: var(--_swatch-size);
 	block-size: var(--_swatch-size);
-	border-radius: 4px;
+	border-radius: var(--stratakit-radius-sm);
 	position: relative;
 	background-position:
 		0 0,
@@ -35,19 +35,19 @@
 	background-image:
 		repeating-linear-gradient(
 			45deg,
-			var(--stratakit-color-bg-neutral-base) 25%,
+			var(--stratakit-color-bg-mono-base) 25%,
 			transparent 25%,
 			transparent 75%,
-			var(--stratakit-color-bg-neutral-base) 75%,
-			var(--stratakit-color-bg-neutral-base)
+			var(--stratakit-color-bg-mono-base) 75%,
+			var(--stratakit-color-bg-mono-base)
 		),
 		repeating-linear-gradient(
 			45deg,
-			var(--stratakit-color-bg-neutral-base) 25%,
-			var(--stratakit-color-bg-neutral-faded) 25%,
-			var(--stratakit-color-bg-neutral-faded) 75%,
-			var(--stratakit-color-bg-neutral-base) 75%,
-			var(--stratakit-color-bg-neutral-base)
+			var(--stratakit-color-bg-mono-base) 25%,
+			var(--stratakit-color-bg-mono-muted) 25%,
+			var(--stratakit-color-bg-mono-muted) 75%,
+			var(--stratakit-color-bg-mono-base) 75%,
+			var(--stratakit-color-bg-mono-base)
 		);
 	forced-color-adjust: none;
 

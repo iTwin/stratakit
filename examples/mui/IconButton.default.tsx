@@ -4,9 +4,8 @@
  *--------------------------------------------------------------------------------------------*/
 
 import IconButton from "@mui/material/IconButton";
+import { svgDownload } from "@stratakit/icons/download";
 import { Icon } from "@stratakit/mui";
-
-import svgDownload from "@stratakit/icons/download.svg";
 
 export default () => {
 	return (

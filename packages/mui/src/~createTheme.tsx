@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
@@ -36,7 +37,9 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
+import { MuiDialogPaper } from "./~components/MuiDialog.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
+import { MuiDrawerPaper } from "./~components/MuiDrawer.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiMenuListSlot } from "./~components/MuiMenu.js";
@@ -65,6 +68,7 @@ import {
 	DismissIcon,
 	ErrorIcon,
 	InfoIcon,
+	SearchIcon,
 	SuccessIcon,
 	WarningIcon,
 } from "./Icon.js";
@@ -73,21 +77,8 @@ import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 
-interface CreateThemeArgs {
-	/**
-	 * The container to use for all portaled components.
-	 *
-	 * Prefer passing a function, which is lazily resolved by MUI when the portal mounts. Passing the
-	 * element directly requires the theme to be recreated once the element becomes available, which
-	 * leaves a one-commit window where portals fall back to `<body>`.
-	 */
-	portalContainer?: HTMLElement | null | (() => HTMLElement | null);
-}
-
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
-function createTheme(args: CreateThemeArgs) {
-	const { portalContainer: container } = args;
-
+function createTheme() {
 	// Map the JS palette back to MUI's own CSS variables, which will then be mapped to the correct StrataKit tokens in CSS.
 	// (This is a fallback for any code that uses MUI's theme.palette values directly instead of CSS variables)
 	const palette = {
@@ -110,6 +101,13 @@ function createTheme(args: CreateThemeArgs) {
 
 	return createMuiTheme({
 		spacing: 4,
+		motion: {
+			reducedMotion: "system",
+		},
+		focusVisible: {
+			outline: "var(--🥝focus-outline)",
+			outlineOffset: "var(--🥝focus-outline-offset)",
+		},
 		cssVariables: {
 			nativeColor: true,
 			colorSchemeSelector: "[data-color-scheme='%s']",
@@ -318,8 +316,8 @@ function createTheme(args: CreateThemeArgs) {
 					component: Role.div,
 					slotProps: {
 						title: {
-							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
-							component: MuiCardHeaderTitle as any,
+							variant: "headline-sm" as never,
+							component: MuiCardHeaderTitle as never,
 						},
 					},
 				},
@@ -386,6 +384,11 @@ function createTheme(args: CreateThemeArgs) {
 				defaultProps: {
 					component: Role.div,
 					disableScrollLock: true, // Handled in MuiDialog.css instead.
+					slotProps: {
+						paper: {
+							component: MuiDialogPaper,
+						},
+					},
 				},
 			},
 			MuiDialogContentText: {
@@ -405,6 +408,11 @@ function createTheme(args: CreateThemeArgs) {
 				defaultProps: {
 					component: Role.div,
 					disableScrollLock: true, // Handled in MuiDrawer.css instead.
+					slotProps: {
+						paper: {
+							component: MuiDrawerPaper,
+						},
+					},
 				},
 			},
 			MuiFab: {
@@ -437,6 +445,7 @@ function createTheme(args: CreateThemeArgs) {
 			},
 			MuiInput: {
 				defaultProps: {
+					classes: { root: "🥝MuiInput" },
 					disableUnderline: true,
 				},
 			},
@@ -482,7 +491,7 @@ function createTheme(args: CreateThemeArgs) {
 			MuiMenuItem: { defaultProps: { component: Role.li } },
 			MuiMenuList: { defaultProps: { component: Role.ul } },
 			MuiMobileStepper: { defaultProps: { component: Role.div } },
-			MuiModal: { defaultProps: { component: Role.div, container } },
+			MuiModal: { defaultProps: { component: Role.div } },
 			MuiOutlinedInput: {
 				defaultProps: {
 					classes: {
@@ -514,19 +523,12 @@ function createTheme(args: CreateThemeArgs) {
 				defaultProps: {
 					component: Role.div,
 					disableScrollLock: true,
-					// Popover passes down `container` prop to `Modal` https://github.com/mui/material-ui/blob/708ef10e874efa63d2e4972bd902befa1912f2dc/packages/mui-material/src/Popover/Popover.js#L389
-					container,
 					slots: {
 						paper: MuiPopoverPaperSlot,
 					},
 					slotProps: {
 						paper: { role: "dialog" },
 					},
-				},
-			},
-			MuiPopper: {
-				defaultProps: {
-					container,
 				},
 			},
 			MuiRadio: {
@@ -654,7 +656,21 @@ function createTheme(args: CreateThemeArgs) {
 					},
 				},
 			},
-			MuiTextField: { defaultProps: { component: Role.div } },
+			MuiTextField: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						input: ({ type }) => ({
+							startAdornment:
+								type === "search" ? (
+									<InputAdornment position="start">
+										<SearchIcon />
+									</InputAdornment>
+								) : undefined,
+						}),
+					},
+				},
+			},
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {
@@ -765,11 +781,12 @@ function withExcludedProps<Element, Props extends object>(
 	excludedProps: readonly string[],
 ) {
 	return React.forwardRef<Element, Props>((props, forwardedRef) => {
-		const filteredProps = Object.fromEntries(
-			Object.entries(props).filter(([key]) => !excludedProps.includes(key)),
-		) as Props;
+		const filteredProps = { ...props };
+		for (const key of excludedProps) {
+			delete filteredProps[key as keyof React.PropsWithoutRef<Props>];
+		}
 
-		return <Component {...filteredProps} ref={forwardedRef} />;
+		return <Component {...(filteredProps as Props)} ref={forwardedRef} />;
 	});
 }
 

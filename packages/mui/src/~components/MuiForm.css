@@ -4,11 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 
 .MuiFormControl-root {
-	row-gap: var(--stratakit-space-x1);
+	row-gap: var(--stratakit-space-100);
 }
 
 .MuiFormControlLabel-root {
-	gap: var(--stratakit-space-x1);
+	gap: var(--stratakit-space-100);
 	margin-inline: 0;
 
 	&:where(.MuiFormControlLabel-labelPlacementTop, .MuiFormControlLabel-labelPlacementBottom) {
@@ -22,19 +22,20 @@
 
 .MuiFormLabel-root {
 	&:where(legend) {
-		margin-block-end: var(--stratakit-space-x1); /* legend does not support gap */
+		margin-block-end: var(--stratakit-space-100); /* legend does not support gap */
 	}
 }
 
 .MuiFormGroup-root {
-	row-gap: var(--stratakit-space-x1);
-	column-gap: var(--stratakit-space-x2);
+	row-gap: var(--stratakit-space-100);
+	column-gap: var(--stratakit-space-200);
 }
 
 .MuiFormHelperText-root {
 	inline-size: fit-content;
 	margin: 0;
-	@apply --typography("caption-lg");
+	font-size: var(--stratakit-font-size-caption-lg);
+	line-height: var(--stratakit-line-height-caption-lg);
 
 	&:where(.Mui-error) {
 		color: var(--stratakit-color-text-critical-base);
@@ -60,7 +61,7 @@
 			background-image: var(--_❗);
 			background-repeat: no-repeat;
 
-			margin-inline-end: var(--stratakit-space-x1);
+			margin-inline-end: var(--stratakit-space-100);
 		}
 
 		&::after {
@@ -77,16 +78,22 @@
 }
 
 .MuiFormLabel-root {
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 	color: var(--stratakit-color-text-neutral-secondary);
 	position: relative; /* Disable floating label */
 	transform: none; /* Undo inset positioning */
 
 	&:where(.MuiInputLabel-root.MuiInputLabel-sizeSmall) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 
 	&:where(.Mui-disabled) {
 		color: var(--stratakit-color-text-neutral-disabled);
 	}
+}
+
+:is(.MuiFormLabel-asterisk, .MuiFormControlLabel-asterisk) {
+	color: var(--stratakit-color-text-critical-base);
 }

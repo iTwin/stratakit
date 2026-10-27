@@ -5,9 +5,8 @@
 
 import Fab from "@mui/material/Fab";
 import Tooltip from "@mui/material/Tooltip";
+import { svgAdd } from "@stratakit/icons/add";
 import { Icon } from "@stratakit/mui";
-
-import svgAdd from "@stratakit/icons/add.svg";
 
 export default () => {
 	return (

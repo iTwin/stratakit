@@ -8,5 +8,5 @@
 }
 
 .tabPanel {
-	font-size: var(--stratakit-font-size-12);
+	font-size: var(--stratakit-font-size-body-sm);
 }

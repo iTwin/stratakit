@@ -8,7 +8,7 @@
 	max-inline-size: 100%;
 	min-inline-size: 128px;
 	overflow: auto;
-	padding: var(--stratakit-space-x05);
-	padding-block-end: var(--stratakit-space-x2);
+	padding: var(--stratakit-space-50);
+	padding-block-end: var(--stratakit-space-200);
 	resize: horizontal;
 }

@@ -18,7 +18,8 @@
 		"@stratakit/structures": "workspace:*"
 	},
 	"devDependencies": {
-		"@types/react": "catalog:"
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:"
 	},
 	"peerDependencies": {
 		"react": "catalog:",

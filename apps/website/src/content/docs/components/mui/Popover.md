@@ -3,7 +3,7 @@ title: Popover
 description: Popovers display content in a non-modal window overlay that is positioned relative to a trigger element.
 links:
   muiDocs: https://mui.com/material-ui/react-popover/
-  apiReference: https://mui.com/material-ui/api/popover/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Popover.default"}
@@ -13,7 +13,8 @@ links:
 - Added [`role="dialog"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role) to the [`paper`](https://mui.com/material-ui/api/popover/#Popover-css-MuiPopover-paper) slot.
 - Added fallback mechanism for automatically labelling the `paper` slot using the trigger element (`anchorEl`).
 - `disableScrollLock` is used to prevent scroll locking when the popover is open.
-- The default [`container`](https://mui.com/material-ui/api/popover/#popover-prop-container) is now the [root portal container](/components/root/#portal-container).
+- The default [`container`](https://mui.com/material-ui/api/popover/#popover-prop-container) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
+- Nested popup elements now use the **Popover** as the portal container.
 - The `elevation` and `marginThreshold` props are not supported.
 
 ## ✅ Do
@@ -23,3 +24,7 @@ links:
 ## 🚫 Don't
 
 - Don't forget to validate that the **Popover** has an appropriate accessible [label](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/dialog_role#labeling).
+
+## API reference
+
+- [`Popover`](https://mui.com/material-ui/api/popover/)

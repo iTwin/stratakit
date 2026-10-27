@@ -5,7 +5,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "wireit",
-		"start": "astro dev",
+		"start": "astro dev --force",
 		"build": "wireit",
 		"test": "wireit",
 		"preview": "astro preview",
@@ -15,20 +15,29 @@
 	},
 	"wireit": {
 		"build": {
-			"command": "astro build",
+			"command": "astro build --force",
 			"files": [
 				"src/**/*",
 				"public",
 				"astro.config.mjs",
 				"tsconfig.json",
-				"api.json"
+				"api.json",
+				"../../examples/**/*.tsx"
+			],
+			"dependencies": [
+				"../../packages/mui:build",
+				"../../packages/icons:build",
+				"../../packages/internal-utils:build",
+				"../../packages/foundations:build",
+				"../../packages/bricks:build",
+				"../../packages/structures:build"
 			],
 			"output": [
 				"dist"
 			]
 		},
 		"dev": {
-			"command": "astro dev",
+			"command": "astro dev --force",
 			"service": true,
 			"dependencies": [
 				"../../packages/mui:build",
@@ -54,27 +63,29 @@
 		}
 	},
 	"dependencies": {
-		"@astrojs/starlight": "^0.40.0",
+		"@astrojs/markdown-remark": "^7.3.2",
+		"@astrojs/starlight": "^0.42.6",
 		"@mui/material": "catalog:",
 		"@stratakit/bricks": "workspace:*",
 		"@stratakit/foundations": "workspace:*",
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*",
 		"@stratakit/structures": "workspace:*",
-		"astro": "^6.4.8",
+		"astro": "^7.3.8",
 		"examples": "workspace:*",
 		"react": "catalog:",
 		"react-dom": "catalog:",
-		"sharp": "^0.34.5"
+		"sharp": "^0.35.5"
 	},
 	"devDependencies": {
-		"@axe-core/playwright": "^4.12.1",
+		"@axe-core/playwright": "^4.13.0",
 		"@playwright/test": "catalog:",
 		"@types/node": "catalog:",
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"@types/xml2js": "^0.4.14",
-		"axe-core": "^4.12.1",
+		"axe-core": "^4.14.0",
+		"esbuild": "catalog:",
 		"github-slugger": "^2.0.0",
 		"remark-directive": "^4.0.0",
 		"ts-morph": "^27.0.2",

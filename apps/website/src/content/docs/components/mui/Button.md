@@ -3,7 +3,7 @@ title: Button
 description: Buttons are used to initiate actions.
 links:
   muiDocs: https://mui.com/material-ui/react-button/
-  apiReference: https://mui.com/material-ui/api/button/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Button.default"}
@@ -81,6 +81,12 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button's*
 
 ::example{src="mui/Button.sizes"}
 
+### Loading
+
+Use the `loading` prop to indicate that user input has been accepted and is in the process of being responded to.
+
+::example{src="mui/Button.loading"}
+
 ## ✅ Do
 
 - Use **Button** for form submissions, modal confirmations, and other non-navigational calls-to-action.
@@ -96,3 +102,8 @@ An [**Icon**](/components/icon) can be displayed before or after the **Button's*
 - Don't use unclear or superfluous icons. The text label is paramount.
 - Don't include **Buttons** in a [toolbar](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/toolbar_role). Use [**IconButtons**](/components/iconbutton) instead.
 - Don't use a color that creates an insufficient [contrast](https://developer.mozilla.org/en-US/docs/Web/Accessibility/Guides/Understanding_WCAG/Perceivable/Color_contrast) between the **Button** and the background color of the interface.
+
+## API reference
+
+- [`Button`](https://mui.com/material-ui/api/button/)
+- [`ButtonBase`](https://mui.com/material-ui/api/button-base/)

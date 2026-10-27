@@ -7,45 +7,42 @@ import assert from "node:assert/strict";
 import test from "node:test";
 
 import * as lightningcss from "lightningcss";
-import { customAtRules, mixinsTransform } from "./lightningcss.mixins.js";
+import { staticVariablesTransform } from "./lightningcss.tokens.js";
 
-test("mixinsTransform: zero-argument mixins", () => {
-	const source = `
-@mixin --foo() {
-  @result {
-    color: red;
-  }
-}
-.foo {
-  @apply --foo;
-}
-`;
+test("composeVisitors: later visitors are not invoked after an earlier one removes a node", () => {
+	/** @type {string[]} */
+	const seen = [];
 
-	const css = lightningcss
-		.transform({
-			filename: "test.css",
-			code: Buffer.from(source),
-			minify: true,
-			customAtRules,
-			visitor: mixinsTransform(),
-		})
-		.code.toString();
+	const dropColor = {
+		Declaration(/** @type {any} */ decl) {
+			return decl.property === "color" ? [] : undefined;
+		},
+	};
 
-	assert.equal(css, `.foo{color:red}`);
+	const recordProperty = {
+		Declaration(/** @type {any} */ decl) {
+			seen.push(decl?.property ?? "<undefined>");
+			return undefined;
+		},
+	};
+
+	lightningcss.transform({
+		filename: "test.css",
+		code: Buffer.from(".a{color:red}"),
+		minify: true,
+		visitor: lightningcss.composeVisitors([dropColor, recordProperty]),
+	});
+
+	assert.deepEqual(seen, []);
 });
 
-test("mixinsTransform: parameterized mixins with if()", () => {
+test("staticVariablesTransform: replays a saved value containing a var()", () => {
+	// A literal value here would not exercise the bug: only `var()` carries
+	// the null-valued fields that fail to round-trip.
 	const source = `
-@mixin --font(--type) {
-  @result {
-    font-family: if(
-      style(--type: "mono"): monospace;
-      else: sans-serif
-    );
-  }
-}
 .foo {
-  @apply --font("mono");
+  --✨saved: var(--other);
+  color: var(--✨saved);
 }
 `;
 
@@ -54,10 +51,10 @@ test("mixinsTransform: parameterized mixins with if()", () => {
 			filename: "test.css",
 			code: Buffer.from(source),
 			minify: true,
-			customAtRules,
-			visitor: mixinsTransform(),
+			visitor: staticVariablesTransform(),
 		})
 		.code.toString();
 
-	assert.equal(css, `.foo{font-family:monospace}`);
+	// The transform appends a trailing whitespace token when replaying a value.
+	assert.equal(css, `.foo{color:var(--other) }`);
 });

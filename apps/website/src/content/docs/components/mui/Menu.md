@@ -3,7 +3,7 @@ title: Menu
 description: Dropdown menus are used to display a list of quick actions in a floating surface.
 links:
   muiDocs: https://mui.com/material-ui/react-menu/
-  apiReference: https://mui.com/material-ui/api/menu/
+  apiReference: "#api-reference"
 ---
 
 ::example{src="mui/Menu.default"}
@@ -15,7 +15,7 @@ links:
 - Added fallback mechanism for automatically labelling the [`list`](https://mui.com/material-ui/api/menu/#Menu-css-MuiMenu-list) slot using the trigger element (`anchorEl`).
 - Includes full `forced-colors` support.
 - `disableScrollLock` is used to prevent scroll locking when the menu is open.
-- The default portal container is now the [root portal container](/components/root/#portal-container).
+- The default [`container`](https://mui.com/material-ui/api/popover/#popover-prop-container) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
 - The `autoFocus` and `disableAutoFocusItem` props are not supported.
 - The `action`, `dense`, and `focusVisibleClassname` props of `MenuItem` are not supported.
 - Ripple effect removed. The `centerRipple`, `disableRipple`, `disableTouchRipple`, `focusRipple`, `TouchRippleProps`, and `touchRippleRef` props of `MenutItem` are not supported.
@@ -46,3 +46,8 @@ With the appropriate role in place, use [`aria-checked="true"`](https://develope
 Make sure the triggering button starts with a predictable label that stays consistent regardless of the selected item. In the example above, the text "Sort by:" remains stable, while the text following it changes based on the selected item. This allows assistive technology users to easily find and operate the menu button.
 
 :::
+
+## API reference
+
+- [`Menu`](https://mui.com/material-ui/api/menu/)
+- [`MenuItem`](https://mui.com/material-ui/api/menu-item/)

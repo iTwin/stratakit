@@ -10,3 +10,23 @@
 :is(html, body):where(:has(.MuiDrawer-root:not(.MuiModal-root.MuiModal-hidden))) {
 	overflow: clip;
 }
+
+.MuiDrawer-paper {
+	border: none;
+
+	:where(.MuiDrawer-root.MuiDrawer-anchorLeft) & {
+		border-inline-end: 1px solid var(--stratakit-color-border-page-base);
+	}
+
+	:where(.MuiDrawer-root.MuiDrawer-anchorRight) & {
+		border-inline-start: 1px solid var(--stratakit-color-border-page-base);
+	}
+
+	:where(.MuiDrawer-root.MuiDrawer-anchorTop) & {
+		border-block-end: 1px solid var(--stratakit-color-border-page-base);
+	}
+
+	:where(.MuiDrawer-root.MuiDrawer-anchorBottom) & {
+		border-block-start: 1px solid var(--stratakit-color-border-page-base);
+	}
+}

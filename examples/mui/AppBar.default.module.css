@@ -6,7 +6,7 @@
 	position: relative;
 	display: flex;
 	align-items: center;
-	padding-inline: var(--stratakit-space-x4);
+	padding-inline: var(--stratakit-space-400);
 	min-height: 56px;
 
 	@media (orientation: landscape) {

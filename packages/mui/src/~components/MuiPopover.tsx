@@ -7,6 +7,7 @@ import * as React from "react";
 import { PopoverPaper } from "@mui/material/Popover";
 import { useMergedRefs } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
+import { PortalProvider } from "../Root.internal.js";
 
 import type { PopoverOwnerState } from "@mui/material/Popover";
 import type { BaseProps } from "@stratakit/internal-utils/props";
@@ -53,11 +54,24 @@ interface MuiPopoverPaperSlotProps extends BaseProps {
 
 const MuiPopoverPaperSlot = forwardRef<"div", MuiPopoverPaperSlotProps>(
 	(props, forwardedRef) => {
+		const containerRef = React.useRef<HTMLDivElement | null>(null);
+		const [container, setContainer] = React.useState<HTMLElement | null>(null);
+
+		const getContainer = React.useCallback(() => containerRef.current, []);
+
 		return (
 			<PopoverPaper
 				{...props}
 				ref={useMergedRefs(forwardedRef, useFallbackLabel(props))}
-			/>
+			>
+				<PortalProvider
+					container={container}
+					unstable_getContainer={getContainer}
+				>
+					{props.children}
+				</PortalProvider>
+				<div ref={useMergedRefs(containerRef, setContainer)} />
+			</PopoverPaper>
 		);
 	},
 );

@@ -20,7 +20,13 @@ import {
 
 const repoPath = process.env.REPO_PATH || "../..";
 
-const packageNames = ["mui", "foundations", "bricks", "structures"];
+const packageNames = [
+	"mui",
+	"foundations",
+	"bricks",
+	"structures",
+	"internal-utils",
+];
 
 const baseTypeNames = ["BaseProps", "FocusableProps"];
 const utilityFunctions = ["loadFoundationsStyles"];
@@ -105,14 +111,15 @@ function generateApi() {
 			"utf-8",
 		);
 		const { exports: packageExports } = JSON.parse(packageJsonStr) as {
-			exports: { [key: string]: string };
+			exports: { [key: string]: Record<string, string> };
 		};
 		const subpaths = Object.entries(packageExports)
-			.filter(([key]) => {
+			.filter(([key, value]) => {
 				if (key === ".") return false;
 				if (key === "./secret-internals") return false;
 				if (key === "./types.d.ts") return false;
 				if (key.endsWith(".json")) return false;
+				if (value["@stratakit/source"].endsWith(".ts")) return false;
 				return true;
 			})
 			.map(([key]) => {
@@ -571,9 +578,9 @@ function getBaseTypesApi({
 	project: Project;
 	packageName: string;
 }): Api.Api | undefined {
-	if (packageName !== "foundations") return undefined;
+	if (packageName !== "internal-utils") return undefined;
 
-	const sourceFile = project.getSourceFile("~utils.tsx");
+	const sourceFile = project.getSourceFile("props.ts");
 	if (!sourceFile) return undefined;
 
 	const types = baseTypeNames.map((name) => {

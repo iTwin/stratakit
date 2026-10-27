@@ -58,6 +58,8 @@
 					var(--stratakit-color-bg-neutral-base) 100%,
 					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
 				);
+				--variant-textBg: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+				--variant-outlinedBg: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 				--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-primary);
 			}
 		}

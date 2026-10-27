@@ -1,0 +1,1 @@
+import{t as e}from"./window-popout-r-PrG3rc.js";var t=`${e}#icon`;`${e}`;export{t};

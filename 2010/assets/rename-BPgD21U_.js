@@ -1,0 +1,1 @@
+import{t as e}from"./rename-BCEVty4R.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./upload-FfkFZ8OL.js";var t=`${e}#icon`;`${e}`;export{t};

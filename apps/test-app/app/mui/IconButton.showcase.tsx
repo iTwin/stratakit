@@ -8,7 +8,7 @@ import IconButtonColors from "examples/mui/IconButton.colors.tsx";
 import IconButtonDefault from "examples/mui/IconButton.default.tsx";
 import IconButtonSizes from "examples/mui/IconButton.sizes.tsx";
 import IconButtonVariants from "examples/mui/IconButton.variants.tsx";
-import { createKnob, DefaultPropsProvider, isProduction } from "~/~utils.tsx";
+import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
 import type { KnobProps } from "~/~utils.tsx";
 
@@ -22,11 +22,9 @@ export default function IconButtonExamples({
 				<IconButtonSizes />
 				<IconButtonVariants />
 				<IconButtonColors />
-				{!isProduction && (
-					<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
-						<IconButtonPlacements_ />
-					</Stack>
-				)}
+				<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
+					<IconButtonPlacements_ />
+				</Stack>
 			</Stack>
 		</DefaultPropsProvider>
 	);

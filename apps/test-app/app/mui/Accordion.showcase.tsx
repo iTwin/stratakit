@@ -12,7 +12,7 @@ import AccordionMarkerPlacement from "examples/mui/Accordion.marker-placement.ts
 import AccordionMultiple from "examples/mui/Accordion.multiple.tsx";
 import AccordionResponsive from "examples/mui/Accordion.responsive.tsx";
 import AccordionVariants from "examples/mui/Accordion.variants.tsx";
-import { createKnob, DefaultPropsProvider, isProduction } from "~/~utils.tsx";
+import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
 import type { KnobProps } from "~/~utils.tsx";
 
@@ -39,7 +39,7 @@ export default function AccordionExamples({
 					<AccordionActions />
 				</div>
 				<AccordionMultiple />
-				{!isProduction && <AccordionMultipleOutlined_ />}
+				<AccordionMultipleOutlined_ />
 				<AccordionVariants />
 			</Stack>
 		</DefaultPropsProvider>

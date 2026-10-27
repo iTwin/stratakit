@@ -169,7 +169,9 @@ function generateApi() {
 			if (!barrelExportAlias) continue;
 
 			// Handle star exports from submodules: `export * as ErrorRegion from ...`
-			const aliasedExports = barrelExportAlias.getExports();
+			const aliasedExports = barrelExportAlias
+				.getExports()
+				.filter((exp) => exp.getName() !== "displayName");
 			const exports =
 				aliasedExports.length > 0 ? aliasedExports : [barrelExportAlias];
 

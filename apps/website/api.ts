@@ -14,6 +14,7 @@ import {
 	SyntaxKind,
 	type Symbol as TSMorphSymbol,
 	type Type as TSMorphType,
+	type TypeAliasDeclaration,
 	TypeFormatFlags,
 	type TypeNode,
 } from "ts-morph";
@@ -92,18 +93,26 @@ function generateApi() {
 			tsConfigFilePath: `${packageDir}/tsconfig.json`,
 		});
 
-		const utilsSourceFiles = [
-			project.getSourceFile("~utils.d.ts"),
-			project.getSourceFile("~utils.tsx"),
-		];
-		utilsSourceFiles.forEach((sourceFile) => {
-			if (!sourceFile) return;
-			const mergeProps = sourceFile.getTypeAliasOrThrow("MergeProps");
+		const sourceFiles = project.getSourceFiles();
+		sourceFiles.forEach((sourceFile) => {
+			const mergeProps = sourceFile.getTypeAlias("MergeProps");
+			if (!mergeProps) return;
+
 			// Omits underlying element props
 			mergeProps.replaceWithText(
 				"type MergeProps<ElementType extends React.ElementType, CustomProps extends Record<string, unknown>> = CustomProps",
 			);
 		});
+
+		const baseTypeDeclarations = baseTypeNames
+			.map((baseTypeName) => {
+				for (const sourceFile of sourceFiles) {
+					const typeAlias = sourceFile.getTypeAlias(baseTypeName);
+					if (typeAlias) return typeAlias;
+				}
+				return undefined;
+			})
+			.filter(Boolean) as TypeAliasDeclaration[];
 
 		// Read subpath exports
 		const packageJsonStr = fs.readFileSync(
@@ -136,9 +145,11 @@ function generateApi() {
 			const sourceFile = project.getSourceFileOrThrow(`${fileName}.tsx`);
 			const convenience = getConvenienceComponent({
 				sourceFile,
+				baseTypeDeclarations,
 			});
 			const composition = getCompositionComponents({
 				sourceFile,
+				baseTypeDeclarations,
 			});
 
 			apis.push({
@@ -149,8 +160,8 @@ function generateApi() {
 			});
 		}
 
-		const barrel = project.getSourceFileOrThrow("index.ts");
-		const barrelExports = barrel.getExportSymbols();
+		const barrel = project.getSourceFile("index.ts");
+		const barrelExports = barrel ? barrel.getExportSymbols() : [];
 		for (const barrelExport of barrelExports) {
 			const barrelName = barrelExport.getName();
 
@@ -201,6 +212,7 @@ function generateApi() {
 					// Handle components that are not exported by subpath exports
 					component = getComponent({
 						exportSymbol,
+						baseTypeDeclarations,
 					});
 					if (!component) continue;
 
@@ -255,7 +267,7 @@ function getReexport(symbol: TSMorphSymbol): Api.Reexport | undefined {
 	const apiName = aliasName.split("/").at(-1) || aliasName;
 	return {
 		packageName: aliasPackageName,
-		apiName: alias.getName(),
+		apiName,
 	};
 }
 
@@ -265,16 +277,29 @@ function getPackageNameFromFilePath(symbol: TSMorphSymbol) {
 	return match ? match[1] : undefined;
 }
 
-function getConvenienceComponent({ sourceFile }: { sourceFile: SourceFile }) {
+function getConvenienceComponent({
+	sourceFile,
+	baseTypeDeclarations,
+}: {
+	sourceFile: SourceFile;
+	baseTypeDeclarations: TypeAliasDeclaration[];
+}) {
 	const exportSymbol = sourceFile.getDefaultExportSymbol();
 	if (!exportSymbol) return undefined;
 
 	return getComponent({
 		exportSymbol,
+		baseTypeDeclarations,
 	});
 }
 
-function getCompositionComponents({ sourceFile }: { sourceFile: SourceFile }) {
+function getCompositionComponents({
+	sourceFile,
+	baseTypeDeclarations,
+}: {
+	sourceFile: SourceFile;
+	baseTypeDeclarations: TypeAliasDeclaration[];
+}) {
 	const defaultExportSymbol = sourceFile.getDefaultExportSymbol();
 	const allExportSymbols = sourceFile.getExportSymbols();
 	const exportSymbols = allExportSymbols
@@ -291,6 +316,7 @@ function getCompositionComponents({ sourceFile }: { sourceFile: SourceFile }) {
 	for (const exportSymbol of exportSymbols) {
 		const component = getComponent({
 			exportSymbol,
+			baseTypeDeclarations,
 		});
 		if (!component) continue;
 
@@ -313,7 +339,13 @@ function getSymbolSourcePos(sourceFile: SourceFile, symbol: TSMorphSymbol) {
 	}, Infinity);
 }
 
-function getComponent({ exportSymbol }: { exportSymbol: TSMorphSymbol }) {
+function getComponent({
+	exportSymbol,
+	baseTypeDeclarations,
+}: {
+	exportSymbol: TSMorphSymbol;
+	baseTypeDeclarations: TypeAliasDeclaration[];
+}) {
 	// Use aliased symbol for `export { X as Y };` OR default export.
 	const aliasedSymbol = exportSymbol.getAliasedSymbol();
 	// Use export symbol for direct exports `export const X = ...;`
@@ -327,9 +359,12 @@ function getComponent({ exportSymbol }: { exportSymbol: TSMorphSymbol }) {
 		? symbol.getName()
 		: exportSymbol.getName();
 	const baseElement = getBaseElement({ symbol });
-	const baseProperties = getBaseProperties({ symbol });
+	const baseProperties = getBaseProperties({
+		symbol,
+		baseTypeDeclarations,
+	});
 	const baseProps = baseProperties.map((bp) => {
-		const typeName = getBaseTypeName(bp.baseType);
+		const typeName = bp.baseTypeDeclaration?.getNameNode().getText();
 		const propertyName = bp.property.getName();
 		return `${typeName}.${propertyName}`;
 	});
@@ -382,7 +417,13 @@ function getBaseElement({ symbol }: { symbol: TSMorphSymbol }) {
 	return baseElement;
 }
 
-function getBaseProperties({ symbol }: { symbol: TSMorphSymbol }) {
+function getBaseProperties({
+	symbol,
+	baseTypeDeclarations,
+}: {
+	symbol: TSMorphSymbol;
+	baseTypeDeclarations: TypeAliasDeclaration[];
+}) {
 	const declaration = symbol.getDeclarations().at(0);
 	if (!declaration) return [];
 
@@ -406,22 +447,28 @@ function getBaseProperties({ symbol }: { symbol: TSMorphSymbol }) {
 	const propsBaseTypes = propsType.getBaseTypes();
 	const propTypes = [propsType, ...propsBaseTypes];
 
-	const basePropType = propTypes.find((propBaseType) => {
-		return getBaseTypeName(propBaseType);
+	const baseTypeDeclaration = baseTypeDeclarations.find((baseTypeDecl) => {
+		const baseType = baseTypeDecl.getType();
+		return propTypes.includes(baseType);
 	});
+
+	const basePropType = baseTypeDeclaration?.getType();
 	if (basePropType) {
 		return basePropType.getProperties().map((property) => ({
 			property,
 			baseType: basePropType,
+			baseTypeDeclaration,
 		}));
 	}
 
 	// Handle Omit<BaseProps<"div">, "children">
 	for (const propType of propTypes) {
 		const aliasTypeArguments = propType.getAliasTypeArguments();
-		const baseType = aliasTypeArguments.find((aliasTypeArgument) => {
-			return getBaseTypeName(aliasTypeArgument);
+		const baseTypeDeclaration = baseTypeDeclarations.find((baseTypeDecl) => {
+			const baseType = baseTypeDecl.getType();
+			return aliasTypeArguments.includes(baseType);
 		});
+		const baseType = baseTypeDeclaration?.getType();
 		if (!baseType) continue;
 
 		const baseTypeProperties = baseType.getProperties();
@@ -434,6 +481,7 @@ function getBaseProperties({ symbol }: { symbol: TSMorphSymbol }) {
 			.map((property) => ({
 				property,
 				baseType,
+				baseTypeDeclaration,
 			}));
 	}
 	return [];
@@ -608,16 +656,6 @@ function getBaseTypesApi({
 		composition: [],
 		types,
 	};
-}
-
-function getBaseTypeName(type: TSMorphType) {
-	return baseTypeNames.find((baseTypeName) => {
-		const text = type.getText(
-			undefined,
-			TypeFormatFlags.OmitParameterModifiers,
-		);
-		return text.startsWith(baseTypeName);
-	});
 }
 
 function getDeprecated(node: JSDocableNode) {

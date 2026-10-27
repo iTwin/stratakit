@@ -1,0 +1,1 @@
+import{t as e}from"./save-UdlUHF5r.js";`${e}`;var t=`${e}#icon-large`;export{t};

@@ -1,0 +1,1 @@
+var e=`/2017/docs/_astro/status-warning.D97TCUkI.svg`,t=`${e}#icon`;`${e}`;export{t};

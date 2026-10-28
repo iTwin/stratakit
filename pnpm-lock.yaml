@@ -479,7 +479,7 @@ importers:
         specifier: ^9.4.0
         version: 9.4.0(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0))(@types/react@19.3.0)(react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       "@stratakit/foundations":
-        specifier: ^1.0.4
+        specifier: ^1.0.5
         version: link:../foundations
       "@stratakit/icons":
         specifier: ^0.4.6

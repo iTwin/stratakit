@@ -32,6 +32,7 @@ Modifications specific to `TextField`:
 - The `color` prop is not supported. Color is applied automatically based on state (e.g., disabled, error).
 - The `variant` prop is not supported. Only the `"outlined"` variant is supported.
 - Removed the [floating label](https://mui.com/material-ui/react-text-field/#floating-label) behavior. The label is always displayed above the input.
+- A search icon is automatically added when [`type="search"`](#search) is set.
 
 ## Examples
 
@@ -60,6 +61,12 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 
 ::example{src="mui/TextField.multiline" min-height="200px"}
 
+### Search
+
+Set [`type="search"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/search) to add a search icon automatically. A clear button can appear after the user enters a query; give it an accessible name and return focus to the input when it is activated.
+
+::example{src="mui/TextField.search"}
+
 ## ✅ Do
 
 - Use descriptive labels and helpful error messages.
@@ -75,4 +82,5 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 
 - [`TextField`](https://mui.com/material-ui/api/text-field/)
 - [`FormControl`](https://mui.com/material-ui/api/form-control/)
+- [`IconButton`](https://mui.com/material-ui/api/icon-button/)
 - [`InputAdornment`](https://mui.com/material-ui/api/input-adornment/)

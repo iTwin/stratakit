@@ -1,5 +1,12 @@
 # Changelog
 
+## 1.0.5
+
+### Patch Changes
+
+- [#1984](https://github.com/iTwin/stratakit/pull/1984): Updated the value of `--stratakit-color-bg-elevation-base` in light mode.
+- [#1911](https://github.com/iTwin/stratakit/pull/1911): Updated the values of all `--stratakit-shadow-*` tokens.
+
 ## 1.0.4
 
 ### Patch Changes

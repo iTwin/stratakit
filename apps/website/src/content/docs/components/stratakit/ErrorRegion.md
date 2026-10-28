@@ -24,9 +24,40 @@ The **ErrorRegion** is not a generic component for alerting users to application
 
 ## Structure
 
-- **[`ErrorRegion.Root`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root)**: The component itself takes [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role), making it discoverable in screen reader software. When there are errors present, the **ErrorRegion** renders a toggle `<button>`, using [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded), with the region's [`label`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root.label).
-  - **[`ErrorRegion.Item`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item)**: `ErrorRegion.Root`'s [`items`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop takes a mapped array of `Error.Items`, each representing a discrete error and together rendered as a list. `ErrorItem`'s [`message`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.message) prop can take any JSX.
-    - **[`actions`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.actions)**: The `ErrorRegion`'s `actions` prop places functionality at the foot of the `ErrorRegion.Item`. Use `actions` to include functionality that addresses the error.
+### Components
+
+An **ErrorRegion** constitutes two key components:
+
+- **[`ErrorRegion.Root`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root)**: The [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) that contains the errors.
+- **[`ErrorRegion.Item`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item)**: Represents a discrete error within the **ErrorRegion**.
+
+### Errors
+
+`ErrorRegion.Item`'s are supplied via the [`items`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop of `ErrorRegion.Root`. Each item in the array represents a discrete error and together they form a list of errors within the **ErrorRegion**. `ErrorRegion.Item`'s [`message`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.message) prop can take any JSX.
+
+```jsx
+items={[
+  <ErrorRegion.Item
+    message={<>Failed to create hierarchy for </>}
+  />
+]}
+```
+
+The [`actions`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.actions) prop places functionality intended to address the error at the foot of the `ErrorRegion.Item`. Each action must be a button displayed as a [**Link**](/components/link).
+
+```jsx
+actions={
+  <Link render={<button />}>Retry</Link>
+}
+```
+
+## Interaction
+
+The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item) and `Error.Item`s can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
+
+### Identification
+
+The `ErrorRegion.Root` component takes [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role), making it discoverable in screen reader software. When there are errors present, the **ErrorRegion** renders a toggle `<button>`, using [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded), with the region's [`label`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root.label).
 
 :::caution[The region label]
 
@@ -35,10 +66,6 @@ The **ErrorRegion**'s visible label is typically used to itemize the errors, wit
 In addition, the outer `role="region"` element itself must be identified to screen reader software. Alongside `label`, apply an [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) with the value _“Layer errors”_ or similar. The region itself is discoverable by screen reader software even when no errors are present and the region is not visible.
 
 :::
-
-## Interaction
-
-The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item) and `Error.Item`s can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
 
 ### Within the Tree
 

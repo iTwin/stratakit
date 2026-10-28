@@ -152,7 +152,7 @@ function getBaseElementLink(baseElement: string) {
 					</AnchorHeading>
 					{baseElement && (
 						<div>
-							Base element:
+							Base element:{" "}
 							<a href={getBaseElementLink(baseElement)}>{`<${component.baseElement}>`}</a>
 						</div>
 					)}
@@ -165,14 +165,12 @@ function getBaseElementLink(baseElement: string) {
 									{propHeading.text}
 								</AnchorHeading>
 								<div>
-									<strong>Type:</strong>
-									<code>{prop.type}</code>
+									<strong>Type:</strong> <code>{prop.type}</code>{" "}
 									{prop.optional ? "(optional)" : <strong>(required)</strong>}
 								</div>
 								{prop.defaultValue && (
 									<div>
-										<strong>Default:</strong>
-										<code>{prop.defaultValue}</code>
+										<strong>Default:</strong> <code>{prop.defaultValue}</code>
 									</div>
 								)}
 								{prop.jsdoc?.id && <Jsdoc id={prop.jsdoc?.id} />}
@@ -223,14 +221,12 @@ function getBaseElementLink(baseElement: string) {
 									{propHeading.text}
 								</AnchorHeading>
 								<div>
-									<strong>Type:</strong>
-									<code>{prop.type}</code>
+									<strong>Type:</strong> <code>{prop.type}</code>{" "}
 									{prop.optional ? "(optional)" : <strong>(required)</strong>}
 								</div>
 								{prop.defaultValue && (
 									<div>
-										<strong>Default:</strong>
-										<code>{prop.defaultValue}</code>
+										<strong>Default:</strong> <code>{prop.defaultValue}</code>
 									</div>
 								)}
 								{prop.jsdoc?.id && <Jsdoc id={prop.jsdoc?.id} />}

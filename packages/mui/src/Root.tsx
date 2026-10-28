@@ -4,17 +4,14 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import {
-	type Theme,
-	ThemeProvider,
-	useColorScheme,
-} from "@mui/material/styles";
-import { PortalContext, Root as StrataKitRoot } from "@stratakit/foundations";
+import { ThemeProvider, useColorScheme } from "@mui/material/styles";
+import { Root as StrataKitRoot } from "@stratakit/foundations";
 import { RootContext } from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { createTheme } from "./~createTheme.js";
+import { PortalThemeProvider } from "./PortalProvider.internal.js";
 import { StyledEngineProvider } from "./Root.internal.js";
 import css from "./styles.css.js";
 
@@ -140,49 +137,6 @@ function Styles() {
 
 	return null;
 }
-
-// ----------------------------------------------------------------------------
-
-function PortalThemeProvider(props: React.PropsWithChildren) {
-	const { container: containerEl, unstable_getContainer } =
-		useSafeContext(PortalContext);
-	const container = unstable_getContainer ?? containerEl;
-	const theme = React.useCallback(
-		(outerTheme: Theme): Theme => {
-			return {
-				...outerTheme,
-				components: {
-					...outerTheme.components,
-					MuiModal: {
-						...outerTheme.components?.MuiModal,
-						defaultProps: {
-							...outerTheme.components?.MuiModal?.defaultProps,
-							container,
-						},
-					},
-					MuiPopover: {
-						...outerTheme.components?.MuiPopover,
-						defaultProps: {
-							...outerTheme.components?.MuiPopover?.defaultProps,
-							// Popover passes down `container` prop to `Modal` https://github.com/mui/material-ui/blob/708ef10e874efa63d2e4972bd902befa1912f2dc/packages/mui-material/src/Popover/Popover.js#L389
-							container,
-						},
-					},
-					MuiPopper: {
-						...outerTheme.components?.MuiPopper,
-						defaultProps: {
-							...outerTheme.components?.MuiPopper?.defaultProps,
-							container,
-						},
-					},
-				},
-			};
-		},
-		[container],
-	);
-	return <ThemeProvider theme={theme} {...props} />;
-}
-DEV: PortalThemeProvider.displayName = "PortalThemeProvider";
 
 // ----------------------------------------------------------------------------
 

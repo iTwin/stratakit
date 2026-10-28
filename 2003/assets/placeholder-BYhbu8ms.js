@@ -1,1 +1,0 @@
-import{t as e}from"./placeholder-CQ45biq_.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

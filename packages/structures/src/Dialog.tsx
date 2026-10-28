@@ -5,11 +5,15 @@
 
 import * as React from "react";
 import * as AkDialog from "@ariakit/react/dialog";
-import { Portal } from "@ariakit/react/portal";
+import {
+	PortalContext as AkPortalContext,
+	Portal,
+} from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { useStoreState } from "@ariakit/react/store";
 import { IconButton, Text } from "@stratakit/bricks";
 import { GhostAligner } from "@stratakit/bricks/secret-internals";
+import { PortalContext } from "@stratakit/foundations";
 import { RootContext } from "@stratakit/foundations/secret-internals";
 import {
 	useCloseWatcher,
@@ -139,6 +143,7 @@ interface DialogWrapperProps
 
 function DialogWrapper(props: DialogWrapperProps) {
 	const [wrapper, setWrapper] = React.useState<HTMLElement | null>(null);
+	const { container } = React.useContext(PortalContext) ?? {};
 
 	const store = AkDialog.useDialogContext();
 	const open = useStoreState(store, (state) => {
@@ -157,14 +162,16 @@ function DialogWrapper(props: DialogWrapperProps) {
 
 	const mounted = useStoreState(store, "mounted");
 	return (
-		<Portal
-			className="🥝DialogWrapper"
-			ref={setWrapper}
-			{...popoverProps}
-			hidden={mounted ? undefined : true}
-		>
-			{props.children}
-		</Portal>
+		<AkPortalContext.Provider value={container ?? null}>
+			<Portal
+				className="🥝DialogWrapper"
+				ref={setWrapper}
+				{...popoverProps}
+				hidden={mounted ? undefined : true}
+			>
+				{props.children}
+			</Portal>
+		</AkPortalContext.Provider>
 	);
 }
 DEV: DialogWrapper.displayName = "DialogWrapper";

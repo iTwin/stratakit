@@ -6,7 +6,7 @@ import { Skeleton, VisuallyHidden } from "@stratakit/bricks";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Skeleton variant="text" size="xsmall" />
 			<VisuallyHidden>Loading…</VisuallyHidden>
 

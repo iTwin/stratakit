@@ -4,23 +4,25 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import FormControlLabel from "@mui/material/FormControlLabel";
+import FormControl from "@mui/material/FormControl";
 import Input from "@mui/material/Input";
+import InputLabel from "@mui/material/InputLabel";
+
+import styles from "./ColorPicker.default.module.css";
 
 export default () => {
+	const inputId = React.useId();
 	const [color, setColor] = React.useState("#188166");
 
 	return (
-		<FormControlLabel
-			label="Color"
-			labelPlacement="start"
-			control={
-				<Input
-					type="color"
-					value={color}
-					onChange={(e) => setColor(e.target.value)}
-				/>
-			}
-		/>
+		<FormControl className={styles.root}>
+			<InputLabel htmlFor={inputId}>Color</InputLabel>
+			<Input
+				id={inputId}
+				type="color"
+				value={color}
+				onChange={(e) => setColor(e.target.value)}
+			/>
+		</FormControl>
 	);
 };

@@ -6,7 +6,7 @@ import { Spinner } from "@stratakit/bricks";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Spinner tone="neutral" />
 			<Spinner tone="accent" />
 		</div>

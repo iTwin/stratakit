@@ -6,7 +6,7 @@ import { Chip } from "@stratakit/structures";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Chip label="HTML" />
 			<Chip label="CSS" />
 			<Chip label="JS" />

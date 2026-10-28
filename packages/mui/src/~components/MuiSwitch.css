@@ -48,11 +48,8 @@
 	);
 	--✨shadow--default:
 		inset 0px -1px 0px 0px --primitive("color.black.8"), /* bevel */
-		inset 0px 0px 0px 1px var(--✨thumb-border-color), /* border */
-		var(--stratakit-shadow-surface-sm);
-	--✨shadow--checked:
-		inset 0px -1px 0px 0px --primitive("color.black.8"), /* bevel */
-		var(--stratakit-shadow-surface-sm);
+		inset 0px 0px 0px 1px var(--✨thumb-border-color); /* border */
+	--✨shadow--checked: inset 0px -1px 0px 0px --primitive("color.black.8"); /* bevel */
 	--✨shadow--disabled: none;
 
 	--✨translate-distance--full: calc(var(--_MuiSwitch-height) - var(--_MuiSwitch-padding) * 2);

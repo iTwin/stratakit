@@ -73,7 +73,6 @@ export default () => {
 						{selectedFiles.map((file, index) => (
 							<ListItem
 								key={`${file.name}-${file.lastModified}`}
-								className={styles.fileItem}
 								secondaryAction={
 									<IconButton
 										label={`Remove ${file.name}`}

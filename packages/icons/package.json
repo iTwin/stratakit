@@ -1,7 +1,7 @@
 {
 	"name": "@stratakit/icons",
 	"type": "module",
-	"version": "0.4.6",
+	"version": "0.4.7",
 	"license": "MIT",
 	"sideEffects": false,
 	"exports": {
@@ -11,12 +11,14 @@
 			"default": "./dist/*.js"
 		},
 		"./*.svg": "./icons/*.svg",
-		"./icons-list.json": "./icons-list.json"
+		"./icons-list.json": "./icons-list.json",
+		"./icons-meta.json": "./icons-meta.json"
 	},
 	"files": [
 		"dist",
 		"icons/*.svg",
 		"icons-list.json",
+		"icons-meta.json",
 		"LICENSE.md",
 		"CHANGELOG.md"
 	],

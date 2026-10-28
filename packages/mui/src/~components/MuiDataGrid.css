@@ -41,7 +41,7 @@
 	  Use 1ms due to
 	  https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration
 	*/
-	animation: selected-border 1ms linear --_MuiDataGrid-first-row-timeline;
+	animation: _MuiDataGrid-selected-border 1ms linear --_MuiDataGrid-first-row-timeline;
 }
 
 .MuiDataGrid-columnHeaderTitle {
@@ -191,7 +191,7 @@
 			Use 1ms due to
 			https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration
 		*/
-		animation: selected-border linear 1ms --_MuiDataGrid-last-row-timeline;
+		animation: _MuiDataGrid-selected-border linear 1ms --_MuiDataGrid-last-row-timeline;
 	}
 }
 
@@ -208,7 +208,7 @@
 	border: 1px solid var(--stratakit-color-border-page-base);
 }
 
-@keyframes selected-border {
+@keyframes _MuiDataGrid-selected-border {
 	0%,
 	100% {
 		--_MuiDataGrid-row-border-color: var(

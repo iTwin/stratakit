@@ -1,0 +1,46 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.MuiFab-root {
+	background-color: var(--stratakit-color-bg-neutral-base);
+	color: var(--stratakit-color-icon-neutral-base);
+
+	box-shadow: var(--stratakit-shadow-surface-sm);
+	border: 1px solid var(--stratakit-color-border-neutral-base);
+
+	&:where(.MuiFab-primary) {
+		background-color: var(--stratakit-color-bg-accent-base);
+		color: var(--stratakit-color-icon-neutral-emphasis);
+		border-color: var(--stratakit-color-border-glow-strong-default);
+	}
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			&:where(.MuiFab-primary) {
+				background-color: color-mix(
+					in oklch,
+					var(--stratakit-color-bg-accent-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+				);
+			}
+
+			&:where(.MuiFab-secondary) {
+				background-color: color-mix(
+					in oklch,
+					var(--stratakit-color-bg-neutral-base) 100%,
+					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+				);
+				color: var(--stratakit-color-icon-neutral-primary);
+			}
+		}
+	}
+
+	&:where(.Mui-disabled) {
+		background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+		color: var(--stratakit-color-icon-neutral-disabled);
+		border-color: transparent;
+		box-shadow: none;
+	}
+}

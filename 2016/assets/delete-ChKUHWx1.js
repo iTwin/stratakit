@@ -1,0 +1,1 @@
+import{t as e}from"./delete-G-vv4lIW.js";`${e}`;var t=`${e}#icon-large`;export{t};

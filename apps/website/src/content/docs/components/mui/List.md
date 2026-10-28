@@ -27,6 +27,12 @@ links:
 
 ::example{src="mui/List.subheader" min-width="300px"}
 
+### Secondary action
+
+The [`secondaryAction`](https://mui.com/material-ui/api/list-item/#list-item-prop-secondaryAction) prop can be used to show an [**IconButton**](/components/iconbutton), which can be triggered separately from the main `ListItemButton`. In the following example, clicking on the list item text does not trigger any action.
+
+::example{src="mui/List.secondary-action-only"}
+
 ## API reference
 
 - [`List`](https://mui.com/material-ui/api/list/)

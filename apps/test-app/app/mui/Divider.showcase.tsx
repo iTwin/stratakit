@@ -12,7 +12,7 @@ import DividerVertical from "examples/mui/Divider.vertical.tsx";
 
 export default function DividerExamples() {
 	return (
-		<>
+		<Stack spacing={4} sx={{ alignItems: "start" }}>
 			<Stack sx={{ alignSelf: "stretch" }} spacing={2}>
 				<DividerDefault />
 				<DividerChildren />
@@ -21,6 +21,6 @@ export default function DividerExamples() {
 			<DividerPresentational />
 			<DividerMargin />
 			<DividerVariant />
-		</>
+		</Stack>
 	);
 }

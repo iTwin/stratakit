@@ -31,13 +31,6 @@
 	padding-inline: var(--stratakit-space-300);
 }
 
-.fileItem {
-	padding-inline-end: calc(
-		var(--stratakit-size-control-field-height-medium) +
-		var(--stratakit-space-300)
-	);
-}
-
 .link {
 	cursor: pointer;
 }

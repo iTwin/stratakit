@@ -9,25 +9,38 @@ import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
 import { PortalContext } from "@stratakit/foundations";
 import { RootContext } from "@stratakit/foundations/secret-internals";
+import { isDocument } from "@stratakit/internal-utils/dom";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 
 import type { StylisElement } from "@emotion/cache";
 
 // ----------------------------------------------------------------------------
 
+interface StyledEngineProviderProps extends React.PropsWithChildren {
+	rootNode?: Node;
+}
+
 /** This is similar to MUI's `StyledEngineProvider` but with a custom Emotion cache. */
-export function StyledEngineProvider({ children }: React.PropsWithChildren) {
-	const [cache] = React.useState(() => createEmotionCache());
+export function StyledEngineProvider(props: StyledEngineProviderProps) {
+	const { children, rootNode } = props;
+
+	const container = isDocument(rootNode) ? rootNode.head : rootNode;
+	const cache = React.useMemo(
+		() => createEmotionCache({ container }),
+		[container],
+	);
+
 	return <CacheProvider value={cache}>{children}</CacheProvider>;
 }
 
 // ----------------------------------------------------------------------------
 
-function createEmotionCache() {
+function createEmotionCache({ container }: { container?: Node }) {
 	const cache = createCache({
 		key: "mui",
 		speedy: true, // This injects styles using the `insertRule` API.
 		stylisPlugins: [prefixer],
+		container,
 	});
 
 	// Reimplementing MUI's `enableCssLayer` prop, which wraps all styles in `@layer mui`. https://github.com/mui/material-ui/blob/5cac916e20b9b27056cff9ba76ab0a99f351ef1c/packages/mui-styled-engine/src/StyledEngineProvider/StyledEngineProvider.js#L87-L96

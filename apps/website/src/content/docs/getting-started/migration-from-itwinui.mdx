@@ -543,7 +543,7 @@ Have questions or feedback about a suggested replacement? Join the [iTwinUI feat
 | [`FileUpload`](https://itwinui.bentley.com/docs/fileupload)                     | [Composite file selection](#fileupload)                                             |
 | [`Flex`](https://itwinui.bentley.com/docs/flex)                                 | [MUI `Stack`](#flex)                                                                |
 | [`Footer`](https://itwinui.bentley.com/docs/footer)                             | [Composite footer](#footer)                                                         |
-| [`Header`](https://itwinui.bentley.com/docs/header)                             | [Native `<header>`](#header)                                                        |
+| [`Header`](https://itwinui.bentley.com/docs/header)                             | [Composite header](#header)                                                         |
 | [`IconButton`](https://itwinui.bentley.com/docs/button#iconbutton)              | [MUI `IconButton`](#iconbutton)                                                     |
 | [`IdeasButton`](https://itwinui.bentley.com/docs/button#ideasbutton)            | [MUI `Button`](#ideasbutton)                                                        |
 | [`InformationPanel`](https://itwinui.bentley.com/docs/informationpanel)         | [MUI `Drawer`](#informationpanel)                                                   |
@@ -565,7 +565,7 @@ Have questions or feedback about a suggested replacement? Join the [iTwinUI feat
 | [`ProgressRadial`](https://itwinui.bentley.com/docs/progressindicator)          | [MUI `CircularProgress`](#progressradial)                                           |
 | [`Radio`](https://itwinui.bentley.com/docs/radio)                               | [MUI `Radio`](#radio)                                                               |
 | [`RadioTile`](https://itwinui.bentley.com/docs/radiotile)                       | [Composite radio tile](#radiotile)                                                  |
-| [`SearchBox`](https://itwinui.bentley.com/docs/searchbox)                       | [MUI `Autocomplete` or MUI `TextField` or MUI `Input`](#searchbox)                  |
+| [`SearchBox`](https://itwinui.bentley.com/docs/searchbox)                       | [MUI `TextField` or MUI `Input`](#searchbox)                                        |
 | [`Select`](https://itwinui.bentley.com/docs/select)                             | [MUI `Select` or MUI `NativeSelect`](#select)                                       |
 | [`SideNavigation`](https://itwinui.bentley.com/docs/sidenavigation)             | [StrataKit `NavigationRail`](#sidenavigation)                                       |
 | [`SkipToContentLink`](https://itwinui.bentley.com/docs/skiptocontentlink)       | [Composite skip link](#skiptocontentlink)                                           |
@@ -749,9 +749,7 @@ Replace the [`Footer` component from `@itwin/itwinui-react`](https://itwinui.ben
 
 ### Header
 
-Replace the [`Header` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/header) with the native [`<header>`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/header) element.
-
-- Add any needed content and functionality using MUI components such as `Breadcrumbs`, `IconButton`, or `Menu`.
+Replace the [`Header` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/header) with the [header composite component](/components/header/).
 
 ### IconButton
 
@@ -903,10 +901,7 @@ Replace the [`RadioTile` component from `@itwin/itwinui-react`](https://itwinui.
 
 ### SearchBox
 
-Replace the [`SearchBox` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/searchbox) with the `TextField` component from `@mui/material`. Set `type="search"` and add a start `InputAdornment`. See the [TextField icon example](/components/textfield/#icon) for reference.
-
-- MUI `TextField` has no equivalent to iTwinUI `SearchBox`'s `expandable` prop. Render an `IconButton` that is replaced by the `TextField` when activated.
-- Replace `status="negative"` with `TextField`'s `error` and `helperText` props. See the [TextField error example](/components/textfield/#error).
+Replace the [`SearchBox` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/searchbox) with the `Input` or `TextField` components from `@mui/material`. See the [TextField search example](/components/textfield/#search) for reference.
 
 ### Select
 

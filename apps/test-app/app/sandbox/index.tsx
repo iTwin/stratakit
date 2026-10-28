@@ -38,7 +38,7 @@ import {
 	unstable_Toolbar as Toolbar,
 	Tree,
 } from "@stratakit/structures";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";
 import {
@@ -50,7 +50,6 @@ import {
 import { SkipLinkContext } from "~/~navigation.tsx";
 import { toUpperCamelCase } from "~/~utils.tsx";
 
-import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
 
 import model1Url from "./_data/sandbox.model1.json?url";
@@ -175,12 +174,6 @@ function LeftPanel() {
 	const selectedModel =
 		(searchParams.get("model") as keyof typeof models) || "model1";
 
-	const query = useQuery({
-		queryKey: ["sandbox-data", selectedModel],
-		queryFn: () => fetchModelsData(selectedModel),
-		staleTime: Number.POSITIVE_INFINITY,
-	});
-
 	return (
 		<>
 			<div className={styles.panelHeader}>
@@ -221,7 +214,7 @@ function LeftPanel() {
 							key={selectedModel}
 							fallback={<Skeleton variant="text" />}
 						>
-							<VersionContent query={query} />
+							<VersionContent model={selectedModel} />
 						</React.Suspense>
 					</hgroup>
 				</div>
@@ -238,16 +231,26 @@ function LeftPanel() {
 			</div>
 
 			<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
-				<PanelContentContainer query={query} />
+				<PanelContentContainer model={selectedModel} />
 			</React.Suspense>
 		</>
 	);
 }
 
-function PanelContentContainer(props: {
-	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
-}) {
-	const { data } = React.use(props.query.promise);
+// ----------------------------------------------------------------------------
+
+function useModelData(model: keyof typeof models) {
+	return useSuspenseQuery({
+		queryKey: ["sandbox-data", model],
+		queryFn: () => fetchModelsData(model),
+		staleTime: Number.POSITIVE_INFINITY,
+	});
+}
+
+function PanelContentContainer(props: { model: keyof typeof models }) {
+	const {
+		data: { data },
+	} = useModelData(props.model);
 
 	return (
 		<SearchboxProvider defaultVisible={Object.keys(data).length !== 1}>
@@ -316,10 +319,10 @@ function SkeletonTreeItem(props: React.ComponentProps<"div">) {
 	);
 }
 
-function VersionContent(props: {
-	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
-}) {
-	const { version = "" } = React.use(props.query.promise);
+function VersionContent(props: { model: keyof typeof models }) {
+	const {
+		data: { version = "" },
+	} = useModelData(props.model);
 
 	return (
 		<Text className={styles.panelCaption} variant="body-sm" render={<p />}>

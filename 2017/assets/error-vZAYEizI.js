@@ -1,0 +1,1 @@
+import{t as e}from"./error-C4EB9t2A.js";var t=`${e}#icon`;`${e}`;export{t};

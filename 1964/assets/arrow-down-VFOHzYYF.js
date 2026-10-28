@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-DQmTMS4t.js";var t=`${e}#icon`;`${e}`;export{t};

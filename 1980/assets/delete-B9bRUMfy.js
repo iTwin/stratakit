@@ -1,1 +1,0 @@
-import{t as e}from"./delete-CQl8Sk_z.js";`${e}`;var t=`${e}#icon-large`;export{t};

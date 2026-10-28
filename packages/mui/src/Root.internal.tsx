@@ -4,7 +4,6 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import createCache from "@emotion/cache";
 import { CacheProvider } from "@emotion/react";
@@ -120,9 +119,7 @@ export function PortalProvider(
 
 	return (
 		<PortalContext.Provider value={{ container, unstable_getContainer }}>
-			<AkPortalContext.Provider value={container}>
-				<Role render={portalProvider ?? <React.Fragment />}>{children}</Role>
-			</AkPortalContext.Provider>
+			<Role render={portalProvider ?? <React.Fragment />}>{children}</Role>
 		</PortalContext.Provider>
 	);
 }

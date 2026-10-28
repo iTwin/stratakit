@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-CHTBqLa3.js";import{t}from"./Icon-agMGDsOa.js";import{t as n}from"./error-BucVXhxn.js";var r={icon:`_icon_18p5z_6`},i=e(),a=()=>(0,i.jsx)(t,{className:r.icon,href:n});export{a as default};

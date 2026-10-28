@@ -1,1 +1,0 @@
-import{K as e,Y as t,t as n}from"./jsx-runtime-CHTBqLa3.js";import{t as r}from"./Typography-hhJ-A9J4.js";import{t as i}from"./LinearProgress-CN34HY3B.js";var a=t(e(),1),o=n(),s=()=>{let e=a.useId();return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(i,{color:`secondary`,"aria-labelledby":e}),(0,o.jsx)(r,{id:e,children:`Analyzing results…`})]})};export{s as default};

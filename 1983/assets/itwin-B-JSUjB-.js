@@ -1,1 +1,0 @@
-import{J as e}from"./jsx-runtime-CHTBqLa3.js";var t=e({default:()=>n}),n=`/1983/assets/brand-android-zQOTBg4b.svg`,r=e({default:()=>i}),i=`/1983/assets/brand-apple-DFn6nuLI.svg`,a=e({default:()=>o}),o=`/1983/assets/building-iETsTk8b.svg`,s=e({default:()=>c}),c=`/1983/assets/itwin-KH20i3wr.svg`;export{i as a,t as c,a as i,s as n,r as o,o as r,n as s,c as t};

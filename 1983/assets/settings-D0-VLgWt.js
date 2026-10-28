@@ -1,0 +1,1 @@
+import{Y as e}from"./jsx-runtime-GiK9V3Xy.js";var t=e({default:()=>n}),n=`/1983/assets/settings-BSloW3Ma.svg`,r=`${n}#icon`,i=`${n}#icon-large`;export{i as n,t as r,r as t};

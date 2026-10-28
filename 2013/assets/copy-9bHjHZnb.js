@@ -1,0 +1,1 @@
+import{t as e}from"./copy-CD5sMsnT.js";`${e}`;var t=`${e}#icon-large`;export{t};

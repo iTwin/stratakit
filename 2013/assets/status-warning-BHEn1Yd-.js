@@ -1,0 +1,1 @@
+import{t as e}from"./status-warning-DGOfXURC.js";var t=`${e}#icon`;`${e}`;export{t};

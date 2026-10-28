@@ -1,1 +1,0 @@
-import{t as e}from"./upload-DnbL2o_q.js";var t=`${e}#icon`;`${e}`;export{t};

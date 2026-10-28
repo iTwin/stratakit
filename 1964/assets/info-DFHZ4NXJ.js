@@ -1,1 +1,0 @@
-import{t as e}from"./info-D3Lgmyrt.js";var t=`${e}#icon`;`${e}`;export{t};

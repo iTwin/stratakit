@@ -1,1 +1,0 @@
-import{pt as e}from"./Root.internal-D6QlvYk8.js";var t=new WeakMap;function n(n,i,a){let{KeyboardEvent:o}=e(n),s=new o(i.type,a);return t.set(s,r(i)),n.dispatchEvent(s)}function r(e){return t.get(e)??e}export{r as n,n as t};

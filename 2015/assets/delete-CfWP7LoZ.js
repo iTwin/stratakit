@@ -1,1 +1,0 @@
-import{t as e}from"./delete-N3TI_PxP.js";`${e}`;var t=`${e}#icon-large`;export{t};

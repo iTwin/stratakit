@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{I as t,p as n}from"./StrataKitRoot.C39Kt8Ej.js";import{t as r}from"./add.CLSluO0X.js";import{t as i}from"./Fab.BjsBtzLR.js";var a=e(),o=()=>(0,a.jsx)(n,{title:`Add documents`,describeChild:!1,children:(0,a.jsx)(i,{children:(0,a.jsx)(t,{href:r})})});export{o as default};

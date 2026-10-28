@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{t}from"./Badge.6UJTzwon.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{variant:`solid`,label:`Solid`}),(0,n.jsx)(t,{variant:`muted`,label:`Muted`}),(0,n.jsx)(t,{variant:`outline`,label:`Outline`})]});export{r as default};

@@ -1,0 +1,1 @@
+function e(e){return e!=null&&!(Array.isArray(e)&&e.length===0)}function t(t,n=!1){return t&&(e(t.value)&&t.value!==``||n&&e(t.defaultValue)&&t.defaultValue!==``)}function n(e){return e.startAdornment}export{t as n,n as t};

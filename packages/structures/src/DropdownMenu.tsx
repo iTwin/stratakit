@@ -16,6 +16,7 @@ import {
 	useMenuContext,
 	useMenuStore,
 } from "@ariakit/react/menu";
+import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
 import { Button, Kbd, Text } from "@stratakit/bricks";
 import {
@@ -23,7 +24,7 @@ import {
 	Dot,
 	predefinedSymbols,
 } from "@stratakit/bricks/secret-internals";
-import { Icon } from "@stratakit/foundations";
+import { Icon, PortalContext } from "@stratakit/foundations";
 import {
 	useCloseWatcher,
 	usePopoverApi,
@@ -81,15 +82,19 @@ function DropdownMenuProvider(props: DropdownMenuProps) {
 
 	const { children, placement, open, setOpen, defaultOpen } = props;
 
+	const { container } = React.useContext(PortalContext) ?? {};
+
 	return (
-		<MenuProvider
-			defaultOpen={defaultOpen}
-			open={open}
-			placement={placement}
-			setOpen={setOpen}
-		>
-			{children}
-		</MenuProvider>
+		<AkPortalContext.Provider value={container ?? null}>
+			<MenuProvider
+				defaultOpen={defaultOpen}
+				open={open}
+				placement={placement}
+				setOpen={setOpen}
+			>
+				{children}
+			</MenuProvider>
+		</AkPortalContext.Provider>
 	);
 }
 DEV: DropdownMenuProvider.displayName = "DropdownMenu.Provider";

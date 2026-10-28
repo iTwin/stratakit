@@ -79,13 +79,18 @@
 
 	&:where(.MuiButton-contained) {
 		box-shadow: var(--stratakit-shadow-surface-sm);
+		border: 1px solid transparent;
+
+		&:where(.MuiButton-colorPrimary, .MuiButton-colorError) {
+			border-color: var(--stratakit-color-border-glow-strong-default);
+		}
 
 		&:where(.MuiButton-colorSecondary) {
-			border: 1px solid;
 			border-color: var(--stratakit-color-border-neutral-base);
 		}
 
 		&:where(.Mui-disabled) {
+			box-shadow: none;
 			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
 			border-color: transparent;
 		}

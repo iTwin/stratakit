@@ -264,9 +264,12 @@ function getReexport(symbol: TSMorphSymbol): Api.Reexport | undefined {
 
 	if (!aliasPackageName) return undefined;
 	if (packageName === aliasPackageName) return undefined;
-	const aliasName = alias.getName();
+
 	// Quick fix alias names with paths: packages/bricks/dist/Table -> Table
-	const apiName = aliasName.split("/").at(-1) || aliasName;
+	const declaration = alias.getDeclarations().at(0);
+	const sourceFile = declaration?.asKind(SyntaxKind.SourceFile);
+
+	const apiName = sourceFile?.getBaseNameWithoutExtension() ?? symbol.getName();
 	return {
 		packageName: aliasPackageName,
 		apiName,

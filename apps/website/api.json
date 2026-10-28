@@ -2384,7 +2384,7 @@
 				"exportName": "Table",
 				"reexport": {
 					"packageName": "bricks",
-					"apiName": "Table\""
+					"apiName": "Table"
 				}
 			},
 			{

@@ -1696,7 +1696,7 @@
 								"name": "onClose",
 								"type": "((event: Event) => void) | undefined",
 								"optional": true,
-								"jsdoc": "This is an event handler prop triggered when the dialog's `close` event is\ndispatched. The `close` event is similar to the native dialog\n[`close`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close_event)\nevent. The only difference is that this event can be canceled with\n`event.preventDefault()`, which will prevent the dialog from hiding.\n\nIt's important to note that this event only fires when the dialog store's\n[`open`](https://ariakit.com/reference/use-dialog-store#open) state is set\nto `false`. If the controlled\n[`open`](https://ariakit.com/reference/dialog#open) prop value changes, or\nif the dialog's visibility is altered in any other way (such as unmounting\nthe dialog without adjusting the open state), this event won't be\ntriggered."
+								"jsdoc": "This is an event handler prop triggered when the dialog's `close` event is\ndispatched. The `close` event is similar to the native dialog\n[`close`](https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close_event)\nevent. The only difference is that this event can be canceled with\n`event.preventDefault()`, which will prevent the dialog from hiding.\n\nThis event fires when a close is requested through the `hide`, `setOpen`,\nor `toggle` functions of the dialog store, of a store that the dialog store\nreceives through the `combobox` or `popover` options, such as the combobox\nstore of a menu, or of a store that receives the dialog store through the\n`disclosure` option, such as a combobox in the dialog. This includes the\nrequests the dialog makes itself, such as on Escape or when the user\ninteracts outside the dialog, and those from other components, such as a\ndisclosure button or an item that hides the popup on click. In this case,\nthe event fires before the store's\n[`open`](https://ariakit.com/reference/use-dialog-store#open) state\nchanges, so preventing it leaves the dialog as it was.\n\nThe event also fires when the `open` state is set to `false` in another\nway, such as a direct `setState` call. In this case, the state is already\n`false` when the event fires, and preventing the event sets it back to\n`true`. If the controlled\n[`open`](https://ariakit.com/reference/dialog#open) prop value changes, or\nif the dialog's visibility is altered in any other way (such as unmounting\nthe dialog without adjusting the open state), this event won't be\ntriggered."
 							},
 							{
 								"name": "open",
@@ -1825,6 +1825,7 @@
 								"name": "placement",
 								"type": "Placement | undefined",
 								"optional": true,
+								"jsdoc": "The placement of the menu. A menu inside a vertical parent menu or menubar\nopens at `right-start` instead, unless it receives a placement of its own,\neither as an option or through a linked `store` or `popover` store.",
 								"defaultValue": "\"bottom-start\""
 							},
 							{

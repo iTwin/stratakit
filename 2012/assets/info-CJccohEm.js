@@ -1,0 +1,1 @@
+import{t as e}from"./info-DR0d_C34.js";var t=`${e}#icon`;`${e}`;export{t};

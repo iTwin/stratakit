@@ -1,1 +1,0 @@
-import{t as e}from"./clock-WOU98JA4.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

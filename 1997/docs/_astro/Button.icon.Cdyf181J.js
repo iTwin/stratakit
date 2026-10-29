@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{B as t}from"./StrataKitRoot.D_SPVilS.js";import{t as n}from"./Button.CLqZo-_Z.js";import{t as r}from"./add.DfER-GTv.js";var i=e(),a=()=>(0,i.jsx)(n,{endIcon:(0,i.jsx)(t,{href:r}),children:`Create new`});export{a as default};

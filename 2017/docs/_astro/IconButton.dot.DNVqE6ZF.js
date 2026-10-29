@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{n as t}from"./example-embed.astro_astro_type_script_index_0_lang.WR8u-Cxc.js";import{t as n}from"./notifications.BH0BwXxt.js";var r=e(),i=()=>(0,r.jsx)(t,{label:`Notifications`,dot:`You have unread notifications`,icon:n});export{i as default};

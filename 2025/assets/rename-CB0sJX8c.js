@@ -1,0 +1,1 @@
+import{t as e}from"./rename-DErRcA-_.js";var t=`${e}#icon`;`${e}`;export{t};

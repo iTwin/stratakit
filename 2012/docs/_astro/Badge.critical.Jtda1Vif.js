@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Cltr0gcK.js";import{t}from"./Badge.BHmD3h01.js";import{t as n}from"./status-warning.G-fTYzzi.js";var r=e(),i=()=>(0,r.jsx)(t,{label:`Unstable`,tone:`critical`,icon:n});export{i as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{B as t}from"./StrataKitRoot.x7lxbGcn.js";var n=`/2012/docs/_astro/Icon.custom.QzTIDwip.svg`,r=e(),i=()=>(0,r.jsx)(t,{href:`${n}#icon`,alt:`Filled Circle`});export{i as default};

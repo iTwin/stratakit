@@ -1,0 +1,1 @@
+import{Y as e}from"./jsx-runtime-GiK9V3Xy.js";var t=e({default:()=>n}),n=`/2023/assets/home-Bgndo3dy.svg`;export{t as n,n as t};

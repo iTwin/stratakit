@@ -1,0 +1,1 @@
+import{t as e}from"./upload-CyBE4Efn.js";var t=`${e}#icon`;`${e}`;export{t};

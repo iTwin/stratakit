@@ -1,0 +1,1 @@
+import{t as e}from"./notifications-BFI_2Cpd.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

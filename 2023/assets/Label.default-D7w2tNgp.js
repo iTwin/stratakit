@@ -1,0 +1,1 @@
+import{X as e,q as t,t as n}from"./jsx-runtime-GiK9V3Xy.js";import{t as r}from"./Label-BC07tWVy.js";import{n as i}from"./TextBox-DMcGe5Rr.js";var a=e(t(),1),o=n(),s=()=>{let e=a.useId();return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(r,{htmlFor:e,children:`Name `}),(0,o.jsx)(i,{id:e})]})};export{s as default};

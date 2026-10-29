@@ -1,0 +1,1 @@
+import{i as e,n as t}from"./jsx-runtime.Dk72oS4N.js";var n=e(t(),1);function r(e){let t=n.useRef({});return n.useEffect(()=>{t.current=e}),t.current}export{r as t};

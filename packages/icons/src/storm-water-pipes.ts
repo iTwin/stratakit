@@ -8,5 +8,11 @@ import {
 	svgPipesWaterStormLarge,
 } from "./pipes-water-storm.js";
 
+/**
+ * @deprecated Use `svgPipesWaterStorm` instead.
+ */
 export const svgStormWaterPipes = svgPipesWaterStorm;
+/**
+ * @deprecated Use `svgPipesWaterStormLarge` instead.
+ */
 export const svgStormWaterPipesLarge = svgPipesWaterStormLarge;

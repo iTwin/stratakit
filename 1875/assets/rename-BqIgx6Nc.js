@@ -1,0 +1,1 @@
+import{t as e}from"./rename-BdROy2n3.js";var t=`${e}#icon`;`${e}`;export{t};

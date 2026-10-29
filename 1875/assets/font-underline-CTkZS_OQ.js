@@ -1,1 +1,0 @@
-import{J as e}from"./jsx-runtime-CHTBqLa3.js";var t=e({default:()=>n}),n=`/1875/assets/font-strikethrough-C3Z2WpuT.svg`,r=e({default:()=>i}),i=`/1875/assets/font-underline-6QPVz7Z7.svg`;export{t as i,r as n,n as r,i as t};

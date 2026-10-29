@@ -1,1 +1,0 @@
-import{K as e,Y as t,t as n}from"./jsx-runtime-CHTBqLa3.js";import{t as r}from"./Icon-agMGDsOa.js";import{t as i}from"./ToggleButton-DI68BbK5.js";import{t as a}from"./edit-eewHn4aJ.js";var o=t(e(),1),s=n(),c=()=>{let[e,t]=o.useState(!1);return(0,s.jsx)(i,{value:`edit`,label:`Edit`,selected:e,onChange:()=>{t(e=>!e)},children:(0,s.jsx)(r,{href:a})})};export{c as default};

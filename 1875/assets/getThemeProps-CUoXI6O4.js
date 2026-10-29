@@ -1,1 +1,0 @@
-import{y as e}from"./DefaultPropsProvider-6eReuYZv.js";function t(t){let{theme:n,name:r,props:i}=t;return!n||!n.components||!n.components[r]||!n.components[r].defaultProps?i:e(n.components[r].defaultProps,i)}export{t};

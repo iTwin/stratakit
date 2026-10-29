@@ -139,9 +139,21 @@ dispatched. The <code>close</code> event is similar to the native dialog
 <a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLDialogElement/close_event"><code>close</code></a>
 event. The only difference is that this event can be canceled with
 <code>event.preventDefault()</code>, which will prevent the dialog from hiding.</p>
-<p>It’s important to note that this event only fires when the dialog store’s
-<a href="https://ariakit.com/reference/use-dialog-store#open"><code>open</code></a> state is set
-to <code>false</code>. If the controlled
+<p>This event fires when a close is requested through the <code>hide</code>, <code>setOpen</code>,
+or <code>toggle</code> functions of the dialog store, of a store that the dialog store
+receives through the <code>combobox</code> or <code>popover</code> options, such as the combobox
+store of a menu, or of a store that receives the dialog store through the
+<code>disclosure</code> option, such as a combobox in the dialog. This includes the
+requests the dialog makes itself, such as on Escape or when the user
+interacts outside the dialog, and those from other components, such as a
+disclosure button or an item that hides the popup on click. In this case,
+the event fires before the store’s
+<a href="https://ariakit.com/reference/use-dialog-store#open"><code>open</code></a> state
+changes, so preventing it leaves the dialog as it was.</p>
+<p>The event also fires when the <code>open</code> state is set to <code>false</code> in another
+way, such as a direct <code>setState</code> call. In this case, the state is already
+<code>false</code> when the event fires, and preventing the event sets it back to
+<code>true</code>. If the controlled
 <a href="https://ariakit.com/reference/dialog#open"><code>open</code></a> prop value changes, or
 if the dialog’s visibility is altered in any other way (such as unmounting
 the dialog without adjusting the open state), this event won’t be

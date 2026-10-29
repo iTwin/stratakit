@@ -2701,11 +2701,11 @@
 		]
 	},
 	{
-		"name": "internal-utils",
+		"name": "common",
 		"apis": [
 			{
 				"name": "Utils",
-				"exportName": "Internal Utils",
+				"exportName": "Common",
 				"description": "Utility types used by StrataKit components.",
 				"composition": [],
 				"types": [

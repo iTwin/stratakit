@@ -7,9 +7,7 @@ import { Badge } from "@astrojs/starlight/components";
 const packagesCollection = await getCollection("packages");
 
 const order = ["mui", "structures"];
-const packages = (await getEntries(packagesCollection)).filter(
-	(pkg) => pkg.id !== "internal-utils",
-);
+const packages = (await getEntries(packagesCollection)).filter((pkg) => pkg.id !== "common");
 packages.sort((a, b) => {
 	const aIndex = order.indexOf(a.id);
 	const bIndex = order.indexOf(b.id);

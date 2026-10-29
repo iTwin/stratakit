@@ -234,8 +234,9 @@ function generateApi() {
 			apis.push(baseTypesApi);
 		}
 
+		const name = packageName === "internal-utils" ? "common" : packageName;
 		packages.push({
-			name: packageName,
+			name,
 			apis,
 		});
 	}
@@ -658,7 +659,7 @@ function getBaseTypesApi({
 
 	return {
 		name: "Utils",
-		exportName: "Internal Utils",
+		exportName: "Common",
 		description: "Utility types used by StrataKit components.",
 		composition: [],
 		types,

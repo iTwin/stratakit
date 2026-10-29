@@ -1277,34 +1277,46 @@
 	},
 	"correspondence-due": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"mail",
+			"envelope",
+			"letter",
+			"communication",
+			"message",
+			"due",
+			"warning",
+			"date",
+			"alert",
+			"schedule"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"correspondence-issues": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"smail",
+			"envelope",
+			"letter",
+			"communication",
+			"message",
+			"issue",
+			"error",
+			"warning",
+			"alert",
+			"problem"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"correspondence-trend": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"mail",
+			"envelope",
+			"communication",
+			"message",
+			"trend",
+			"chart",
+			"line",
+			"analytics",
+			"data",
+			"tracking"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -1520,23 +1532,32 @@
 	},
 	"deliverables-due": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"package",
+			"box",
+			"ship",
+			"release",
+			"milestone",
+			"due",
+			"warning",
+			"alert",
+			"deadline",
+			"schedule"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"deliverables-trend": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"package",
+			"box",
+			"ship",
+			"release",
+			"milestone",
+			"trend",
+			"chart",
+			"analytics",
+			"line",
+			"tracking",
+			"success"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -2656,12 +2677,16 @@
 	},
 	"forms-overdue": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"document",
+			"sheet",
+			"file",
+			"template",
+			"overdue",
+			"warning",
+			"late",
+			"delay",
+			"alert",
+			"date"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -2714,12 +2739,16 @@
 	},
 	"forms-trend": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"document",
+			"sheet",
+			"file",
+			"template",
+			"trend",
+			"chart",
+			"line",
+			"analytics",
+			"data",
+			"tracking"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -3088,34 +3117,45 @@
 	},
 	"imodel-problematic-sync": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"imodel",
+			"digital twin",
+			"sync",
+			"warning",
+			"error",
+			"alert",
+			"cloud",
+			"problem",
+			"failure",
+			"link"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"imodel-progress": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"imodel",
+			"digital twin",
+			"sync",
+			"progress",
+			"active",
+			"loading",
+			"cloud",
+			"update",
+			"dynamic",
+			"process"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"imodel-supply-chain": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"imodel",
+			"digital twin",
+			"supply chain",
+			"logistics",
+			"package",
+			"cargo",
+			"cloud",
+			"flow",
+			"tracking"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5119,12 +5159,16 @@
 	},
 	"standards-checking": {
 		"aliases": [
-			"specification",
 			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"compliance",
+			"verification",
+			"rule",
+			"list",
+			"audit",
+			"scale",
+			"quality",
+			"pass",
+			"code"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5208,12 +5252,16 @@
 	},
 	"subsurface-navigation": {
 		"aliases": [
-			"specification",
-			"check",
-			"review",
-			"examine",
-			"assess",
-			"validate"
+			"route",
+			"utility",
+			"underground",
+			"navigation",
+			"map",
+			"terrain",
+			"geology",
+			"pipe",
+			"guide",
+			"depth"
 		],
 		"symbols": ["icon", "icon-large"]
 	},

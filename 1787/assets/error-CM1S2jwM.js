@@ -1,0 +1,1 @@
+import{t as e}from"./error-DKg7l-_s.js";var t=`${e}#icon`;`${e}`;export{t};

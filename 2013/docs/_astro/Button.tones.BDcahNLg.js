@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{c as t}from"./example-embed.astro_astro_type_script_index_0_lang.DmALPY_s.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{tone:`accent`,children:`Accent`}),(0,n.jsx)(t,{tone:`neutral`,children:`Neutral`})]});export{r as default};

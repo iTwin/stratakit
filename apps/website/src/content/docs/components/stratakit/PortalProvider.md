@@ -8,7 +8,7 @@ links:
 
 The **PortalProvider** component sets up the portal context and MUI theme provider, so that all descendant portaled elements render into a specified container instead of the default [root portal container](/components/root/#portal-container).
 
-For example, if you use a _custom_ or _3rd party_ dialog, you can ensure that portaled elements appear above the dialog and are included in its accessibility tree.
+For example, if you use a _custom_ or _third party_ dialog, you can ensure that portaled elements appear above the dialog and are included in its accessibility tree.
 
 ## Container
 

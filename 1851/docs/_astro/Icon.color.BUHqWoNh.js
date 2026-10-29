@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{M as t,U as n}from"./StrataKitRoot.CgLxHsGQ.js";var r={icon:`_icon_18p5z_6`},i=e(),a=()=>(0,i.jsx)(n,{className:r.icon,href:t});export{a as default};

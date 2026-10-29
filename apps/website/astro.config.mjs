@@ -97,6 +97,10 @@ export default defineConfig({
 						},
 					],
 				},
+				{
+					label: "Patterns",
+					items: [{ autogenerate: { directory: "patterns" } }],
+				},
 				{ label: "Icons", slug: "icons" },
 				{ label: "API Reference", link: "/reference" },
 				{ label: "Changelog", slug: "changelog" },

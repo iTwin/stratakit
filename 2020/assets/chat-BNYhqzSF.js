@@ -1,1 +1,0 @@
-import{t as e}from"./chat-BTOVCV5D.js";var t=`${e}#icon`;`${e}`;export{t};

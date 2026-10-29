@@ -1,1 +1,0 @@
-import{t as e}from"./script-D49hgPp5.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

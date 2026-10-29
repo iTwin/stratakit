@@ -1,1 +1,0 @@
-import{t as e}from"./delete-PHs-QQdc.js";`${e}`;var t=`${e}#icon-large`;export{t};

@@ -1,1 +1,0 @@
-import{Y as e}from"./jsx-runtime-GiK9V3Xy.js";var t=e({default:()=>n}),n=`/2010/assets/sound-loud-U3tKba0C.svg`,r=e({default:()=>i}),i=`/2010/assets/sound-quiet-Bo506plk.svg`;export{t as i,r as n,n as r,i as t};

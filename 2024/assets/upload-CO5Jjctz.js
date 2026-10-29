@@ -1,0 +1,1 @@
+import{t as e}from"./upload-CC7GoVFu.js";var t=`${e}#icon`;`${e}`;export{t};

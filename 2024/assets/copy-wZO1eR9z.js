@@ -1,0 +1,1 @@
+import{t as e}from"./copy-BAkmt2J_.js";`${e}`;var t=`${e}#icon-large`;export{t};

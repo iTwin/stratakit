@@ -1,1 +1,0 @@
-import{t as e}from"./upload-BjrcuCp-.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,1 +1,0 @@
-import{t as e}from"./rename-w3EmAU6_.js";var t=`${e}#icon`;`${e}`;export{t};

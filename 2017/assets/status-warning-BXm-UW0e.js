@@ -1,1 +1,0 @@
-import{t as e}from"./status-warning-CFR62cRA.js";var t=`${e}#icon`;`${e}`;export{t};

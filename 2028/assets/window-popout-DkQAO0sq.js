@@ -1,0 +1,1 @@
+import{t as e}from"./window-popout-7oDC_Whx.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -22,8 +22,16 @@ links:
 
 ::example{src="mui/ButtonGroup.sizes"}
 
+### Split button
+
+A split button combines a primary action with a [**Menu**](/components/menu) of related alternatives. Use the first button to run the primary action and the icon button to open the menu.
+
+::example{src="mui/ButtonGroup.split"}
+
 ## API reference
 
 - [`ButtonGroup`](https://mui.com/material-ui/api/button-group/)
 - [`Button`](https://mui.com/material-ui/api/button/)
 - [`IconButton`](https://mui.com/material-ui/api/icon-button/)
+- [`Menu`](https://mui.com/material-ui/api/menu/)
+- [`MenuItem`](https://mui.com/material-ui/api/menu-item/)

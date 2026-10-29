@@ -1,0 +1,1 @@
+import{t as e}from"./chat-DpLxj4er.js";var t=`${e}#icon`;`${e}`;export{t};

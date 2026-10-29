@@ -1,0 +1,1 @@
+import{t as e}from"./window-popout-R3-hw-Pz.js";var t=`${e}#icon`;`${e}`;export{t};

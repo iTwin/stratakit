@@ -1,0 +1,1 @@
+import{t as e}from"./error-CIV8otU0.js";var t=`${e}#icon`;`${e}`;export{t};

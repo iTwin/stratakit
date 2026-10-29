@@ -150,7 +150,7 @@
 .MuiDataGrid-cell {
 	border: 0;
 	box-shadow: none;
-	background: var(--_MuiDataGrid-row-background-color);
+	background: transparent;
 }
 
 .MuiDataGrid-filterFormDeleteIcon {

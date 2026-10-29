@@ -12,7 +12,7 @@ For example, if you use a _custom_ or _3rd party_ dialog, you can ensure that po
 
 ## Container
 
-Use the [`container`](/reference/mui/PortalProvider#PortalProvider.PortalProvider.container) prop to specify the element that descendant elements are portaled into. Additionally, the [`unstable_getContainer`](/reference/mui/PortalProvider#PortalProvider.PortalProvider.unstable_getContainer) prop can be used to avoid the one-commit fallback to `<body>` element in MUI components when the container element is not immediately available.
+Use the [`container`](/reference/mui/PortalProvider#PortalProvider.container) prop to specify the element that descendant elements are portaled into. Additionally, the [`unstable_getContainer`](/reference/mui/PortalProvider#PortalProvider.unstable_getContainer) prop can be used to avoid the one-commit fallback to `<body>` element in MUI components when the container element is not immediately available.
 
 ## API reference
 

@@ -30,18 +30,12 @@
 .MuiDataGrid-columnHeaders > [role="row"] > [role="none"] {
 	border-bottom-color: var(--_MuiDataGrid-row-border-color);
 
-	/*
-		Don't wrap in prefers-reduced-motion since this is not an animation in the
-	  traditional sense, it a view-timeline based animation that is used to adjust
-	  the color of the header border when the first row is selected 
-
-		Depends on the row defining the timeline
-	  name `--_MuiDataGrid-first-row-timeline` when selected.
-
-	  Use 1ms due to
-	  https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration
-	*/
-	animation: _MuiDataGrid-selected-border 1ms linear --_MuiDataGrid-first-row-timeline;
+	/* No prefers-reduced-motion guard: instant color change, no motion, when
+		   the first row is selected and touches the scroll viewport edge. */
+	animation-name: _MuiDataGrid-selected-border;
+	animation-timing-function: linear;
+	animation-duration: 1ms; /* Use 1ms due to https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration */
+	animation-timeline: --_MuiDataGrid-first-row-timeline;
 }
 
 .MuiDataGrid-columnHeaderTitle {
@@ -180,19 +174,12 @@
 	border-top-color: var(--_MuiDataGrid-row-border-color);
 
 	@container style(--_MuiDataGrid-shared-row-footer-border: true) {
-		/*
-			Don't wrap in prefers-reduced-motion since this is not an animation in the
-			traditional sense, it a view-timeline based animation that is used to adjust
-			the color of the footer border when the last row is selected 
-
-			Depends on the row defining the timeline
-			name `--_MuiDataGrid-last-row-timeline` when selected.
-
-			Use 1ms due to
-			https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration
-		*/
-		animation: _MuiDataGrid-selected-border linear 1ms --_MuiDataGrid-last-row-timeline;
-	}
+		/* No prefers-reduced-motion guard: instant color change, no motion, when
+		   the last row is selected and touches the scroll viewport edge. */
+		animation-name: _MuiDataGrid-selected-border;
+		animation-timing-function: linear;
+		animation-duration: 1ms; /* Use 1ms due to https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration */
+		animation-timeline: --_MuiDataGrid-last-row-timeline;
 }
 
 /* Update padding on both the export and column header menu.  Only the column

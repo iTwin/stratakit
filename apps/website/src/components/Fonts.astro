@@ -1,6 +1,8 @@
 ---
 import InterVariable from "../assets/InterVariable.woff2?url";
 import InterVariableItalic from "../assets/InterVariable-Italic.woff2?url";
+import PlexMonoVariableItalic from "../assets/IBM Plex Mono Var-Italic.woff2?url";
+import PlexMonoVariable from "../assets/IBM Plex Mono Var-Roman.woff2?url";
 
 const fonts = /* css */ `
 @font-face {
@@ -10,13 +12,26 @@ const fonts = /* css */ `
   font-display: swap;
   src: url(${InterVariable}) format("woff2");
 }
-
 @font-face {
   font-family: InterVariable;
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
   src: url(${InterVariableItalic}) format("woff2");
+}
+@font-face {
+  font-family: 'IBM Plex Mono Var';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url(${PlexMonoVariable}) format("woff2");
+}
+@font-face {
+  font-family: 'IBM Plex Mono Var';
+  font-style: italic;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url(${PlexMonoVariableItalic}) format("woff2");
 }
 `;
 ---

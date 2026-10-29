@@ -10,14 +10,14 @@ Although they are very similar, use `interface` for consistency and [better dete
 
 ### forwardRef
 
-Use the `forwardRef` utility from [packages/internal-utils](./packages/internal-utils/src/react.ts) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.
+Use the `forwardRef` utility from [packages/internal-utils](../packages/internal-utils/src/react.ts) instead of `React.forwardRef`. The internal version allows refs to be loosely typed as `HTMLElement`.
 
 ### File structure
 
-- Declare the main component or function of the file near the top of the file.
+- Declare the main component or function of the file near the top.
   - Helper or utility functions used in the main component can follow after.
   - Static constants can still be declared before the main export.
-- Within `packages/`, place the `export` statement at the very bottom. This allows easier review of the API surface.
+- Within `packages/`, place the `export` statement at the very bottom of the file. This allows easier review of the API surface.
 - For React components, declare the props interface directly above the relevant component.
 - Improve the scannability of long files by grouping related code together and using separator comments to indicate different regions.
 
@@ -26,8 +26,7 @@ Use the `forwardRef` utility from [packages/internal-utils](./packages/internal-
 **✅ Do**
 
 ```tsx
-interface RadioTileProps = {
-{
+interface RadioTileProps {
 	label: string;
 	description?: string;
 	value: string;
@@ -55,6 +54,8 @@ function RadioTile(props: {
 ```
 
 ### Destructure props as the first line of the function instead of the function parameters
+
+**✅ Do**
 
 ```tsx
 function RadioTiles(props: RadioTileProps) {
@@ -113,7 +114,7 @@ One exception is with rules involving pseudo elements. These must be written out
 
 ### Target 0,1,0 sepecificity with rules
 
-Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to try and keep a flat specifcificy of 0,1,0. This supports reading the CSS from top to bottom, knowing the declarations further down take priority.
+Use [`:where()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selectors/:where) to try and keep a flat specificity of 0,1,0. This supports reading the CSS from top to bottom, knowing the declarations further down take priority.
 
 **✅ Do**
 
@@ -137,7 +138,7 @@ Use [:where](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Selector
 
 ### Use CSS logical properties
 
-Use [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values) instead of physical properties. This is to support different locales that do use a left-right top-bottom layout.
+Use [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Logical_properties_and_values) instead of physical properties. This is to support different locales that don't use a left-right top-bottom layout.
 
 | Physical property | Logical property    |
 | ----------------- | ------------------- |
@@ -175,7 +176,7 @@ Wrap any rules relating to hover with the [`any-hover` media query](https://deve
 
 > Deprecate `color` prop of `Chip`
 
-### Format Code
+### Format code
 
 - Use backticks to highlight code.
 - Include quotes around string values. Numbers and boolean values are unquoted.

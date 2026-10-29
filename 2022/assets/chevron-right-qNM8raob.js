@@ -1,0 +1,1 @@
+import{Y as e}from"./jsx-runtime-GiK9V3Xy.js";var t=e({default:()=>n}),n=`/2022/assets/chevron-left-BbSGwDxv.svg`,r=e({default:()=>i}),i=`/2022/assets/chevron-right-ia40WXiF.svg`;export{t as i,r as n,n as r,i as t};

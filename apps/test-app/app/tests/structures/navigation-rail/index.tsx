@@ -6,7 +6,7 @@
 import * as React from "react";
 import { Avatar, Button, Divider, Text } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
-import { svgBrandBentleySystemsLarge } from "@stratakit/icons/brand-bentley-systems";
+import { svgBrandBentleySystemsFilledLarge } from "@stratakit/icons/brand-bentley-systems";
 import { svgDatabaseLarge } from "@stratakit/icons/database";
 import { svgHelpLarge } from "@stratakit/icons/help";
 import { svgHourglassLarge } from "@stratakit/icons/hourglass";
@@ -60,7 +60,7 @@ export default definePage(
 				<NavigationRail.Header>
 					<Icon
 						alt="Acme app"
-						href={svgBrandBentleySystemsLarge}
+						href={svgBrandBentleySystemsFilledLarge}
 						size="large"
 					/>
 					<NavigationRail.ToggleButton />
@@ -127,7 +127,11 @@ function VisualTest() {
 	return (
 		<NavigationRail.Root>
 			<NavigationRail.Header>
-				<Icon alt="Acme app" href={svgBrandBentleySystemsLarge} size="large" />
+				<Icon
+					alt="Acme app"
+					href={svgBrandBentleySystemsFilledLarge}
+					size="large"
+				/>
 				<NavigationRail.ToggleButton />
 			</NavigationRail.Header>
 
@@ -196,7 +200,7 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 				<NavigationRail.Header>
 					<Icon
 						alt="Acme app"
-						href={svgBrandBentleySystemsLarge}
+						href={svgBrandBentleySystemsFilledLarge}
 						size="large"
 					/>
 					<NavigationRail.ToggleButton />

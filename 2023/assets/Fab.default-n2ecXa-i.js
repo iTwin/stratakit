@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-GiK9V3Xy.js";import{t}from"./Icon-DGC6irq1.js";import{t as n}from"./Tooltip-Bzr2cDdm.js";import{t as r}from"./Fab-CZnD35N_.js";import{t as i}from"./add-CLNNTsjN.js";var a=e(),o=()=>(0,a.jsx)(n,{title:`Add documents`,describeChild:!1,children:(0,a.jsx)(r,{children:(0,a.jsx)(t,{href:i})})});export{o as default};

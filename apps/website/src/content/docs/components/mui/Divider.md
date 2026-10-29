@@ -55,13 +55,13 @@ By default, the **Divider** appears in a horizontal orientation. Reorientate it 
 
 The `margin` prop can be set to include some space before and after the **Divider**.
 
-::example{src="mui/Divider.margin"}
+::example{src="mui/Divider.margin" min-height="150px"}
 
 ### Variant
 
 The variant can control how much of the container the **Divider** spans. The default is `"fullWidth"`.
 
-::example{src="mui/Divider.variant"}
+::example{src="mui/Divider.variant" min-height="275px"}
 
 ### Children
 

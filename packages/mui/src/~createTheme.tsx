@@ -59,6 +59,7 @@ import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	CalendarIcon,
 	CaretsUpDownIcon,
+	CheckmarkIcon,
 	ChevronDownIcon,
 	ChevronLeftDoubleIcon,
 	ChevronLeftIcon,
@@ -380,6 +381,8 @@ function createTheme() {
 				defaultProps: {
 					checkboxSelection: true,
 					slots: {
+						booleanCellFalseIcon: DismissIcon,
+						booleanCellTrueIcon: CheckmarkIcon,
 						columnMenuIcon: MoreVerticalIcon,
 						columnMenuSortAscendingIcon: SortAscendingIcon,
 						columnMenuSortDescendingIcon: SortDescendingIcon,

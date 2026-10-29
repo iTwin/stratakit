@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/collapse-rows-all.svg";
+import {
+	svgRowsCollapseAll,
+	svgRowsCollapseAllLarge,
+} from "./rows-collapse-all.js";
 
-export const svgCollapseRowsAll = `${url}#icon`;
-export const svgCollapseRowsAllLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgRowsCollapseAll` instead.
+ */
+export const svgCollapseRowsAll = svgRowsCollapseAll;
+/**
+ * @deprecated Use `svgRowsCollapseAllLarge` instead.
+ */
+export const svgCollapseRowsAllLarge = svgRowsCollapseAllLarge;

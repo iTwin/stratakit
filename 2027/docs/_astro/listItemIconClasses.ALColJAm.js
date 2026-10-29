@@ -1,0 +1,1 @@
+import{J as e,Y as t}from"./chevron-down.BMpmVMsp.js";function n(e){return t(`MuiListItemIcon`,e)}var r=e(`MuiListItemIcon`,[`root`,`alignItemsFlexStart`]);export{r as n,n as t};

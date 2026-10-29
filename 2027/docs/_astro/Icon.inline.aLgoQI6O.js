@@ -1,0 +1,1 @@
+import{St as e,dr as t}from"./chevron-down.BMpmVMsp.js";var n=t(),r=()=>(0,n.jsx)(e,{render:(0,n.jsx)(`svg`,{xmlns:`http://www.w3.org/2000/svg`,viewBox:`0 0 16 16`,children:(0,n.jsx)(`circle`,{cx:`8`,cy:`8`,r:`7`,strokeWidth:`2`,fill:`none`,stroke:`currentColor`})})});export{r as default};

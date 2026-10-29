@@ -6,7 +6,7 @@ import { Chip } from "@stratakit/structures";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Chip onDismiss={() => {}} label="sort:updated-desc" />
 			<Chip onDismiss={() => {}} label="is:pr" />
 			<Chip onDismiss={() => {}} label="is:open" />

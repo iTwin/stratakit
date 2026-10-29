@@ -5,7 +5,6 @@
 
 import { defineCollection, reference } from "astro:content";
 import * as fs from "node:fs/promises";
-import { createRequire } from "node:module";
 import * as path from "node:path";
 
 import { docsLoader } from "@astrojs/starlight/loaders";
@@ -14,10 +13,8 @@ import { file } from "astro/loaders";
 import { z } from "astro/zod";
 import { slug as generateSlug } from "github-slugger";
 
-import type { DataStore, Loader } from "astro/loaders";
+import type { Loader } from "astro/loaders";
 import type { Api } from "../api.ts";
-
-const require = createRequire(import.meta.url);
 
 export const collections = {
 	docs: defineCollection({
@@ -47,14 +44,6 @@ export const collections = {
 					})
 					.optional(),
 			}),
-		}),
-	}),
-
-	examples: defineCollection({
-		loader: examplesLoader(),
-		schema: z.object({
-			displayName: z.string(),
-			packageName: z.string(),
 		}),
 	}),
 
@@ -280,69 +269,6 @@ function jsdocLoader() {
 			const handleDevelopmentChange = async (filePath: string) => {
 				if (!filePath.endsWith("api.json")) return;
 				await populateStore();
-			};
-			watcher?.on("change", handleDevelopmentChange);
-			watcher?.on("unlink", handleDevelopmentChange);
-		},
-	} satisfies Loader;
-}
-
-/** Content Loader that reads all `.tsx` and `.jsx` files from the `examples` package subdirectories. */
-function examplesLoader() {
-	const populateExamples = async (store: DataStore) => {
-		store.clear();
-
-		const examplesPath = path.dirname(require.resolve("examples/package.json"));
-		const examplesDir = await fs.readdir(examplesPath);
-		const packages = (
-			await Array.fromAsync(examplesDir, (entry) => {
-				const entryPath = path.join(examplesPath, entry);
-				return fs
-					.stat(entryPath)
-					.then((stat) => (stat.isDirectory() ? entry : null)) // only include directories
-					.catch(() => null);
-			})
-		).filter((value): value is string => value !== null);
-
-		for (const packageName of packages) {
-			const packagePath = path.join(examplesPath, packageName);
-			let exampleFiles: string[];
-			try {
-				exampleFiles = (await fs.readdir(packagePath)).filter(
-					(file) => file.endsWith(".tsx") || file.endsWith(".jsx"),
-				);
-			} catch {
-				continue; // skip if subdirectory doesn't exist
-			}
-
-			for (const exampleFile of exampleFiles) {
-				const fileName = exampleFile.replace(/\.tsx$|\.jsx$/, "");
-				const [componentName, exampleName] = fileName.split(".", 2);
-				const id = `${packageName}/${fileName}`;
-
-				store.set({
-					id,
-					data: {
-						displayName: `${componentName} (${exampleName})`,
-						packageName,
-					},
-				});
-			}
-		}
-	};
-
-	return {
-		name: "examples-loader",
-		load: async ({ watcher, store }) => {
-			await populateExamples(store);
-
-			// Handle dev server changes to files in the `examples` package.
-			const examplesPath = path.dirname(
-				require.resolve("examples/package.json"),
-			);
-			const handleDevelopmentChange = async (filePath: string) => {
-				if (!filePath.startsWith(examplesPath)) return;
-				await populateExamples(store);
 			};
 			watcher?.on("change", handleDevelopmentChange);
 			watcher?.on("unlink", handleDevelopmentChange);

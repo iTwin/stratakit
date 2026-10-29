@@ -6,7 +6,7 @@ import { Text } from "@stratakit/bricks";
 
 export default () => {
 	return (
-		<div className="stack">
+		<div style={{ display: "grid", gap: 8 }}>
 			<Text variant="caption-sm">Caption small</Text>
 			<Text variant="caption-md">Caption medium</Text>
 			<Text variant="caption-lg">Caption large</Text>

@@ -7,15 +7,18 @@ links:
 
 ::example{src="composite/RadioTiles.default"}
 
-You may include icons to help make each tile more identifiable. However, it is valid to provide an icon without text.
+**Radio tiles** can be constructed using a combination of the [**Radio**](/components/radio/) and [**Paper**](/components/paper/) components, with some additional styling.
 
-The example uses the [pseudo-content trick](https://inclusive-components.design/cards/#thepseudocontenttrick) to make the entire tile clickable. This expands the clickable `<label>` element to cover the entire tile without requiring all content to be a child of `<label>`.
+You may include an [**Icon**](/components/icon/) to help make each **radio tile** more identifiable. However, it is invalid to provide an icon without text.
+
+The example uses the [pseudo-content trick](https://inclusive-components.design/cards/#thepseudocontenttrick) to make the entire **radio tile** clickable. This expands the clickable `<label>` element to cover the entire **radio tile** without requiring all content to be a child of `<label>`.
 
 ### API reference
 
+- [`Paper`](https://mui.com/material-ui/api/paper/)
 - [`RadioGroup`](https://mui.com/material-ui/api/radio-group/)
 - [`Radio`](https://mui.com/material-ui/api/radio/)
 - [`FormControl`](https://mui.com/material-ui/api/form-control/)
 - [`FormLabel`](https://mui.com/material-ui/api/form-label/)
 - [`Typography`](https://mui.com/material-ui/api/typography/)
-- [`Icon`](/components/icon)
+- [`Icon`](/reference/mui/Icon)

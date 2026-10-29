@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
@@ -67,6 +68,7 @@ import {
 	DismissIcon,
 	ErrorIcon,
 	InfoIcon,
+	SearchIcon,
 	SuccessIcon,
 	WarningIcon,
 } from "./Icon.js";
@@ -654,7 +656,21 @@ function createTheme() {
 					},
 				},
 			},
-			MuiTextField: { defaultProps: { component: Role.div } },
+			MuiTextField: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						input: ({ type }) => ({
+							startAdornment:
+								type === "search" ? (
+									<InputAdornment position="start">
+										<SearchIcon />
+									</InputAdornment>
+								) : undefined,
+						}),
+					},
+				},
+			},
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {
@@ -673,6 +689,7 @@ function createTheme() {
 				defaultProps: {
 					placement: "top",
 					describeChild: true,
+					enterDelay: 500,
 					slotProps: {
 						tooltip: {
 							className: "🥝MuiTooltip",

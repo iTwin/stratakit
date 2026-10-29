@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{B as t}from"./StrataKitRoot.CBipe_3X.js";var n=`/2016/docs/_astro/layers.C_Rs9pWi.svg`,r=`${n}#icon`;`${n}`;var i=e(),a=()=>(0,i.jsx)(t,{href:r,alt:`Layers`});export{a as default};

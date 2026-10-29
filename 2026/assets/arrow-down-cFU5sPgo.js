@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-CsSa1L3D.js";var t=`${e}#icon`;`${e}`;export{t};

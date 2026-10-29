@@ -1,0 +1,1 @@
+import{t as e}from"./upload-r9BubLpx.js";var t=`${e}#icon`;`${e}`;export{t};

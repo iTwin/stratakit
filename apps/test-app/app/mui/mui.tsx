@@ -7,9 +7,7 @@ import * as React from "react";
 import { type MetaFunction, useHref, useLocation } from "react-router";
 import Container from "@mui/material/Container";
 import IconButton from "@mui/material/IconButton";
-import { ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
-import deepmerge from "@mui/utils/deepmerge";
 import { svgScript } from "@stratakit/icons/script";
 import { svgWindowPopout } from "@stratakit/icons/window-popout";
 import { Icon } from "@stratakit/mui";
@@ -23,7 +21,6 @@ import {
 import { SkipLinkContext } from "~/~navigation.tsx";
 import { useIsWideScreen } from "~/~utils.tsx";
 
-import type { ComponentsProps, Theme } from "@mui/material/styles";
 import type { Knob } from "~/~utils.tsx";
 
 import styles from "./mui.module.css";
@@ -147,9 +144,7 @@ export default function Page() {
 					([name, { default: Component, knobs }]) => (
 						<React.Suspense key={name}>
 							<KnobsProvider knobs={knobs}>
-								<ComponentExamples name={name}>
-									<Component />
-								</ComponentExamples>
+								<ComponentExamples name={name} component={Component} />
 							</KnobsProvider>
 						</React.Suspense>
 					),
@@ -163,11 +158,11 @@ export default function Page() {
 
 interface ComponentExamplesProps {
 	name: string;
-	children?: React.ReactNode;
+	component: React.ComponentType<Record<string, unknown>>;
 }
 
 function ComponentExamples(props: ComponentExamplesProps) {
-	const { children, name } = props;
+	const { component: Component, name } = props;
 	const id = name.toLowerCase().replace(" ", "-");
 
 	const isTarget = useLocation().hash === `#${id}`;
@@ -187,18 +182,12 @@ function ComponentExamples(props: ComponentExamplesProps) {
 		[id],
 	);
 
-	const { knobs, enabled: enabledKnobs } = useKnobs();
+	const { values } = useKnobs();
 
-	/** All enabled default props to be passed to the ThemeProvider */
-	const knobProps = Object.entries(enabledKnobs).reduce(
-		(result, [knobName, enabled]) => {
-			if (!enabled) return result;
-			const knob = knobs.get(knobName);
-			if (!knob?.props) return result;
-			return deepmerge(result, knob.props);
-		},
-		{} as ComponentsProps,
-	);
+	const standaloneParams = new URLSearchParams({
+		path: `mui/${name}.showcase`,
+		props: JSON.stringify(values), // Knob values passed as serialized props into the `/standalone` route.
+	});
 
 	return (
 		<ExamplesShowcase
@@ -218,7 +207,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 					<KnobControlEntrypoint />
 					<IconButton
 						render={<a />}
-						href={useHref(`/standalone?path=mui/${name}.showcase`)}
+						href={useHref(`/standalone?${standaloneParams}`)}
 						label="Standalone showcase"
 						size="small"
 					>
@@ -227,20 +216,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 				</>
 			}
 		>
-			<ThemeProvider
-				theme={(outerTheme: Theme): Theme =>
-					deepmerge(outerTheme, {
-						components: Object.fromEntries(
-							Object.entries(knobProps).map(([componentName, defaultProps]) => [
-								componentName,
-								{ defaultProps },
-							]),
-						),
-					})
-				}
-			>
-				{children}
-			</ThemeProvider>
+			<Component {...values} />
 		</ExamplesShowcase>
 	);
 }
@@ -250,7 +226,7 @@ function ComponentExamples(props: ComponentExamplesProps) {
 type Knobs = Record<string, Knob>;
 
 interface ExamplesModule {
-	default: React.FC;
+	default: React.FC<Record<string, unknown>>;
 	knobs?: Knobs;
 }
 

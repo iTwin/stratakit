@@ -112,6 +112,13 @@
 		}
 	}
 
+	&:where(input[type="search" i]) {
+		&::-webkit-search-cancel-button {
+			-webkit-appearance: none;
+			appearance: none;
+		}
+	}
+
 	:where(.MuiInputBase-root.MuiInputBase-multiline) > & {
 		padding-block: 8.25px;
 		align-content: baseline;

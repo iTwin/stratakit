@@ -4,12 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { IconButton } from "@stratakit/bricks";
+import { svgChevronDown } from "@stratakit/icons/chevron-down";
 import { svgScript } from "@stratakit/icons/script";
 import { svgWindowPopout } from "@stratakit/icons/window-popout";
-import { Root } from "@stratakit/mui";
-import { useColorScheme } from "./~utils.ts";
 
-import styles from "./ExamplePreview.module.css";
+import styles from "./ExampleEmbed.module.css";
 
 // ----------------------------------------------------------------------------
 
@@ -27,12 +26,23 @@ const exampleModules = {
 
 // ----------------------------------------------------------------------------
 
-export function ExampleEmbed({ src }: { src: string }) {
+interface ExampleEmbedProps {
+	/** Name of the example file (including package), e.g. "mui/Button.default". */
+	src: string;
+	/** Callback invoked when the "Source code" button is clicked. */
+	onSourceToggle: (expanded: boolean) => void;
+}
+
+export function ExampleEmbed(props: ExampleEmbedProps) {
+	const { src, onSourceToggle } = props;
+
 	const { exampleName, packageName } = parseSrc(src);
 	const labelId = React.useId();
+	const [sourceExpanded, setSourceExpanded] = React.useState(false);
 
 	return (
 		<div
+			slot="preview"
 			className={styles.exampleEmbedRoot}
 			role="group"
 			aria-labelledby={labelId}
@@ -47,15 +57,22 @@ export function ExampleEmbed({ src }: { src: string }) {
 
 			<div className={styles.toolbar}>
 				<IconButton
+					icon={svgChevronDown}
+					label="Source code"
+					variant="ghost"
+					aria-expanded={sourceExpanded}
+					onClick={() => {
+						const expanded = !sourceExpanded;
+						setSourceExpanded(expanded);
+						onSourceToggle(expanded);
+					}}
+					className={styles.sourceCodeButton}
+				/>
+				<IconButton
 					icon={svgWindowPopout}
 					label="Open in new tab"
 					variant="ghost"
-					render={
-						<a
-							href={`${import.meta.env.BASE_URL}/examples/${src}`}
-							target="_blank"
-						/>
-					}
+					render={<a href={getStandaloneExampleUrl(src)} target="_blank" />}
 				/>
 				<IconButton
 					icon={svgScript}
@@ -70,14 +87,12 @@ export function ExampleEmbed({ src }: { src: string }) {
 
 // ----------------------------------------------------------------------------
 
-export function ExamplePreview({
+function ExamplePreview({
 	exampleName,
 	packageName,
-	withRoot,
 }: {
 	exampleName: string;
 	packageName: string;
-	withRoot?: boolean;
 }) {
 	const ExampleComponent = React.useMemo(() => {
 		const modules = exampleModules[packageName as keyof typeof exampleModules];
@@ -88,20 +103,10 @@ export function ExamplePreview({
 		return React.lazy(lazyImport);
 	}, [exampleName, packageName]);
 
-	const colorScheme = useColorScheme();
-
-	const content = (
+	return (
 		<React.Suspense>
 			<ExampleComponent />
 		</React.Suspense>
-	);
-
-	if (!withRoot) return content;
-
-	return (
-		<Root colorScheme={colorScheme} style={{ display: "contents" }}>
-			{content}
-		</Root>
 	);
 }
 
@@ -114,4 +119,20 @@ function parseSrc(src: string) {
 		throw new Error(`Invalid example src: ${src}`);
 	}
 	return { packageName, exampleName };
+}
+
+// ----------------------------------------------------------------------------
+
+/** Returns a URL to the standalone example page, using the test-app's [`/standalone` route](../../../test-app/app/standalone.tsx). */
+export function getStandaloneExampleUrl(src: string) {
+	const base = import.meta.env.BASE_URL.replace(/\/$/, "");
+
+	// The `/standalone` route is hosted one level above the `/docs` base.
+	let url = new URL(`${base}/../standalone`, import.meta.env.SITE);
+	if (import.meta.env.DEV) {
+		url = new URL("http://localhost:1800/standalone"); // We use a separate dev server for `test-app`.
+	}
+	url.searchParams.set("path", `examples/${src}`);
+
+	return url.href;
 }

@@ -23,9 +23,7 @@ import type { LinksFunction } from "react-router";
 import interVariable from "./assets/InterVariable.woff2?url";
 import interVariableItalic from "./assets/InterVariable-Italic.woff2?url";
 
-const queryClient = new QueryClient({
-	defaultOptions: { queries: { experimental_prefetchInRender: true } }, // https://tanstack.com/query/latest/docs/framework/react/guides/suspense#using-usequerypromise-and-reactuse-experimental
-});
+const queryClient = new QueryClient();
 
 export const links: LinksFunction = () => {
 	const faviconHref = isProduction ? "/favicon.svg" : "/favicon-dev.svg";

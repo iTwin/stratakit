@@ -59,7 +59,9 @@ export default function Standalone() {
 			<title>{`${title} – StrataKit`}</title>
 			<div id="root" className={styles.root}>
 				{modulePath && (
-					<React.Suspense fallback={null}>
+					<React.Suspense
+						fallback={<div data-testid="showcase-loading">Loading…</div>}
+					>
 						<StandaloneRenderer
 							modulePath={modulePath}
 							exportName={exportName}

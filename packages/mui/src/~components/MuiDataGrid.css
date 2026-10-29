@@ -4,7 +4,23 @@
  *--------------------------------------------------------------------------------------------*/
 .MuiDataGrid-root {
 	--_MuiDataGrid-row-border-color: var(--stratakit-color-border-neutral-muted);
+	--_MuiDataGrid-shared-row-footer-border: true;
 	border: none;
+	border-radius: 0;
+
+	timeline-scope: --_MuiDataGrid-first-row-timeline, --_MuiDataGrid-last-row-timeline;
+
+	/*
+    Share the row between the last row and footer except when:
+    1. There is a gap between the last row and the start of the footer.  This
+       uses an ugly selector because there isn't a good way to get when this
+       element is shown with the documented API.
+    2. There is no footer.
+	*/
+	&:has(.MuiDataGrid-virtualScrollerContent .MuiDataGrid-filler > *),
+	&:not(:has(.MuiDataGrid-footerContainer)) {
+		--_MuiDataGrid-shared-row-footer-border: false;
+	}
 }
 /* 
   Select all the cell elements in the column header row.  Both the normal column
@@ -13,6 +29,13 @@
 .MuiDataGrid-columnHeader,
 .MuiDataGrid-columnHeaders > [role="row"] > [role="none"] {
 	border-bottom-color: var(--_MuiDataGrid-row-border-color);
+
+	/* No prefers-reduced-motion guard: instant color change, no motion, when
+		   the first row is selected and touches the scroll viewport edge. */
+	animation-name: _MuiDataGrid-selected-border;
+	animation-timing-function: linear;
+	animation-duration: 1ms; /* Use 1ms due to https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration */
+	animation-timeline: --_MuiDataGrid-first-row-timeline;
 }
 
 .MuiDataGrid-columnHeaderTitle {
@@ -69,6 +92,15 @@
 		--_MuiDataGrid-row-background-color: var(--✨row-bg--active);
 		--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--active-hover);
 		--_MuiDataGrid-row-border-color: var(--✨row-border-selected);
+
+		&:where(.MuiDataGrid-row--firstVisible) {
+			view-timeline: --_MuiDataGrid-first-row-timeline block;
+		}
+		&:where(.MuiDataGrid-row--lastVisible) {
+			view-timeline: --_MuiDataGrid-last-row-timeline block;
+			/* cancel the portion of the virtual scroller render zone translation  */
+			view-timeline-inset: auto var(--DataGrid-topContainerHeight, 56px);
+		}
 	}
 
 	/* 
@@ -80,8 +112,10 @@
 		border-bottom-color: var(--✨row-border-selected);
 	}
 
-	&:where(.MuiDataGrid-row--lastVisible) {
-		border-bottom-width: 0;
+	@container style(--_MuiDataGrid-shared-row-footer-border: true) {
+		&:where(.MuiDataGrid-row--lastVisible) {
+			border-bottom-width: 0;
+		}
 	}
 }
 
@@ -127,8 +161,26 @@
 	overflow: visible;
 }
 
+.MuiDataGrid-virtualScrollerContent .MuiDataGrid-filler > * {
+	/* 
+		Remove border below the bottom row that MUI adds when there is a gap between
+		the bottom of the last row and the footer.  In the StrataKit implementation
+		the bottom row controls this border.
+	*/
+	border-top-width: 0;
+}
+
 .MuiDataGrid-footerContainer {
 	border-top-color: var(--_MuiDataGrid-row-border-color);
+
+	@container style(--_MuiDataGrid-shared-row-footer-border: true) {
+		/* No prefers-reduced-motion guard: instant color change, no motion, when
+		   the last row is selected and touches the scroll viewport edge. */
+		animation-name: _MuiDataGrid-selected-border;
+		animation-timing-function: linear;
+		animation-duration: 1ms; /* Use 1ms due to https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration */
+		animation-timeline: --_MuiDataGrid-last-row-timeline;
+	}
 }
 
 /* Update padding on both the export and column header menu.  Only the column
@@ -142,4 +194,19 @@
 .MuiDataGrid-menu .MuiPaper-root {
 	box-shadow: var(--stratakit-shadow-surface-lg);
 	border: 1px solid var(--stratakit-color-border-page-base);
+}
+
+@keyframes _MuiDataGrid-selected-border {
+	0%,
+	100% {
+		--_MuiDataGrid-row-border-color: var(
+			--stratakit-color-border-accent-strong /* --✨row-border-selected */
+		);
+	}
+}
+
+@property --_MuiDataGrid-shared-row-footer-border {
+	syntax: "true | false";
+	inherits: true;
+	initial-value: true;
 }

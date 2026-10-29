@@ -224,7 +224,10 @@ const columns: GridColDef<Asset>[] = [
 		align: "right",
 		editable: true,
 		valueFormatter: (value?: number) =>
-			typeof value === "number" ? costFormatter.format(value) : "-",
+			typeof value === "number" && !Number.isNaN(value)
+				? costFormatter.format(value)
+				: "-",
+		valueParser: (value: string) => Number.parseFloat(value),
 	},
 	{
 		field: "inService",
@@ -242,6 +245,7 @@ export default function DataTypesExample() {
 				Device Inventory
 			</Typography>
 			<DataGrid
+				sx={{ height: "420px" }}
 				showToolbar
 				rows={rows}
 				columns={columns}

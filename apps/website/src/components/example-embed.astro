@@ -4,13 +4,28 @@
 
 <script>
 	import { createElement } from "react";
-	import { ExampleEmbed } from "./ExamplePreview.tsx";
+	import { ExampleEmbed } from "./ExampleEmbed.tsx";
 	import { mountPortal } from "./StrataKitRoot.tsx";
 
 	customElements.define(
 		"example-embed",
 		class extends HTMLElement {
 			#controller: AbortController | undefined;
+
+			#previewSlot = document.createElement("slot");
+			#sourceSlot = document.createElement("slot");
+
+			constructor() {
+				super();
+
+				this.#previewSlot.name = "preview";
+				this.#previewSlot.part.add("preview");
+
+				this.#sourceSlot.part.add("source");
+				this.#sourceSlot.hidden = true; // initially collapsed
+
+				this.attachShadow({ mode: "open" }).append(this.#previewSlot, this.#sourceSlot);
+			}
 
 			connectedCallback() {
 				this.#controller = new AbortController();
@@ -19,7 +34,12 @@
 				if (!src) return;
 
 				const unmount = mountPortal({
-					element: createElement(ExampleEmbed, { src }),
+					element: createElement(ExampleEmbed, {
+						src,
+						onSourceToggle: (expanded) => {
+							this.#sourceSlot.hidden = !expanded;
+						},
+					}),
 					target: this,
 				});
 
@@ -37,15 +57,41 @@
 	@layer page {
 		example-embed {
 			display: block;
+			min-inline-size: 0;
 
-			&,
-			> * {
-				min-block-size: var(--example-min-height, 125px); /* Reduce layout shift */
+			/* Reduce layout shift */
+			&:not(:defined) {
+				min-block-size: var(--example-min-height, 125px);
+
+				> * {
+					display: none;
+				}
 			}
 
 			border-radius: var(--stratakit-radius-md);
 			outline: 1px solid var(--stratakit-color-border-neutral-muted);
 			background-color: var(--stratakit-color-bg-page-base);
+
+			&::part(preview) {
+				display: block;
+				min-block-size: var(--example-min-height, 125px);
+			}
+
+			> [slot="preview"] {
+				min-block-size: inherit;
+			}
+
+			> :not([slot="preview"]) {
+				&:where(.expressive-code) {
+					margin-block: 0;
+					border-block-start: 1px solid var(--stratakit-color-border-neutral-muted);
+					background-color: var(--stratakit-color-bg-page-depth);
+
+					pre {
+						border: 0;
+					}
+				}
+			}
 		}
 	}
 </style>

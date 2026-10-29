@@ -2,14 +2,14 @@ import{X as e,c as t,g as n,q as r,r as i,s as a,t as o}from"./jsx-runtime-GiK9V
 @font-face {
   font-family: InterVariable;
   font-style: normal;
-  font-weight 100 900;
+  font-weight: 100 900;
   font-display: swap;
   src: url(${Hn}) format("woff2");
 }
 @font-face {
   font-family: InterVariable;
   font-style: italic;
-  font-weight 100 900;
+  font-weight: 100 900;
   font-display: swap;
   src: url(${Un}) format("woff2");
 }

@@ -8,7 +8,7 @@ links:
 
 The **PortalProvider** component sets up StrataKit's portal context and MUI's theme provider, so that all descendant portaled elements from StrataKit and MUI render inside the specified container instead of the default [root portal container](/components/root/#portal-container).
 
-For example, if you use a _custom_ or _third party_ dialog, you can ensure that portaled elements appear above the dialog and are included in its accessibility tree.
+For example, if you use a _custom_ or _third party_ dialog, you can wrap its contents inside **PortalProvider** to ensure that all nested portaled elements appear in front of the dialog and are included in its [accessibility tree](https://developer.mozilla.org/en-US/docs/Glossary/Accessibility_tree).
 
 ## Container
 

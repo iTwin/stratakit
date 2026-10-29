@@ -1,1 +1,0 @@
-import{t as e}from"./star-Cxs_L36c.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

@@ -180,6 +180,7 @@
 		animation-timing-function: linear;
 		animation-duration: 1ms; /* Use 1ms due to https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration */
 		animation-timeline: --_MuiDataGrid-last-row-timeline;
+	}
 }
 
 /* Update padding on both the export and column header menu.  Only the column

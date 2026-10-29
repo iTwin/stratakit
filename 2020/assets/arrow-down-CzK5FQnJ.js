@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-gS_Kak89.js";var t=`${e}#icon`;`${e}`;export{t};

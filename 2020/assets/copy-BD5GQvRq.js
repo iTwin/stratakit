@@ -1,0 +1,1 @@
+import{t as e}from"./copy-CFSOmfTz.js";`${e}`;var t=`${e}#icon-large`;export{t};

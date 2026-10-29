@@ -32,6 +32,7 @@ It has row and cell selection and editing as first class concepts. The grid is a
 
 - Restyled using StrataKit's visual language.
 - Changed default for `checkboxSelection` to true.
+- The `showCellVerticalBorder` and `showColumnVerticalBorder` props are not supported.
 
 ## Examples
 

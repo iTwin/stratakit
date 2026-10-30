@@ -101,6 +101,11 @@
 			/* cancel the portion of the virtual scroller render zone translation  */
 			view-timeline-inset: auto var(--DataGrid-topContainerHeight, 56px);
 		}
+		&:where(.MuiDataGrid-row--firstVisible.MuiDataGrid-row--firstVisible) {
+			view-timeline:
+				--_MuiDataGrid-last-row-timeline,
+				--_MuiDataGrid-first-row-timeline block;
+		}
 	}
 
 	/* 

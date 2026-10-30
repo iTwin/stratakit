@@ -1,1 +1,0 @@
-import{t as e}from"./rename-JNjz1Rfe.js";var t=`${e}#icon`;`${e}`;export{t};

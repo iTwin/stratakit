@@ -28,12 +28,12 @@ The **ErrorRegion** is not a generic component for alerting users to application
 
 An **ErrorRegion** constitutes two key components:
 
-- **[`ErrorRegion.Root`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root)**: The [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) that contains the errors.
-- **[`ErrorRegion.Item`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item)**: Represents a discrete error within the **ErrorRegion**.
+- **[`ErrorRegion.Root`](/reference/structures/ErrorRegion/#ErrorRegion.Root)**: The [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) that contains the errors.
+- **[`ErrorRegion.Item`](/reference/structures/ErrorRegion/#ErrorRegion.Item)**: Represents a discrete error within the **ErrorRegion**.
 
 ### Errors
 
-`ErrorRegion.Item`'s are supplied via the [`items`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop of `ErrorRegion.Root`. Each item in the array represents a discrete error and together they form a list of errors within the **ErrorRegion**. `ErrorRegion.Item`'s [`message`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.message) prop can take any JSX.
+`ErrorRegion.Item`'s are supplied via the [`items`](/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop of `ErrorRegion.Root`. Each item in the array represents a discrete error and together they form a list of errors within the **ErrorRegion**. `ErrorRegion.Item`'s [`message`](/reference/structures/ErrorRegion/#ErrorRegion.Item.message) prop can take any JSX.
 
 ```jsx
 items={[
@@ -43,7 +43,7 @@ items={[
 ]}
 ```
 
-The [`actions`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.actions) prop places functionality intended to address the error at the foot of the `ErrorRegion.Item`. Each action must be a button displayed as a [**Link**](/components/link).
+The [`actions`](/reference/structures/ErrorRegion/#ErrorRegion.Item.actions) prop places functionality intended to address the error at the foot of the `ErrorRegion.Item`. Each action must be a button displayed as a [**Link**](/components/link).
 
 ```jsx
 actions={
@@ -53,11 +53,11 @@ actions={
 
 ## Interaction
 
-The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item) and `Error.Item`s can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
+The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](/reference/structures/Tree/#Tree.Item) and `Error.Item`s can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
 
 ### Identification
 
-The `ErrorRegion.Root` component takes [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role), making it discoverable in screen reader software. When there are errors present, the **ErrorRegion** renders a toggle `<button>`, using [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded), with the region's [`label`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Root.label).
+The `ErrorRegion.Root` component takes [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role), making it discoverable in screen reader software. When there are errors present, the **ErrorRegion** renders a toggle `<button>`, using [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded), with the region's [`label`](/reference/structures/ErrorRegion/#ErrorRegion.Root.label).
 
 :::caution[The region label]
 
@@ -71,10 +71,10 @@ In addition, the outer `role="region"` element itself must be identified to scre
 
 When an error occurs:
 
-1. Apply [`error`](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item.error) to the `Tree.Item` in question.
+1. Apply [`error`](/reference/structures/Tree/#Tree.Item.error) to the `Tree.Item` in question.
 2. Update the `ErrorRegion.Root`'s `label` to reflect the change. For example, if there was already one error present in the tree, use a label like _“2 errors found”_. This updated label will be announced in screen reader software.
 3. Repopulate `ErrorRegion.Root`'s `items` to include the new `ErrorItem`.
-4. **Recommended**: Append an [action](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item.actions) to `actions` for addressing the error within the `Tree.Item` itself.
+4. **Recommended**: Append an [action](/reference/structures/Tree/#Tree.Item.actions) to `actions` for addressing the error within the `Tree.Item` itself.
 
 :::caution[Focus management]
 
@@ -87,7 +87,7 @@ Do not send keyboard focus to the **ErrorRegion** when an error is occurs. Users
 When the user visits the **ErrorRegion**:
 
 1. Clicking the `ErrorRegion`'s `<button>` toggles the visibility of the `Error.Item`s.
-2. **Recommended**: The [`message`](https://stratakit.bentley.com/docs/reference/structures/ErrorRegion/#ErrorRegion.Item.message) for each `Error.Item` includes a link to the corresponding `Tree.Item`, using the `Tree.Item`'s [`label`](https://stratakit.bentley.com/docs/reference/structures/Tree/#Tree.Item.label) as the link text. Point the link to the `Tree.Item`'s `id`.
+2. **Recommended**: The [`message`](/reference/structures/ErrorRegion/#ErrorRegion.Item.message) for each `Error.Item` includes a link to the corresponding `Tree.Item`, using the `Tree.Item`'s [`label`](/reference/structures/Tree/#Tree.Item.label) as the link text. Point the link to the `Tree.Item`'s `id`.
 3. **Recommended**: The `Tree.Item`'s `actions` includes a control that addresses—or can attempt to address—the error. For example, where data failed to be fetched, supply a “Retry” button.
 4. Where an `error` is successfully addressed, the `Error.Item` is removed. If the user was focused within the `Error.Item` when this happened, focus must be redirected to one of two places:
    - To the **ErrorRegion**'s toggle button, secreting the list of `Error.Item`s

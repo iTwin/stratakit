@@ -1,1 +1,0 @@
-import{Y as e}from"./jsx-runtime-GiK9V3Xy.js";var t=e({default:()=>n}),n=`/2019/assets/window-popout-pJesppJT.svg`;export{t as n,n as t};

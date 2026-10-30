@@ -1,1 +1,0 @@
-import{t as e}from"./upload-DBQZDpCG.js";var t=`${e}#icon`;`${e}`;export{t};

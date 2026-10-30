@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{B as t,E as n}from"./StrataKitRoot.BJJZO-ku.js";import{t as r}from"./TextField.BkJvuoEH.js";var i=`/2025/docs/_astro/email-at.BYClD7Uv.svg`,a=`${i}#icon`;`${i}`;var o=e(),s=()=>(0,o.jsx)(r,{label:`Username`,slotProps:{input:{startAdornment:(0,o.jsx)(n,{position:`start`,children:(0,o.jsx)(t,{href:a})})}}});export{s as default};

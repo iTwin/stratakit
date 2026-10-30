@@ -52,6 +52,8 @@ export function mountPortal({
 		return;
 	}
 
+	ensureStrataKitRoot();
+
 	const id = nextId();
 	elements.set(id, { element, target });
 	renderRoot(); // initial or re-render
@@ -65,8 +67,8 @@ export function mountPortal({
 
 // ----------------------------------------------------------------------------
 
-/* Injects a `<react-root>` element that does the initial render of the React tree. */
-export function initializeStrataKitRoot() {
+/* Injects a `<react-root>` element that does the initial render of the React tree. No-ops if the root already exists. */
+export function ensureStrataKitRoot() {
 	if (root) return;
 
 	const container = (() => {

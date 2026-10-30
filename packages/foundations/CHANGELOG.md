@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Removed Ariakit's [`PortalContext`](https://ariakit.com/reference/portal-context) from the `Root` component. StrataKit components that were previously relying on this context now use the `PortalContext` from `@stratakit/foundations` instead.
+
 ## 1.0.5
 
 ### Patch Changes

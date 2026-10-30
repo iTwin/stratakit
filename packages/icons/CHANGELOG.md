@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.4.8
+
+### Patch Changes
+
+- [#2022](https://github.com/iTwin/stratakit/pull/2022): Added new icons:
+
+  - `correspondence-due.svg`
+  - `correspondence-issues.svg`
+  - `correspondence-trend.svg`
+  - `deliverables-due.svg`
+  - `deliverables-trend.svg`
+  - `forms-overdue.svg`
+  - `forms-trend.svg`
+  - `imodel-problematic-sync.svg`
+  - `imodel-progress.svg`
+  - `imodel-supply-chain.svg`
+  - `standards-checking.svg`
+  - `subsurface-navigation.svg`
+
 ## 0.4.7
 
 - [#1904](https://github.com/iTwin/stratakit/pull/1904): Added `icons-meta.json` file that contains metadata for each SVG icon. Use the icon name (without the `.svg` extension) as the key to access the corresponding metadata object.

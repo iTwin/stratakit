@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/profile.svg";
+import { svgUserProfile, svgUserProfileLarge } from "./user-profile.js";
 
-export const svgProfile = `${url}#icon`;
-export const svgProfileLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgUserProfile` instead.
+ */
+export const svgProfile = svgUserProfile;
+/**
+ * @deprecated Use `svgUserProfileLarge` instead.
+ */
+export const svgProfileLarge = svgUserProfileLarge;

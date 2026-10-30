@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/storm-water-pipes.svg";
+import {
+	svgPipesWaterStorm,
+	svgPipesWaterStormLarge,
+} from "./pipes-water-storm.js";
 
-export const svgStormWaterPipes = `${url}#icon`;
-export const svgStormWaterPipesLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgPipesWaterStorm` instead.
+ */
+export const svgStormWaterPipes = svgPipesWaterStorm;
+/**
+ * @deprecated Use `svgPipesWaterStormLarge` instead.
+ */
+export const svgStormWaterPipesLarge = svgPipesWaterStormLarge;

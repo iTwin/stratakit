@@ -14,7 +14,20 @@ const ICONS_DIR = fileURLToPath(new URL("../icons", import.meta.url));
 const SRC_DIR = fileURLToPath(new URL("../src", import.meta.url));
 
 test("every SVG has a matching TS module", async () => {
-	const actual = await readdir(SRC_DIR);
+	const modulesWithoutIcons = [
+		"collapse-rows-all.ts",
+		"collapse-rows.ts",
+		"expand-rows-all.ts",
+		"expand-rows.ts",
+		"portable-water-pipes.ts",
+		"profile.ts",
+		"sewage-pipes.ts",
+		"storm-water-pipes.ts",
+	];
+
+	const actual = (await readdir(SRC_DIR)).filter(
+		(file) => !modulesWithoutIcons.includes(file),
+	);
 	const expected = (await readdir(ICONS_DIR))
 		.filter((file) => file.endsWith(".svg"))
 		.map((file) => file.replace(/\.svg$/, ".ts"));

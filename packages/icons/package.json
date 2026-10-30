@@ -11,6 +11,14 @@
 			"default": "./dist/*.js"
 		},
 		"./*.svg": "./icons/*.svg",
+		"./collapse-rows-all.svg": "./icons/rows-collapse-all.svg",
+		"./collapse-rows.svg": "./icons/rows-collapse.svg",
+		"./expand-rows-all.svg": "./icons/rows-expand-all.svg",
+		"./expand-rows.svg": "./icons/rows-expand.svg",
+		"./portable-water-pipes.svg": "./icons/pipes-water-portable.svg",
+		"./profile.svg": "./icons/user-profile.svg",
+		"./sewage-pipes.svg": "./icons/pipes-sewage.svg",
+		"./storm-water-pipes.svg": "./icons/pipes-water-storm.svg",
 		"./icons-list.json": "./icons-list.json",
 		"./icons-meta.json": "./icons-meta.json"
 	},

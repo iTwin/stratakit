@@ -1060,31 +1060,6 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"collapse-rows-all": {
-		"aliases": [
-			"minimize",
-			"hide",
-			"compress",
-			"reduce",
-			"conceal",
-			"fold",
-			"contract",
-			"collapse"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"collapse-rows": {
-		"aliases": [
-			"minimize",
-			"hide",
-			"compress",
-			"reduce",
-			"conceal",
-			"fold",
-			"contract"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
 	"column-manage": {
 		"aliases": [
 			"organize",
@@ -1907,30 +1882,6 @@
 			"abandon",
 			"end",
 			"log out"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"expand-rows-all": {
-		"aliases": [
-			"maximize",
-			"show",
-			"extend",
-			"reveal",
-			"open",
-			"display",
-			"unfold"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"expand-rows": {
-		"aliases": [
-			"maximize",
-			"show",
-			"extend",
-			"reveal",
-			"open",
-			"display",
-			"unfold"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -3195,7 +3146,22 @@
 		"symbols": ["icon", "icon-large"]
 	},
 	"license-minus": {
-		"aliases": ["permission", "software"],
+		"aliases": [
+			"contract",
+			"agreement",
+			"permit",
+			"legal",
+			"certificate",
+			"document",
+			"verify",
+			"subscription",
+			"access",
+			"remove",
+			"delete",
+			"minus",
+			"revoke",
+			"subtract"
+		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"lightbulb": {
@@ -3946,6 +3912,25 @@
 		"aliases": ["utility", "plumbing", "infrastructure", "flow", "supply"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"pipes-sewage": {
+		"aliases": [
+			"drainage",
+			"pipes",
+			"plumbing",
+			"sanitation",
+			"sewer",
+			"wastewater"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"pipes-water-portable": {
+		"aliases": ["drinking", "pipes", "plumbing", "portable", "supply", "water"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"pipes-water-storm": {
+		"aliases": ["drainage", "pipes", "plumbing", "runoff", "storm", "water"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"pipes": {
 		"aliases": ["conduit", "pipe", "pipeline", "plumbing", "tube"],
 		"symbols": ["icon", "icon-large"]
@@ -4013,10 +3998,6 @@
 			"site",
 			"water"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"portable-water-pipes": {
-		"aliases": ["drinking", "pipes", "plumbing", "portable", "supply", "water"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"portal-connect": {
@@ -4104,17 +4085,6 @@
 			"items",
 			"merchandise",
 			"stock"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"profile": {
-		"aliases": [
-			"identify",
-			"personalize",
-			"user",
-			"customize",
-			"configure",
-			"preferences"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -4425,6 +4395,55 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"rows-collapse-all": {
+		"aliases": [
+			"minimize",
+			"hide",
+			"compress",
+			"reduce",
+			"conceal",
+			"fold",
+			"contract",
+			"collapse"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"rows-collapse": {
+		"aliases": [
+			"minimize",
+			"hide",
+			"compress",
+			"reduce",
+			"conceal",
+			"fold",
+			"contract"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"rows-expand-all": {
+		"aliases": [
+			"maximize",
+			"show",
+			"extend",
+			"reveal",
+			"open",
+			"display",
+			"unfold"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"rows-expand": {
+		"aliases": [
+			"maximize",
+			"show",
+			"extend",
+			"reveal",
+			"open",
+			"display",
+			"unfold"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"rule-delta-create": {
 		"aliases": ["change", "difference", "geometry", "variation"],
 		"symbols": ["icon", "icon-large"]
@@ -4629,17 +4648,6 @@
 			"customize",
 			"setup",
 			"preferences"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"sewage-pipes": {
-		"aliases": [
-			"drainage",
-			"pipes",
-			"plumbing",
-			"sanitation",
-			"sewer",
-			"wastewater"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5070,10 +5078,6 @@
 		"aliases": ["time", "measure", "track", "monitor", "record", "clock"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"storm-water-pipes": {
-		"aliases": ["drainage", "pipes", "plumbing", "runoff", "storm", "water"],
-		"symbols": ["icon", "icon-large"]
-	},
 	"subscriptions": {
 		"aliases": [
 			"billing",
@@ -5091,14 +5095,16 @@
 	},
 	"supply-chain": {
 		"aliases": [
-			"arrange",
-			"design",
-			"layout",
-			"organize",
-			"presentation",
-			"structure",
-			"style",
-			"template"
+			"logistics",
+			"transport",
+			"distribution",
+			"cargo",
+			"manufacturing",
+			"delivery",
+			"warehouse",
+			"tracking",
+			"industry",
+			"flow"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5458,6 +5464,17 @@
 	},
 	"user-edit": {
 		"aliases": ["account", "change", "modify", "profile", "update"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"user-profile": {
+		"aliases": [
+			"identify",
+			"personalize",
+			"user",
+			"customize",
+			"configure",
+			"preferences"
+		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"user-restricted": {

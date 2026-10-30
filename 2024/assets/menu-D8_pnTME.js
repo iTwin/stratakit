@@ -1,1 +1,0 @@
-import{Y as e}from"./jsx-runtime-GiK9V3Xy.js";var t=e({default:()=>n}),n=`/2024/assets/menu-KglrlGTQ.svg`;export{t as n,n as t};

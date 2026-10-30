@@ -1,1 +1,0 @@
-import{Y as e}from"./jsx-runtime-GiK9V3Xy.js";var t=e({default:()=>n}),n=`/2024/assets/brand-android-zQOTBg4b.svg`,r=e({default:()=>i}),i=`/2024/assets/brand-apple-DFn6nuLI.svg`,a=e({default:()=>o}),o=`/2024/assets/building-iETsTk8b.svg`,s=e({default:()=>c}),c=`/2024/assets/itwin-KH20i3wr.svg`;export{i as a,t as c,a as i,s as n,r as o,o as r,n as s,c as t};

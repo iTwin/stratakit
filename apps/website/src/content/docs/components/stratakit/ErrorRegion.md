@@ -57,15 +57,13 @@ The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](
 
 ### Identification
 
-The `ErrorRegion.Root` component takes [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role), making it discoverable in screen reader software.
+The **ErrorRegion**'s visible [`label`](/reference/structures/ErrorRegion/#ErrorRegion.Root.label) is typically used to itemize the errors, with a value like _“3 issues present”_.
 
-:::caution[The region label]
+In addition, the [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) must be identified to screen reader software using a stable label. Apply an [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) with the value _“Layer errors”_ or similar. The region itself is discoverable by screen reader software even when no errors are present and the region is not visible.
 
-The **ErrorRegion**'s visible label is typically used to itemize the errors, with a value like _“3 issues present”_.
-
-In addition, the outer `role="region"` element itself must be identified to screen reader software. Alongside `label`, apply an [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) with the value _“Layer errors”_ or similar. The region itself is discoverable by screen reader software even when no errors are present and the region is not visible.
-
-:::
+```tsx
+<ErrorRegion.Root aria-label="Layer errors" label={`${issues.length} issues found`} />
+```
 
 ### Visibility
 

@@ -117,37 +117,35 @@ To ensure bidirectional association with the `ErrorRegion.Item`, reference the r
 Ensure that the `id` attributes are unique in the entire document. Additionally, `id` attributes should be stable between page reloads when linking them via the [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment).
 :::
 
-### Within the Tree
-
-When an error occurs:
-
-1. Apply [`error`](/reference/structures/Tree/#Tree.Item.error) to the `Tree.Item` in question.
-2. Update the `ErrorRegion.Root`'s `label` to reflect the change. For example, if there was already one error present in the tree, use a label like _“2 errors found”_. This updated label will be announced in screen reader software.
-3. Repopulate `ErrorRegion.Root`'s `items` to include the new `ErrorItem`.
-4. **Recommended**: Append an [action](/reference/structures/Tree/#Tree.Item.actions) to `actions` for addressing the error within the `Tree.Item` itself.
-
-:::caution[Focus management]
-
-Do not send keyboard focus to the **ErrorRegion** when an error is occurs. Users must remain at their current location in the [**Tree**](/components/tree).
-
-:::
-
-### Within the ErrorRegion
-
-When the user visits the **ErrorRegion**:
-
-1. Clicking the `ErrorRegion`'s `<button>` toggles the visibility of the `ErrorRegion.Item`s.
-2. **Recommended**: The [`message`](/reference/structures/ErrorRegion/#ErrorRegion.Item.message) for each `ErrorRegion.Item` includes a link to the corresponding `Tree.Item`, using the `Tree.Item`'s [`label`](/reference/structures/Tree/#Tree.Item.label) as the link text. Point the link to the `Tree.Item`'s `id`.
-3. **Recommended**: The `Tree.Item`'s `actions` includes a control that addresses—or can attempt to address—the error. For example, where data failed to be fetched, supply a “Retry” button.
-4. Where an `error` is successfully addressed, the `ErrorRegion.Item` is removed. If the user was focused within the `ErrorRegion.Item` when this happened, focus must be redirected to one of two places:
-   - To the **ErrorRegion**'s toggle button, secreting the list of `ErrorRegion.Item`s
-   - To the `Tree.Item` whose `error` was just corrected
-
 ## Examples
 
 ### Tree errors
 
-Collocate errors raised from a `Tree` component in an **ErrorRegion**. In the example below, the behavior described in [within the Tree](#within-the-tree) and [within the ErrorRegion](#within-the-errorregion) is demonstrated.
+Collocate errors raised from a **Tree** component in an **ErrorRegion**.
+
+When an error occurs, within the **Tree**:
+
+1. [`error`](/reference/structures/Tree/#Tree.Item.error) is applied to the `Tree.Item` in question.
+2. `label` of the `ErrorRegion.Root` is updated to reflect the change. For example, if there was already one error present in the tree, use a label like _“2 errors found”_. This updated label will be announced in screen reader software.
+3. `items` of the `ErrorRegion.Root` is repopulated to include the new `ErrorItem`.
+4. [`actions`](/reference/structures/Tree/#Tree.Item.actions) of the `Tree.Item` are used for addressing the error within the `Tree.Item` itself.
+
+:::caution[Focus management]
+
+Do not send keyboard focus to the **ErrorRegion** when an error occurs. Users must remain at their current location in the [**Tree**](/components/tree).
+
+:::
+
+Within the **ErrorRegion**:
+
+1. Clicking the `ErrorRegion`'s `<button>` toggles the visibility of the `ErrorRegion.Item`s.
+2. The `message` of each `ErrorRegion.Item` includes a link to the corresponding `Tree.Item`, using the `Tree.Item`'s [`label`](/reference/structures/Tree/#Tree.Item.label) as the link text. Point the link to the `Tree.Item`'s `id`.
+3. The `Tree.Item`'s `actions` includes a control that addresses—or can attempt to address—the error. For example, where data failed to be fetched, supply a “Retry” button.
+4. Where an `error` is successfully addressed, the `ErrorRegion.Item` is removed. If the user was focused within the `ErrorRegion.Item` when this happened, focus must be redirected to one of two places:
+   - To the **ErrorRegion**'s toggle button, collapsing the list of `ErrorRegion.Item`s
+   - To the `Tree.Item` whose `error` was just corrected
+
+In the example below, the described behavior is illustrated.
 
 ::example{src="structures/ErrorRegion.tree" min-height="250px" min-width="450px" vertical-stretch}
 

@@ -1,1 +1,0 @@
-import{J as e,Y as t}from"./chevron-down.BMpmVMsp.js";function n(e){return t(`MuiInputAdornment`,e)}var r=e(`MuiInputAdornment`,[`root`,`filled`,`standard`,`outlined`,`positionStart`,`positionEnd`,`disablePointerEvents`,`hiddenLabel`,`sizeSmall`]);export{r as n,n as t};

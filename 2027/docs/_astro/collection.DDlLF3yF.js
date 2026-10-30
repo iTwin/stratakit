@@ -1,1 +1,0 @@
-import{Rt as e,Vt as t,an as n,dr as r,zt as i}from"./chevron-down.BMpmVMsp.js";import{a,s as o}from"./collection-store.D3x35kUT.js";var s=r(),c=`div`,l=i(function({store:e,...t}){let r=o();return e||=r,t=n(t,t=>(0,s.jsx)(a,{value:e,children:t}),[e]),t}),u=t(function(t){let n=l(t);return e(c,n)});export{u as t};

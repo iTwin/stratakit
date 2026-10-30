@@ -31,7 +31,7 @@ const rows: Asset[] = [
 		department: "Engineering",
 		purchaseDate: "2024-04-02",
 		cost: 899,
-		inService: true,
+		inService: false,
 	},
 	{
 		assetId: 1003,

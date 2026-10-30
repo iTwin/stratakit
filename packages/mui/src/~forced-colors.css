@@ -127,21 +127,44 @@
 	color: GrayText;
 }
 
-.MuiFormHelperText-root:where(.Mui-error) {
-	forced-color-adjust: none;
-	background-color: Mark;
-	color: MarkText;
+.MuiFormControlLabel-label {
+	&:where(.Mui-disabled) {
+		color: GrayText;
+	}
+}
 
-	&::before,
-	&::after {
-		background-color: MarkText;
+.MuiFormHelperText-root {
+	&:where(.Mui-disabled) {
+		color: GrayText;
+	}
+
+	&:where(.Mui-error) {
+		forced-color-adjust: none;
+		background-color: Mark;
+		color: MarkText;
+
+		&::before,
+		&::after {
+			background-color: MarkText;
+		}
+	}
+}
+
+.MuiFormLabel-root {
+	&:where(.Mui-disabled) {
+		color: GrayText;
 	}
 }
 
 .🥝MuiInput {
 	&:where(.Mui-disabled) {
 		border-color: GrayText;
+		color: GrayText;
 	}
+}
+
+.MuiInputAdornment-root {
+	color: inherit;
 }
 
 .MuiLinearProgress-root {

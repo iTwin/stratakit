@@ -1,1 +1,0 @@
-import{Y as e}from"./jsx-runtime-GiK9V3Xy.js";var t=e({default:()=>n}),n=`/2026/assets/save-Brs3a-6s.svg`;export{t as n,n as t};

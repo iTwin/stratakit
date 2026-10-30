@@ -1,0 +1,222 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+.MuiDataGrid-root {
+	--_MuiDataGrid-row-border-color: var(--stratakit-color-border-neutral-muted);
+	--_MuiDataGrid-shared-row-footer-border: true;
+	border: none;
+	border-radius: 0;
+
+	timeline-scope: --_MuiDataGrid-first-row-timeline, --_MuiDataGrid-last-row-timeline;
+
+	/*
+    Share the row between the last row and footer except when:
+    1. There is a gap between the last row and the start of the footer.  This
+       uses an ugly selector because there isn't a good way to get when this
+       element is shown with the documented API.
+    2. There is no footer.
+	*/
+	&:has(.MuiDataGrid-virtualScrollerContent .MuiDataGrid-filler > *),
+	&:not(:has(.MuiDataGrid-footerContainer)) {
+		--_MuiDataGrid-shared-row-footer-border: false;
+	}
+}
+/* 
+  Select all the cell elements in the column header row.  Both the normal column
+  header cells and undocumented filler elements.
+*/
+.MuiDataGrid-columnHeader,
+.MuiDataGrid-columnHeaders > [role="row"] > [role="none"] {
+	border-bottom-color: var(--_MuiDataGrid-row-border-color);
+
+	/* No prefers-reduced-motion guard: instant color change, no motion, when
+		   the first row is selected and touches the scroll viewport edge. */
+	animation-name: _MuiDataGrid-selected-border;
+	animation-timing-function: linear;
+	animation-duration: 1ms; /* Use 1ms due to https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration */
+	animation-timeline: --_MuiDataGrid-first-row-timeline;
+}
+
+.MuiDataGrid-columnHeaderTitle {
+	color: var(--stratakit-color-text-neutral-secondary);
+	font-weight: unset;
+}
+
+/* Prevent clipping of the select all checkbox focus outline */
+.MuiDataGrid-columnHeaderTitleContainerContent {
+	:where(.MuiDataGrid-columnHeaderCheckbox) & {
+		overflow: visible;
+	}
+}
+
+.MuiDataGrid-columnSeparator {
+	color: var(--stratakit-color-border-neutral-base);
+
+	&:where(.MuiDataGrid-columnSeparator--resizable) :where(rect) {
+		transform-origin: center;
+		transform: scaleY(2.5);
+	}
+
+	@media (any-hover: hover) {
+		&:where(.MuiDataGrid-columnSeparator--resizable:hover) {
+			color: var(--stratakit-color-border-accent-strong);
+		}
+	}
+
+	&:where(.MuiDataGrid-columnSeparator--resizing) {
+		color: var(--stratakit-color-border-accent-strong);
+	}
+}
+
+.MuiDataGrid-row {
+	--✨row-bg--default: transparent;
+	--✨row-bg--hover: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+	--✨row-bg--active: var(--stratakit-color-bg-glow-on-surface-accent-pressed);
+	--✨row-bg--active-hover: var(--stratakit-color-bg-glow-on-surface-accent-active-hover);
+	--✨row-border-selected: var(--stratakit-color-border-accent-strong);
+
+	--_MuiDataGrid-row-background-color: var(--_MuiDataGrid-background-color);
+	--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--hover);
+
+	border-bottom: 1px solid var(--_MuiDataGrid-row-border-color);
+	background-color: var(--_MuiDataGrid-row-background-color);
+
+	@media (any-hover: hover) {
+		&:where(:hover) {
+			--_MuiDataGrid-row-background-color: var(--_MuiDataGrid-row-background-color--hover);
+		}
+	}
+
+	&:where(.Mui-selected) {
+		--_MuiDataGrid-row-background-color: var(--✨row-bg--active);
+		--_MuiDataGrid-row-background-color--hover: var(--✨row-bg--active-hover);
+		--_MuiDataGrid-row-border-color: var(--✨row-border-selected);
+
+		&:where(.MuiDataGrid-row--firstVisible) {
+			view-timeline: --_MuiDataGrid-first-row-timeline block;
+		}
+		&:where(.MuiDataGrid-row--lastVisible) {
+			view-timeline: --_MuiDataGrid-last-row-timeline block;
+			/* cancel the portion of the virtual scroller render zone translation  */
+			view-timeline-inset: auto var(--DataGrid-topContainerHeight, 56px);
+		}
+		&:where(.MuiDataGrid-row--firstVisible.MuiDataGrid-row--firstVisible) {
+			view-timeline:
+				--_MuiDataGrid-last-row-timeline,
+				--_MuiDataGrid-first-row-timeline block;
+		}
+	}
+
+	/* 
+		Rows share a border and each one renders its bottom border, and uses its
+		previous sibling for the top border.  If the next row is selected, this row
+		needs to adjust it's bottom border color to match the highlight.
+	*/
+	&:has(+ :where(.MuiDataGrid-row.Mui-selected)) {
+		border-bottom-color: var(--✨row-border-selected);
+	}
+
+	@container style(--_MuiDataGrid-shared-row-footer-border: true) {
+		&:where(.MuiDataGrid-row--lastVisible) {
+			border-bottom-width: 0;
+		}
+	}
+}
+
+.MuiDataGrid-cell,
+.MuiDataGrid-columnHeader {
+	position: relative;
+	/* 
+		Remove the outline set by MUI because:
+		1. Stratakit uses the ::after element to show the focus indicator adjust for borders.
+		2. Stratakit only shows the focus indicator with :focus-visible instead of :focus to avoid
+		   showing on mouse events.
+	*/
+	outline: none !important;
+
+	&:where(:focus-visible, :has(:focus-visible)) {
+		&::after {
+			pointer-events: none;
+			content: "";
+			position: absolute;
+			inset: 0;
+
+			outline: var(--🥝focus-outline);
+			outline-offset: -2px;
+		}
+
+		/*  
+			Avoid overlapping with the cells row's border which renders underneath the cell.  Header
+   		renders its own border and doesn't have this issue. 
+		*/
+		&:where(.MuiDataGrid-cell)::after {
+			inset-block-end: 1px;
+		}
+	}
+}
+
+.MuiDataGrid-cell {
+	border: 0;
+	box-shadow: none;
+	background: transparent;
+}
+
+.MuiDataGrid-filterFormDeleteIcon {
+	align-items: flex-end; /* Align with the
+  input field when the label and input field are vertically stacked */
+}
+
+.MuiDataGrid-toolbarQuickFilter .MuiFormControl-root {
+	overflow: visible;
+}
+
+.MuiDataGrid-virtualScrollerContent .MuiDataGrid-filler > * {
+	/* 
+		Remove border below the bottom row that MUI adds when there is a gap between
+		the bottom of the last row and the footer.  In the StrataKit implementation
+		the bottom row controls this border.
+	*/
+	border-top-width: 0;
+}
+
+.MuiDataGrid-footerContainer {
+	border-top-color: var(--_MuiDataGrid-row-border-color);
+
+	@container style(--_MuiDataGrid-shared-row-footer-border: true) {
+		/* No prefers-reduced-motion guard: instant color change, no motion, when
+		   the last row is selected and touches the scroll viewport edge. */
+		animation-name: _MuiDataGrid-selected-border;
+		animation-timing-function: linear;
+		animation-duration: 1ms; /* Use 1ms due to https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Scroll-driven_animations/Timelines#animation_duration */
+		animation-timeline: --_MuiDataGrid-last-row-timeline;
+	}
+}
+
+/* Update padding on both the export and column header menu.  Only the column
+	 header menu uses .MuiDataGrid-menuList, this selector catches both */
+.MuiDataGrid-menu .MuiList-root {
+	padding-inline: var(--stratakit-space-100);
+}
+
+/* Match styling from MuiMenu.css for column and filter dialogs */
+.MuiDataGrid-paper,
+.MuiDataGrid-menu .MuiPaper-root {
+	box-shadow: var(--stratakit-shadow-surface-lg);
+	border: 1px solid var(--stratakit-color-border-page-base);
+}
+
+@keyframes _MuiDataGrid-selected-border {
+	0%,
+	100% {
+		--_MuiDataGrid-row-border-color: var(
+			--stratakit-color-border-accent-strong /* --✨row-border-selected */
+		);
+	}
+}
+
+@property --_MuiDataGrid-shared-row-footer-border {
+	syntax: "true | false";
+	inherits: true;
+	initial-value: true;
+}

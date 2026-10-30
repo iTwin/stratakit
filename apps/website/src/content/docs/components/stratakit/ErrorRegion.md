@@ -67,6 +67,18 @@ In addition, the outer `role="region"` element itself must be identified to scre
 
 :::
 
+### Visibility
+
+Use the [`items`](/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop to control the visibility of the **ErrorRegion**. Avoid conditionally rendering the **ErrorRegion** to ensure that the [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) announces changes to the [`label`](/reference/structures/ErrorRegion#ErrorRegion.Root.label) prop.
+
+```tsx
+// ❌
+hasErrors ? <ErrorRegion.Root items={[<ErrorRegion.Item />]} /> : null;
+
+// ✅
+<ErrorRegion.Root items={hasErrors ? [<ErrorRegion.Item />] : undefined} />;
+```
+
 ### Within the Tree
 
 When an error occurs:

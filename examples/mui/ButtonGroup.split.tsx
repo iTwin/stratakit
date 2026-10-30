@@ -13,25 +13,27 @@ import { Icon } from "@stratakit/mui";
 
 export default () => {
 	const primaryButtonId = React.useId();
-	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-	const open = Boolean(anchorEl);
-	const handleClose = () => setAnchorEl(null);
+	const [open, setOpen] = React.useState(false);
+	const handleClose = () => setOpen(false);
+	const [groupElement, setGroupElement] = React.useState<HTMLElement | null>(
+		null,
+	);
 
 	return (
 		<>
-			<ButtonGroup aria-labelledby={primaryButtonId}>
+			<ButtonGroup ref={setGroupElement} aria-labelledby={primaryButtonId}>
 				<Button id={primaryButtonId}>Paste</Button>
 				<Button
 					aria-label="Alternatives"
 					aria-haspopup="true"
 					aria-expanded={open ? "true" : "false"}
-					onClick={(event) => setAnchorEl(event.currentTarget)}
+					onClick={() => setOpen(true)}
 				>
 					<Icon href={svgChevronDown} />
 				</Button>
 			</ButtonGroup>
 
-			<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+			<Menu anchorEl={groupElement} open={open} onClose={handleClose}>
 				<MenuItem onClick={handleClose}>Paste as plain text</MenuItem>
 				<MenuItem onClick={handleClose}>Paste special</MenuItem>
 			</Menu>

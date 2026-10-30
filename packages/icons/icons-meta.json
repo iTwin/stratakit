@@ -1095,7 +1095,7 @@
 			"adjust",
 			"configure",
 			"settings",
-			"prefences"
+			"preferences"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -1272,6 +1272,51 @@
 			"sharp",
 			"point",
 			"corner-mark"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"correspondence-due": {
+		"aliases": [
+			"mail",
+			"envelope",
+			"letter",
+			"communication",
+			"message",
+			"due",
+			"warning",
+			"date",
+			"alert",
+			"schedule"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"correspondence-issues": {
+		"aliases": [
+			"mail",
+			"envelope",
+			"letter",
+			"communication",
+			"message",
+			"issue",
+			"error",
+			"warning",
+			"alert",
+			"problem"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"correspondence-trend": {
+		"aliases": [
+			"mail",
+			"envelope",
+			"communication",
+			"message",
+			"trend",
+			"chart",
+			"line",
+			"analytics",
+			"data",
+			"tracking"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -1482,6 +1527,37 @@
 			"trash",
 			"bin",
 			"waste"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"deliverables-due": {
+		"aliases": [
+			"package",
+			"box",
+			"ship",
+			"release",
+			"milestone",
+			"due",
+			"warning",
+			"alert",
+			"deadline",
+			"schedule"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"deliverables-trend": {
+		"aliases": [
+			"package",
+			"box",
+			"ship",
+			"release",
+			"milestone",
+			"trend",
+			"chart",
+			"analytics",
+			"line",
+			"tracking",
+			"success"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -2599,6 +2675,21 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"forms-overdue": {
+		"aliases": [
+			"document",
+			"sheet",
+			"file",
+			"template",
+			"overdue",
+			"warning",
+			"late",
+			"delay",
+			"alert",
+			"date"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"forms-shared-help": {
 		"aliases": [
 			"form",
@@ -2643,6 +2734,21 @@
 			"distribute",
 			"response",
 			"submission"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"forms-trend": {
+		"aliases": [
+			"document",
+			"sheet",
+			"file",
+			"template",
+			"trend",
+			"chart",
+			"line",
+			"analytics",
+			"data",
+			"tracking"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -3006,6 +3112,50 @@
 			"photo",
 			"graphic",
 			"file"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"imodel-problematic-sync": {
+		"aliases": [
+			"imodel",
+			"digital twin",
+			"sync",
+			"warning",
+			"error",
+			"alert",
+			"cloud",
+			"problem",
+			"failure",
+			"link"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"imodel-progress": {
+		"aliases": [
+			"imodel",
+			"digital twin",
+			"sync",
+			"progress",
+			"active",
+			"loading",
+			"cloud",
+			"update",
+			"dynamic",
+			"process"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"imodel-supply-chain": {
+		"aliases": [
+			"imodel",
+			"digital twin",
+			"supply chain",
+			"logistics",
+			"package",
+			"cargo",
+			"cloud",
+			"flow",
+			"tracking"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5007,6 +5157,21 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"standards-checking": {
+		"aliases": [
+			"check",
+			"compliance",
+			"verification",
+			"rule",
+			"list",
+			"audit",
+			"scale",
+			"quality",
+			"pass",
+			"code"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"star": {
 		"aliases": [
 			"mark",
@@ -5082,6 +5247,21 @@
 			"recurring",
 			"renewal",
 			"service"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"subsurface-navigation": {
+		"aliases": [
+			"route",
+			"utility",
+			"underground",
+			"navigation",
+			"map",
+			"terrain",
+			"geology",
+			"pipe",
+			"guide",
+			"depth"
 		],
 		"symbols": ["icon", "icon-large"]
 	},

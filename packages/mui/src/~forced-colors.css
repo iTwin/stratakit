@@ -87,6 +87,11 @@
 }
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
+	> input {
+		background-color: var(--_MuiCheckbox-background-color);
+		border-color: var(--_MuiCheckbox-border-color);
+	}
+
 	--_MuiCheckbox-border-color: CanvasText;
 	--_MuiCheckbox-color: CanvasText;
 
@@ -122,21 +127,44 @@
 	color: GrayText;
 }
 
-.MuiFormHelperText-root:where(.Mui-error) {
-	forced-color-adjust: none;
-	background-color: Mark;
-	color: MarkText;
+.MuiFormControlLabel-label {
+	&:where(.Mui-disabled) {
+		color: GrayText;
+	}
+}
 
-	&::before,
-	&::after {
-		background-color: MarkText;
+.MuiFormHelperText-root {
+	&:where(.Mui-disabled) {
+		color: GrayText;
+	}
+
+	&:where(.Mui-error) {
+		forced-color-adjust: none;
+		background-color: Mark;
+		color: MarkText;
+
+		&::before,
+		&::after {
+			background-color: MarkText;
+		}
+	}
+}
+
+.MuiFormLabel-root {
+	&:where(.Mui-disabled) {
+		color: GrayText;
 	}
 }
 
 .🥝MuiInput {
 	&:where(.Mui-disabled) {
 		border-color: GrayText;
+		color: GrayText;
 	}
+}
+
+.MuiInputAdornment-root {
+	color: inherit;
 }
 
 .MuiLinearProgress-root {

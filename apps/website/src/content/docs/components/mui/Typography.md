@@ -32,7 +32,7 @@ The following custom **Typography** `variant`s are available:
 - `"caption-lg"` / `"caption-md"` / `"caption-sm"`
 - `"mono-sm"`
 
-::example{src="mui/Typography.variants" min-height="600px"}
+::example{src="mui/Typography.variants" min-height="625px"}
 
 All of the stock MUI **Typography** `variant`s are also available for backwards compatibility, but not recommended for use.
 

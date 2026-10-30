@@ -109,7 +109,7 @@ Item selection is facilitated with [`selected`](/reference/structures/Tree/#Tree
 
 One approach is to make items behave like radio buttons, wherein only one can be selected at a time.
 
-::example{src="structures/Tree.select-one" min-width="300px" min-height="150px" vertical-stretch}
+::example{src="structures/Tree.select-one" min-width="300px" min-height="225px" vertical-stretch}
 
 #### Cumulative selection
 
@@ -117,7 +117,7 @@ If desired, each [`Tree.Item`](/reference/structures/Tree/#Tree.Item) can act in
 
 In the following example, “Item 1.1” and “Item 3” are selected from the outset.
 
-::example{src="structures/Tree.select-many" min-width="300px" min-height="150px" vertical-stretch}
+::example{src="structures/Tree.select-many" min-width="300px" min-height="225px" vertical-stretch}
 
 :::note[The `aria-multiselectable` attribute]
 

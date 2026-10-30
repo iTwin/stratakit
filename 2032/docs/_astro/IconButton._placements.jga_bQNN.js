@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{U as t,_ as n}from"./StrataKitRoot.R8CbDaiZ.js";import{t as r}from"./placeholder.xByW2AxN.js";var i=e(),a=[`left`,`top`,`bottom`,`right`],o=()=>a.map(e=>(0,i.jsx)(n,{label:`${e.charAt(0).toUpperCase()}${e.slice(1)}`,labelPlacement:e,children:(0,i.jsx)(t,{href:r})},e));export{o as default};

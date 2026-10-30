@@ -55,7 +55,7 @@ jobs:
               state: 'open',
               per_page: 100
             });
-            return ['commit', 'docs', ...openPRs.map(pr => pr.number)].join('\n');
+            return ['commit', '/docs/', ...openPRs.map(pr => pr.number)].join('\n');
 
   deploy:
     name: Deploy to GitHub Pages

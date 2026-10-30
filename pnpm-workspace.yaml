@@ -5,8 +5,8 @@ packages:
   - examples
 
 catalog:
-  "@mui/material": ^9.4.0
-  "@mui/utils": ^9.4.0
+  "@mui/material": ^9.5.0
+  "@mui/utils": ^9.5.0
   "@mui/x-date-pickers": ^9.15.0
   "@playwright/test": ~1.64.0
   "@types/node": ^22.19.19

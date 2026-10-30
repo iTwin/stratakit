@@ -6,7 +6,7 @@ links:
   apiReference: "#api-reference"
 ---
 
-::example{src="mui/DatePicker.default"}
+::example{src="mui/DatePicker.default" min-height="150px"}
 
 ## StrataKit MUI modifications
 
@@ -21,13 +21,13 @@ Use [`slotProps.textField`](https://mui.com/x/api/date-pickers/date-picker/#date
 - **Small:** Use in compact interfaces where space is limited.
 - **Medium:** Default size, suitable for most use cases.
 
-::example{src="mui/DatePicker.sizes"}
+::example{src="mui/DatePicker.sizes" min-height="150px"}
 
 ### Calendar
 
 Use [`DateCalendar`](https://mui.com/x/api/date-pickers/date-calendar/) when users should select a date directly from an inline calendar without opening a text field.
 
-::example{src="mui/DatePicker.calendar"}
+::example{src="mui/DatePicker.calendar" min-height="400px"}
 
 ## API reference
 

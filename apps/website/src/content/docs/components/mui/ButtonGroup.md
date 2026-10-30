@@ -20,7 +20,7 @@ links:
 - **Medium:** Default size, suitable for most use cases.
 - **Large:** Use in spacious layouts where a more prominent button is needed.
 
-::example{src="mui/ButtonGroup.sizes"}
+::example{src="mui/ButtonGroup.sizes" min-height="200px"}
 
 ## API reference
 

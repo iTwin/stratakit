@@ -6,7 +6,7 @@ links:
   apiReference: "#api-reference"
 ---
 
-::example{src="composite/TransferList.default"}
+::example{src="composite/TransferList.default" min-height="325px"}
 
 This example is adapted from the [MUI documentation for TransferList](https://mui.com/material-ui/react-transfer-list/) with minor modifications.
 

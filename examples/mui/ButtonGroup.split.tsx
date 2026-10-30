@@ -12,7 +12,6 @@ import { svgChevronDown } from "@stratakit/icons/chevron-down";
 import { Icon } from "@stratakit/mui";
 
 export default () => {
-	const primaryButtonId = React.useId();
 	const [open, setOpen] = React.useState(false);
 	const handleClose = () => setOpen(false);
 	const [groupElement, setGroupElement] = React.useState<HTMLElement | null>(
@@ -21,8 +20,8 @@ export default () => {
 
 	return (
 		<>
-			<ButtonGroup ref={setGroupElement} aria-labelledby={primaryButtonId}>
-				<Button id={primaryButtonId}>Paste</Button>
+			<ButtonGroup ref={setGroupElement} aria-label="Paste actions">
+				<Button>Paste</Button>
 				<Button
 					aria-label="Alternatives"
 					aria-haspopup="true"

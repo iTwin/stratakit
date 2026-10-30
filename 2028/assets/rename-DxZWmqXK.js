@@ -1,1 +1,0 @@
-import{t as e}from"./rename-CoGFBkh8.js";var t=`${e}#icon`;`${e}`;export{t};

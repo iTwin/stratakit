@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
 import { IconButton } from "@stratakit/bricks";
+import { svgChevronDown } from "@stratakit/icons/chevron-down";
 import { svgScript } from "@stratakit/icons/script";
 import { svgWindowPopout } from "@stratakit/icons/window-popout";
 
@@ -25,12 +26,23 @@ const exampleModules = {
 
 // ----------------------------------------------------------------------------
 
-export function ExampleEmbed({ src }: { src: string }) {
+interface ExampleEmbedProps {
+	/** Name of the example file (including package), e.g. "mui/Button.default". */
+	src: string;
+	/** Callback invoked when the "Source code" button is clicked. */
+	onSourceToggle: (expanded: boolean) => void;
+}
+
+export function ExampleEmbed(props: ExampleEmbedProps) {
+	const { src, onSourceToggle } = props;
+
 	const { exampleName, packageName } = parseSrc(src);
 	const labelId = React.useId();
+	const [sourceExpanded, setSourceExpanded] = React.useState(false);
 
 	return (
 		<div
+			slot="preview"
 			className={styles.exampleEmbedRoot}
 			role="group"
 			aria-labelledby={labelId}
@@ -44,6 +56,18 @@ export function ExampleEmbed({ src }: { src: string }) {
 			</div>
 
 			<div className={styles.toolbar}>
+				<IconButton
+					icon={svgChevronDown}
+					label="Source code"
+					variant="ghost"
+					aria-expanded={sourceExpanded}
+					onClick={() => {
+						const expanded = !sourceExpanded;
+						setSourceExpanded(expanded);
+						onSourceToggle(expanded);
+					}}
+					className={styles.sourceCodeButton}
+				/>
 				<IconButton
 					icon={svgWindowPopout}
 					label="Open in new tab"

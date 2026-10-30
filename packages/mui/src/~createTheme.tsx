@@ -186,9 +186,16 @@ function createTheme() {
 						success: <SuccessIcon />,
 						warning: <WarningIcon />,
 					},
+					slots: {
+						closeIcon: withExcludedProps(DismissIcon, [
+							"ownerState",
+							"fontSize",
+						]),
+					},
 					slotProps: {
 						closeButton: {
 							edge: "end",
+							color: "secondary",
 						},
 					},
 				},
@@ -689,6 +696,7 @@ function createTheme() {
 				defaultProps: {
 					placement: "top",
 					describeChild: true,
+					enterDelay: 500,
 					slotProps: {
 						tooltip: {
 							className: "🥝MuiTooltip",

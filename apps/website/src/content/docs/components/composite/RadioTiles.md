@@ -5,7 +5,7 @@ links:
   apiReference: "#api-reference"
 ---
 
-::example{src="composite/RadioTiles.default"}
+::example{src="composite/RadioTiles.default" min-height="450px"}
 
 **Radio tiles** can be constructed using a combination of the [**Radio**](/components/radio/) and [**Paper**](/components/paper/) components, with some additional styling.
 

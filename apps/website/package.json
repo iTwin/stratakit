@@ -5,7 +5,7 @@
 	"private": true,
 	"scripts": {
 		"dev": "wireit",
-		"start": "astro dev",
+		"start": "astro dev --force",
 		"build": "wireit",
 		"test": "wireit",
 		"preview": "astro preview",
@@ -15,13 +15,14 @@
 	},
 	"wireit": {
 		"build": {
-			"command": "astro build",
+			"command": "astro build --force",
 			"files": [
 				"src/**/*",
 				"public",
 				"astro.config.mjs",
 				"tsconfig.json",
-				"api.json"
+				"api.json",
+				"../../examples/**/*.tsx"
 			],
 			"dependencies": [
 				"../../packages/mui:build",
@@ -36,7 +37,7 @@
 			]
 		},
 		"dev": {
-			"command": "astro dev",
+			"command": "astro dev --force",
 			"service": true,
 			"dependencies": [
 				"../../packages/mui:build",

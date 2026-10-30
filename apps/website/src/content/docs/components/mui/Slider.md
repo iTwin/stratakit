@@ -30,7 +30,7 @@ links:
 - **Small:** Use in compact interfaces where space is limited.
 - **Medium:** Default size, suitable for most use cases.
 
-::example{src="mui/Slider.sizes" min-width="300px"}
+::example{src="mui/Slider.sizes" min-width="300px" min-height="200px"}
 
 ### Tooltip
 
@@ -40,7 +40,7 @@ Use the `valueLabelDisplay` prop to show a tooltip near the **Slider** thumb for
 
 ### Vertical
 
-::example{src="mui/Slider.vertical" min-width="300px"}
+::example{src="mui/Slider.vertical" min-width="300px" min-height="250px"}
 
 ## API reference
 

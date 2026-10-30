@@ -30,7 +30,7 @@ links:
 - **Small:** Use in compact interfaces where space is limited.
 - **Medium:** Default size, suitable for most use cases.
 
-::example{src="mui/Autocomplete.sizes"}
+::example{src="mui/Autocomplete.sizes" min-height="175px"}
 
 ## API reference
 

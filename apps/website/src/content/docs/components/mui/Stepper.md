@@ -37,7 +37,7 @@ links:
 
 In the long stepper, there are no labels underneath the step indicators to save space. Instead, the label for the step currently in progress appears under the diagram along with ‘Step X of X’. This allocates more space for longer step names, as well as allowing more step indicators to be contained within the diagram.
 
-::example{src="mui/Stepper.long" min-width="500px"}
+::example{src="mui/Stepper.long" min-width="500px" min-height="175px"}
 
 ## API reference
 

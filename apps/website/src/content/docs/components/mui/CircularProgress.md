@@ -6,7 +6,7 @@ links:
   apiReference: "#api-reference"
 ---
 
-::example{src="mui/CircularProgress.default"}
+::example{src="mui/CircularProgress.default" min-height="150px"}
 
 ## StrataKit MUI modifications
 
@@ -22,13 +22,13 @@ links:
 - **Primary:** The default. Use when indicating the primary loading state on a page.
 - **Secondary:** Use when indicating a secondary loading state or when multiple loading states are shown at once.
 
-::example{src="mui/CircularProgress.colors"}
+::example{src="mui/CircularProgress.colors" min-height="150px"}
 
 ### Determinate
 
 Set the `variant` prop to `"determinate"` when the completion percentage is known.
 
-::example{src="mui/CircularProgress.determinate"}
+::example{src="mui/CircularProgress.determinate" min-height="150px"}
 
 ## API reference
 

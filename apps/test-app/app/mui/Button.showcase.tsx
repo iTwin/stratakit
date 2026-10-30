@@ -10,7 +10,7 @@ import ButtonDefault from "examples/mui/Button.default.tsx";
 import ButtonLoading from "examples/mui/Button.loading.tsx";
 import ButtonSizes from "examples/mui/Button.sizes.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
-import { createKnob, DefaultPropsProvider, isProduction } from "~/~utils.tsx";
+import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
 import type { KnobProps } from "~/~utils.tsx";
 
@@ -23,8 +23,8 @@ export default function ButtonExamples({ disabled }: KnobProps<typeof knobs>) {
 				<ButtonSizes />
 				<ButtonVariants />
 				<ButtonColors />
-				{!isProduction && <ButtonIcons_ />}
-				{!isProduction && <ButtonPermutations_ />}
+				<ButtonIcons_ />
+				<ButtonPermutations_ />
 			</Stack>
 		</DefaultPropsProvider>
 	);

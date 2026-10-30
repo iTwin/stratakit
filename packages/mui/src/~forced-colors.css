@@ -87,6 +87,11 @@
 }
 
 :is(.MuiCheckbox-root, .MuiRadio-root) {
+	> input {
+		background-color: var(--_MuiCheckbox-background-color);
+		border-color: var(--_MuiCheckbox-border-color);
+	}
+
 	--_MuiCheckbox-border-color: CanvasText;
 	--_MuiCheckbox-color: CanvasText;
 

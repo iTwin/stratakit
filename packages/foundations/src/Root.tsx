@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { identity } from "@stratakit/internal-utils/common";
 import {
@@ -273,8 +272,14 @@ function SynchronizeAccentColor({
 
 // ----------------------------------------------------------------------------
 
+/**
+ * Context to configure the portal behavior used by descendant components.
+ */
 const PortalContext = React.createContext<
 	| {
+			/**
+			 * The element to which all portals will be rendered.
+			 */
 			container: HTMLElement | null;
 			/**
 			 * Function that is lazily resolved by MUI when the portal mounts. Passing the
@@ -287,6 +292,7 @@ const PortalContext = React.createContext<
 	  }
 	| undefined
 >(undefined);
+DEV: PortalContext.displayName = "PortalContext";
 
 // ----------------------------------------------------------------------------
 
@@ -308,18 +314,16 @@ function RootPortalProvider(props: RootPortalProviderProps) {
 		<PortalContext.Provider
 			value={{ container, unstable_getContainer: getContainer }}
 		>
-			<AkPortalContext.Provider value={container}>
-				<Role render={portalProvider ?? <React.Fragment />}>
-					<PortalContainer
-						colorScheme={props.colorScheme}
-						unstable_accentColor={props.unstable_accentColor}
-						density={props.density}
-						ref={useMergedRefs(containerRef, setContainer)}
-						render={props.portalContainerProp}
-					/>
-					{props.children}
-				</Role>
-			</AkPortalContext.Provider>
+			<Role render={portalProvider ?? <React.Fragment />}>
+				<PortalContainer
+					colorScheme={props.colorScheme}
+					unstable_accentColor={props.unstable_accentColor}
+					density={props.density}
+					ref={useMergedRefs(containerRef, setContainer)}
+					render={props.portalContainerProp}
+				/>
+				{props.children}
+			</Role>
 		</PortalContext.Provider>
 	);
 }

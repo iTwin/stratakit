@@ -1,1 +1,0 @@
-import{t as e}from"./status-success-Dl_pgh16.js";var t=`${e}#icon`;`${e}`;export{t};

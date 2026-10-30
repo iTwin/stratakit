@@ -1,1 +1,0 @@
-import{t as e}from"./dismiss-BU4V2ptR.js";var t=`${e}#icon`;`${e}`;export{t};

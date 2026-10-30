@@ -38,7 +38,7 @@ It has row and cell selection and editing as first class concepts. The grid is a
 
 ### Editing data types
 
-This example shows how editing can work with multiple different types of data.
+**DataGrid** supports editing values of different data types.
 
 ::example{src="mui/DataGrid.datatypes" min-height="720px"}
 

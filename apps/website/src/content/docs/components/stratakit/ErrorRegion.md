@@ -38,7 +38,7 @@ An **ErrorRegion** constitutes two key components:
 ```jsx
 items={[
   <ErrorRegion.Item
-    message={<>Failed to create hierarchy for </>}
+    message={<>Failed to create hierarchy</>}
   />
 ]}
 ```
@@ -53,7 +53,7 @@ actions={
 
 ## Interaction
 
-The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](/reference/structures/Tree/#Tree.Item) and `ErrorRegion.Item`s can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
+The behavior of the **ErrorRegion** and the relationship between `ErrorRegion.Item`s and related UI elements can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
 
 ### Identification
 
@@ -67,7 +67,7 @@ In addition, the [region landmark](https://developer.mozilla.org/en-US/docs/Web/
 
 ### Visibility
 
-Use the [`items`](/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop to control the visibility of the **ErrorRegion**. Avoid conditionally rendering the **ErrorRegion** to ensure that the [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) announces changes to the [`label`](/reference/structures/ErrorRegion#ErrorRegion.Root.label) prop.
+Use the [`items`](/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop to control the visibility of the **ErrorRegion**. Avoid conditionally rendering the **ErrorRegion** to ensure that the [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions) announces changes to the [`label`](/reference/structures/ErrorRegion/#ErrorRegion.Root.label) prop.
 
 ```tsx
 // ❌
@@ -80,7 +80,7 @@ hasErrors ? <ErrorRegion.Root items={[<ErrorRegion.Item />]} /> : null;
 ### Disclosure
 
 The **ErrorRegion** is initially collapsed, showing only a toggle `<button>` to expand and reveal the list of `ErrorRegion.Item`s.
-Alternatively, use the [`open`](/reference/structures/ErrorRegion#ErrorRegion.Root.open) and [`setOpen`](/reference/structures/ErrorRegion#ErrorRegion.Root.setOpen) props to control the disclosure state.
+Alternatively, use the [`open`](/reference/structures/ErrorRegion/#ErrorRegion.Root.open) and [`setOpen`](/reference/structures/ErrorRegion/#ErrorRegion.Root.setOpen) props to control the disclosure state.
 
 ```tsx
 const [open, setOpen] = React.useState(false);
@@ -90,7 +90,7 @@ const [open, setOpen] = React.useState(false);
 
 ### Error association
 
-Use the `messageId` prop of `ErrorRegion.Item` to semantically associate the error message with the related UI element, such as a `Tree.Item`. The specified `messageId` is applied as the [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id) to the node that displays the error, enabling referencing via attributes like [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby). When used with the `Tree.Item`, the `error` attribute should reference the `messageId`.
+Use the [`messageId`](/reference/structures/ErrorRegion/#ErrorRegion.Item.messageId) prop of `ErrorRegion.Item` to semantically associate the error message with the related UI element, such as `Tree.Item`. The specified `messageId` is applied as the [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id) attribute to the node that displays the error, enabling referencing via attributes like [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby). When used with the `Tree.Item`, the [`error`](/reference/structures/Tree/#Tree.Item.error) prop should reference the `messageId`.
 
 ```tsx "load-error"
 <ErrorRegion.Item messageId="load-error" />
@@ -104,8 +104,8 @@ To ensure bidirectional association with the `ErrorRegion.Item`, reference the r
 <ErrorRegion.Item
 	message={
 		<>
-			<span>Failed to create hierarchy for </span>
-			<Anchor href="#imodels"">iModels</Anchor>
+			<span>Failed to create hierarchy</span>
+			<Anchor href="#imodels">iModels</Anchor>
 		</>
 	}
 />
@@ -166,3 +166,4 @@ Collocate errors raised from a `Tree` component in an **ErrorRegion**. In the ex
 
 - [`ErrorRegion.Root`](/reference/structures/ErrorRegion/#ErrorRegion.Root)
 - [`ErrorRegion.Item`](/reference/structures/ErrorRegion/#ErrorRegion.Item)
+- [`Tree.Item`](/reference/structures/Tree/#Tree.Item)

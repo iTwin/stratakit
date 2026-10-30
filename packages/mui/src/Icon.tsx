@@ -33,10 +33,18 @@ import { svgWarning } from "@stratakit/icons/warning";
 
 // ----------------------------------------------------------------------------
 
+interface SvgProps extends React.SVGProps<SVGSVGElement> {
+	// Accept the MUI SvgIcon titleAccess prop as a way to set the accessible name of the element
+	titleAccess?: string;
+}
+
 function createIconComponent(href: string) {
-	return React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
+	return React.forwardRef<SVGSVGElement, SvgProps>(
 		function IconComponent(props, forwardedRef) {
-			return <Icon {...props} href={href} ref={forwardedRef} />;
+			const { titleAccess, ...rest } = props;
+			return (
+				<Icon {...rest} href={href} ref={forwardedRef} alt={titleAccess} />
+			);
 		},
 	);
 }

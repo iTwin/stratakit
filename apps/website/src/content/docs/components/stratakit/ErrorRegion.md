@@ -57,7 +57,7 @@ The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](
 
 ### Identification
 
-The `ErrorRegion.Root` component takes [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role), making it discoverable in screen reader software. When there are errors present, the **ErrorRegion** renders a toggle `<button>`, using [`aria-expanded`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-expanded), with the region's [`label`](/reference/structures/ErrorRegion/#ErrorRegion.Root.label).
+The `ErrorRegion.Root` component takes [`role="region"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role), making it discoverable in screen reader software.
 
 :::caution[The region label]
 
@@ -77,6 +77,17 @@ hasErrors ? <ErrorRegion.Root items={[<ErrorRegion.Item />]} /> : null;
 
 // ✅
 <ErrorRegion.Root items={hasErrors ? [<ErrorRegion.Item />] : undefined} />;
+```
+
+### Disclosure
+
+The **ErrorRegion** is initially collapsed, showing only a toggle `<button>` to expand and reveal the list of `ErrorRegion.Item`s.
+Alternatively, use the [`open`](/reference/structures/ErrorRegion#ErrorRegion.Root.open) and [`setOpen`](/reference/structures/ErrorRegion#ErrorRegion.Root.setOpen) props to control the disclosure state.
+
+```tsx
+const [open, setOpen] = React.useState(false);
+
+<ErrorRegion.Root open={open} setOpen={setOpen} />;
 ```
 
 ### Within the Tree

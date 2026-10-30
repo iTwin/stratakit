@@ -1,0 +1,1 @@
+import{t as e}from"./chevron-down-CTgpoisk.js";var t=`${e}#icon`;`${e}`;export{t};

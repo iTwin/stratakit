@@ -21,12 +21,12 @@ It has row and cell selection and editing as first class concepts. The grid is a
 
 **Table** provides a straightforward user interface for data with limited interactivity. Controls are accessed with the keyboard as normal by tabbing through each one individually.
 
-| Use case                                                          | DataGrid | Table |
-| ----------------------------------------------------------------- | -------- | ----- |
-| Displaying data with no interactivity                             | ❌       | ✅    |
-| Selecting rows only                                               | ❌       | ✅    |
-| Displaying data with multiple interactive components per row      | ✅       | ✅    |
-| Spreadsheet experience where the user adjusts the values of cells | ✅       | ❌    |
+| Use case                                                          | [DataGrid](/components/datagrid) | [Table](/components/table) |
+| ----------------------------------------------------------------- | -------------------------------- | -------------------------- |
+| Displaying data with no interactivity                             | ❌                               | ✅                         |
+| Selecting rows only                                               | ❌                               | ✅                         |
+| Displaying data with multiple interactive components per row      | ✅                               | ✅                         |
+| Spreadsheet experience where the user adjusts the values of cells | ✅                               | ❌                         |
 
 ## StrataKit MUI modifications
 

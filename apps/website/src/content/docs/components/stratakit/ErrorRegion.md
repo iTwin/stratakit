@@ -53,7 +53,7 @@ actions={
 
 ## Interaction
 
-The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](/reference/structures/Tree/#Tree.Item) and `Error.Item`s can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
+The behavior of the **ErrorRegion** and the relationship between [`Tree.Item`s](/reference/structures/Tree/#Tree.Item) and `ErrorRegion.Item`s can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
 
 ### Identification
 
@@ -86,11 +86,11 @@ Do not send keyboard focus to the **ErrorRegion** when an error is occurs. Users
 
 When the user visits the **ErrorRegion**:
 
-1. Clicking the `ErrorRegion`'s `<button>` toggles the visibility of the `Error.Item`s.
-2. **Recommended**: The [`message`](/reference/structures/ErrorRegion/#ErrorRegion.Item.message) for each `Error.Item` includes a link to the corresponding `Tree.Item`, using the `Tree.Item`'s [`label`](/reference/structures/Tree/#Tree.Item.label) as the link text. Point the link to the `Tree.Item`'s `id`.
+1. Clicking the `ErrorRegion`'s `<button>` toggles the visibility of the `ErrorRegion.Item`s.
+2. **Recommended**: The [`message`](/reference/structures/ErrorRegion/#ErrorRegion.Item.message) for each `ErrorRegion.Item` includes a link to the corresponding `Tree.Item`, using the `Tree.Item`'s [`label`](/reference/structures/Tree/#Tree.Item.label) as the link text. Point the link to the `Tree.Item`'s `id`.
 3. **Recommended**: The `Tree.Item`'s `actions` includes a control that addresses—or can attempt to address—the error. For example, where data failed to be fetched, supply a “Retry” button.
-4. Where an `error` is successfully addressed, the `Error.Item` is removed. If the user was focused within the `Error.Item` when this happened, focus must be redirected to one of two places:
-   - To the **ErrorRegion**'s toggle button, secreting the list of `Error.Item`s
+4. Where an `error` is successfully addressed, the `ErrorRegion.Item` is removed. If the user was focused within the `ErrorRegion.Item` when this happened, focus must be redirected to one of two places:
+   - To the **ErrorRegion**'s toggle button, secreting the list of `ErrorRegion.Item`s
    - To the `Tree.Item` whose `error` was just corrected
 
 ## Examples
@@ -105,7 +105,7 @@ Collocate errors raised from a `Tree` component in an **ErrorRegion**. In the ex
 
 - Use **ErrorRegion** to collate and describe [**Tree**](/components/tree) errors.
 - Supply both a `label` and `aria-label` to `ErrorRegion.Root` for summarizing the errors and identifying the **ErrorRegion** respectively.
-- Update the `label` whenever errors (`Error.Item`s) are added or removed.
+- Update the `label` whenever errors (`ErrorRegion.Item`s) are added or removed.
 
 ## ❌ Don't
 

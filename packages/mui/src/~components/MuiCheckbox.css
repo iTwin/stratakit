@@ -22,10 +22,6 @@
 	--✨checkmark--error: var(--stratakit-color-icon-neutral-primary);
 	--✨checkmark--disabled: var(--stratakit-color-icon-neutral-disabled);
 
-	--✨touch-target-hover--default: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
-	--✨touch-target-hover--checked: var(--stratakit-color-bg-glow-on-surface-accent-hover);
-	--✨touch-target-hover--error: var(--stratakit-color-bg-glow-on-surface-critical-hover);
-
 	--✨size: 1rem;
 
 	--✨svg-unchecked: url('data:image/svg+xml;utf8,<svg viewBox="0 0 16 16"></svg>');
@@ -38,14 +34,6 @@
 	padding: 0;
 	position: relative;
 
-	/* This pseudo-element increases tap target size to 24x24 */
-	&::before {
-		content: "";
-		position: absolute;
-		inset: calc(((24px - var(--✨size)) / 2) * -1); /* Makes touch target area 24px */
-		border-radius: 50%;
-	}
-
 	> input {
 		appearance: none;
 		opacity: 1;
@@ -56,6 +44,31 @@
 		border: 1px solid var(--_MuiCheckbox-border-color);
 		border-radius: var(--_MuiCheckbox-border-radius);
 		position: relative;
+
+		transition: 150ms ease-out;
+		transition-property: background-color, border-color;
+
+		@media (any-hover: hover) {
+			&:where(:hover) {
+				background-color: color-mix(
+					in oklch,
+					var(--_MuiCheckbox-background-color) 100%,
+					var(--stratakit-color-glow-hue) var(--_MuiCheckbox-hover-bg-glow-\%, 0%)
+				);
+				border-color: color-mix(
+					in oklch,
+					var(--_MuiCheckbox-border-color) 100%,
+					var(--stratakit-color-glow-hue) var(--_MuiCheckbox-hover-border-glow-\%, 0%)
+				);
+			}
+		}
+
+		/* This pseudo-element increases target size to 24x24 */
+		&::before {
+			content: "";
+			position: absolute;
+			inset: calc(-1 * (((24px - var(--✨size)) / 2) + 1px));
+		}
 
 		/* This pseudo-element adds the actual checkmark SVG via `--_MuiCheckbox-mask-image` */
 		&::after {
@@ -75,26 +88,30 @@
 	--_MuiCheckbox-background-color: var(--✨bg--default);
 	--_MuiCheckbox-border-color: var(--✨border--default);
 	--_MuiCheckbox-color: var(--✨checkmark--checked);
-	--_MuiCheckbox-hover-overlay-color: var(--✨touch-target-hover--default);
+	--_MuiCheckbox-hover-bg-glow-\%: var(--stratakit-color-bg-glow-base-hover-\%);
+	--_MuiCheckbox-hover-border-glow-\%: var(--stratakit-color-border-glow-base-hover-\%);
 
 	&:where(.Mui-checked, .MuiCheckbox-indeterminate) {
 		--_MuiCheckbox-background-color: var(--✨bg--checked);
 		--_MuiCheckbox-border-color: var(--✨border--checked);
-		--_MuiCheckbox-hover-overlay-color: var(--✨touch-target-hover--checked);
+		--_MuiCheckbox-hover-bg-glow-\%: var(--stratakit-color-bg-glow-strong-hover-\%);
+		--_MuiCheckbox-hover-border-glow-\%: var(--stratakit-color-border-glow-strong-hover-\%);
 	}
 
 	:where(.MuiFormControlLabel-root.Mui-error) & {
 		--_MuiCheckbox-background-color: var(--✨bg--error);
 		--_MuiCheckbox-border-color: var(--✨border--error);
 		--_MuiCheckbox-color: var(--✨checkmark--error);
-		--_MuiCheckbox-hover-overlay-color: var(--✨touch-target-hover--error);
+		--_MuiCheckbox-hover-bg-glow-\%: var(--stratakit-color-bg-glow-base-hover-\%);
+		--_MuiCheckbox-hover-border-glow-\%: var(--stratakit-color-border-glow-strong-hover-\%);
 	}
 
 	&:where(.Mui-disabled) {
 		--_MuiCheckbox-background-color: var(--✨bg--disabled);
 		--_MuiCheckbox-border-color: var(--✨border--disabled);
 		--_MuiCheckbox-color: var(--✨checkmark--disabled);
-		--_MuiCheckbox-hover-overlay-color: transparent;
+		--_MuiCheckbox-hover-bg-glow-\%: 0%;
+		--_MuiCheckbox-hover-border-glow-\%: 0%;
 	}
 
 	&:where(.MuiCheckbox-root) {
@@ -114,13 +131,6 @@
 
 		&:where(.Mui-checked) {
 			--_MuiCheckbox-mask-image: var(--✨svg-radio-checked);
-		}
-	}
-
-	@media (any-hover: hover) {
-		&:where(:hover)::before,
-		:where(.MuiFormControlLabel-root:hover) &::before {
-			background-color: var(--_MuiCheckbox-hover-overlay-color);
 		}
 	}
 	/* #endregion */

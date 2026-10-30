@@ -1,0 +1,1 @@
+import{Y as e}from"./jsx-runtime-GiK9V3Xy.js";var t=e({default:()=>n}),n=`/2033/assets/layers-C_Rs9pWi.svg`;export{t as n,n as t};

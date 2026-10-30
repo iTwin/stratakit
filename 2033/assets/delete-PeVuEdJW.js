@@ -1,0 +1,1 @@
+import{t as e}from"./delete-CSEbf8ZU.js";`${e}`;var t=`${e}#icon-large`;export{t};

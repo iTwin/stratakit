@@ -5,6 +5,7 @@
 import Stack from "@mui/material/Stack";
 import ButtonGroupDefault from "examples/mui/ButtonGroup.default.tsx";
 import ButtonGroupSizes from "examples/mui/ButtonGroup.sizes.tsx";
+import ButtonGroupSplit from "examples/mui/ButtonGroup.split.tsx";
 import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
 import type { KnobProps } from "~/~utils.tsx";
@@ -16,6 +17,7 @@ export default function ButtonGroupExamples({
 		<DefaultPropsProvider value={{ MuiButtonGroup: { disabled } }}>
 			<Stack spacing={4} sx={{ alignItems: "start" }}>
 				<ButtonGroupDefault />
+				<ButtonGroupSplit />
 				<ButtonGroupSizes />
 			</Stack>
 		</DefaultPropsProvider>

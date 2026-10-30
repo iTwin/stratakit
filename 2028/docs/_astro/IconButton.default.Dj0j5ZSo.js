@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{n as t}from"./example-embed.astro_astro_type_script_index_0_lang.BETJpAvD.js";import{t as n}from"./download.BE33DH9J.js";var r=e(),i=()=>(0,r.jsx)(t,{label:`Download`,icon:n});export{i as default};

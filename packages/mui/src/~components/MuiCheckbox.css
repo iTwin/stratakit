@@ -38,14 +38,6 @@
 	padding: 0;
 	position: relative;
 
-	/* This pseudo-element increases tap target size to 24x24 */
-	&::before {
-		content: "";
-		position: absolute;
-		inset: calc(((24px - var(--✨size)) / 2) * -1); /* Makes touch target area 24px */
-		border-radius: 50%;
-	}
-
 	> input {
 		appearance: none;
 		opacity: 1;
@@ -56,6 +48,13 @@
 		border: 1px solid var(--_MuiCheckbox-border-color);
 		border-radius: var(--_MuiCheckbox-border-radius);
 		position: relative;
+
+		/* This pseudo-element increases target size to 24x24 */
+		&::before {
+			content: "";
+			position: absolute;
+			inset: calc(-1 * (((24px - var(--✨size)) / 2) + 1px));
+		}
 
 		/* This pseudo-element adds the actual checkmark SVG via `--_MuiCheckbox-mask-image` */
 		&::after {
@@ -118,8 +117,8 @@
 	}
 
 	@media (any-hover: hover) {
-		&:where(:hover)::before,
-		:where(.MuiFormControlLabel-root:hover) &::before {
+		&:where(:hover) > input::before,
+		:where(.MuiFormControlLabel-root:hover) & > input::before {
 			background-color: var(--_MuiCheckbox-hover-overlay-color);
 		}
 	}

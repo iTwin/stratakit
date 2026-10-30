@@ -43,10 +43,6 @@
 		--_MuiButton-padding-inline: var(--stratakit-space-400);
 	}
 
-	&:where(:has(> .🥝Icon)) {
-		--_MuiButton-padding-inline: var(--_MuiButton-padding-block);
-	}
-
 	&:where(.MuiButton-colorSecondary) {
 		--variant-containedBg: var(--stratakit-color-bg-neutral-base);
 		--variant-containedColor: var(--stratakit-color-text-neutral-primary);

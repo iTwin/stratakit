@@ -14,16 +14,23 @@ import {
 	SyntaxKind,
 	type Symbol as TSMorphSymbol,
 	type Type as TSMorphType,
+	type TypeAliasDeclaration,
 	TypeFormatFlags,
 	type TypeNode,
 } from "ts-morph";
 
 const repoPath = process.env.REPO_PATH || "../..";
 
-const packageNames = ["mui", "foundations", "bricks", "structures"];
+const packageNames = [
+	"mui",
+	"foundations",
+	"bricks",
+	"structures",
+	"internal-utils",
+];
 
 const baseTypeNames = ["BaseProps", "FocusableProps"];
-const utilityFunctions = ["loadFoundationsStyles"];
+const utilityFunctions = ["loadFoundationsStyles", "PortalContext"];
 
 type Api = Api.Package[];
 
@@ -90,18 +97,26 @@ function generateApi() {
 			tsConfigFilePath: `${packageDir}/tsconfig.json`,
 		});
 
-		const utilsSourceFiles = [
-			project.getSourceFile("~utils.d.ts"),
-			project.getSourceFile("~utils.tsx"),
-		];
-		utilsSourceFiles.forEach((sourceFile) => {
-			if (!sourceFile) return;
-			const mergeProps = sourceFile.getTypeAliasOrThrow("MergeProps");
+		const sourceFiles = project.getSourceFiles();
+		sourceFiles.forEach((sourceFile) => {
+			const mergeProps = sourceFile.getTypeAlias("MergeProps");
+			if (!mergeProps) return;
+
 			// Omits underlying element props
 			mergeProps.replaceWithText(
 				"type MergeProps<ElementType extends React.ElementType, CustomProps extends Record<string, unknown>> = CustomProps",
 			);
 		});
+
+		const baseTypeDeclarations = baseTypeNames
+			.map((baseTypeName) => {
+				for (const sourceFile of sourceFiles) {
+					const typeAlias = sourceFile.getTypeAlias(baseTypeName);
+					if (typeAlias) return typeAlias;
+				}
+				return undefined;
+			})
+			.filter(Boolean) as TypeAliasDeclaration[];
 
 		// Read subpath exports
 		const packageJsonStr = fs.readFileSync(
@@ -109,14 +124,15 @@ function generateApi() {
 			"utf-8",
 		);
 		const { exports: packageExports } = JSON.parse(packageJsonStr) as {
-			exports: { [key: string]: string };
+			exports: { [key: string]: Record<string, string> };
 		};
 		const subpaths = Object.entries(packageExports)
-			.filter(([key]) => {
+			.filter(([key, value]) => {
 				if (key === ".") return false;
 				if (key === "./secret-internals") return false;
 				if (key === "./types.d.ts") return false;
 				if (key.endsWith(".json")) return false;
+				if (value["@stratakit/source"].endsWith(".ts")) return false;
 				return true;
 			})
 			.map(([key]) => {
@@ -133,9 +149,11 @@ function generateApi() {
 			const sourceFile = project.getSourceFileOrThrow(`${fileName}.tsx`);
 			const convenience = getConvenienceComponent({
 				sourceFile,
+				baseTypeDeclarations,
 			});
 			const composition = getCompositionComponents({
 				sourceFile,
+				baseTypeDeclarations,
 			});
 
 			apis.push({
@@ -146,8 +164,8 @@ function generateApi() {
 			});
 		}
 
-		const barrel = project.getSourceFileOrThrow("index.ts");
-		const barrelExports = barrel.getExportSymbols();
+		const barrel = project.getSourceFile("index.ts");
+		const barrelExports = barrel ? barrel.getExportSymbols() : [];
 		for (const barrelExport of barrelExports) {
 			const barrelName = barrelExport.getName();
 
@@ -155,7 +173,9 @@ function generateApi() {
 			if (!barrelExportAlias) continue;
 
 			// Handle star exports from submodules: `export * as ErrorRegion from ...`
-			const aliasedExports = barrelExportAlias.getExports();
+			const aliasedExports = barrelExportAlias
+				.getExports()
+				.filter((exp) => exp.getName() !== "displayName");
 			const exports =
 				aliasedExports.length > 0 ? aliasedExports : [barrelExportAlias];
 
@@ -198,6 +218,7 @@ function generateApi() {
 					// Handle components that are not exported by subpath exports
 					component = getComponent({
 						exportSymbol,
+						baseTypeDeclarations,
 					});
 					if (!component) continue;
 
@@ -217,8 +238,9 @@ function generateApi() {
 			apis.push(baseTypesApi);
 		}
 
+		const name = packageName === "internal-utils" ? "common" : packageName;
 		packages.push({
-			name: packageName,
+			name,
 			apis,
 		});
 	}
@@ -247,9 +269,15 @@ function getReexport(symbol: TSMorphSymbol): Api.Reexport | undefined {
 
 	if (!aliasPackageName) return undefined;
 	if (packageName === aliasPackageName) return undefined;
+
+	// Quick fix alias names with paths: packages/bricks/dist/Table -> Table
+	const declaration = alias.getDeclarations().at(0);
+	const sourceFile = declaration?.asKind(SyntaxKind.SourceFile);
+
+	const apiName = sourceFile?.getBaseNameWithoutExtension() ?? symbol.getName();
 	return {
 		packageName: aliasPackageName,
-		apiName: alias.getName(),
+		apiName,
 	};
 }
 
@@ -259,16 +287,29 @@ function getPackageNameFromFilePath(symbol: TSMorphSymbol) {
 	return match ? match[1] : undefined;
 }
 
-function getConvenienceComponent({ sourceFile }: { sourceFile: SourceFile }) {
+function getConvenienceComponent({
+	sourceFile,
+	baseTypeDeclarations,
+}: {
+	sourceFile: SourceFile;
+	baseTypeDeclarations: TypeAliasDeclaration[];
+}) {
 	const exportSymbol = sourceFile.getDefaultExportSymbol();
 	if (!exportSymbol) return undefined;
 
 	return getComponent({
 		exportSymbol,
+		baseTypeDeclarations,
 	});
 }
 
-function getCompositionComponents({ sourceFile }: { sourceFile: SourceFile }) {
+function getCompositionComponents({
+	sourceFile,
+	baseTypeDeclarations,
+}: {
+	sourceFile: SourceFile;
+	baseTypeDeclarations: TypeAliasDeclaration[];
+}) {
 	const defaultExportSymbol = sourceFile.getDefaultExportSymbol();
 	const allExportSymbols = sourceFile.getExportSymbols();
 	const exportSymbols = allExportSymbols
@@ -285,6 +326,7 @@ function getCompositionComponents({ sourceFile }: { sourceFile: SourceFile }) {
 	for (const exportSymbol of exportSymbols) {
 		const component = getComponent({
 			exportSymbol,
+			baseTypeDeclarations,
 		});
 		if (!component) continue;
 
@@ -307,7 +349,13 @@ function getSymbolSourcePos(sourceFile: SourceFile, symbol: TSMorphSymbol) {
 	}, Infinity);
 }
 
-function getComponent({ exportSymbol }: { exportSymbol: TSMorphSymbol }) {
+function getComponent({
+	exportSymbol,
+	baseTypeDeclarations,
+}: {
+	exportSymbol: TSMorphSymbol;
+	baseTypeDeclarations: TypeAliasDeclaration[];
+}) {
 	// Use aliased symbol for `export { X as Y };` OR default export.
 	const aliasedSymbol = exportSymbol.getAliasedSymbol();
 	// Use export symbol for direct exports `export const X = ...;`
@@ -321,12 +369,17 @@ function getComponent({ exportSymbol }: { exportSymbol: TSMorphSymbol }) {
 		? symbol.getName()
 		: exportSymbol.getName();
 	const baseElement = getBaseElement({ symbol });
-	const baseProperties = getBaseProperties({ symbol });
-	const baseProps = baseProperties.map((bp) => {
-		const typeName = getBaseTypeName(bp.baseType);
-		const propertyName = bp.property.getName();
-		return `${typeName}.${propertyName}`;
+	const baseProperties = getBaseProperties({
+		symbol,
+		baseTypeDeclarations,
 	});
+	const baseProps = baseProperties
+		.map((bp) => {
+			const typeName = bp.baseTypeDeclaration?.getNameNode().getText();
+			const propertyName = bp.property.getName();
+			return `${typeName}.${propertyName}`;
+		})
+		.sort();
 	const props = getComponentProps({
 		symbol,
 		baseProperties: baseProperties.map((bp) => bp.property),
@@ -376,7 +429,13 @@ function getBaseElement({ symbol }: { symbol: TSMorphSymbol }) {
 	return baseElement;
 }
 
-function getBaseProperties({ symbol }: { symbol: TSMorphSymbol }) {
+function getBaseProperties({
+	symbol,
+	baseTypeDeclarations,
+}: {
+	symbol: TSMorphSymbol;
+	baseTypeDeclarations: TypeAliasDeclaration[];
+}) {
 	const declaration = symbol.getDeclarations().at(0);
 	if (!declaration) return [];
 
@@ -400,22 +459,28 @@ function getBaseProperties({ symbol }: { symbol: TSMorphSymbol }) {
 	const propsBaseTypes = propsType.getBaseTypes();
 	const propTypes = [propsType, ...propsBaseTypes];
 
-	const basePropType = propTypes.find((propBaseType) => {
-		return getBaseTypeName(propBaseType);
+	const baseTypeDeclaration = baseTypeDeclarations.find((baseTypeDecl) => {
+		const baseType = baseTypeDecl.getType();
+		return propTypes.includes(baseType);
 	});
+
+	const basePropType = baseTypeDeclaration?.getType();
 	if (basePropType) {
 		return basePropType.getProperties().map((property) => ({
 			property,
 			baseType: basePropType,
+			baseTypeDeclaration,
 		}));
 	}
 
 	// Handle Omit<BaseProps<"div">, "children">
 	for (const propType of propTypes) {
 		const aliasTypeArguments = propType.getAliasTypeArguments();
-		const baseType = aliasTypeArguments.find((aliasTypeArgument) => {
-			return getBaseTypeName(aliasTypeArgument);
+		const baseTypeDeclaration = baseTypeDeclarations.find((baseTypeDecl) => {
+			const baseType = baseTypeDecl.getType();
+			return aliasTypeArguments.includes(baseType);
 		});
+		const baseType = baseTypeDeclaration?.getType();
 		if (!baseType) continue;
 
 		const baseTypeProperties = baseType.getProperties();
@@ -428,6 +493,7 @@ function getBaseProperties({ symbol }: { symbol: TSMorphSymbol }) {
 			.map((property) => ({
 				property,
 				baseType,
+				baseTypeDeclaration,
 			}));
 	}
 	return [];
@@ -572,9 +638,9 @@ function getBaseTypesApi({
 	project: Project;
 	packageName: string;
 }): Api.Api | undefined {
-	if (packageName !== "foundations") return undefined;
+	if (packageName !== "internal-utils") return undefined;
 
-	const sourceFile = project.getSourceFile("~utils.tsx");
+	const sourceFile = project.getSourceFile("props.ts");
 	if (!sourceFile) return undefined;
 
 	const types = baseTypeNames.map((name) => {
@@ -597,21 +663,11 @@ function getBaseTypesApi({
 
 	return {
 		name: "Utils",
-		exportName: "Internal Utils",
+		exportName: "Common",
 		description: "Utility types used by StrataKit components.",
 		composition: [],
 		types,
 	};
-}
-
-function getBaseTypeName(type: TSMorphType) {
-	return baseTypeNames.find((baseTypeName) => {
-		const text = type.getText(
-			undefined,
-			TypeFormatFlags.OmitParameterModifiers,
-		);
-		return text.startsWith(baseTypeName);
-	});
 }
 
 function getDeprecated(node: JSDocableNode) {

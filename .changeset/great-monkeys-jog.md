@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Updated closeIcon in `Alert`.
+Updated the appearance of close button in `Alert`.

@@ -41,10 +41,14 @@ namespace Api {
 	}
 
 	export interface Api {
+		/** Module name: `Progress` for `Progress.tsx`. */
 		name: string;
 		description?: string;
+		/** Name of the subpath export: `unstable_AccordionItem` for `@stratakit/structures/unstable_AccordionItem`. */
 		exportName?: string;
+		/** Default export component. */
 		convenience?: Component;
+		/** Named export components. */
 		composition: Component[];
 		types?: Type[];
 		reexport?: Reexport;

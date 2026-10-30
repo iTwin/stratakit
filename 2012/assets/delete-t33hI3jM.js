@@ -1,1 +1,0 @@
-import{t as e}from"./delete-DDoN-j4s.js";`${e}`;var t=`${e}#icon-large`;export{t};

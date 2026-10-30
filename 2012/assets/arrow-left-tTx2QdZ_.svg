@@ -1,5 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg">
-  <symbol id="icon" fill="none" viewBox="0 0 16 16"><path fill="currentColor" d="M5.647 4.146a.5.5 0 0 1 .707.707L3.707 7.5H13.5a.5.5 0 0 1 0 1H3.707l2.647 2.646.064.078a.5.5 0 0 1-.693.694l-.078-.065-3.5-3.5a.5.5 0 0 1 0-.707l3.5-3.5Z"/></symbol>
-  <symbol id="icon-large" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.354 5.146a.5.5 0 0 0-.708 0l-6.5 6.5a.5.5 0 0 0 0 .707l6.5 6.5a.5.5 0 1 0 .707-.707L4.708 12.5H20.5a.5.5 0 0 0 0-1H4.707l5.647-5.646a.5.5 0 0 0 0-.708Z" clip-rule="evenodd"/></symbol>
-  <use href="#icon"/>
-</svg>

@@ -1,1 +1,0 @@
-import{X as e,q as t}from"./jsx-runtime-GiK9V3Xy.js";import{B as n,E as r}from"./DefaultPropsProvider-BlgllZbr.js";var i=e(t(),1);function a(e){return Object.keys(e).length===0}function o(e=null){let t=i.useContext(n);return!t||a(t)?e:t}var s=r();function c(e=s){return o(e)}export{o as n,c as t};

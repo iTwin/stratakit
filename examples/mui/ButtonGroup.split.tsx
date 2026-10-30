@@ -12,16 +12,17 @@ import { svgChevronDown } from "@stratakit/icons/chevron-down";
 import { Icon } from "@stratakit/mui";
 
 export default () => {
+	const primaryButtonId = React.useId();
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 	const open = Boolean(anchorEl);
 	const handleClose = () => setAnchorEl(null);
 
 	return (
 		<>
-			<ButtonGroup aria-label="Paste actions">
-				<Button>Paste</Button>
+			<ButtonGroup aria-labelledby={primaryButtonId}>
+				<Button id={primaryButtonId}>Paste</Button>
 				<Button
-					aria-label="More paste actions"
+					aria-label="Alternatives"
 					aria-haspopup="true"
 					aria-expanded={open ? "true" : "false"}
 					onClick={(event) => setAnchorEl(event.currentTarget)}

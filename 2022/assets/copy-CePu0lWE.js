@@ -1,1 +1,0 @@
-import{t as e}from"./copy-BmfpFdon.js";`${e}`;var t=`${e}#icon-large`;export{t};

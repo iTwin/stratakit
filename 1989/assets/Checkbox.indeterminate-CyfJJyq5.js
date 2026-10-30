@@ -1,1 +1,0 @@
-import{t as e}from"./jsx-runtime-GiK9V3Xy.js";import{t}from"./Checkbox-D-czxJUa.js";import{t as n}from"./FormControlLabel-DpsmK1Fu.js";var r=e(),i=()=>(0,r.jsx)(n,{control:(0,r.jsx)(t,{indeterminate:!0}),label:`Indeterminate`});export{i as default};

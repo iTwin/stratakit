@@ -1,0 +1,1 @@
+import{t as e}from"./more-vertical-CFFKiSk4.js";var t=`${e}#icon`;`${e}`;export{t};

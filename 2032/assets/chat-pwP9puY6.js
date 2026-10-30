@@ -1,0 +1,1 @@
+import{t as e}from"./chat-BR0YpGIB.js";var t=`${e}#icon`;`${e}`;export{t};

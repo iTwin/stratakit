@@ -46,6 +46,9 @@ function getComponentHeading(component: (typeof components)[number]) {
 		}
 		return getHeading(api.name);
 	}
+	if (api.name === component.name) {
+		return getHeading(component.name);
+	}
 	return getHeading(`${api.name}.${component.name}`);
 }
 

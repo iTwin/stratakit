@@ -6,7 +6,7 @@ links:
   apiReference: "#api-reference"
 ---
 
-::example{src="mui/Table.default"}
+::example{src="mui/Table.default" min-height="375px"}
 
 ## StrataKit MUI modifications
 
@@ -20,19 +20,19 @@ links:
 
 ### Footer
 
-::example{src="mui/Table.footer"}
+::example{src="mui/Table.footer" min-height="475px"}
 
 ### Dense
 
 Use `size="small"` for compact interfaces with limited screen real estate or when displaying large datasets.
 
-::example{src="mui/Table.small"}
+::example{src="mui/Table.small" min-height="300px"}
 
 ### Row selection
 
 Use a [**Checkbox**](/components/checkbox) within the **Table**'s first column to give the user a clear indicator that rows can be selected. Combine it with the `TableRow`'s [`selected`](https://mui.com/material-ui/api/table-row/#table-row-prop-selected) prop to visually reinforce selected rows.
 
-::example{src="mui/Table.select"}
+::example{src="mui/Table.select" min-height="375px"}
 
 :::caution
 Placing a "select all" checkbox within the column header is not recommended.
@@ -46,7 +46,17 @@ The [`sortDirection`](https://mui.com/material-ui/api/table-cell/#table-cell-pro
 
 This example is adapted from the [MUI Table Sorting example](https://mui.com/material-ui/react-table/#sorting-selecting) and follows the accessibility guidance described in [Adrian Roselli's article on sortable table columns](https://adrianroselli.com/2021/04/sortable-table-columns.html).
 
-::example{src="mui/Table.sort"}
+::example{src="mui/Table.sort" min-height="425px"}
+
+### Number Alignment
+
+When creating a table that has number values it is often desirable for the user to be able to quickly compare numbers by scanning down the columns of the table.
+
+- Right align numeric cells using the [`text-align`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/text-align) CSS property or [`TableCell`'s `align`](https://mui.com/material-ui/api/table-cell/#table-cell-prop-align) prop.
+- Set the CSS property [`font-variant-numeric: tabular-nums`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/font-variant-numeric) on the column with numbers. This ensures each digit takes up the same width and the place values align across rows.
+- Use an instance of [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) to format the numbers. Set `minimumFractionDigits` and `maximumFractionDigits` set to the same value to insure that all numbers have the same number of fractional digits and the place values align.
+
+::example{src="mui/Table.numberAlignment" min-height="500px"}
 
 ## API reference
 

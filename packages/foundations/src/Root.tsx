@@ -5,7 +5,6 @@
 
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
 import { identity } from "@stratakit/internal-utils/common";
 import {
@@ -287,6 +286,7 @@ const PortalContext = React.createContext<
 	  }
 	| undefined
 >(undefined);
+DEV: PortalContext.displayName = "PortalContext";
 
 // ----------------------------------------------------------------------------
 
@@ -308,18 +308,16 @@ function RootPortalProvider(props: RootPortalProviderProps) {
 		<PortalContext.Provider
 			value={{ container, unstable_getContainer: getContainer }}
 		>
-			<AkPortalContext.Provider value={container}>
-				<Role render={portalProvider ?? <React.Fragment />}>
-					<PortalContainer
-						colorScheme={props.colorScheme}
-						unstable_accentColor={props.unstable_accentColor}
-						density={props.density}
-						ref={useMergedRefs(containerRef, setContainer)}
-						render={props.portalContainerProp}
-					/>
-					{props.children}
-				</Role>
-			</AkPortalContext.Provider>
+			<Role render={portalProvider ?? <React.Fragment />}>
+				<PortalContainer
+					colorScheme={props.colorScheme}
+					unstable_accentColor={props.unstable_accentColor}
+					density={props.density}
+					ref={useMergedRefs(containerRef, setContainer)}
+					render={props.portalContainerProp}
+				/>
+				{props.children}
+			</Role>
 		</PortalContext.Provider>
 	);
 }

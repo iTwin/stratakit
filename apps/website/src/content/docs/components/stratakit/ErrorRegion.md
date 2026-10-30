@@ -121,13 +121,13 @@ Ensure that the `id` attributes are unique in the entire document. Additionally,
 
 ### Tree errors
 
-Collocate errors raised from a **Tree** component in an **ErrorRegion**.
+Collate errors raised from a **Tree** component in an **ErrorRegion**.
 
-When an error occurs, within the **Tree**:
+Within the **Tree**, when an error occurs:
 
 1. [`error`](/reference/structures/Tree/#Tree.Item.error) is applied to the `Tree.Item` in question.
 2. `label` of the `ErrorRegion.Root` is updated to reflect the change. For example, if there was already one error present in the tree, use a label like _“2 errors found”_. This updated label will be announced in screen reader software.
-3. `items` of the `ErrorRegion.Root` is repopulated to include the new `ErrorItem`.
+3. `items` of the `ErrorRegion.Root` is repopulated to include the new `ErrorRegion.Item`.
 4. [`actions`](/reference/structures/Tree/#Tree.Item.actions) of the `Tree.Item` are used for addressing the error within the `Tree.Item` itself.
 
 :::caution[Focus management]

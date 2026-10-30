@@ -90,6 +90,35 @@ const [open, setOpen] = React.useState(false);
 <ErrorRegion.Root open={open} setOpen={setOpen} />;
 ```
 
+### Error association
+
+Use the `messageId` prop of `ErrorRegion.Item` to semantically associate the error message with the related UI element, such as a `Tree.Item`. The specified `messageId` is applied as the [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id) to the node that displays the error, enabling referencing via attributes like [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby). When used with the `Tree.Item`, the `error` attribute should reference the `messageId`.
+
+```tsx "load-error"
+<ErrorRegion.Item messageId="load-error" />
+
+<Tree.Item error="load-error" />
+```
+
+To ensure bidirectional association with the `ErrorRegion.Item`, reference the related UI element in the `message` of `ErrorRegion.Item`.
+
+```tsx "imodels"
+<ErrorRegion.Item
+	message={
+		<>
+			<span>Failed to create hierarchy for </span>
+			<Anchor href="#imodels"">iModels</Anchor>
+		</>
+	}
+/>
+
+<Tree.Item id="imodels" />
+```
+
+:::caution[Unique IDs]
+Ensure that the `id` attributes are unique in the entire document. Additionally, `id` attributes should be stable between page reloads when linking them via the [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment).
+:::
+
 ### Within the Tree
 
 When an error occurs:

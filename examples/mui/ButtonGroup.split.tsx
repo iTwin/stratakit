@@ -6,7 +6,6 @@
 import * as React from "react";
 import Button from "@mui/material/Button";
 import ButtonGroup from "@mui/material/ButtonGroup";
-import IconButton from "@mui/material/IconButton";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { svgChevronDown } from "@stratakit/icons/chevron-down";
@@ -21,15 +20,14 @@ export default () => {
 		<>
 			<ButtonGroup aria-label="Paste actions">
 				<Button>Paste</Button>
-				<IconButton
-					variant="outlined"
-					label="More paste actions"
+				<Button
+					aria-label="More paste actions"
 					aria-haspopup="true"
 					aria-expanded={open ? "true" : "false"}
 					onClick={(event) => setAnchorEl(event.currentTarget)}
 				>
 					<Icon href={svgChevronDown} />
-				</IconButton>
+				</Button>
 			</ButtonGroup>
 
 			<Menu anchorEl={anchorEl} open={open} onClose={handleClose}>

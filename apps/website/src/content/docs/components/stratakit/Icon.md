@@ -10,13 +10,13 @@ links:
 
 The **Icon** component ensures a consistent visual style for icons throughout the user interface. It is optimized for use with [StrataKit icons](/icons/), but it also supports [custom icons](#custom).
 
-Use the [`href`](/reference/mui/Icon/#Icon.Icon.href) prop to specify the icon you want to display. It accepts a [URI reference](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment) that resolves to an SVG or one of its [`<symbol>` elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/symbol). Named exports from [`@stratakit/icons`](/icons/) work out-of-the-box.
+Use the [`href`](/reference/mui/Icon/#Icon.href) prop to specify the icon you want to display. It accepts a [URI reference](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment) that resolves to an SVG or one of its [`<symbol>` elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/symbol). Named exports from [`@stratakit/icons`](/icons/) work out-of-the-box.
 
 ## Examples
 
 ### Sizes
 
-Use the [`size`](/reference/mui/Icon/#Icon.Icon.size) prop to adjust the **Icon's** physical dimensions.
+Use the [`size`](/reference/mui/Icon/#Icon.size) prop to adjust the **Icon's** physical dimensions.
 
 - **Regular:** Default size, suitable for most use cases.
 - **Large:** Increased size, use in larger spaces.
@@ -25,7 +25,7 @@ Use the [`size`](/reference/mui/Icon/#Icon.Icon.size) prop to adjust the **Icon'
 
 ### Decorative
 
-Omit the [`alt`](/reference/mui/Icon/#Icon.Icon.alt) prop if the **Icon** is purely decorative. This will hide the **Icon** from assistive technologies.
+Omit the [`alt`](/reference/mui/Icon/#Icon.alt) prop if the **Icon** is purely decorative. This will hide the **Icon** from assistive technologies.
 
 In the example below, the Button already has an accessible name, so the **Icon** is considered decorative.
 

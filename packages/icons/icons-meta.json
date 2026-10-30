@@ -1095,7 +1095,7 @@
 			"adjust",
 			"configure",
 			"settings",
-			"prefences"
+			"preferences"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -1292,7 +1292,7 @@
 	},
 	"correspondence-issues": {
 		"aliases": [
-			"smail",
+			"mail",
 			"envelope",
 			"letter",
 			"communication",

@@ -5,14 +5,20 @@ description: Self-host the fonts used by StrataKit.
 
 StrataKit uses the following fonts:
 
-- [`InterVariable`](https://rsms.me/inter/) as the primary interface font for most text on the page, including headings.
-- [`IBM Plex Mono Var`](https://github.com/IBM/plex/tree/master/packages/plex-mono-variable) as the monospace font (e.g. for code snippets).
+- [Inter](https://rsms.me/inter/) as the primary interface font for most text on the page, including headings.
+- [IBM Plex Mono](https://github.com/IBM/plex/tree/master/packages/plex-mono-variable) as the monospace font (e.g. for code snippets).
 
 We recommend self-hosting all fonts for better performance, reliability, and security.
 
-## InterVariable
+:::caution[Avoid third-party sources]
+We recommend downloading the font files from the official sources linked below. Third-party sources, such as Google Fonts or Fontsource, may use different `font-family` names or even serve a different version of the font altogether, which can result in visual differences.
 
-`InterVariable` is set as StrataKit's primary interface font, via the `--stratakit-font-family-sans` CSS variable.
+StrataKit only references the exact `font-family` names listed below, so the `@font-face` rules _must_ use these names.
+:::
+
+## Inter
+
+StrataKit uses the variable version of [Inter](https://rsms.me/inter/), referenced by the font-family name `InterVariable` in the `--stratakit-font-family-sans` CSS variable.
 
 To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.me/inter/font-files/InterVariable.woff2) and [`InterVariable-Italic.woff2`](https://rsms.me/inter/font-files/InterVariable-Italic.woff2) font files from the [official website](https://rsms.me/inter/), and serve them alongside your other assets. Then include the following CSS in the `<head>` of your document, replacing the placeholder paths with the correct path to where the fonts are located:
 
@@ -39,9 +45,9 @@ To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.
 If the `InterVariable` font-face is not available on the page, the [`Root`](/components/root/) component will automatically load it from [Inter's official CDN](https://rsms.me/inter/#faq-cdn) as a fallback. This results in an external request, which could get blocked by security policies. Self-hosting avoids any such potential issues.
 :::
 
-## IBM Plex Mono Var (optional)
+## IBM Plex Mono (optional)
 
-`IBM Plex Mono Var` is set as StrataKit's monospace font, via the `--stratakit-font-family-mono` CSS variable.
+StrataKit uses the variable version of [IBM Plex Mono](https://github.com/IBM/plex/tree/master/packages/plex-mono-variable), referenced by the font-family name `IBM Plex Mono Var` in the `--stratakit-font-family-mono` CSS variable.
 
 To self-host `IBM Plex Mono Var`, download the [`IBM Plex Mono Var-Roman.woff2`](https://github.com/IBM/plex/blob/master/packages/plex-mono-variable/fonts/complete/woff2/IBM%20Plex%20Mono%20Var-Roman.woff2) and [`IBM Plex Mono Var-Italic.woff2`](https://github.com/IBM/plex/blob/master/packages/plex-mono-variable/fonts/complete/woff2/IBM%20Plex%20Mono%20Var-Italic.woff2) font files from the [official repository](https://github.com/IBM/plex/tree/master/packages/plex-mono-variable/fonts/complete/woff2), and serve them alongside your other assets. Then include the following CSS in the `<head>` of your document, replacing the placeholder paths with the correct path to where the fonts are located:
 

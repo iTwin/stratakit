@@ -9,6 +9,7 @@ import ButtonGroup from "@mui/material/ButtonGroup";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import { svgChevronDown } from "@stratakit/icons/chevron-down";
+import { svgChevronUp } from "@stratakit/icons/chevron-up";
 import { Icon } from "@stratakit/mui";
 
 export default () => {
@@ -28,7 +29,7 @@ export default () => {
 					aria-expanded={open ? "true" : "false"}
 					onClick={() => setOpen(true)}
 				>
-					<Icon href={svgChevronDown} />
+					<Icon href={!open ? svgChevronDown : svgChevronUp} />
 				</Button>
 			</ButtonGroup>
 

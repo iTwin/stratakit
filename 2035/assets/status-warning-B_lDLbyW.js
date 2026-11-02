@@ -1,1 +1,0 @@
-import{t as e}from"./status-warning-Hp2YR3S4.js";var t=`${e}#icon`;`${e}`;export{t};

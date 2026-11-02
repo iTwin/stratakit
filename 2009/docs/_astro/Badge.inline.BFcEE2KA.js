@@ -1,0 +1,1 @@
+import{dr as e}from"./chevron-down.DMAXlk1_.js";import{t}from"./Badge.C_DhM8f7.js";var n=e(),r=()=>(0,n.jsx)(t,{badgeContent:`Pending`,variant:`inline`});export{r as default};

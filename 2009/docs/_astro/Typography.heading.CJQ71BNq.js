@@ -1,1 +1,0 @@
-import{dr as e}from"./chevron-down.DJw5FcHM.js";import{t}from"./Typography.tIpv2r_A.js";var n=e(),r=()=>(0,n.jsx)(t,{variant:`headline-md`,render:(0,n.jsx)(`h2`,{}),children:`Heading text`});export{r as default};

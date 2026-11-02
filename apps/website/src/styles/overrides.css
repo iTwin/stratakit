@@ -26,7 +26,8 @@
 
 	--sl-main-pad: var(--stratakit-space-400);
 
-	--sl-font: "InterVariable", system-ui, sans-serif;
+	--sl-font: var(--stratakit-font-family-sans, "InterVariable");
+	--sl-font-mono: var(--stratakit-font-family-mono, "IBM Plex Mono Var");
 }
 
 #starlight__sidebar {

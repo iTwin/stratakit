@@ -10,7 +10,7 @@ links:
 
 ## StrataKit MUI modifications
 
-- The `font-family` has been changed to `InterVariable`. See [self-hosting fonts](/getting-started/develop/#self-hosting-the-fonts).
+- The primary `font-family` has been changed to `InterVariable`. See [self-hosting fonts](/getting-started/fonts/).
 - The typography scale has been adjusted to better align with StrataKit's more compact visual language.
 - Several new [`variant`s](#variants) have been added.
 - The default `variant` is now `"inherit"` instead of `"body1"`.

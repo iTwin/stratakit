@@ -43,7 +43,7 @@ function createIconComponent(href: string) {
 		function IconComponent(props, forwardedRef) {
 			const { titleAccess, ...rest } = props;
 			return (
-				<Icon {...rest} href={href} ref={forwardedRef} alt={titleAccess} />
+				<Icon alt={titleAccess} {...rest} href={href} ref={forwardedRef} />
 			);
 		},
 	);

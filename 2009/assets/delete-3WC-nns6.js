@@ -1,1 +1,0 @@
-import{t as e}from"./delete-CU2h8-oL.js";`${e}`;var t=`${e}#icon-large`;export{t};

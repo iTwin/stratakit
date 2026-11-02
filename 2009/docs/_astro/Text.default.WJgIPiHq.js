@@ -1,1 +1,0 @@
-import{dr as e}from"./chevron-down.DMAXlk1_.js";import{t}from"./Text.DhZ9G1O0.js";var n=e(),r=()=>(0,n.jsx)(t,{variant:`body-sm`,children:`Basic text`});export{r as default};

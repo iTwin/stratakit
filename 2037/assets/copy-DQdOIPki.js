@@ -1,0 +1,1 @@
+import{t as e}from"./copy-DreZH0Fo.js";`${e}`;var t=`${e}#icon-large`;export{t};

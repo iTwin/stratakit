@@ -1,0 +1,1 @@
+import{t as e}from"./error-Dz_Psosd.js";var t=`${e}#icon`;`${e}`;export{t};

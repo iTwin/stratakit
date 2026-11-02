@@ -1,0 +1,1 @@
+import{t as e}from"./copy-uiCuT2hh.js";`${e}`;var t=`${e}#icon-large`;export{t};

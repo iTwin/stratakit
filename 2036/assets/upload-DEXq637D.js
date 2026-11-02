@@ -1,0 +1,1 @@
+import{t as e}from"./upload-Cem5z1iK.js";var t=`${e}#icon`;`${e}`;export{t};

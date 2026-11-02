@@ -1,0 +1,1 @@
+import{i as e,n as t}from"./jsx-runtime.Dk72oS4N.js";var n=e(t(),1),r=typeof window<`u`?n.useLayoutEffect:n.useEffect;function i(e){let t=n.useRef(e);return r(()=>{t.current=e}),n.useRef((...e)=>(0,t.current)(...e)).current}export{r as n,i as t};

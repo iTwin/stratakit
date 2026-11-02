@@ -55,7 +55,7 @@
 
 	@media (any-hover: hover) {
 		&:where(:hover) {
-			&:where(.MuiIconButton-colorSecondary) {
+			&:where(:not(.MuiIconButton-colorPrimary, .MuiIconButton-colorError)) {
 				--_MuiIconButton-icon-color: var(--stratakit-color-icon-neutral-primary);
 				--_MuiIconButton-background: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 			}

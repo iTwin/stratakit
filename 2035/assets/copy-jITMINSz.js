@@ -1,0 +1,1 @@
+import{t as e}from"./copy-CMxut-9e.js";`${e}`;var t=`${e}#icon-large`;export{t};

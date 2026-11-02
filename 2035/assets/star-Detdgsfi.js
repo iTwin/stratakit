@@ -1,0 +1,1 @@
+import{t as e}from"./star-x-4fn_26.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

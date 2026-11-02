@@ -12,6 +12,7 @@
 }
 
 .MuiButton-root {
+	column-gap: var(--stratakit-space-200);
 	min-block-size: var(--_MuiButton-height);
 	min-inline-size: var(--_MuiButton-height);
 	padding-block-start: var(--_MuiButton-padding-block);
@@ -43,8 +44,12 @@
 		--_MuiButton-padding-inline: var(--stratakit-space-400);
 	}
 
-	&:where(:has(> .🥝Icon), [aria-label]:has(> .MuiButton-icon)) {
+	&:where(:has(> .🥝Icon)) {
 		--_MuiButton-padding-inline: var(--_MuiButton-padding-block);
+	}
+
+	&:where(:has(> .MuiButton-icon)) {
+		column-gap: var(--stratakit-space-300);
 	}
 
 	&:where(.MuiButton-colorSecondary) {
@@ -121,4 +126,5 @@
 
 .MuiButton-icon {
 	color: var(--_MuiButton-icon-color);
+	margin-inline: calc(var(--stratakit-space-100) * -1);
 }

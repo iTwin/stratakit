@@ -20,6 +20,8 @@ import { isProduction, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
 
+import plexMonoVariableItalic from "./assets/IBM Plex Mono Var-Italic.woff2?url";
+import plexMonoVariable from "./assets/IBM Plex Mono Var-Roman.woff2?url";
 import interVariable from "./assets/InterVariable.woff2?url";
 import interVariableItalic from "./assets/InterVariable-Italic.woff2?url";
 
@@ -129,21 +131,35 @@ function useIsRootTest() {
 
 function Fonts() {
 	return (
-		// Based on https://rsms.me/inter/inter.css
+		// Based on https://rsms.me/inter/inter.css and https://github.com/IBM/plex/blob/master/packages/plex-mono-variable/fonts/split/woff2/IBM%20Plex%20Mono%20Var-Roman.css
 		<style>{`
 @font-face {
   font-family: InterVariable;
   font-style: normal;
-  font-weight 100 900;
+  font-weight: 100 900;
   font-display: swap;
   src: url(${interVariable}) format("woff2");
 }
 @font-face {
   font-family: InterVariable;
   font-style: italic;
-  font-weight 100 900;
+  font-weight: 100 900;
   font-display: swap;
   src: url(${interVariableItalic}) format("woff2");
+}
+@font-face {
+  font-family: 'IBM Plex Mono Var';
+  font-style: normal;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url(${plexMonoVariable}) format("woff2");
+}
+@font-face {
+  font-family: 'IBM Plex Mono Var';
+  font-style: italic;
+  font-weight: 100 700;
+  font-display: swap;
+  src: url(${plexMonoVariableItalic}) format("woff2");
 }
 `}</style>
 	);

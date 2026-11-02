@@ -1,0 +1,1 @@
+import{t as e}from"./upload-D-l5ynin.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./jsx-runtime.Dk72oS4N.js";import{i as t}from"./Anchor.EOXm6tbb.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{tone:`accent`,href:`https://www.example.com/`,children:`Accent`}),(0,n.jsx)(t,{tone:`neutral`,href:`https://www.example.com/`,children:`Neutral`})]});export{r as default};

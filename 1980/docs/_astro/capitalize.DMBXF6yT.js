@@ -1,1 +1,0 @@
-import{j as e}from"./DefaultPropsProvider.CMtx5EYl.js";var t=e;export{t};

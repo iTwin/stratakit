@@ -1,1 +1,0 @@
-var e=`/1970/docs/_astro/star.BiFwr69e.svg`,t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

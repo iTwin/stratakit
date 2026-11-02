@@ -1,1 +1,0 @@
-import{t as e}from"./user.DvhD20HV.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

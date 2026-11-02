@@ -1,1 +1,0 @@
-import{t as e}from"./placeholder.BgvY_MMY.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,1 +1,0 @@
-var e=`/1970/docs/_astro/status-draft.CqfFrtfd.svg`,t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

@@ -1,1 +1,0 @@
-import{b as e,y as t}from"./DefaultPropsProvider.BFMl2K7d.js";function n(t){return e(`MuiListItemText`,t)}var r=t(`MuiListItemText`,[`root`,`multiline`,`dense`,`inset`,`primary`,`secondary`]);export{r as n,n as t};

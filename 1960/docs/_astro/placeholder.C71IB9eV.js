@@ -1,1 +1,0 @@
-import{t as e}from"./placeholder.rMNMDu_w.js";var t=`${e}#icon`;`${e}`;export{t};

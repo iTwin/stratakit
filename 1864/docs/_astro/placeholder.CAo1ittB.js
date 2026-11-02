@@ -1,1 +1,0 @@
-import{t as e}from"./placeholder.B6_yIGcL.js";var t=`${e}#icon`;`${e}`;export{t};

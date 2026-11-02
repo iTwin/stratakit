@@ -1,1 +1,0 @@
-import{C as e,S as t}from"./DefaultPropsProvider.CMQOYUA8.js";function n(t){return e(`MuiListItemButton`,t)}var r=t(`MuiListItemButton`,[`root`,`focusVisible`,`dense`,`alignItemsFlexStart`,`disabled`,`divider`,`gutters`,`selected`]);export{r as n,n as t};

@@ -1,0 +1,1 @@
+import{t as e}from"./script-DPiO79-h.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

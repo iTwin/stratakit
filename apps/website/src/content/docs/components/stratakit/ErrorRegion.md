@@ -101,17 +101,18 @@ Use the [`messageId`](/reference/structures/ErrorRegion/#ErrorRegion.Item.messag
 <Tree.Item error="load-error" />
 ```
 
-To ensure bidirectional association with the `ErrorRegion.Item`, reference the related UI element in the `message` of `ErrorRegion.Item`.
+To ensure bidirectional association with the `ErrorRegion.Item`, reference the related UI element in the `message` prop. This message can include a [Link](/components/link) to provide a convenient way for the user to return back to associated element.
 
 ```tsx "imodels"
 <ErrorRegion.Item
 	message={
 		<>
-			<span>Failed to create hierarchy</span>
-			<Anchor href="#imodels">iModels</Anchor>
+			<span>Failed to create hierarchy for</span>
+			<Link href="#imodels">iModels</Link>
 		</>
 	}
 />
+```
 
 <Tree.Item id="imodels" />
 ```

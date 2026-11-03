@@ -1,0 +1,10 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.root {
+	align-items: center;
+	flex-direction: row;
+	gap: var(--stratakit-space-100);
+}

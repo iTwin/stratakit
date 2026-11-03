@@ -6,7 +6,7 @@ import { unstable_Banner as Banner } from "@stratakit/structures";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Banner
 				tone="neutral"
 				label="Update complete"

@@ -1,10 +1,13 @@
 // @ts-check
 
+import { readFileSync } from "node:fs";
+
 import { unified } from "@astrojs/markdown-remark";
 import starlight from "@astrojs/starlight";
 import { defineConfig } from "astro/config";
 import remarkDirective from "remark-directive";
 import { visit } from "unist-util-visit";
+import { copyrightBannerJs } from "internal/copyright-linter.ts";
 
 const BASE_URL = process.env.BASE_FOLDER
 	? `/${process.env.BASE_FOLDER}/docs`
@@ -71,6 +74,16 @@ export default defineConfig({
 				},
 				{ label: "Guides", items: [{ autogenerate: { directory: "guides" } }] },
 				{
+					label: "Tokens",
+					items: [
+						{
+							label: "Overview",
+							slug: "tokens/overview",
+						},
+						{ autogenerate: { directory: "tokens" } },
+					],
+				},
+				{
 					label: "Components",
 					items: [
 						{
@@ -95,7 +108,6 @@ export default defineConfig({
 					],
 				},
 				{ label: "Icons", slug: "icons" },
-				{ label: "Examples", link: "/examples" },
 				{ label: "API Reference", link: "/reference" },
 				{ label: "Changelog", slug: "changelog" },
 				{ label: "Contributing", slug: "contributing" },
@@ -151,8 +163,8 @@ function rehypeWrapTables({ tagName = "responsive-table" } = {}) {
  * Remark plugin that processes `::example{src="..."}` directives to embed live examples.
  *
  * Requires a `src` attribute. Optionally supported attributes:
- * - `min-width`
- * - `min-height`
+ * - `min-width` - rounded up to the nearest 25px.
+ * - `min-height` - rounded up to the nearest 25px.
  * - `vertical-align` - allowed values: "stretch". By default the example is vertically centered.
  */
 function remarkLiveExamples() {
@@ -173,6 +185,18 @@ function remarkLiveExamples() {
 					return;
 				}
 
+				let rawSource;
+				try {
+					rawSource = readFileSync(
+						new URL(import.meta.resolve(`examples/${src}.tsx`)),
+						"utf8",
+					);
+				} catch {
+					file.fail(`Could not read example source: ${src}.tsx`, node);
+					return;
+				}
+				const trimmedSource = rawSource.replace(copyrightBannerJs, "").trim();
+
 				node.data ||= {};
 
 				const verticalStretch =
@@ -190,7 +214,13 @@ function remarkLiveExamples() {
 					"data-src": src,
 					...(style ? { style } : {}),
 				};
-				node.children = [];
+				node.children = [
+					{
+						type: "code",
+						lang: "tsx",
+						value: trimmedSource,
+					},
+				];
 			}
 		});
 	};

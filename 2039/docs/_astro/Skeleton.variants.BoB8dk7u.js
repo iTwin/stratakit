@@ -1,0 +1,1 @@
+import{dr as e}from"./chevron-down.DB6num7i.js";import{t}from"./VisuallyHidden.Cykkw52x.js";import{t as n}from"./Skeleton.BhJ2vs0o.js";var r=e(),i=()=>(0,r.jsxs)(`div`,{style:{display:`flex`,gap:8,alignItems:`center`},children:[(0,r.jsx)(n,{variant:`object`}),(0,r.jsx)(n,{variant:`text`}),(0,r.jsx)(t,{children:`Loading…`})]});export{i as default};

@@ -32,6 +32,16 @@ An **ErrorRegion** constitutes two key components:
 - **[`ErrorRegion.Root`](/reference/structures/ErrorRegion/#ErrorRegion.Root)**: The [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) that contains the errors.
 - **[`ErrorRegion.Item`](/reference/structures/ErrorRegion/#ErrorRegion.Item)**: Represents a discrete error within the **ErrorRegion**.
 
+### Labels
+
+The **ErrorRegion**'s visible [`label`](/reference/structures/ErrorRegion/#ErrorRegion.Root.label) is typically used to itemize the errors, with a value like _“3 issues present”_.
+
+In addition, the [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) must be identified to screen reader software using a stable label. Apply an [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) with the value _“Layer errors”_ or similar. The region itself is discoverable by screen reader software even when no errors are present and the region is not visible.
+
+```tsx
+<ErrorRegion.Root aria-label="Layer errors" label={`${issues.length} issues found`} />
+```
+
 ### Errors
 
 `ErrorRegion.Item`'s are supplied via the [`items`](/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop of `ErrorRegion.Root`. Each item in the array represents a discrete error and together they form a list of errors within the **ErrorRegion**. `ErrorRegion.Item`'s [`message`](/reference/structures/ErrorRegion/#ErrorRegion.Item.message) prop can take any JSX.
@@ -55,16 +65,6 @@ actions={
 ## Interaction
 
 The behavior of the **ErrorRegion** and the relationship between `ErrorRegion.Item`s and related UI elements can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
-
-### Identification
-
-The **ErrorRegion**'s visible [`label`](/reference/structures/ErrorRegion/#ErrorRegion.Root.label) is typically used to itemize the errors, with a value like _“3 issues present”_.
-
-In addition, the [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) must be identified to screen reader software using a stable label. Apply an [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) with the value _“Layer errors”_ or similar. The region itself is discoverable by screen reader software even when no errors are present and the region is not visible.
-
-```tsx
-<ErrorRegion.Root aria-label="Layer errors" label={`${issues.length} issues found`} />
-```
 
 ### Visibility
 

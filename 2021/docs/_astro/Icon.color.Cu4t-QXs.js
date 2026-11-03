@@ -1,0 +1,1 @@
+import{St as e,dr as t}from"./chevron-down.C11fm_G-.js";import{t as n}from"./error.CQPn_o1q.js";var r={icon:`_icon_18p5z_6`},i=t(),a=()=>(0,i.jsx)(e,{className:r.icon,href:n});export{a as default};

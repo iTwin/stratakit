@@ -1,0 +1,1 @@
+import{St as e,dr as t}from"./chevron-down.C11fm_G-.js";import{t as n}from"./Avatar.imR_kguD.js";import{t as r}from"./user.C54p_Fx6.js";var i=t(),a=()=>(0,i.jsx)(n,{"aria-label":`Kit Stratan`,role:`img`,children:(0,i.jsx)(e,{href:r})});export{a as default};

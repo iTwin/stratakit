@@ -1,0 +1,1 @@
+import{dr as e}from"./chevron-down.DE9l2vU1.js";import{t}from"./Button.BvMDegTH.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{tone:`accent`,children:`Accent`}),(0,n.jsx)(t,{tone:`neutral`,children:`Neutral`})]});export{r as default};

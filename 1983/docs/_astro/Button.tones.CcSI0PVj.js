@@ -1,1 +1,0 @@
-import{dr as e}from"./chevron-down.DfkdHZ3x.js";import{t}from"./Button.Coz_dC4k.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{tone:`accent`,children:`Accent`}),(0,n.jsx)(t,{tone:`neutral`,children:`Neutral`})]});export{r as default};

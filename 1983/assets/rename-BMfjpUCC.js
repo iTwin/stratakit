@@ -1,1 +1,0 @@
-import{t as e}from"./rename-hgv_Vg3N.js";var t=`${e}#icon`;`${e}`;export{t};

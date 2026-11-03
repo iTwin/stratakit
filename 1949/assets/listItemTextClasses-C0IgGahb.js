@@ -1,1 +1,0 @@
-import{S as e}from"./DefaultPropsProvider-CttC6f9u.js";import{n as t}from"./memoTheme-C7OvJhA7.js";function n(t){return e(`MuiListItemIcon`,t)}var r=t(`MuiListItemIcon`,[`root`,`alignItemsFlexStart`]);function i(t){return e(`MuiListItemText`,t)}var a=t(`MuiListItemText`,[`root`,`multiline`,`dense`,`inset`,`primary`,`secondary`]);export{r as i,a as n,n as r,i as t};

@@ -195,9 +195,16 @@ function createTheme() {
 						success: <SuccessIcon />,
 						warning: <WarningIcon />,
 					},
+					slots: {
+						closeIcon: withExcludedProps(DismissIcon, [
+							"ownerState",
+							"fontSize",
+						]),
+					},
 					slotProps: {
 						closeButton: {
 							edge: "end",
+							color: "secondary",
 						},
 					},
 				},

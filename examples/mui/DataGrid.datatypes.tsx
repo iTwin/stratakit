@@ -245,7 +245,6 @@ export default function DataTypesExample() {
 				Device Inventory
 			</Typography>
 			<DataGrid
-				sx={{ height: "420px" }}
 				showToolbar
 				rows={rows}
 				columns={columns}

@@ -3,10 +3,6 @@
 ---
 
 <script>
-	import { createElement } from "react";
-	import { ExampleEmbed } from "./ExampleEmbed.tsx";
-	import { mountPortal } from "./StrataKitRoot.tsx";
-
 	customElements.define(
 		"example-embed",
 		class extends HTMLElement {
@@ -27,11 +23,18 @@
 				this.attachShadow({ mode: "open" }).append(this.#previewSlot, this.#sourceSlot);
 			}
 
-			connectedCallback() {
+			async connectedCallback() {
 				this.#controller = new AbortController();
+				const { signal } = this.#controller;
 
 				const src = this.dataset.src;
 				if (!src) return;
+
+				// Lazy-loaded so that pages without examples don't load React.
+				const { mountPortal } = await import("./StrataKitRoot.tsx");
+				const { createElement } = await import("react");
+				const { ExampleEmbed } = await import("./ExampleEmbed.tsx");
+				if (signal.aborted) return;
 
 				const unmount = mountPortal({
 					element: createElement(ExampleEmbed, {
@@ -42,8 +45,7 @@
 					}),
 					target: this,
 				});
-
-				this.#controller.signal.onabort = () => unmount?.();
+				signal.onabort = () => unmount?.();
 			}
 
 			disconnectedCallback() {

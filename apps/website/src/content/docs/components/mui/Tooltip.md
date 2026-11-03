@@ -38,7 +38,7 @@ Make sure the **Tooltip** is suitable for your use case. In some cases, a static
 
 The **Tooltip** supports 12 [`placement`](https://mui.com/material-ui/api/tooltip/#tooltip-prop-placement) options. The example highlights 4 of the most common.
 
-::example{src="mui/Tooltip.direction"}
+::example{src="mui/Tooltip.direction" min-height="300px"}
 
 ### Label
 

@@ -44,11 +44,7 @@
 		--_MuiButton-padding-inline: var(--stratakit-space-400);
 	}
 
-	&:where(:has(> .🥝Icon)) {
-		--_MuiButton-padding-inline: var(--_MuiButton-padding-block);
-	}
-
-	&:where(:has(> .MuiButton-icon)) {
+	&:where(:has(> .MuiButton-icon, :is(.MuiButton-root > .🥝Icon))) {
 		column-gap: var(--stratakit-space-300);
 	}
 
@@ -124,7 +120,7 @@
 	}
 }
 
-.MuiButton-icon {
+:is(.MuiButton-icon, :where(.MuiButton-root > .🥝Icon)) {
 	color: var(--_MuiButton-icon-color);
 	margin-inline: calc(var(--stratakit-space-100) * -1);
 }

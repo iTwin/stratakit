@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.CKlAt_PZ.js";var t=`${e}#icon`;`${e}`;export{t};

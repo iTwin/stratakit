@@ -1,0 +1,1 @@
+import{dr as e}from"./chevron-down.fa0MJvTo.js";import{t}from"./Chip.D24GuI5v.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{onDismiss:()=>{},label:`sort:updated-desc`}),(0,n.jsx)(t,{onDismiss:()=>{},label:`is:pr`}),(0,n.jsx)(t,{onDismiss:()=>{},label:`is:open`})]});export{r as default};

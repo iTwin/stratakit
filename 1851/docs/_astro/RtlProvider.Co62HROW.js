@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.BIHhs0cK.js";import{t}from"./react.DFMT2RoL.js";import{n}from"./example-embed.astro_astro_type_script_index_0_lang.BkB3NX6Y.js";var r=n(t(),1),i=e(),a=r.createContext(void 0);function o({value:e,...t}){return(0,i.jsx)(a.Provider,{value:e??!0,...t})}var s=()=>r.useContext(a)??!1;export{s as n,o as t};

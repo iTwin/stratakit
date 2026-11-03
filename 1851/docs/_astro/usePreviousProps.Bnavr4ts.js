@@ -1,0 +1,1 @@
+import{t as e}from"./react.DFMT2RoL.js";import{n as t}from"./example-embed.astro_astro_type_script_index_0_lang.BkB3NX6Y.js";var n=t(e(),1);function r(e){let t=n.useRef({});return n.useEffect(()=>{t.current=e}),t.current}export{r as t};

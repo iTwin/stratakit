@@ -21,7 +21,11 @@ const MuiSnackbar = forwardRef<"div", BaseProps<"div">>(
 
 		return (
 			<AkPortalContext.Provider value={container ?? null}>
-				<Portal {...props} ref={forwardedRef} />
+				<Portal
+					{...props}
+					data-color-scheme="dark" // force dark mode for all descendants
+					ref={forwardedRef}
+				/>
 			</AkPortalContext.Provider>
 		);
 	},

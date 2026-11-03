@@ -1,0 +1,1 @@
+var e=`/1851/docs/_astro/chevron-left.BbSGwDxv.svg`,t=`${e}#icon`;`${e}`;var n=`/1851/docs/_astro/chevron-right.ia40WXiF.svg`,r=`${n}#icon`;`${n}`;export{t as n,r as t};

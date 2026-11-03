@@ -1,0 +1,1 @@
+var e=`/1851/docs/_astro/clock.BGP3CvPS.svg`,t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

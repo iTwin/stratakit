@@ -6,7 +6,7 @@ links:
   apiReference: "#api-reference"
 ---
 
-::example{src="mui/AppBar.default" min-width="450px"}
+::example{src="mui/AppBar.default" min-width="450px" min-height="150px"}
 
 ## StrataKit MUI modifications
 

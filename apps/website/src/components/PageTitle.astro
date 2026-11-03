@@ -24,12 +24,17 @@ function getBreadcrumbsFromRoute(id: string | undefined) {
 	const apiName = parts.slice(2).join("/"); // In case there are more parts
 	const baseUrl = import.meta.env.BASE_URL;
 
+	const packageCrumb =
+		packageId === "common"
+			? undefined
+			: {
+					label: `@stratakit/${packageId}`,
+					href: `${baseUrl}/reference/#${packageId}`,
+				};
+
 	return [
 		{ label: "API Reference", href: `${baseUrl}/reference/` },
-		{
-			label: `@stratakit/${packageId}`,
-			href: `${baseUrl}/reference/#${packageId}`,
-		},
+		...(packageCrumb ? [packageCrumb] : []),
 		{ label: apiName },
 	];
 }

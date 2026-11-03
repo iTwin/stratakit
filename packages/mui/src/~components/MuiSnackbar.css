@@ -5,6 +5,11 @@
 
 .MuiSnackbarContent-root:is(.MuiPaper-root) {
 	background-color: var(--stratakit-color-bg-elevation-emphasis);
+	box-shadow: var(--stratakit-shadow-surface-lg);
+
+	border: none;
+	outline: 1px solid var(--stratakit-color-border-elevation-base);
+	outline-offset: -2px;
 }
 
 :is(.MuiSnackbarContent-action) .MuiIconButton-root {

@@ -14,7 +14,7 @@ Additionally, it allows you to configure the [color scheme](#color-scheme) and [
 
 ## Color scheme
 
-Set the required [`colorScheme`](/reference/mui/Root#Root.Root.colorScheme) prop to apply a color scheme to all StrataKit components on the page.
+Set the required [`colorScheme`](/reference/mui/Root#Root.colorScheme) prop to apply a color scheme to all StrataKit components on the page.
 
 ```tsx
 <Root colorScheme="dark">{/* Your app goes here */}</Root>
@@ -28,7 +28,7 @@ StrataKit synchronizes the color scheme with the parent document or a shadow-roo
 
 ## Root node
 
-Use the [`rootNode`](/reference/mui/Root#Root.Root.rootNode) prop to customize the [root node](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode) to which this **Root** component is attached. This needs to be set when the **Root** is rendered within [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM) or a [popup window](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#description).
+Use the [`rootNode`](/reference/mui/Root#Root.rootNode) prop to customize the [root node](https://developer.mozilla.org/en-US/docs/Web/API/Node/getRootNode) to which this **Root** component is attached. This needs to be set when the **Root** is rendered within [shadow DOM](https://developer.mozilla.org/en-US/docs/Web/API/Web_components/Using_shadow_DOM) or a [popup window](https://developer.mozilla.org/en-US/docs/Web/API/Window/open#description).
 
 ```tsx
 <Root rootNode={popup.document}>
@@ -36,7 +36,7 @@ Use the [`rootNode`](/reference/mui/Root#Root.Root.rootNode) prop to customize t
 
 ## Accent color
 
-Use the [`unstable_accentColor`](/reference/mui/Root#Root.Root.unstable_accentColor) prop to set the accent color applied to all StrataKit components under the **Root**.
+Use the [`unstable_accentColor`](/reference/mui/Root#Root.unstable_accentColor) prop to set the accent color applied to all StrataKit components under the **Root**.
 
 - **Aurora** (default): StrataKit's preferred green accent color.
 - **Cobalt**: Blue accent color for better compatibility with older, iTwinUI-based applications.
@@ -59,7 +59,9 @@ The prop is marked unstable, as we finalize its API. If you have feedback or use
 
 ## Portal container
 
-The **Root** component creates a separate [portal container](https://react.dev/reference/react-dom/createPortal#usage-notes) element for components that need to render outside of the normal React tree. This includes `Autocomplete`, `Dialog`, `Drawer`, `Menu`, `Modal`, `Popover`, `Popper`, `Select`, `Snackbar`, `SwipeableDrawer`, and `Tooltip`.
+The **Root** component creates a separate [portal container](https://react.dev/reference/react-dom/createPortal#usage-notes) element for components that need to render outside of the normal React tree. This includes [**Autocomplete**](/components/autocomplete), [**Dialog**](/components/dialog), [**Drawer**](/components/drawer), [**Menu**](/components/menu), `Modal`, [**Popover**](/components/popover), `Popper`, [**Select**](/components/select), [**Snackbar**](/components/snackbar), [**SwipeableDrawer**](/components/drawer/#swipeabledrawer), and [**Tooltip**](/components/tooltip).
+
+The portal container can be adjusted for a sub-tree of the application by using the [**PortalProvider**](/components/portalprovider).
 
 ## ✅ Do
 

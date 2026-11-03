@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.0.5
+
+### Patch Changes
+
+- [#1984](https://github.com/iTwin/stratakit/pull/1984): Updated the value of `--stratakit-color-bg-elevation-base` in light mode.
+- [#1911](https://github.com/iTwin/stratakit/pull/1911): Updated the values of all `--stratakit-shadow-*` tokens.
+
+## 1.0.4
+
+### Patch Changes
+
+- [#1963](https://github.com/iTwin/stratakit/pull/1963): Removed leftover `-faded` variables from light mode. These variables were previously removed from dark mode as part of the `1.0.0` release.
+
 ## 1.0.3
 
 ### Patch Changes

@@ -7,7 +7,7 @@ import { svgPlaceholder } from "@stratakit/icons/placeholder";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<IconButton variant="solid" label="Solid" icon={svgPlaceholder} />
 			<IconButton variant="outline" label="Outline" icon={svgPlaceholder} />
 			<IconButton variant="ghost" label="Ghost" icon={svgPlaceholder} />

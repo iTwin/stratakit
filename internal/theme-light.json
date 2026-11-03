@@ -136,7 +136,7 @@
 			"elevation": {
 				"base": {
 					"$type": "color",
-					"$value": "{p-color.white.100}"
+					"$value": "{p-color.gray.3}"
 				},
 				"emphasis": {
 					"$type": "color",
@@ -348,10 +348,6 @@
 					"$type": "color",
 					"$value": "{p-color.gray.500}"
 				},
-				"faded": {
-					"$type": "color",
-					"$value": "{p-color.gray.700}"
-				},
 				"muted": {
 					"$type": "color",
 					"$value": "{p-color.gray.100}"
@@ -361,10 +357,6 @@
 				"base": {
 					"$type": "color",
 					"$value": "{p-color.aurora.500}"
-				},
-				"faded": {
-					"$type": "color",
-					"$value": "{p-color.aurora.700}"
 				},
 				"muted": {
 					"$type": "color",
@@ -380,10 +372,6 @@
 					"$type": "color",
 					"$value": "{p-color.blue.500}"
 				},
-				"faded": {
-					"$type": "color",
-					"$value": "{p-color.blue.700}"
-				},
 				"muted": {
 					"$type": "color",
 					"$value": "{p-color.blue.100}"
@@ -397,10 +385,6 @@
 				"muted": {
 					"$type": "color",
 					"$value": "{p-color.green.100}"
-				},
-				"faded": {
-					"$type": "color",
-					"$value": "{p-color.green.700}"
 				}
 			},
 			"attention": {
@@ -411,10 +395,6 @@
 				"muted": {
 					"$type": "color",
 					"$value": "{p-color.yellow.100}"
-				},
-				"faded": {
-					"$type": "color",
-					"$value": "{p-color.yellow.700}"
 				}
 			},
 			"🫥severe": {
@@ -425,10 +405,6 @@
 				"muted": {
 					"$type": "color",
 					"$value": "{p-color.orange.100}"
-				},
-				"faded": {
-					"$type": "color",
-					"$value": "{p-color.orange.700}"
 				}
 			},
 			"critical": {
@@ -439,10 +415,6 @@
 				"muted": {
 					"$type": "color",
 					"$value": "{p-color.red.100}"
-				},
-				"faded": {
-					"$type": "color",
-					"$value": "{p-color.red.700}"
 				}
 			},
 			"🫥highlight": {
@@ -453,10 +425,6 @@
 				"muted": {
 					"$type": "color",
 					"$value": "{p-color.pink.100}"
-				},
-				"faded": {
-					"$type": "color",
-					"$value": "{p-color.pink.700}"
 				}
 			},
 			"🫥special": {
@@ -467,10 +435,6 @@
 				"muted": {
 					"$type": "color",
 					"$value": "{p-color.purple.100}"
-				},
-				"faded": {
-					"$type": "color",
-					"$value": "{p-color.purple.700}"
 				}
 			},
 			"glow": {

@@ -6,6 +6,7 @@
 @layer {
 	.exampleEmbedRoot {
 		display: grid;
+		margin-block: 0;
 		align-items: var(--example-align-items, center);
 
 		> * {
@@ -27,6 +28,14 @@
 		place-self: end;
 		display: flex;
 		padding: 4px;
+	}
+
+	.sourceCodeButton svg {
+		transition: rotate 150ms ease-in-out;
+
+		:where(.sourceCodeButton[aria-expanded="true"]) & {
+			rotate: 180deg;
+		}
 	}
 }
 

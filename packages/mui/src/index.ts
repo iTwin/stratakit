@@ -5,4 +5,5 @@
 "use client";
 
 export { Icon } from "./Icon.js";
+export { PortalProvider } from "./PortalProvider.js";
 export { Root } from "./Root.js";

@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/playwright:v1.62.1-noble
+FROM mcr.microsoft.com/playwright:v1.64.0-noble
 RUN --mount=type=cache,target=/root/.npm \
     npm install -g pnpm@11.18.0
 

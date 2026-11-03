@@ -5,8 +5,10 @@
 
 import * as React from "react";
 import * as AkPopover from "@ariakit/react/popover";
+import { PortalContext as AkPortalContext } from "@ariakit/react/portal";
 import { useStoreState } from "@ariakit/react/store";
 import { Button } from "@stratakit/bricks";
+import { PortalContext } from "@stratakit/foundations";
 import {
 	useCloseWatcher,
 	usePopoverApi,
@@ -33,14 +35,18 @@ interface PopoverProviderProps
 function PopoverProvider(props: PopoverProviderProps) {
 	const { children, open, setOpen, placement = "bottom-start" } = props;
 
+	const { container } = React.useContext(PortalContext) ?? {};
+
 	return (
-		<AkPopover.PopoverProvider
-			open={open}
-			setOpen={setOpen}
-			placement={placement}
-		>
-			{children}
-		</AkPopover.PopoverProvider>
+		<AkPortalContext.Provider value={container ?? null}>
+			<AkPopover.PopoverProvider
+				open={open}
+				setOpen={setOpen}
+				placement={placement}
+			>
+				{children}
+			</AkPopover.PopoverProvider>
+		</AkPortalContext.Provider>
 	);
 }
 DEV: PopoverProvider.displayName = "PopoverProvider";

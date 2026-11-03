@@ -15,12 +15,12 @@ See [**Develop with StrataKit**](/getting-started/develop/) for detailed install
 
 By making an established open-source library responsible for generic components, we are free to focus efforts on developing components that solve more complex and specific tasks.
 
-**StrataKit**'s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating **StrataKit's** design tokens and [iconography](/icons/).
+**StrataKit**'s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating **StrataKit's** [design tokens](/tokens/overview/) and [iconography](/icons/).
 
 The theme includes the following modifications:
 
 1. **Styling**: The style has been aligned with **StrataKit's** visual language.
-2. **Typography**: **StrataKit's** principle font is [Inter](https://rsms.me/inter/), which needs to be [self-hosted](/getting-started/develop/#self-hosting-the-fonts).
+2. **Typography**: **StrataKit's** primary font is [InterVariable](https://rsms.me/inter/), which needs to be [self-hosted](/getting-started/fonts/).
 3. **Icons**: Component icons are taken exclusively from **StrataKit's** own icon collection.
 4. **API**: Some props have been adjusted or removed, and some new props have been added.
 5. **Structure and behavior**: The markup structure and interaction behavior of certain components have been modified to meet **StrataKit** UX and accessibility requirements.

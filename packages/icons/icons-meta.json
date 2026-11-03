@@ -2162,21 +2162,32 @@
 		"symbols": ["icon", "icon-large"]
 	},
 	"filetype-system": {
-		"aliases": ["file", "format"],
+		"aliases": [
+			"file",
+			"document",
+			"system",
+			"config",
+			"settings",
+			"format",
+			"os",
+			"binary",
+			"utility",
+			"code"
+		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"filetype-text": {
 		"aliases": [
 			"file",
-			"format",
-			"txt",
-			"text",
 			"document",
-			"plain text",
-			"notes",
-			"writing",
-			"read",
-			"edit"
+			"text",
+			"txt",
+			"format",
+			"content",
+			"copy",
+			"note",
+			"write",
+			"generic"
 		],
 		"symbols": ["icon", "icon-large"]
 	},

@@ -1,0 +1,1 @@
+import{dr as e}from"./chevron-down.BQiPWCNp.js";import{s as t}from"./disclosure-store.dqJ1Zcgg.js";import{a as n}from"./DpKu70iZ.DEzDBAXc.js";var r=e();function i(e={}){let i=n(e);return(0,r.jsx)(t,{value:i,children:e.children})}export{i as t};

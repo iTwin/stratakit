@@ -6,7 +6,7 @@ links:
   apiReference: "#api-reference"
 ---
 
-::example{src="mui/Alert.default"}
+::example{src="mui/Alert.default" min-height="175px"}
 
 ## StrataKit MUI modifications
 

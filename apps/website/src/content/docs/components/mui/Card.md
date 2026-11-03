@@ -48,7 +48,7 @@ Modifications to `CardActionArea`:
 
 Add multiple actions, at the foot of the **Card**, with the [`CardActions`](https://mui.com/material-ui/api/card-actions/) component.
 
-::example{src="mui/Card.actions"}
+::example{src="mui/Card.actions" min-height="375px"}
 
 :::caution
 **Cards** with `CardActions` must not include `CardActionArea`, which is better suited when the entire **Card** is actionable.
@@ -58,7 +58,7 @@ Add multiple actions, at the foot of the **Card**, with the [`CardActions`](http
 
 Add metadata and a [**Menu**](/components/menu) to [`CardHeader`](https://mui.com/material-ui/api/card-header/) using the `subheader` and `action` props.
 
-::example{src="mui/Card.menu" min-height="325px"}
+::example{src="mui/Card.menu" min-height="400px"}
 
 ### Heading levels
 

@@ -93,7 +93,7 @@ const [open, setOpen] = React.useState(false);
 
 ### Error association
 
-Use the [`messageId`](/reference/structures/ErrorRegion/#ErrorRegion.Item.messageId) prop of `ErrorRegion.Item` to semantically associate the error message with the related UI element, such as `Tree.Item`. The specified `messageId` is applied as the [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id) attribute to the node that displays the error, enabling referencing via attributes like [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby). When used with the `Tree.Item`, the [`error`](/reference/structures/Tree/#Tree.Item.error) prop should reference the `messageId`.
+Use the [`messageId`](/reference/structures/ErrorRegion/#ErrorRegion.Item.messageId) prop of `ErrorRegion.Item` to semantically associate the error message with the related UI element. The `messageId` sets the [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id) of the error message, which can then be referenced by attributes like [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby). When used with the `Tree.Item`, pass the same value to its [`error`](/reference/structures/Tree/#Tree.Item.error) prop.
 
 ```tsx "load-error"
 <ErrorRegion.Item messageId="load-error" />

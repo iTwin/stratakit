@@ -1,0 +1,1 @@
+import{t as e}from"./react.5lpE263c.js";import"./example-embed.astro_astro_type_script_index_0_lang.n4OJTuhw.js";e();function t(e){return e?.props?.ref||null}export{t};

@@ -31,12 +31,13 @@ import { svgStatusSuccess } from "@stratakit/icons/status-success";
 import { svgVisibilityHide } from "@stratakit/icons/visibility-hide";
 import { svgWarning } from "@stratakit/icons/warning";
 
+import type SvgIcon from "@mui/material/SvgIcon";
+
 // ----------------------------------------------------------------------------
 
-interface SvgProps extends React.SVGProps<SVGSVGElement> {
-	// Accept the MUI SvgIcon titleAccess prop as a way to set the accessible name of the element
-	titleAccess?: string;
-}
+interface SvgProps
+	extends React.SVGProps<SVGSVGElement>,
+		Pick<React.ComponentProps<typeof SvgIcon>, "titleAccess"> {}
 
 function createIconComponent(href: string) {
 	return React.forwardRef<SVGSVGElement, SvgProps>(

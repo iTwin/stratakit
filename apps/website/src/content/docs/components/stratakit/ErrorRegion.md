@@ -81,7 +81,8 @@ hasErrors ? <ErrorRegion.Root items={[<ErrorRegion.Item />]} /> : null;
 
 ### Disclosure
 
-The **ErrorRegion** is initially collapsed, showing only a toggle `<button>` to expand and reveal the list of `ErrorRegion.Item`s.
+The **ErrorRegion** is initially collapsed, showing only a toggle `<button>` to expand and reveal the list of `ErrorRegion.Item`s. This disclosure state is handled automatically by default.
+
 Alternatively, use the [`open`](/reference/structures/ErrorRegion/#ErrorRegion.Root.open) and [`setOpen`](/reference/structures/ErrorRegion/#ErrorRegion.Root.setOpen) props to control the disclosure state.
 
 ```tsx

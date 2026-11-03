@@ -1,1 +1,0 @@
-import{t as e}from"./delete-BEmF_CV_.js";`${e}`;var t=`${e}#icon-large`;export{t};

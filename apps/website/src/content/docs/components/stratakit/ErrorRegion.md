@@ -150,7 +150,7 @@ Within the **ErrorRegion**:
 
 In the example below, the described behavior is illustrated.
 
-::example{src="structures/ErrorRegion.tree" min-height="250px" min-width="450px" vertical-stretch}
+::example{src="structures/ErrorRegion.tree" min-height="400px" min-width="450px" vertical-stretch}
 
 ## ✅ Do
 

@@ -3,10 +3,11 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import { IconButton } from "@stratakit/bricks";
+import IconButton from "@mui/material/IconButton";
 import { svgChevronDown } from "@stratakit/icons/chevron-down";
 import { svgScript } from "@stratakit/icons/script";
 import { svgWindowPopout } from "@stratakit/icons/window-popout";
+import { Icon } from "@stratakit/mui";
 
 import styles from "./ExampleEmbed.module.css";
 
@@ -57,9 +58,8 @@ export function ExampleEmbed(props: ExampleEmbedProps) {
 
 			<div className={styles.toolbar}>
 				<IconButton
-					icon={svgChevronDown}
 					label="Source code"
-					variant="ghost"
+					size="small"
 					aria-expanded={sourceExpanded}
 					onClick={() => {
 						const expanded = !sourceExpanded;
@@ -67,19 +67,25 @@ export function ExampleEmbed(props: ExampleEmbedProps) {
 						onSourceToggle(expanded);
 					}}
 					className={styles.sourceCodeButton}
-				/>
+				>
+					<Icon href={svgChevronDown} />
+				</IconButton>
 				<IconButton
-					icon={svgWindowPopout}
 					label="Open in new tab"
-					variant="ghost"
-					render={<a href={getStandaloneExampleUrl(src)} target="_blank" />}
-				/>
+					size="small"
+					href={getStandaloneExampleUrl(src)}
+					target="_blank"
+				>
+					<Icon href={svgWindowPopout} />
+				</IconButton>
 				<IconButton
-					icon={svgScript}
 					label="View source on GitHub"
-					variant="ghost"
-					render={<a href={`${examplesSrcUrl}${src}.tsx`} target="_blank" />}
-				/>
+					size="small"
+					href={`${examplesSrcUrl}${src}.tsx`}
+					target="_blank"
+				>
+					<Icon href={svgScript} />
+				</IconButton>
 			</div>
 		</div>
 	);

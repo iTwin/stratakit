@@ -1,1 +1,0 @@
-import{t as e}from"./react.DFMT2RoL.js";import"./example-embed.astro_astro_type_script_index_0_lang.BkB3NX6Y.js";e();function t(e){return e?.props?.ref||null}export{t};

@@ -118,7 +118,7 @@ To ensure bidirectional association with the `ErrorRegion.Item`, reference the r
 ```
 
 :::caution[Unique IDs]
-Ensure that the `id` attributes are unique in the entire document. Additionally, `id` attributes should be stable between page reloads when linking them via the [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment).
+`id` attributes should be stable between page reloads when linking them via the [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment).
 :::
 
 ## Examples

@@ -25,6 +25,7 @@ export default function IconButtonExamples({
 				<IconButtonSizes />
 				<IconButtonVariants />
 				<IconButtonColors />
+				<InvalidColors />
 				<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
 					<IconButtonPlacements_ />
 				</Stack>
@@ -40,7 +41,7 @@ export const knobs = {
 export const InvalidColors = () => {
 	return (
 		/* @ts-expect-error force invalid color to tests implementations not using StrataKit types */
-		<IconButton color="default" title="default">
+		<IconButton color="default" label="default">
 			<Icon href={svgError} />
 		</IconButton>
 	);

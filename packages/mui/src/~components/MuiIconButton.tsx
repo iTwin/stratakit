@@ -27,7 +27,7 @@ const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 			className,
 			...rest
 		} = props;
-		const useSecondaryColor = !className?.includes("MuiIconButton-color");
+		const forceSecondaryColor = !className?.includes("MuiIconButton-color");
 
 		return (
 			<Tooltip
@@ -38,7 +38,7 @@ const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 				<MuiButtonBase
 					{...rest}
 					className={cx(className, {
-						"MuiIconButton-colorSecondary": useSecondaryColor,
+						"MuiIconButton-colorSecondary": forceSecondaryColor,
 					})}
 					data-_sk-variant={variant}
 					ref={forwardedRef}

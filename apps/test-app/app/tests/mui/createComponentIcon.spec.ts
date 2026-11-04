@@ -22,3 +22,19 @@ test("accepts titleAccess prop and converts it to label.", async ({ page }) => {
 	await expect(trueCell).toHaveAccessibleName("yes");
 	await expect(falseCell).toHaveAccessibleName("no");
 });
+
+test("Does not pass font-size through to SVG element on icons", async ({
+	page,
+}) => {
+	await page.goto("/standalone?path=mui/DataGrid.showcase&export=DataTypes");
+	const iconButton = await page.getByRole("button", { name: "Filters" });
+	const svg = iconButton.locator("css=svg");
+	await expect(svg).not.toHaveAttribute("font-size");
+});
+
+test("filters out ownerState", async ({ page }) => {
+	await page.goto("/standalone?path=mui/Alert.showcase&export=AlertClose");
+	const iconButton = await page.getByRole("button", { name: "Close" });
+	const svg = iconButton.locator("css=svg");
+	await expect(svg).not.toHaveAttribute("ownerState");
+});

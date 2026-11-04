@@ -196,10 +196,7 @@ function createTheme() {
 						warning: <WarningIcon />,
 					},
 					slots: {
-						closeIcon: withExcludedProps(DismissIcon, [
-							"ownerState",
-							"fontSize",
-						]),
+						closeIcon: DismissIcon,
 					},
 					slotProps: {
 						closeButton: {
@@ -416,7 +413,7 @@ function createTheme() {
 			MuiDatePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: withExcludedProps(CalendarIcon, ["ownerState"]),
+						openPickerIcon: CalendarIcon,
 					},
 					slotProps: {
 						openPickerButton: {
@@ -719,7 +716,7 @@ function createTheme() {
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: withExcludedProps(ClockIcon, ["ownerState"]),
+						openPickerIcon: ClockIcon,
 					},
 					slotProps: {
 						openPickerButton: {
@@ -816,23 +813,6 @@ function withRenderProp(
 ) {
 	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
 		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
-	});
-}
-
-// ----------------------------------------------------------------------------
-
-/** HOC that "excludes" certain props from being passed to the specified Component. */
-function withExcludedProps<Element, Props extends object>(
-	Component: React.ComponentType<Props & React.RefAttributes<Element>>,
-	excludedProps: readonly string[],
-) {
-	return React.forwardRef<Element, Props>((props, forwardedRef) => {
-		const filteredProps = { ...props };
-		for (const key of excludedProps) {
-			delete filteredProps[key as keyof React.PropsWithoutRef<Props>];
-		}
-
-		return <Component {...(filteredProps as Props)} ref={forwardedRef} />;
 	});
 }
 

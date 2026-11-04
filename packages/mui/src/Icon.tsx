@@ -42,7 +42,13 @@ interface SvgProps
 function createIconComponent(href: string) {
 	return React.forwardRef<SVGSVGElement, SvgProps>(
 		function IconComponent(props, forwardedRef) {
-			const { titleAccess, ...rest } = props;
+			const {
+				titleAccess,
+				//@ts-expect-error Not explicitly typed but DatePicker passes ownerState to openPickerIcon slot and it should be filtered out
+				ownerState: _ownerState,
+				fontSize: _fontSize,
+				...rest
+			} = props;
 			return (
 				<Icon alt={titleAccess} {...rest} href={href} ref={forwardedRef} />
 			);

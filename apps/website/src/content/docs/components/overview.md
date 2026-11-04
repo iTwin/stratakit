@@ -15,7 +15,7 @@ See [**Develop with StrataKit**](/getting-started/develop/) for detailed install
 
 By making an established open-source library responsible for generic components, we are free to focus efforts on developing components that solve more complex and specific tasks.
 
-**StrataKit**'s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating **StrataKit's** design tokens and [iconography](/icons/).
+**StrataKit**'s [**MUI** theme](https://www.npmjs.com/package/@stratakit/mui) ensures consistency across all components, incorporating **StrataKit's** [design tokens](/tokens/overview/) and [iconography](/icons/).
 
 The theme includes the following modifications:
 

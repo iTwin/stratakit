@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
-import Typography from "@mui/material/Typography";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 
 interface Asset {
@@ -238,29 +236,23 @@ const columns: GridColDef<Asset>[] = [
 ];
 
 export default function DataTypesExample() {
-	const captionId = React.useId();
 	return (
-		<div role="group" aria-labelledby={captionId}>
-			<Typography variant="headline-sm" id={captionId} render={<div />}>
-				Device Inventory
-			</Typography>
-			<DataGrid
-				showToolbar
-				rows={rows}
-				columns={columns}
-				getRowId={(row) => row.assetId}
-				initialState={{
-					pagination: {
-						paginationModel: {
-							pageSize: 10,
-						},
+		<DataGrid
+			label="Device Inventory"
+			showToolbar
+			rows={rows}
+			columns={columns}
+			getRowId={(row) => row.assetId}
+			initialState={{
+				pagination: {
+					paginationModel: {
+						pageSize: 10,
 					},
-				}}
-				pageSizeOptions={[5]}
-				checkboxSelection
-				disableRowSelectionOnClick
-				aria-labelledby={captionId}
-			/>
-		</div>
+				},
+			}}
+			pageSizeOptions={[5]}
+			checkboxSelection
+			disableRowSelectionOnClick
+		/>
 	);
 }

@@ -39,32 +39,9 @@ export const knobs = {
 
 export const InvalidColors = () => {
 	return (
-		<Stack direction="row" spacing={2}>
-			<IconButton color="secondary" title="secondary">
-				<Icon href={svgError} />
-			</IconButton>
-			{/* @ts-expect-error force invalid color to tests implementations not using StrataKit types */}
-			<IconButton color="default" title="default">
-				<Icon href={svgError} />
-			</IconButton>
-			{/* @ts-expect-error force invalid color to tests implementations not using StrataKit types */}
-			<IconButton color="info" title="info">
-				<Icon href={svgError} />
-			</IconButton>
-			{/* @ts-expect-error force invalid color to tests implementations not using StrataKit types */}
-			<IconButton color="success" title="success">
-				<Icon href={svgError} />
-			</IconButton>
-			{/* @ts-expect-error force invalid color to tests implementations not using StrataKit types */}
-			<IconButton color="warning" title="warning">
-				<Icon href={svgError} />
-			</IconButton>
-			<span style={{ color: "orangered" }}>
-				{/* @ts-expect-error force invalid color to tests implementations not using StrataKit types */}
-				<IconButton color="inherit" title="inherit">
-					<Icon href="error" />
-				</IconButton>
-			</span>
-		</Stack>
+		/* @ts-expect-error force invalid color to tests implementations not using StrataKit types */
+		<IconButton color="default" title="default">
+			<Icon href={svgError} />
+		</IconButton>
 	);
 };

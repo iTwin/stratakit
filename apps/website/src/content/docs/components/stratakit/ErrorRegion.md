@@ -117,7 +117,7 @@ To ensure bidirectional association with the `ErrorRegion.Item`, reference the r
 <Tree.Item id="imodels" />
 ```
 
-:::caution[Unique IDs]
+:::caution[Stable IDs]
 `id` attributes should be stable between page reloads when linking them via the [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment).
 :::
 

@@ -35,7 +35,8 @@ An **ErrorRegion** constitutes two key components:
 ### Labels
 
 The **ErrorRegion**'s visible [`label`](/reference/structures/ErrorRegion/#ErrorRegion.Root.label) is typically used to itemize the errors, with a value like _“3 issues present”_.
-The changes to the `label` prop are announced to assistive technologies via a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions), which requires the **ErrorRegion** to be mounted and attached to the DOM persistently.
+
+Changes to the `label` prop are announced to assistive technologies via a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions), which requires the **ErrorRegion** to be mounted and attached to the DOM persistently.
 
 In addition, the [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) must be identified to screen reader software using a stable label. Apply an [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) with the value _“Layer errors”_ or similar. The region itself is discoverable by screen reader software even when no errors are present and the region is not visible.
 

@@ -32,11 +32,11 @@ interface RadioTileProps {
 	value: string;
 	icon?: React.ReactNode;
 	disabled?: boolean;
-};
+}
 
 function RadioTiles(props: RadioTileProps) {
 	/* ... */
- }
+}
 ```
 
 **❌ Don't**
@@ -149,6 +149,34 @@ Use [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/Gu
 | max-width         | max-inline-size     |
 | max-height        | max-block-size      |
 
+### Namespace global identifiers
+
+Any identifiers that live in the global scope, such as CSS custom properties, keyframes, or global class names, should be namespaced with a prefix to avoid collisions with third-party styles. The exact prefix depends on the specific package where the styles live; check surrounding files for existing conventions.
+
+**✅ Do**
+
+```css
+@keyframes --🥝Skeleton-shimmer {
+}
+```
+
+```css
+@property --_MuiYearCalendar-fade-start {
+}
+```
+
+**❌ Don't**
+
+```css
+@keyframes shimmer {
+}
+```
+
+```css
+@property --fade-start {
+}
+```
+
 ### Wrap hover rules with media query
 
 Wrap any rules relating to hover with the [`any-hover` media query](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/any-hover). This prevents an undesirable situation on touch devices where the hover state may get stuck on after a tap.
@@ -158,6 +186,34 @@ Wrap any rules relating to hover with the [`any-hover` media query](https://deve
 	&:where(:hover) {
 		opacity: 1;
 	}
+}
+```
+
+### Forced-colors styles
+
+Define any styles related to [`forced-colors`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@media/forced-colors) in a dedicated `.css` file, separately from the main component styles. This allows all `forced-colors` styles to be imported and applied from one place. For example, see [`~forced-colors.css`](https://github.com/iTwin/stratakit/blob/main/packages/mui/src/~forced-colors.css).
+
+```css
+@import "./~forced-colors.css" (forced-colors: active);
+```
+
+Keep [`forced-color-adjust`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/forced-color-adjust) declarations scoped to the smallest set of elements possible, and include a brief code comment explaining why this declaration is necessary.
+
+**✅ Do**
+
+```css
+.MuiBottomNavigationAction-label {
+	&:where(.Mui-selected) {
+		forced-color-adjust: none; /* removing the backplate */
+	}
+}
+```
+
+**❌ Don't**
+
+```css
+.MuiBottomNavigationAction-content {
+	forced-color-adjust: none;
 }
 ```
 

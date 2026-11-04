@@ -20,10 +20,17 @@ links:
 - **Medium:** Default size, suitable for most use cases.
 - **Large:** Use in spacious layouts where a more prominent button is needed.
 
-::example{src="mui/ButtonGroup.sizes"}
+::example{src="mui/ButtonGroup.sizes" min-height="200px"}
+
+### Split button
+
+A split button combines a primary action with a [**Menu**](/components/menu) of related alternatives. Use the first button to run the primary action and the second button to open the menu.
+
+::example{src="mui/ButtonGroup.split"}
 
 ## API reference
 
 - [`ButtonGroup`](https://mui.com/material-ui/api/button-group/)
 - [`Button`](https://mui.com/material-ui/api/button/)
-- [`IconButton`](https://mui.com/material-ui/api/icon-button/)
+- [`Menu`](https://mui.com/material-ui/api/menu/)
+- [`MenuItem`](https://mui.com/material-ui/api/menu-item/)

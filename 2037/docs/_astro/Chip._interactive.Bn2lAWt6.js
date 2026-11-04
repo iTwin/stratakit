@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.CgQj45Lw.js";import{t}from"./Chip.Do5Nla8p.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Clickable and deletable Chip`,onClick:()=>{console.log(`Clicked`)},onDelete:()=>{console.log(`Deleted`)}});export{r as default};

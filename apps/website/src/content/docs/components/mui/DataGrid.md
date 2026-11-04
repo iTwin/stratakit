@@ -48,6 +48,15 @@ It has row and cell selection and editing as first class concepts. The grid is a
 
 ::example{src="mui/DataGrid.datatypes" min-height="775px"}
 
+### Non-selectable rows
+
+By default the **DataGrid** is configured to allow row selection. To use without row selection:
+
+- Set `checkboxSelection={false}` to hide the selection checkbox in the first column.
+- Set `isRowSelectable={()=>false}` to mark all rows as non selectable.
+
+::example{src="mui/DataGrid.nonselectable" min-height="500px"}
+
 ## ✅ Do
 
 - Use a **DataGrid** to handle large amounts of editable data.

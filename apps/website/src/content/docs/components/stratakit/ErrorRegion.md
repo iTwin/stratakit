@@ -107,10 +107,10 @@ To ensure bidirectional association with the `ErrorRegion.Item`, reference the r
 ```tsx "imodels"
 <ErrorRegion.Item
 	message={
-		<>
+		<p>
 			<span>Failed to create hierarchy for</span>
 			<Link href="#imodels">iModels</Link>
-		</>
+		</p>
 	}
 />
 

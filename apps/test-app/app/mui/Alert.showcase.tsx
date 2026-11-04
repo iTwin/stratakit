@@ -18,3 +18,5 @@ export default function AlertExamples() {
 		</Stack>
 	);
 }
+
+export { AlertClose };

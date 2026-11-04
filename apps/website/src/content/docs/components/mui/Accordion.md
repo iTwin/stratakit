@@ -45,14 +45,14 @@ Make sure the **Accordion** is suitable for your use case. There may be other, m
 
 Disclose any **Accordion's** content by default using the `defaultExpanded` prop. Alternatively, use `expanded` and `onChange` props to control the expanded state.
 
-::example{src="mui/Accordion.expanded"}
+::example{src="mui/Accordion.expanded" min-height="175px"}
 
 ### Variants
 
 - **Elevation:** Default accordion styling. Use in tight spaces, such as side panels or widgets, where the context provides an outline already.
 - **Outlined:** Adds a border around the accordion. Use in open layouts where you want to define the accordion's boundaries.
 
-::example{src="mui/Accordion.variants"}
+::example{src="mui/Accordion.variants" min-height="175px"}
 
 | Use case      | Elevation | Outlined |
 | ------------- | --------- | -------- |
@@ -63,13 +63,13 @@ Disclose any **Accordion's** content by default using the `defaultExpanded` prop
 
 The marker placement automatically adapts based on the container's width using a [container query](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Containment/Container_queries). To benefit from this automatic responsive behavior, make sure to create a containment context by setting `container-type: inline-size;` on an ancestor element.
 
-::example{src="mui/Accordion.responsive"}
+::example{src="mui/Accordion.responsive" min-width="450px"}
 
 ### Marker placement
 
 Use the `markerPlacement` prop to control the **AccordionSummary** marker placement. By default, the marker is left aligned, but moves to the right side when the accordion is narrow. Set `markerPlacement="start"` or `markerPlacement="end"` to force a fixed placement.
 
-::example{src="mui/Accordion.marker-placement"}
+::example{src="mui/Accordion.marker-placement" min-height="150px"}
 
 ### Multiple Accordions
 
@@ -77,7 +77,7 @@ Multiple adjacent **Accordions** make a set. To make this set programmatically d
 
 **Accordions** commonly represent major sections of a page and are rendered with an [`<h3>` heading element](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/Heading_Elements) by default. Use the `render` prop on [`slotProps.heading`](https://mui.com/material-ui/api/accordion/#accordion-prop-slotProps) to change the heading level.
 
-::example{src="mui/Accordion.multiple"}
+::example{src="mui/Accordion.multiple" min-height="200px"}
 
 :::caution[Heading levels]
 

@@ -74,6 +74,16 @@ export default defineConfig({
 				},
 				{ label: "Guides", items: [{ autogenerate: { directory: "guides" } }] },
 				{
+					label: "Tokens",
+					items: [
+						{
+							label: "Overview",
+							slug: "tokens/overview",
+						},
+						{ autogenerate: { directory: "tokens" } },
+					],
+				},
+				{
 					label: "Components",
 					items: [
 						{
@@ -153,8 +163,8 @@ function rehypeWrapTables({ tagName = "responsive-table" } = {}) {
  * Remark plugin that processes `::example{src="..."}` directives to embed live examples.
  *
  * Requires a `src` attribute. Optionally supported attributes:
- * - `min-width`
- * - `min-height`
+ * - `min-width` - rounded up to the nearest 25px.
+ * - `min-height` - rounded up to the nearest 25px.
  * - `vertical-align` - allowed values: "stretch". By default the example is vertically centered.
  */
 function remarkLiveExamples() {

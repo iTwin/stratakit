@@ -62,13 +62,14 @@
 		"@types/react": "catalog:",
 		"@types/react-dom": "catalog:",
 		"@mui/x-date-pickers": "catalog:",
+		"@mui/x-data-grid": "catalog:",
 		"esbuild": "catalog:",
 		"react": "catalog:",
 		"react-dom": "catalog:",
 		"typescript": "catalog:"
 	},
 	"peerDependencies": {
-		"@mui/material": "^9.4.0",
+		"@mui/material": "^9.5.0",
 		"@stratakit/foundations": "^1.0.5",
 		"react": "^19.0.0",
 		"react-dom": "^19.0.0"

@@ -1,0 +1,1 @@
+import{t as e}from"./status-warning-DlGirH6u.js";var t=`${e}#icon`;`${e}`;export{t};

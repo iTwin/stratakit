@@ -1,0 +1,1 @@
+import{X as e,Z as t}from"./chevron-down.BTipd47q.js";function n(e){return t(`MuiInputLabel`,e)}var r=e(`MuiInputLabel`,[`root`,`focused`,`disabled`,`error`,`required`,`asterisk`,`formControl`,`sizeSmall`,`shrink`,`animated`,`standard`,`filled`,`outlined`]);export{r as n,n as t};

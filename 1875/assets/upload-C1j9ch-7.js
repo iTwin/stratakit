@@ -1,1 +1,0 @@
-import{t as e}from"./upload-j-eUpFFv.js";var t=`${e}#icon`;`${e}`;export{t};

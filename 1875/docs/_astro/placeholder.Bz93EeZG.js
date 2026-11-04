@@ -1,1 +1,0 @@
-import{t as e}from"./placeholder.DfVO_FZl.js";var t=`${e}#icon`;`${e}`;export{t};

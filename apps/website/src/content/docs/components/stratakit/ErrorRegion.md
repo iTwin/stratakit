@@ -70,7 +70,7 @@ The behavior of the **ErrorRegion** and the relationship between `ErrorRegion.It
 
 ### Visibility
 
-Use the [`items`](/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop to control the visibility of the **ErrorRegion** and avoid conditionally rendering it to ensure that [changes to the `label` prop](#labels) are properly announced.
+Use the [`items`](/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop to control the visibility of the **ErrorRegion** and avoid conditionally rendering it. This ensures that changes to the [`label` prop](#labels) are properly announced and that the region landmark remains discoverable.
 
 ```tsx
 // ❌

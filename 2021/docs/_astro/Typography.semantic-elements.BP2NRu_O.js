@@ -1,1 +1,0 @@
-import{dr as e}from"./chevron-down.C11fm_G-.js";import{t}from"./Stack.DanFGR_C.js";import{t as n}from"./Typography.B1wrhUbO.js";var r=e(),i=()=>(0,r.jsxs)(t,{spacing:2,sx:{alignItems:`start`},children:[(0,r.jsx)(n,{variant:`body-md`,render:(0,r.jsx)(`kbd`,{}),children:`Kbd`}),(0,r.jsx)(n,{variant:`body-md`,render:(0,r.jsx)(`code`,{}),children:`Code`})]});export{i as default};

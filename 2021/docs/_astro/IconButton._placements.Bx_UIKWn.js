@@ -1,0 +1,1 @@
+import{St as e,dr as t,n}from"./chevron-down.DEdAwPkl.js";import{t as r}from"./placeholder.BxOEzitp.js";var i=t(),a=[`left`,`top`,`bottom`,`right`],o=()=>a.map(t=>(0,i.jsx)(n,{label:`${t.charAt(0).toUpperCase()}${t.slice(1)}`,labelPlacement:t,children:(0,i.jsx)(e,{href:r})},t));export{o as default};

@@ -1,1 +1,0 @@
-import{dr as e}from"./chevron-down.CBMWw-Ox.js";import{t}from"./Button.Doa6znRe.js";import{t as n}from"./ButtonGroup.BU_wgXDJ.js";var r=e(),i=()=>(0,r.jsxs)(n,{"aria-label":`File actions`,children:[(0,r.jsx)(t,{children:`Edit`}),(0,r.jsx)(t,{children:`Move`}),(0,r.jsx)(t,{children:`Delete`})]});export{i as default};

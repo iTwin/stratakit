@@ -1,1 +1,0 @@
-import{dr as e}from"./chevron-down.CBMWw-Ox.js";import{T as t,ut as n}from"./useReduceAnimations.GK4GTQDE.js";import{t as r}from"./DateCalendar.CsDs1pEU.js";var i=e(),a=()=>(0,i.jsx)(t,{dateAdapter:n,children:(0,i.jsx)(r,{})});export{a as default};

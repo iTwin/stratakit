@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.BPFW9cDK.js";import{t}from"./Badge.X8qgXOSu.js";import{t as n}from"./status-warning.D2-tByWH.js";var r=e(),i=()=>(0,r.jsx)(t,{label:`Unstable`,tone:`critical`,icon:n});export{i as default};

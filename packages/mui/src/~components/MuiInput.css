@@ -4,10 +4,15 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝MuiInput {
+	/* #region Variables */
+	--✨bg--default: var(--stratakit-color-bg-control-textbox);
+	--✨bg--autofill: var(--stratakit-color-bg-accent-muted);
+
 	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	/* #endregion */
 
 	font-size: var(--stratakit-font-size-body-md);
 	line-height: var(--stratakit-line-height-body-md);
@@ -15,9 +20,10 @@
 	margin: 0;
 	border: 1px solid var(--_MuiInput-border-color);
 	border-radius: var(--stratakit-radius-sm);
-	background-color: var(--stratakit-color-bg-control-textbox);
+	background-color: var(--_MuiInput-background-color);
 	transition: border-color 150ms ease-out;
 
+	--_MuiInput-background-color: var(--✨bg--default);
 	--_MuiInput-border-color: var(--✨border--default);
 
 	@media (any-hover: hover) {
@@ -34,6 +40,10 @@
 		--_MuiInput-border-color: var(--✨border--focus);
 		outline: var(--🥝focus-outline);
 		outline-offset: var(--🥝focus-outline-offset);
+	}
+
+	&:where(:has(:is(input, textarea):is(:autofill, :-webkit-autofill))) {
+		--_MuiInput-background-color: var(--✨bg--autofill);
 	}
 
 	&:where(.Mui-error) {
@@ -80,6 +90,10 @@
 	align-content: center;
 
 	&:where(input, textarea) {
+		&:where(:autofill, :-webkit-autofill) {
+			box-shadow: 0 0 0 calc(infinity * 1px) var(--_MuiInput-background-color) inset;
+		}
+
 		&::placeholder {
 			color: var(--stratakit-color-text-neutral-placeholder);
 			opacity: 1;

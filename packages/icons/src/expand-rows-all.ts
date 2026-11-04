@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/expand-rows-all.svg";
+import { svgRowsExpandAll, svgRowsExpandAllLarge } from "./rows-expand-all.js";
 
-export const svgExpandRowsAll = `${url}#icon`;
-export const svgExpandRowsAllLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgRowsExpandAll` instead.
+ */
+export const svgExpandRowsAll = svgRowsExpandAll;
+/**
+ * @deprecated Use `svgRowsExpandAllLarge` instead.
+ */
+export const svgExpandRowsAllLarge = svgRowsExpandAllLarge;

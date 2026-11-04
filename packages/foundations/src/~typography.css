@@ -6,7 +6,7 @@
 :host {
 	--stratakit-font-family-sans: "InterVariable", "Noto Sans", "Open Sans", sans-serif;
 	--stratakit-font-family-mono:
-		"Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas, monospace;
+		"IBM Plex Mono Var", "Noto Sans Mono", ui-monospace, "Cascadia Mono", monospace;
 
 	--stratakit-font-size-display-lg: 4rem; /* 64 */
 	--stratakit-font-size-display-md: 3rem; /* 48 */

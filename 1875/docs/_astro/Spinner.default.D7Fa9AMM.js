@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.C6Zv1CfN.js";import{t}from"./Spinner.BNeTz10R.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as default};

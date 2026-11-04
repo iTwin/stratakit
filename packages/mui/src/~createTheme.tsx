@@ -196,10 +196,7 @@ function createTheme() {
 						warning: <WarningIcon />,
 					},
 					slots: {
-						closeIcon: withExcludedProps(DismissIcon, [
-							"ownerState",
-							"fontSize",
-						]),
+						closeIcon: DismissIcon,
 					},
 					slotProps: {
 						closeButton: {

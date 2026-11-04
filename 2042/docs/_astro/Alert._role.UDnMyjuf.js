@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.D8X444Jn.js";import{t}from"./Alert.PXkAVD5c.js";import{t as n}from"./AlertTitle.CoYzORbB.js";var r=e(),i=()=>(0,r.jsxs)(t,{severity:`error`,role:`alert`,children:[(0,r.jsx)(n,{children:`Invalid credit card`}),`Your bank has declined the charge to your card. Please check the card number or contact your bank.`]});export{i as default};

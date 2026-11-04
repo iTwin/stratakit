@@ -7,7 +7,7 @@ Added `actions` prop to `DialogTitle`. Use it to display additional actions in t
 ```tsx
 <DialogTitle
 	actions={
-		<IconButton label="Dismiss" onClick={handleClose} edge="end">
+		<IconButton label="Dismiss" onClick={handleClose}>
 			<Icon href={svgDismiss} />
 		</IconButton>
 	}

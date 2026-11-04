@@ -37,7 +37,7 @@ export default () => {
 							>
 								<Icon href={fullScreen ? svgWindowZoomOut : svgWindowZoomIn} />
 							</IconButton>
-							<IconButton label="Dismiss" onClick={handleClose} edge="end">
+							<IconButton label="Dismiss" onClick={handleClose}>
 								<Icon href={svgDismiss} />
 							</IconButton>
 						</>

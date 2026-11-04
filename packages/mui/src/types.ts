@@ -583,7 +583,7 @@ declare module "@mui/material/DialogTitle" {
 		 * @example
 		 * ```tsx
 		 * actions={
-		 *   <IconButton label="Dismiss" edge="end">
+		 *   <IconButton label="Dismiss">
 		 *     <Icon href={svgDismiss} />
 		 *   </IconButton>
 		 * }

@@ -27,7 +27,7 @@ export default () => {
 			<Dialog open={open} onClose={handleClose}>
 				<DialogTitle
 					actions={
-						<IconButton label="Dismiss" onClick={handleClose} edge="end">
+						<IconButton label="Dismiss" onClick={handleClose}>
 							<Icon href={svgDismiss} />
 						</IconButton>
 					}

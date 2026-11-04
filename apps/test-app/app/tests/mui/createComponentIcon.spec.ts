@@ -4,7 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import { expect, test } from "#playwright";
 
-test("Includes accessible text for Boolean columns", async ({ page }) => {
+// This file includes tests that validate the behavior of `createComponentIcon` from
+// packages/mui/src/Icon.tsx.  None of those components created are  are directly exported from
+// @stratakit/mui so they have to be tested indirectly
+
+test("accepts titleAccess prop and converts it to label.", async ({ page }) => {
 	await page.goto("/standalone?path=mui/DataGrid.showcase&export=DataTypes");
 	const trueCell = page
 		.getByRole("row")

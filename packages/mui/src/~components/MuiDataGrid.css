@@ -213,6 +213,17 @@
 	border: 1px solid var(--stratakit-color-border-page-base);
 }
 
+:is(.MuiDataGrid-columnsManagement, .MuiDataGrid-columnsManagementFooter) {
+	padding-inline: var(--stratakit-space-300);
+	padding-block: var(--stratakit-space-100);
+	row-gap: var(--stratakit-space-200);
+}
+
+.MuiDataGrid-columnsManagementRow {
+	overflow: visible;
+	gap: var(--stratakit-space-150);
+}
+
 @keyframes _MuiDataGrid-selected-border {
 	0%,
 	100% {

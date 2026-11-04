@@ -32,8 +32,7 @@ export default () => {
 					actions={
 						<>
 							<IconButton
-								label="Toggle maximized"
-								aria-pressed={fullScreen}
+								label={fullScreen ? "Reset size" : "Maximize"}
 								onClick={() => setFullScreen(!fullScreen)}
 							>
 								<Icon href={fullScreen ? svgWindowZoomOut : svgWindowZoomIn} />

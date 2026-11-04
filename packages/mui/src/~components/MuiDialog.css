@@ -29,7 +29,7 @@
 }
 
 .MuiDialogTitle-root {
-	.🥝MuiDialogTitleHeader > & {
+	:where(.🥝MuiDialogTitleHeader) > & {
 		margin-inline-end: auto;
 		padding: 0;
 	}

@@ -1,1 +1,0 @@
-import{t as e}from"./edit-B0b486qN.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

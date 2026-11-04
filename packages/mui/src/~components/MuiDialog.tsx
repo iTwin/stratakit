@@ -10,6 +10,7 @@ import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import { PortalProvider } from "../PortalProvider.js";
 
+import type DialogTitle from "@mui/material/DialogTitle";
 import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
@@ -48,4 +49,30 @@ DEV: MuiDialogPaper.displayName = "MuiDialogPaper";
 
 // ----------------------------------------------------------------------------
 
-export { MuiDialogPaper };
+type DialogTitleProps = React.ComponentProps<typeof DialogTitle>;
+
+interface MuiDialogTitleProps
+	extends BaseProps<"h2">,
+		Pick<DialogTitleProps, "actions"> {}
+
+const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
+	(props, forwardedRef) => {
+		const { actions, ...rest } = props;
+		const title = <Role.h2 {...rest} ref={forwardedRef} />;
+		if (actions) {
+			return (
+				<div className="🥝MuiDialogTitleHeader">
+					{title}
+					{actions}
+				</div>
+			);
+		}
+
+		return title;
+	},
+);
+DEV: MuiDialogTitle.displayName = "MuiDialogTitle";
+
+// ----------------------------------------------------------------------------
+
+export { MuiDialogPaper, MuiDialogTitle };

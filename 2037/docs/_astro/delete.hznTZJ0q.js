@@ -1,1 +1,0 @@
-var e=`/2037/docs/_astro/delete.BEgRbQFW.svg`;`${e}`;var t=`${e}#icon-large`;export{t};

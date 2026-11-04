@@ -51,7 +51,7 @@ In addition, the [region landmark](https://developer.mozilla.org/en-US/docs/Web/
 ```jsx
 items={[
   <ErrorRegion.Item
-    message={<>Failed to create hierarchy</>}
+    message={<p>Failed to create hierarchy</p>}
   />
 ]}
 ```

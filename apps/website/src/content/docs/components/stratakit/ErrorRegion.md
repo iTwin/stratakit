@@ -16,12 +16,12 @@ The **ErrorRegion** records errors in one place, to be addressed at the user's c
 
 The **ErrorRegion** is not a generic component for alerting users to application state. It collates errors accumulated from an interactive dataset, such as a layers panel rendered using a [**Tree**](/components/tree). Consult the table below to compare **ErrorRegion** with alternatives.
 
-| Use case                                                                 | [ErrorRegion](/components/errorregion) | [FormControl](/components/checkbox/#error) | [Snackbar](/components/snackbar) | [Accordion](/components/accordion) |
-| ------------------------------------------------------------------------ | -------------------------------------- | ------------------------------------------ | -------------------------------- | ---------------------------------- |
-| Collating errors                                                         | ✅                                     | ❌                                         | ❌                               | ❌                                 |
-| Inline error message                                                     | ❌                                     | ✅                                         | ❌                               | ❌                                 |
-| Alerting users of application state (errors, warnings, success messages) | ❌                                     | ❌                                         | ✅                               | ❌                                 |
-| Collating arbitrary content for future disclosure                        | ❌                                     | ❌                                         | ❌                               | ✅                                 |
+| Use case                                                                 | [ErrorRegion](/components/errorregion) | Inline error message | [Snackbar](/components/snackbar) | [Accordion](/components/accordion) |
+| ------------------------------------------------------------------------ | -------------------------------------- | -------------------- | -------------------------------- | ---------------------------------- |
+| Collating errors                                                         | ✅                                     | ❌                   | ❌                               | ❌                                 |
+| Form field errors                                                        | ❌                                     | ✅                   | ❌                               | ❌                                 |
+| Alerting users of application state (errors, warnings, success messages) | ❌                                     | ❌                   | ✅                               | ❌                                 |
+| Collating arbitrary content for future disclosure                        | ❌                                     | ❌                   | ❌                               | ✅                                 |
 
 ## Structure
 

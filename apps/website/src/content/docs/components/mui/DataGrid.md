@@ -6,7 +6,7 @@ links:
   apiReference: "#api-reference"
 ---
 
-::example{src="mui/DataGrid.default" min-height="509px"}
+::example{src="mui/DataGrid.default" min-height="500px"}
 
 The **DataGrid** is a complex control with many options for editing, filtering, sorting, pagination, and virtualization. The [MUI DataGrid documentation](https://mui.com/x/react-data-grid/) contains numerous examples.
 
@@ -44,19 +44,19 @@ It has row and cell selection and editing as first class concepts. The grid is a
 
 ### Editing data types
 
-**DataGrid** supports editing values of different data types.
+**DataGrid** supports [editing values](https://mui.com/x/react-data-grid/editing/) of different data types.
 
-::example{src="mui/DataGrid.datatypes" min-height="720px"}
+::example{src="mui/DataGrid.datatypes" min-height="775px"}
 
 ## ✅ Do
 
 - Use a **DataGrid** to handle large amounts of editable data.
-- Wrap **DataGrid** in a `<div role="group" aria-labelledby={...}>` and provide a label as in the examples. This helps semantically connect the header toolbar and footer toolbar to the grid as well as insure that the grid has an accessible name.
+- Set the `label` prop to provide an accessible name for the grid.
 
 ## 🚫 Don't
 
-- Use **DataGrid** where a simpler **Table** would work.
-- Remove the selection checkbox without also removing the ability to select rows . The color contrast of the selected background is too low to indicate selection on its own. The checkbox is required to help identify selected rows. Use `isRowSelectable={() => false}` to insure that rows cannot be selected with the keyboard or pointer.
+- Don't use **DataGrid** where a simpler **Table** would work.
+- Don't remove the selection checkbox without also removing the ability to select rows. The checkbox is required to help identify selected rows.
 
 ## API reference
 

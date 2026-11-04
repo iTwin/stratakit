@@ -9,6 +9,7 @@
 	border-radius: 0;
 
 	timeline-scope: --_MuiDataGrid-first-row-timeline, --_MuiDataGrid-last-row-timeline;
+	anchor-scope: --_MuiDataGrid-focused-cell;
 
 	/*
     Share the row between the last row and footer except when:
@@ -22,6 +23,26 @@
 		--_MuiDataGrid-shared-row-footer-border: false;
 	}
 }
+
+/* Custom focus indicator for the focused cell */
+.MuiDataGrid-mainContent {
+	&::after {
+		content: "";
+		pointer-events: none;
+
+		position: absolute;
+		position-anchor: --_MuiDataGrid-focused-cell;
+
+		top: calc(anchor(start) - 1px);
+		left: anchor(start);
+		right: anchor(end);
+		bottom: anchor(end);
+
+		outline: var(--🥝focus-outline);
+		outline-offset: -2px;
+	}
+}
+
 /* 
   Select all the cell elements in the column header row.  Both the normal column
   header cells and undocumented filler elements.
@@ -101,6 +122,11 @@
 			/* cancel the portion of the virtual scroller render zone translation  */
 			view-timeline-inset: auto var(--DataGrid-topContainerHeight, 56px);
 		}
+		&:where(.MuiDataGrid-row--firstVisible.MuiDataGrid-row--firstVisible) {
+			view-timeline:
+				--_MuiDataGrid-last-row-timeline,
+				--_MuiDataGrid-first-row-timeline block;
+		}
 	}
 
 	/* 
@@ -122,31 +148,17 @@
 .MuiDataGrid-cell,
 .MuiDataGrid-columnHeader {
 	position: relative;
-	/* 
-		Remove the outline set by MUI because:
-		1. Stratakit uses the ::after element to show the focus indicator adjust for borders.
-		2. Stratakit only shows the focus indicator with :focus-visible instead of :focus to avoid
-		   showing on mouse events.
-	*/
-	outline: none !important;
+
+	&:where(:focus-within) {
+		outline: none !important; /* don't show the focus ring on mouse clicks */
+	}
 
 	&:where(:focus-visible, :has(:focus-visible)) {
-		&::after {
-			pointer-events: none;
-			content: "";
-			position: absolute;
-			inset: 0;
+		anchor-name: --_MuiDataGrid-focused-cell;
 
+		@supports not (position-anchor: --_MuiDataGrid-focused-cell) {
 			outline: var(--🥝focus-outline);
 			outline-offset: -2px;
-		}
-
-		/*  
-			Avoid overlapping with the cells row's border which renders underneath the cell.  Header
-   		renders its own border and doesn't have this issue. 
-		*/
-		&:where(.MuiDataGrid-cell)::after {
-			inset-block-end: 1px;
 		}
 	}
 }
@@ -199,6 +211,17 @@
 .MuiDataGrid-menu .MuiPaper-root {
 	box-shadow: var(--stratakit-shadow-surface-lg);
 	border: 1px solid var(--stratakit-color-border-page-base);
+}
+
+:is(.MuiDataGrid-columnsManagement, .MuiDataGrid-columnsManagementFooter) {
+	padding-inline: var(--stratakit-space-300);
+	padding-block: var(--stratakit-space-100);
+	row-gap: var(--stratakit-space-200);
+}
+
+.MuiDataGrid-columnsManagementRow {
+	overflow: visible;
+	gap: var(--stratakit-space-150);
 }
 
 @keyframes _MuiDataGrid-selected-border {

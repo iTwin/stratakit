@@ -3,8 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
-import Typography from "@mui/material/Typography";
 import { DataGrid, type GridColDef } from "@mui/x-data-grid";
 
 const columns: GridColDef<(typeof rows)[number]>[] = [
@@ -40,26 +38,20 @@ const rows = [
 ];
 
 export default function DefaultExample() {
-	const captionId = React.useId();
 	return (
-		<div role="group" aria-labelledby={captionId}>
-			<Typography variant="headline-sm" id={captionId} render={<div />}>
-				Game of Thrones Characters
-			</Typography>
-			<DataGrid
-				showToolbar
-				rows={rows}
-				columns={columns}
-				initialState={{
-					pagination: {
-						paginationModel: {
-							pageSize: 5,
-						},
+		<DataGrid
+			label="Game of Thrones Characters"
+			showToolbar
+			rows={rows}
+			columns={columns}
+			initialState={{
+				pagination: {
+					paginationModel: {
+						pageSize: 5,
 					},
-				}}
-				pageSizeOptions={[5]}
-				aria-labelledby={captionId}
-			/>
-		</div>
+				},
+			}}
+			pageSizeOptions={[5]}
+		/>
 	);
 }

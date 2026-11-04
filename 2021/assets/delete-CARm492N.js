@@ -1,1 +1,0 @@
-import{t as e}from"./delete-DXr_J-ZU.js";`${e}`;var t=`${e}#icon-large`;export{t};

@@ -75,7 +75,7 @@ interface RepositoryTreeProps {
 
 function RepositoryTree(props: RepositoryTreeProps) {
 	const { errors, onError, onRetry } = props;
-	const [expandedItems, setExpandedItems] = React.useState<string[]>([]);
+	const [expandedItems, setExpandedItems] = React.useState(["features"]);
 	return (
 		<Tree.Root className={styles.tree}>
 			{flatRepositoryData.map((item) => {

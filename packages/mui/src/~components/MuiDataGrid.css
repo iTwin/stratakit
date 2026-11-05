@@ -9,7 +9,6 @@
 	border-radius: 0;
 
 	timeline-scope: --_MuiDataGrid-first-row-timeline, --_MuiDataGrid-last-row-timeline;
-	anchor-scope: --_MuiDataGrid-focused-cell;
 
 	/*
     Share the row between the last row and footer except when:
@@ -24,22 +23,29 @@
 	}
 }
 
-/* Custom focus indicator for the focused cell */
-.MuiDataGrid-mainContent {
+:is(.MuiDataGrid-columnHeaders, .MuiDataGrid-row) {
+	position: relative;
+	anchor-scope: --_MuiDataGrid-focused-cell;
+
 	&::after {
 		content: "";
 		pointer-events: none;
+	}
 
-		position: absolute;
-		position-anchor: --_MuiDataGrid-focused-cell;
+	/* Custom focus indicator for the focused cell */
+	&:where(:has(:focus-visible))::after {
+		@supports (position-anchor: --_MuiDataGrid-focused-cell) {
+			position: absolute;
+			position-anchor: --_MuiDataGrid-focused-cell;
 
-		top: calc(anchor(start) - 1px);
-		left: anchor(start);
-		right: anchor(end);
-		bottom: anchor(end);
+			top: calc(anchor(start) - 1px);
+			left: anchor(start);
+			right: anchor(end);
+			bottom: anchor(end);
 
-		outline: var(--🥝focus-outline);
-		outline-offset: -2px;
+			outline: var(--🥝focus-outline);
+			outline-offset: -3px;
+		}
 	}
 }
 

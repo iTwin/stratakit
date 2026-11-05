@@ -1,1 +1,0 @@
-import{t as e}from"./save-CGy0UXe7.js";`${e}`;var t=`${e}#icon-large`;export{t};

@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.nNryG9Fp.js";import{t}from"./Spinner.D2G7beE7.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{size:`small`}),(0,n.jsx)(t,{size:`medium`}),(0,n.jsx)(t,{size:`large`}),(0,n.jsx)(t,{size:`xlarge`})]});export{r as default};

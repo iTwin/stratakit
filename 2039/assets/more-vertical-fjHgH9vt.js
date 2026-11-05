@@ -1,0 +1,1 @@
+import{t as e}from"./more-vertical-B5-oTML_.js";var t=`${e}#icon`;`${e}`;export{t};

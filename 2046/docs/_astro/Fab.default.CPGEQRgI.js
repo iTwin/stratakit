@@ -1,0 +1,1 @@
+import{pr as e,wt as t}from"./chevron-down.Dsdilv9S.js";import{t as n}from"./Tooltip.T_jClCgo.js";import{t as r}from"./add.3boMMJHB.js";import{t as i}from"./Fab.BhkSo2NJ.js";var a=e(),o=()=>(0,a.jsx)(n,{title:`Add documents`,describeChild:!1,children:(0,a.jsx)(i,{children:(0,a.jsx)(t,{href:r})})});export{o as default};

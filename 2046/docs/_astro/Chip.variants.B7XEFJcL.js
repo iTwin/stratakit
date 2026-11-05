@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.DI8icCWb.js";import{t}from"./Chip.DlnADKA8.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{variant:`solid`,label:`Solid`}),(0,n.jsx)(t,{variant:`outline`,label:`Outline`})]});export{r as default};

@@ -1,1 +1,0 @@
-import{t as e}from"./chat-pBCuUhpy.js";var t=`${e}#icon`;`${e}`;export{t};

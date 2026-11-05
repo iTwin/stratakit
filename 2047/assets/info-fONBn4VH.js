@@ -1,1 +1,0 @@
-import{t as e}from"./info-CpriSFRf.js";var t=`${e}#icon`;`${e}`;export{t};

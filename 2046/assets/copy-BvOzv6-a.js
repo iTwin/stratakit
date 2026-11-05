@@ -1,0 +1,1 @@
+import{t as e}from"./copy-B3cRlc_K.js";`${e}`;var t=`${e}#icon-large`;export{t};

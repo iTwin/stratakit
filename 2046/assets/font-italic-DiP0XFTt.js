@@ -1,0 +1,1 @@
+import{r as e,t}from"./font-italic-BQz-2sas.js";var n=`${e}#icon`,r=`${e}#icon-large`,i=`${t}#icon`,a=`${t}#icon-large`;export{r as i,a as n,n as r,i as t};

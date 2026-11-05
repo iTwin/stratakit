@@ -63,9 +63,7 @@ export default function Standalone() {
 			<title>{`${title} – StrataKit`}</title>
 			<div id="root" className={styles.root}>
 				{modulePath && (
-					<React.Suspense
-						fallback={<div data-testid="showcase-loading">Loading…</div>}
-					>
+					<React.Suspense>
 						<StandaloneRenderer
 							key={`${modulePath}#${exportName ?? "default"}`}
 							modulePath={modulePath}
@@ -94,6 +92,9 @@ function StandaloneRenderer({
 }: StandaloneRendererProps) {
 	const Component = React.use(loadModule(modulePath, exportName));
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: We need to resolve the promise for each new location key.
+	React.useEffect(() => void pendingMount?.resolve(), [useLocation().key]);
+
 	return <Component {...props} />;
 }
 
@@ -102,8 +103,15 @@ function StandaloneRenderer({
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
 	usePlaywrightMount();
 
-	return <pre>{error instanceof Error ? error.message : String(error)}</pre>;
+	React.useEffect(() => void pendingMount?.reject(error), [error]);
+
+	return (
+		<pre id="root">
+			{error instanceof Error ? error.message : String(error)}
+		</pre>
+	);
 }
+
 // ----------------------------------------------------------------------------
 
 /**
@@ -148,6 +156,9 @@ type MountParams = {
 	props?: Record<string, unknown>;
 };
 
+/** This promise gets mutated by the `Standalone` renderer so that it resolves whenever a new "story" is mounted. */
+let pendingMount: PromiseWithResolvers<void> | null;
+
 /**
  * Exposes `window.mount` and `window.unmount` functions for Playwright component testing.
  * These functions update the URL search params to reflect the mounted "story" and its props.
@@ -168,7 +179,17 @@ function usePlaywrightMount() {
 					...(exportName && { export: exportName }),
 				}).toString();
 
-				await navigate({ search }, { replace: true, preventScrollReset: true });
+				if (!modulePath) throw new Error("A story is required");
+
+				pendingMount = Promise.withResolvers<void>();
+				try {
+					await Promise.all([
+						navigate({ search }, { replace: true, preventScrollReset: true }),
+						pendingMount.promise,
+					]);
+				} finally {
+					pendingMount = null;
+				}
 			};
 
 			window.unmount = async () => {

@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.BKobOes3.js";import{i as t}from"./Anchor.BWhW3db9.js";var n=e(),r=()=>(0,n.jsx)(t,{href:`/getting-started`,children:`Getting started`});export{r as default};

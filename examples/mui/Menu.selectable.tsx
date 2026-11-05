@@ -29,10 +29,12 @@ export default () => {
 				endIcon={<Icon href={open ? svgChevronUp : svgChevronDown} />}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
 			>
-				<Typography color="textSecondary" id={mainLabelId}>
-					Sort by:
-				</Typography>
-				&nbsp;{sortOrder}
+				<span>
+					<Typography color="textSecondary" id={mainLabelId} render={<span />}>
+						Sort by:
+					</Typography>
+					&nbsp;{sortOrder}
+				</span>
 			</Button>
 			<Menu
 				anchorEl={anchorEl}

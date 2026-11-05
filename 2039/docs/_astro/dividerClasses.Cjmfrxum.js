@@ -1,1 +1,0 @@
-import{J as e,Y as t}from"./chevron-down.DB6num7i.js";function n(e){return t(`MuiDivider`,e)}var r=e(`MuiDivider`,[`root`,`absolute`,`fullWidth`,`inset`,`middle`,`flexItem`,`vertical`,`withChildren`,`textAlignRight`,`textAlignLeft`,`wrapper`,`wrapperVertical`]);export{n,r as t};

@@ -1,0 +1,1 @@
+import{t as e}from"./delete-CP8NOC6l.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

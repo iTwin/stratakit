@@ -4,37 +4,63 @@ import InterVariableItalic from "internal/fonts/InterVariable-Italic.woff2?url";
 import PlexMonoVariableItalic from "internal/fonts/IBM Plex Mono Var-Italic.woff2?url";
 import PlexMonoVariable from "internal/fonts/IBM Plex Mono Var-Roman.woff2?url";
 
+/**
+ * In the production deployment, rewrite the font URL to use the same asset from the `test-app`.
+ * This helps avoid duplicate requests when navigating between `test-app` and `website`.
+ *
+ * The hashes are assumed to be identical because they are both processed by Vite.
+ *
+ * @param url The original font URL in `website`, e.g. `/docs/_astro/InterVariable.<hash>.woff2`
+ * @returns The equivalent URL in the `test-app`, e.g. `/assets/InterVariable-<hash>.woff2`
+ */
+function getFontUrl(url: string) {
+	if (!import.meta.env.PROD || !process.env.GH_PAGES_URL) return url;
+
+	url = url.replace("/docs/_astro/", "/assets/");
+
+	// Astro uses [name].[hash].[extension] format
+	const [extension, hash, ...parts] = url.split(".").toReversed();
+
+	// React Router uses `[name]-[hash].[extension]` format
+	return `${parts.toReversed().join(".")}-${hash}.${extension}`;
+}
+
+const interVariable = getFontUrl(InterVariable);
+const interVariableItalic = getFontUrl(InterVariableItalic);
+const plexMonoVariable = getFontUrl(PlexMonoVariable);
+const plexMonoVariableItalic = getFontUrl(PlexMonoVariableItalic);
+
 const fonts = /* css */ `
 @font-face {
   font-family: InterVariable;
   font-style: normal;
   font-weight: 100 900;
   font-display: swap;
-  src: url(${InterVariable}) format("woff2");
+  src: url(${interVariable}) format("woff2");
 }
 @font-face {
   font-family: InterVariable;
   font-style: italic;
   font-weight: 100 900;
   font-display: swap;
-  src: url(${InterVariableItalic}) format("woff2");
+  src: url(${interVariableItalic}) format("woff2");
 }
 @font-face {
   font-family: 'IBM Plex Mono Var';
   font-style: normal;
   font-weight: 100 700;
   font-display: swap;
-  src: url(${PlexMonoVariable}) format("woff2");
+  src: url(${plexMonoVariable}) format("woff2");
 }
 @font-face {
   font-family: 'IBM Plex Mono Var';
   font-style: italic;
   font-weight: 100 700;
   font-display: swap;
-  src: url(${PlexMonoVariableItalic}) format("woff2");
+  src: url(${plexMonoVariableItalic}) format("woff2");
 }
 `;
 ---
 
-<link rel="preload" as="font" type="font/woff2" href={InterVariable} crossorigin />
+<link rel="preload" as="font" type="font/woff2" href={interVariable} crossorigin />
 <style is:inline set:html={fonts}></style>

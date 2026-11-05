@@ -1,0 +1,1 @@
+import{t as e}from"./react.m2QMIn-h.js";import{n as t}from"./example-embed.astro_astro_type_script_index_0_lang.pHbpogDh.js";var n=t(e(),1);function r(e,t){return n.isValidElement(e)&&t.indexOf(e.type.muiName??e.type?._payload?.value?.muiName)!==-1}export{r as t};

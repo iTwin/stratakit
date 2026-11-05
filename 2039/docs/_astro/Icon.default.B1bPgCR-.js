@@ -1,0 +1,1 @@
+import{pr as e,wt as t}from"./chevron-down.gAYmB4rL.js";var n=`/2039/docs/_astro/layers.C_Rs9pWi.svg`,r=`${n}#icon`;`${n}`;var i=e(),a=()=>(0,i.jsx)(t,{href:r,alt:`Layers`});export{a as default};

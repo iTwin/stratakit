@@ -1,0 +1,1 @@
+import{t as e}from"./more-vertical-BYpGTA3w.js";var t=`${e}#icon`;`${e}`;export{t};

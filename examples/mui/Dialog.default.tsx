@@ -26,11 +26,11 @@ export default () => {
 			<Button onClick={() => setOpen(true)}>About</Button>
 			<Dialog open={open} onClose={handleClose}>
 				<DialogTitle
-					actions={
-						<IconButton label="Dismiss" onClick={handleClose}>
+					actions={[
+						<IconButton key="dismiss" label="Dismiss" onClick={handleClose}>
 							<Icon href={svgDismiss} />
-						</IconButton>
-					}
+						</IconButton>,
+					]}
 				>
 					What is a dialog?
 				</DialogTitle>

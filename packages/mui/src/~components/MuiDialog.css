@@ -34,13 +34,6 @@
 	}
 }
 
-.MuiIconButton-root {
-	/** Last IconButton within the dialog header. */
-	:where(.🥝MuiDialogTitleHeader) &:where(:not(:has(~ .MuiIconButton-root))) {
-		margin-inline-end: calc(var(--_MuiIconButton-margin-negative) * -1);
-	}
-}
-
 .MuiDialogContent-root {
 	:where(.🥝MuiDialogTitleHeader) + & {
 		/** Rely on header spacing, similar to https://github.com/mui/material-ui/blob/403986ae957cea6959358fb8dbefc2178b62f2d5/packages/mui-material/src/DialogContent/DialogContent.js#L56 */

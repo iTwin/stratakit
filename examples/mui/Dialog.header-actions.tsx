@@ -29,19 +29,18 @@ export default () => {
 			<Button onClick={() => setOpen(true)}>Release notes</Button>
 			<Dialog open={open} onClose={handleClose} fullScreen={fullScreen}>
 				<DialogTitle
-					actions={
-						<>
-							<IconButton
-								label={fullScreen ? "Reset size" : "Maximize"}
-								onClick={() => setFullScreen(!fullScreen)}
-							>
-								<Icon href={fullScreen ? svgWindowZoomOut : svgWindowZoomIn} />
-							</IconButton>
-							<IconButton label="Dismiss" onClick={handleClose}>
-								<Icon href={svgDismiss} />
-							</IconButton>
-						</>
-					}
+					actions={[
+						<IconButton
+							key="maximize"
+							label={fullScreen ? "Reset size" : "Maximize"}
+							onClick={() => setFullScreen(!fullScreen)}
+						>
+							<Icon href={fullScreen ? svgWindowZoomOut : svgWindowZoomIn} />
+						</IconButton>,
+						<IconButton key="dismiss" label="Dismiss" onClick={handleClose}>
+							<Icon href={svgDismiss} />
+						</IconButton>,
+					]}
 				>
 					Release notes
 				</DialogTitle>

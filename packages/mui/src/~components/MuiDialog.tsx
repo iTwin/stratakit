@@ -62,11 +62,16 @@ const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
 		const { actions, ...rest } = props;
 		const title = <Role.h2 {...rest} ref={forwardedRef} />;
 		if (actions) {
+			const lastAction = actions.at(-1);
+			const leadingActions = actions.slice(0, -1);
 			return (
 				<div className="🥝MuiDialogTitleHeader">
 					{title}
 					<MuiDialogTitleActionsProvider>
-						{actions}
+						{leadingActions}
+						<MuiDialogTitleLastActionProvider>
+							{lastAction}
+						</MuiDialogTitleLastActionProvider>
 					</MuiDialogTitleActionsProvider>
 				</div>
 			);
@@ -102,6 +107,32 @@ function MuiDialogTitleActionsProvider(props: React.PropsWithChildren) {
 }
 DEV: MuiDialogTitleActionsProvider.displayName =
 	"MuiDialogTitleActionsProvider";
+
+// ----------------------------------------------------------------------------
+
+function MuiDialogTitleLastActionProvider(props: React.PropsWithChildren) {
+	return (
+		<ThemeProvider<Theme>
+			theme={(outerTheme) => ({
+				...outerTheme,
+				components: {
+					...outerTheme.components,
+					MuiIconButton: {
+						...outerTheme.components?.MuiIconButton,
+						defaultProps: {
+							...outerTheme.components?.MuiIconButton?.defaultProps,
+							edge: "end",
+						},
+					},
+				},
+			})}
+		>
+			{props.children}
+		</ThemeProvider>
+	);
+}
+DEV: MuiDialogTitleLastActionProvider.displayName =
+	"MuiDialogTitleLastActionProvider";
 
 // ----------------------------------------------------------------------------
 

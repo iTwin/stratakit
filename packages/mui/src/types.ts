@@ -582,14 +582,14 @@ declare module "@mui/material/DialogTitle" {
 		 *
 		 * @example
 		 * ```tsx
-		 * actions={
-		 *   <IconButton label="Dismiss">
+		 * actions={[
+		 *   <IconButton key="dismiss" label="Dismiss">
 		 *     <Icon href={svgDismiss} />
 		 *   </IconButton>
-		 * }
+		 * ]}
 		 * ```
 		 */
-		actions?: React.ReactNode;
+		actions?: React.ReactNode[];
 	}
 }
 

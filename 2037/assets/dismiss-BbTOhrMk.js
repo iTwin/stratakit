@@ -1,1 +1,0 @@
-import{t as e}from"./dismiss-BFVL_JNm.js";var t=`${e}#icon`;`${e}`;export{t};

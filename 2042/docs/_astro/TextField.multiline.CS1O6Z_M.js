@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.BGb_-Er0.js";import{t}from"./TextField.BI4040XG.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Description`,multiline:!0});export{r as default};

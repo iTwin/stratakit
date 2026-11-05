@@ -1,5 +1,5 @@
 ---
-"@stratakit/foundations": patch
+"@stratakit/foundations": minor
 ---
 
 Added new variables for `mono-lg` and `mono-md` typography variants.

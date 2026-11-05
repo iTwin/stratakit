@@ -23,7 +23,6 @@
 .🥝MuiDialogTitleHeader {
 	display: flex;
 	align-items: center;
-	gap: var(--stratakit-space-100);
 	padding-block: var(--stratakit-space-500);
 	padding-inline: var(--stratakit-space-600);
 }

@@ -21,9 +21,15 @@
 }
 
 .🥝MuiDialogTitleHeader {
+	--✨min-height: 56px; /* var(--stratakit-space-400) * 2 + var(--stratakit-space-600) */
+	--✨large-action-size: var(--stratakit-space-1000);
+
+	/* Ensure minimum height even if large action is displayed. */
+	min-block-size: var(--✨min-height);
+	padding-block: calc((var(--✨min-height) - var(--✨large-action-size)) / 2);
+
 	display: flex;
 	align-items: center;
-	padding-block: var(--stratakit-space-500);
 	padding-inline: var(--stratakit-space-600);
 }
 

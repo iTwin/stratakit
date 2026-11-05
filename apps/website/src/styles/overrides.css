@@ -28,6 +28,11 @@
 
 	--sl-font: var(--stratakit-font-family-sans, "InterVariable");
 	--sl-font-mono: var(--stratakit-font-family-mono, "IBM Plex Mono Var");
+
+	--sl-text-code: var(--stratakit-font-size-mono-md);
+	--sl-text-code-sm: var(--stratakit-font-size-mono-sm);
+	--ec-codeLineHt: var(--stratakit-line-height-mono-md);
+	--sl-color-bg-inline-code: var(--stratakit-color-bg-mono-muted);
 }
 
 #starlight__sidebar {
@@ -66,8 +71,6 @@
 }
 
 .sl-markdown-content code:not(:where(.not-content *)) {
-	background-color: var(--stratakit-color-bg-neutral-base);
-	border: 1px solid var(--stratakit-color-border-neutral-muted);
 	border-radius: var(--stratakit-radius-sm);
 }
 

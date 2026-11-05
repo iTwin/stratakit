@@ -103,4 +103,8 @@
 	--stratakit-mui-palette-TableCell-border: var(--stratakit-color-border-neutral-muted);
 
 	--stratakit-mui-palette-Tooltip-bg: var(--stratakit-color-bg-elevation-emphasis);
+
+	--stratakit-mui-palette-DataGrid-bg: var(--stratakit-color-bg-page-base);
+	--stratakit-mui-palette-DataGrid-headerBg: var(--stratakit-color-bg-page-base);
+	--stratakit-mui-palette-DataGrid-pinnedBg: var(--stratakit-color-bg-page-base);
 }

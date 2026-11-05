@@ -121,6 +121,16 @@
 		line-height: var(--stratakit-line-height-caption-sm);
 	}
 
+	&:where(.MuiTypography-mono-lg) {
+		font-family: var(--stratakit-font-family-mono);
+		font-size: var(--stratakit-font-size-mono-lg);
+		line-height: var(--stratakit-line-height-mono-lg);
+	}
+	&:where(.MuiTypography-mono-md) {
+		font-family: var(--stratakit-font-family-mono);
+		font-size: var(--stratakit-font-size-mono-md);
+		line-height: var(--stratakit-line-height-mono-md);
+	}
 	&:where(.MuiTypography-mono-sm) {
 		font-family: var(--stratakit-font-family-mono);
 		font-size: var(--stratakit-font-size-mono-sm);

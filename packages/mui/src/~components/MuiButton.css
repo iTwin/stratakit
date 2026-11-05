@@ -12,6 +12,7 @@
 }
 
 .MuiButton-root {
+	column-gap: var(--stratakit-space-200);
 	min-block-size: var(--_MuiButton-height);
 	min-inline-size: var(--_MuiButton-height);
 	padding-block-start: var(--_MuiButton-padding-block);
@@ -41,6 +42,10 @@
 		--_MuiButton-height: var(--stratakit-size-control-field-height-large);
 		--_MuiButton-padding-block: var(--stratakit-space-100);
 		--_MuiButton-padding-inline: var(--stratakit-space-400);
+	}
+
+	&:where(:has(> .MuiButton-icon, :is(.MuiButton-root > .🥝Icon))) {
+		column-gap: var(--stratakit-space-300);
 	}
 
 	&:where(.MuiButton-colorSecondary) {
@@ -115,6 +120,7 @@
 	}
 }
 
-.MuiButton-icon {
+:is(.MuiButton-icon, :where(.MuiButton-root > .🥝Icon)) {
 	color: var(--_MuiButton-icon-color);
+	margin-inline: calc(var(--stratakit-space-100) * -1);
 }

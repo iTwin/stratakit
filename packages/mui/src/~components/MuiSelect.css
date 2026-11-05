@@ -18,12 +18,6 @@
 	);
 }
 
-:is(.MuiSelect-root, .MuiNativeSelect-root) {
-	&:where(:not(.Mui-disabled)) {
-		box-shadow: var(--stratakit-shadow-surface-sm);
-	}
-}
-
 :is(.MuiSelect-icon, .MuiNativeSelect-icon) {
 	inset-block-start: 50%;
 	translate: 0 -50%;

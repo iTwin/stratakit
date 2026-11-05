@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.BcrZA1Rp.js";import{t}from"./Button.CeDKuLt8.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{tone:`accent`,children:`Accent`}),(0,n.jsx)(t,{tone:`neutral`,children:`Neutral`})]});export{r as default};

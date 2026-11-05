@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.BcrZA1Rp.js";import{t}from"./Chip.a76X2zTG.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{onDismiss:()=>{},label:`sort:updated-desc`}),(0,n.jsx)(t,{onDismiss:()=>{},label:`is:pr`}),(0,n.jsx)(t,{onDismiss:()=>{},label:`is:open`})]});export{r as default};

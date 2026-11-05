@@ -5,12 +5,14 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import { ThemeProvider } from "@mui/material/styles";
 import { RootContext } from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import { PortalProvider } from "../PortalProvider.js";
 
 import type DialogTitle from "@mui/material/DialogTitle";
+import type { Theme } from "@mui/material/styles";
 import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
@@ -63,7 +65,9 @@ const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
 			return (
 				<div className="🥝MuiDialogTitleHeader">
 					{title}
-					{actions}
+					<MuiDialogTitleActionsProvider>
+						{actions}
+					</MuiDialogTitleActionsProvider>
 				</div>
 			);
 		}
@@ -72,6 +76,32 @@ const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
 	},
 );
 DEV: MuiDialogTitle.displayName = "MuiDialogTitle";
+
+// ----------------------------------------------------------------------------
+
+function MuiDialogTitleActionsProvider(props: React.PropsWithChildren) {
+	return (
+		<ThemeProvider<Theme>
+			theme={(outerTheme) => ({
+				...outerTheme,
+				components: {
+					...outerTheme.components,
+					MuiIconButton: {
+						...outerTheme.components?.MuiIconButton,
+						defaultProps: {
+							...outerTheme.components?.MuiIconButton?.defaultProps,
+							size: "small",
+						},
+					},
+				},
+			})}
+		>
+			{props.children}
+		</ThemeProvider>
+	);
+}
+DEV: MuiDialogTitleActionsProvider.displayName =
+	"MuiDialogTitleActionsProvider";
 
 // ----------------------------------------------------------------------------
 

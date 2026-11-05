@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.DJQvtcu8.js";import{t}from"./Button.Dvq2kJGB.js";import{t as n}from"./Tooltip.BfquLLJo.js";var r=e(),i=()=>(0,r.jsx)(n,{content:`Save is disabled until you finish reading the documentation.`,type:`description`,children:(0,r.jsx)(t,{disabled:!0,children:`Save`})});export{i as default};

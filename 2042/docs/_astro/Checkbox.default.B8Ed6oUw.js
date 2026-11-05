@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.DJQvtcu8.js";import{t}from"./Checkbox.B4k7uWHY.js";import{t as n}from"./FormControlLabel.BwroDyy3.js";var r=e(),i=()=>(0,r.jsx)(n,{control:(0,r.jsx)(t,{}),label:`Don't show again`});export{i as default};

@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.BGb_-Er0.js";import{t}from"./Spinner.BGdI9Lir.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as default};

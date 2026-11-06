@@ -3683,7 +3683,24 @@
 		"symbols": ["icon", "icon-large"]
 	},
 	"model-cloud": {
-		"aliases": ["lorem", "ipsum"],
+		"aliases": [
+			"3d",
+			"assemble",
+			"build",
+			"design",
+			"digital twin",
+			"representation",
+			"BIM",
+			"structure",
+			"view",
+			"visualize",
+			"cloud",
+			"cloud model",
+			"hosted model",
+			"online",
+			"remote",
+			"connected"
+		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"model-cube": {

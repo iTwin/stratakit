@@ -1,1 +1,0 @@
-import{b as e}from"./DefaultPropsProvider-BlgllZbr.js";var t=e();export{t};

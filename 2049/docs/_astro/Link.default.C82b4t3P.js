@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.DgIP-yaT.js";import{t}from"./Link.DJn-07zd.js";var n=e(),r=()=>(0,n.jsx)(t,{href:`/`,children:`Home`});export{r as default};

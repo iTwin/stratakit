@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.D2Bd5xvM.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./delete-DOGX4KSa.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

@@ -12,6 +12,7 @@ links:
 
 - Restyled using StrataKit's visual language.
 - Added `actions` prop to `DialogTitle` for displaying [header actions](#header-actions).
+- Added `slotProps.header` to `DialogTitle` for customizing the [header element](#header-actions).
 - The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
 - Nested popup elements now use the **Dialog** as the portal container.
 - The `PaperComponent` prop is not supported.
@@ -30,6 +31,8 @@ Dialogs that guard sensitive actions and warrant explicit user confirmation shou
 Use the `actions` prop of `DialogTitle` to display additional actions within the **Dialog** header. Most commonly, this is used to provide a dismiss button, but it can accommodate multiple controls relevant to the **Dialog**.
 
 ::example{src="mui/Dialog.header-actions"}
+
+The title and header actions are wrapped in a header element, which can be customized by passing `slotProps.header` to the `DialogTitle`.
 
 ## API reference
 

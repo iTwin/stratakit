@@ -1,0 +1,1 @@
+import{t as e}from"./react.C9JGJv6E.js";import{n as t}from"./example-embed.astro_astro_type_script_index_0_lang.Cb0Vy2zf.js";var n=t(e(),1),r=n.createContext(void 0);function i(){return n.useContext(r)}function a({props:e,states:t}){let i=n.useContext(r),a={};return t.forEach(t=>{let n=e[t];a[t]=n===void 0&&i?i[t]:n}),[a,i]}export{a as n,r,i as t};

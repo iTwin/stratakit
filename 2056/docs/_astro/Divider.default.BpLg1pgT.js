@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.Q3GdmCsi.js";import{t}from"./Divider.pIgPS4rS.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as default};

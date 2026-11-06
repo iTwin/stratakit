@@ -1,5 +1,22 @@
 # Changelog
 
+## 1.1.0
+
+### Minor Changes
+
+- [#2037](https://github.com/iTwin/stratakit/pull/2037): Added new variables for `mono-lg` and `mono-md` typography variants.
+
+  - `--stratakit-font-size-mono-lg` and `--stratakit-line-height-mono-lg`
+  - `--stratakit-font-size-mono-md` and `--stratakit-line-height-mono-md`
+
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Removed Ariakit's [`PortalContext`](https://ariakit.com/reference/portal-context) from the `Root` component. StrataKit components that were previously relying on this context now use the `PortalContext` from `@stratakit/foundations` instead.
+
+### Patch Changes
+
+- [#1948](https://github.com/iTwin/stratakit/pull/1948): Removed the requirement for `data-color-scheme` to be set on the `<html>` element.
+- [#2009](https://github.com/iTwin/stratakit/pull/2009): Updated `--stratakit-font-family-mono` to include "IBM Plex Mono Var" as the primary monospace font.
+- [#2031](https://github.com/iTwin/stratakit/pull/2031): Set minimum width and height for `Icon`.
+
 ## 1.0.5
 
 ### Patch Changes

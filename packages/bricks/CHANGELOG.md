@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.6.2
+
+### Patch Changes
+
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Updated `Tooltip` component to use the `PortalContext` from `@stratakit/foundations` instead of Ariakit's `PortalContext`.
+- [#1949](https://github.com/iTwin/stratakit/pull/1949): Updated `Tooltip` to force dark mode.
+- Updated dependencies:
+  - @stratakit/foundations@1.1.0
+
 ## 0.6.1
 
 - [#1830](https://github.com/iTwin/stratakit/pull/1830): Fixed React Compiler output to cover the entirety of the code.

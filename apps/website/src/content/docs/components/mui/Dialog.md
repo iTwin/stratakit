@@ -11,8 +11,8 @@ links:
 ## StrataKit MUI modifications
 
 - Restyled using StrataKit's visual language.
+- Added `slotProps.header` to `DialogTitle` for customizing the [header element](#header).
 - Added `actions` prop to `DialogTitle` for displaying [header actions](#header-actions).
-- Added `slotProps.header` to `DialogTitle` for customizing the [header element](#header-actions).
 - The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
 - Nested popup elements now use the **Dialog** as the portal container.
 - The `PaperComponent` prop is not supported.

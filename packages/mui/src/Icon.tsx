@@ -41,6 +41,7 @@ interface SvgProps
 
 function createIconComponent(href: string) {
 	return React.forwardRef<SVGSVGElement, SvgProps>(
+		// biome-ignore lint/correctness/noComponentHookFactories: This gets called once in the module, not per render.
 		function IconComponent(props, forwardedRef) {
 			const {
 				titleAccess,

@@ -18,7 +18,7 @@ function PaperComponent(props: PaperProps) {
 		<Draggable
 			nodeRef={nodeRef as React.RefObject<HTMLDivElement>}
 			handle="#draggable-dialog-title"
-			cancel={'[class*="MuiDialogContent-root"]'}
+			cancel=".MuiDialogContent-root, .MuiButtonBase-root"
 		>
 			<Paper {...props} ref={nodeRef} />
 		</Draggable>

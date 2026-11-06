@@ -1,1 +1,0 @@
-var e=`/2045/docs/_astro/rename.BvvUZl9x.svg`,t=`${e}#icon`;`${e}`;export{t};

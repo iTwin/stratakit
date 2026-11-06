@@ -1,1 +1,0 @@
-var e=`/2045/docs/_astro/chevron-left-double.Yq2ILp6R.svg`,t=`${e}#icon`;`${e}`;var n=`/2045/docs/_astro/chevron-right-double.CbaEkBTv.svg`,r=`${n}#icon`;`${n}`;export{t as n,r as t};

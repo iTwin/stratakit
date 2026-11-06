@@ -30,7 +30,7 @@ The following custom **Typography** `variant`s are available:
 - `"body-lg"` / `"body-md"` / `"body-sm"`
 - `"subtitle-lg"` / `"subtitle-md"` / `"subtitle-sm"`
 - `"caption-lg"` / `"caption-md"` / `"caption-sm"`
-- `"mono-sm"`
+- `"mono-lg"` / `"mono-md"` / `"mono-sm"`
 
 ::example{src="mui/Typography.variants" min-height="625px"}
 

@@ -42,6 +42,8 @@ export default () => {
 			<Typography variant="caption-lg">caption-lg</Typography>
 			<Typography variant="caption-md">caption-md</Typography>
 			<Typography variant="caption-sm">caption-sm</Typography>
+			<Typography variant="mono-lg">mono-lg</Typography>
+			<Typography variant="mono-md">mono-md</Typography>
 			<Typography variant="mono-sm">mono-sm</Typography>
 		</Stack>
 	);

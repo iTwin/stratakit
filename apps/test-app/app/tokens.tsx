@@ -47,6 +47,8 @@ const typographyVariants = [
 	"caption-lg",
 	"caption-md",
 	"caption-sm",
+	// "mono-lg", // not currently supported by `Text`
+	// "mono-md", // not currently supported by `Text`
 	"mono-sm",
 ] as const;
 

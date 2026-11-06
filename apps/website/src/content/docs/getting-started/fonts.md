@@ -74,6 +74,24 @@ To self-host `IBM Plex Mono Var`, download the [`IBM Plex Mono Var-Roman.woff2`]
 `IBM Plex Mono Var` is _not_ loaded automatically. If it is not available on the page, StrataKit falls back to other monospace fonts installed on the user's system.
 :::
 
+## Preloading
+
+Normally, the browser requests a font file only after it finds text on the page that uses the font. If the text is rendered before the font finishes downloading, this can result in a brief [flash of unstyled text (FOUT)](https://web.dev/articles/preload-optional-fonts).
+
+To start the download earlier, add a [preload link](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/preload) for `InterVariable.woff2` to the `<head>` of your document. The `href` value must match the URL in the `@font-face` rule exactly.
+
+```html
+<link rel="preload" href="/path/to/InterVariable.woff2" as="font" type="font/woff2" crossorigin />
+```
+
+The [`crossorigin`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/crossorigin) attribute is [required](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Attributes/rel/preload#cors-enabled_fetches), even when the font file is served on the same origin.
+
+:::tip
+Preload only the font files that are considered critical. Most StrataKit elements rely only on `InterVariable.woff2`, so it is usually the only font file that needs preloading.
+:::
+
 ## Bundling
 
 [Vite](https://vite.dev/guide/assets.html#importing-asset-as-url) and other build tools can handle `url()` references and automatically copy these font files into your output directory with hashed file names. These files can then be safely served with [HTTP caching](https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/#how_to_cache_static_resources_using_http_caching) without blocking upgrades to newer versions of the fonts.
+
+The [preload link](#preloading) and the `@font-face` rule must use the same hashed URL. (Vite automatically rewrites preload links in `index.html` too.)

@@ -9,7 +9,10 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
 import Paper, { type PaperProps } from "@mui/material/Paper";
+import { svgDismiss } from "@stratakit/icons/dismiss";
+import { Icon } from "@stratakit/mui";
 import Draggable from "react-draggable";
 
 function PaperComponent(props: PaperProps) {
@@ -45,7 +48,19 @@ export default function DraggableDialog() {
 				PaperComponent={PaperComponent}
 				aria-labelledby="draggable-dialog-title"
 			>
-				<DialogTitle style={{ cursor: "move" }} id="draggable-dialog-title">
+				<DialogTitle
+					actions={[
+						<IconButton key="dismiss" label="Dismiss" onClick={handleClose}>
+							<Icon href={svgDismiss} />
+						</IconButton>,
+					]}
+					slotProps={{
+						header: {
+							id: "draggable-dialog-title",
+							style: { cursor: "move" },
+						},
+					}}
+				>
 					Subscribe
 				</DialogTitle>
 				<DialogContent>

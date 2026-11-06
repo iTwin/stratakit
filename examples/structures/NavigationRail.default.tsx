@@ -53,11 +53,12 @@ export default () => {
 						label="Integrations"
 						suffix={<Icon href={svgWindowPopout} alt="(opens in new tab)" />}
 					/>
-					<NavigationRail.Footer>
-						<Divider margin />
-						<NavigationRail.Button icon={svgSettingsLarge} label="Settings" />
-					</NavigationRail.Footer>
 				</NavigationRail.Content>
+
+				<NavigationRail.Footer>
+					<Divider margin />
+					<NavigationRail.Button icon={svgSettingsLarge} label="Settings" />
+				</NavigationRail.Footer>
 			</NavigationRail.Root>
 		</div>
 	);

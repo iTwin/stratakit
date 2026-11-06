@@ -90,6 +90,8 @@
 
 		/* Should be floating above the right edge of the header during collapsed state */
 		&:where(:not(.🥝NavigationRailHeader[data-_sk-expanded="true"] &)) {
+			z-index: 10; /* needs a large enough value to float above adjacent elements */
+
 			/* Use fixed anchor positioning to escape overflow. */
 			position: fixed;
 			position-anchor: --🥝NavigationRail;

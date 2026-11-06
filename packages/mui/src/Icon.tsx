@@ -31,12 +31,21 @@ import { svgStatusSuccess } from "@stratakit/icons/status-success";
 import { svgVisibilityHide } from "@stratakit/icons/visibility-hide";
 import { svgWarning } from "@stratakit/icons/warning";
 
+import type SvgIcon from "@mui/material/SvgIcon";
+
 // ----------------------------------------------------------------------------
 
+interface SvgProps
+	extends React.SVGProps<SVGSVGElement>,
+		Pick<React.ComponentProps<typeof SvgIcon>, "titleAccess"> {}
+
 function createIconComponent(href: string) {
-	return React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
+	return React.forwardRef<SVGSVGElement, SvgProps>(
 		function IconComponent(props, forwardedRef) {
-			return <Icon {...props} href={href} ref={forwardedRef} />;
+			const { titleAccess, ...rest } = props;
+			return (
+				<Icon alt={titleAccess} {...rest} href={href} ref={forwardedRef} />
+			);
 		},
 	);
 }

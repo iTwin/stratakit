@@ -89,34 +89,31 @@ export default definePage(
 						icon={svgPlugins}
 						suffix={<Icon alt="(opens in new tab)" href={svgWindowPopout} />}
 					/>
-
-					<NavigationRail.Footer>
-						<NavigationRail.List>
-							<NavigationRail.ListItem>
-								<NavigationRail.Button icon={svgHelpLarge} label="Support" />
-							</NavigationRail.ListItem>
-							<Divider presentational />
-							<NavigationRail.ListItem>
-								<NavigationRail.Button
-									icon={svgNotificationsLarge}
-									label="Notifications"
-								/>
-							</NavigationRail.ListItem>
-							<NavigationRail.ListItem>
-								<NavigationRail.Button
-									icon={svgSettingsLarge}
-									label="Settings"
-								/>
-							</NavigationRail.ListItem>
-							<NavigationRail.ListItem>
-								<NavigationRail.Button
-									icon={<Avatar image={<Icon href={svgUser} />} />}
-									label="Account"
-								/>
-							</NavigationRail.ListItem>
-						</NavigationRail.List>
-					</NavigationRail.Footer>
 				</NavigationRail.Content>
+
+				<NavigationRail.Footer>
+					<NavigationRail.List>
+						<NavigationRail.ListItem>
+							<NavigationRail.Button icon={svgHelpLarge} label="Support" />
+						</NavigationRail.ListItem>
+						<Divider presentational />
+						<NavigationRail.ListItem>
+							<NavigationRail.Button
+								icon={svgNotificationsLarge}
+								label="Notifications"
+							/>
+						</NavigationRail.ListItem>
+						<NavigationRail.ListItem>
+							<NavigationRail.Button icon={svgSettingsLarge} label="Settings" />
+						</NavigationRail.ListItem>
+						<NavigationRail.ListItem>
+							<NavigationRail.Button
+								icon={<Avatar image={<Icon href={svgUser} />} />}
+								label="Account"
+							/>
+						</NavigationRail.ListItem>
+					</NavigationRail.List>
+				</NavigationRail.Footer>
 			</NavigationRail.Root>
 		);
 	},
@@ -161,19 +158,19 @@ function VisualTest() {
 						/>
 					</NavigationRail.ListItem>
 				</NavigationRail.List>
-
-				<NavigationRail.Footer>
-					<NavigationRail.List>
-						<NavigationRail.ListItem>
-							<NavigationRail.Button icon={svgPlaceholder} label="Item #4" />
-						</NavigationRail.ListItem>
-						<Divider presentational />
-						<NavigationRail.ListItem>
-							<NavigationRail.Button icon={svgPlaceholder} label="Item #5" />
-						</NavigationRail.ListItem>
-					</NavigationRail.List>
-				</NavigationRail.Footer>
 			</NavigationRail.Content>
+
+			<NavigationRail.Footer>
+				<NavigationRail.List>
+					<NavigationRail.ListItem>
+						<NavigationRail.Button icon={svgPlaceholder} label="Item #4" />
+					</NavigationRail.ListItem>
+					<Divider presentational />
+					<NavigationRail.ListItem>
+						<NavigationRail.Button icon={svgPlaceholder} label="Item #5" />
+					</NavigationRail.ListItem>
+				</NavigationRail.List>
+			</NavigationRail.Footer>
 		</NavigationRail.Root>
 	);
 }

@@ -130,17 +130,17 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 								{groupIndex < navItems.length - 1 && <Divider presentational />}
 							</React.Fragment>
 						))}
-
-					<NavigationRail.Footer>
-						<Divider />
-						<NavigationRail.Button
-							label="Settings"
-							icon={svgSettingsLarge}
-							onClick={() => setOpen(true)}
-						/>
-						<SettingsDialog open={open} onClose={() => setOpen(false)} />
-					</NavigationRail.Footer>
 				</NavigationRail.Content>
+
+				<NavigationRail.Footer>
+					<Divider />
+					<NavigationRail.Button
+						label="Settings"
+						icon={svgSettingsLarge}
+						onClick={() => setOpen(true)}
+					/>
+					<SettingsDialog open={open} onClose={() => setOpen(false)} />
+				</NavigationRail.Footer>
 			</NavigationRail.Root>
 
 			<div className={styles.mainContent}>

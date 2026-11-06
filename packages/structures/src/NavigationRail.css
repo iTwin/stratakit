@@ -12,6 +12,7 @@
 		flex-direction: column;
 		gap: var(--stratakit-space-100);
 
+		overflow: auto;
 		block-size: 100%;
 		min-inline-size: var(--✨size--collapsed);
 		inline-size: var(--🥝NavigationRail-inline-size);
@@ -38,6 +39,10 @@
 		position: relative;
 		display: flex;
 		align-items: center;
+
+		position: sticky;
+		inset-block-start: 0;
+		background-color: var(--stratakit-color-bg-page-depth);
 
 		padding-block-start: var(--stratakit-space-200);
 		padding-block-end: var(--stratakit-space-200);
@@ -120,7 +125,6 @@
 		padding-inline-end: var(--stratakit-space-200);
 
 		flex: 999;
-		overflow: auto;
 
 		display: flex;
 		flex-direction: column;
@@ -271,6 +275,18 @@
 .🥝NavigationRailFooter {
 	@layer base {
 		margin-block-start: auto;
+
+		padding-block-start: var(--stratakit-space-300); /* create visual separation from content */
+		padding-block-end: var(--stratakit-space-100);
+		padding-inline-start: var(--stratakit-space-200);
+		padding-inline-end: var(--stratakit-space-200);
+	}
+
+	@layer modifiers {
+		:where(.🥝NavigationRailContent) & {
+			padding-inline: unset;
+			padding-block-end: unset;
+		}
 	}
 }
 

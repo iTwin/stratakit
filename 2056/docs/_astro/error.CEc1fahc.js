@@ -1,0 +1,1 @@
+var e=`/2056/docs/_astro/error.DlVzCGS_.svg`,t=`${e}#icon`;`${e}`;export{t};

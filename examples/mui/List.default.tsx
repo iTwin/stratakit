@@ -8,10 +8,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
+import { svgInbox } from "@stratakit/icons/inbox";
+import { svgStatusDraft } from "@stratakit/icons/status-draft";
 import { Icon } from "@stratakit/mui";
-
-import svgInbox from "@stratakit/icons/inbox.svg";
-import svgStatusDraft from "@stratakit/icons/status-draft.svg";
 
 export default () => {
 	return (

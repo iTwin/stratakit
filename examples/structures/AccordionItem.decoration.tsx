@@ -3,9 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Icon } from "@stratakit/foundations";
+import { svgInfo } from "@stratakit/icons/info";
 import { unstable_AccordionItem as AccordionItem } from "@stratakit/structures";
-
-import svgInfo from "@stratakit/icons/info.svg";
 
 export default () => {
 	return (

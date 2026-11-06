@@ -23,16 +23,23 @@ Make sure the **Link** is suitable for your use case. There may be other, more a
 | Navigating between interface screens or sections                                 | ✅                       | ❌                           |
 | Submitting forms, confirming or cancelling dialogs, creating or deleting content | ❌                       | ✅                           |
 
+## Examples
+
+### External
+
+Indicate when a **Link** opens a site outside your application. Add a visible external-link marker and visually hidden text so screen reader users receive the same context.
+
+::example{src="mui/Link.external"}
+
 ## ✅ Do
 
 - Use **Link** to link between pages and page sections (fragments).
-- Add `tabindex="-1"` to the element representing the target section (fragment) to ensure it receives keyboard focus.
 - Provide a label that describes the purpose of the link. This label should still be understandable when removed from context.
 
 ## 🚫 Don't
 
 - Don't use **Link** for non-navigational (linking) actions. Use a component like [**Button**](/components/button), [**IconButton**](/components/iconbutton), or [**Switch**](/components/switch) (depending on your use case).
-- Don't include **Links** with the same label but pointing to different locations. For "read more" links, you can include clarifying text with the [**VisuallyHidden**](/components/visuallyhidden) component. That is, two links appearing as "read more" can become "read more about x" and "read more about y" in screen reader output.
+- Don't include **Links** with the same label but pointing to different locations. For "read more" links, you can include clarifying text with the [`visuallyHidden`](https://mui.com/system/screen-readers/#visually-hidden-elements) utility. That is, two links appearing as "read more" can become "read more about x" and "read more about y" in screen reader output.
 
 ## API reference
 

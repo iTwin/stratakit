@@ -1,8 +1,7 @@
 import Button from "@mui/material/Button";
 import Container from "@mui/material/Container";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { Icon } from "@stratakit/mui";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export default function App() {
 	return (

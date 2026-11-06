@@ -12,7 +12,8 @@ npm add @stratakit/mui
 
 Additional setup/considerations:
 
-- `@stratakit/mui` has a direct dependency on [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations) and [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons), the latter of which requires [bundler configuration](https://github.com/iTwin/stratakit/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
+- `@stratakit/mui` has a peer dependency on [`@stratakit/foundations`](https://www.npmjs.com/package/@stratakit/foundations) (for tokens) and [`@mui/material`](https://www.npmjs.com/package/@mui/material) (for MUI components).
+- `@stratakit/mui` has a direct dependency on [`@stratakit/icons`](https://www.npmjs.com/package/@stratakit/icons), which requires [bundler configuration](https://github.com/iTwin/stratakit/tree/main/packages/icons#bundler-configuration) to ensure that `.svg` files are not inlined.
 - You should ensure that [StrataKit fonts](#fonts) are loaded in your application.
 - [`/types.d.ts`](#typescript) must be included in your project to ensure that the module augmentation for MUI components is picked up by TypeScript.
 - If you are trying to use this package alongside iTwinUI, you will also need to set up the [theme bridge](https://github.com/iTwin/iTwinUI/wiki/StrataKit-theme-bridge).
@@ -44,7 +45,7 @@ Now you can use any components directly from `@mui/material`, and they will be a
 
 ```jsx
 import { Icon } from "@stratakit/mui";
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 
 <Icon href={svgPlaceholder} />;
 ```
@@ -54,34 +55,9 @@ import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 ## Fonts
 
-StrataKit uses [InterVariable](https://rsms.me/inter/) as its interface font. In the future, other fonts may also be added for different purposes. We recommend self-hosting all fonts for robustness, security and performance reasons.
+StrataKit uses [InterVariable](https://rsms.me/inter/) as its primary interface font and [IBM Plex Mono Var](https://github.com/IBM/plex/tree/master/packages/plex-mono-variable) as the monospace font. We recommend self-hosting all fonts for robustness, security and performance reasons.
 
-To self-host `InterVariable`, download the [`InterVariable.woff2`](https://rsms.me/inter/font-files/InterVariable.woff2) and [`InterVariable-Italic.woff2`](https://rsms.me/inter/font-files/InterVariable-Italic.woff2) font files from the official website, and serve them alongside your other assets. Then include the following CSS in the `<head>` of your document, replacing the placeholder paths with the correct path to where the fonts are located:
-
-```html
-<style>
-	@font-face {
-		font-family: InterVariable;
-		font-style: normal;
-		font-weight: 100 900;
-		font-display: swap;
-		src: url("/path/to/InterVariable.woff2") format("woff2");
-	}
-
-	@font-face {
-		font-family: InterVariable;
-		font-style: italic;
-		font-weight: 100 900;
-		font-display: swap;
-		src: url("/path/to/InterVariable-Italic.woff2") format("woff2");
-	}
-</style>
-```
-
-Build tools such as [Vite](https://vite.dev/guide/assets.html#importing-asset-as-url) can handle `url()` references and automatically copy these files into your output directory with hashed file names. These files can then be safely served with [HTTP caching](https://developer.chrome.com/docs/lighthouse/performance/uses-long-cache-ttl/#how_to_cache_static_resources_using_http_caching) without blocking upgrades to newer versions of the fonts.
-
-> [!NOTE]
-> If the `<Root>` component cannot find `InterVariable` as a font in the document, it will automatically add a fallback which uses [Inter’s CDN](https://rsms.me/inter/#faq-cdn). In all cases, we recommend self-hosting to avoid any potential security and reliability issues that may arise from the use of a third-party CDN.
+See [Fonts documentation](https://stratakit.bentley.com/docs/getting-started/fonts/) for self-hosting instructions.
 
 ## TypeScript
 

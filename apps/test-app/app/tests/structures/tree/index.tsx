@@ -5,16 +5,15 @@
 
 import * as React from "react";
 import { Icon } from "@stratakit/foundations";
+import { svgLockUnlocked } from "@stratakit/icons/lock-unlocked";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
+import { svgRefresh } from "@stratakit/icons/refresh";
+import { svgVisibilityShow } from "@stratakit/icons/visibility-show";
 import { Tree } from "@stratakit/structures";
 import { produce } from "immer";
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
-
-import svgUnlock from "@stratakit/icons/lock-unlocked.svg";
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
-import svgRefresh from "@stratakit/icons/refresh.svg";
-import svgShow from "@stratakit/icons/visibility-show.svg";
 
 export const handle = { title: "Tree" };
 
@@ -176,13 +175,13 @@ export default definePage(
 									: [
 											<Tree.ItemAction
 												key="unlock"
-												icon={svgUnlock}
+												icon={svgLockUnlocked}
 												label="Unlock"
 												visible={visible}
 											/>,
 											<Tree.ItemAction
 												key="show"
-												icon={svgShow}
+												icon={svgVisibilityShow}
 												label="Show"
 												visible={visible}
 											/>,
@@ -193,12 +192,12 @@ export default definePage(
 									? [
 											<Tree.ItemAction
 												key="unlock"
-												icon={svgUnlock}
+												icon={svgLockUnlocked}
 												label="Unlock"
 											/>,
 											<Tree.ItemAction
 												key="show"
-												icon={svgShow}
+												icon={svgVisibilityShow}
 												label="Show"
 											/>,
 										]

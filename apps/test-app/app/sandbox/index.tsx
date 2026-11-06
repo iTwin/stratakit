@@ -18,6 +18,19 @@ import {
 	VisuallyHidden,
 } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { svgCursorLarge } from "@stratakit/icons/cursor";
+import { svgCursorSelectLarge } from "@stratakit/icons/cursor-select";
+import { svgDismiss } from "@stratakit/icons/dismiss";
+import { svgDrawLarge } from "@stratakit/icons/draw";
+import { svgFilter } from "@stratakit/icons/filter";
+import { svgLock } from "@stratakit/icons/lock";
+import { svgMeasureLarge } from "@stratakit/icons/measure";
+import { svgPanelCollapseLeft } from "@stratakit/icons/panel-collapse-left";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
+import { svgRetry } from "@stratakit/icons/retry";
+import { svgSearch } from "@stratakit/icons/search";
+import { svgVisibilityHide } from "@stratakit/icons/visibility-hide";
+import { svgVisibilityShow } from "@stratakit/icons/visibility-show";
 import {
 	DropdownMenu,
 	unstable_ErrorRegion as ErrorRegion,
@@ -25,7 +38,7 @@ import {
 	unstable_Toolbar as Toolbar,
 	Tree,
 } from "@stratakit/structures";
-import { useQuery } from "@tanstack/react-query";
+import { useSuspenseQuery } from "@tanstack/react-query";
 import cx from "classnames";
 import { produce } from "immer";
 import {
@@ -37,22 +50,8 @@ import {
 import { SkipLinkContext } from "~/~navigation.tsx";
 import { toUpperCamelCase } from "~/~utils.tsx";
 
-import type { UseQueryResult } from "@tanstack/react-query";
 import type { MetaFunction } from "react-router";
 
-import svgCursor from "@stratakit/icons/cursor.svg";
-import svgCursorSelect from "@stratakit/icons/cursor-select.svg";
-import svgDismiss from "@stratakit/icons/dismiss.svg";
-import svgDraw from "@stratakit/icons/draw.svg";
-import svgFilter from "@stratakit/icons/filter.svg";
-import svgLock from "@stratakit/icons/lock.svg";
-import svgMeasure from "@stratakit/icons/measure.svg";
-import svgPanelCollapseLeft from "@stratakit/icons/panel-collapse-left.svg";
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
-import svgRetry from "@stratakit/icons/retry.svg";
-import svgSearch from "@stratakit/icons/search.svg";
-import svgHide from "@stratakit/icons/visibility-hide.svg";
-import svgShow from "@stratakit/icons/visibility-show.svg";
 import model1Url from "./_data/sandbox.model1.json?url";
 import model2Url from "./_data/sandbox.model2.json?url";
 import model3Url from "./_data/sandbox.model3.json?url";
@@ -139,36 +138,28 @@ function Canvas() {
 			<Toolbar.Group variant="solid">
 				<Toolbar.Item
 					render={
-						<IconButton
-							label="Select"
-							icon={`${svgCursor}#icon-large`}
-							variant="ghost"
-						/>
+						<IconButton label="Select" icon={svgCursorLarge} variant="ghost" />
 					}
 				/>
 				<Toolbar.Item
 					render={
 						<IconButton
 							label="Move"
-							icon={`${svgCursorSelect}#icon-large`}
+							icon={svgCursorSelectLarge}
 							variant="ghost"
 						/>
 					}
 				/>
 				<Toolbar.Item
 					render={
-						<IconButton
-							label="Draw"
-							icon={`${svgDraw}#icon-large`}
-							variant="ghost"
-						/>
+						<IconButton label="Draw" icon={svgDrawLarge} variant="ghost" />
 					}
 				/>
 				<Toolbar.Item
 					render={
 						<IconButton
 							label="Measure"
-							icon={`${svgMeasure}#icon-large`}
+							icon={svgMeasureLarge}
 							variant="ghost"
 						/>
 					}
@@ -182,12 +173,6 @@ function LeftPanel() {
 	const [searchParams, setSearchParams] = useSearchParams();
 	const selectedModel =
 		(searchParams.get("model") as keyof typeof models) || "model1";
-
-	const query = useQuery({
-		queryKey: ["sandbox-data", selectedModel],
-		queryFn: () => fetchModelsData(selectedModel),
-		staleTime: Number.POSITIVE_INFINITY,
-	});
 
 	return (
 		<>
@@ -229,7 +214,7 @@ function LeftPanel() {
 							key={selectedModel}
 							fallback={<Skeleton variant="text" />}
 						>
-							<VersionContent query={query} />
+							<VersionContent model={selectedModel} />
 						</React.Suspense>
 					</hgroup>
 				</div>
@@ -246,16 +231,26 @@ function LeftPanel() {
 			</div>
 
 			<React.Suspense key={selectedModel} fallback={<PanelLoading />}>
-				<PanelContentContainer query={query} />
+				<PanelContentContainer model={selectedModel} />
 			</React.Suspense>
 		</>
 	);
 }
 
-function PanelContentContainer(props: {
-	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
-}) {
-	const { data } = React.use(props.query.promise);
+// ----------------------------------------------------------------------------
+
+function useModelData(model: keyof typeof models) {
+	return useSuspenseQuery({
+		queryKey: ["sandbox-data", model],
+		queryFn: () => fetchModelsData(model),
+		staleTime: Number.POSITIVE_INFINITY,
+	});
+}
+
+function PanelContentContainer(props: { model: keyof typeof models }) {
+	const {
+		data: { data },
+	} = useModelData(props.model);
 
 	return (
 		<SearchboxProvider defaultVisible={Object.keys(data).length !== 1}>
@@ -324,10 +319,10 @@ function SkeletonTreeItem(props: React.ComponentProps<"div">) {
 	);
 }
 
-function VersionContent(props: {
-	query: UseQueryResult<Awaited<ReturnType<typeof fetchModelsData>>>;
-}) {
-	const { version = "" } = React.use(props.query.promise);
+function VersionContent(props: { model: keyof typeof models }) {
+	const {
+		data: { version = "" },
+	} = useModelData(props.model);
 
 	return (
 		<Text className={styles.panelCaption} variant="body-sm" render={<p />}>
@@ -798,7 +793,7 @@ function VisibilityAction({ item, onClick }: VisibilityActionProps) {
 	return (
 		<Tree.ItemAction
 			key="visibility"
-			icon={item.hidden ? svgHide : svgShow}
+			icon={item.hidden ? svgVisibilityHide : svgVisibilityShow}
 			label={item.hidden ? "Show" : "Hide"}
 			visible={item.hidden ? true : undefined}
 			onClick={React.useCallback(() => {

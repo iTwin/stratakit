@@ -13,6 +13,7 @@
 @import "./~components/MuiAvatarGroup.css";
 @import "./~components/MuiBadge.css";
 @import "./~components/MuiBottomNavigation.css";
+@import "./~components/MuiBreadcrumbs.css";
 @import "./~components/MuiButton.css";
 @import "./~components/MuiCard.css";
 @import "./~components/MuiCheckbox.css";
@@ -41,6 +42,7 @@
 @import "./~components/MuiTooltip.css";
 
 @import "./~components/MuiDatePicker.css";
+@import "./~components/MuiDataGrid.css";
 
 .MuiAppBar-root {
 	background-color: var(--stratakit-color-bg-page-base);

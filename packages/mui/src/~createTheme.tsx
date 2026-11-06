@@ -5,6 +5,7 @@
 
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
+import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
 import StepConnector from "@mui/material/StepConnector";
 import { createTheme as createMuiTheme } from "@mui/material/styles";
@@ -58,21 +59,30 @@ import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	CalendarIcon,
 	CaretsUpDownIcon,
+	CheckmarkIcon,
 	ChevronDownIcon,
 	ChevronLeftDoubleIcon,
 	ChevronLeftIcon,
 	ChevronRightDoubleIcon,
 	ChevronRightIcon,
 	ClockIcon,
+	ColumnManageIcon,
 	DismissIcon,
 	ErrorIcon,
+	ExportIcon,
+	FilterIcon,
 	InfoIcon,
+	MoreVerticalIcon,
+	SearchIcon,
+	SortAscendingIcon,
+	SortDescendingIcon,
 	SuccessIcon,
+	VisibilityHideIcon,
 	WarningIcon,
 } from "./Icon.js";
 
-import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
+import type {} from "@mui/x-data-grid/themeAugmentation";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
@@ -184,9 +194,16 @@ function createTheme() {
 						success: <SuccessIcon />,
 						warning: <WarningIcon />,
 					},
+					slots: {
+						closeIcon: withExcludedProps(DismissIcon, [
+							"ownerState",
+							"fontSize",
+						]),
+					},
 					slotProps: {
 						closeButton: {
 							edge: "end",
+							color: "secondary",
 						},
 					},
 				},
@@ -314,8 +331,8 @@ function createTheme() {
 					component: Role.div,
 					slotProps: {
 						title: {
-							// biome-ignore lint/suspicious/noExplicitAny: MUI's CardHeader.title.component is hardcoded to "span"
-							component: MuiCardHeaderTitle as any,
+							variant: "headline-sm" as never,
+							component: MuiCardHeaderTitle as never,
 						},
 					},
 				},
@@ -364,6 +381,35 @@ function createTheme() {
 						date
 							.toLocaleDateString(undefined, { weekday: "short" })
 							.slice(0, 2),
+				},
+			},
+			MuiDataGrid: {
+				defaultProps: {
+					checkboxSelection: true,
+					slots: {
+						booleanCellFalseIcon: DismissIcon,
+						booleanCellTrueIcon: CheckmarkIcon,
+						columnMenuIcon: MoreVerticalIcon,
+						columnMenuSortAscendingIcon: SortAscendingIcon,
+						columnMenuSortDescendingIcon: SortDescendingIcon,
+						columnMenuFilterIcon: FilterIcon,
+						columnMenuHideIcon: VisibilityHideIcon,
+						columnSortedAscendingIcon: SortAscendingIcon,
+						columnSortedDescendingIcon: SortDescendingIcon,
+						columnFilteredIcon: FilterIcon,
+						columnMenuManageColumnsIcon: ColumnManageIcon,
+						columnSelectorIcon: ColumnManageIcon,
+						exportIcon: ExportIcon,
+						filterPanelDeleteIcon: DismissIcon,
+						quickFilterIcon: SearchIcon,
+						quickFilterClearIcon: DismissIcon,
+						openFilterButtonIcon: FilterIcon,
+					},
+					slotProps: {
+						basePopper: {
+							role: undefined, // Work around https://github.com/mui/mui-x/issues/23848
+						},
+					},
 				},
 			},
 			MuiDatePicker: {
@@ -612,7 +658,7 @@ function createTheme() {
 				},
 			},
 			MuiTab: { defaultProps: { component: MuiTab, iconPosition: "start" } },
-			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
+			MuiTable: { defaultProps: { component: Role.table } },
 			MuiTableBody: {
 				defaultProps: {
 					component: MuiTableBody,
@@ -621,21 +667,21 @@ function createTheme() {
 			},
 			MuiTableCell: { defaultProps: { component: MuiTableCell } },
 			MuiTableContainer: {
-				defaultProps: { component: withRenderProp(Role, "div") },
+				defaultProps: { component: Role.div },
 			},
 			MuiTableFooter: {
-				defaultProps: { component: withRenderProp(Role, "tfoot") },
+				defaultProps: { component: Role.tfoot },
 			},
 			MuiTableHead: {
 				defaultProps: { component: MuiTableHead },
 			},
 			MuiTablePagination: {
 				defaultProps: {
-					component: withRenderProp(Role, "td"),
+					component: Role.td,
 					slotProps: { root: { colSpan: 999 } },
 				},
 			},
-			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
+			MuiTableRow: { defaultProps: { component: Role.tr } },
 			MuiTableSortLabel: {
 				defaultProps: {
 					component: Role.span,
@@ -654,7 +700,21 @@ function createTheme() {
 					},
 				},
 			},
-			MuiTextField: { defaultProps: { component: Role.div } },
+			MuiTextField: {
+				defaultProps: {
+					component: Role.div,
+					slotProps: {
+						input: ({ type }) => ({
+							startAdornment:
+								type === "search" ? (
+									<InputAdornment position="start">
+										<SearchIcon />
+									</InputAdornment>
+								) : undefined,
+						}),
+					},
+				},
+			},
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {
@@ -673,6 +733,7 @@ function createTheme() {
 				defaultProps: {
 					placement: "top",
 					describeChild: true,
+					enterDelay: 500,
 					slotProps: {
 						tooltip: {
 							className: "🥝MuiTooltip",
@@ -742,18 +803,6 @@ function createTheme() {
 				],
 			},
 		},
-	});
-}
-
-// ----------------------------------------------------------------------------
-
-/** HOC that sets a default value for the `render` prop. */
-function withRenderProp(
-	Role: React.ComponentType<RoleProps>,
-	DefaultTagName: React.ElementType,
-) {
-	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
-		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
 	});
 }
 

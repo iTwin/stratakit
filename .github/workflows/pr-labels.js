@@ -4,6 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 const LABELS = {
 	API_BRIDGE: "API bridge",
+	COMPOSITE_COMPONENT: "composite component",
 	GITHUB_ACTIONS: "github_actions",
 	PKG_FOUNDATIONS: "pkg: @stratakit/foundations",
 	PKG_ICONS: "pkg: @stratakit/icons",
@@ -15,6 +16,7 @@ const LABELS = {
 };
 
 const LABEL_MAP = {
+	[LABELS.COMPOSITE_COMPONENT]: ["examples/composite/"],
 	[LABELS.GITHUB_ACTIONS]: [".github/workflows"],
 	[LABELS.PKG_FOUNDATIONS]: ["packages/foundations"],
 	[LABELS.PKG_ICONS]: ["packages/icons"],

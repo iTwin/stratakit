@@ -6,7 +6,7 @@ import { Skeleton, VisuallyHidden } from "@stratakit/bricks";
 
 export default () => {
 	return (
-		<div className="flex" style={{ alignItems: "center" }}>
+		<div style={{ display: "flex", gap: 8, alignItems: "center" }}>
 			<Skeleton variant="object" />
 			<Skeleton variant="text" />
 			<VisuallyHidden>Loading…</VisuallyHidden>

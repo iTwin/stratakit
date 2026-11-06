@@ -5,12 +5,11 @@
 
 import * as React from "react";
 import ToggleButton from "@mui/material/ToggleButton";
+import { svgArrowDown } from "@stratakit/icons/arrow-down";
+import { svgArrowLeft } from "@stratakit/icons/arrow-left";
+import { svgArrowRight } from "@stratakit/icons/arrow-right";
+import { svgArrowUp } from "@stratakit/icons/arrow-up";
 import { Icon } from "@stratakit/mui";
-
-import svgArrowDown from "@stratakit/icons/arrow-down.svg";
-import svgArrowLeft from "@stratakit/icons/arrow-left.svg";
-import svgArrowRight from "@stratakit/icons/arrow-right.svg";
-import svgArrowUp from "@stratakit/icons/arrow-up.svg";
 
 type ToggleButtonProps = React.ComponentProps<typeof ToggleButton>;
 const placements = [

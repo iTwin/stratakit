@@ -5,11 +5,10 @@
 
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { Icon } from "@stratakit/mui";
 
 import type * as React from "react";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 type ButtonProps = React.ComponentProps<typeof Button>;
 

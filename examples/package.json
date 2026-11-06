@@ -10,6 +10,7 @@
 		"@mui/material": "catalog:",
 		"@mui/utils": "catalog:",
 		"@mui/x-date-pickers": "catalog:",
+		"@mui/x-data-grid": "catalog:",
 		"@stratakit/bricks": "workspace:*",
 		"@stratakit/foundations": "workspace:*",
 		"@stratakit/icons": "workspace:*",
@@ -19,7 +20,8 @@
 		"react-draggable": "^4.7.2"
 	},
 	"devDependencies": {
-		"@types/react": "catalog:"
+		"@types/react": "catalog:",
+		"@types/react-dom": "catalog:"
 	},
 	"peerDependencies": {
 		"react": "catalog:",

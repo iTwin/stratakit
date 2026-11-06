@@ -72,16 +72,16 @@ More complex interactive components like [**Menu**](/components/menu) and [**Dia
 
 In the order of major page [landmarks](#landmarks), the `<header>`—typically including a `<nav>`—is expected to come first.
 
-A [skip link](https://www.w3.org/WAI/test-evaluate/easy-checks/skip-link/) is a mechanism for bypassing this header/navigation functionality to interact directly with the main content of the page. It is a provision for keyboard users and is considered an accessibility requirement according to [WCAG](https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html).
+A [skip link](https://www.w3.org/WAI/test-evaluate/easy-checks/skip-link/) is a mechanism for bypassing this header/navigation functionality to interact directly with the main content of the page. It is a provision for keyboard users and is considered an accessibility requirement according to [WCAG](https://www.w3.org/WAI/WCAG22/Understanding/bypass-blocks.html). See the [skip link composite component](/components/skiplink) for implementation guidance.
 
 Typically, skip links are hidden until focused by keyboard. They are not needed by or available to mouse users.
 
-If you are implementing your own skip link, point the skip link's `href` to the `<main>` element page fragment. To ensure keyboard focus follows the link, include `tabindex="-1"` on the target element.
+If you are implementing your own skip link, point its `href` to the `<main>` element's page fragment. When the link is activated, the browser scrolls to the target and moves focus there; a `tabindex` is not needed.
 
 ```html
 <a href="#main">skip to content</a>
 <!-- page preamble here -->
-<main id="main" tabindex="-1">...</main>
+<main id="main">...</main>
 ```
 
 ## Belonging

@@ -6,7 +6,8 @@
 	--✨padding: var(--stratakit-space-100);
 
 	@layer base {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		position: relative;
 		z-index: 1;
 	}

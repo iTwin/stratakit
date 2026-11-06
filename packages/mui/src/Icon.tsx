@@ -5,25 +5,31 @@
 
 import * as React from "react";
 import { Icon } from "@stratakit/foundations";
-
-import svgArrowDown from "@stratakit/icons/arrow-down.svg";
-import svgCalendar from "@stratakit/icons/calendar.svg";
-import svgCaretsUpDown from "@stratakit/icons/carets-up-down.svg";
-import svgCheckmark from "@stratakit/icons/checkmark.svg";
-import svgChevronDown from "@stratakit/icons/chevron-down.svg";
-import svgChevronLeft from "@stratakit/icons/chevron-left.svg";
-import svgChevronLeftDouble from "@stratakit/icons/chevron-left-double.svg";
-import svgChevronRight from "@stratakit/icons/chevron-right.svg";
-import svgChevronRightDouble from "@stratakit/icons/chevron-right-double.svg";
-import svgClock from "@stratakit/icons/clock.svg";
-import svgDismiss from "@stratakit/icons/dismiss.svg";
-import svgDismissCircle from "@stratakit/icons/dismiss-circle.svg";
-import svgError from "@stratakit/icons/error.svg";
-import svgInfo from "@stratakit/icons/info.svg";
-import svgSortAscending from "@stratakit/icons/sort-ascending.svg";
-import svgSortDescending from "@stratakit/icons/sort-descending.svg";
-import svgStatusSuccess from "@stratakit/icons/status-success.svg";
-import svgWarning from "@stratakit/icons/warning.svg";
+import { svgArrowDown } from "@stratakit/icons/arrow-down";
+import { svgCalendar } from "@stratakit/icons/calendar";
+import { svgCaretsUpDown } from "@stratakit/icons/carets-up-down";
+import { svgCheckmark } from "@stratakit/icons/checkmark";
+import { svgChevronDown } from "@stratakit/icons/chevron-down";
+import { svgChevronLeft } from "@stratakit/icons/chevron-left";
+import { svgChevronLeftDouble } from "@stratakit/icons/chevron-left-double";
+import { svgChevronRight } from "@stratakit/icons/chevron-right";
+import { svgChevronRightDouble } from "@stratakit/icons/chevron-right-double";
+import { svgClock } from "@stratakit/icons/clock";
+import { svgColumnManage } from "@stratakit/icons/column-manage";
+import { svgDelete } from "@stratakit/icons/delete";
+import { svgDismiss } from "@stratakit/icons/dismiss";
+import { svgDismissCircle } from "@stratakit/icons/dismiss-circle";
+import { svgError } from "@stratakit/icons/error";
+import { svgExport } from "@stratakit/icons/export";
+import { svgFilter } from "@stratakit/icons/filter";
+import { svgInfo } from "@stratakit/icons/info";
+import { svgMoreVertical } from "@stratakit/icons/more-vertical";
+import { svgSearch } from "@stratakit/icons/search";
+import { svgSortAscending } from "@stratakit/icons/sort-ascending";
+import { svgSortDescending } from "@stratakit/icons/sort-descending";
+import { svgStatusSuccess } from "@stratakit/icons/status-success";
+import { svgVisibilityHide } from "@stratakit/icons/visibility-hide";
+import { svgWarning } from "@stratakit/icons/warning";
 
 // ----------------------------------------------------------------------------
 
@@ -52,6 +58,7 @@ const ChevronLeftDoubleIcon = createIconComponent(svgChevronLeftDouble);
 const ChevronRightIcon = createIconComponent(svgChevronRight);
 const ChevronRightDoubleIcon = createIconComponent(svgChevronRightDouble);
 
+const DeleteIcon = createIconComponent(svgDelete);
 const DismissIcon = createIconComponent(svgDismiss);
 const DismissCircleIcon = createIconComponent(svgDismissCircle);
 
@@ -62,6 +69,13 @@ const WarningIcon = createIconComponent(svgWarning);
 
 const SortAscendingIcon = createIconComponent(svgSortAscending);
 const SortDescendingIcon = createIconComponent(svgSortDescending);
+
+const FilterIcon = createIconComponent(svgFilter);
+const MoreVerticalIcon = createIconComponent(svgMoreVertical);
+const ColumnManageIcon = createIconComponent(svgColumnManage);
+const VisibilityHideIcon = createIconComponent(svgVisibilityHide);
+const SearchIcon = createIconComponent(svgSearch);
+const ExportIcon = createIconComponent(svgExport);
 
 // ----------------------------------------------------------------------------
 
@@ -76,13 +90,20 @@ export {
 	ChevronRightDoubleIcon,
 	ChevronRightIcon,
 	ClockIcon,
+	ColumnManageIcon,
+	DeleteIcon,
 	DismissCircleIcon,
 	DismissIcon,
 	ErrorIcon,
+	ExportIcon,
+	FilterIcon,
 	Icon,
 	InfoIcon,
+	MoreVerticalIcon,
+	SearchIcon,
 	SortAscendingIcon,
 	SortDescendingIcon,
 	SuccessIcon,
+	VisibilityHideIcon,
 	WarningIcon,
 };

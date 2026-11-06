@@ -3,9 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import { Badge } from "@stratakit/bricks";
-
-import svgWarning from "@stratakit/icons/status-warning.svg";
+import { svgStatusWarning } from "@stratakit/icons/status-warning";
 
 export default () => {
-	return <Badge label="Unstable" tone="critical" icon={svgWarning} />;
+	return <Badge label="Unstable" tone="critical" icon={svgStatusWarning} />;
 };

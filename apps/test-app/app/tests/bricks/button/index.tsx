@@ -5,9 +5,8 @@
 
 import { Button } from "@stratakit/bricks";
 import { Icon } from "@stratakit/foundations";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { definePage } from "~/~utils.tsx";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Button" };
 

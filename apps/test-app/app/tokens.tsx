@@ -31,14 +31,6 @@ const shadowTokens = [
 	"surface-md",
 	"surface-lg",
 	"surface-xl",
-	"control-button-base-drop",
-	"control-button-base-inset",
-	"control-dialog-base",
-	"control-dropdown-base",
-	"control-input-base",
-	"control-table-strong",
-	"control-toolbar-base",
-	"control-tooltip-base",
 	"brand-logo-base",
 ];
 
@@ -55,6 +47,8 @@ const typographyVariants = [
 	"caption-lg",
 	"caption-md",
 	"caption-sm",
+	// "mono-lg", // not currently supported by `Text`
+	// "mono-md", // not currently supported by `Text`
 	"mono-sm",
 ] as const;
 

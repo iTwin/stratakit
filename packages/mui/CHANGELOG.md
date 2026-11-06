@@ -1,5 +1,70 @@
 # Changelog
 
+## 1.2.1
+
+### Patch Changes
+
+- [#1951](https://github.com/iTwin/stratakit/pull/1951): Updated border and shadow in `Snackbar`.
+- [#1993](https://github.com/iTwin/stratakit/pull/1993): Fixed an issue where the `Root` component was injecting styles into the wrong document when using the `rootNode` prop.
+- [#1984](https://github.com/iTwin/stratakit/pull/1984): Updated background color of `Alert` and `Card` in light mode.
+- [#1911](https://github.com/iTwin/stratakit/pull/1911): Adjusted the appearance of _shadows_ across various components.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.5
+
+## 1.2.0
+
+### Minor Changes
+
+- [#1932](https://github.com/iTwin/stratakit/pull/1932): Add styling for semantic `<code>` and `<kbd>` elements rendered through `Typography`.
+
+### Patch Changes
+
+- [#1973](https://github.com/iTwin/stratakit/pull/1973): Fixed disabled `IconButton` displaying an outline in the default `variant`.
+- [#1909](https://github.com/iTwin/stratakit/pull/1909): Fixed padding on `ListItem` with `secondaryAction`.
+- [#1934](https://github.com/iTwin/stratakit/pull/1934): Fixed bug with `<Button loading/>` not having a visible progress indicator.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.4
+
+## 1.1.1
+
+### Patch Changes
+
+- [#1830](https://github.com/iTwin/stratakit/pull/1830): Fixed React Compiler output to cover the entirety of the code.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.3
+  - @stratakit/internal-utils@0.2.1
+
+## 1.1.0
+
+### Minor Changes
+
+- [#1855](https://github.com/iTwin/stratakit/pull/1855): Added styling support for `type="color"` rendered by `Input`.
+- [#1886](https://github.com/iTwin/stratakit/pull/1886): Added checkmark icon to `Switch` when in the on position.
+- [#1861](https://github.com/iTwin/stratakit/pull/1861): Added `variant` prop to `IconButton`.
+
+### Patch Changes
+
+- [#1915](https://github.com/iTwin/stratakit/pull/1915): Updated colors in `ListSubheader` and `BottomNavigation`.
+- [#1889](https://github.com/iTwin/stratakit/pull/1889): Fixed `variant="outlined"` styling on `Paper`.
+- [#1882](https://github.com/iTwin/stratakit/pull/1882): Updated `Link` font weight to match regular text when it has no `href`.
+- [#1890](https://github.com/iTwin/stratakit/pull/1890): Fixed the `variant` prop of `CardHeader`'s `slotProps.title`.
+- [#1903](https://github.com/iTwin/stratakit/pull/1903): Fixed text alignment for month buttons in `DatePicker`.
+- [#1915](https://github.com/iTwin/stratakit/pull/1915): Updated the value of `--stratakit-mui-palette-background-paper`.
+- [#1882](https://github.com/iTwin/stratakit/pull/1882): Improved visuals of `Breadcrumbs` when used with `Button`.
+- Updated dependencies:
+  - @stratakit/foundations@1.0.2
+  - @stratakit/icons@0.4.6
+
+## 1.0.2
+
+### Patch Changes
+
+- [#1874](https://github.com/iTwin/stratakit/pull/1874): Updated `Input` to include StrataKit's internal class for consistent styling.
+- [#1870](https://github.com/iTwin/stratakit/pull/1870): Updated `@stratakit/icons` svg imports.
+- [#1857](https://github.com/iTwin/stratakit/pull/1857): Updated spacing for `Card`.
+- Updated dependencies:
+  - @stratakit/icons@0.4.5
+
 ## 1.0.1
 
 ### Patch Changes

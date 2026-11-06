@@ -13,8 +13,7 @@ const key = `${packageName}@${__VERSION__}`;
 
 /**
  * Internal hook that should be called by all bricks.
- * Currently, it just validates that bricks are used inside `Root` (from foundations)
- * and stores the package version in Context.
+ * It loads styles and validates that bricks are used inside `Root`.
  *
  * @private
  */

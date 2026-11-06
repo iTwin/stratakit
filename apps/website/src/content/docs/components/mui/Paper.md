@@ -8,6 +8,14 @@ links:
 
 ::example{src="mui/Paper.default" min-height="200px"}
 
+## Examples
+
+### Outlined
+
+Set `variant="outlined"` for a visual effect that relies on outline instead of shadow for separation.
+
+::example{src="mui/Paper.outlined" min-height="200px"}
+
 ## API reference
 
 - [`Paper`](https://mui.com/material-ui/api/paper/)

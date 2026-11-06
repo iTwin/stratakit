@@ -4,10 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import { Icon } from "@stratakit/foundations";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { Tabs } from "@stratakit/structures";
 import { definePage } from "~/~utils.tsx";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "Tabs" };
 

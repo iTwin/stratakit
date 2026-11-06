@@ -6,7 +6,7 @@ import { Field, Select } from "@stratakit/bricks";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Field.Root>
 				<Field.Label>Design system:</Field.Label>
 				<Field.Control

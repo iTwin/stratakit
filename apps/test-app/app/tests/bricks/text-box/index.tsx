@@ -5,11 +5,10 @@
 
 import * as React from "react";
 import { Field, Label, TextBox } from "@stratakit/bricks";
+import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { definePage } from "~/~utils.tsx";
 
 import type { VariantProps } from "~/~utils.tsx";
-
-import svgPlaceholder from "@stratakit/icons/placeholder.svg";
 
 export const handle = { title: "TextBox" };
 

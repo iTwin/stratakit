@@ -10,10 +10,9 @@ import ListItem from "@mui/material/ListItem";
 import ListItemAvatar from "@mui/material/ListItemAvatar";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+import { svgFolder } from "@stratakit/icons/folder";
+import { svgRename } from "@stratakit/icons/rename";
 import { Icon } from "@stratakit/mui";
-
-import svgFolder from "@stratakit/icons/folder.svg";
-import svgRename from "@stratakit/icons/rename.svg";
 
 export default () => {
 	return (

@@ -1,0 +1,1 @@
+import{t as e}from"./upload-BbbnttMn.js";var t=`${e}#icon`;`${e}`;export{t};

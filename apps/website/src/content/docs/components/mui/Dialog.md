@@ -28,7 +28,7 @@ Dialogs that guard sensitive actions and warrant explicit user confirmation shou
 
 ### Header
 
-The header element is rendered only when [header actions](#header-actions) are provided. It wraps the title and header actions of the **Dialog**. Use the `slotProps.header` of `DialogTitle` to customize it.
+The header element wraps the title and header actions of the **Dialog**. It is rendered only when [header actions](#header-actions) are provided. Use the `slotProps.header` of `DialogTitle` to customize the header.
 
 ```tsx
 slotProps={{

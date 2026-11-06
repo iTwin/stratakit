@@ -321,6 +321,9 @@ importers:
       react-dom:
         specifier: "catalog:"
         version: 19.3.0(react@19.3.0)
+      react-draggable:
+        specifier: ^4.7.2
+        version: 4.7.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
     devDependencies:
       "@types/react":
         specifier: "catalog:"
@@ -5076,6 +5079,15 @@ packages:
     peerDependencies:
       react: ^19.3.0
 
+  react-draggable@4.7.2:
+    resolution:
+      {
+        integrity: sha512-pmqDx72EqhMGoJe/x42ZO2wJ9TIz7qJ5OPnFu6lVWWznEuJumlSjR+J0V4tNyDFhUo6dVvv56FeiTqN+arTgnw==,
+      }
+    peerDependencies:
+      react: ">= 16.3.0"
+      react-dom: ">= 16.3.0"
+
   react-is@16.13.1:
     resolution:
       {
@@ -9040,6 +9052,13 @@ snapshots:
     dependencies:
       react: 19.3.0
       scheduler: 0.28.0
+
+  react-draggable@4.7.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0):
+    dependencies:
+      clsx: 2.1.1
+      prop-types: 15.8.1
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
 
   react-is@16.13.1: {}
 

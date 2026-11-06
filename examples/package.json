@@ -16,7 +16,8 @@
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*",
 		"@stratakit/structures": "workspace:*",
-		"date-fns": "^4.4.0"
+		"date-fns": "^4.4.0",
+		"react-draggable": "^4.7.2"
 	},
 	"devDependencies": {
 		"@types/react": "catalog:",

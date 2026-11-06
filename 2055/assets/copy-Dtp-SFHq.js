@@ -1,0 +1,1 @@
+import{t as e}from"./copy-DZ-08U-Z.js";`${e}`;var t=`${e}#icon-large`;export{t};

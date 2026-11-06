@@ -1,1 +1,0 @@
-import{t as e}from"./clock-DU-P23gy.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

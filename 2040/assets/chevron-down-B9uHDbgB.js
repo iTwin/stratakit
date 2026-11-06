@@ -1,1 +1,0 @@
-import{t as e}from"./chevron-down-anxTwGDZ.js";var t=`${e}#icon`;`${e}`;export{t};

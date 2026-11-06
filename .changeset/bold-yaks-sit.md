@@ -13,8 +13,7 @@ Added `actions` prop to `DialogTitle`. Use it to display additional actions in t
 	]}
 	slotProps={{
 		header: {
-			className: "draggable-header",
-			onPointerDown: handlePointerDown,
+			// Props for the header element
 		},
 	}}
 >

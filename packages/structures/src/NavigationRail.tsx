@@ -154,20 +154,21 @@ interface NavigationRailRootProps extends NavigationRailRootInnerProps {
  *       </NavigationRail.ListItem>
  *     </NavigationRail.List>
  *
- *     <NavigationRail.Footer>
- *       <NavigationRail.List>
- *         <NavigationRail.ListItem>
- *           <NavigationRail.Button label="Help" icon={helpIcon} onClick={…} />
- *         </NavigationRail.ListItem>
- *         <NavigationRail.ListItem>
- *           <NavigationRail.Button label="Settings" icon={settingsIcon} onClick={…} />
- *         </NavigationRail.ListItem>
- *         <NavigationRail.ListItem>
- *           <NavigationRail.Button label="Profile" icon={userIcon} onClick={…} />
- *         </NavigationRail.ListItem>
- *       </NavigationRail.List>
- *    </NavigationRail.Footer>
  *   </NavigationRail.Content>
+ *
+ *   <NavigationRail.Footer>
+ *     <NavigationRail.List>
+ *       <NavigationRail.ListItem>
+ *         <NavigationRail.Button label="Help" icon={helpIcon} onClick={…} />
+ *       </NavigationRail.ListItem>
+ *       <NavigationRail.ListItem>
+ *         <NavigationRail.Button label="Settings" icon={settingsIcon} onClick={…} />
+ *       </NavigationRail.ListItem>
+ *       <NavigationRail.ListItem>
+ *         <NavigationRail.Button label="Profile" icon={userIcon} onClick={…} />
+ *       </NavigationRail.ListItem>
+ *     </NavigationRail.List>
+ *   </NavigationRail.Footer>
  * </NavigationRail.Root>
  * ```
  */
@@ -285,17 +286,13 @@ DEV: NavigationRailToggleButton.displayName = "NavigationRail.ToggleButton";
 interface NavigationRailContentProps extends BaseProps {}
 
 /**
- * `NavigationRail.Content` is a wraps the main content of the `NavigationRail`, including
- * the primary navigation list and an optional footer.
+ * `NavigationRail.Content` wraps the main content of the `NavigationRail`, including
+ * the primary navigation list.
  *
  * Example:
  * ```tsx
  * <NavigationRail.Content>
  *   <NavigationRail.List>…</NavigationRail.List>
- *
- *   <NavigationRail.Footer>
- *     <NavigationRail.List>…</NavigationRail.List>
- *   </NavigationRail.Footer>
  * </NavigationRail.Content>
  * ```
  */
@@ -725,13 +722,9 @@ interface NavigationRailFooterProps extends BaseProps<"footer"> {}
  *
  * Example:
  * ```tsx
- * <NavigationRail.Content>
+ * <NavigationRail.Footer>
  *   <NavigationRail.List>…</NavigationRail.List>
- *
- *   <NavigationRail.Footer>
- *     <NavigationRail.List>…</NavigationRail.List>
- *   </NavigationRail.Footer>
- * </NavigationRail.Content>
+ * </NavigationRail.Footer>
  * ```
  */
 const NavigationRailFooter = forwardRef<"footer", NavigationRailFooterProps>(

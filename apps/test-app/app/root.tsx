@@ -37,6 +37,13 @@ export const links: LinksFunction = () => {
 			type: "image/svg+xml",
 		},
 		{ rel: "manifest", href: "/manifest.json", crossOrigin: "use-credentials" },
+		{
+			rel: "preload",
+			href: interVariable,
+			as: "font",
+			type: "font/woff2",
+			crossOrigin: "anonymous",
+		},
 	];
 };
 

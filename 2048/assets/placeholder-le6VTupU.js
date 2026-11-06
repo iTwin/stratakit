@@ -1,1 +1,0 @@
-import{t as e}from"./placeholder-Cpeb3dk1.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

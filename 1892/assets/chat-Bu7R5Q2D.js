@@ -1,0 +1,1 @@
+import{t as e}from"./chat-B6In-y2A.js";var t=`${e}#icon`;`${e}`;export{t};

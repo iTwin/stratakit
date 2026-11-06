@@ -1,0 +1,1 @@
+import{t as e}from"./rename-Ca-Cm3Ma.js";var t=`${e}#icon`;`${e}`;export{t};

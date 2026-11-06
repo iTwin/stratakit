@@ -18,6 +18,11 @@
 	min-inline-size: min(calc(100% - var(--✨min-inset)), 100%, 296px);
 
 	box-shadow: var(--stratakit-shadow-surface-xl);
+
+	&:where(.MuiDialog-paperFullScreen) {
+		border: none;
+		border-radius: 0;
+	}
 }
 
 .MuiDialogActions-root {

@@ -68,7 +68,7 @@ const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
 			const lastAction = actions.at(-1);
 			const leadingActions = actions.slice(0, -1);
 			return (
-				<div
+				<Role.div
 					{...headerProps}
 					className={cx("🥝MuiDialogTitleHeader", headerProps?.className)}
 				>
@@ -79,7 +79,7 @@ const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
 							{lastAction}
 						</MuiDialogTitleLastActionProvider>
 					</MuiDialogTitleActionsProvider>
-				</div>
+				</Role.div>
 			);
 		}
 

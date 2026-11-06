@@ -12,6 +12,7 @@
 }
 
 .MuiButton-root {
+	column-gap: var(--stratakit-space-200);
 	min-block-size: var(--_MuiButton-height);
 	min-inline-size: var(--_MuiButton-height);
 	padding-block-start: var(--_MuiButton-padding-block);
@@ -20,24 +21,31 @@
 	padding-inline-end: var(--_MuiButton-padding-inline);
 
 	&:where(.MuiButton-sizeSmall) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		--_MuiButton-height: var(--stratakit-size-control-field-height-small);
 		--_MuiButton-padding-block: var(--stratakit-space-50);
 		--_MuiButton-padding-inline: var(--stratakit-space-200);
 	}
 
 	&:where(.MuiButton-sizeMedium) {
-		@apply --typography("body-md");
+		font-size: var(--stratakit-font-size-body-md);
+		line-height: var(--stratakit-line-height-body-md);
 		--_MuiButton-height: var(--stratakit-size-control-field-height-medium);
 		--_MuiButton-padding-block: var(--stratakit-space-100);
 		--_MuiButton-padding-inline: var(--stratakit-space-300);
 	}
 
 	&:where(.MuiButton-sizeLarge) {
-		@apply --typography("body-lg");
+		font-size: var(--stratakit-font-size-body-lg);
+		line-height: var(--stratakit-line-height-body-lg);
 		--_MuiButton-height: var(--stratakit-size-control-field-height-large);
 		--_MuiButton-padding-block: var(--stratakit-space-100);
 		--_MuiButton-padding-inline: var(--stratakit-space-400);
+	}
+
+	&:where(:has(> .MuiButton-icon, :is(.MuiButton-root > .🥝Icon))) {
+		column-gap: var(--stratakit-space-300);
 	}
 
 	&:where(.MuiButton-colorSecondary) {
@@ -55,6 +63,8 @@
 					var(--stratakit-color-bg-neutral-base) 100%,
 					var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
 				);
+				--variant-textBg: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+				--variant-outlinedBg: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
 				--_MuiButton-icon-color: var(--stratakit-color-icon-neutral-primary);
 			}
 		}
@@ -74,13 +84,18 @@
 
 	&:where(.MuiButton-contained) {
 		box-shadow: var(--stratakit-shadow-surface-sm);
+		border: 1px solid transparent;
+
+		&:where(.MuiButton-colorPrimary, .MuiButton-colorError) {
+			border-color: var(--stratakit-color-border-glow-strong-default);
+		}
 
 		&:where(.MuiButton-colorSecondary) {
-			border: 1px solid;
 			border-color: var(--stratakit-color-border-neutral-base);
 		}
 
 		&:where(.Mui-disabled) {
+			box-shadow: none;
 			background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
 			border-color: transparent;
 		}
@@ -105,6 +120,7 @@
 	}
 }
 
-.MuiButton-icon {
+:is(.MuiButton-icon, :where(.MuiButton-root > .🥝Icon)) {
 	color: var(--_MuiButton-icon-color);
+	margin-inline: calc(var(--stratakit-space-100) * -1);
 }

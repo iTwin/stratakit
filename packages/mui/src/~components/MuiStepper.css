@@ -47,7 +47,8 @@
 	border: 1px solid var(--stratakit-color-border-neutral-base);
 	background-color: var(--stratakit-color-bg-neutral-base);
 	color: var(--stratakit-color-text-neutral-primary);
-	@apply --typography("body-sm");
+	font-size: var(--stratakit-font-size-body-sm);
+	line-height: var(--stratakit-line-height-body-sm);
 
 	&:where(:not(.Mui-completed):empty)::before {
 		content: counter(stepper);

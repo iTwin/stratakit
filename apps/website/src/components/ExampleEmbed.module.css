@@ -1,0 +1,76 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+@layer {
+	.exampleEmbedRoot {
+		display: grid;
+		margin-block: 0;
+		align-items: var(--example-align-items, center);
+
+		> * {
+			grid-area: 1 / 1 / -1 / -1;
+		}
+	}
+
+	.examplePreviewWrapper {
+		margin-inline: auto;
+		padding: 2rem;
+
+		min-inline-size: min(var(--example-min-width), 100%);
+		max-inline-size: 100%;
+
+		overflow: auto;
+	}
+
+	.toolbar {
+		place-self: end;
+		display: flex;
+		padding: 4px;
+	}
+
+	.sourceCodeButton svg {
+		transition: rotate 150ms ease-in-out;
+
+		:where(.sourceCodeButton[aria-expanded="true"]) & {
+			rotate: 180deg;
+		}
+	}
+}
+
+/* Prevent leakage of global styles into examples */
+
+.exampleEmbedRoot *:not(
+	#a#b,
+	/* biome-ignore format: Keep comment for work comment on same line as fix */
+	select /* Work around https://issues.chromium.org/issues/544708765 */
+) {
+	@layer starlight.base {
+		all: revert-layer;
+	}
+	@layer starlight.reset {
+		all: revert-layer;
+	}
+	@layer starlight.core {
+		all: revert-layer;
+	}
+	@layer starlight.content {
+		all: revert-layer;
+	}
+	@layer starlight.components {
+		all: revert-layer;
+	}
+	@layer starlight.utils {
+		all: revert-layer;
+	}
+	@layer starlight {
+		all: revert-layer;
+	}
+	@layer page {
+		all: revert-layer;
+	}
+	@layer overrides {
+		all: revert-layer;
+	}
+}

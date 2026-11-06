@@ -59,6 +59,14 @@ The `variant` prop can be used to control the visual look of the `IconButton`.
 
 ::example{src="mui/IconButton.variants"}
 
+### Colors
+
+- **Secondary:** The default, neutral color. If unsure, use this.
+- **Primary:** Reserved for key actions, tools, and call-to-actions. Use sparingly—one per page or section. Multiple accent-colored buttons dilute impact and create visual noise.
+- **Error:** Reserved for destructive or potentially harmful actions, such as deleting content. Use sparingly to avoid desensitizing users to its significance.
+
+::example{src="mui/IconButton.colors"}
+
 ## ✅ Do
 
 - Use the `label` prop to provide an accessible name and tooltip for the **IconButton**.

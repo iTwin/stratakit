@@ -10,13 +10,13 @@ links:
 
 The **Icon** component ensures a consistent visual style for icons throughout the user interface. It is optimized for use with [StrataKit icons](/icons/), but it also supports [custom icons](#custom).
 
-Use the [`href`](/reference/mui/Icon/#Icon.Icon.href) prop to specify the icon you want to display. It accepts a [URI reference](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment) that resolves to an SVG or one of its [`<symbol>` elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/symbol). Named exports from [`@stratakit/icons`](/icons/) work out-of-the-box.
+Use the [`href`](/reference/mui/Icon/#Icon.href) prop to specify the icon you want to display. It accepts a [URI reference](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment) that resolves to an SVG or one of its [`<symbol>` elements](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/symbol). Named exports from [`@stratakit/icons`](/icons/) work out-of-the-box.
 
 ## Examples
 
 ### Sizes
 
-Use the [`size`](/reference/mui/Icon/#Icon.Icon.size) prop to adjust the **Icon's** physical dimensions.
+Use the [`size`](/reference/mui/Icon/#Icon.size) prop to adjust the **Icon's** physical dimensions.
 
 - **Regular:** Default size, suitable for most use cases.
 - **Large:** Increased size, use in larger spaces.
@@ -25,7 +25,7 @@ Use the [`size`](/reference/mui/Icon/#Icon.Icon.size) prop to adjust the **Icon'
 
 ### Decorative
 
-Omit the [`alt`](/reference/mui/Icon/#Icon.Icon.alt) prop if the **Icon** is purely decorative. This will hide the **Icon** from assistive technologies.
+Omit the [`alt`](/reference/mui/Icon/#Icon.alt) prop if the **Icon** is purely decorative. This will hide the **Icon** from assistive technologies.
 
 In the example below, the Button already has an accessible name, so the **Icon** is considered decorative.
 
@@ -41,9 +41,13 @@ By default, the **Icon** component inherits the ancestor's color. Use the [`colo
 
 The `href` prop can point to any valid `<symbol>` or `<svg>` that has an `id`. This is the recommended way to use custom icons.
 
-Alternatively, the `render` prop can be used to display an inlined SVG, as in the example below. This can be useful when you need to target the individual elements inside the SVG (e.g. for styling or animation purposes).
-
 ::example{src="mui/Icon.custom"}
+
+### Inline
+
+The `render` prop can be used to display an inlined SVG, as in the example below. This can be useful when you need to target the individual elements inside the SVG (e.g. for styling or animation purposes).
+
+::example{src="mui/Icon.inline"}
 
 ## ✅ Do
 

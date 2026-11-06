@@ -47,6 +47,10 @@ Make sure the triggering button starts with a predictable label that stays consi
 
 :::
 
+## ✅ Do
+
+- Consider adding a chevron icon to the element that triggers a **Menu**. This helps indicate to users that the element reveals additional actions, rather than performing an immediate action itself.
+
 ## API reference
 
 - [`Menu`](https://mui.com/material-ui/api/menu/)

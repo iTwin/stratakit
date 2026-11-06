@@ -7,7 +7,7 @@ import { svgPlaceholder } from "@stratakit/icons/placeholder";
 
 export default () => {
 	return (
-		<div className="flex">
+		<div style={{ display: "flex", gap: 8 }}>
 			<Badge tone="neutral" label="Neutral" icon={svgPlaceholder} />
 			<Badge tone="info" label="Info" icon={svgPlaceholder} />
 			<Badge tone="positive" label="Positive" icon={svgPlaceholder} />

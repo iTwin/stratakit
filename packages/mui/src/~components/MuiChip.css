@@ -83,11 +83,13 @@
 	padding-inline-end: var(--_MuiChip-padding-inline);
 
 	:where(.MuiChip-root.MuiChip-sizeSmall) & {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 	}
 
 	:where(.MuiChip-root.MuiChip-sizeMedium) & {
-		@apply --typography("body-md");
+		font-size: var(--stratakit-font-size-body-md);
+		line-height: var(--stratakit-line-height-body-md);
 	}
 
 	&:where(button) {

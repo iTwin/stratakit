@@ -1,5 +1,7 @@
 ---
-import iconsList from "@stratakit/icons/icons-list.json";
+import iconsMeta from "@stratakit/icons/icons-meta.json";
+import IconDialog from "./IconDialog.astro";
+import { svgSearch } from "@stratakit/icons/search";
 
 const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", {
 	query: "?url",
@@ -7,20 +9,61 @@ const allIcons = import.meta.glob("/node_modules/@stratakit/icons/icons/*.svg", 
 });
 
 function getIconHref(iconName: string) {
-	const module = allIcons[`/node_modules/@stratakit/icons/icons/${iconName}`];
-	return (module as { default: string })?.default;
+	const module = allIcons[`/node_modules/@stratakit/icons/icons/${iconName}.svg`];
+	return (module as unknown as { default: string })?.default;
 }
+
+const iconMetaEntries = Object.entries(iconsMeta);
+
+const defaultSymbol = "icon";
+const allSymbols = [...new Set(iconMetaEntries.flatMap(([, meta]) => meta.symbols))];
 ---
 
+<div class="icon-search-field">
+	<label for="icon-search-input">Search icons</label>
+	<div class="text-field">
+		<svg>
+			<use href={svgSearch}></use>
+		</svg>
+		<input id="icon-search-input" type="search" />
+	</div>
+</div>
+<div>
+	<fieldset id="icon-symbol-filter">
+		<legend>Symbol</legend>
+		<div class="chips">
+			{
+				allSymbols.map((symbol) => (
+					<label>
+						<input
+							type="radio"
+							name="symbol"
+							value={symbol}
+							checked={symbol === defaultSymbol ? true : undefined}
+						/>
+						<span>{symbol}</span>
+					</label>
+				))
+			}
+		</div>
+	</fieldset>
+</div>
+
+<div id="icon-count" aria-live="polite" aria-atomic="true">
+	Showing {iconMetaEntries.length} icons
+</div>
 <div role="list" class="icons-grid not-content">
 	{
-		iconsList.map((iconName) => {
+		iconMetaEntries.map(([iconName]) => {
+			const href = getIconHref(iconName);
 			return (
-				<div role="listitem" class="icon">
-					<svg width="24" height="24">
-						<use href={`${getIconHref(iconName)}#icon-large`} />
-					</svg>
-					{iconName}
+				<div role="listitem" class="icon" data-icon={iconName} data-href={href}>
+					<button id={iconName} type="button">
+						<svg>
+							<use href={`${href}#${defaultSymbol}`} />
+						</svg>
+						{iconName}
+					</button>
 				</div>
 			);
 		})
@@ -32,8 +75,59 @@ function getIconHref(iconName: string) {
 	<div class="cover-it" role="none"></div>
 </div>
 
+<IconDialog id="icon-dialog" />
+
 <style>
 	@layer page {
+		.text-field {
+			margin-block-start: 0;
+			display: flex;
+			align-items: center;
+			position: relative;
+
+			svg {
+				position: absolute;
+				left: var(--stratakit-space-200);
+			}
+		}
+
+		input[type="search"] {
+			inline-size: 100%;
+			min-block-size: var(--stratakit-size-control-field-height-medium);
+			padding-inline-start: calc(16px + var(--stratakit-space-300));
+			padding-inline-end: var(--stratakit-space-300);
+			border: 1px solid var(--stratakit-color-border-page-base);
+			border-radius: var(--stratakit-radius-sm);
+			background-color: var(--stratakit-color-bg-control-textbox);
+			margin-block-start: var(--stratakit-space-50);
+
+			&::-webkit-search-cancel-button {
+				appearance: none;
+			}
+		}
+
+		fieldset {
+			margin-block-start: 1.5rem;
+
+			label {
+				margin-top: 0;
+				display: inline-flex;
+				gap: var(--stratakit-space-100);
+				cursor: pointer;
+				align-items: center;
+			}
+
+			.chips {
+				display: flex;
+				gap: var(--stratakit-space-600);
+				margin-block-start: var(--stratakit-space-50);
+			}
+		}
+
+		#icon-count {
+			margin-block-start: 1.5rem;
+		}
+
 		.icons-grid {
 			--_grid-bg: var(--stratakit-color-bg-page-depth);
 			--_grid-line: var(--stratakit-color-border-neutral-muted);
@@ -65,27 +159,152 @@ function getIconHref(iconName: string) {
 
 		.icon {
 			margin: 0;
-			padding: var(--stratakit-space-400);
 
+			display: grid;
 			text-align: center;
 			font-size: var(--stratakit-font-size-body-sm);
 			overflow-wrap: anywhere;
 			hyphens: auto;
 
-			display: grid;
-			justify-items: center;
-			justify-content: center;
-			align-content: start;
-			gap: var(--stratakit-space-200);
-
 			background-color: var(--_grid-bg);
+
+			button {
+				padding: var(--stratakit-space-400);
+				display: grid;
+				justify-items: center;
+				justify-content: center;
+				align-content: start;
+				gap: var(--stratakit-space-200);
+				outline-offset: -2px;
+				color: var(--stratakit-color-icon-neutral-base);
+
+				&:hover {
+					background-color: var(--stratakit-color-bg-glow-on-surface-neutral-hover);
+					color: var(--stratakit-color-text-neutral-primary);
+				}
+			}
 		}
 
 		svg {
 			display: block;
-			inline-size: 1.5rem;
 			aspect-ratio: 1;
-			color: var(--stratakit-color-icon-neutral-primary);
+			inline-size: 1rem;
+
+			&[data-size="large"] {
+				inline-size: 1.5rem;
+			}
 		}
 	}
 </style>
+
+<script>
+	import iconsMeta from "@stratakit/icons/icons-meta.json";
+	import type { IconDialog } from "./IconDialog.ts";
+
+	const debouncedFilter = debounce(filter, 200);
+
+	const symbolInputs = document.querySelectorAll<HTMLInputElement>(
+		`#icon-symbol-filter input[type="radio"]`,
+	);
+	for (const symbolInput of symbolInputs) {
+		symbolInput.addEventListener("change", debouncedFilter);
+	}
+
+	const searchInput = document.querySelector<HTMLInputElement>("#icon-search-input")!;
+	searchInput.addEventListener("input", debouncedFilter);
+
+	const icons = document.querySelectorAll<HTMLElement>("[data-icon]");
+	for (const icon of icons) {
+		const iconButton = icon.querySelector<HTMLButtonElement>("button");
+		if (!iconButton) continue;
+
+		iconButton.addEventListener("click", () => {
+			const iconName = icon.dataset.icon;
+			if (!iconName) return;
+
+			const href = icon.dataset.href;
+			if (!href) return;
+
+			iconDialog.renderIcon({
+				href,
+				iconName,
+			});
+			iconDialog.dialog.showModal();
+
+			const url = new URL(location.href);
+			url.hash = iconName;
+			history.replaceState(null, "", url);
+		});
+	}
+
+	const iconDialog = document.querySelector<IconDialog>("icon-dialog")!;
+	iconDialog.dialog.addEventListener("close", () => {
+		const iconButton = document.querySelector<HTMLElement>(
+			`[data-icon="${iconDialog.iconName}"] button`,
+		);
+		iconButton?.focus();
+
+		const url = new URL(location.href);
+		url.hash = "";
+		history.replaceState(null, "", url);
+	});
+
+	const countElement = document.querySelector<HTMLElement>("#icon-count")!;
+
+	function filter() {
+		const query = searchInput.value;
+		const selectedSymbol =
+			document.querySelector<HTMLInputElement>("#icon-symbol-filter input:checked")?.value ??
+			"icon";
+		const size = getSize(selectedSymbol);
+
+		let visibleIcons = 0;
+		for (const icon of icons) {
+			const iconName = icon.dataset.icon!;
+			const meta = iconsMeta[iconName as keyof typeof iconsMeta];
+			if (!meta) continue;
+
+			const hasSymbol = meta.symbols.includes(selectedSymbol);
+			const matchesQuery = matchQuery(query, iconName, meta.aliases);
+			const visible = matchesQuery && hasSymbol;
+			icon.hidden = !visible;
+
+			if (!visible) continue;
+
+			visibleIcons++;
+			const svg = icon.querySelector<SVGElement>("svg")!;
+			const href = icon.dataset.href!;
+			updateIcon(svg, `${href}#${selectedSymbol}`, size);
+		}
+
+		countElement.textContent = `Showing ${visibleIcons} icon(s)`;
+	}
+
+	function matchQuery(query: string, iconName: string, aliases: string[]) {
+		query = query.trim().toLowerCase();
+		iconName = iconName.toLowerCase();
+
+		if (!query) return true;
+		if (iconName.includes(query)) return true;
+		return aliases.some((alias) => alias.toLowerCase().includes(query));
+	}
+
+	function getSize(symbol: string) {
+		return symbol.includes("-large") ? "large" : "regular";
+	}
+
+	function updateIcon(svg: SVGElement, href: string, size: "regular" | "large") {
+		svg.dataset.size = size;
+
+		const use = svg.querySelector<SVGUseElement>("use")!;
+		use.setAttribute("href", href);
+	}
+
+	function debounce<Args extends unknown[]>(fn: (...args: Args) => void, delay: number) {
+		let timeout: ReturnType<typeof setTimeout>;
+		return (...args: Args) => {
+			clearTimeout(timeout);
+			timeout = setTimeout(() => fn(...args), delay);
+		};
+	}
+</script>

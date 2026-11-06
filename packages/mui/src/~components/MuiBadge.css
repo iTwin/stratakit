@@ -8,7 +8,8 @@
 	--🥝selection-color-text: var(--stratakit-color-static-black);
 	--_MuiBadge-color: var(--stratakit-color-text-neutral-emphasis);
 
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 	background-color: var(--_MuiBadge-background-color);
 	box-shadow: 0px 0px 0px 1px var(--_MuiBadge-border-color) inset;
 	border-radius: var(--stratakit-radius-round);
@@ -27,7 +28,8 @@
 	}
 
 	&:where(.MuiBadge-inline[data-_sk-size="small"]) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		--_MuiBadge-block-size: 1.25rem;
 		--_MuiBadge-padding-inline: var(--stratakit-space-200);
 	}

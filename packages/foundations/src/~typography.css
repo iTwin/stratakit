@@ -6,7 +6,7 @@
 :host {
 	--stratakit-font-family-sans: "InterVariable", "Noto Sans", "Open Sans", sans-serif;
 	--stratakit-font-family-mono:
-		"Geist Mono", "Noto Sans Mono", ui-monospace, "Segoe UI Mono", Consolas, monospace;
+		"IBM Plex Mono Var", "Noto Sans Mono", ui-monospace, "Cascadia Mono", monospace;
 
 	--stratakit-font-size-display-lg: 4rem; /* 64 */
 	--stratakit-font-size-display-md: 3rem; /* 48 */
@@ -43,12 +43,17 @@
 	--stratakit-line-height-caption-md: 1.4545; /* 16/11 */
 	--stratakit-line-height-caption-sm: 1.4; /* 14/10 */
 
+	--stratakit-font-size-mono-lg: 1rem; /* 16 */
+	--stratakit-font-size-mono-md: 0.875rem; /* 14 */
 	--stratakit-font-size-mono-sm: 0.75rem; /* 12 */
+	--stratakit-line-height-mono-lg: 1.5; /* 24/16 */
+	--stratakit-line-height-mono-md: 1.4286; /* 20/14 */
 	--stratakit-line-height-mono-sm: 1.3333; /* 16/12 */
 }
 
 .🥝Root:where([data-_sk-density="dense"]) {
-	@apply --typography("body-sm");
+	font-size: var(--stratakit-font-size-body-sm);
+	line-height: var(--stratakit-line-height-body-sm);
 }
 
 /* This is taken from Inter’s official stylesheet. */

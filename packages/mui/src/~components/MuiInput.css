@@ -4,23 +4,37 @@
  *--------------------------------------------------------------------------------------------*/
 
 .🥝MuiInput {
+	/* #region Variables */
+	--✨bg--default: var(--stratakit-color-bg-control-textbox);
+	--✨bg--autofill: var(--stratakit-color-bg-accent-muted);
+
 	--✨border--default: var(--stratakit-color-border-neutral-base);
 	--✨border--focus: var(--stratakit-color-border-accent-strong);
 	--✨border--error: var(--stratakit-color-border-critical-base);
 	--✨border--disabled: var(--stratakit-color-border-glow-on-surface-disabled);
+	/* #endregion */
 
-	@apply --typography("body-md");
+	font-size: var(--stratakit-font-size-body-md);
+	line-height: var(--stratakit-line-height-body-md);
 	padding: 0;
 	margin: 0;
 	border: 1px solid var(--_MuiInput-border-color);
 	border-radius: var(--stratakit-radius-sm);
-	background-color: var(--stratakit-color-bg-control-textbox);
-	transition: border-color 150ms ease-out;
+	background-color: var(--_MuiInput-background-color);
+	transition:
+		background-color 150ms ease-out,
+		border-color 150ms ease-out;
 
+	--_MuiInput-background-color: var(--✨bg--default);
 	--_MuiInput-border-color: var(--✨border--default);
 
 	@media (any-hover: hover) {
-		&:where(:not(.Mui-disabled)):hover {
+		&:where(:not(.Mui-disabled):hover) {
+			background-color: color-mix(
+				in oklch,
+				var(--_MuiInput-background-color) 100%,
+				var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+			);
 			border-color: color-mix(
 				in oklch,
 				var(--_MuiInput-border-color) 100%,
@@ -33,6 +47,10 @@
 		--_MuiInput-border-color: var(--✨border--focus);
 		outline: var(--🥝focus-outline);
 		outline-offset: var(--🥝focus-outline-offset);
+	}
+
+	&:where(:has(:is(input, textarea):is(:autofill, :-webkit-autofill))) {
+		--_MuiInput-background-color: var(--✨bg--autofill);
 	}
 
 	&:where(.Mui-error) {
@@ -56,7 +74,8 @@
 	--_MuiInput-padding-inline: var(--stratakit-space-300);
 
 	&:where(.MuiInputBase-sizeSmall) {
-		@apply --typography("body-sm");
+		font-size: var(--stratakit-font-size-body-sm);
+		line-height: var(--stratakit-line-height-body-sm);
 		--_MuiInput-block-size: var(--stratakit-size-control-field-height-small);
 		--_MuiInput-padding-inline: var(--stratakit-space-200);
 	}
@@ -78,6 +97,10 @@
 	align-content: center;
 
 	&:where(input, textarea) {
+		&:where(:autofill, :-webkit-autofill) {
+			box-shadow: 0 0 0 calc(infinity * 1px) var(--_MuiInput-background-color) inset;
+		}
+
 		&::placeholder {
 			color: var(--stratakit-color-text-neutral-placeholder);
 			opacity: 1;
@@ -107,6 +130,13 @@
 			block-size: var(--✨color-swatch-size);
 			border: 1px solid var(--stratakit-color-border-neutral-base);
 			border-radius: 1px;
+		}
+	}
+
+	&:where(input[type="search" i]) {
+		&::-webkit-search-cancel-button {
+			-webkit-appearance: none;
+			appearance: none;
 		}
 	}
 

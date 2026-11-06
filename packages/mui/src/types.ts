@@ -575,6 +575,24 @@ declare module "@mui/material/DialogContent" {
 	}
 }
 
+declare module "@mui/material/DialogTitle" {
+	interface DialogTitleOwnProps {
+		/**
+		 * Actions to be displayed in the dialog header. Usually includes a button to dismiss the dialog.
+		 *
+		 * @example
+		 * ```tsx
+		 * actions={[
+		 *   <IconButton key="dismiss" label="Dismiss">
+		 *     <Icon href={svgDismiss} />
+		 *   </IconButton>
+		 * ]}
+		 * ```
+		 */
+		actions?: React.ReactNode[];
+	}
+}
+
 declare module "@mui/material/Drawer" {
 	interface DrawerProps {
 		/** @deprecated StrataKit does not support this prop. */

@@ -10,6 +10,9 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
+import IconButton from "@mui/material/IconButton";
+import { svgDismiss } from "@stratakit/icons/dismiss";
+import { Icon } from "@stratakit/mui";
 
 export default () => {
 	const [open, setOpen] = React.useState(false);
@@ -20,18 +23,26 @@ export default () => {
 
 	return (
 		<>
-			<Button onClick={() => setOpen(true)}>Open dialog</Button>
+			<Button onClick={() => setOpen(true)}>About</Button>
 			<Dialog open={open} onClose={handleClose}>
-				<DialogTitle>Important decision</DialogTitle>
+				<DialogTitle
+					actions={[
+						<IconButton key="dismiss" label="Dismiss" onClick={handleClose}>
+							<Icon href={svgDismiss} />
+						</IconButton>,
+					]}
+				>
+					What is a dialog?
+				</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
-						{`Are you sure you want to use MUI? This decision cannot be undone.`}
+						A dialog is used to display additional actions and information on a
+						floating surface.
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleClose}>No</Button>
 					<Button onClick={handleClose} color="primary">
-						Yes
+						Got it
 					</Button>
 				</DialogActions>
 			</Dialog>

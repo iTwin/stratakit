@@ -27,7 +27,9 @@ Dialogs that guard sensitive actions and warrant explicit user confirmation shou
 
 ### Header actions
 
-Use the `actions` prop of `DialogTitle` to display additional actions within the **Dialog** header. Most commonly, this is used to provide a dismiss button, but it can accommodate multiple controls relevant to the **Dialog**.
+Use the `actions` prop of `DialogTitle` to display additional actions within the **Dialog** header. Most commonly, this is used to provide a dismiss button, but it can accommodate multiple controls.
+
+In the following example, the _"Maximize"_ button sets the **Dialog**'s [`fullScreen`](https://mui.com/material-ui/api/dialog/#dialog-prop-fullScreen) prop.
 
 ::example{src="mui/Dialog.header-actions"}
 

@@ -1,0 +1,1 @@
+import{t as e}from"./delete-G89PMS7U.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

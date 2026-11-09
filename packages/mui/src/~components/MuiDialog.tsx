@@ -61,7 +61,7 @@ interface MuiDialogTitleProps
 const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
 	(props, forwardedRef) => {
 		const { actions, slotProps, ...rest } = props;
-		const { header: headerProps } = slotProps ?? {};
+		const { wrapper: wrapperProps } = slotProps ?? {};
 
 		const title = <Role.h2 {...rest} ref={forwardedRef} />;
 		if (actions) {
@@ -69,8 +69,8 @@ const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
 			const leadingActions = actions.slice(0, -1);
 			return (
 				<Role.div
-					{...headerProps}
-					className={cx("🥝MuiDialogTitleHeader", headerProps?.className)}
+					{...wrapperProps}
+					className={cx("🥝MuiDialogTitleWrapper", wrapperProps?.className)}
 				>
 					{title}
 					<MuiDialogTitleActionsProvider>

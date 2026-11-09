@@ -2,7 +2,7 @@
 "@stratakit/mui": minor
 ---
 
-Added `actions` prop to `DialogTitle`. Use it to display additional actions in the header of the `Dialog`, such as a dismiss button. Use `slotProps.header` to customize the header element if needed.
+Added `actions` prop to `DialogTitle`. Use it to display additional actions in the header of the `Dialog`, such as a dismiss button. Use `slotProps.wrapper` to customize the wrapper element if needed.
 
 ```tsx
 <DialogTitle
@@ -12,8 +12,8 @@ Added `actions` prop to `DialogTitle`. Use it to display additional actions in t
 		</IconButton>,
 	]}
 	slotProps={{
-		header: {
-			// Props for the header element
+		wrapper: {
+			// Props for the wrapper element
 		},
 	}}
 >

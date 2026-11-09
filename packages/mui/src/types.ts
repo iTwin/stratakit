@@ -596,11 +596,11 @@ declare module "@mui/material/DialogTitle" {
 		 */
 		slotProps?: {
 			/**
-			 * Props forwarded to the header slot.
+			 * Props forwarded to the wrapper slot.
 			 *
-			 * Header element is rendered only if `actions` prop is provided for `DialogTitle`.
+			 * Wrapper element is rendered only if `actions` prop is provided for `DialogTitle`.
 			 */
-			header?: BaseProps & { ref?: React.Ref<HTMLDivElement> };
+			wrapper?: BaseProps & { ref?: React.Ref<HTMLDivElement> };
 		};
 	}
 }

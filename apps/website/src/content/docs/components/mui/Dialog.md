@@ -12,6 +12,7 @@ links:
 
 - Restyled using StrataKit's visual language.
 - Added `actions` prop to `DialogTitle` for displaying [header actions](#header-actions).
+- Added `slotProps.wrapper` to `DialogTitle` for customizing the [wrapper element](#header-actions).
 - The default [`container`](https://mui.com/material-ui/api/modal/#modal-prop-container) now resolves from StrataKit's portal context, which defaults to [root portal container](/components/root/#portal-container).
 - Nested popup elements now use the **Dialog** as the portal container.
 - The `PaperComponent` prop is not supported.
@@ -32,6 +33,8 @@ Use the `actions` prop of `DialogTitle` to display additional actions within the
 In the following example, the _"Maximize"_ button sets the **Dialog**'s [`fullScreen`](https://mui.com/material-ui/api/dialog/#dialog-prop-fullScreen) prop.
 
 ::example{src="mui/Dialog.header-actions"}
+
+The title and header actions are wrapped in an element, which can be customized by passing `slotProps.wrapper` to the `DialogTitle`.
 
 ## API reference
 

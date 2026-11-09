@@ -9,6 +9,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { RootContext } from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
+import cx from "classnames";
 import { PortalProvider } from "../PortalProvider.js";
 
 import type DialogTitle from "@mui/material/DialogTitle";
@@ -55,17 +56,22 @@ type DialogTitleProps = React.ComponentProps<typeof DialogTitle>;
 
 interface MuiDialogTitleProps
 	extends BaseProps<"h2">,
-		Pick<DialogTitleProps, "actions"> {}
+		Pick<DialogTitleProps, "actions" | "slotProps"> {}
 
 const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
 	(props, forwardedRef) => {
-		const { actions, ...rest } = props;
+		const { actions, slotProps, ...rest } = props;
+		const { wrapper: wrapperProps } = slotProps ?? {};
+
 		const title = <Role.h2 {...rest} ref={forwardedRef} />;
 		if (actions) {
 			const lastAction = actions.at(-1);
 			const leadingActions = actions.slice(0, -1);
 			return (
-				<div className="🥝MuiDialogTitleHeader">
+				<Role.div
+					{...wrapperProps}
+					className={cx("🥝MuiDialogTitleWrapper", wrapperProps?.className)}
+				>
 					{title}
 					<MuiDialogTitleActionsProvider>
 						{leadingActions}
@@ -73,7 +79,7 @@ const MuiDialogTitle = forwardRef<"h2", MuiDialogTitleProps>(
 							{lastAction}
 						</MuiDialogTitleLastActionProvider>
 					</MuiDialogTitleActionsProvider>
-				</div>
+				</Role.div>
 			);
 		}
 

@@ -59,6 +59,7 @@ import type {
 	TypographyTypeMap,
 } from "@mui/material/Typography";
 import type {} from "@mui/material/Zoom";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 import type * as React from "react";
 
 declare module "@mui/material/OverridableComponent" {
@@ -590,6 +591,17 @@ declare module "@mui/material/DialogTitle" {
 		 * ```
 		 */
 		actions?: React.ReactNode[];
+		/**
+		 * The props used for each slot inside.
+		 */
+		slotProps?: {
+			/**
+			 * Props forwarded to the element which wraps the title and the actions.
+			 *
+			 * Wrapper element is rendered only if `actions` prop is provided for `DialogTitle`.
+			 */
+			wrapper?: BaseProps & { ref?: React.Ref<HTMLDivElement> };
+		};
 	}
 }
 

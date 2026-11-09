@@ -1,5 +1,56 @@
 # Changelog
 
+## 1.3.0
+
+### Minor Changes
+
+- [#2042](https://github.com/iTwin/stratakit/pull/2042): Added `actions` prop to `DialogTitle`. Use it to display additional actions in the header of the `Dialog`, such as a dismiss button. Use `slotProps.wrapper` to customize the wrapper element if needed.
+
+  ```tsx
+  <DialogTitle
+  	actions={[
+  		<IconButton key="dismiss" label="Dismiss">
+  			<Icon href={svgDismiss} />
+  		</IconButton>,
+  	]}
+  	slotProps={{
+  		wrapper: {
+  			// Props for the wrapper element
+  		},
+  	}}
+  >
+  	Dialog title
+  </DialogTitle>
+  ```
+
+- [#1851](https://github.com/iTwin/stratakit/pull/1851): Added row and icon styling for `DataGrid`.
+- [#1989](https://github.com/iTwin/stratakit/pull/1989): Updated the minimum version of `@mui/material` from `^9.4.0` to `^9.5.0`.
+- [#1977](https://github.com/iTwin/stratakit/pull/1977): Added styling support for `type="search"` rendered by `TextField`.
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Updated `Snackbar` component to use the `PortalContext` from `@stratakit/foundations` instead of Ariakit's `PortalContext`.
+- [#2037](https://github.com/iTwin/stratakit/pull/2037): Added `"mono-lg"` and `"mono-md"` variants to the `Typography` component.
+- [#1980](https://github.com/iTwin/stratakit/pull/1980): Added `PortalProvider` component that sets up `PortalContext` and MUI theme provider.
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Removed Ariakit's [`PortalContext`](https://ariakit.com/reference/portal-context) from the `Root`, `Dialog`, `Drawer`, and `Popover` components. StrataKit components that were previously relying on this context now use the `PortalContext` from `@stratakit/foundations` instead.
+
+### Patch Changes
+
+- [#1949](https://github.com/iTwin/stratakit/pull/1949): Updated `Snackbar` to force dark mode. This fixes the appearance of nested elements in light mode.
+- [#2052](https://github.com/iTwin/stratakit/pull/2052): Updated an internal focus-outline-offset property to not inherit.
+- [#2030](https://github.com/iTwin/stratakit/pull/2030): Updated `Checkbox`'s hit target size and hover styles.
+- [#2024](https://github.com/iTwin/stratakit/pull/2024): Updated font styles for `Typography` when rendered as `<kbd>`.
+- [#2031](https://github.com/iTwin/stratakit/pull/2031): Updated `Button` styling to maintain a 1:1 aspect ratio when it contains only an icon.
+- [#1949](https://github.com/iTwin/stratakit/pull/1949): Updated `Tooltip` to force dark mode.
+- [#1997](https://github.com/iTwin/stratakit/pull/1997): Added autofill styling to `TextField`.
+- [#2007](https://github.com/iTwin/stratakit/pull/2007): Improved disabled styling of inputs in `forced-colors` mode.
+- [#2026](https://github.com/iTwin/stratakit/pull/2026): Updated the appearance of close button in `Alert`.
+- [#2040](https://github.com/iTwin/stratakit/pull/2040): Improved hover visuals for inputs.
+- [#1988](https://github.com/iTwin/stratakit/pull/1988): Updated `border` styling for certain variants of `Button`.
+- [#1994](https://github.com/iTwin/stratakit/pull/1994): Updated the hover state styling for certain permutations of `IconButton` and `Button`.
+- [#2011](https://github.com/iTwin/stratakit/pull/2011): Increased the entry delay for `Tooltip`.
+- [#1787](https://github.com/iTwin/stratakit/pull/1787): Improved styling of `DatePicker`'s year and month picker to match the Strata visual design language.
+- Updated dependencies:
+  - @stratakit/foundations@1.1.0
+  - @stratakit/icons@0.4.8
+
 ## 1.2.1
 
 ### Patch Changes

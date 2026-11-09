@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.6.3
+
+### Patch Changes
+
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Removed Ariakit's [`PortalContext`](https://ariakit.com/reference/portal-context) from the `Dialog` and `Popover` components. StrataKit components that were previously relying on this context now use the `PortalContext` from `@stratakit/foundations` instead.
+- [#2052](https://github.com/iTwin/stratakit/pull/2052): Updated an internal focus-outline-offset property to not inherit.
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Updated `Dialog`, `DropdownMenu` and `Popover` components to use the `PortalContext` from `@stratakit/foundations` instead of Ariakit's `PortalContext`.
+- Updated dependencies:
+  - @stratakit/bricks@0.6.2
+  - @stratakit/foundations@1.1.0
+
 ## 0.6.2
 
 - [#1943](https://github.com/iTwin/stratakit/pull/1943): Added a max-height on the `DropdownMenu` so it does not extend beyond the viewport.

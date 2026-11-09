@@ -1,1 +1,0 @@
-import{t as e}from"./arrow-down-DM7cayd1.js";var t=`${e}#icon`;`${e}`;export{t};

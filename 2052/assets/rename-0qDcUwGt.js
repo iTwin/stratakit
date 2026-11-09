@@ -1,1 +1,0 @@
-import{t as e}from"./rename-DepOmgGT.js";var t=`${e}#icon`;`${e}`;export{t};

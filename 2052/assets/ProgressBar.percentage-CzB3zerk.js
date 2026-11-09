@@ -1,0 +1,1 @@
+import{J as e,Z as t,t as n}from"./jsx-runtime-D_cWKu3M.js";import{t as r}from"./Text-JRPokfVt.js";import{t as i}from"./Progress-DteYYLUI.js";var a=t(e(),1),o=n(),s=()=>{let e=a.useId();return(0,o.jsxs)(o.Fragment,{children:[(0,o.jsx)(i,{value:50,"aria-labelledby":e}),(0,o.jsx)(r,{variant:`body-sm`,id:e,children:`Uploading files…`})]})};export{s as default};

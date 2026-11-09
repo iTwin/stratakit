@@ -1,1 +1,0 @@
-import{X as e}from"./jsx-runtime-D_cWKu3M.js";var t=e({default:()=>n}),n=`/2042/assets/configuration-7cwDkVE3.svg`,r=e({default:()=>i}),i=`/2042/assets/drag-handle-vertical-DW6VnHDu.svg`,a=e({default:()=>o}),o=`/2042/assets/link-TuvCCAq9.svg`;export{n as a,r as i,a as n,t as o,i as r,o as t};

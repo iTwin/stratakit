@@ -21,22 +21,15 @@
 }
 
 .🥝MuiDialogTitleHeader {
-	--✨min-height: 56px; /* var(--stratakit-space-400) * 2 + var(--stratakit-space-600) */
-	--✨large-action-size: var(--stratakit-size-control-field-height-large);
-
-	/* Ensure minimum height even if large action is displayed. */
-	min-block-size: var(--✨min-height);
-	padding-block: calc((var(--✨min-height) - var(--✨large-action-size)) / 2);
-
 	display: flex;
 	align-items: center;
-	padding-inline: var(--stratakit-space-600);
+	padding-inline-end: var(--stratakit-space-600);
 }
 
 .MuiDialogTitle-root {
 	:where(.🥝MuiDialogTitleHeader) > & {
 		margin-inline-end: auto;
-		padding: 0;
+		padding-inline-end: 0;
 	}
 }
 

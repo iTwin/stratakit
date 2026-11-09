@@ -1,0 +1,1 @@
+import{t as e}from"./error-BKPO06fA.js";var t=`${e}#icon`;`${e}`;export{t};

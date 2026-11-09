@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder-CVF5tmju.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

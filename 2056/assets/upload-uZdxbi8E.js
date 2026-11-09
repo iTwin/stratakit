@@ -1,0 +1,1 @@
+import{t as e}from"./upload-Dc4GLsE_.js";var t=`${e}#icon`;`${e}`;export{t};

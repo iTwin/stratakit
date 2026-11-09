@@ -27,9 +27,10 @@ test("does not pass font-size through to SVG element on icons", async ({
 	await expect(svg).not.toHaveAttribute("font-size");
 });
 
-test("filters out ownerState", async ({ page }) => {
-	await page.goto("/standalone?path=mui/Alert.showcase&export=AlertClose");
-	const iconButton = await page.getByRole("button", { name: "Close" });
-	const svg = iconButton.locator("css=svg");
+test("filters out ownerState", async ({ mount }) => {
+	const root = await mount("tests/mui/Icon.fixture", {
+		ownerState: { error: true },
+	});
+	const svg = root.locator("css=svg");
 	await expect(svg).not.toHaveAttribute("ownerState");
 });

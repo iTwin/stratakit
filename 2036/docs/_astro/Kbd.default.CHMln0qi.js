@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.BTipd47q.js";import{t}from"./Kbd.TScV-_1B.js";var n=e(),r=()=>(0,n.jsx)(t,{children:`A`});export{r as default};

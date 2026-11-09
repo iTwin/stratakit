@@ -1,1 +1,0 @@
-import{t as e}from"./info-Duuxc2-h.js";var t=`${e}#icon`;`${e}`;export{t};

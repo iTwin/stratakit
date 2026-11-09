@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.qGps1cOC.js";import{t}from"./Button.R1KTquF6.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{variant:`solid`,children:`Solid`}),(0,n.jsx)(t,{variant:`outline`,children:`Outline`}),(0,n.jsx)(t,{variant:`ghost`,children:`Ghost`})]});export{r as default};

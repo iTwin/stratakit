@@ -16,3 +16,21 @@ test("converts titleAccess to label", async ({ mount }) => {
 	});
 	await expect(root.getByRole("img")).toHaveAccessibleName(label);
 });
+
+test("does not pass font-size through to SVG element on icons", async ({
+	mount,
+}) => {
+	const root = await mount("tests/mui/Icon.fixture", {
+		fontSize: "small",
+	});
+	const svg = root.locator("css=svg");
+	await expect(svg).not.toHaveAttribute("font-size");
+});
+
+test("filters out ownerState", async ({ mount }) => {
+	const root = await mount("tests/mui/Icon.fixture", {
+		ownerState: { error: true },
+	});
+	const svg = root.locator("css=svg");
+	await expect(svg).not.toHaveAttribute("ownerState");
+});

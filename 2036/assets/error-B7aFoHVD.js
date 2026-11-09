@@ -1,0 +1,1 @@
+import{t as e}from"./error-Bon9uph0.js";var t=`${e}#icon`;`${e}`;export{t};

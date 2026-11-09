@@ -1,0 +1,1 @@
+import{t as e}from"./upload-PSe4Jt2T.js";var t=`${e}#icon`;`${e}`;export{t};

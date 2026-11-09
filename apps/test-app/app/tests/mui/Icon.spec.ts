@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { randomUUID } from "crypto";
+import { randomUUID } from "node:crypto";
 
 import { expect, test } from "#playwright";
 

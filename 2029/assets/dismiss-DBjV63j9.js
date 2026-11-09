@@ -1,1 +1,0 @@
-import{t as e}from"./dismiss-Bse7ccki.js";var t=`${e}#icon`;`${e}`;export{t};

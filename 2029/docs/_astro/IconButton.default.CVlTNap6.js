@@ -1,1 +1,0 @@
-import{n as e,pr as t,wt as n}from"./chevron-down.qGps1cOC.js";import{t as r}from"./download.DQF5kMZR.js";var i=`${r}#icon`;`${r}`;var a=t(),o=()=>(0,a.jsx)(e,{label:`Download`,children:(0,a.jsx)(n,{href:i})});export{o as default};

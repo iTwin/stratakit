@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.qGps1cOC.js";import{t}from"./Avatar.IcGV_jar.js";var n=e(),r=()=>(0,n.jsx)(t,{initials:`WW`,alt:`Willow Winters`});export{r as default};

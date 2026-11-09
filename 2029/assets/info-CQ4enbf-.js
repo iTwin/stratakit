@@ -1,1 +1,0 @@
-import{t as e}from"./info-CLjd0Su6.js";var t=`${e}#icon`;`${e}`;export{t};

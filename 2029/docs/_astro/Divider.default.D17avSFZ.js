@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.qGps1cOC.js";import{t}from"./Divider.C3SAwpf2.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as default};

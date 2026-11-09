@@ -5,7 +5,9 @@
 .🥝Icon {
 	@layer base {
 		width: var(--🥝Icon-size, 1rem);
+		min-width: var(--🥝Icon-size, 1rem);
 		height: var(--🥝Icon-size, 1rem);
+		min-height: var(--🥝Icon-size, 1rem);
 		flex-shrink: 0;
 		color: var(--🥝Icon-color);
 		transition: color 150ms ease-out;

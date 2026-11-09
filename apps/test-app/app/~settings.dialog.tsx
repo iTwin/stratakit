@@ -3,9 +3,10 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 import * as React from "react";
-import { Button, NativeSelect } from "@mui/material";
+import Button from "@mui/material/Button";
 import FormControl from "@mui/material/FormControl";
 import InputLabel from "@mui/material/InputLabel";
+import NativeSelect from "@mui/material/NativeSelect";
 import Switch from "@mui/material/Switch";
 import * as Dialog from "@stratakit/structures/unstable_Dialog";
 import { useSettingsStore } from "./~settings.tsx";

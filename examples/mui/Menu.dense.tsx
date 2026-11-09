@@ -7,6 +7,9 @@ import * as React from "react";
 import Button from "@mui/material/Button";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import { svgChevronDown } from "@stratakit/icons/chevron-down";
+import { svgChevronUp } from "@stratakit/icons/chevron-up";
+import { Icon } from "@stratakit/mui";
 
 export default () => {
 	const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -20,6 +23,7 @@ export default () => {
 			<Button
 				aria-haspopup="true"
 				aria-expanded={open ? "true" : "false"}
+				endIcon={<Icon href={open ? svgChevronUp : svgChevronDown} />}
 				onClick={(event) => setAnchorEl(event.currentTarget)}
 				size="small"
 			>

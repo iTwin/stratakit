@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -81,10 +80,10 @@ import {
 	WarningIcon,
 } from "./Icon.js";
 
-import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
 import type {} from "@mui/x-data-grid/themeAugmentation";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
+import type * as React from "react";
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
 function createTheme() {
@@ -656,7 +655,7 @@ function createTheme() {
 				},
 			},
 			MuiTab: { defaultProps: { component: MuiTab, iconPosition: "start" } },
-			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
+			MuiTable: { defaultProps: { component: Role.table } },
 			MuiTableBody: {
 				defaultProps: {
 					component: MuiTableBody,
@@ -665,21 +664,21 @@ function createTheme() {
 			},
 			MuiTableCell: { defaultProps: { component: MuiTableCell } },
 			MuiTableContainer: {
-				defaultProps: { component: withRenderProp(Role, "div") },
+				defaultProps: { component: Role.div },
 			},
 			MuiTableFooter: {
-				defaultProps: { component: withRenderProp(Role, "tfoot") },
+				defaultProps: { component: Role.tfoot },
 			},
 			MuiTableHead: {
 				defaultProps: { component: MuiTableHead },
 			},
 			MuiTablePagination: {
 				defaultProps: {
-					component: withRenderProp(Role, "td"),
+					component: Role.td,
 					slotProps: { root: { colSpan: 999 } },
 				},
 			},
-			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
+			MuiTableRow: { defaultProps: { component: Role.tr } },
 			MuiTableSortLabel: {
 				defaultProps: {
 					component: Role.span,
@@ -801,18 +800,6 @@ function createTheme() {
 				],
 			},
 		},
-	});
-}
-
-// ----------------------------------------------------------------------------
-
-/** HOC that sets a default value for the `render` prop. */
-function withRenderProp(
-	Role: React.ComponentType<RoleProps>,
-	DefaultTagName: React.ElementType,
-) {
-	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
-		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
 	});
 }
 

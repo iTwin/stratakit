@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.0rvbEabA.js";import{t}from"./Typography.Bmwp-R2D.js";var n=e(),r=()=>(0,n.jsx)(t,{variant:`headline-md`,render:(0,n.jsx)(`h2`,{}),children:`Heading text`});export{r as default};

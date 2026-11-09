@@ -20,10 +20,10 @@ import { isProduction, useColorScheme } from "./~utils.tsx";
 
 import type { LinksFunction } from "react-router";
 
-import plexMonoVariableItalic from "./assets/IBM Plex Mono Var-Italic.woff2?url";
-import plexMonoVariable from "./assets/IBM Plex Mono Var-Roman.woff2?url";
-import interVariable from "./assets/InterVariable.woff2?url";
-import interVariableItalic from "./assets/InterVariable-Italic.woff2?url";
+import plexMonoVariableItalic from "internal/fonts/IBM Plex Mono Var-Italic.woff2?url";
+import plexMonoVariable from "internal/fonts/IBM Plex Mono Var-Roman.woff2?url";
+import interVariable from "internal/fonts/InterVariable.woff2?url";
+import interVariableItalic from "internal/fonts/InterVariable-Italic.woff2?url";
 
 const queryClient = new QueryClient();
 
@@ -37,6 +37,13 @@ export const links: LinksFunction = () => {
 			type: "image/svg+xml",
 		},
 		{ rel: "manifest", href: "/manifest.json", crossOrigin: "use-credentials" },
+		{
+			rel: "preload",
+			href: interVariable,
+			as: "font",
+			type: "font/woff2",
+			crossOrigin: "anonymous",
+		},
 	];
 };
 

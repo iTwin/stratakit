@@ -24,6 +24,7 @@ type ComponentModule = Record<string, unknown> & {
 const moduleLoaders = new Map(
 	Object.entries({
 		...import.meta.glob<ComponentModule>("./**/*.showcase.tsx"), // all `.showcase` files within test-app
+		...import.meta.glob<ComponentModule>("./tests/**/*.fixture.tsx"), // `.fixture` files within `tests/` dir
 		...import.meta.glob<ComponentModule>(
 			"./examples/*/*.{tsx,jsx}", // all files within the `examples` package
 			{ base: "../../../" },

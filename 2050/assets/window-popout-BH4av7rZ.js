@@ -1,0 +1,1 @@
+import{t as e}from"./window-popout-DC6iqk46.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-De6Y45V8.js";var t=`${e}#icon`;`${e}`;export{t};

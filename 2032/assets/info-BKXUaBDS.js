@@ -1,0 +1,1 @@
+import{t as e}from"./info-DKi2CwmW.js";var t=`${e}#icon`;`${e}`;export{t};

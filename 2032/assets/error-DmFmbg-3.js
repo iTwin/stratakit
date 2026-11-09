@@ -1,0 +1,1 @@
+import{t as e}from"./error-CCI6kNue.js";var t=`${e}#icon`;`${e}`;export{t};

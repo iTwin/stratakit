@@ -1,1 +1,0 @@
-import{t as e}from"./more-vertical-n4v2DBGL.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./chevron-up-DnaUe12_.js";var t=`${e}#icon`;`${e}`;export{t};

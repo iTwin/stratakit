@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 import { expect, test } from "#playwright";
 
-test("showcase", { tag: "@visual-2" }, async ({ page }) => {
-	await page.goto("/standalone?path=mui/Table.showcase");
+test.use({ baseURL: "http://localhost:1800/standalone" });
+
+test("showcase", { tag: "@visual-2" }, async ({ page, mount }) => {
+	await mount("mui/Table.showcase");
 	await expect(page).toHaveScreenshot({ fullPage: true });
 });

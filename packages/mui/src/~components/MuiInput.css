@@ -21,13 +21,20 @@
 	border: 1px solid var(--_MuiInput-border-color);
 	border-radius: var(--stratakit-radius-sm);
 	background-color: var(--_MuiInput-background-color);
-	transition: border-color 150ms ease-out;
+	transition:
+		background-color 150ms ease-out,
+		border-color 150ms ease-out;
 
 	--_MuiInput-background-color: var(--✨bg--default);
 	--_MuiInput-border-color: var(--✨border--default);
 
 	@media (any-hover: hover) {
-		&:where(:not(.Mui-disabled)):hover {
+		&:where(:not(.Mui-disabled):hover) {
+			background-color: color-mix(
+				in oklch,
+				var(--_MuiInput-background-color) 100%,
+				var(--stratakit-color-glow-hue) var(--stratakit-color-bg-glow-base-hover-\%)
+			);
 			border-color: color-mix(
 				in oklch,
 				var(--_MuiInput-border-color) 100%,

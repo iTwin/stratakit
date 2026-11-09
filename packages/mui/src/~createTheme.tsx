@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -59,23 +58,32 @@ import { MuiTypography, variantMapping } from "./~components/MuiTypography.js";
 import {
 	CalendarIcon,
 	CaretsUpDownIcon,
+	CheckmarkIcon,
 	ChevronDownIcon,
 	ChevronLeftDoubleIcon,
 	ChevronLeftIcon,
 	ChevronRightDoubleIcon,
 	ChevronRightIcon,
 	ClockIcon,
+	ColumnManageIcon,
 	DismissIcon,
 	ErrorIcon,
+	ExportIcon,
+	FilterIcon,
 	InfoIcon,
+	MoreVerticalIcon,
 	SearchIcon,
+	SortAscendingIcon,
+	SortDescendingIcon,
 	SuccessIcon,
+	VisibilityHideIcon,
 	WarningIcon,
 } from "./Icon.js";
 
-import type { RoleProps } from "@ariakit/react/role";
 import type { ColorSystemOptions } from "@mui/material/styles";
+import type {} from "@mui/x-data-grid/themeAugmentation";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
+import type * as React from "react";
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
 function createTheme() {
@@ -187,10 +195,7 @@ function createTheme() {
 						warning: <WarningIcon />,
 					},
 					slots: {
-						closeIcon: withExcludedProps(DismissIcon, [
-							"ownerState",
-							"fontSize",
-						]),
+						closeIcon: DismissIcon,
 					},
 					slotProps: {
 						closeButton: {
@@ -375,10 +380,39 @@ function createTheme() {
 							.slice(0, 2),
 				},
 			},
+			MuiDataGrid: {
+				defaultProps: {
+					checkboxSelection: true,
+					slots: {
+						booleanCellFalseIcon: DismissIcon,
+						booleanCellTrueIcon: CheckmarkIcon,
+						columnMenuIcon: MoreVerticalIcon,
+						columnMenuSortAscendingIcon: SortAscendingIcon,
+						columnMenuSortDescendingIcon: SortDescendingIcon,
+						columnMenuFilterIcon: FilterIcon,
+						columnMenuHideIcon: VisibilityHideIcon,
+						columnSortedAscendingIcon: SortAscendingIcon,
+						columnSortedDescendingIcon: SortDescendingIcon,
+						columnFilteredIcon: FilterIcon,
+						columnMenuManageColumnsIcon: ColumnManageIcon,
+						columnSelectorIcon: ColumnManageIcon,
+						exportIcon: ExportIcon,
+						filterPanelDeleteIcon: DismissIcon,
+						quickFilterIcon: SearchIcon,
+						quickFilterClearIcon: DismissIcon,
+						openFilterButtonIcon: FilterIcon,
+					},
+					slotProps: {
+						basePopper: {
+							role: undefined, // Work around https://github.com/mui/mui-x/issues/23848
+						},
+					},
+				},
+			},
 			MuiDatePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: withExcludedProps(CalendarIcon, ["ownerState"]),
+						openPickerIcon: CalendarIcon,
 					},
 					slotProps: {
 						openPickerButton: {
@@ -621,7 +655,7 @@ function createTheme() {
 				},
 			},
 			MuiTab: { defaultProps: { component: MuiTab, iconPosition: "start" } },
-			MuiTable: { defaultProps: { component: withRenderProp(Role, "table") } },
+			MuiTable: { defaultProps: { component: Role.table } },
 			MuiTableBody: {
 				defaultProps: {
 					component: MuiTableBody,
@@ -630,21 +664,21 @@ function createTheme() {
 			},
 			MuiTableCell: { defaultProps: { component: MuiTableCell } },
 			MuiTableContainer: {
-				defaultProps: { component: withRenderProp(Role, "div") },
+				defaultProps: { component: Role.div },
 			},
 			MuiTableFooter: {
-				defaultProps: { component: withRenderProp(Role, "tfoot") },
+				defaultProps: { component: Role.tfoot },
 			},
 			MuiTableHead: {
 				defaultProps: { component: MuiTableHead },
 			},
 			MuiTablePagination: {
 				defaultProps: {
-					component: withRenderProp(Role, "td"),
+					component: Role.td,
 					slotProps: { root: { colSpan: 999 } },
 				},
 			},
-			MuiTableRow: { defaultProps: { component: withRenderProp(Role, "tr") } },
+			MuiTableRow: { defaultProps: { component: Role.tr } },
 			MuiTableSortLabel: {
 				defaultProps: {
 					component: Role.span,
@@ -681,7 +715,7 @@ function createTheme() {
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: withExcludedProps(ClockIcon, ["ownerState"]),
+						openPickerIcon: ClockIcon,
 					},
 					slotProps: {
 						openPickerButton: {
@@ -766,35 +800,6 @@ function createTheme() {
 				],
 			},
 		},
-	});
-}
-
-// ----------------------------------------------------------------------------
-
-/** HOC that sets a default value for the `render` prop. */
-function withRenderProp(
-	Role: React.ComponentType<RoleProps>,
-	DefaultTagName: React.ElementType,
-) {
-	return React.forwardRef<HTMLDivElement, RoleProps>((props, forwardedRef) => {
-		return <Role render={<DefaultTagName />} {...props} ref={forwardedRef} />;
-	});
-}
-
-// ----------------------------------------------------------------------------
-
-/** HOC that "excludes" certain props from being passed to the specified Component. */
-function withExcludedProps<Element, Props extends object>(
-	Component: React.ComponentType<Props & React.RefAttributes<Element>>,
-	excludedProps: readonly string[],
-) {
-	return React.forwardRef<Element, Props>((props, forwardedRef) => {
-		const filteredProps = { ...props };
-		for (const key of excludedProps) {
-			delete filteredProps[key as keyof React.PropsWithoutRef<Props>];
-		}
-
-		return <Component {...(filteredProps as Props)} ref={forwardedRef} />;
 	});
 }
 

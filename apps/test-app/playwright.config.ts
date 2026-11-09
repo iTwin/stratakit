@@ -128,9 +128,6 @@ export const test = base.extend<{ page: Page }>({
 		page.goto = async (url, options) => {
 			const result = await _goto.call(page, url, options);
 			await page.waitForSelector("body[data-loaded]", { timeout: 5000 });
-			await page
-				.getByTestId("showcase-loading")
-				.waitFor({ state: "hidden", timeout: 5000 });
 			return result;
 		};
 		await use(page);

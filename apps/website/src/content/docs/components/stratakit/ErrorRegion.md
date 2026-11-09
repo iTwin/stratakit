@@ -1,6 +1,6 @@
 ---
 title: ErrorRegion
-description: Error regions are used to display errors collected from different parts of a section.
+description: Error regions collate errors generated from an interactive dataset.
 status: unstable
 links:
   apiReference: "#api-reference"
@@ -8,7 +8,164 @@ links:
 
 ::example{src="structures/ErrorRegion.default" min-height="250px" min-width="450px" vertical-stretch}
 
+During the exploration and operation of a layers panel (typically rendered as a [**Tree**](/components/tree)), errors may occasionally be incurred. For example, the application may fail to fetch the data needed to render a subtree of layers.
+
+The **ErrorRegion** records errors in one place, to be addressed at the user's convenience. As errors are accumulated, operation can continue unhindered.
+
+## Use cases
+
+The **ErrorRegion** is not a generic component for alerting users to application state. It collates errors accumulated from an interactive dataset, such as a layers panel rendered using a [**Tree**](/components/tree). Consult the table below to compare **ErrorRegion** with alternatives.
+
+| Use case                                                                 | [ErrorRegion](/components/errorregion) | Inline error message | [Snackbar](/components/snackbar) | [Accordion](/components/accordion) |
+| ------------------------------------------------------------------------ | -------------------------------------- | -------------------- | -------------------------------- | ---------------------------------- |
+| Collating errors                                                         | ✅                                     | ❌                   | ❌                               | ❌                                 |
+| Form field errors                                                        | ❌                                     | ✅                   | ❌                               | ❌                                 |
+| Alerting users of application state (errors, warnings, success messages) | ❌                                     | ❌                   | ✅                               | ❌                                 |
+| Collating arbitrary content for future disclosure                        | ❌                                     | ❌                   | ❌                               | ✅                                 |
+
+## Structure
+
+### Components
+
+An **ErrorRegion** constitutes two key components:
+
+- **[`ErrorRegion.Root`](/reference/structures/ErrorRegion/#ErrorRegion.Root)**: The [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) that contains the errors.
+- **[`ErrorRegion.Item`](/reference/structures/ErrorRegion/#ErrorRegion.Item)**: Represents a discrete error within the **ErrorRegion**.
+
+### Labels
+
+The **ErrorRegion**'s visible [`label`](/reference/structures/ErrorRegion/#ErrorRegion.Root.label) is typically used to itemize the errors, with a value like _“3 issues present”_.
+
+Changes to the `label` prop are announced to assistive technologies via a [live region](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Guides/Live_regions), which requires the **ErrorRegion** to be mounted and attached to the DOM persistently.
+
+In addition, the [region landmark](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/region_role) must be identified to screen reader software using a stable label. Apply an [`aria-label`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-label) with the value _“Layer errors”_ or similar. The region itself is discoverable by screen reader software even when no errors are present and the region is not visible.
+
+```tsx
+<ErrorRegion.Root aria-label="Layer errors" label={`${issues.length} issues found`} />
+```
+
+### Errors
+
+`ErrorRegion.Item`'s are supplied via the [`items`](/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop of `ErrorRegion.Root`. Each item in the array represents a discrete error and together they form a list of errors within the **ErrorRegion**. `ErrorRegion.Item`'s [`message`](/reference/structures/ErrorRegion/#ErrorRegion.Item.message) prop can take any JSX.
+
+```jsx
+items={[
+  <ErrorRegion.Item
+    message={<p>Failed to create hierarchy</p>}
+  />
+]}
+```
+
+The [`actions`](/reference/structures/ErrorRegion/#ErrorRegion.Item.actions) prop places functionality intended to address the error at the foot of the `ErrorRegion.Item`. Each action must be a button displayed as a [**Link**](/components/link).
+
+```jsx
+actions={
+  <Link render={<button />}>Retry</Link>
+}
+```
+
+## Interaction
+
+The behavior of the **ErrorRegion** and the relationship between `ErrorRegion.Item`s and related UI elements can differ somewhat according to your application needs. The following describes the out-of-the-box behavior alongside recommended provisions.
+
+### Visibility
+
+Use the [`items`](/reference/structures/ErrorRegion/#ErrorRegion.Root.items) prop to control the visibility of the **ErrorRegion** and avoid conditionally rendering it. This ensures that changes to the [`label` prop](#labels) are properly announced and that the region landmark remains discoverable.
+
+```tsx
+// ❌
+hasErrors ? <ErrorRegion.Root items={[<ErrorRegion.Item />]} /> : null;
+
+// ✅
+<ErrorRegion.Root items={hasErrors ? [<ErrorRegion.Item />] : undefined} />;
+```
+
+### Disclosure
+
+The **ErrorRegion** is initially collapsed, showing only a toggle `<button>` to expand and reveal the list of `ErrorRegion.Item`s. This disclosure state is handled automatically by default.
+
+Alternatively, use the [`open`](/reference/structures/ErrorRegion/#ErrorRegion.Root.open) and [`setOpen`](/reference/structures/ErrorRegion/#ErrorRegion.Root.setOpen) props to control the disclosure state.
+
+```tsx
+const [open, setOpen] = React.useState(false);
+
+<ErrorRegion.Root open={open} setOpen={setOpen} />;
+```
+
+### Error association
+
+Use the [`messageId`](/reference/structures/ErrorRegion/#ErrorRegion.Item.messageId) prop of `ErrorRegion.Item` to semantically associate the error message with the related UI element. The `messageId` sets the [`id`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/id) of the error message, which can then be referenced by attributes like [`aria-describedby`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-describedby). When used with the `Tree.Item`, pass the same value to its [`error`](/reference/structures/Tree/#Tree.Item.error) prop.
+
+```tsx "load-error"
+<ErrorRegion.Item messageId="load-error" />
+
+<Tree.Item error="load-error" />
+```
+
+To ensure bidirectional association with the `ErrorRegion.Item`, reference the related UI element in the `message` prop. This message can include a [Link](/components/link) to provide a convenient way for the user to return back to associated element.
+
+```tsx "imodels"
+<ErrorRegion.Item
+	message={
+		<p>
+			<span>Failed to create hierarchy for</span>
+			<Link href="#imodels">iModels</Link>
+		</p>
+	}
+/>
+
+<Tree.Item id="imodels" />
+```
+
+:::caution[Stable IDs]
+`id` attributes should be stable between page reloads when linking them via the [URI fragment](https://developer.mozilla.org/en-US/docs/Web/URI/Reference/Fragment).
+:::
+
+## Examples
+
+### Tree errors
+
+Collate errors raised from a **Tree** component in an **ErrorRegion**.
+
+Within the **Tree**, when an error occurs:
+
+1. [`error`](/reference/structures/Tree/#Tree.Item.error) is applied to the `Tree.Item` in question.
+2. `label` of the `ErrorRegion.Root` is updated to reflect the change. For example, if there was already one error present in the tree, use a label like _“2 errors found”_. This updated label will be announced in screen reader software.
+3. `items` of the `ErrorRegion.Root` is repopulated to include the new `ErrorRegion.Item`.
+4. [`actions`](/reference/structures/Tree/#Tree.Item.actions) of the `Tree.Item` are used for addressing the error within the `Tree.Item` itself.
+
+:::caution[Focus management]
+
+Do not send keyboard focus to the **ErrorRegion** when an error occurs. Users must remain at their current location in the [**Tree**](/components/tree).
+
+:::
+
+Within the **ErrorRegion**:
+
+1. Clicking the `ErrorRegion`'s `<button>` toggles the visibility of the `ErrorRegion.Item`s.
+2. The `message` of each `ErrorRegion.Item` includes a link to the corresponding `Tree.Item`, using the `Tree.Item`'s [`label`](/reference/structures/Tree/#Tree.Item.label) as the link text. Point the link to the `Tree.Item`'s `id`.
+3. The `Tree.Item`'s `actions` includes a control that addresses—or can attempt to address—the error. For example, where data failed to be fetched, supply a “Retry” button.
+4. Where an `error` is successfully addressed, the `ErrorRegion.Item` is removed. If the user was focused within the `ErrorRegion.Item` when this happened, focus must be redirected to one of two places:
+   - To the **ErrorRegion**'s toggle button, collapsing the list of `ErrorRegion.Item`s
+   - To the `Tree.Item` whose `error` was just corrected
+
+In the example below, the described behavior is illustrated.
+
+::example{src="structures/ErrorRegion.tree" min-height="400px" min-width="450px" vertical-stretch}
+
+## ✅ Do
+
+- Use **ErrorRegion** to collate and describe [**Tree**](/components/tree) errors.
+- Supply both a `label` and `aria-label` to `ErrorRegion.Root` for summarizing the errors and identifying the **ErrorRegion** respectively.
+- Update the `label` whenever errors (`ErrorRegion.Item`s) are added or removed.
+
+## ❌ Don't
+
+- Don't use **ErrorRegion** for form errors or generic status messages.
+- Don't steal focus and direct it to the **ErrorRegion** when an error occurs.
+
 ## API reference
 
 - [`ErrorRegion.Root`](/reference/structures/ErrorRegion/#ErrorRegion.Root)
 - [`ErrorRegion.Item`](/reference/structures/ErrorRegion/#ErrorRegion.Item)
+- [`Tree.Item`](/reference/structures/Tree/#Tree.Item)

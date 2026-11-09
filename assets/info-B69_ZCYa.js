@@ -1,0 +1,1 @@
+import{t as e}from"./info-CvKMGV_g.js";var t=`${e}#icon`;`${e}`;export{t};

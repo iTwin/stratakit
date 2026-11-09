@@ -1,0 +1,1 @@
+import{t as e}from"./more-vertical-D1V4Nact.js";var t=`${e}#icon`;`${e}`;export{t};

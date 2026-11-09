@@ -1,0 +1,1 @@
+import{t as e}from"./rename-BzO-sowP.js";var t=`${e}#icon`;`${e}`;export{t};

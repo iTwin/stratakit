@@ -1,0 +1,1 @@
+import{t as e}from"./error-DFvlUgWP.js";var t=`${e}#icon`;`${e}`;export{t};

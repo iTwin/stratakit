@@ -1,0 +1,1 @@
+import{t as e}from"./save-Zf_muQv3.js";`${e}`;var t=`${e}#icon-large`;export{t};

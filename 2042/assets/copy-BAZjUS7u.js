@@ -1,1 +1,0 @@
-import{t as e}from"./copy-G1sovVZ6.js";`${e}`;var t=`${e}#icon-large`;export{t};

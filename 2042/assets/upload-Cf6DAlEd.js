@@ -1,0 +1,1 @@
+import{t as e}from"./upload-DBfJfnPf.js";var t=`${e}#icon`;`${e}`;export{t};

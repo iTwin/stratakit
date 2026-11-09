@@ -26,10 +26,10 @@
 - [#1851](https://github.com/iTwin/stratakit/pull/1851): Added row and icon styling for `DataGrid`.
 - [#1989](https://github.com/iTwin/stratakit/pull/1989): Updated the minimum version of `@mui/material` from `^9.4.0` to `^9.5.0`.
 - [#1977](https://github.com/iTwin/stratakit/pull/1977): Added styling support for `type="search"` rendered by `TextField`.
-- [#1964](https://github.com/iTwin/stratakit/pull/1964): Updated `Snackbar` component to use the `PortalContext` from `@stratakit/foundations` instead of Ariakit's `PortalContext`.
 - [#2037](https://github.com/iTwin/stratakit/pull/2037): Added `"mono-lg"` and `"mono-md"` variants to the `Typography` component.
 - [#1980](https://github.com/iTwin/stratakit/pull/1980): Added `PortalProvider` component that sets up `PortalContext` and MUI theme provider.
-- [#1964](https://github.com/iTwin/stratakit/pull/1964): Removed Ariakit's [`PortalContext`](https://ariakit.com/reference/portal-context) from the `Root`, `Dialog`, `Drawer`, and `Popover` components. StrataKit components that were previously relying on this context now use the `PortalContext` from `@stratakit/foundations` instead.
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Updated `Snackbar` component to use the `PortalContext` from `@stratakit/foundations` instead of Ariakit's `PortalContext`.
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Removed Ariakit's [`PortalContext`](https://ariakit.com/reference/portal-context) provider from the `Root`, `Dialog`, `Drawer`, and `Popover` components. StrataKit components that were previously relying on this context now use the `PortalContext` from `@stratakit/foundations` instead.
 
 ### Patch Changes
 

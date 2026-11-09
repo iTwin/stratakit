@@ -2,8 +2,6 @@
 
 ## 0.4.8
 
-### Patch Changes
-
 - [#2053](https://github.com/iTwin/stratakit/pull/2053): Added new `model-cloud.svg` icon.
 - [#2021](https://github.com/iTwin/stratakit/pull/2021): Renamed icons in a backwards compatible way. Old icon names are now considered deprecated and will be removed in a future release.
 

@@ -2,8 +2,6 @@
 
 ## 0.6.2
 
-### Patch Changes
-
 - [#1964](https://github.com/iTwin/stratakit/pull/1964): Updated `Tooltip` component to use the `PortalContext` from `@stratakit/foundations` instead of Ariakit's `PortalContext`.
 - [#1949](https://github.com/iTwin/stratakit/pull/1949): Updated `Tooltip` to force dark mode.
 - Updated dependencies:

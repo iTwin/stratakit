@@ -59,6 +59,7 @@ import type {
 	TypographyTypeMap,
 } from "@mui/material/Typography";
 import type {} from "@mui/material/Zoom";
+import type { BaseProps } from "@stratakit/internal-utils/props";
 import type * as React from "react";
 
 declare module "@mui/material/OverridableComponent" {
@@ -572,6 +573,35 @@ declare module "@mui/material/DialogContent" {
 	interface DialogContentProps {
 		/** @deprecated StrataKit does not support this prop. */
 		dividers?: DialogContentProps["dividers"];
+	}
+}
+
+declare module "@mui/material/DialogTitle" {
+	interface DialogTitleOwnProps {
+		/**
+		 * Actions to be displayed in the dialog header. Usually includes a button to dismiss the dialog.
+		 *
+		 * @example
+		 * ```tsx
+		 * actions={[
+		 *   <IconButton key="dismiss" label="Dismiss">
+		 *     <Icon href={svgDismiss} />
+		 *   </IconButton>
+		 * ]}
+		 * ```
+		 */
+		actions?: React.ReactNode[];
+		/**
+		 * The props used for each slot inside.
+		 */
+		slotProps?: {
+			/**
+			 * Props forwarded to the element which wraps the title and the actions.
+			 *
+			 * Wrapper element is rendered only if `actions` prop is provided for `DialogTitle`.
+			 */
+			wrapper?: BaseProps & { ref?: React.Ref<HTMLDivElement> };
+		};
 	}
 }
 
@@ -1448,6 +1478,8 @@ declare module "@mui/material/Typography" {
 		"caption-lg": true;
 		"caption-md": true;
 		"caption-sm": true;
+		"mono-lg": true;
+		"mono-md": true;
 		"mono-sm": true;
 
 		// Stock MUI heading variants are removed here and re-added above, with the `render` prop required.

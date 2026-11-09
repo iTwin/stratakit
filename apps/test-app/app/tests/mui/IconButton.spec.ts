@@ -4,9 +4,11 @@
  *--------------------------------------------------------------------------------------------*/
 import { expect, test } from "#playwright";
 
-test("showcase", { tag: "@visual-2" }, async ({ page }) => {
-	await page.goto("/standalone?path=mui/IconButton.showcase");
-	await expect(page).toHaveScreenshot();
+test.use({ baseURL: "http://localhost:1800/standalone" });
+
+test("showcase", { tag: "@visual-2" }, async ({ mount }) => {
+	const component = await mount("mui/IconButton.showcase");
+	await expect(component).toHaveScreenshot();
 });
 
 test("color=default renders with secondary color", async ({ page }) => {

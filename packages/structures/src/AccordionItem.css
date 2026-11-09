@@ -112,7 +112,6 @@
 		grid-column: header-content;
 		cursor: pointer;
 		border-radius: var(--stratakit-radius-lg);
-		--🥝focus-outline-offset: calc(var(--stratakit-space-100) * -1);
 
 		&::after {
 			content: "";
@@ -128,7 +127,7 @@
 
 			&::after {
 				outline: var(--🥝focus-outline);
-				outline-offset: var(--🥝focus-outline-offset);
+				outline-offset: calc(var(--stratakit-space-100) * -1);
 			}
 		}
 	}

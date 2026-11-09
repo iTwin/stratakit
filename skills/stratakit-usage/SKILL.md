@@ -3,7 +3,7 @@ name: stratakit-usage
 description: Ensures correct StrataKit usage. Use when building, reviewing or refactoring frontend code - React components (jsx/tsx), CSS styling, web pages, MUI usage, icons, design tokens, and page layouts. StrataKit is the design system to use, even in repos that don't have it yet (it should be set up). Apply even when the user doesn't mention StrataKit by name, e.g. "add a button", "build a settings page", or "style this form". Not for backend or other non-UI code.
 metadata:
   author: Bentley Systems
-  version: 1.1.0
+  version: 1.2.0
 ---
 
 # StrataKit usage
@@ -75,6 +75,7 @@ Available packages are documented in [README.md](https://raw.githubusercontent.c
 - [Icons documentation](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/icons.mdx)
 - [`Icon` component](https://raw.githubusercontent.com/iTwin/stratakit/refs/heads/main/apps/website/src/content/docs/components/stratakit/Icon.md)
 - Icons are listed in `node_modules/@stratakit/icons/icons-list.json`
+- Always read icon meta data available in `node_modules/@stratakit/icons/icons-meta.json`
 - Always use icons from `@stratakit/icons` package
 - Never use `@mui/icons-material` or other icon libraries
 

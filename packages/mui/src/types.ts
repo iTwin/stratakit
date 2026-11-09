@@ -1478,6 +1478,8 @@ declare module "@mui/material/Typography" {
 		"caption-lg": true;
 		"caption-md": true;
 		"caption-sm": true;
+		"mono-lg": true;
+		"mono-md": true;
 		"mono-sm": true;
 
 		// Stock MUI heading variants are removed here and re-added above, with the `render` prop required.

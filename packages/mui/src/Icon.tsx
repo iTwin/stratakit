@@ -15,22 +15,44 @@ import { svgChevronLeftDouble } from "@stratakit/icons/chevron-left-double";
 import { svgChevronRight } from "@stratakit/icons/chevron-right";
 import { svgChevronRightDouble } from "@stratakit/icons/chevron-right-double";
 import { svgClock } from "@stratakit/icons/clock";
+import { svgColumnManage } from "@stratakit/icons/column-manage";
+import { svgDelete } from "@stratakit/icons/delete";
 import { svgDismiss } from "@stratakit/icons/dismiss";
 import { svgDismissCircle } from "@stratakit/icons/dismiss-circle";
 import { svgError } from "@stratakit/icons/error";
+import { svgExport } from "@stratakit/icons/export";
+import { svgFilter } from "@stratakit/icons/filter";
 import { svgInfo } from "@stratakit/icons/info";
+import { svgMoreVertical } from "@stratakit/icons/more-vertical";
 import { svgSearch } from "@stratakit/icons/search";
 import { svgSortAscending } from "@stratakit/icons/sort-ascending";
 import { svgSortDescending } from "@stratakit/icons/sort-descending";
 import { svgStatusSuccess } from "@stratakit/icons/status-success";
+import { svgVisibilityHide } from "@stratakit/icons/visibility-hide";
 import { svgWarning } from "@stratakit/icons/warning";
+
+import type SvgIcon from "@mui/material/SvgIcon";
 
 // ----------------------------------------------------------------------------
 
+interface SvgProps
+	extends React.SVGProps<SVGSVGElement>,
+		Pick<React.ComponentProps<typeof SvgIcon>, "titleAccess"> {}
+
 function createIconComponent(href: string) {
-	return React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
+	return React.forwardRef<SVGSVGElement, SvgProps>(
+		// biome-ignore lint/correctness/noComponentHookFactories: This gets called once in the module, not per render.
 		function IconComponent(props, forwardedRef) {
-			return <Icon {...props} href={href} ref={forwardedRef} />;
+			const {
+				titleAccess,
+				//@ts-expect-error Not explicitly typed but DatePicker passes ownerState to openPickerIcon slot and it should be filtered out
+				ownerState: _ownerState,
+				fontSize: _fontSize,
+				...rest
+			} = props;
+			return (
+				<Icon alt={titleAccess} {...rest} href={href} ref={forwardedRef} />
+			);
 		},
 	);
 }
@@ -52,6 +74,7 @@ const ChevronLeftDoubleIcon = createIconComponent(svgChevronLeftDouble);
 const ChevronRightIcon = createIconComponent(svgChevronRight);
 const ChevronRightDoubleIcon = createIconComponent(svgChevronRightDouble);
 
+const DeleteIcon = createIconComponent(svgDelete);
 const DismissIcon = createIconComponent(svgDismiss);
 const DismissCircleIcon = createIconComponent(svgDismissCircle);
 
@@ -63,7 +86,12 @@ const WarningIcon = createIconComponent(svgWarning);
 const SortAscendingIcon = createIconComponent(svgSortAscending);
 const SortDescendingIcon = createIconComponent(svgSortDescending);
 
+const FilterIcon = createIconComponent(svgFilter);
+const MoreVerticalIcon = createIconComponent(svgMoreVertical);
+const ColumnManageIcon = createIconComponent(svgColumnManage);
+const VisibilityHideIcon = createIconComponent(svgVisibilityHide);
 const SearchIcon = createIconComponent(svgSearch);
+const ExportIcon = createIconComponent(svgExport);
 
 // ----------------------------------------------------------------------------
 
@@ -78,14 +106,20 @@ export {
 	ChevronRightDoubleIcon,
 	ChevronRightIcon,
 	ClockIcon,
+	ColumnManageIcon,
+	DeleteIcon,
 	DismissCircleIcon,
 	DismissIcon,
 	ErrorIcon,
+	ExportIcon,
+	FilterIcon,
 	Icon,
 	InfoIcon,
+	MoreVerticalIcon,
 	SearchIcon,
 	SortAscendingIcon,
 	SortDescendingIcon,
 	SuccessIcon,
+	VisibilityHideIcon,
 	WarningIcon,
 };

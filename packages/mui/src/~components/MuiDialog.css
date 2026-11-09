@@ -28,7 +28,7 @@
 
 .MuiDialogTitle-root {
 	:where(.🥝MuiDialogTitleWrapper) > & {
-		margin-inline-end: auto;
+		flex: 999;
 		padding-inline-end: 0;
 	}
 }

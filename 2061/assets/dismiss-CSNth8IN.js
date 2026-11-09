@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-CNSot9Cx.js";var t=`${e}#icon`;`${e}`;export{t};

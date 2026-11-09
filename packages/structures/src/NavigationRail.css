@@ -15,6 +15,7 @@
 		overflow: auto;
 		block-size: 100%;
 		scrollbar-color: var(--stratakit-color-bg-control-scrollbar-surface) transparent;
+		scrollbar-width: thin;
 
 		min-inline-size: var(--✨size--collapsed);
 		inline-size: var(--🥝NavigationRail-inline-size);

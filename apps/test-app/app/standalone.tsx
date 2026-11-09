@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
-import { useLocation } from "react-router";
+import { useLocation, useNavigate } from "react-router";
+
+import type { Route } from "./+types/standalone.ts";
 
 import styles from "./standalone.module.css";
 
@@ -40,6 +42,8 @@ const modulePromises = new Map<
 // ----------------------------------------------------------------------------
 
 export default function Standalone() {
+	usePlaywrightMount();
+
 	const { search } = useLocation();
 	const searchParams = new URLSearchParams(search);
 	const modulePath = searchParams.get("path") ?? "";
@@ -60,10 +64,9 @@ export default function Standalone() {
 			<title>{`${title} – StrataKit`}</title>
 			<div id="root" className={styles.root}>
 				{modulePath && (
-					<React.Suspense
-						fallback={<div data-testid="showcase-loading">Loading…</div>}
-					>
+					<React.Suspense>
 						<StandaloneRenderer
+							key={`${modulePath}#${exportName ?? "default"}`}
 							modulePath={modulePath}
 							exportName={exportName}
 							props={props}
@@ -90,7 +93,24 @@ function StandaloneRenderer({
 }: StandaloneRendererProps) {
 	const Component = React.use(loadModule(modulePath, exportName));
 
+	// biome-ignore lint/correctness/useExhaustiveDependencies: We need to resolve the promise for each new location key.
+	React.useEffect(() => void pendingMount?.resolve(), [useLocation().key]);
+
 	return <Component {...props} />;
+}
+
+// ----------------------------------------------------------------------------
+
+export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+	usePlaywrightMount();
+
+	React.useEffect(() => void pendingMount?.reject(error), [error]);
+
+	return (
+		<pre id="root">
+			{error instanceof Error ? error.message : String(error)}
+		</pre>
+	);
 }
 
 // ----------------------------------------------------------------------------
@@ -122,4 +142,69 @@ function loadModule(path: string, exportName?: string) {
 	modulePromises.set(cacheKey, promise);
 
 	return promise;
+}
+
+// ----------------------------------------------------------------------------
+
+declare global {
+	interface Window {
+		mount(params: MountParams): Promise<void>;
+		unmount(): Promise<void>;
+	}
+}
+type MountParams = {
+	story: string;
+	props?: Record<string, unknown>;
+};
+
+/** This promise gets mutated by the `Standalone` renderer so that it resolves whenever a new "story" is mounted. */
+let pendingMount: PromiseWithResolvers<void> | null;
+
+/**
+ * Exposes `window.mount` and `window.unmount` functions for Playwright component testing.
+ * These functions update the URL search params to reflect the mounted "story" and its props.
+ *
+ * @see https://playwright.dev/docs/api/class-fixtures#fixtures-mount
+ */
+function usePlaywrightMount() {
+	const navigate = useNavigate();
+
+	React.useEffect(
+		function exposeWindowMount() {
+			window.mount = async ({ story, props = {} }) => {
+				const [modulePath, exportName] = story.split("#"); // e.g. "mui/Button.showcase#Test"
+
+				const search = new URLSearchParams({
+					path: modulePath,
+					props: JSON.stringify(props),
+					...(exportName && { export: exportName }),
+				}).toString();
+
+				if (!modulePath) throw new Error("A story is required");
+
+				pendingMount = Promise.withResolvers<void>();
+				try {
+					await Promise.all([
+						navigate({ search }, { replace: true, preventScrollReset: true }),
+						pendingMount.promise,
+					]);
+				} finally {
+					pendingMount = null;
+				}
+			};
+
+			window.unmount = async () => {
+				await navigate(
+					{ search: "" },
+					{ replace: true, preventScrollReset: true },
+				);
+			};
+
+			return () => {
+				Reflect.deleteProperty(window, "mount");
+				Reflect.deleteProperty(window, "unmount");
+			};
+		},
+		[navigate],
+	);
 }

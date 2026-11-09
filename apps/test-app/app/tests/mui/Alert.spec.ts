@@ -4,7 +4,9 @@
  *--------------------------------------------------------------------------------------------*/
 import { expect, test } from "#playwright";
 
-test("showcase", { tag: "@visual-2" }, async ({ page }) => {
-	await page.goto("/standalone?path=mui/Alert.showcase");
-	await expect(page).toHaveScreenshot();
+test.use({ baseURL: "http://localhost:1800/standalone" });
+
+test("showcase", { tag: "@visual-2" }, async ({ mount }) => {
+	const component = await mount("mui/Alert.showcase");
+	await expect(component).toHaveScreenshot();
 });

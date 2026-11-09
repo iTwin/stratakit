@@ -3682,6 +3682,27 @@
 		"aliases": ["delete", "subtract", "eliminate", "remove", "erase"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"model-cloud": {
+		"aliases": [
+			"3d",
+			"assemble",
+			"build",
+			"design",
+			"digital twin",
+			"representation",
+			"BIM",
+			"structure",
+			"view",
+			"visualize",
+			"cloud",
+			"cloud model",
+			"hosted model",
+			"online",
+			"remote",
+			"connected"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"model-cube": {
 		"aliases": ["display", "rotate", "view", "3d", "shape", "sides"],
 		"symbols": ["icon", "icon-large"]

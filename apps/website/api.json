@@ -2193,7 +2193,7 @@
 							}
 						],
 						"baseElement": "nav",
-						"jsdoc": "The `NavigationRail` presents top-level navigation items in a vertical orientation.\n\nExample:\n```tsx\n<NavigationRail.Root>\n  <NavigationRail.Header>\n    <IconButton label=\"Home\" render={<a href=\"/\" />}>\n      <Icon href={applicationIcon} />\n    </IconButton>\n    <NavigationRail.ToggleButton />\n  </NavigationRail.Header>\n\n  <NavigationRail.Content>\n    <NavigationRail.List>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Dashboard\" icon={dashboardIcon} href=\"/dashboard\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Reports\" icon={reportsIcon} href=\"/reports\" />\n      </NavigationRail.ListItem>\n    </NavigationRail.List>\n\n    <NavigationRail.Footer>\n      <NavigationRail.List>\n        <NavigationRail.ListItem>\n          <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n        </NavigationRail.ListItem>\n        <NavigationRail.ListItem>\n          <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…} />\n        </NavigationRail.ListItem>\n        <NavigationRail.ListItem>\n          <NavigationRail.Button label=\"Profile\" icon={userIcon} onClick={…} />\n        </NavigationRail.ListItem>\n      </NavigationRail.List>\n   </NavigationRail.Footer>\n  </NavigationRail.Content>\n</NavigationRail.Root>\n```",
+						"jsdoc": "The `NavigationRail` presents top-level navigation items in a vertical orientation.\n\nExample:\n```tsx\n<NavigationRail.Root>\n  <NavigationRail.Header>\n    <IconButton label=\"Home\" render={<a href=\"/\" />}>\n      <Icon href={applicationIcon} />\n    </IconButton>\n    <NavigationRail.ToggleButton />\n  </NavigationRail.Header>\n\n  <NavigationRail.Content>\n    <NavigationRail.List>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Dashboard\" icon={dashboardIcon} href=\"/dashboard\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Anchor label=\"Reports\" icon={reportsIcon} href=\"/reports\" />\n      </NavigationRail.ListItem>\n    </NavigationRail.List>\n\n  </NavigationRail.Content>\n\n  <NavigationRail.Footer>\n    <NavigationRail.List>\n      <NavigationRail.ListItem>\n        <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…} />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Button label=\"Profile\" icon={userIcon} onClick={…} />\n      </NavigationRail.ListItem>\n    </NavigationRail.List>\n  </NavigationRail.Footer>\n</NavigationRail.Root>\n```",
 						"barrelName": "unstable_NavigationRail.Root"
 					},
 					{
@@ -2230,7 +2230,7 @@
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "`NavigationRail.Content` is a wraps the main content of the `NavigationRail`, including\nthe primary navigation list and an optional footer.\n\nExample:\n```tsx\n<NavigationRail.Content>\n  <NavigationRail.List>…</NavigationRail.List>\n\n  <NavigationRail.Footer>\n    <NavigationRail.List>…</NavigationRail.List>\n  </NavigationRail.Footer>\n</NavigationRail.Content>\n```",
+						"jsdoc": "`NavigationRail.Content` wraps the main content of the `NavigationRail`, including\nthe primary navigation list.\n\nExample:\n```tsx\n<NavigationRail.Content>\n  <NavigationRail.List>…</NavigationRail.List>\n</NavigationRail.Content>\n```",
 						"barrelName": "unstable_NavigationRail.Content"
 					},
 					{
@@ -2314,7 +2314,7 @@
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "footer",
-						"jsdoc": "`NavigationRail.Footer` is typically used for grouping secondary actions list near the bottom\nof the `NavigationRail`, away from the main navigation items.\n\nExample:\n```tsx\n<NavigationRail.Content>\n  <NavigationRail.List>…</NavigationRail.List>\n\n  <NavigationRail.Footer>\n    <NavigationRail.List>…</NavigationRail.List>\n  </NavigationRail.Footer>\n</NavigationRail.Content>\n```",
+						"jsdoc": "`NavigationRail.Footer` is typically used for grouping secondary actions list near the bottom\nof the `NavigationRail`, away from the main navigation items.\n\nExample:\n```tsx\n<NavigationRail.Footer>\n  <NavigationRail.List>…</NavigationRail.List>\n</NavigationRail.Footer>\n```",
 						"barrelName": "unstable_NavigationRail.Footer"
 					}
 				],

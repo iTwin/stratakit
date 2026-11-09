@@ -1,1 +1,0 @@
-import{J as e,Z as t}from"./jsx-runtime-D_cWKu3M.js";var n=t(e(),1),r=typeof window<`u`?n.useLayoutEffect:n.useEffect;function i(e){let t=n.useRef(e);return r(()=>{t.current=e}),n.useRef((...e)=>(0,t.current)(...e)).current}export{r as n,i as t};

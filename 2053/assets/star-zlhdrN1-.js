@@ -1,1 +1,0 @@
-import{t as e}from"./star-CvcGD6rq.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

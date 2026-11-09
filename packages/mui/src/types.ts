@@ -596,7 +596,7 @@ declare module "@mui/material/DialogTitle" {
 		 */
 		slotProps?: {
 			/**
-			 * Props forwarded to the wrapper slot.
+			 * Props forwarded to the element which wraps the title and the actions.
 			 *
 			 * Wrapper element is rendered only if `actions` prop is provided for `DialogTitle`.
 			 */

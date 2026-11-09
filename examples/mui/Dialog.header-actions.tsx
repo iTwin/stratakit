@@ -12,8 +12,8 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import IconButton from "@mui/material/IconButton";
 import { svgDismiss } from "@stratakit/icons/dismiss";
-import { svgWindowZoomIn } from "@stratakit/icons/window-zoom-in";
-import { svgWindowZoomOut } from "@stratakit/icons/window-zoom-out";
+import { svgWindowCollapse } from "@stratakit/icons/window-collapse";
+import { svgWindowExpand } from "@stratakit/icons/window-expand";
 import { Icon } from "@stratakit/mui";
 
 export default () => {
@@ -35,7 +35,7 @@ export default () => {
 							label={fullScreen ? "Reset size" : "Maximize"}
 							onClick={() => setFullScreen(!fullScreen)}
 						>
-							<Icon href={fullScreen ? svgWindowZoomOut : svgWindowZoomIn} />
+							<Icon href={fullScreen ? svgWindowCollapse : svgWindowExpand} />
 						</IconButton>,
 						<IconButton key="dismiss" label="Dismiss" onClick={handleClose}>
 							<Icon href={svgDismiss} />

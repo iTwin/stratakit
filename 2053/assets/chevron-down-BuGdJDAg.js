@@ -1,0 +1,1 @@
+import{t as e}from"./chevron-down-CkVLKDGv.js";var t=`${e}#icon`;`${e}`;export{t};

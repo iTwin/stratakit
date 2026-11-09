@@ -1,1 +1,0 @@
-import{t as e}from"./upload-DX0dcha9.js";var t=`${e}#icon`;`${e}`;export{t};

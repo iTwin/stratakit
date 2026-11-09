@@ -1,0 +1,1 @@
+import{t as e}from"./chat-335DOJ-m.js";var t=`${e}#icon`;`${e}`;export{t};

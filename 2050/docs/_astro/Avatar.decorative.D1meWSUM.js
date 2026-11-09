@@ -1,1 +1,0 @@
-import{St as e,dr as t}from"./chevron-down.cq2_3V3j.js";import{t as n}from"./Link.DHyefJ0Y.js";import{t as r}from"./Avatar.4AX7iX7t.js";import{t as i}from"./user.BnOYeQUV.js";var a={link:`_link_g2exl_6`},o=t(),s=()=>(0,o.jsxs)(n,{className:a.link,href:`#profile`,children:[(0,o.jsx)(r,{children:(0,o.jsx)(e,{href:i})}),`Kit Stratan`]});export{s as default};

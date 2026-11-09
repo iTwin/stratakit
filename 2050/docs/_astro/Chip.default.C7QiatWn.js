@@ -1,1 +1,0 @@
-import{dr as e}from"./chevron-down.cq2_3V3j.js";import{t}from"./Chip.BpXL-Lm_.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{label:`HTML`}),(0,n.jsx)(t,{label:`CSS`}),(0,n.jsx)(t,{label:`JS`})]});export{r as default};

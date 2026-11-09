@@ -1,1 +1,0 @@
-import{X as e}from"./jsx-runtime-D_cWKu3M.js";var t=e({default:()=>n}),n=`/2032/assets/settings-BSloW3Ma.svg`,r=`${n}#icon`,i=`${n}#icon-large`;export{i as n,t as r,r as t};

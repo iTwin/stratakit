@@ -1,1 +1,0 @@
-import{t as e}from"./status-success-BSThl4v5.js";var t=`${e}#icon`;`${e}`;export{t};

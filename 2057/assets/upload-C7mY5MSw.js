@@ -1,0 +1,1 @@
+import{t as e}from"./upload-pdf2yI5D.js";var t=`${e}#icon`;`${e}`;export{t};

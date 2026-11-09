@@ -1,0 +1,1 @@
+import{t as e}from"./delete-DiW_mZ2M.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

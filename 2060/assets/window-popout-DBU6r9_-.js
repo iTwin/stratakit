@@ -1,0 +1,1 @@
+import{t as e}from"./window-popout-D1tKRvPN.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./save-CotXVL_y.js";`${e}`;var t=`${e}#icon-large`;export{t};

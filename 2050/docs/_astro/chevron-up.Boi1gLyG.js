@@ -1,1 +1,0 @@
-var e=`/2050/docs/_astro/chevron-up.BlPTbJpD.svg`,t=`${e}#icon`;`${e}`;export{t};

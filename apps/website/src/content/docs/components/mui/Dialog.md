@@ -16,6 +16,14 @@ links:
 - The `PaperComponent` prop is not supported.
 - The `dividers` prop of `DialogContent` is not supported.
 
+## Examples
+
+### Full Screen
+
+For large forms or complex interactions the `Dialog` can be sized to take up the full screen.
+
+::example{src="mui/Dialog.fullScreen"}
+
 ## API reference
 
 - [`Dialog`](https://mui.com/material-ui/api/dialog/)

@@ -167,6 +167,20 @@
 			outline-offset: -2px;
 		}
 	}
+
+	&:where(.MuiDataGrid-cell--editable):not(.MuiDataGrid-cell--editing):where(
+			:focus-visible,
+			:has(:focus-visible)
+		)::after {
+		display: block;
+		content: "";
+		position: absolute;
+		background-color: var(--stratakit-color-bg-accent-base);
+		width: var(--stratakit-space-200);
+		height: var(--stratakit-space-200);
+		bottom: 5px;
+		right: 5px;
+	}
 }
 
 .MuiDataGrid-cell {

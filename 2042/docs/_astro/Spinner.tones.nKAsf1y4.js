@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.BLg3BV6N.js";import{t}from"./Spinner.C8xXXXpr.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{tone:`neutral`}),(0,n.jsx)(t,{tone:`accent`})]});export{r as default};

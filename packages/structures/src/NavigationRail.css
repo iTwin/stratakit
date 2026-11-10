@@ -17,6 +17,9 @@
 		scrollbar-color: var(--stratakit-color-bg-control-scrollbar-surface) transparent;
 		scrollbar-width: thin;
 
+		animation: --🥝NavigationRail-scroll-fade linear;
+		animation-timeline: scroll(self block);
+
 		min-inline-size: var(--✨size--collapsed);
 		inline-size: var(--🥝NavigationRail-inline-size);
 
@@ -34,6 +37,23 @@
 		&:where([data-_sk-expanded="true"]) {
 			--🥝NavigationRail-inline-size: var(--✨size--expanded);
 		}
+	}
+}
+
+/* resolves to true when the bottom is overflowing */
+@property --🥝NavigationRail-overflow-end {
+	syntax: "true | false";
+	inherits: true;
+	initial-value: false;
+}
+
+@keyframes --🥝NavigationRail-scroll-fade {
+	0%,
+	99.9% {
+		--🥝NavigationRail-overflow-end: true;
+	}
+	100% {
+		--🥝NavigationRail-overflow-end: false;
 	}
 }
 
@@ -281,6 +301,7 @@
 
 .🥝NavigationRailFooter {
 	@layer base {
+		position: relative;
 		margin-block-start: auto;
 
 		padding-block-start: var(--stratakit-space-300); /* create visual separation from content */
@@ -299,6 +320,22 @@
 			position: sticky;
 			inset-block-end: 0;
 			background-color: var(--stratakit-color-bg-page-depth);
+
+			/* adds a scroll fade above the footer when the content is overflowing */
+			&::before {
+				content: "";
+				pointer-events: none;
+
+				position: absolute;
+				inset-block-end: 100%;
+				inset-inline: var(--stratakit-space-200);
+
+				@container style(--🥝NavigationRail-overflow-end: true) {
+					mask-image: linear-gradient(to bottom, transparent 0%, #000 100%);
+					block-size: 32px;
+					background-color: var(--stratakit-color-bg-page-depth);
+				}
+			}
 		}
 	}
 }

@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.D0U9Mecl.js";import{t}from"./IconButton.Cd8HJxIs.js";import{t as n}from"./notifications.DXQe7ogk.js";var r=e(),i=()=>(0,r.jsx)(t,{label:`Notifications`,dot:`You have unread notifications`,icon:n});export{i as default};

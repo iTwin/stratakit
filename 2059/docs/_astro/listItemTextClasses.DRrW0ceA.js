@@ -1,1 +1,0 @@
-import{X as e,Z as t}from"./chevron-down.D0U9Mecl.js";function n(e){return t(`MuiListItemText`,e)}var r=e(`MuiListItemText`,[`root`,`multiline`,`dense`,`inset`,`primary`,`secondary`]);export{r as n,n as t};

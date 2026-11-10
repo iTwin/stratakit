@@ -48,6 +48,10 @@ This example is adapted from the [MUI Table Sorting example](https://mui.com/mat
 
 ::example{src="mui/Table.sort" min-height="425px"}
 
+### Filtering
+
+<iframe src="https://stackblitz.com/github/iTwin/stratakit/tree/mark/example-stackblitz/examples/stackblitz/tanstack-filter?embed=1&file=src%2FTanstack.filter.tsx&view=preview" allow="cross-origin-isolated" credentialless style="height:600px;width:100%"></iframe>
+
 ### Number Alignment
 
 When creating a table that has number values it is often desirable for the user to be able to quickly compare numbers by scanning down the columns of the table.

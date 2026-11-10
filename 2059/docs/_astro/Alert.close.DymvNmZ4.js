@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.DVtB-PRN.js";import{t}from"./Alert.C6V0Rdwq.js";var n=e(),r=()=>(0,n.jsx)(t,{severity:`error`,onClose:()=>{},children:`The request was not approved.`});export{r as default};

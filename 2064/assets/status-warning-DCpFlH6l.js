@@ -1,0 +1,1 @@
+import{t as e}from"./status-warning-BVREV310.js";var t=`${e}#icon`;`${e}`;export{t};

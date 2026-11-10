@@ -1,0 +1,1 @@
+import{t as e}from"./clock-BN8L7mt3.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

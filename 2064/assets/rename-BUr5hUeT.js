@@ -1,0 +1,1 @@
+import{t as e}from"./rename-BedJ4Gwn.js";var t=`${e}#icon`;`${e}`;export{t};

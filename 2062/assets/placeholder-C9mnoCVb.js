@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder-CYpS4wi2.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

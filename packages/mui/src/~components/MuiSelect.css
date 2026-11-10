@@ -33,7 +33,7 @@
 :is(.MuiSelect-icon, .MuiNativeSelect-icon) {
 	inset-block-start: 50%;
 	translate: 0 -50%;
-	inset-inline-end: calc(var(--_MuiInput-padding-inline) - 1px);
+	inset-inline-end: calc((var(--_MuiInput-padding-inline) * 0.5) - 1px);
 }
 
 @supports (appearance: base-select) {

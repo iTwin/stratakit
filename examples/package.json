@@ -16,6 +16,7 @@
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*",
 		"@stratakit/structures": "workspace:*",
+		"@tanstack/react-table": "9.3.1",
 		"date-fns": "^4.4.0"
 	},
 	"devDependencies": {

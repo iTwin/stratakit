@@ -1,0 +1,1 @@
+import{t as e}from"./window-popout-BWahEPGL.js";var t=`${e}#icon`;`${e}`;export{t};

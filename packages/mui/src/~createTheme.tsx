@@ -465,6 +465,12 @@ function createTheme() {
 					color: "primary",
 				},
 			},
+			MuiFilledInput: {
+				defaultProps: {
+					classes: { root: "🥝MuiInput" },
+					disableUnderline: true,
+				},
+			},
 			MuiFormControl: { defaultProps: { component: Role.div } },
 			MuiFormControlLabel: {
 				defaultProps: {

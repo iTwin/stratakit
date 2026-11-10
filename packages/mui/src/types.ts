@@ -30,6 +30,7 @@ import type { InputProps } from "@mui/material/Input";
 import type { InputBaseProps } from "@mui/material/InputBase";
 import type { ListSubheaderOwnProps as MuiListSubheaderOwnProps } from "@mui/material/ListSubheader";
 import type { MenuProps as MuiMenuProps } from "@mui/material/Menu";
+import type { NativeSelectProps } from "@mui/material/NativeSelect";
 import type { OutlinedInputProps } from "@mui/material/OutlinedInput";
 import type {
 	CommonProps,
@@ -894,16 +895,15 @@ declare module "@mui/material/MenuItem" {
 	}
 }
 declare module "@mui/material/NativeSelect" {
-	interface NativeSelectProps {
-		/** @deprecated StrataKit does not support this prop. */
-		variant?: NativeSelectProps["variant"];
-	}
-
 	// @ts-expect-error -- Default exports cannot be augmented, but the prop deprecations still take effect.
 	export default function NativeSelect(
 		props: {
-			/** @deprecated StrataKit does not support this prop. */
-			variant?: NativeSelectProps["variant"];
+			/**
+			 * The variant to use.
+			 *
+			 * The `"standard"` variant is not supported by StrataKit.
+			 */
+			variant?: Exclude<NativeSelectProps["variant"], "standard">;
 		} & Omit<NativeSelectProps, "variant" | keyof InputDeprecatedProps> &
 			InputDeprecatedProps,
 	): React.JSX.Element;
@@ -1049,8 +1049,14 @@ declare module "@mui/material/Select" {
 		props: {
 			/** @deprecated StrataKit does not support this prop. */
 			IconComponent?: SelectProps["IconComponent"];
-			/** @deprecated StrataKit does not support this prop. */
-			variant?: SelectProps["variant"];
+			/**
+			 * The variant to use.
+			 *
+			 * The `"standard"` variant is not supported by StrataKit.
+			 *
+			 * @default "outlined"
+			 */
+			variant?: Exclude<SelectProps["variant"], "standard">;
 			/** @deprecated StrataKit does not support this prop. */
 			disableUnderline?: SelectProps["disableUnderline"];
 		} & Omit<

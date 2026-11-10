@@ -1,5 +1,5 @@
 ---
-"@stratakit/mui": patch
+"@stratakit/mui": minor
 ---
 
-Improved visuals for `Select` and `NativeSelect`.
+Reintroduced the `variant` prop of `Select` and `NativeSelect`, supporting the `"outlined"` and `"filled"` values.

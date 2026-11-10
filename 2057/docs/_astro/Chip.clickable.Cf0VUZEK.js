@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.uuMGpoDY.js";import{t}from"./Chip.Eva-RDXl.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Clickable Chip`,onClick:()=>{console.log(`Clicked`)}});export{r as default};

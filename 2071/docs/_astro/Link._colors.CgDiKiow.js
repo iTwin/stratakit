@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.B0r1lDN7.js";import{t}from"./Stack.DIe0lDAh.js";import{t as n}from"./Link.vlEQQa-u.js";var r=e(),i=[`primary`,`error`,`info`,`success`,`warning`],a=()=>(0,r.jsx)(t,{direction:`row`,spacing:2,sx:{flexWrap:`wrap`},children:i.map(e=>(0,r.jsxs)(n,{color:e,href:`#${e}`,children:[e.charAt(0).toUpperCase(),e.slice(1)]},e))});export{a as default};

@@ -37,7 +37,7 @@ To make `MenuItem`s selectable, override the default `role` to either:
 - [`role="menuitemradio"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemradio_role) when only one item within a group is selectable
 - [`role="menuitemcheckbox"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Roles/menuitemcheckbox_role) when the items are individually selectable.
 
-With the appropriate role in place, use the [`selected`](https://mui.com/material-ui/api/menu-item/#menu-item-prop-selected) prop to mark the selected item(s).
+With the appropriate role in place, use the [`selected`](https://mui.com/material-ui/api/menu-item/#menu-item-prop-selected) prop to mark the selected item(s). This will automatically add the [`aria-checked="true"`](https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/Reference/Attributes/aria-checked) attribute to go along with the role.
 
 ::example{src="mui/Menu.selectable"}
 

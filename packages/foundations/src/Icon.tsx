@@ -32,8 +32,7 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	 *
 	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
 	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from
-	 * non-supported URLs; the fetched SVG content will be sanitized using the
-	 * `unstable_htmlSanitizer` function passed to `<Root>`.
+	 * non-supported URLs; the fetched SVG content will be sanitized automatically.
 	 */
 	href?: string;
 	/**
@@ -115,13 +114,26 @@ function toIconHref(hrefBase: string) {
 
 // ----------------------------------------------------------------------------
 
-/** "Parses" a string of HTML into a DocumentFragment. */
-function parseDOM(
+/** Parses and sanitizes an SVG string into a DocumentFragment, preserving `<symbol>` elements. */
+function parseSvg(
 	htmlString: string,
 	{ ownerDocument }: { ownerDocument: Document },
 ) {
 	const template = ownerDocument.createElement("template");
-	template.innerHTML = htmlString;
+	const Sanitizer = ownerDocument.defaultView?.Sanitizer;
+
+	if (typeof template.setHTML === "function" && Sanitizer) {
+		const sanitizer = new Sanitizer();
+		sanitizer.allowElement({
+			name: "symbol",
+			namespace: "http://www.w3.org/2000/svg",
+			attributes: ["id", "viewBox"],
+		});
+		template.setHTML(htmlString, { sanitizer });
+	} else {
+		template.innerHTML = htmlString;
+	}
+
 	return template.content;
 }
 
@@ -191,7 +203,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 
 					// Find all `<symbol>` elements from the response.
 					const fetchedSvgString = sanitizeHtml.current(await response.text());
-					const parsedSvgContent = parseDOM(fetchedSvgString, {
+					const parsedSvgContent = parseSvg(fetchedSvgString, {
 						ownerDocument,
 					});
 					const symbols = parsedSvgContent.querySelectorAll("symbol");

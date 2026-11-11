@@ -1,1 +1,0 @@
-import{t as e}from"./chat-DZTAx_gU.js";var t=`${e}#icon`;`${e}`;export{t};

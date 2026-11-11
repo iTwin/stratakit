@@ -1,0 +1,1 @@
+import{t as e}from"./status-warning-CET7Sq6t.js";var t=`${e}#icon`;`${e}`;export{t};

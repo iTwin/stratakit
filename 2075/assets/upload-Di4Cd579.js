@@ -1,0 +1,1 @@
+import{t as e}from"./upload-tSab9dHz.js";var t=`${e}#icon`;`${e}`;export{t};

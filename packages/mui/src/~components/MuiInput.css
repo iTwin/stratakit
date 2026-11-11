@@ -133,7 +133,15 @@
 		}
 	}
 
-	&:where(input[type="number" i], input[inputmode="decimal" i], input[inputmode="numeric" i]) {
+	&:where(
+			input:is(
+				[type="number" i],
+				[type="tel" i],
+				[inputmode="decimal" i],
+				[inputmode="numeric" i],
+				[inputmode="tel" i]
+			)
+		) {
 		font-variant-numeric: tabular-nums;
 	}
 

@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.Dc91WxBH.js";import{i as t}from"./Anchor.rt4OVRKT.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{tone:`accent`,href:`https://www.example.com/`,children:`Accent`}),(0,n.jsx)(t,{tone:`neutral`,href:`https://www.example.com/`,children:`Neutral`})]});export{r as default};

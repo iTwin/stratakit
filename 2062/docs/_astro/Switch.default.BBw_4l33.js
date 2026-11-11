@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.Dc91WxBH.js";import{t}from"./FormControlLabel.B7FtR37k.js";import{t as n}from"./Switch.izsyepzS.js";var r=e(),i=()=>(0,r.jsx)(t,{control:(0,r.jsx)(n,{}),label:`Dark mode`});export{i as default};

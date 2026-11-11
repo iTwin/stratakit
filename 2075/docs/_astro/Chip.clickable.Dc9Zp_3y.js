@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.B0NGyXAh.js";import{t}from"./Chip.BtpYw9c_.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Clickable Chip`,onClick:()=>{console.log(`Clicked`)}});export{r as default};

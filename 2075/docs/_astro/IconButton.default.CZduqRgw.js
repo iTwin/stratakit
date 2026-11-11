@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.B0NGyXAh.js";import{t}from"./IconButton.BCwPQcqe.js";import{t as n}from"./download.BTAkx1wB.js";var r=e(),i=()=>(0,r.jsx)(t,{label:`Download`,icon:n});export{i as default};

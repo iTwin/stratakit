@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.B0NGyXAh.js";import{t}from"./Divider.Bc2r86ol.js";var n=e(),r=()=>(0,n.jsx)(`div`,{style:{minInlineSize:200},children:(0,n.jsx)(t,{})});export{r as default};

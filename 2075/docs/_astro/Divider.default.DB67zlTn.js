@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.CB1TSheU.js";import{t}from"./Divider.gIlo8VtN.js";var n=e(),r=()=>(0,n.jsx)(t,{});export{r as default};

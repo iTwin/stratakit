@@ -61,23 +61,20 @@ export default () => {
 						label="Integrations"
 						suffix={<Icon href={svgWindowPopout} alt="(opens in new tab)" />}
 					/>
-
-					<NavigationRail.Footer>
-						<NavigationRail.List>
-							<NavigationRail.ListItem>
-								<NotificationsButton expanded={expanded} />
-							</NavigationRail.ListItem>
-							<NavigationRail.ListItem>
-								<NavigationRail.Button
-									icon={svgSettingsLarge}
-									label="Settings"
-								/>
-							</NavigationRail.ListItem>
-						</NavigationRail.List>
-						<Divider role="presentation" margin />
-						<AccountButton />
-					</NavigationRail.Footer>
 				</NavigationRail.Content>
+
+				<NavigationRail.Footer>
+					<NavigationRail.List>
+						<NavigationRail.ListItem>
+							<NotificationsButton expanded={expanded} />
+						</NavigationRail.ListItem>
+						<NavigationRail.ListItem>
+							<NavigationRail.Button icon={svgSettingsLarge} label="Settings" />
+						</NavigationRail.ListItem>
+					</NavigationRail.List>
+					<Divider role="presentation" margin />
+					<AccountButton />
+				</NavigationRail.Footer>
 			</NavigationRail.Root>
 		</div>
 	);

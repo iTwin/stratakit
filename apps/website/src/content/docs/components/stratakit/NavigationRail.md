@@ -30,15 +30,13 @@ Make sure the **NavigationRail** is suitable for your use case. There may be oth
 - [`NavigationRail.Content`](#navigationrailcontent)
 - [`NavigationRail.Footer`](#navigationrailfooter)
 
-These are used to create the following basic structure. Note that `NavigationRail.Footer` is nested inside `NavigationRail.Content`.
+These are used to create the following basic structure.
 
 ```jsx
 <NavigationRail.Root>
 	<NavigationRail.Header>...</NavigationRail.Header>
-	<NavigationRail.Content>
-		...
-		<NavigationRail.Footer>...</NavigationRail.Footer>
-	</NavigationRail.Content>
+	<NavigationRail.Content>...</NavigationRail.Content>
+	<NavigationRail.Footer>...</NavigationRail.Footer>
 </NavigationRail.Root>
 ```
 
@@ -73,8 +71,6 @@ You can group related navigation components using the [`NavigationRail.List`](/r
 	</NavigationRail.List>
 	<Divider role="presentation" />
 	<NavigationRail.Anchor>...</NavigationRail.Anchor>
-
-	<NavigationRail.Footer>...</NavigationRail.Footer>
 </NavigationRail.Content>
 ```
 

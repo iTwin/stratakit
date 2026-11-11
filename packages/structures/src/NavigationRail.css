@@ -12,14 +12,25 @@
 		flex-direction: column;
 		gap: var(--stratakit-space-100);
 
+		overflow: auto;
 		block-size: 100%;
+		scrollbar-color: var(--stratakit-color-bg-control-scrollbar-surface) transparent;
+		scrollbar-width: thin;
+
+		animation: --🥝NavigationRail-scroll-fade linear;
+		animation-timeline: scroll(self block);
+
 		min-inline-size: var(--✨size--collapsed);
 		inline-size: var(--🥝NavigationRail-inline-size);
 
 		background-color: var(--stratakit-color-bg-page-depth);
 		border-inline-end: 1px solid var(--stratakit-color-border-neutral-muted);
 
+		anchor-name: --🥝NavigationRail;
+		anchor-scope: --🥝NavigationRail;
+
 		--🥝Divider-cross-axis-margin: var(--stratakit-space-100);
+		--🥝NavigationRailHeader-height: 56px;
 	}
 
 	@layer modifiers {
@@ -29,19 +40,36 @@
 	}
 }
 
-.🥝NavigationRailHeader {
-	--✨header-height: 56px;
+/* resolves to true when the bottom is overflowing */
+@property --🥝NavigationRail-overflow-end {
+	syntax: "true | false";
+	inherits: true;
+	initial-value: false;
+}
 
+@keyframes --🥝NavigationRail-scroll-fade {
+	0%,
+	99.9% {
+		--🥝NavigationRail-overflow-end: true;
+	}
+	100% {
+		--🥝NavigationRail-overflow-end: false;
+	}
+}
+
+.🥝NavigationRailHeader {
 	@layer base {
 		position: relative;
 		display: flex;
 		align-items: center;
 
+		background-color: var(--stratakit-color-bg-page-depth);
+
 		padding-block-start: var(--stratakit-space-200);
 		padding-block-end: var(--stratakit-space-200);
-		padding-inline-start: var(--stratakit-space-400);
+		padding-inline-start: calc(var(--stratakit-space-400) + 1px);
 		padding-inline-end: var(--stratakit-space-400);
-		min-block-size: var(--✨header-height);
+		min-block-size: var(--🥝NavigationRailHeader-height);
 	}
 }
 
@@ -51,17 +79,21 @@
 	@layer base {
 		inline-size: var(--✨size--outer);
 		block-size: var(--✨size--outer);
-		margin-inline-start: auto;
 
 		border-radius: var(--stratakit-radius-round);
 		border: 1px solid var(--stratakit-color-border-neutral-muted);
 		background-color: var(--stratakit-color-bg-page-base);
 		color: var(--stratakit-color-icon-neutral-base);
 
+		align-self: center;
 		display: grid;
 		place-items: center;
 
 		transition: rotate 150ms ease-out;
+
+		:where(.🥝NavigationRailHeader) & {
+			margin-inline-start: auto;
+		}
 
 		&::before {
 			content: "";
@@ -83,10 +115,27 @@
 		}
 
 		/* Should be floating above the right edge of the header during collapsed state */
-		:where(.🥝NavigationRailHeader:not([data-_sk-expanded="true"])) & {
-			position: absolute;
-			inset-inline-end: 0;
-			translate: 50%;
+		&:where(:not(.🥝NavigationRailHeader[data-_sk-expanded="true"] &)) {
+			z-index: 10; /* needs a large enough value to float above adjacent elements */
+
+			/* Use fixed anchor positioning to escape overflow. */
+			position: fixed;
+			position-anchor: --🥝NavigationRail;
+
+			inset-inline-start: calc(anchor(self-end) - var(--✨size--outer) / 2);
+			inset-block-start: calc(
+				anchor(start) +
+				(var(--🥝NavigationRailHeader-height) - var(--✨size--outer)) /
+				2
+			);
+
+			/* Place within the header bounds to prevent clipping in unsupported browsers */
+			@supports not (position-anchor: --🥝NavigationRail) {
+				:where(.🥝NavigationRailHeader) & {
+					position: absolute;
+					inset-inline-end: 0;
+				}
+			}
 		}
 
 		&:where([aria-pressed="true"]) {
@@ -103,7 +152,6 @@
 		padding-inline-end: var(--stratakit-space-200);
 
 		flex: 999;
-		overflow: auto;
 
 		display: flex;
 		flex-direction: column;
@@ -253,7 +301,42 @@
 
 .🥝NavigationRailFooter {
 	@layer base {
+		position: relative;
 		margin-block-start: auto;
+
+		padding-block-start: var(--stratakit-space-300); /* create visual separation from content */
+		padding-block-end: var(--stratakit-space-100);
+		padding-inline-start: var(--stratakit-space-200);
+		padding-inline-end: var(--stratakit-space-200);
+	}
+
+	@layer modifiers {
+		:where(.🥝NavigationRailContent) & {
+			padding-inline: unset;
+			padding-block-end: unset;
+		}
+
+		@media (min-height: 400px) {
+			position: sticky;
+			inset-block-end: 0;
+			background-color: var(--stratakit-color-bg-page-depth);
+
+			/* adds a scroll fade above the footer when the content is overflowing */
+			&::before {
+				content: "";
+				pointer-events: none;
+
+				position: absolute;
+				inset-block-end: 100%;
+				inset-inline: var(--stratakit-space-200);
+
+				@container style(--🥝NavigationRail-overflow-end: true) {
+					mask-image: linear-gradient(to bottom, transparent 0%, #000 100%);
+					block-size: 32px;
+					background-color: var(--stratakit-color-bg-page-depth);
+				}
+			}
+		}
 	}
 }
 

@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.Di-RT4Q4.js";import{t}from"./Button.CdKYsmaQ.js";var n=e(),r=()=>(0,n.jsx)(t,{loading:!0,children:`Create new`});export{r as default};

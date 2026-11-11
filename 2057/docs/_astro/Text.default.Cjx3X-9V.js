@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.Di-RT4Q4.js";import{t}from"./Text.lx8b1ecX.js";var n=e(),r=()=>(0,n.jsx)(t,{variant:`body-sm`,children:`Basic text`});export{r as default};

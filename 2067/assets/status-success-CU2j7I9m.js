@@ -1,0 +1,1 @@
+import{t as e}from"./status-success-DLH-32UO.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./user.pgq0_o8C.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

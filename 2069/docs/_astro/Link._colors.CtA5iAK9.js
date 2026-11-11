@@ -1,1 +1,0 @@
-import{fr as e}from"./chevron-down.D4poxH5G.js";import{t}from"./Stack.Ho5K9nyF.js";import{t as n}from"./Link.B5S16tVF.js";var r=e(),i=[`primary`,`error`,`info`,`success`,`warning`],a=()=>(0,r.jsx)(t,{direction:`row`,spacing:2,sx:{flexWrap:`wrap`},children:i.map(e=>(0,r.jsxs)(n,{color:e,href:`#${e}`,children:[e.charAt(0).toUpperCase(),e.slice(1)]},e))});export{a as default};

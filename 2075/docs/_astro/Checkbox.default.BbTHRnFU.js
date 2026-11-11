@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.B0NGyXAh.js";import{t}from"./Checkbox.CWyh23aV.js";import{a as n,i as r,t as i}from"./Field.C0sV5qH4.js";var a=e(),o=()=>(0,a.jsxs)(n,{children:[(0,a.jsx)(i,{render:(0,a.jsx)(t,{})}),(0,a.jsx)(r,{children:`Don’t show again`})]});export{o as default};

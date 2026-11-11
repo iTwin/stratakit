@@ -1,0 +1,1 @@
+import{t as e}from"./status-warning-GY-74tJM.js";var t=`${e}#icon`;`${e}`;export{t};

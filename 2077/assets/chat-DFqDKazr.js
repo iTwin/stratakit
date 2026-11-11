@@ -1,0 +1,1 @@
+import{t as e}from"./chat-CEhYBE4v.js";var t=`${e}#icon`;`${e}`;export{t};

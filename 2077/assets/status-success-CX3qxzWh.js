@@ -1,0 +1,1 @@
+import{t as e}from"./status-success-TIUAs_1a.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./upload-DH-4ahzi.js";var t=`${e}#icon`;`${e}`;export{t};

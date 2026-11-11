@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-DdvWTg2m.js";var t=`${e}#icon`;`${e}`;export{t};

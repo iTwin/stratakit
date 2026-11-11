@@ -1,0 +1,1 @@
+import{t as e}from"./more-vertical-jUW1_FML.js";var t=`${e}#icon`;`${e}`;export{t};

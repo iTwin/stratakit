@@ -21,6 +21,7 @@
 		"@types/react": "^19.3.0",
 		"@types/react-dom": "^19.3.0",
 		"@vitejs/plugin-react": "^6.3.0",
+		"oxc-transform-react": "*",
 		"typescript": "~7.0.2",
 		"vite": "^8.3.6"
 	}

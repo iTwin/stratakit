@@ -1,0 +1,1 @@
+import{t as e}from"./upload-DUDUTJ6N.js";var t=`${e}#icon`;`${e}`;export{t};

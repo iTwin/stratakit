@@ -61,6 +61,12 @@ Use the [`multiline`](https://mui.com/material-ui/api/input/#input-prop-multilin
 
 ::example{src="mui/TextField.multiline" min-height="200px"}
 
+### Number
+
+Avoid [`type="number"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/number) due to its [usability and accessibility issues](https://technology.blog.gov.uk/2020/02/24/why-the-gov-uk-design-system-team-changed-the-input-type-for-numbers/).
+
+Instead, use `slotProps.htmlInput` to set [`inputmode`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/inputmode) to `"numeric"` for whole numbers or `"decimal"` for fractional values. These display a suitable keyboard on touch devices.
+
 ### Search
 
 Set [`type="search"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/search) to add a search icon automatically. A clear button can appear after the user enters a query; give it an accessible name and return focus to the input when it is activated.

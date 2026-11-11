@@ -133,6 +133,10 @@
 		}
 	}
 
+	&:where(input[type="number" i], input[inputmode="decimal" i], input[inputmode="numeric" i]) {
+		font-variant-numeric: tabular-nums;
+	}
+
 	&:where(input[type="search" i]) {
 		&::-webkit-search-cancel-button {
 			-webkit-appearance: none;

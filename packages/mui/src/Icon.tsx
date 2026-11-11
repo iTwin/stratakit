@@ -31,12 +31,28 @@ import { svgStatusSuccess } from "@stratakit/icons/status-success";
 import { svgVisibilityHide } from "@stratakit/icons/visibility-hide";
 import { svgWarning } from "@stratakit/icons/warning";
 
+import type SvgIcon from "@mui/material/SvgIcon";
+
 // ----------------------------------------------------------------------------
 
+interface SvgProps
+	extends React.SVGProps<SVGSVGElement>,
+		Pick<React.ComponentProps<typeof SvgIcon>, "titleAccess"> {}
+
 function createIconComponent(href: string) {
-	return React.forwardRef<SVGSVGElement, React.SVGProps<SVGSVGElement>>(
+	return React.forwardRef<SVGSVGElement, SvgProps>(
+		// biome-ignore lint/correctness/noComponentHookFactories: This gets called once in the module, not per render.
 		function IconComponent(props, forwardedRef) {
-			return <Icon {...props} href={href} ref={forwardedRef} />;
+			const {
+				titleAccess,
+				//@ts-expect-error Not explicitly typed but DatePicker passes ownerState to openPickerIcon slot and it should be filtered out
+				ownerState: _ownerState,
+				fontSize: _fontSize,
+				...rest
+			} = props;
+			return (
+				<Icon alt={titleAccess} {...rest} href={href} ref={forwardedRef} />
+			);
 		},
 	);
 }

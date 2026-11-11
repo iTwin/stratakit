@@ -1,0 +1,1 @@
+import{fr as e}from"./chevron-down.Ci5_xBlF.js";import{t}from"./MenuItem.Bk2hnpPV.js";import{t as n}from"./MenuList.CJGYic7o.js";var r=e(),i=()=>(0,r.jsxs)(n,{children:[(0,r.jsx)(t,{children:`Profile`}),(0,r.jsx)(t,{children:`My account`}),(0,r.jsx)(t,{children:`Logout`})]});export{i as default};

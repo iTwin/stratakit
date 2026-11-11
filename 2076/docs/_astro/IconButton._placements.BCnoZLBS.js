@@ -1,0 +1,1 @@
+import{fr as e,n as t,wt as n}from"./chevron-down.Ci5_xBlF.js";import{t as r}from"./placeholder.CsnKIB-F.js";var i=e(),a=[`left`,`top`,`bottom`,`right`],o=()=>a.map(e=>(0,i.jsx)(t,{label:`${e.charAt(0).toUpperCase()}${e.slice(1)}`,labelPlacement:e,children:(0,i.jsx)(n,{href:r})},e));export{o as default};

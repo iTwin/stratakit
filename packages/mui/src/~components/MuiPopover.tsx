@@ -29,7 +29,12 @@ export function useFallbackLabel(
 
 	return React.useCallback(
 		(element?: HTMLElement) => {
-			if (!element || !(ownerState.anchorEl instanceof HTMLElement)) return;
+			if (!element) return;
+			const anchorEl =
+				typeof ownerState.anchorEl === "function"
+					? ownerState.anchorEl()
+					: ownerState.anchorEl;
+			if (!(anchorEl instanceof HTMLElement)) return;
 			if (
 				ariaLabel ||
 				ariaLabelledBy ||
@@ -40,7 +45,7 @@ export function useFallbackLabel(
 			}
 
 			// Use the trigger button as the fallback accessible name for the popover.
-			element.ariaLabelledByElements = [ownerState.anchorEl];
+			element.ariaLabelledByElements = [anchorEl];
 		},
 		[ownerState.anchorEl, ariaLabel, ariaLabelledBy],
 	);

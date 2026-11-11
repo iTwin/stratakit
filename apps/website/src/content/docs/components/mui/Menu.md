@@ -30,7 +30,7 @@ The `dense` prop is also available via [`MenuList`](https://mui.com/material-ui/
 
 ::example{src="mui/Menu.dense"}
 
-## Selectable
+### Selectable
 
 To make `MenuItem`s selectable, override the default `role` to either:
 

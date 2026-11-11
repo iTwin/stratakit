@@ -132,6 +132,19 @@ function parseSvg(
 		template.setHTML(htmlString, { sanitizer });
 	} else {
 		template.innerHTML = htmlString;
+
+		// Basic best-effort sanitization for browsers without the Sanitizer API.
+		for (const element of template.content.querySelectorAll("*")) {
+			// Remove `<script>` and `<foreignObject>` elements
+			if (["script", "foreignObject"].includes(element.localName)) {
+				element.remove();
+				continue;
+			}
+			// Remove `on*` attributes
+			for (const { name } of Array.from(element.attributes)) {
+				if (name.toLowerCase().startsWith("on")) element.removeAttribute(name);
+			}
+		}
 	}
 
 	return template.content;

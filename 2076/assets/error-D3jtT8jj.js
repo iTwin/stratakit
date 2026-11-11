@@ -1,0 +1,1 @@
+import{t as e}from"./error-CUMxc6m5.js";var t=`${e}#icon`;`${e}`;export{t};

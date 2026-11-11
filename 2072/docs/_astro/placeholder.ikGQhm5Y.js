@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.rsLMg82o.js";var t=`${e}#icon`;`${e}`;export{t};

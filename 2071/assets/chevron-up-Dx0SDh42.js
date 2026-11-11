@@ -1,0 +1,1 @@
+import{t as e}from"./chevron-up-BBiLTfbc.js";var t=`${e}#icon`;`${e}`;export{t};

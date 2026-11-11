@@ -1,0 +1,1 @@
+import{t as e}from"./rename-BFOj__Z_.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.g8bu71EM.js";import{i as t,n,r,t as i}from"./DropdownMenu.nu3x7cQp.js";var a=e(),o=()=>(0,a.jsxs)(t,{children:[(0,a.jsx)(i,{children:`Actions`}),(0,a.jsxs)(n,{children:[(0,a.jsx)(r,{shortcuts:`Command+N`,label:`New`}),(0,a.jsx)(r,{shortcuts:`Command+O`,label:`Open`}),(0,a.jsx)(r,{shortcuts:`Command+S`,label:`Save`})]})]});export{o as default};

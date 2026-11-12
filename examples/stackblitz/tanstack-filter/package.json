@@ -9,6 +9,7 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@faker-js/faker": "^10.6.0",
 		"@mui/material": "^9.5.0",
 		"@stratakit/foundations": "latest",
 		"@stratakit/icons": "latest",

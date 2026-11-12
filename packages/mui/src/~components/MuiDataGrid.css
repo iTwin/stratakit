@@ -175,7 +175,7 @@
 		display: block;
 		content: "";
 		position: absolute;
-		background-color: var(--stratakit-color-bg-accent-base);
+		background-color: var(--stratakit-color-border-accent-strong);
 		width: var(--stratakit-space-200);
 		height: var(--stratakit-space-200);
 		bottom: 5px;

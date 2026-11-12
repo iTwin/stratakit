@@ -50,7 +50,7 @@ This example is adapted from the [MUI Table Sorting example](https://mui.com/mat
 
 ### Filtering
 
-::example{src="tanstack/Tanstack.filter"}
+::example{src="tanstack/Tanstack.filter" min-height="775px"}
 
 ### Number Alignment
 

@@ -1,1 +1,0 @@
-import{t as e}from"./status-warning-C06_l_qc.js";var t=`${e}#icon`;`${e}`;export{t};

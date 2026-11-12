@@ -1,1 +1,0 @@
-import{h as e}from"./chevron-down.GXrSIWTb.js";import{i as t,r as n,t as r}from"./mergeSlotProps.D0n2qslu.js";function i(i){let{elementType:a,externalSlotProps:o,ownerState:s,skipResolvingSlotProps:c=!1,...l}=i,u=c?{}:n(o,s),{props:d,internalRef:f}=r({...l,externalSlotProps:u}),p=e(f,u?.ref,i.additionalProps?.ref);return t(a,{...d,ref:p},s)}export{i as t};

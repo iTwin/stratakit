@@ -1,1 +1,0 @@
-var e=`/2079/docs/_astro/more-vertical.5gqhcowm.svg`,t=`${e}#icon`;`${e}`;export{t};

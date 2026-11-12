@@ -1,1 +1,0 @@
-import{t as e}from"./save-DBpOH0ER.js";`${e}`;var t=`${e}#icon-large`;export{t};

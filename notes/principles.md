@@ -31,6 +31,6 @@ We make sure that accessibility is part of the conversation at every step. By in
 
 ## 5. Do less so others can do more
 
-A successful design system is critical infrastructure that teams can trust and rely on. We hold StrataKit to a higher bar than typical product code, and we make this bar achievable by focusing on the _essentials_. Our core packages contain only what must be correct everywhere (e.g. design tokens, base components, common icons). Documentation and examples meet the same quality bar as the packages, but are much easier to maintain.
+A successful design system is critical infrastructure that teams can trust and rely on. We hold StrataKit to a high bar, and we achieve this by focusing on the _essentials_. Our core packages contain only what must be correct everywhere (e.g. design tokens, base components, common icons). Documentation and examples meet the same quality bar as the packages, but are much easier to maintain.
 
 Rather than owning every possible experience, we ship the _building blocks_ that unlock those experiences, and supplement them with high-level guidance. This gives teams control over their specific experiences without making us the bottleneck.

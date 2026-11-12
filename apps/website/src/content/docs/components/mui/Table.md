@@ -50,7 +50,7 @@ This example is adapted from the [MUI Table Sorting example](https://mui.com/mat
 
 ### Filtering
 
-<iframe src="https://stackblitz.com/github/iTwin/stratakit/tree/mark/example-stackblitz/examples/stackblitz/tanstack-filter?embed=1&file=src%2FTanstack.filter.tsx&view=preview" allow="cross-origin-isolated" credentialless style="height:600px;width:100%"></iframe>
+[TanStack filtering example on StackBlitz](https://stackblitz.com/github/iTwin/stratakit/tree/mark/example-stackblitz/examples/stackblitz/tanstack-filter).
 
 ### Number Alignment
 

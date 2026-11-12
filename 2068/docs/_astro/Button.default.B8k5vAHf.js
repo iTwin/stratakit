@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.DUIS5PUy.js";import{t}from"./Button.BAb8Dg7v.js";var n=e(),r=()=>(0,n.jsx)(t,{onClick:()=>{},children:`Create new`});export{r as default};

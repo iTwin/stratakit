@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.BeHcGW9b.js";import{t}from"./TextField.Ch0i5fKX.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Name`});export{r as default};

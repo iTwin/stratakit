@@ -1,1 +1,0 @@
-import{t as e}from"./chevron-up-DDGpI2_d.js";var t=`${e}#icon`;`${e}`;export{t};

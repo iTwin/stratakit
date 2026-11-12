@@ -1,1 +1,0 @@
-import{q as e}from"./chevron-down.C0DV6ysJ.js";function t(t){let{theme:n,name:r,props:i}=t;return!n||!n.components||!n.components[r]||!n.components[r].defaultProps?i:e(n.components[r].defaultProps,i)}export{t};

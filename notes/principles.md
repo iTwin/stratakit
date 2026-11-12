@@ -7,9 +7,9 @@ When working on StrataKit, we follow these principles.
 
 ## 1. Consistent and intuitive
 
-A design system is nothing if not _consistent_. Similar components should look, behave and be configured similarly. Smaller, independent pieces should feel like they belong in the same system. When we find reasons to make a change, we apply it everywhere rather than in one place.
+A design system is nothing if not _consistent_. Similar components should look, behave and be configured similarly. Small, independent pieces should work together harmoniously to form a cohesive whole. When we find reasons to make a change, we apply it everywhere rather than in one place.
 
-Components should be easy to use and hard to misuse. Where it's not possible to bake desired outcomes into the component, we provide copious guidance and sample code to cover the gaps.
+Components should be easy to use and hard to misuse. Where it's not possible to bake desired outcomes into the component or where its behavior may otherwise be surprising, we provide copious guidance and sample code to cover the gaps.
 
 ## 2. Craft in every detail
 

@@ -55,7 +55,7 @@ const features = tableFeatures({
 });
 
 const columnHelper = createColumnHelper<typeof features, Person>();
-const data = makeData();
+const data = makeData(100);
 
 export default function TanstackFilter() {
 	const columns = React.useMemo(

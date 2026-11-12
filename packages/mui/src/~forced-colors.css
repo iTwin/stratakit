@@ -132,6 +132,15 @@
 		color: GrayText;
 	}
 }
+.MuiDataGrid-cell,
+.MuiDataGrid-columnHeader {
+	&:where(.MuiDataGrid-cell--editable):not(.MuiDataGrid-cell--editing):where(
+			:focus-visible,
+			:has(:focus-visible)
+		)::after {
+		background-color: Highlight;
+	}
+}
 
 .MuiFormHelperText-root {
 	&:where(.Mui-disabled) {

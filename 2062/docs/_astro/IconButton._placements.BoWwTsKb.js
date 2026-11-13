@@ -1,0 +1,1 @@
+import{n as e,pr as t,wt as n}from"./chevron-down.DnMohHm5.js";import{t as r}from"./placeholder.3sOSI_xw.js";var i=t(),a=[`left`,`top`,`bottom`,`right`],o=()=>a.map(t=>(0,i.jsx)(e,{label:`${t.charAt(0).toUpperCase()}${t.slice(1)}`,labelPlacement:t,children:(0,i.jsx)(n,{href:r})},t));export{o as default};

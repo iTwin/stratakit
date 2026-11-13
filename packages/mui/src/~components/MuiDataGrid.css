@@ -176,10 +176,10 @@
 		content: "";
 		position: absolute;
 		background-color: var(--stratakit-color-border-accent-strong);
-		width: var(--stratakit-space-200);
-		height: var(--stratakit-space-200);
-		bottom: 5px;
-		right: 5px;
+		inline-size: var(--stratakit-space-200);
+		block-size: var(--stratakit-space-200);
+		inset-block-end: 5px;
+		inset-inline-end: 5px;
 	}
 }
 

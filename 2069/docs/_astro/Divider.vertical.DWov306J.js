@@ -1,0 +1,1 @@
+import{fr as e}from"./chevron-down.DTjAGnW7.js";import{t}from"./Divider.C17azoeo.js";var n=e(),r=()=>(0,n.jsx)(`div`,{style:{blockSize:`calc(100dvh - 16px * 2)`},children:(0,n.jsx)(t,{orientation:`vertical`})});export{r as default};

@@ -6,7 +6,6 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
 import { Role } from "@ariakit/react/role";
-import { identity } from "@stratakit/internal-utils/common";
 import {
 	getOwnerDocument,
 	getWindow,
@@ -18,7 +17,6 @@ import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import css from "./~styles.css.js";
 import {
-	HtmlSanitizerContext,
 	RootContext,
 	RootNodeContext,
 	spriteSheetId,
@@ -72,19 +70,6 @@ interface RootProps extends BaseProps {
 	density?: "dense";
 
 	/**
-	 * An HTML sanitizer function that will be used across all components wherever DOM elements
-	 * are created from HTML strings.
-	 *
-	 * When this prop is not passed, sanitization will be skipped.
-	 *
-	 * Example:
-	 * ```tsx
-	 * unstable_htmlSanitizer={DOMPurify.sanitize}
-	 * ```
-	 */
-	unstable_htmlSanitizer?: (html: string) => string;
-
-	/**
 	 * Allows to customize the root portal container element.
 	 */
 	portalContainer?: React.ReactElement;
@@ -123,7 +108,6 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 	const {
 		children,
 		synchronizeColorScheme = true,
-		unstable_htmlSanitizer = identity,
 		unstable_portalProvider,
 		portalContainer: portalContainerProp,
 		...rest
@@ -141,16 +125,14 @@ const Root = forwardRef<"div", RootProps>((props, forwardedRef) => {
 				) : null}
 				<SynchronizeAccentColor accentColor={props.unstable_accentColor} />
 
-				<HtmlSanitizerContext.Provider value={unstable_htmlSanitizer}>
-					<RootPortalProvider
-						colorScheme={props.colorScheme}
-						unstable_accentColor={props.unstable_accentColor}
-						density={props.density}
-						portalContainerProp={portalContainerProp}
-					>
-						{children}
-					</RootPortalProvider>
-				</HtmlSanitizerContext.Provider>
+				<RootPortalProvider
+					colorScheme={props.colorScheme}
+					unstable_accentColor={props.unstable_accentColor}
+					density={props.density}
+					portalContainerProp={portalContainerProp}
+				>
+					{children}
+				</RootPortalProvider>
 			</RootProvider>
 		</RootInternal>
 	);

@@ -51,9 +51,3 @@ export function useRootNode() {
 export const spriteSheetId = "🥝-inline-sprites";
 
 // ----------------------------------------------------------------------------
-
-export const HtmlSanitizerContext = React.createContext<
-	((html: string) => string) | undefined
->(undefined);
-
-// ----------------------------------------------------------------------------

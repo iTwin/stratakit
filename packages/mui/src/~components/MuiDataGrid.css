@@ -168,7 +168,7 @@
 		}
 	}
 
-	&:where(.MuiDataGrid-cell--editable):not(.MuiDataGrid-cell--editing):where(
+	&:where(.MuiDataGrid-cell--editable:not(.MuiDataGrid-cell--editing)):where(
 			:focus-visible,
 			:has(:focus-visible)
 		)::after {

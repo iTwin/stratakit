@@ -1,0 +1,1 @@
+import{fr as e}from"./chevron-down.XH1R1UHW.js";import{t}from"./Chip.PiMRecT8.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Outlined Chip`,variant:`outlined`});export{r as default};

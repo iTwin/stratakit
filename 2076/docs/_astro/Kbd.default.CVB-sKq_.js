@@ -1,0 +1,1 @@
+import{fr as e}from"./chevron-down.XH1R1UHW.js";import{t}from"./Kbd.EnHzBd_C.js";var n=e(),r=()=>(0,n.jsx)(t,{children:`A`});export{r as default};

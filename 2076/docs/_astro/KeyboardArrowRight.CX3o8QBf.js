@@ -1,0 +1,1 @@
+import{fr as e}from"./chevron-down.XH1R1UHW.js";import{t}from"./createSvgIcon.BON_e_NM.js";var n=e(),r=t((0,n.jsx)(`path`,{d:`M15.41 16.09l-4.58-4.59 4.58-4.59L14 5.5l-6 6 6 6z`}),`KeyboardArrowLeft`),i=t((0,n.jsx)(`path`,{d:`M8.59 16.34l4.58-4.59-4.58-4.59L10 5.75l6 6-6 6z`}),`KeyboardArrowRight`);export{r as n,i as t};

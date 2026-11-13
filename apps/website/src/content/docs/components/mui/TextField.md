@@ -67,6 +67,15 @@ Avoid [`type="number"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Refere
 
 Instead, use `slotProps.htmlInput` to set [`inputmode`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/inputmode) to `"numeric"` for whole numbers or `"decimal"` for fractional values. These display a suitable keyboard on touch devices.
 
+```jsx {3-5}
+<TextField
+	label="ZIP code"
+	slotProps={{
+		htmlInput: { inputMode: "numeric" },
+	}}
+/>
+```
+
 ### Search
 
 Set [`type="search"`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/input/search) to add a search icon automatically. A clear button can appear after the user enters a query; give it an accessible name and return focus to the input when it is activated.

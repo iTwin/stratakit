@@ -133,6 +133,18 @@
 		}
 	}
 
+	&:where(
+			input:is(
+				[type="number" i],
+				[type="tel" i],
+				[inputmode="decimal" i],
+				[inputmode="numeric" i],
+				[inputmode="tel" i]
+			)
+		) {
+		font-variant-numeric: tabular-nums;
+	}
+
 	&:where(input[type="search" i]) {
 		&::-webkit-search-cancel-button {
 			-webkit-appearance: none;

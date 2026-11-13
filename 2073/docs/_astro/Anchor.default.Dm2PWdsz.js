@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.vlw1jlo2.js";import{i as t}from"./Anchor.BCFGL_-r.js";var n=e(),r=()=>(0,n.jsx)(t,{href:`/getting-started`,children:`Getting started`});export{r as default};

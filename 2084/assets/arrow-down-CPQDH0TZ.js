@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-DRN4UzMy.js";var t=`${e}#icon`;`${e}`;export{t};

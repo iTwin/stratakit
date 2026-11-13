@@ -1,0 +1,1 @@
+import{t as e}from"./delete-DjlH-bEr.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

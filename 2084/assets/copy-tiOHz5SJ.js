@@ -1,0 +1,1 @@
+import{t as e}from"./copy-DD_LYoOi.js";`${e}`;var t=`${e}#icon-large`;export{t};

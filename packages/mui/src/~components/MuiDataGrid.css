@@ -171,15 +171,17 @@
 	&:where(.MuiDataGrid-cell--editable:not(.MuiDataGrid-cell--editing)):where(
 			:focus-visible,
 			:has(:focus-visible)
-		)::after {
-		display: block;
-		content: "";
-		position: absolute;
-		background-color: var(--stratakit-color-border-accent-strong);
-		inline-size: var(--stratakit-space-200);
-		block-size: var(--stratakit-space-200);
-		inset-block-end: 5px;
-		inset-inline-end: 5px;
+		) {
+		&::after {
+			display: block;
+			content: "";
+			position: absolute;
+			background-color: var(--stratakit-color-border-accent-strong);
+			inline-size: var(--stratakit-space-200);
+			block-size: var(--stratakit-space-200);
+			inset-block-end: 5px;
+			inset-inline-end: 5px;
+		}
 	}
 }
 

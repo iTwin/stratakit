@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.Cb2mxWyI.js";import{t}from"./Checkbox.DdnLfK6r.js";import{a as n,i as r,t as i}from"./Field.BwhcRRpV.js";var a=e(),o=()=>(0,a.jsxs)(n,{children:[(0,a.jsx)(i,{render:(0,a.jsx)(t,{})}),(0,a.jsx)(r,{children:`Enable experimental features`})]});export{o as default};

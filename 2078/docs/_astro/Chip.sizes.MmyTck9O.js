@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.Cb2mxWyI.js";import{t}from"./Stack.BytNflZS.js";import{t as n}from"./Chip.AV1sCleD.js";var r=e(),i=()=>(0,r.jsxs)(t,{spacing:2,direction:`row`,sx:{alignItems:`center`,flexWrap:`wrap`},children:[(0,r.jsx)(n,{size:`small`,label:`Small`}),(0,r.jsx)(n,{label:`Medium`})]});export{i as default};

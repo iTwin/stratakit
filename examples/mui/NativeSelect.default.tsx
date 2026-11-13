@@ -12,9 +12,7 @@ export default () => {
 	const inputId = React.useId();
 	return (
 		<FormControl>
-			<InputLabel variant="standard" htmlFor={inputId}>
-				Design system
-			</InputLabel>
+			<InputLabel htmlFor={inputId}>Design system</InputLabel>
 			<NativeSelect
 				defaultValue={2}
 				slotProps={{

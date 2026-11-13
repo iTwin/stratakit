@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.4
+
+- [#2057](https://github.com/iTwin/stratakit/pull/2057): Updated the structure of `NavigationRail`, so that `NavigationRail.Root` is the scrollable element. This allows `NavigationRail.Footer` to be rendered as a sibling of `NavigationRail.Content`.
+- [#2056](https://github.com/iTwin/stratakit/pull/2056): Reworked the positioning logic in `NavigationRail.ToggleButton` to make it more resilient.
+- [#2082](https://github.com/iTwin/stratakit/pull/2082): Clamped the `ErrorRegion`'s max-height to the nearest container, created using `container-type: size`.
+- Updated dependencies:
+  - @stratakit/foundations@1.1.1
+
 ## 0.6.3
 
 - [#2052](https://github.com/iTwin/stratakit/pull/2052): Updated an internal focus-outline-offset property to not inherit.

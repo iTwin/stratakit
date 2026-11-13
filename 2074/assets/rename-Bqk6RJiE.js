@@ -1,0 +1,1 @@
+import{t as e}from"./rename-1C_WdufL.js";var t=`${e}#icon`;`${e}`;export{t};

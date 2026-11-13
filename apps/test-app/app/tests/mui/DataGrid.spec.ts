@@ -14,7 +14,7 @@ test("shows focus editing caret in editable cells", {
 	const editableCell = grid
 		.getByRole("gridcell", { name: "Engineering" })
 		.first();
-	await expect(editableCell).toBeVisible();
+	await expect(editableCell).toHaveAccessibleDescription("editable");
 	await editableCell.focus();
 	await expect(editableCell).toHaveScreenshot();
 });
@@ -24,7 +24,7 @@ test("does not shows focus editing caret in non-editable cells", {
 }, async ({ mount }) => {
 	const grid = await mount("mui/DataGrid.showcase#DataTypes");
 	const cell = grid.getByRole("gridcell", { name: "1001" }).first();
-	await expect(cell).toBeVisible();
+	await expect(cell).not.toHaveAccessibleDescription("editable");
 	await cell.focus();
 	await expect(cell).toHaveScreenshot();
 });

@@ -5,7 +5,7 @@
 
 # StrataKit
 
-Monorepo for **StrataKit** — Bentley's new flagship design system, and the successor to [iTwinUI](https://github.com/iTwin/iTwinUI).
+Monorepo for **StrataKit** — Bentley's new flagship design system, and the successor to [iTwinUI](https://github.com/iTwin/iTwinUI). StrataKit helps teams build consistent, accessible interfaces for complex construction and infrastructure work.
 
 [Read the documentation](https://stratakit.bentley.com/docs) to get started.
 
@@ -53,6 +53,6 @@ With special thanks to [@msllrs](https://github.com/msllrs), [@ahilhorst](https:
 
 ## Contributing
 
-Are you interested in helping StrataKit grow? You can submit feature requests or bugs by creating [issues](https://github.com/iTwin/stratakit/issues).
+You can help improve StrataKit by opening [issues](https://github.com/iTwin/stratakit/issues) and [discussions](https://github.com/iTwin/stratakit/discussions).
 
-If you're interested in contributing code, please read [`CONTRIBUTING.md`](./CONTRIBUTING.md) for more information.
+If you're interested in contributing code, please read the [contributing guide](./CONTRIBUTING.md) and StrataKit's [engineering principles](./notes/principles.md).

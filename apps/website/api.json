@@ -101,7 +101,7 @@
 								"name": "href",
 								"type": "string | undefined",
 								"optional": true,
-								"jsdoc": "URL to an SVG symbol (e.g. from `@stratakit/icons` or a custom `.svg` file).\n\nThe URL should include a hash pointing to a specific symbol within the SVG (e.g. `#icon`, `#icon-large`).\nBy default, the `#icon` symbol is appended if no hash is provided.\n\nNote: The `.svg` must be an external HTTP resource for it to be processed by\nthe `<use>` element. As a fallback, JS will be used to `fetch` the SVG from\nnon-supported URLs; the fetched SVG content will be sanitized automatically."
+								"jsdoc": "URL to an SVG symbol (e.g. from `@stratakit/icons` or a custom `.svg` file).\n\nThe URL should include a hash pointing to a specific symbol within the SVG (e.g. `#icon`, `#icon-large`).\nBy default, the `#icon` symbol is appended if no hash is provided.\n\nNote: The `.svg` must be an external HTTP resource for it to be processed by\nthe `<use>` element. As a fallback, JS will be used to `fetch` the SVG from non-supported URLs;\nthe fetched SVG content will be sanitized automatically in supported browsers."
 							},
 							{
 								"name": "size",

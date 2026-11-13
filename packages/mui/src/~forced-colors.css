@@ -132,6 +132,10 @@
 		color: GrayText;
 	}
 }
+.MuiDataGrid-cell::after,
+.MuiDataGrid-columnHeader::after {
+	background-color: Highlight;
+}
 
 .MuiFormHelperText-root {
 	&:where(.Mui-disabled) {

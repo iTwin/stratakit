@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.Bs7PNvzM.js";import{t}from"./Paper.Sg_4sjSn.js";var n={paper:`_paper_1m011_5`},r=e(),i=()=>(0,r.jsx)(t,{className:n.paper,variant:`outlined`});export{i as default};

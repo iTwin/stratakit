@@ -1,1 +1,0 @@
-import{t as e}from"./chevron-up-Dm1trLzC.js";var t=`${e}#icon`;`${e}`;export{t};

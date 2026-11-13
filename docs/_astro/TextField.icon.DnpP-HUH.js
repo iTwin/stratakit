@@ -1,0 +1,1 @@
+import{pr as e,wt as t}from"./chevron-down.DMGBCUbS.js";import{t as n}from"./InputAdornment.B4vmYX6P.js";import{t as r}from"./TextField.3Oh5Fw_h.js";var i=`/docs/_astro/email-at.BYClD7Uv.svg`,a=`${i}#icon`;`${i}`;var o=e(),s=()=>(0,o.jsx)(r,{label:`Username`,slotProps:{input:{startAdornment:(0,o.jsx)(n,{position:`start`,children:(0,o.jsx)(t,{href:a})})}}});export{s as default};

@@ -1,0 +1,1 @@
+import{Bt as e,Ut as t,Vt as n,pr as r,sn as i}from"./chevron-down.5LUvobDJ.js";import{a,s as o}from"./collection-store.0ejEVh5F.js";var s=r(),c=`div`,l=n(function({store:e,...t}){let n=o();return e||=n,t=i(t,t=>(0,s.jsx)(a,{value:e,children:t}),[e]),t}),u=t(function(t){let n=l(t);return e(c,n)});export{u as t};

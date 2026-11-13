@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.DzkzIlUl.js";import{t}from"./Typography.CEhQWo3Z.js";var n=e(),r=()=>(0,n.jsx)(t,{variant:`headline-md`,render:(0,n.jsx)(`h2`,{}),children:`Heading text`});export{r as default};

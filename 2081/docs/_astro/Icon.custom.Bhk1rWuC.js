@@ -1,1 +1,0 @@
-import{pr as e,wt as t}from"./chevron-down.CKy9D9HZ.js";var n=`/2081/docs/_astro/Icon.custom.QzTIDwip.svg`,r=e(),i=()=>(0,r.jsx)(t,{href:`${n}#icon`,alt:`Filled Circle`});export{i as default};

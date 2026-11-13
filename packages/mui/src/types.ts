@@ -566,6 +566,10 @@ declare module "@mui/material/Dialog" {
 		component?: React.ElementType;
 		/** @deprecated StrataKit does not support this prop. */
 		PaperComponent?: DialogProps["PaperComponent"];
+		/**
+		 * When set to `true`, the dialog becomes non-modal (modeless).
+		 */
+		nonModal?: boolean;
 	}
 }
 

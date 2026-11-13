@@ -18,10 +18,28 @@
 	);
 }
 
+:is(.MuiSelect-root, .MuiNativeSelect-root) {
+	&:where(.MuiOutlinedInput-root) {
+		--_MuiInput-background-color: transparent;
+	}
+
+	&:where(.MuiFilledInput-root, :has(> .MuiNativeSelect-filled)) {
+		--_MuiInput-background-color: var(--stratakit-color-bg-neutral-base);
+
+		&:where(:not(.Mui-disabled)) {
+			box-shadow: var(--stratakit-shadow-surface-sm);
+		}
+
+		&:where(.Mui-disabled) {
+			--_MuiInput-background-color: var(--stratakit-color-bg-glow-on-surface-disabled);
+		}
+	}
+}
+
 :is(.MuiSelect-icon, .MuiNativeSelect-icon) {
 	inset-block-start: 50%;
 	translate: 0 -50%;
-	inset-inline-end: calc(var(--_MuiInput-padding-inline) - 1px);
+	inset-inline-end: calc(var(--_MuiInput-padding-inline) - var(--stratakit-space-100) - 1px);
 }
 
 @supports (appearance: base-select) {

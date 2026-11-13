@@ -1,1 +1,0 @@
-import{t as e}from"./react.DEQpr7kA.js";import{n as t}from"./example-embed.astro_astro_type_script_index_0_lang.BZHqT4IY.js";var n=t(e(),1);function r(e){return n.Children.toArray(e).filter(e=>n.isValidElement(e))}export{r as t};

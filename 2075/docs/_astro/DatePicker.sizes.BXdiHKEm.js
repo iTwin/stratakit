@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.Bs7PNvzM.js";import{T as t,lt as n}from"./useReduceAnimations.CC0qFQB1.js";import{t as r}from"./DatePicker.DgcJyWep.js";var i=e(),a=()=>(0,i.jsx)(t,{dateAdapter:n,children:(0,i.jsx)(r,{label:`Date`,format:`yyyy/MM/dd`,slotProps:{textField:{size:`small`,helperText:`YYYY/MM/DD`}}})});export{a as default};

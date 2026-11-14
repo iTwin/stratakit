@@ -285,6 +285,9 @@ importers:
 
   examples:
     dependencies:
+      "@faker-js/faker":
+        specifier: ^10.6.0
+        version: 10.6.0
       "@mui/material":
         specifier: "catalog:"
         version: 9.5.0(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0))(@emotion/styled@11.14.1(@emotion/react@11.14.0(@types/react@19.3.0)(react@19.3.0))(@types/react@19.3.0)(react@19.3.0))(@types/react@19.3.0)(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
@@ -312,6 +315,9 @@ importers:
       "@stratakit/structures":
         specifier: workspace:*
         version: link:../packages/structures
+      "@tanstack/react-table":
+        specifier: 9.3.1
+        version: 9.3.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
       date-fns:
         specifier: ^4.4.0
         version: 4.4.0
@@ -1648,6 +1654,13 @@ packages:
         integrity: sha512-SNI7EgUSiADqbqUzzMbj1ZeC/r2pa5eg3KyFOGAd3a7EsIA4qzjXQLp+ODWQtHVDKFCdGs4J3ovSJUqvKIK96g==,
       }
 
+  "@faker-js/faker@10.6.0":
+    resolution:
+      {
+        integrity: sha512-3RQHgEtvL1Frl/d1cSreo7qhJ3Gk1OdNUai/CtZ8G+wYeRQnJih3s9xJ9/kgYekPQRdwgh0HXRPqMlzWGwivIQ==,
+      }
+    engines: { node: ^20.19.0 || ^22.13.0 || ^23.5.0 || >=24.0.0, npm: ">=10" }
+
   "@floating-ui/core@1.8.0":
     resolution:
       {
@@ -2611,6 +2624,37 @@ packages:
       }
     peerDependencies:
       react: ^18 || ^19
+
+  "@tanstack/react-store@0.11.2":
+    resolution:
+      {
+        integrity: sha512-oj5O5DmiMWE+ih+SioX2ayC1kbK7d3fpLx0B75fPJr9nY3zU+hoW010yr64qXsY/9fyiLVE2bn5mGNV3owm8RQ==,
+      }
+    peerDependencies:
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+      react-dom: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
+
+  "@tanstack/react-table@9.3.1":
+    resolution:
+      {
+        integrity: sha512-E6Ya5TnY6EaGyZYIUqig/29Lr/gJSAubQkLJFqiWkUl5nRCr0Xr9hvJot+NiRTtG+TzGxHTiqUW3bnLtQxlHug==,
+      }
+    engines: { node: ">=20" }
+    peerDependencies:
+      react: ">=18"
+
+  "@tanstack/store@0.11.2":
+    resolution:
+      {
+        integrity: sha512-sJ4mjol8uQsHV0gOJzzjwXfh2Fwm+Sz0+8deqiTm4jGbMdjzNSW+xZCFm0kUa870uhd8yi+DpKnZb5Kc4apa0Q==,
+      }
+
+  "@tanstack/table-core@9.3.1":
+    resolution:
+      {
+        integrity: sha512-zQvlxSNi2qGM3L4jh85Z6hqMfdIR5qOfD9KHOU32nuKFJGN0RlJ7UvV1lsPb1fPVhpFYI0VP3jJGxLdLDpTKjQ==,
+      }
+    engines: { node: ">=20" }
 
   "@ts-morph/common@0.28.1":
     resolution:
@@ -6757,6 +6801,8 @@ snapshots:
     dependencies:
       "@expressive-code/core": 0.44.2
 
+  "@faker-js/faker@10.6.0": {}
+
   "@floating-ui/core@1.8.0":
     dependencies:
       "@floating-ui/utils": 0.2.12
@@ -7331,6 +7377,27 @@ snapshots:
     dependencies:
       "@tanstack/query-core": 5.104.1
       react: 19.3.0
+
+  "@tanstack/react-store@0.11.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)":
+    dependencies:
+      "@tanstack/store": 0.11.2
+      react: 19.3.0
+      react-dom: 19.3.0(react@19.3.0)
+      use-sync-external-store: 1.7.0(react@19.3.0)
+
+  "@tanstack/react-table@9.3.1(react-dom@19.3.0(react@19.3.0))(react@19.3.0)":
+    dependencies:
+      "@tanstack/react-store": 0.11.2(react-dom@19.3.0(react@19.3.0))(react@19.3.0)
+      "@tanstack/table-core": 9.3.1
+      react: 19.3.0
+    transitivePeerDependencies:
+      - react-dom
+
+  "@tanstack/store@0.11.2": {}
+
+  "@tanstack/table-core@9.3.1":
+    dependencies:
+      "@tanstack/store": 0.11.2
 
   "@ts-morph/common@0.28.1":
     dependencies:

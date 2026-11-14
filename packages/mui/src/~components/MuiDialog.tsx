@@ -4,17 +4,108 @@
  *--------------------------------------------------------------------------------------------*/
 
 import * as React from "react";
+import * as AkDialog from "@ariakit/react/dialog";
+import {
+	PortalContext as AkPortalContext,
+	Portal,
+} from "@ariakit/react/portal";
 import { Role } from "@ariakit/react/role";
+import Modal from "@mui/material/Modal";
 import { ThemeProvider } from "@mui/material/styles";
+import { PortalContext } from "@stratakit/foundations";
 import { RootContext } from "@stratakit/foundations/secret-internals";
 import { useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
 import { PortalProvider } from "../PortalProvider.js";
 
+import type { DialogOwnerState, DialogProps } from "@mui/material/Dialog";
 import type DialogTitle from "@mui/material/DialogTitle";
+import type { ModalProps } from "@mui/material/Modal";
 import type { Theme } from "@mui/material/styles";
 import type { BaseProps } from "@stratakit/internal-utils/props";
+
+// ----------------------------------------------------------------------------
+
+const MuiDialogContext = React.createContext<
+	| {
+			open: boolean;
+	  }
+	| undefined
+>(undefined);
+
+// ----------------------------------------------------------------------------
+
+interface MuiDialogRootSlotProps extends DialogProps {}
+
+const MuiDialogRootSlot = forwardRef<"div", MuiDialogRootSlotProps>(
+	(props, forwardedRef) => {
+		const { nonModal, ...rest } = props;
+		const { open } = props;
+
+		return (
+			<MuiDialogContext.Provider
+				value={{
+					open,
+				}}
+			>
+				{!nonModal ? (
+					<Modal {...(rest as unknown as ModalProps)} ref={forwardedRef} />
+				) : (
+					<MuiDialogNonModalRoot {...rest} ref={forwardedRef} />
+				)}
+			</MuiDialogContext.Provider>
+		);
+	},
+);
+DEV: MuiDialogRootSlot.displayName = "MuiDialogRootSlot";
+
+// ----------------------------------------------------------------------------
+
+interface MuiDialogNonModalRootProps extends DialogProps {
+	ownerState?: DialogOwnerState;
+}
+
+const MuiDialogNonModalRoot = forwardRef<"div", MuiDialogNonModalRootProps>(
+	(props, forwardedRef) => {
+		const {
+			// biome-ignore-start lint/correctness/noUnusedVariables: Unused props of `Dialog`
+			classes,
+			closeAfterTransition = false,
+			container: _container,
+			component,
+			disableAutoFocus = false,
+			disableEnforceFocus = false,
+			disablePortal = false,
+			disableRestoreFocus = false,
+			disableScrollLock = false,
+			hideBackdrop = false,
+			keepMounted = false,
+			onClose,
+			onTransitionEnter,
+			onTransitionExited,
+			open,
+			slotProps,
+			slots,
+			ownerState,
+			// biome-ignore-end lint/correctness/noUnusedVariables: Unused props of `Dialog`
+			...rest
+		} = props;
+
+		const { container } = React.useContext(PortalContext) ?? {};
+
+		return (
+			<AkPortalContext.Provider value={container ?? null}>
+				<Portal
+					{...rest}
+					className={cx("🥝MuiDialogNonModalRoot", rest.className)}
+					ref={forwardedRef}
+				/>
+			</AkPortalContext.Provider>
+		);
+	},
+);
+DEV: MuiDialogNonModalRoot.displayName = "MuiDialogNonModalRoot";
 
 // ----------------------------------------------------------------------------
 
@@ -34,8 +125,9 @@ const MuiDialogPaper = forwardRef<"div", BaseProps<"div">>(
 			return containerEl ?? null;
 		}, [rootNode, containerId]);
 
+		const Component = MuiDialogNonModalPaper;
 		return (
-			<Role {...props} ref={forwardedRef}>
+			<Component {...props} ref={forwardedRef}>
 				<PortalProvider
 					container={container}
 					unstable_getContainer={getContainer}
@@ -44,11 +136,34 @@ const MuiDialogPaper = forwardRef<"div", BaseProps<"div">>(
 				</PortalProvider>
 				{/* Render portalled elements in a container to avoid `aria-hidden` focus warning. */}
 				<div id={containerId} ref={setContainer} />
-			</Role>
+			</Component>
 		);
 	},
 );
 DEV: MuiDialogPaper.displayName = "MuiDialogPaper";
+
+// ----------------------------------------------------------------------------
+
+const MuiDialogNonModalPaper = forwardRef<"div", BaseProps<"div">>(
+	(props, forwardedRef) => {
+		const { "aria-modal": _ariaModal, ...rest } = props;
+
+		const { open } = useSafeContext(MuiDialogContext);
+
+		return (
+			<AkDialog.Dialog
+				portal={false}
+				hideOnInteractOutside={false}
+				autoFocusOnShow={true}
+				modal={false}
+				open={open}
+				{...(rest as unknown as React.ComponentProps<typeof AkDialog.Dialog>)}
+				ref={forwardedRef}
+			/>
+		);
+	},
+);
+DEV: MuiDialogNonModalPaper.displayName = "MuiDialogNonModalPaper";
 
 // ----------------------------------------------------------------------------
 
@@ -142,4 +257,4 @@ DEV: MuiDialogTitleLastActionProvider.displayName =
 
 // ----------------------------------------------------------------------------
 
-export { MuiDialogPaper, MuiDialogTitle };
+export { MuiDialogPaper, MuiDialogRootSlot, MuiDialogTitle };

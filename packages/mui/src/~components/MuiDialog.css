@@ -18,6 +18,10 @@
 	min-inline-size: min(calc(100% - var(--✨min-inset)), 100%, 296px);
 
 	box-shadow: var(--stratakit-shadow-surface-xl);
+
+	:where(.🥝MuiDialogNonModalRoot > .MuiDialog-container) > & {
+		pointer-events: auto;
+	}
 }
 
 .🥝MuiDialogTitleWrapper {
@@ -52,4 +56,10 @@
 		padding-inline-start: var(--stratakit-space-500);
 		padding-inline-end: var(--stratakit-space-500);
 	}
+}
+
+.🥝MuiDialogNonModalRoot {
+	position: fixed;
+	inset: 0;
+	pointer-events: none;
 }

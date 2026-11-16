@@ -1,0 +1,1 @@
+import{t as e}from"./info-C-6SuTlt.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg">
+  <symbol id="icon" fill="none" viewBox="0 0 16 16"><path stroke="currentColor" stroke-linejoin="round" d="M7.3 2.71 2.7 7.3a1 1 0 0 0 0 1.4l4.6 4.6a1 1 0 0 0 1.4 0l4.6-4.59a1 1 0 0 0 0-1.41L8.7 2.7a1 1 0 0 0-1.4 0Z"/></symbol>
+  <symbol id="icon-large" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linejoin="round" d="M11.29 2.2 2.2 11.3a1 1 0 0 0 0 1.4l9.09 9.1a1 1 0 0 0 1.41 0l9.09-9.1a1 1 0 0 0 0-1.4L12.7 2.2a1 1 0 0 0-1.41 0Z"/></symbol>
+  <use href="#icon"/>
+</svg>

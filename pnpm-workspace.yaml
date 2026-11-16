@@ -27,6 +27,7 @@ minimumReleaseAgeExclude:
   - "@mui/*"
   - react
   - react-dom
+  - "@ts-morph/common@0.29.1"
 
 allowBuilds:
   core-js-pure: false

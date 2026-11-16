@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.3.1
+
+### Patch Changes
+
+- [#2068](https://github.com/iTwin/stratakit/pull/2068): Updated `Icon` to automatically sanitize fetched SVG content when a non-HTTP `href` is used.
+- [#2079](https://github.com/iTwin/stratakit/pull/2079): Adjusted `Button` spacing.
+- [#2036](https://github.com/iTwin/stratakit/pull/2036): Fixed `IconButton` colors in `DataGrid`.
+- Updated dependencies:
+  - @stratakit/foundations@1.1.1
+
 ## 1.3.0
 
 ### Minor Changes

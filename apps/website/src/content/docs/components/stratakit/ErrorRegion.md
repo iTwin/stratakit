@@ -158,6 +158,7 @@ In the example below, the described behavior is illustrated.
 - Use **ErrorRegion** to collate and describe [**Tree**](/components/tree) errors.
 - Supply both a `label` and `aria-label` to `ErrorRegion.Root` for summarizing the errors and identifying the **ErrorRegion** respectively.
 - Update the `label` whenever errors (`ErrorRegion.Item`s) are added or removed.
+- Set `container-type: size` on the parent container of **ErrorRegion** when height is limited.
 
 ## ❌ Don't
 

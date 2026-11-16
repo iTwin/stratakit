@@ -1,0 +1,1 @@
+var e=typeof document<`u`;function t(e){return e?.nodeType===Node.DOCUMENT_NODE}function n(e){return e&&(t(e)?e:e.ownerDocument)||null}function r(e){return n(e)?.defaultView||null}export{t as i,r as n,e as r,n as t};

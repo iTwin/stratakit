@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.BrORoPCf.js";import{t}from"./Chip.DCD-F3xN.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Outlined Chip`,variant:`outlined`});export{r as default};

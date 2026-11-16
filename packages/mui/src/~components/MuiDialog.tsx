@@ -160,10 +160,6 @@ const MuiDialogNonModalPaper = forwardRef<"div", BaseProps<"div">>(
 				open={open}
 				hideOnInteractOutside={false}
 				onClose={(e) => {
-					const dialog = e.target;
-					if (!(dialog instanceof HTMLElement)) return;
-					if (!dialog.contains(document.activeElement)) return;
-
 					onClose?.(e, "escapeKeyDown");
 				}}
 				{...(rest as unknown as React.ComponentProps<typeof AkDialog.Dialog>)}

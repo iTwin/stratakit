@@ -29,7 +29,8 @@ import type { BaseProps } from "@stratakit/internal-utils/props";
 
 const MuiDialogContext = React.createContext<
 	| {
-			open: boolean;
+			open: DialogProps["open"];
+			onClose: DialogProps["onClose"];
 	  }
 	| undefined
 >(undefined);
@@ -41,12 +42,13 @@ interface MuiDialogRootSlotProps extends DialogProps {}
 const MuiDialogRootSlot = forwardRef<"div", MuiDialogRootSlotProps>(
 	(props, forwardedRef) => {
 		const { nonModal, ...rest } = props;
-		const { open } = props;
+		const { open, onClose } = props;
 
 		return (
 			<MuiDialogContext.Provider
 				value={{
 					open,
+					onClose,
 				}}
 			>
 				{!nonModal ? (
@@ -148,15 +150,22 @@ const MuiDialogNonModalPaper = forwardRef<"div", BaseProps<"div">>(
 	(props, forwardedRef) => {
 		const { "aria-modal": _ariaModal, ...rest } = props;
 
-		const { open } = useSafeContext(MuiDialogContext);
+		const { open, onClose } = useSafeContext(MuiDialogContext);
 
 		return (
 			<AkDialog.Dialog
 				portal={false}
-				hideOnInteractOutside={false}
 				autoFocusOnShow={true}
 				modal={false}
 				open={open}
+				hideOnInteractOutside={false}
+				onClose={(e) => {
+					const dialog = e.target;
+					if (!(dialog instanceof HTMLElement)) return;
+					if (!dialog.contains(document.activeElement)) return;
+
+					onClose?.(e, "escapeKeyDown");
+				}}
 				{...(rest as unknown as React.ComponentProps<typeof AkDialog.Dialog>)}
 				ref={forwardedRef}
 			/>

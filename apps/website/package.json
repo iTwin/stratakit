@@ -71,7 +71,7 @@
 		"@stratakit/icons": "workspace:*",
 		"@stratakit/mui": "workspace:*",
 		"@stratakit/structures": "workspace:*",
-		"astro": "^7.4.7",
+		"astro": "^7.4.12",
 		"examples": "workspace:*",
 		"react": "catalog:",
 		"react-dom": "catalog:",

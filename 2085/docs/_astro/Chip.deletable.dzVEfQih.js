@@ -1,0 +1,1 @@
+import{t as e}from"./Chip.B79Yc6Xb.js";import{pr as t}from"./chevron-down.B8zMQfnK.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Deletable Chip`,onDelete:()=>{console.log(`Deleted`)}});export{r as default};

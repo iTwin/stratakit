@@ -5594,15 +5594,15 @@
 	"text-medium": {
 		"aliases": [
 			"font size",
-			"tiny",
-			"diminutive",
-			"petite",
-			"mini",
-			"compact",
-			"fine print",
-			"reduced",
-			"less",
-			"brief"
+			"average",
+			"regular",
+			"normal",
+			"standard",
+			"middle",
+			"moderate",
+			"default",
+			"content",
+			"paragraph"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5613,15 +5613,15 @@
 	"text-small": {
 		"aliases": [
 			"font size",
-			"average",
-			"regular",
-			"normal",
-			"standard",
-			"middle",
-			"moderate",
-			"default",
-			"content",
-			"paragraph"
+			"tiny",
+			"diminutive",
+			"petite",
+			"mini",
+			"compact",
+			"fine print",
+			"reduced",
+			"less",
+			"brief"
 		],
 		"symbols": ["icon", "icon-large"]
 	},

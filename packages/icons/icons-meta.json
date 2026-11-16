@@ -64,24 +64,6 @@
 		"aliases": ["create", "insert", "new", "attach", "plus", "+"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"add-region": {
-		"aliases": [
-			"area",
-			"zone",
-			"territory",
-			"boundary",
-			"polygon",
-			"select",
-			"add",
-			"create",
-			"bounding-box",
-			"sector",
-			"division",
-			"volume",
-			"space"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
 	"add-square": {
 		"aliases": ["create", "insert", "new", "attach", "plus", "+"],
 		"symbols": ["icon", "icon-large"]
@@ -756,6 +738,14 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"cells-merge": {
+		"aliases": ["cells", "combine", "join", "merge", "table"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"cells-split": {
+		"aliases": ["cells", "divide", "separate", "split", "table"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"cesium": {
 		"aliases": ["3d", "globe", "map", "world", "visualization"],
 		"symbols": ["icon", "icon-large"]
@@ -797,6 +787,10 @@
 			"segment",
 			"allocate"
 		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"chart-scatter": {
+		"aliases": ["plot", "chart", "data", "statistics", "analysis", "points"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"chart": {
@@ -1076,6 +1070,10 @@
 	},
 	"column": {
 		"aliases": ["structure", "support", "pillar", "post", "vertical", "frame"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"columns-delete": {
+		"aliases": ["columns", "delete", "remove", "table"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"commit-changes": {
@@ -1460,34 +1458,6 @@
 			"select",
 			"time"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"define-region-size": {
-		"aliases": [
-			"dimension",
-			"scale",
-			"crop-size",
-			"viewport-bounds",
-			"resize",
-			"frame-dimensions",
-			"area-scale",
-			"boundary-size",
-			"extent",
-			"layout-measure",
-			"footprint-dimensions"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"delete-columns": {
-		"aliases": ["columns", "delete", "remove", "table"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"delete-rows": {
-		"aliases": ["rows", "delete", "remove", "table"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"delete-table": {
-		"aliases": ["delete", "remove", "table"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"delete": {
@@ -2794,16 +2764,16 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"gesture-one-finger-double-tap": {
+	"gesture-double-tap-one-finger": {
 		"aliases": ["touch", "interact", "tap", "press", "click"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"gesture-one-finger-drag": {
+	"gesture-drag-one-finger": {
 		"aliases": ["move", "slide", "swipe", "shift", "relocate"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"gesture-one-finger-tap": {
-		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
+	"gesture-drag-two-finger": {
+		"aliases": ["move", "slide", "swipe", "shift", "interact", "relocate"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-pinch": {
@@ -2818,6 +2788,14 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"gesture-tap-one-finger": {
+		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"gesture-tap-two-finger": {
+		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"gesture-touch": {
 		"aliases": [
 			"interact",
@@ -2828,14 +2806,6 @@
 			"handle",
 			"finger"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"gesture-two-finger-drag": {
-		"aliases": ["move", "slide", "swipe", "shift", "interact", "relocate"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"gesture-two-finger-tap": {
-		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-two-finger": {
@@ -2910,10 +2880,6 @@
 	},
 	"grading-limit": {
 		"aliases": ["terrain", "boundary", "elevation", "extent", "slope"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"graph-scatter-chart": {
-		"aliases": ["plot", "chart", "data", "statistics", "analysis", "points"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"grid-lines": {
@@ -3077,21 +3043,6 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"imodel-problematic-sync": {
-		"aliases": [
-			"imodel",
-			"digital twin",
-			"sync",
-			"warning",
-			"error",
-			"alert",
-			"cloud",
-			"problem",
-			"failure",
-			"link"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
 	"imodel-progress": {
 		"aliases": [
 			"imodel",
@@ -3118,6 +3069,21 @@
 			"cloud",
 			"flow",
 			"tracking"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"imodel-sync-problematic": {
+		"aliases": [
+			"imodel",
+			"digital twin",
+			"sync",
+			"warning",
+			"error",
+			"alert",
+			"cloud",
+			"problem",
+			"failure",
+			"link"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -3638,10 +3604,6 @@
 		"aliases": ["select", "choose", "list", "pick", "options", "hamburger"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"merge-cells": {
-		"aliases": ["cells", "combine", "join", "merge", "table"],
-		"symbols": ["icon", "icon-large"]
-	},
 	"merge": {
 		"aliases": ["combine", "join", "unite", "fuse", "integrate", "mix"],
 		"symbols": ["icon", "icon-large"]
@@ -4086,14 +4048,6 @@
 		"aliases": ["mark", "attach", "fix", "secure", "fasten"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"pipe-sewer": {
-		"aliases": ["drain", "waste", "utility", "infrastructure", "disposal"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"pipe-water": {
-		"aliases": ["utility", "plumbing", "infrastructure", "flow", "supply"],
-		"symbols": ["icon", "icon-large"]
-	},
 	"pipes-sewage": {
 		"aliases": [
 			"drainage",
@@ -4105,12 +4059,20 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"pipes-sewer": {
+		"aliases": ["drain", "waste", "utility", "infrastructure", "disposal"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"pipes-water-portable": {
 		"aliases": ["drinking", "pipes", "plumbing", "portable", "supply", "water"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"pipes-water-storm": {
 		"aliases": ["drainage", "pipes", "plumbing", "runoff", "storm", "water"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"pipes-water": {
+		"aliases": ["utility", "plumbing", "infrastructure", "flow", "supply"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"pipes": {
@@ -4492,6 +4454,40 @@
 		"aliases": ["renew", "update", "recreate", "rebuild", "generate"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"region-add": {
+		"aliases": [
+			"area",
+			"zone",
+			"territory",
+			"boundary",
+			"polygon",
+			"select",
+			"add",
+			"create",
+			"bounding-box",
+			"sector",
+			"division",
+			"volume",
+			"space"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"region-define-size": {
+		"aliases": [
+			"dimension",
+			"scale",
+			"crop-size",
+			"viewport-bounds",
+			"resize",
+			"frame-dimensions",
+			"area-scale",
+			"boundary-size",
+			"extent",
+			"layout-measure",
+			"footprint-dimensions"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"rename": {
 		"aliases": ["edit", "change", "modify", "alter", "update", "name", "text"],
 		"symbols": ["icon", "icon-large"]
@@ -4602,6 +4598,10 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"rows-delete": {
+		"aliases": ["rows", "delete", "remove", "table"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"rows-expand-all": {
 		"aliases": [
 			"maximize",
@@ -4626,8 +4626,12 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"rule-delta-create": {
+	"rule-create-delta": {
 		"aliases": ["change", "difference", "geometry", "variation"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"rule-create-slope": {
+		"aliases": ["angle", "constraint", "geometry", "gradient"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"rule-ditch": {
@@ -4645,10 +4649,6 @@
 			"water management",
 			"land planning"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"rule-slope-create": {
-		"aliases": ["angle", "constraint", "geometry", "gradient"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"rule": {
@@ -5157,10 +5157,6 @@
 		"aliases": ["rotate", "turn", "space", "revolve", "twist", "3d", "move"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"split-cells": {
-		"aliases": ["cells", "divide", "separate", "split", "table"],
-		"symbols": ["icon", "icon-large"]
-	},
 	"spring-area": {
 		"aliases": [
 			"support",
@@ -5363,6 +5359,10 @@
 	},
 	"table-column-insert-right": {
 		"aliases": ["add", "data", "new"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"table-delete": {
+		"aliases": ["delete", "remove", "table"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"table-of-contents": {
@@ -5737,6 +5737,10 @@
 		"aliases": ["check", "verify", "confirm", "authenticate", "approve"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"vertex-add-mesh": {
+		"aliases": ["3d", "create", "geometry", "new", "point"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"vertex-add": {
 		"aliases": ["create", "point", "node", "new", "geometry"],
 		"symbols": ["icon", "icon-large"]
@@ -5745,20 +5749,16 @@
 		"aliases": ["bearing", "geometry", "orientation", "point", "vector"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"vertex-control-mesh": {
+		"aliases": ["3d", "edit", "geometry", "manipulate", "point"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"vertex-control-slope": {
 		"aliases": ["angle", "geometry", "gradient", "incline", "point"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-edit": {
 		"aliases": ["modify", "point", "node", "adjust", "geometry"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"vertex-mesh-add": {
-		"aliases": ["3d", "create", "geometry", "new", "point"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"vertex-mesh-control": {
-		"aliases": ["3d", "edit", "geometry", "manipulate", "point"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-remove": {

@@ -3,7 +3,17 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/gesture-one-finger-double-tap.svg";
+import {
+	svgGestureDoubleTapOneFinger,
+	svgGestureDoubleTapOneFingerLarge,
+} from "./gesture-double-tap-one-finger.js";
 
-export const svgGestureOneFingerDoubleTap = `${url}#icon`;
-export const svgGestureOneFingerDoubleTapLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgGestureDoubleTapOneFinger` instead.
+ */
+export const svgGestureOneFingerDoubleTap = svgGestureDoubleTapOneFinger;
+/**
+ * @deprecated Use `svgGestureDoubleTapOneFingerLarge` instead.
+ */
+export const svgGestureOneFingerDoubleTapLarge =
+	svgGestureDoubleTapOneFingerLarge;

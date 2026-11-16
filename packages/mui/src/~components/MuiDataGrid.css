@@ -170,17 +170,29 @@
 
 	&:where(.MuiDataGrid-cell--editable:not(.MuiDataGrid-cell--editing)):where(
 			:focus-visible,
-			:has(:focus-visible)
+			:has(:focus-visible),
+			:hover
 		) {
+		/* show as neutral color when hovering only, but match focus when it is shown with focus ring */
+		--_MuiDataGrid-cell-edit-icon-color: var(--stratakit-color-icon-neutral-base);
+		&:where(:focus-visible, :has(:focus-visible)) {
+			--_MuiDataGrid-cell-edit-icon-color: var(--stratakit-color-border-accent-strong);
+		}
+
 		&::after {
-			display: block;
+			--✨edit-svg: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="2 2 12 12"><path fill="currentColor" d="M9.94 2.854a1.5 1.5 0 0 1 2.12 0l1.086 1.086a1.5 1.5 0 0 1 0 2.12l-7.292 7.294a.5.5 0 0 1-.354.146H3a.5.5 0 0 1-.5-.5v-2.5a.5.5 0 0 1 .146-.353L9.94 2.854ZM3.5 10.707V12.5h1.793l6-6L9.5 4.707l-6 6Zm7.854-7.146a.5.5 0 0 0-.707 0l-.44.44L12 5.792l.44-.44a.5.5 0 0 0 0-.706L11.354 3.56Z"></path></svg>');
+
 			content: "";
+			pointer-events: none;
+
 			position: absolute;
-			background-color: var(--stratakit-color-border-accent-strong);
-			inline-size: var(--stratakit-space-200);
-			block-size: var(--stratakit-space-200);
 			inset-block-end: 5px;
 			inset-inline-end: 5px;
+			inline-size: var(--stratakit-space-300);
+			block-size: var(--stratakit-space-300);
+
+			mask: var(--✨edit-svg) no-repeat center;
+			background-color: var(--_MuiDataGrid-cell-edit-icon-color);
 		}
 	}
 }

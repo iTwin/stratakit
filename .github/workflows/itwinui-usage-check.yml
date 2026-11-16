@@ -1,0 +1,44 @@
+name: iTwinUI usage check
+
+# Flags newly added iTwinUI usage (package imports, --iui-* CSS variables,
+# iui-* class names) in pull requests, pointing teams to StrataKit instead.
+# Only added lines are checked, so existing usage is never flagged.
+#
+# Other repositories can adopt this in two ways:
+#
+# 1. Call it as a reusable workflow:
+#
+#      jobs:
+#        itwinui-usage:
+#          uses: iTwin/stratakit/.github/workflows/itwinui-usage-check.yml@main
+#          with:
+#            severity: warning # or "error" to fail the check
+#
+# 2. Enforce it org-wide without per-repo changes via a repository ruleset
+#    ("Require workflows to pass before merging") targeting this workflow file.
+
+on:
+  workflow_call:
+    inputs:
+      severity:
+        description: >-
+          "error" fails the check when new iTwinUI usage is found;
+          "warning" only annotates.
+        type: string
+        default: "warning"
+  pull_request:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  itwinui-usage:
+    name: Check for new iTwinUI usage
+    # Skip StrataKit's own PRs (this repo legitimately references iTwinUI).
+    if: github.event_name != 'pull_request' || github.repository != 'iTwin/stratakit'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: iTwin/stratakit/.github/actions/itwinui-usage-check@main
+        with:
+          severity: ${{ inputs.severity || 'warning' }}

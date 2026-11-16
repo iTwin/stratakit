@@ -1,0 +1,34 @@
+name: "iTwinUI usage check"
+description: >-
+  Flags newly added iTwinUI imports, CSS variables, and class names in a pull
+  request, pointing to their StrataKit replacements. Only added lines are
+  checked, so existing usage is grandfathered.
+
+inputs:
+  severity:
+    description: >-
+      "error" fails the check when new iTwinUI usage is found;
+      "warning" only annotates.
+    default: "warning"
+  token:
+    description: "GitHub token used to read the pull request diff."
+    default: ${{ github.token }}
+  pr-number:
+    description: "Pull request number to scan. Defaults to the current pull_request event."
+    default: ${{ github.event.pull_request.number }}
+
+outputs:
+  findings-count:
+    description: "Number of newly added iTwinUI usages found."
+    value: ${{ steps.scan.outputs.findings-count }}
+
+runs:
+  using: composite
+  steps:
+    - id: scan
+      run: node "${GITHUB_ACTION_PATH}/scan.mjs"
+      shell: bash
+      env:
+        GITHUB_TOKEN: ${{ inputs.token }}
+        PR_NUMBER: ${{ inputs.pr-number }}
+        SEVERITY: ${{ inputs.severity }}

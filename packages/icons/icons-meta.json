@@ -5181,30 +5181,6 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"sorting-ascending": {
-		"aliases": [
-			"arrange",
-			"order",
-			"sequence",
-			"organize",
-			"sort",
-			"sorting",
-			"a-z"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"sorting-descending": {
-		"aliases": [
-			"arrange",
-			"order",
-			"sequence",
-			"organize",
-			"sort",
-			"sorting",
-			"z-a"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
 	"sorting": {
 		"aliases": ["arrange", "order", "sequence", "organize", "sort", "arrows"],
 		"symbols": ["icon", "icon-large"]

@@ -1,0 +1,1 @@
+import{t as e}from"./Button-57U12e-G.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{onClick:()=>{},children:`Create new`});export{r as default};

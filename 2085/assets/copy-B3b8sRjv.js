@@ -1,0 +1,1 @@
+import{t as e}from"./copy-asqE-Jt4.js";`${e}`;var t=`${e}#icon-large`;export{t};

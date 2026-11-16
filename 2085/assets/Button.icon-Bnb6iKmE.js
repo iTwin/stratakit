@@ -1,0 +1,1 @@
+import{t as e}from"./Button-57U12e-G.js";import{t}from"./Icon-CMnOw122.js";import{t as n}from"./arrow-right-D13G_NC0.js";import{t as r}from"./jsx-runtime-znEIPLWF.js";var i=r(),a=()=>(0,i.jsxs)(e,{onClick:()=>{},children:[`Create new`,(0,i.jsx)(t,{href:n})]});export{a as default};

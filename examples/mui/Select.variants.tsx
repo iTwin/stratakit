@@ -13,9 +13,23 @@ import Stack from "@mui/material/Stack";
 export default () => {
 	return (
 		<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
+			<ContainedSelect />
 			<OutlinedSelect />
-			<FilledSelect />
 		</Stack>
+	);
+};
+
+const ContainedSelect = () => {
+	const id = React.useId();
+	const label = "Contained";
+	return (
+		<FormControl>
+			<InputLabel id={id}>{label}</InputLabel>
+			<Select variant="contained" labelId={id} label={label} defaultValue={1}>
+				<MenuItem value={1}>Burrito</MenuItem>
+				<MenuItem value={2}>Jelly donut</MenuItem>
+			</Select>
+		</FormControl>
 	);
 };
 
@@ -28,20 +42,6 @@ const OutlinedSelect = () => {
 			<Select variant="outlined" labelId={id} label={label} defaultValue={1}>
 				<MenuItem value={1}>Stencil</MenuItem>
 				<MenuItem value={2}>Coloring book</MenuItem>
-			</Select>
-		</FormControl>
-	);
-};
-
-const FilledSelect = () => {
-	const id = React.useId();
-	const label = "Filled";
-	return (
-		<FormControl>
-			<InputLabel id={id}>{label}</InputLabel>
-			<Select variant="filled" labelId={id} label={label} defaultValue={1}>
-				<MenuItem value={1}>Burrito</MenuItem>
-				<MenuItem value={2}>Jelly donut</MenuItem>
 			</Select>
 		</FormControl>
 	);

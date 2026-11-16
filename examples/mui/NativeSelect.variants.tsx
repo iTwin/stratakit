@@ -12,9 +12,26 @@ import Stack from "@mui/material/Stack";
 export default () => {
 	return (
 		<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
+			<ContainedNativeSelect />
 			<OutlinedNativeSelect />
-			<FilledNativeSelect />
 		</Stack>
+	);
+};
+
+const ContainedNativeSelect = () => {
+	const inputId = React.useId();
+	return (
+		<FormControl>
+			<InputLabel htmlFor={inputId}>Contained</InputLabel>
+			<NativeSelect
+				variant="contained"
+				defaultValue={1}
+				slotProps={{ input: { name: "contained", id: inputId } }}
+			>
+				<option value={1}>Burrito</option>
+				<option value={2}>Jelly donut</option>
+			</NativeSelect>
+		</FormControl>
 	);
 };
 
@@ -30,23 +47,6 @@ const OutlinedNativeSelect = () => {
 			>
 				<option value={1}>Stencil</option>
 				<option value={2}>Coloring book</option>
-			</NativeSelect>
-		</FormControl>
-	);
-};
-
-const FilledNativeSelect = () => {
-	const inputId = React.useId();
-	return (
-		<FormControl>
-			<InputLabel htmlFor={inputId}>Filled</InputLabel>
-			<NativeSelect
-				variant="filled"
-				defaultValue={1}
-				slotProps={{ input: { name: "filled", id: inputId } }}
-			>
-				<option value={1}>Burrito</option>
-				<option value={2}>Jelly donut</option>
 			</NativeSelect>
 		</FormControl>
 	);

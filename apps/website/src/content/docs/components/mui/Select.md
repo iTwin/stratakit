@@ -25,13 +25,13 @@ Modifications to `NativeSelect`:
 
 - The `color` and `disableInjectingGlobalStyles` props are not supported via `InputBase`.
 - The `disableUnderline` prop is not supported via `Input`. Changed the default value to `true`.
-- The `variant` prop does not support the `"standard"` value.
+- The `variant` prop supports the `"contained"` (default) and `"outlined"` values. MUI's `"standard"` and `"filled"` variants are not supported.
 - Restyled using StrataKit's visual language.
 
 Modifications to `Select`:
 
 - The `color`, `disableInjectingGlobalStyles`, `disableUnderline`, `IconComponent`, and `notched` props are not supported.
-- The `variant` prop does not support the `"standard"` value.
+- The `variant` prop supports the `"contained"` (default) and `"outlined"` values. MUI's `"standard"` and `"filled"` variants are not supported.
 - Restyled using StrataKit's visual language.
 - The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.
@@ -42,8 +42,8 @@ Modifications to `Select`:
 
 ### Variants
 
-- **Outlined:** Default select styling. If you're not sure what variant to use, use this one.
-- **Filled:** Visually matches a button. Use when the select is placed alongside buttons, such as in a toolbar.
+- **Contained:** Default select styling. If you're not sure what variant to use, use this one.
+- **Outlined:** Reduce the visual weight with a transparent background. Use for secondary controls or to unclutter the UI.
 
 ::example{src="mui/Select.variants"}
 

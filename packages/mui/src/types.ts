@@ -901,9 +901,11 @@ declare module "@mui/material/NativeSelect" {
 			/**
 			 * The variant to use.
 			 *
-			 * The `"standard"` variant is not supported by StrataKit.
+			 * MUI's `"standard"` and `"filled"` variants are not supported by StrataKit.
+			 *
+			 * @default "contained"
 			 */
-			variant?: Exclude<NativeSelectProps["variant"], "standard">;
+			variant?: "contained" | "outlined";
 		} & Omit<NativeSelectProps, "variant" | keyof InputDeprecatedProps> &
 			InputDeprecatedProps,
 	): React.JSX.Element;
@@ -1052,11 +1054,11 @@ declare module "@mui/material/Select" {
 			/**
 			 * The variant to use.
 			 *
-			 * The `"standard"` variant is not supported by StrataKit.
+			 * MUI's `"standard"` and `"filled"` variants are not supported by StrataKit.
 			 *
-			 * @default "outlined"
+			 * @default "contained"
 			 */
-			variant?: Exclude<SelectProps["variant"], "standard">;
+			variant?: "contained" | "outlined";
 			/** @deprecated StrataKit does not support this prop. */
 			disableUnderline?: SelectProps["disableUnderline"];
 		} & Omit<

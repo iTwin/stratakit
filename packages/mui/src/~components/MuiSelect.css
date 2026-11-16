@@ -19,11 +19,11 @@
 }
 
 :is(.MuiSelect-root, .MuiNativeSelect-root) {
-	&:where(.MuiOutlinedInput-root) {
+	&:where(:has(> .MuiSelect-outlined, > .MuiNativeSelect-outlined)) {
 		--_MuiInput-background-color: transparent;
 	}
 
-	&:where(.MuiFilledInput-root, :has(> .MuiNativeSelect-filled)) {
+	&:where(:has(> .MuiSelect-contained, > .MuiNativeSelect-contained)) {
 		--_MuiInput-background-color: var(--stratakit-color-bg-neutral-base);
 
 		&:where(:not(.Mui-disabled)) {

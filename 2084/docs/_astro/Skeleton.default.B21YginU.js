@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.Cquv3un5.js";import{t}from"./VisuallyHidden.Dn1ITIxd.js";import{t as n}from"./Skeleton.ByExMXFW.js";var r=e(),i=()=>(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(n,{variant:`text`}),(0,r.jsx)(t,{children:`Loading…`})]});export{i as default};

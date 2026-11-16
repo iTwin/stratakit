@@ -1,6 +1,8 @@
 # Contributing
 
-Welcome to the contribution guide for StrataKit! In here you will find all the information you need to get started.
+This guide explains how to set up your development environment and contribute code to StrataKit.
+
+We follow our [engineering principles](./notes/principles.md) when working on StrataKit.
 
 ---
 

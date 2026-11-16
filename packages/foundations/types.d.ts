@@ -8,3 +8,11 @@ declare module "*.css?inline" {
 }
 
 declare const __VERSION__: string;
+
+// https://developer.mozilla.org/en-US/docs/Web/API/Element/setHTML
+declare interface HTMLElement {
+	setHTML?(
+		html: string,
+		options?: { sanitizer?: Sanitizer | SanitizerConfig | SanitizerPresets },
+	): void;
+}

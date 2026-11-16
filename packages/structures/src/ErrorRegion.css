@@ -93,7 +93,7 @@
 }
 
 .🥝ErrorRegionDialog {
-	--✨container-max-size: 350px;
+	--✨container-max-size: min(350px, calc(100cqb - var(--stratakit-space-200)));
 	--✨container-border-size: 2px;
 	--✨header-size: 2rem;
 
@@ -131,7 +131,7 @@
 }
 
 .🥝ErrorRegionItems {
-	--✨container-max-size: 350px;
+	--✨container-max-size: min(350px, calc(100cqb - var(--stratakit-space-200)));
 	--✨container-border-size: 2px;
 	--✨header-size: 2rem;
 

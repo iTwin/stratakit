@@ -1,1 +1,0 @@
-import{t as e}from"./status-warning-Brctt1Ao.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,1 +1,0 @@
-import{t as e}from"./upload-Xey410OG.js";var t=`${e}#icon`;`${e}`;export{t};

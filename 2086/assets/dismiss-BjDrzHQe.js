@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-B86AYXzi.js";var t=`${e}#icon`;`${e}`;export{t};

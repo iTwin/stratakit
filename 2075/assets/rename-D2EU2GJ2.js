@@ -1,1 +1,0 @@
-import{t as e}from"./rename-CUe4yAdk.js";var t=`${e}#icon`;`${e}`;export{t};

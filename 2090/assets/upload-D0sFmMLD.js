@@ -1,0 +1,1 @@
+import{t as e}from"./upload-sYAOF4MD.js";var t=`${e}#icon`;`${e}`;export{t};

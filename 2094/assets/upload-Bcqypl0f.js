@@ -1,0 +1,1 @@
+import{t as e}from"./upload-Cl7_dSEJ.js";var t=`${e}#icon`;`${e}`;export{t};

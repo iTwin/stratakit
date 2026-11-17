@@ -125,10 +125,6 @@ function parseSvg(
 			attributes: ["id", "viewBox"],
 		});
 		template.setHTML(htmlString, { sanitizer });
-	} else {
-		let error = `[Icon] Sanitizer API is not available.`;
-		DEV: error += ` Non-HTTP URLs cannot be safely inlined without sanitization. Please pass a valid HTTP/HTTPS URL to the href prop.`;
-		throw new Error(error);
 	}
 
 	return template.content;
@@ -183,6 +179,13 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 
 			const abortController = new AbortController();
 			const { signal } = abortController;
+
+			// Throw if the HTML Sanitizer API is not available.
+			if (!ownerDocument?.defaultView?.Sanitizer) {
+				let error = `[Icon] Sanitizer API is not available.`;
+				DEV: error += ` Non-HTTP URLs cannot be safely inlined without sanitization. Please pass a valid HTTP/HTTPS URL to the href prop.`;
+				throw new Error(error);
+			}
 
 			(async () => {
 				try {

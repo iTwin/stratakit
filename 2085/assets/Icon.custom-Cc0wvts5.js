@@ -1,1 +1,0 @@
-import{t as e}from"./Icon-CMnOw122.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=`/2085/assets/Icon.custom-QzTIDwip.svg`,r=t(),i=()=>(0,r.jsx)(e,{href:`${n}#icon`,alt:`Filled Circle`});export{i as default};

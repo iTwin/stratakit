@@ -37,6 +37,7 @@ It has row and cell selection and editing as first class concepts. The grid is a
 ## StrataKit MUI modifications
 
 - Restyled using StrataKit's visual language.
+- Added hover and focus styling to differentiate editable cells with the pencil icon.
 - Changed default for `checkboxSelection` to true.
 - The `showCellVerticalBorder` and `showColumnVerticalBorder` props are not supported.
 

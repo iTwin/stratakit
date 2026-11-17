@@ -2,4 +2,4 @@
 "@stratakit/mui": patch
 ---
 
-Adjusted `Button` spacing.
+Improved number field styling.

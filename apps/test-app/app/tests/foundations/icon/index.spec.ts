@@ -21,6 +21,16 @@ test("alt prop", async ({ page }) => {
 	await expect(icon).not.toHaveAttribute("aria-hidden");
 });
 
+test("sanitization of data uri", async ({ page }) => {
+	await page.goto("/tests/icon?_sanitization");
+
+	const symbol = page.locator("symbol");
+	await expect(symbol).toHaveAttribute("viewBox", "0 0 100 100");
+	await expect(symbol).not.toHaveAttribute("onclick");
+	await expect(symbol.locator("script, [onerror]")).toHaveCount(0);
+	await expect(symbol.locator("circle")).toHaveCount(1);
+});
+
 test.describe("@visual", () => {
 	test("default", async ({ page }) => {
 		await page.goto("/tests/icon");

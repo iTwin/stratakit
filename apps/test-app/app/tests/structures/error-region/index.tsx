@@ -10,7 +10,7 @@ import { definePage } from "~/~utils.tsx";
 
 export const handle = { title: "Error Region" };
 
-export default definePage(function Page({ items = 2, controls }) {
+export default definePage(function Page({ items = 2, controls, height }) {
 	const [errors, setErrors] = React.useState(() => {
 		return Array.from({ length: Number(items) }).map((_, index) => index + 1);
 	});
@@ -21,7 +21,12 @@ export default definePage(function Page({ items = 2, controls }) {
 		return `${errorsLength} issues found`;
 	}, [errorsLength]);
 	return (
-		<div style={{ minHeight: 200 }}>
+		<div
+			style={{
+				minHeight: 200,
+				...(height && { height, containerType: "size" }),
+			}}
+		>
 			{controls ? (
 				<Button
 					onClick={() => {

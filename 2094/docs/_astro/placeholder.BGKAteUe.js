@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.DwHNA_cL.js";var t=`${e}#icon`;`${e}`;export{t};

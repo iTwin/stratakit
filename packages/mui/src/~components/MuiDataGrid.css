@@ -188,8 +188,8 @@
 			position: absolute;
 			inset-block-end: 5px;
 			inset-inline-end: 5px;
-			inline-size: var(--stratakit-space-300);
-			block-size: var(--stratakit-space-300);
+			inline-size: 0.75rem;
+			block-size: 0.75rem;
 
 			mask: var(--✨edit-svg) no-repeat center;
 			background-color: var(--_MuiDataGrid-cell-edit-icon-color);

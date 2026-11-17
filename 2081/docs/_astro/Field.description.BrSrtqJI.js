@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.qp6KNv7M.js";import{a as t,i as n,n as r,t as i}from"./Field.DeY2-Fji.js";import{n as a}from"./TextBox.6Dc8nloS.js";var o=e(),s=()=>(0,o.jsxs)(t,{children:[(0,o.jsx)(n,{children:`Bio`}),(0,o.jsx)(r,{children:`Tell us a little about yourself.`}),(0,o.jsx)(i,{render:(0,o.jsx)(a,{})})]});export{s as default};

@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.qp6KNv7M.js";import{t}from"./Autocomplete.c-fKqvh7.js";import{t as n}from"./TextField.BrNfHzRY.js";var r=e(),i=()=>(0,r.jsx)(t,{options:[`Badge`,`Button`,`Checkbox`,`Dialog`,`Divider`,`Progress`,`Rating`,`Select`,`Switch`,`TextField`],renderInput:e=>(0,r.jsx)(n,{...e,label:`Favorite components`}),multiple:!0});export{i as default};

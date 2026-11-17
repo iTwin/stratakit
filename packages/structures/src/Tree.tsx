@@ -14,7 +14,10 @@ import type { BaseProps } from "@stratakit/internal-utils/props";
 
 // ----------------------------------------------------------------------------
 
-interface TreeProps extends BaseProps {}
+interface TreeProps extends BaseProps {
+	/** Accessible name for the tree control. */
+	"aria-label"?: string;
+}
 
 /**
  * A tree is a hierarchical list of items that can be expanded or collapsed, or optionally selected.

@@ -24,7 +24,7 @@ export default () => {
 	};
 
 	return (
-		<Tree.Root className={styles.tree}>
+		<Tree.Root className={styles.tree} aria-label="Example Items">
 			<Tree.Item
 				label="Item 1"
 				aria-level={1}

@@ -6,7 +6,9 @@ The pull request (PR) process serves a few different purposes:
 - PR review is a quality + correctness gate. Review is the cheapest way to catch problems before they get shipped.
 - The PR also serves as a historical record, useful when revisiting old commits to understand past changes.
 
-We follow Google's engineering practices: [the reviewer guide](https://google.github.io/eng-practices/review/reviewer/) and [the author guide](https://google.github.io/eng-practices/review/developer/). This page covers only what we want to add or stress. Note: Google's term for a PR is "CL" (changelist).
+We follow Google's engineering practices: [the reviewer guide](https://google.github.io/eng-practices/review/reviewer/) and [the author guide](https://google.github.io/eng-practices/review/developer/). This page covers only what we want to add or stress.
+
+**Note:** Google's term for a PR is "CL" (changelist).
 
 ## For authors
 
@@ -23,14 +25,15 @@ We follow Google's engineering practices: [the reviewer guide](https://google.gi
   - Include links to relevant commits and let the reviewers resolve their own comments. Do not resolve threads on behalf of others.
 - Consider [dismissing](https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/dismissing-a-pull-request-review) stale approvals if significant changes have been pushed since.
 - Consider requesting additional reviews from individuals who may be interested in the change. This can even include non-maintainers (e.g. designers or consumers).
-- Before proposing _substantial_ changes (e.g. architectural changes or entirely new features), consider opening an issue or RFC discussion to get alignment and feedback. (see [Rust's RFC process](https://rust-lang.github.io/rfcs/0002-rfc-process.html))
+- Before proposing _substantial_ changes (e.g. architectural changes or entirely new features), consider opening an [issue](https://github.com/iTwin/stratakit/issues) or [discussion](https://github.com/iTwin/stratakit/discussions) to get alignment and feedback.
+  - If you have a specific solution in mind, you can present it in the form of a "request for comments" (RFC). (see [Rust's RFC process](https://rust-lang.github.io/rfcs/0002-rfc-process.html))
 - Keep your branch up-to-date and free of conflicts. Make sure CI checks are passing. If the PR state has deteriorated since it was opened, consider moving it back to draft. Don't leave open PRs hanging.
 
 See also: [Respectful Changes](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/cl_respect.md)
 
 ## For reviewers
 
-- Code reviews should be _fast_. This is the single best way to ensure team velocity. ([speed of reviews](https://google.github.io/eng-practices/review/reviewer/speed.html))
+- Code review communication should be _fast_. This is the single best way to ensure team velocity. ([speed of reviews](https://google.github.io/eng-practices/review/reviewer/speed.html))
   - Respond within one business day. This also applies when responding to individual comments.
   - If you can't do a full review, leave broad comments first or ask another maintainer to review it.
   - Importantly, this is about turnaround time. Responding fast does not equate to reviewing less thoroughly.
@@ -85,7 +88,7 @@ When disagreements happen, try to settle them within the PR thread first. State 
 
 If the thread isn't converging, talk synchronously outside of GitHub, either 1:1 or as a team. Escalate if necessary. Record the outcome on the PR.
 
-See also: [Handling comments](https://google.github.io/eng-practices/review/developer/handling-comments.html) & [Handling pushback](https://google.github.io/eng-practices/review/reviewer/pushback.html)
+See also: [Handling comments](https://google.github.io/eng-practices/review/developer/handling-comments.html), [Handling pushback](https://google.github.io/eng-practices/review/reviewer/pushback.html) & [our code of conduct](../CODE_OF_CONDUCT.md?plain=1#L15-L37).
 
 ## Patches
 
@@ -127,4 +130,4 @@ remove all tests
 Co-authored-by: Ada Lovelace <ada@example.com>
 ```
 
-GitHub's UI recognizes commits that include co-author trailers. See [Creating a commit with multiple authors](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors)
+GitHub's UI recognizes commits that include co-author trailers. See [Creating a commit with multiple authors](https://docs.github.com/en/pull-requests/committing-changes-to-your-project/creating-and-editing-commits/creating-a-commit-with-multiple-authors).

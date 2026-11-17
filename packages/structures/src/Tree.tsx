@@ -26,7 +26,7 @@ interface TreeProps extends BaseProps {
  *
  * Example:
  * ```tsx
- * <Tree.Root>
+ * <Tree.Root aria-label="Example Tree">
  *   <Tree.Item label="Parent 1" aria-level={1} aria-posinset={1} aria-setsize={2} />
  *   <Tree.Item label="Child 1.1" aria-level={2} aria-posinset={1} aria-setsize={2} />
  *   <Tree.Item label="Child 1.2" aria-level={2} aria-posinset={2} aria-setsize={2} />

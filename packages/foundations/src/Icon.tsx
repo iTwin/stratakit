@@ -126,9 +126,9 @@ function parseSvg(
 		});
 		template.setHTML(htmlString, { sanitizer });
 	} else {
-		const error = `[Icon] Sanitizer API is not available. Non-HTTP URLs cannot be safely inlined.`;
-		console.error(error);
-		DEV: throw new Error(error);
+		let error = `[Icon] Sanitizer API is not available.`;
+		DEV: error += ` Non-HTTP URLs cannot be safely inlined without sanitization. Please pass a valid HTTP/HTTPS URL to the href prop.`;
+		throw new Error(error);
 	}
 
 	return template.content;

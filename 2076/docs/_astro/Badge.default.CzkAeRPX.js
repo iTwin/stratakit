@@ -1,1 +1,0 @@
-import{fr as e}from"./chevron-down.BoigK2dm.js";import{t}from"./Badge.DwN4Osww.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Pending`});export{r as default};

@@ -1,1 +1,0 @@
-import{fr as e}from"./chevron-down.BoigK2dm.js";import{t}from"./Spinner.Bpp79DSx.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{tone:`neutral`}),(0,n.jsx)(t,{tone:`accent`})]});export{r as default};

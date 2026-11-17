@@ -1,0 +1,1 @@
+import{fr as e}from"./chevron-down.BoigK2dm.js";import{t}from"./Button.CpYouw-E.js";var n=e(),r=()=>(0,n.jsx)(t,{onClick:()=>{},children:`Create new`});export{r as default};

@@ -24,5 +24,7 @@ Renamed icons in a backwards compatible way. Old icon names are now considered d
 | rule-delta-create             | rule-create-delta             |
 | rule-slope-create             | rule-create-slope             |
 | split-cells                   | cells-split                   |
+| table-column-insert-right     | column-insert-right           |
+| table-row-insert-below        | row-insert-below              |
 | vertex-mesh-add               | vertex-add-mesh               |
 | vertex-mesh-control           | vertex-control-mesh           |

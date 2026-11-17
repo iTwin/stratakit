@@ -37,6 +37,8 @@
 		"./sewage-pipes.svg": "./icons/pipes-sewage.svg",
 		"./split-cells.svg": "./icons/cells-split.svg",
 		"./storm-water-pipes.svg": "./icons/pipes-water-storm.svg",
+		"./table-column-insert-right.svg": "./icons/column-insert-right.svg",
+		"./table-row-insert-below.svg": "./icons/row-insert-below.svg",
 		"./vertex-mesh-add.svg": "./icons/vertex-add-mesh.svg",
 		"./vertex-mesh-control.svg": "./icons/vertex-control-mesh.svg",
 		"./icons-list.json": "./icons-list.json",

@@ -17,6 +17,8 @@ import type { BaseProps } from "@stratakit/internal-utils/props";
 interface TreeProps extends BaseProps {
 	/** Accessible name for the tree control. */
 	"aria-label"?: string;
+	/** Id of element containing the accessible name of the element. */
+	"aria-labelledby"?: string;
 }
 
 /**

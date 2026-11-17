@@ -139,6 +139,7 @@ Selecting an item applies `aria-selected="true"`. Where it's possible to select 
 - Prioritize actions by adding them via `inlineActions`.
 - Implement a selection behavior suited to your users.
 - Use an `aria-level` value that reflects the level of the item in the hierarchy.
+- Use [`aria-label`](/reference/structures/Tree/#Tree.Root.aria-label) or [`aria-labelledby`](/reference/structures/Tree/#Tree.Root.aria-labelledby) on the `Tree.Root` component to provide an accessible name for the **Tree**.
 
 ## 🚫 Don't
 

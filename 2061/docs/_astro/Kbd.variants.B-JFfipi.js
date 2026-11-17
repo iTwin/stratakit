@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down._8SV1oFV.js";import{t}from"./Kbd.D6fRs3JW.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{variant:`solid`,children:`Solid`}),(0,n.jsx)(t,{variant:`muted`,children:`Muted`}),(0,n.jsx)(t,{variant:`ghost`,children:`Ghost`})]});export{r as default};

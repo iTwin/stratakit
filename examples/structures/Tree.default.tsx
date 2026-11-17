@@ -24,9 +24,9 @@ export default () => {
 	};
 
 	return (
-		<Tree.Root className={styles.tree} aria-label="Example Items">
+		<Tree.Root className={styles.tree} aria-label="Engineering Departments">
 			<Tree.Item
-				label="Item 1"
+				label="Software Engineering"
 				aria-level={1}
 				aria-posinset={1}
 				aria-setsize={3}
@@ -36,13 +36,13 @@ export default () => {
 			{expandedItems.item1 && (
 				<>
 					<Tree.Item
-						label="Item 1.1"
+						label="Frontend"
 						aria-level={2}
 						aria-posinset={1}
 						aria-setsize={2}
 					/>
 					<Tree.Item
-						label="Item 1.2"
+						label="Backend"
 						aria-level={2}
 						aria-posinset={2}
 						aria-setsize={2}
@@ -50,7 +50,7 @@ export default () => {
 				</>
 			)}
 			<Tree.Item
-				label="Item 2"
+				label="Mechanical Engineering"
 				aria-level={1}
 				aria-posinset={2}
 				aria-setsize={3}
@@ -60,13 +60,13 @@ export default () => {
 			{expandedItems.item2 && (
 				<>
 					<Tree.Item
-						label="Item 2.1"
+						label="Design"
 						aria-level={2}
 						aria-posinset={1}
 						aria-setsize={2}
 					/>
 					<Tree.Item
-						label="Item 2.2"
+						label="Manufacturing"
 						aria-level={2}
 						aria-posinset={2}
 						aria-setsize={2}
@@ -74,7 +74,7 @@ export default () => {
 				</>
 			)}
 			<Tree.Item
-				label="Item 3"
+				label="Civil Engineering"
 				aria-level={1}
 				aria-posinset={3}
 				aria-setsize={3}
@@ -84,13 +84,13 @@ export default () => {
 			{expandedItems.item3 && (
 				<>
 					<Tree.Item
-						label="Item 3.1"
+						label="Structural"
 						aria-level={2}
 						aria-posinset={1}
 						aria-setsize={2}
 					/>
 					<Tree.Item
-						label="Item 3.2"
+						label="Transportation"
 						aria-level={2}
 						aria-posinset={2}
 						aria-setsize={2}

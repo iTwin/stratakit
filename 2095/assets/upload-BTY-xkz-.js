@@ -1,1 +1,0 @@
-import{t as e}from"./upload-CPeQ-7SH.js";var t=`${e}#icon`;`${e}`;export{t};

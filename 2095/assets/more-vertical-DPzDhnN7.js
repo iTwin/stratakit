@@ -1,1 +1,0 @@
-import{t as e}from"./more-vertical-CLiP2k_d.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1
+
+### Patch Changes
+
+- [#2068](https://github.com/iTwin/stratakit/pull/2068): Updated `Icon` to automatically sanitize fetched SVG content when a non-HTTP `href` is used.
+
 ## 1.1.0
 
 ### Minor Changes

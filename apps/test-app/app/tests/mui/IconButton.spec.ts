@@ -10,3 +10,12 @@ test("showcase", { tag: "@visual-2" }, async ({ mount }) => {
 	const component = await mount("mui/IconButton.showcase");
 	await expect(component).toHaveScreenshot();
 });
+
+test("color=default renders with secondary color", async ({ page }) => {
+	await page.goto(
+		"/standalone?path=mui/IconButton.showcase&export=InvalidColors",
+	);
+
+	const button = page.getByRole("button", { name: "default" });
+	await expect(button).toHaveClass(/MuiIconButton-colorSecondary/);
+});

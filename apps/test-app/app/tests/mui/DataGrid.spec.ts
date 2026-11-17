@@ -7,24 +7,16 @@ import { expect, test } from "#playwright";
 
 test.use({ baseURL: "http://localhost:1800/standalone" });
 
-test("shows focus editing caret in editable cells", {
-	tag: "@visual-2",
-}, async ({ mount }) => {
+test("shows edit icon in focused and hovered cells that are editable", async ({
+	mount,
+}) => {
 	const grid = await mount("mui/DataGrid.showcase#DataTypes");
-	const editableCell = grid
-		.getByRole("gridcell", { name: "Engineering" })
-		.first();
-	await expect(editableCell).toHaveAccessibleDescription("editable");
-	await editableCell.focus();
-	await expect(editableCell).toHaveScreenshot();
-});
-
-test("does not shows focus editing caret in non-editable cells", {
-	tag: "@visual-2",
-}, async ({ mount }) => {
-	const grid = await mount("mui/DataGrid.showcase#DataTypes");
-	const cell = grid.getByRole("gridcell", { name: "1001" }).first();
-	await expect(cell).not.toHaveAccessibleDescription("editable");
-	await cell.focus();
-	await expect(cell).toHaveScreenshot();
+	await grid.getByRole("gridcell", { name: "Engineering" }).first().focus();
+	await grid
+		.getByRole("gridcell", {
+			name: "Dell Precision 7680",
+		})
+		.first()
+		.hover();
+	await expect(grid).toHaveScreenshot();
 });

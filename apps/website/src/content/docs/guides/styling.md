@@ -69,3 +69,15 @@ In the rare case where a style must branch on color scheme, key off the `data-co
 StrataKit provides a consistent, accessible focus outline for all interactive elements and actively guards it against removal. Do not fight this: never set `outline: none` (or `outline: 0`) in application styles. People navigating with a keyboard rely on the focus outline to know where they are.
 
 If a custom element needs different focus styling, scope it to [`:focus-visible`](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible) and ensure the replacement indicator is clearly visible in both color schemes.
+
+## Use logical properties
+
+Write custom styles with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). `margin-inline-start` instead of `margin-left`, `padding-block` instead of `padding-top`/`padding-bottom`, and so on. StrataKit's own styles are written this way, keeping layouts correct in right-to-left and vertical writing modes:
+
+```css
+@layer app {
+	.app-toolbarButton {
+		margin-inline-start: var(--stratakit-space-100);
+	}
+}
+```

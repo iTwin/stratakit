@@ -1,1 +1,0 @@
-import{t as e}from"./status-warning-CG8U5cP2.js";var t=`${e}#icon`;`${e}`;export{t};

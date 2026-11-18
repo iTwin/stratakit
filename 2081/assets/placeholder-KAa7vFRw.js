@@ -1,1 +1,0 @@
-import{t as e}from"./placeholder-DUzkedFL.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

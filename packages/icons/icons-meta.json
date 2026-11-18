@@ -2397,6 +2397,23 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"fit-to-view-horizontal": {
+		"aliases": [
+			"adjust",
+			"align",
+			"center",
+			"fit",
+			"frame",
+			"horizontal",
+			"position",
+			"resize",
+			"scale",
+			"stretch",
+			"view",
+			"width"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"fit-to-view": {
 		"aliases": [
 			"adjust",
@@ -2460,6 +2477,21 @@
 			"hide",
 			"reduce",
 			"shrink"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"folder-minimize": {
+		"aliases": [
+			"reduce",
+			"decrease",
+			"lessen",
+			"shrink",
+			"contract",
+			"diminish",
+			"downsize",
+			"curtail",
+			"scale down",
+			"condense"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -3182,6 +3214,10 @@
 		"aliases": ["error", "alert", "support", "bug"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"item": {
+		"aliases": ["object", "shape", "diamond", "element", "entity", "product"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"itwin": {
 		"aliases": [
 			"model",
@@ -3292,6 +3328,21 @@
 			"minus",
 			"revoke",
 			"subtract"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"license": {
+		"aliases": [
+			"contract",
+			"agreement",
+			"permit",
+			"legal",
+			"certificate",
+			"document",
+			"verify",
+			"key",
+			"subscription",
+			"access"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -4895,6 +4946,14 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"skip-backward": {
+		"aliases": ["previous", "rewind", "return", "back", "media", "track"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"skip-forward": {
+		"aliases": ["next", "advance", "forward", "ahead", "media", "track"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"slab-opening": {
 		"aliases": [
 			"hole",
@@ -5106,6 +5165,10 @@
 		"aliases": ["load", "snow", "environmental", "weather", "climate", "roof"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"sorting-ascending": {
+		"aliases": ["arrange", "order", "sequence", "organize", "sort", "sorting"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"sorting-ascending-alpha": {
 		"aliases": [
 			"arrange",
@@ -5118,6 +5181,22 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"sorting-ascending-numeric": {
+		"aliases": [
+			"arrange",
+			"order",
+			"sequence",
+			"organize",
+			"sort",
+			"sorting",
+			"1-9"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"sorting-descending": {
+		"aliases": ["arrange", "order", "sequence", "organize", "sort", "sorting"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"sorting-descending-alpha": {
 		"aliases": [
 			"arrange",
@@ -5127,6 +5206,18 @@
 			"sort",
 			"sorting",
 			"z-a"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"sorting-descending-numeric": {
+		"aliases": [
+			"arrange",
+			"order",
+			"sequence",
+			"organize",
+			"sort",
+			"sorting",
+			"9-1"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5353,6 +5444,21 @@
 		"aliases": ["aid", "assistance", "customer", "guidance", "help", "service"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"suppress-hide": {
+		"aliases": [
+			"block",
+			"conceal",
+			"exclude",
+			"hidden",
+			"invisible",
+			"manual",
+			"mask",
+			"obscure",
+			"remove",
+			"suppress"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"suppress": {
 		"aliases": ["hide", "remove", "eliminate", "conceal", "gavel"],
 		"symbols": ["icon", "icon-large"]
@@ -5517,8 +5623,38 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"text-medium": {
+		"aliases": [
+			"font size",
+			"average",
+			"regular",
+			"normal",
+			"standard",
+			"middle",
+			"moderate",
+			"default",
+			"content",
+			"paragraph"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"text-rotate-right": {
 		"aliases": ["format", "rotate", "text", "turn"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"text-small": {
+		"aliases": [
+			"font size",
+			"tiny",
+			"diminutive",
+			"petite",
+			"mini",
+			"compact",
+			"fine print",
+			"reduced",
+			"less",
+			"brief"
+		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"text": {
@@ -5587,6 +5723,36 @@
 	},
 	"tree-item-unlocked": {
 		"aliases": ["open", "access", "available", "hierarchy", "node"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"tree-navigate-down": {
+		"aliases": [
+			"branch",
+			"child",
+			"collapse",
+			"delve",
+			"descend",
+			"directory",
+			"downwards",
+			"hierarchy",
+			"level down",
+			"move down"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"tree-navigate-up": {
+		"aliases": [
+			"ascend",
+			"branch",
+			"climb",
+			"directory",
+			"expand",
+			"hierarchy",
+			"level up",
+			"move up",
+			"parent",
+			"upwards"
+		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"truck": {

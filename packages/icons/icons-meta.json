@@ -1054,6 +1054,10 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"column-insert-right": {
+		"aliases": ["add", "data", "new"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"column-manage": {
 		"aliases": [
 			"organize",
@@ -4624,6 +4628,10 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"row-insert-below": {
+		"aliases": ["add", "data", "new"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"rows-collapse-all": {
 		"aliases": [
 			"minimize",
@@ -5157,7 +5165,7 @@
 		"aliases": ["load", "snow", "environmental", "weather", "climate", "roof"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"sort-ascending": {
+	"sorting-ascending-alpha": {
 		"aliases": [
 			"arrange",
 			"order",
@@ -5169,7 +5177,7 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"sort-descending": {
+	"sorting-descending-alpha": {
 		"aliases": [
 			"arrange",
 			"order",
@@ -5431,10 +5439,6 @@
 		"aliases": ["select", "sample", "choose", "pick", "color"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"table-column-insert-right": {
-		"aliases": ["add", "data", "new"],
-		"symbols": ["icon", "icon-large"]
-	},
 	"table-delete": {
 		"aliases": ["delete", "remove", "table"],
 		"symbols": ["icon", "icon-large"]
@@ -5450,10 +5454,6 @@
 			"bullets",
 			"toc"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"table-row-insert-below": {
-		"aliases": ["add", "data", "new"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"table-rows-comfortable": {

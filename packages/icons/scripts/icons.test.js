@@ -39,8 +39,12 @@ test("every SVG has a matching TS module", async () => {
 		"rule-delta-create.ts",
 		"rule-slope-create.ts",
 		"sewage-pipes.ts",
+		"sort-ascending.ts",
+		"sort-descending.ts",
 		"split-cells.ts",
 		"storm-water-pipes.ts",
+		"table-column-insert-right.ts",
+		"table-row-insert-below.ts",
 		"vertex-mesh-add.ts",
 		"vertex-mesh-control.ts",
 	];

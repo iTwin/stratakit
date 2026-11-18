@@ -1,0 +1,1 @@
+import{t as e}from"./more-vertical-Cn70s-bI.js";var t=`${e}#icon`;`${e}`;export{t};

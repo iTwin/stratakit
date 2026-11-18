@@ -1,0 +1,1 @@
+import{t as e}from"./edit-Co8Gizj_.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

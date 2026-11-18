@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.3.2
+
+### Patch Changes
+
+- [#2061](https://github.com/iTwin/stratakit/pull/2061): Added a caret indicator identify editable `DataGrid` cells.
+- [#2075](https://github.com/iTwin/stratakit/pull/2075): Improved number field styling.
+- [#2078](https://github.com/iTwin/stratakit/pull/2078): Fixed `Menu` and `Popover` fallback labelling mechanism to handle functional form of `anchorEl`.
+- Updated dependencies:
+  - @stratakit/icons@0.4.9
+  - @stratakit/foundations@1.1.2
+
 ## 1.3.1
 
 ### Patch Changes

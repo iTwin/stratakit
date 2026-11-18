@@ -1,1 +1,0 @@
-import{t as e}from"./chat-DT1ikwzf.js";var t=`${e}#icon`;`${e}`;export{t};

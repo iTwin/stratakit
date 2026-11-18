@@ -1,1 +1,0 @@
-import{t as e}from"./rename-Bv1opqkE.js";var t=`${e}#icon`;`${e}`;export{t};

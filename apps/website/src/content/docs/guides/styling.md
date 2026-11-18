@@ -17,6 +17,8 @@ Avoid using [MUI's `sx` prop](https://mui.com/system/getting-started/the-sx-prop
 
 Class names applied by StrataKit and MUI, such as `.MuiButton-root` or `.Mui-disabled`, are implementation details. They may change in any release without notice, so selectors that target them are fragile. An application-owned class passed through `className` is the only stable styling hook.
 
+### Use cascade layers
+
 StrataKit and MUI styles use CSS cascade layers. Declare your application layer after them to set override order, rather than increasing selector specificity or using `!important`. See [MDN's guide to cascade layers](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers) for details.
 
 ```css
@@ -28,3 +30,5 @@ StrataKit and MUI styles use CSS cascade layers. Declare your application layer 
 	}
 }
 ```
+
+Within your own layer, keep selector specificity low. Prefer single-class selectors, and use [`:where()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:where) when a selector needs extra qualification, so that later styles in the same layer can still override earlier ones without specificity battles.

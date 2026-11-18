@@ -5177,6 +5177,22 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"sorting-ascending-numeric": {
+		"aliases": [
+			"arrange",
+			"order",
+			"sequence",
+			"organize",
+			"sort",
+			"sorting",
+			"1-9"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"sorting-ascending": {
+		"aliases": ["arrange", "order", "sequence", "organize", "sort", "sorting"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"sorting-descending-alpha": {
 		"aliases": [
 			"arrange",
@@ -5187,6 +5203,22 @@
 			"sorting",
 			"z-a"
 		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"sorting-descending-numeric": {
+		"aliases": [
+			"arrange",
+			"order",
+			"sequence",
+			"organize",
+			"sort",
+			"sorting",
+			"9-1"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"sorting-descending": {
+		"aliases": ["arrange", "order", "sequence", "organize", "sort", "sorting"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"sorting": {

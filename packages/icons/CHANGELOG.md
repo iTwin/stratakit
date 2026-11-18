@@ -1,5 +1,62 @@
 # Changelog
 
+## 0.4.9
+
+### Patch Changes
+
+- [#2098](https://github.com/iTwin/stratakit/pull/2098): Updated icons:
+
+  - `developer.svg`
+  - `sorting-ascending-alpha.svg` (previously `sort-ascending.svg`)
+  - `sorting-descending-alpha.svg` (previously `sort-descending.svg`)
+
+- [#2086](https://github.com/iTwin/stratakit/pull/2086): Renamed icons in a backwards compatible way. Old icon names are now considered deprecated and will be removed in a future release.
+
+  | Before                        | After                         |
+  | ----------------------------- | ----------------------------- |
+  | add-region                    | region-add                    |
+  | define-region-size            | region-define-size            |
+  | delete-columns                | columns-delete                |
+  | delete-rows                   | rows-delete                   |
+  | delete-table                  | table-delete                  |
+  | gesture-one-finger-double-tap | gesture-double-tap-one-finger |
+  | gesture-one-finger-drag       | gesture-drag-one-finger       |
+  | gesture-one-finger-tap        | gesture-tap-one-finger        |
+  | gesture-two-finger-drag       | gesture-drag-two-finger       |
+  | gesture-two-finger-tap        | gesture-tap-two-finger        |
+  | graph-scatter-chart           | chart-scatter                 |
+  | imodel-problematic-sync       | imodel-sync-problematic       |
+  | merge-cells                   | cells-merge                   |
+  | pipe-sewer                    | pipes-sewer                   |
+  | pipe-water                    | pipes-water                   |
+  | rule-delta-create             | rule-create-delta             |
+  | rule-slope-create             | rule-create-slope             |
+  | sort-ascending                | sorting-ascending-alpha       |
+  | sort-descending               | sorting-descending-alpha      |
+  | split-cells                   | cells-split                   |
+  | table-column-insert-right     | column-insert-right           |
+  | table-row-insert-below        | row-insert-below              |
+  | vertex-mesh-add               | vertex-add-mesh               |
+  | vertex-mesh-control           | vertex-control-mesh           |
+
+- [#2087](https://github.com/iTwin/stratakit/pull/2087): Added new icons:
+
+  - `fit-to-view-horizontal.svg`
+  - `folder-minimize.svg`
+  - `item.svg`
+  - `license.svg`
+  - `skip-backward.svg`
+  - `skip-forward.svg`
+  - `sorting-ascending-numeric.svg`
+  - `sorting-ascending.svg`
+  - `sorting-descending-numeric.svg`
+  - `sorting-descending.svg`
+  - `suppress-hide.svg`
+  - `text-medium.svg`
+  - `text-small.svg`
+  - `tree-navigate-down.svg`
+  - `tree-navigate-up.svg`
+
 ## 0.4.8
 
 - [#2053](https://github.com/iTwin/stratakit/pull/2053): Added new `model-cloud.svg` icon.

@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.2
+
+### Patch Changes
+
+- [#2095](https://github.com/iTwin/stratakit/pull/2095): Fixed an issue where development-only code was showing up (incorrectly) in the production build.
+
 ## 1.1.1
 
 ### Patch Changes

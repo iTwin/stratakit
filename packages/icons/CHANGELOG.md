@@ -2,15 +2,7 @@
 
 ## 0.4.9
 
-### Patch Changes
-
-- [#2098](https://github.com/iTwin/stratakit/pull/2098): Updated icons:
-
-  - `developer.svg`
-  - `sorting-ascending-alpha.svg` (previously `sort-ascending.svg`)
-  - `sorting-descending-alpha.svg` (previously `sort-descending.svg`)
-
-- [#2086](https://github.com/iTwin/stratakit/pull/2086): Renamed icons in a backwards compatible way. Old icon names are now considered deprecated and will be removed in a future release.
+- [#2086](https://github.com/iTwin/stratakit/pull/2086): Renamed icons in a backwards compatible way. Old icon names are now considered **deprecated** and will be removed in a future release.
 
   | Before                        | After                         |
   | ----------------------------- | ----------------------------- |
@@ -38,6 +30,12 @@
   | table-row-insert-below        | row-insert-below              |
   | vertex-mesh-add               | vertex-add-mesh               |
   | vertex-mesh-control           | vertex-control-mesh           |
+
+- [#2098](https://github.com/iTwin/stratakit/pull/2098): Updated icons:
+
+  - `developer.svg`
+  - `sorting-ascending-alpha.svg` (previously `sort-ascending.svg`)
+  - `sorting-descending-alpha.svg` (previously `sort-descending.svg`)
 
 - [#2087](https://github.com/iTwin/stratakit/pull/2087): Added new icons:
 

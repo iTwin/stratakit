@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.ewXKd4NV.js";import{t}from"./Avatar.YbcVdo0Y.js";var n=e(),r=()=>(0,n.jsx)(t,{initials:`WW`,alt:`Willow Winters`});export{r as default};

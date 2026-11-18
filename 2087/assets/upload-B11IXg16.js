@@ -1,1 +1,0 @@
-import{t as e}from"./upload-Bic6L2Dj.js";var t=`${e}#icon`;`${e}`;export{t};

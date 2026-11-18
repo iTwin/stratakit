@@ -1,0 +1,133 @@
+{
+	// Sync with `biome.jsonc` from the `main` branch
+	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+	"files": {
+		"ignoreUnknown": true,
+		"includes": ["**", "!**/*.astro", "!**/*.md"]
+	},
+	"vcs": {
+		"enabled": true,
+		"clientKind": "git",
+		"useIgnoreFile": true
+	},
+	"css": {
+		"formatter": {
+			"lineWidth": 100
+		},
+		"linter": {
+			"enabled": true
+		},
+		"parser": {
+			"tailwindDirectives": true
+		}
+	},
+	"assist": {
+		"actions": {
+			"source": {
+				"organizeImports": {
+					"level": "on",
+					"options": {
+						"groups": [
+							// protocol
+							{
+								"type": false,
+								"source": [":PACKAGE_WITH_PROTOCOL:", ":BUN:", ":NODE:"]
+							},
+							":BLANK_LINE:",
+							// framework (react)
+							{
+								"type": false,
+								"source": ["react", "react-dom", "react-router"]
+							},
+							// imports without file extensions
+							{
+								"type": false,
+								"source": ["**", "!**/*.*", "!*.*"]
+							},
+							// imports with js,jsx,ts,tsx extension
+							{
+								"type": false,
+								"source": ["**/*.{js,jsx,ts,tsx}", "*.{js,jsx,ts,tsx}"]
+							},
+							// URLs
+							{
+								"type": false,
+								"source": ":URL:"
+							},
+							":BLANK_LINE:",
+							// type imports
+							{ "type": true },
+							":BLANK_LINE:"
+							// asset imports (unmatched by all other groups) are placed last automatically
+						]
+					}
+				}
+			}
+		}
+	},
+	"linter": {
+		"rules": {
+			"correctness": {
+				"noUnknownProperty": "off",
+				"noUnusedImports": "info",
+				"noUnusedLabels": "off",
+				"noUnusedVariables": {
+					"level": "warn",
+					"options": { "ignoreRestSiblings": false }
+				}
+			},
+			"suspicious": {
+				"noDuplicateCustomProperties": "off",
+				"noDuplicateProperties": "off",
+				"noConfusingLabels": "off",
+				"noUnknownAtRules": "off"
+			},
+			"complexity": {
+				"noImportantStyles": "off"
+			},
+			"a11y": "off",
+			"style": {
+				"noDescendingSpecificity": "off",
+				"noRestrictedImports": {
+					"level": "warn",
+					"options": {
+						"paths": {
+							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead.",
+							"@mui/material": "Use of MUI's barrel is discouraged. Import MUI components from their individual entrypoints instead.  See https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-barrel-imports"
+						}
+					}
+				}
+			},
+			"security": {
+				"noBlankTarget": "off"
+			}
+		},
+		"domains": {
+			"react": "recommended"
+		}
+	},
+	"overrides": [
+		{
+			"includes": ["apps/test-app/**"],
+			"linter": {
+				"rules": {
+					"style": {
+						"noRestrictedImports": {
+							"level": "warn",
+							"options": {
+								"paths": {
+									"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead.",
+									"@mui/material": "Use of MUI's barrel is discouraged. Import MUI components from their individual entrypoints instead.  See https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-barrel-imports",
+									"@playwright/test": {
+										"importNames": ["expect", "test"],
+										"message": "Import `expect` and `test` from `#playwright` instead."
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	]
+}

@@ -1,0 +1,6 @@
+packages:
+  - "examples/stackblitz/*"
+allowBuilds:
+  esbuild: true
+  lefthook: true
+  sharp: set this to true or false

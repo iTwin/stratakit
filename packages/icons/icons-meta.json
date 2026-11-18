@@ -5106,7 +5106,7 @@
 		"aliases": ["load", "snow", "environmental", "weather", "climate", "roof"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"sort-ascending": {
+	"sorting-ascending-alpha": {
 		"aliases": [
 			"arrange",
 			"order",
@@ -5118,7 +5118,7 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"sort-descending": {
+	"sorting-descending-alpha": {
 		"aliases": [
 			"arrange",
 			"order",

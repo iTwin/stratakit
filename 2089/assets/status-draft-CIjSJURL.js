@@ -1,1 +1,0 @@
-import{t as e}from"./status-draft-C2_ISENr.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

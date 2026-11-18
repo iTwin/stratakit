@@ -1,1 +1,0 @@
-import{t as e}from"./Chip.DmhFPn5I.js";import{pr as t}from"./chevron-down.XHLK56Va.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Outlined Chip`,variant:`outlined`});export{r as default};

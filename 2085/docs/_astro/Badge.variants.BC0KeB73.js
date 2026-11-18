@@ -1,0 +1,1 @@
+import{t as e}from"./Badge.BAYNI1sl.js";import{pr as t}from"./chevron-down.DLEhM1Iq.js";var n=t(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(e,{variant:`solid`,label:`Solid`}),(0,n.jsx)(e,{variant:`muted`,label:`Muted`}),(0,n.jsx)(e,{variant:`outline`,label:`Outline`})]});export{r as default};

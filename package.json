@@ -16,7 +16,7 @@
 		"test": "pnpm --filter=@stratakit/test-app --filter=@stratakit/icons --filter=internal test",
 		"changeset": "pnpx @changesets/cli@3.0.3",
 		"changeset:version": "pnpm run changeset version && pnpm format",
-		"changeset:publish": "pnpm run build && pnpm run changeset publish"
+		"changeset:release": "pnpm run build && pnpm run changeset pack --out-dir dist/release && pnpm run changeset git-tag"
 	},
 	"devDependencies": {
 		"@actions/github": "^9.1.1",

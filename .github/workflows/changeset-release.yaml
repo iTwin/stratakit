@@ -7,9 +7,6 @@ on:
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
-env:
-  PNPM_CONFIG_PROVENANCE: true
-
 jobs:
   release:
     name: Release
@@ -17,10 +14,11 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write # for pushing commits/tags
-      id-token: write # for npm provenance
       pull-requests: write # for creating PRs
     outputs:
       published: ${{ steps.changesets.outputs.published }}
+      has-packages: ${{ steps.upload.outputs.artifact-id != '' }}
+      npm-tag: ${{ steps.npm-tag.outputs.tag }}
 
     steps:
       - name: Checkout Repo
@@ -37,26 +35,68 @@ jobs:
         with:
           node-version: 22.x
           cache: "pnpm"
-          registry-url: https://registry.npmjs.org/
 
       - run: pnpm install
 
-      - name: Create release PR or publish to npm
+      - name: Create release PR or pack and tag packages
         id: changesets
         uses: changesets/action@ae32849d5ba541f9ae29e40e22a623bc13562f51 # v2.1.2
         with:
           version-script: pnpm run changeset:version
-          publish-script: pnpm run changeset:publish
+          publish-script: pnpm run changeset:release
           pr-title: Release packages
           commit-message: Release packages
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}
           GIT_AUTHOR_NAME: github-actions[bot]
           GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
           GIT_COMMITTER_NAME: github-actions[bot]
           GIT_COMMITTER_EMAIL: github-actions[bot]@users.noreply.github.com
+
+      - name: Upload package tarballs
+        id: upload
+        if: hashFiles('dist/release/packages/*.tgz') != ''
+        uses: actions/upload-artifact@v7
+        with:
+          name: npm-tarballs
+          path: dist/release/packages/*.tgz
+
+      - name: Determine npm dist tag
+        id: npm-tag
+        # reads the `tag` from .changeset/pre.json or defaults to 'latest'
+        run: echo "tag=$(jq -r .tag .changeset/pre.json 2>/dev/null || echo latest)" >> "$GITHUB_OUTPUT"
+
+  # This job has access to the npm token, so it must not check out the repo or install deps.
+  publish:
+    name: Publish to npm
+    needs: release
+    if: needs.release.outputs.has-packages == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write # for npm provenance
+
+    steps:
+      - name: Download package tarballs
+        uses: actions/download-artifact@v8
+        with:
+          name: npm-tarballs
+          path: release
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          registry-url: https://registry.npmjs.org/
+
+      - name: Publish package tarballs
+        working-directory: release
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}
+        run: |
+          for tarball in *.tgz; do
+            npm publish "./$tarball" --provenance --access public --tag ${{ needs.release.outputs.npm-tag }}
+          done
 
   deploy-docs:
     name: Deploy released docs

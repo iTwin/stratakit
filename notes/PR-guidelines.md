@@ -58,11 +58,13 @@ See also: [Respectful Code Reviews](https://chromium.googlesource.com/chromium/s
 
 Generally, there are three key questions (or axes) to consider when reviewing a PR:
 
-| Question         | Evaluation                                                                                                     |
-| ---------------- | -------------------------------------------------------------------------------------------------------------- |
-| "Do we want it?" | Not all changes belong in the codebase. If the change is undesirable, then additional review is wasted effort. |
-| "Does it work?"  | The change should do what it says, and behave correctly in all intended scenarios (including edge cases).      |
-| "Does it fit?"   | The code should align with the existing project conventions and best practices.                                |
+| Question         | Expectation                                                                                               | Evaluated against                           |
+| ---------------- | --------------------------------------------------------------------------------------------------------- | ------------------------------------------- |
+| "Do we want it?" | The change is desirable and belongs in the codebase in its current form.                                  | Agreement from maintainers.                 |
+| "Does it work?"  | The change should do what it says, and behave correctly in all intended scenarios (including edge cases). | The PR description or linked issue.         |
+| "Does it fit?"   | The code should align with the existing project conventions and best practices.                           | Our written standards and surrounding code. |
+
+Settle "Do we want it?" first. If the change is undesirable, then additional review is wasted effort.
 
 In addition, also ask "what could go wrong?" (see next section: [Merge risk](#merge-risk))
 

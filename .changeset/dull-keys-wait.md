@@ -1,5 +1,5 @@
 ---
-"@stratakit/icons": minor
+"@stratakit/icons": patch
 ---
 
 Renamed icons in a backwards compatible way. Old icon names are now considered deprecated and will be removed in a future release.

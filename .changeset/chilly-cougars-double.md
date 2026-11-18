@@ -1,5 +1,5 @@
 ---
-"@stratakit/icons": minor
+"@stratakit/icons": patch
 ---
 
 Updated icons:

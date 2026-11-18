@@ -33,7 +33,7 @@ See also: [Respectful Changes](https://chromium.googlesource.com/chromium/src/+/
 
 ## For reviewers
 
-- Code review communication should be _fast_. This is the single best way to ensure team velocity. ([speed of reviews](https://google.github.io/eng-practices/review/reviewer/speed.html))
+- PR communication should be _fast_. This is the single best way to ensure team velocity. ([speed of reviews](https://google.github.io/eng-practices/review/reviewer/speed.html))
   - Respond within one business day. This also applies when responding to individual comments.
   - If you can't do a full review, leave broad comments first or ask another maintainer to review it.
   - Importantly, this is about turnaround time. Responding fast does not equate to reviewing less thoroughly.
@@ -49,7 +49,7 @@ See also: [Respectful Changes](https://chromium.googlesource.com/chromium/src/+/
   - Don't assume that cleanup work will happen later; this is a common way for codebases to degenerate. ([cleaning it up later](https://google.github.io/eng-practices/review/reviewer/pushback.html#later))
   - Consider labelling comments by severity or category. For example, "nit:", "optional:", "question:", or "pre-existing:".
 - Test the change, rather than judging it solely from the diff. Test it in different environments and using different input devices.
-- On matters of code style, the [style guide](./STYLEGUIDE.md) is the ultimate authority. If a specific case is not covered, follow existing patterns and consider expanding the style guide. ([the standard of code review](https://google.github.io/eng-practices/review/reviewer/standard.html))
+- On matters of code style, the [style guide](./STYLEGUIDE.md) is the ultimate authority. If a specific case is not covered, follow existing patterns and consider expanding (or asking the PR author to expand) the style guide. ([the standard of code review](https://google.github.io/eng-practices/review/reviewer/standard.html))
 - Consider providing [code suggestions](https://docs.github.com/en/pull-requests/how-tos/review-pull-requests/reviewing-proposed-changes-in-a-pull-request#:~:text=suggest%20a%20specific%20change) or [patches](#patches) to communicate specific code changes more clearly. This can be especially helpful for editorial or stylistic changes.
 
 See also: [Respectful Code Reviews](https://chromium.googlesource.com/chromium/src/+/refs/heads/main/docs/cr_respect.md)

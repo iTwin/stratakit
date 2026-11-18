@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/table-column-insert-right.svg";
+import {
+	svgColumnInsertRight,
+	svgColumnInsertRightLarge,
+} from "./column-insert-right.js";
 
-export const svgTableColumnInsertRight = `${url}#icon`;
-export const svgTableColumnInsertRightLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgColumnInsertRight` instead.
+ */
+export const svgTableColumnInsertRight = svgColumnInsertRight;
+/**
+ * @deprecated Use `svgColumnInsertRightLarge` instead.
+ */
+export const svgTableColumnInsertRightLarge = svgColumnInsertRightLarge;

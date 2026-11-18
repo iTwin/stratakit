@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/pipe-sewer.svg";
+import { svgPipesSewer, svgPipesSewerLarge } from "./pipes-sewer.js";
 
-export const svgPipeSewer = `${url}#icon`;
-export const svgPipeSewerLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgPipesSewer` instead.
+ */
+export const svgPipeSewer = svgPipesSewer;
+/**
+ * @deprecated Use `svgPipesSewerLarge` instead.
+ */
+export const svgPipeSewerLarge = svgPipesSewerLarge;

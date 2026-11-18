@@ -1,0 +1,1 @@
+import{t as e}from"./rename-D_fjMtTn.js";var t=`${e}#icon`;`${e}`;export{t};

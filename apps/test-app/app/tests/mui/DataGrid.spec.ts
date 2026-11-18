@@ -7,9 +7,9 @@ import { expect, test } from "#playwright";
 
 test.use({ baseURL: "http://localhost:1800/standalone" });
 
-test("shows edit icon in focused and hovered cells that are editable", async ({
-	mount,
-}) => {
+test("shows edit icon in focused and hovered cells that are editable", {
+	tag: "@visual-2",
+}, async ({ mount }) => {
 	const grid = await mount("mui/DataGrid.showcase#DataTypes");
 	await grid.getByRole("gridcell", { name: "Engineering" }).first().focus();
 	await grid

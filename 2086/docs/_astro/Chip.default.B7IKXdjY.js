@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.CYVzW5Qu.js";import{t}from"./Chip.BwT2pPWY.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Default Chip`});export{r as default};

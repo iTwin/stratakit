@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.d74kszhL.js";import{t}from"./VisuallyHidden.CM3Zp652.js";import{t as n}from"./Skeleton.Cyet37fw.js";var r=e(),i=()=>(0,r.jsxs)(`div`,{style:{display:`flex`,gap:8,alignItems:`center`},children:[(0,r.jsx)(n,{variant:`object`}),(0,r.jsx)(n,{variant:`text`}),(0,r.jsx)(t,{children:`Loading…`})]});export{i as default};

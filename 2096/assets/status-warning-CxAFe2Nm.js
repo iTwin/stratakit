@@ -1,1 +1,0 @@
-import{t as e}from"./status-warning-B5VtDsmT.js";var t=`${e}#icon`;`${e}`;export{t};

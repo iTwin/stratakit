@@ -7,10 +7,10 @@ import Stack from "@mui/material/Stack";
 import visuallyHidden from "@mui/utils/visuallyHidden";
 import { svgPlaceholder } from "@stratakit/icons/placeholder";
 import { Icon } from "@stratakit/mui";
-import ButtonIcons_ from "examples/mui/Button._icons.tsx";
 import ButtonPermutations_ from "examples/mui/Button._permutations.js";
 import ButtonColors from "examples/mui/Button.colors.tsx";
 import ButtonDefault from "examples/mui/Button.default.tsx";
+import ButtonIcon from "examples/mui/Button.icon.tsx";
 import ButtonLoading from "examples/mui/Button.loading.tsx";
 import ButtonSizes from "examples/mui/Button.sizes.tsx";
 import ButtonVariants from "examples/mui/Button.variants.tsx";
@@ -18,16 +18,19 @@ import { createKnob, DefaultPropsProvider } from "~/~utils.tsx";
 
 import type { KnobProps } from "~/~utils.tsx";
 
-export default function ButtonExamples({ disabled }: KnobProps<typeof knobs>) {
+export default function ButtonExamples({
+	disabled,
+	size,
+}: KnobProps<typeof knobs>) {
 	return (
-		<DefaultPropsProvider value={{ MuiButton: { disabled } }}>
+		<DefaultPropsProvider value={{ MuiButton: { disabled, size } }}>
 			<Stack spacing={4} sx={{ alignItems: "start" }}>
 				<ButtonDefault />
 				<ButtonLoading />
 				<ButtonSizes />
 				<ButtonVariants />
 				<ButtonColors />
-				<ButtonIcons_ />
+				<ButtonIcons />
 				<ButtonIconOnly />
 				<ButtonPermutations_ />
 			</Stack>
@@ -37,7 +40,23 @@ export default function ButtonExamples({ disabled }: KnobProps<typeof knobs>) {
 
 export const knobs = {
 	disabled: createKnob({ type: "boolean" }),
+	size: createKnob({ type: "select", options: ["small", "medium", "large"] }),
 };
+
+export function ButtonIcons() {
+	return (
+		<Stack spacing={2} direction="row" sx={{ flexWrap: "wrap" }}>
+			<ButtonIcon />
+			<Button startIcon={<Icon href={svgPlaceholder} />}>Start icon</Button>
+			<Button
+				startIcon={<Icon href={svgPlaceholder} />}
+				endIcon={<Icon href={svgPlaceholder} />}
+			>
+				Both icons
+			</Button>
+		</Stack>
+	);
+}
 
 export function ButtonIconOnly() {
 	return (

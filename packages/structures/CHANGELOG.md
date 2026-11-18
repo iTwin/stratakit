@@ -1,5 +1,22 @@
 # Changelog
 
+## 0.6.4
+
+- [#2057](https://github.com/iTwin/stratakit/pull/2057): Updated the structure of `NavigationRail`, so that `NavigationRail.Root` is the scrollable element. This allows `NavigationRail.Footer` to be rendered as a sibling of `NavigationRail.Content`.
+- [#2056](https://github.com/iTwin/stratakit/pull/2056): Reworked the positioning logic in `NavigationRail.ToggleButton` to make it more resilient.
+- [#2082](https://github.com/iTwin/stratakit/pull/2082): Clamped the `ErrorRegion`'s max-height to the nearest container, created using `container-type: size`.
+- Updated dependencies:
+  - @stratakit/foundations@1.1.1
+
+## 0.6.3
+
+- [#2052](https://github.com/iTwin/stratakit/pull/2052): Updated an internal focus-outline-offset property to not inherit.
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Updated `Dialog`, `DropdownMenu` and `Popover` components to use the `PortalContext` from `@stratakit/foundations` instead of Ariakit's `PortalContext`.
+- [#1964](https://github.com/iTwin/stratakit/pull/1964): Removed Ariakit's [`PortalContext`](https://ariakit.com/reference/portal-context) provider from the `Dialog` and `Popover` components. StrataKit components that were previously relying on this context now use the `PortalContext` from `@stratakit/foundations` instead.
+- Updated dependencies:
+  - @stratakit/bricks@0.6.2
+  - @stratakit/foundations@1.1.0
+
 ## 0.6.2
 
 - [#1943](https://github.com/iTwin/stratakit/pull/1943): Added a max-height on the `DropdownMenu` so it does not extend beyond the viewport.

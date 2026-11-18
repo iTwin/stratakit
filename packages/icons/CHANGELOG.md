@@ -1,5 +1,36 @@
 # Changelog
 
+## 0.4.8
+
+- [#2053](https://github.com/iTwin/stratakit/pull/2053): Added new `model-cloud.svg` icon.
+- [#2021](https://github.com/iTwin/stratakit/pull/2021): Renamed icons in a backwards compatible way. Old icon names are now considered deprecated and will be removed in a future release.
+
+  | Before               | After                |
+  | -------------------- | -------------------- |
+  | collapse-rows-all    | rows-collapse-all    |
+  | collapse-rows        | rows-collapse        |
+  | expand-rows-all      | rows-expand-all      |
+  | expand-rows          | rows-expand          |
+  | portable-water-pipes | pipes-water-portable |
+  | profile              | user-profile         |
+  | sewage-pipes         | pipes-sewage         |
+  | storm-water-pipes    | pipes-water-storm    |
+
+- [#2022](https://github.com/iTwin/stratakit/pull/2022): Added new icons:
+
+  - `correspondence-due.svg`
+  - `correspondence-issues.svg`
+  - `correspondence-trend.svg`
+  - `deliverables-due.svg`
+  - `deliverables-trend.svg`
+  - `forms-overdue.svg`
+  - `forms-trend.svg`
+  - `imodel-problematic-sync.svg`
+  - `imodel-progress.svg`
+  - `imodel-supply-chain.svg`
+  - `standards-checking.svg`
+  - `subsurface-navigation.svg`
+
 ## 0.4.7
 
 - [#1904](https://github.com/iTwin/stratakit/pull/1904): Added `icons-meta.json` file that contains metadata for each SVG icon. Use the icon name (without the `.svg` extension) as the key to access the corresponding metadata object.

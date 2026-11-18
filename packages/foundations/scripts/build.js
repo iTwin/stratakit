@@ -31,7 +31,7 @@ await esbuild.build({
 	define: {
 		__VERSION__: `"${meta.version}"`,
 	},
-	dropLabels: ["DROP", ...(isDev ? ["DEV"] : [])],
+	dropLabels: ["DROP", ...(!isDev ? ["DEV"] : [])],
 	plugins: !isDev ? [reactCompilerPlugin()] : [],
 });
 

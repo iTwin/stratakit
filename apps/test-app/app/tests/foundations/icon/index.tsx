@@ -22,7 +22,11 @@ export default definePage(
 			/>
 		);
 	},
-	{ renderProp: RenderPropTest, _fallback: RuntimeFallbackTest },
+	{
+		renderProp: RenderPropTest,
+		_fallback: RuntimeFallbackTest,
+		_sanitization: SanitizationTest,
+	},
 );
 
 function RenderPropTest() {
@@ -39,5 +43,10 @@ function RenderPropTest() {
 
 function RuntimeFallbackTest() {
 	const datauri = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon" fill="none" viewBox="0 0 16 16"><path fill="currentColor" fill-rule="evenodd" d="M8 2a6 6 0 1 0 0 12A6 6 0 0 0 8 2ZM1 8a7 7 0 1 1 14 0A7 7 0 0 1 1 8Z" clip-rule="evenodd"/></symbol></svg>`;
+	return <Icon href={datauri} />;
+}
+
+function SanitizationTest() {
+	const datauri = `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg"><symbol id="icon" viewBox="0 0 100 100" onclick="alert(1)"><script>alert(1)</script><circle cx="50" cy="50" r="50" fill="currentColor" /><foreignObject><img src="x" onerror="alert(1)" /></foreignObject></symbol></svg>`;
 	return <Icon href={datauri} />;
 }

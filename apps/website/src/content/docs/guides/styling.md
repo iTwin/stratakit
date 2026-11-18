@@ -7,7 +7,7 @@ Start with a [StrataKit component](/components/overview/) when it meets your nee
 
 ## Style component instances
 
-Avoid using [MUI's `sx` prop](https://mui.com/system/getting-started/the-sx-prop/) for application styling. Add an application-owned class with `className` and define its styles in CSS instead:
+Avoid using [MUI's `sx` prop](https://mui.com/system/getting-started/the-sx-prop/) for application styling. The same applies to MUI's other CSS-in-JS escape hatches, such as the [`styled()`](https://mui.com/system/styled/) utility and [`createTheme`](https://mui.com/material-ui/customization/theming/) style overrides. StrataKit owns the theme, and such overrides can conflict with its styles. Add an application-owned class with `className` and define its styles in CSS instead:
 
 ```tsx
 <Button className="app-toolbarButton">Save</Button>

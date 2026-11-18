@@ -32,3 +32,20 @@ StrataKit and MUI styles use CSS cascade layers. Declare your application layer 
 ```
 
 Within your own layer, keep selector specificity low. Prefer single-class selectors, and use [`:where()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:where) when a selector needs extra qualification, so that later styles in the same layer can still override earlier ones without specificity battles.
+
+## Use design tokens
+
+Prefer [StrataKit tokens](/tokens/overview/) over hard-coded values. Tokens keep custom UI visually consistent with StrataKit components and automatically adapt to theming changes:
+
+```css
+@layer app {
+	.app-sidePanel {
+		padding: var(--stratakit-space-200);
+		border-radius: var(--stratakit-radius-md);
+		background-color: var(--stratakit-color-bg-elevation-base);
+		color: var(--stratakit-color-text-neutral-primary);
+	}
+}
+```
+
+Only CSS variables prefixed with `--stratakit-` are public. Variables without this prefix (including `--_*`-prefixed ones) are private implementation details and may change without notice. Also avoid `--stratakit-mui-*` variables, which exist only for MUI compatibility. See the [token naming convention](/tokens/overview/#naming-convention) for details.

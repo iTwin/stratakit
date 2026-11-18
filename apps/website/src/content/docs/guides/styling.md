@@ -13,6 +13,10 @@ Avoid using [MUI's `sx` prop](https://mui.com/system/getting-started/the-sx-prop
 <Button className="app-toolbarButton">Save</Button>
 ```
 
+### Don't target internal class names
+
+Class names applied by StrataKit and MUI, such as `.MuiButton-root` or `.Mui-disabled`, are implementation details. They may change in any release without notice, so selectors that target them are fragile. An application-owned class passed through `className` is the only stable styling hook.
+
 StrataKit and MUI styles use CSS cascade layers. Declare your application layer after them to set override order, rather than increasing selector specificity or using `!important`. See [MDN's guide to cascade layers](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers) for details.
 
 ```css

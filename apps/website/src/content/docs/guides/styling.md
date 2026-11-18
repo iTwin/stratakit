@@ -49,3 +49,17 @@ Prefer [StrataKit tokens](/tokens/overview/) over hard-coded values. Tokens keep
 ```
 
 Only CSS variables prefixed with `--stratakit-` are public. Variables without this prefix (including `--_*`-prefixed ones) are private implementation details and may change without notice. Also avoid `--stratakit-mui-*` variables, which exist only for MUI compatibility. See the [token naming convention](/tokens/overview/#naming-convention) for details.
+
+## Support both color schemes
+
+StrataKit supports light and dark color modes through the [Root](/components/root/) component's `colorScheme` prop. Color tokens update automatically when the color scheme changes, so custom styles that use them adapt for free. Avoid literal color values, which look correct in one mode and break in the other. Always test custom UI in both light and dark modes.
+
+In the rare case where a style must branch on color scheme, key off the `data-color-scheme` attribute that **Root** manages on the `<html>` element:
+
+```css
+@layer app {
+	[data-color-scheme="dark"] .app-heroBanner {
+		background-image: url("/hero-dark.webp");
+	}
+}
+```

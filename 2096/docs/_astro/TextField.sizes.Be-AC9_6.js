@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.D2KxhBwm.js";import{t}from"./Stack.DOJeRdGi.js";import{t as n}from"./TextField.Drp5DO83.js";var r=e(),i=()=>(0,r.jsxs)(t,{spacing:2,direction:`row`,sx:{alignItems:`center`,flexWrap:`wrap`},children:[(0,r.jsx)(n,{size:`small`,label:`Small`}),(0,r.jsx)(n,{size:`medium`,label:`Medium`})]});export{i as default};

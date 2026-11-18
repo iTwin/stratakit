@@ -5165,6 +5165,10 @@
 		"aliases": ["load", "snow", "environmental", "weather", "climate", "roof"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"sorting-ascending": {
+		"aliases": ["arrange", "order", "sequence", "organize", "sort", "sorting"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"sorting-ascending-alpha": {
 		"aliases": [
 			"arrange",
@@ -5189,7 +5193,7 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"sorting-ascending": {
+	"sorting-descending": {
 		"aliases": ["arrange", "order", "sequence", "organize", "sort", "sorting"],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5215,10 +5219,6 @@
 			"sorting",
 			"9-1"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"sorting-descending": {
-		"aliases": ["arrange", "order", "sequence", "organize", "sort", "sorting"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"sorting": {

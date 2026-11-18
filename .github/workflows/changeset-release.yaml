@@ -67,36 +67,17 @@ jobs:
         # reads the `tag` from .changeset/pre.json or defaults to 'latest'
         run: echo "tag=$(jq -r .tag .changeset/pre.json 2>/dev/null || echo latest)" >> "$GITHUB_OUTPUT"
 
-  # This job has access to the npm token, so it must not check out the repo or install deps.
   publish:
     name: Publish to npm
     needs: release
     if: needs.release.outputs.has-packages == 'true'
-    runs-on: ubuntu-latest
     permissions:
       id-token: write # for npm provenance
-
-    steps:
-      - name: Download package tarballs
-        uses: actions/download-artifact@v8
-        with:
-          name: npm-tarballs
-          path: release
-
-      - name: Use Node 22.x
-        uses: actions/setup-node@v7
-        with:
-          node-version: 22.x
-          registry-url: https://registry.npmjs.org/
-
-      - name: Publish package tarballs
-        working-directory: release
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}
-        run: |
-          for tarball in *.tgz; do
-            npm publish "./$tarball" --provenance --access public --tag ${{ needs.release.outputs.npm-tag }}
-          done
+    uses: "./.github/workflows/publish-npm-tarballs.yaml"
+    with:
+      tag: ${{ needs.release.outputs.npm-tag }}
+    secrets:
+      NPMJS_PUBLISH_ITWIN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}
 
   deploy-docs:
     name: Deploy released docs

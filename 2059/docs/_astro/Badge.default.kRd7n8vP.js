@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.BrORoPCf.js";import{t}from"./Badge.BIyoDM-a.js";var n=e(),r=()=>(0,n.jsx)(t,{label:`Pending`});export{r as default};

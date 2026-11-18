@@ -3,7 +3,6 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import InputAdornment from "@mui/material/InputAdornment";
 import OutlinedInput from "@mui/material/OutlinedInput";
@@ -37,7 +36,7 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
-import { MuiDialogPaper } from "./~components/MuiDialog.js";
+import { MuiDialogPaper, MuiDialogTitle } from "./~components/MuiDialog.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiDrawerPaper } from "./~components/MuiDrawer.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
@@ -84,6 +83,7 @@ import {
 import type { ColorSystemOptions } from "@mui/material/styles";
 import type {} from "@mui/x-data-grid/themeAugmentation";
 import type {} from "@mui/x-date-pickers/themeAugmentation";
+import type * as React from "react";
 
 /** Creates a StrataKit theme for MUI. Should be used with MUI's `ThemeProvider`. */
 function createTheme() {
@@ -195,10 +195,7 @@ function createTheme() {
 						warning: <WarningIcon />,
 					},
 					slots: {
-						closeIcon: withExcludedProps(DismissIcon, [
-							"ownerState",
-							"fontSize",
-						]),
+						closeIcon: DismissIcon,
 					},
 					slotProps: {
 						closeButton: {
@@ -415,7 +412,7 @@ function createTheme() {
 			MuiDatePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: withExcludedProps(CalendarIcon, ["ownerState"]),
+						openPickerIcon: CalendarIcon,
 					},
 					slotProps: {
 						openPickerButton: {
@@ -443,7 +440,7 @@ function createTheme() {
 			},
 			MuiDialogTitle: {
 				defaultProps: {
-					component: Role.h2,
+					component: MuiDialogTitle,
 					variant: "body-lg",
 				},
 			},
@@ -718,7 +715,7 @@ function createTheme() {
 			MuiTimePicker: {
 				defaultProps: {
 					slots: {
-						openPickerIcon: withExcludedProps(ClockIcon, ["ownerState"]),
+						openPickerIcon: ClockIcon,
 					},
 					slotProps: {
 						openPickerButton: {
@@ -803,23 +800,6 @@ function createTheme() {
 				],
 			},
 		},
-	});
-}
-
-// ----------------------------------------------------------------------------
-
-/** HOC that "excludes" certain props from being passed to the specified Component. */
-function withExcludedProps<Element, Props extends object>(
-	Component: React.ComponentType<Props & React.RefAttributes<Element>>,
-	excludedProps: readonly string[],
-) {
-	return React.forwardRef<Element, Props>((props, forwardedRef) => {
-		const filteredProps = { ...props };
-		for (const key of excludedProps) {
-			delete filteredProps[key as keyof React.PropsWithoutRef<Props>];
-		}
-
-		return <Component {...(filteredProps as Props)} ref={forwardedRef} />;
 	});
 }
 

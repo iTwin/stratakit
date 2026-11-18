@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/vertex-mesh-control.svg";
+import {
+	svgVertexControlMesh,
+	svgVertexControlMeshLarge,
+} from "./vertex-control-mesh.js";
 
-export const svgVertexMeshControl = `${url}#icon`;
-export const svgVertexMeshControlLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgVertexControlMesh` instead.
+ */
+export const svgVertexMeshControl = svgVertexControlMesh;
+/**
+ * @deprecated Use `svgVertexControlMeshLarge` instead.
+ */
+export const svgVertexMeshControlLarge = svgVertexControlMeshLarge;

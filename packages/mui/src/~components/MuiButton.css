@@ -12,7 +12,7 @@
 }
 
 .MuiButton-root {
-	column-gap: var(--stratakit-space-200);
+	column-gap: var(--stratakit-space-100);
 	min-block-size: var(--_MuiButton-height);
 	min-inline-size: var(--_MuiButton-height);
 	padding-block-start: var(--_MuiButton-padding-block);
@@ -45,7 +45,7 @@
 	}
 
 	&:where(:has(> .MuiButton-icon, :is(.MuiButton-root > .🥝Icon))) {
-		column-gap: var(--stratakit-space-300);
+		column-gap: var(--stratakit-space-200);
 	}
 
 	&:where(.MuiButton-colorSecondary) {

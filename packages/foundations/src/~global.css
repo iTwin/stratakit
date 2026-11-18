@@ -31,3 +31,9 @@ body {
 	background-color: var(--🥝selection-color-bg);
 	color: var(--🥝selection-color-text);
 }
+
+@property --🥝focus-outline-offset {
+	syntax: "<length>";
+	inherits: false;
+	initial-value: 1px;
+}

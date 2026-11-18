@@ -5,6 +5,7 @@
 
 import Tooltip from "@mui/material/Tooltip";
 import { forwardRef } from "@stratakit/internal-utils/react";
+import cx from "classnames";
 import { MuiButtonBase } from "./MuiButtonBase.js";
 
 import type { IconButtonOwnProps } from "@mui/material/IconButton";
@@ -18,7 +19,15 @@ interface MuiIconButtonProps
 
 const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 	(props, forwardedRef) => {
-		const { title, label = title, labelPlacement, variant, ...rest } = props;
+		const {
+			title,
+			label = title,
+			labelPlacement,
+			variant,
+			className,
+			...rest
+		} = props;
+		const forceSecondaryColor = !className?.includes("MuiIconButton-color");
 
 		return (
 			<Tooltip
@@ -28,6 +37,9 @@ const MuiIconButton = forwardRef<"button", MuiIconButtonProps>(
 			>
 				<MuiButtonBase
 					{...rest}
+					className={cx(className, {
+						"MuiIconButton-colorSecondary": forceSecondaryColor,
+					})}
 					data-_sk-variant={variant}
 					ref={forwardedRef}
 				/>

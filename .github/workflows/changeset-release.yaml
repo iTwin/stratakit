@@ -37,6 +37,7 @@ jobs:
         with:
           node-version: 22.x
           cache: "pnpm"
+          registry-url: https://registry.npmjs.org/
 
       - run: pnpm install
 
@@ -51,7 +52,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}
           GIT_AUTHOR_NAME: github-actions[bot]
           GIT_AUTHOR_EMAIL: github-actions[bot]@users.noreply.github.com
           GIT_COMMITTER_NAME: github-actions[bot]

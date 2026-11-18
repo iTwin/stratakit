@@ -63,3 +63,9 @@ In the rare case where a style must branch on color scheme, key off the `data-co
 	}
 }
 ```
+
+## Keep focus outlines visible
+
+StrataKit provides a consistent, accessible focus outline for all interactive elements and actively guards it against removal. Do not fight this: never set `outline: none` (or `outline: 0`) in application styles. People navigating with a keyboard rely on the focus outline to know where they are.
+
+If a custom element needs different focus styling, scope it to [`:focus-visible`](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible) and ensure the replacement indicator is clearly visible in both color schemes.

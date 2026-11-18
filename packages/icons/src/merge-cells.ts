@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/merge-cells.svg";
+import { svgCellsMerge, svgCellsMergeLarge } from "./cells-merge.js";
 
-export const svgMergeCells = `${url}#icon`;
-export const svgMergeCellsLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgCellsMerge` instead.
+ */
+export const svgMergeCells = svgCellsMerge;
+/**
+ * @deprecated Use `svgCellsMergeLarge` instead.
+ */
+export const svgMergeCellsLarge = svgCellsMergeLarge;

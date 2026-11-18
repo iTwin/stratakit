@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/delete-columns.svg";
+import { svgColumnsDelete, svgColumnsDeleteLarge } from "./columns-delete.js";
 
-export const svgDeleteColumns = `${url}#icon`;
-export const svgDeleteColumnsLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgColumnsDelete` instead.
+ */
+export const svgDeleteColumns = svgColumnsDelete;
+/**
+ * @deprecated Use `svgColumnsDeleteLarge` instead.
+ */
+export const svgDeleteColumnsLarge = svgColumnsDeleteLarge;

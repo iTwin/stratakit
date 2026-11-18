@@ -92,7 +92,7 @@ See also: [Handling comments](https://google.github.io/eng-practices/review/deve
 
 ## Patches
 
-Reviewers can help PR authors by providing [patches](<https://en.wikipedia.org/wiki/Patch_(computing)>) to show their proposed change, especially when it spans multiple files or contains multiple suggestions. While reviewers are not expected to solve all problems for the PR author, showing code can be a more efficient way to communicate (though it is not a substitute for explanation).
+Reviewers can help PR authors by providing a [patch](<https://en.wikipedia.org/wiki/Patch_(computing)>) that shows their exact proposed change. While reviewers are not expected to solve all problems for the PR author, showing code can be a more efficient way to communicate, especially when a requested change spans multiple files or contains multiple small details. However, a patch is not a substitute for proper explanation, and PR authors can choose to reject patches.
 
 To create a patch, check out the PR branch locally, make your proposed edits (but leave them unstaged), and run [`git diff`](https://git-scm.com/docs/git-diff). Copy the output to your clipboard or save it to a file.
 
@@ -106,7 +106,7 @@ git diff > review.patch
 
 Share the output in a fenced `diff` [code block](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-and-highlighting-code-blocks) in a PR comment. You may want to enclose long snippets in a `<details>` element or upload a `.patch` file. (Note: do not remove extra newlines from the end of a patch.)
 
-Patches can be applied directly from the clipboard or from `.patch` files, using the [`git apply`](https://git-scm.com/docs/git-apply) command:
+Patches can be applied directly from the clipboard or from `.patch` files, using the [`git apply`](https://git-scm.com/docs/git-apply) command.
 
 ```sh
 # from clipboard (macOS)
@@ -115,6 +115,8 @@ pbpaste | git apply
 # from file
 git apply review.patch
 ```
+
+Third-party extensions such as [GitLens](https://marketplace.visualstudio.com/items?itemName=eamodio.gitlens) might offer built-in flows for copying and applying patches to/from the clipboard.
 
 Review and test the changes before committing them. Consider crediting [co-authors](#co-authors) in your commit message.
 

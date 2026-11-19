@@ -221,9 +221,10 @@ function createTheme() {
 						</li>
 					),
 					slotProps: {
-						root: {
+						root: ({ size }) => ({
 							component: MuiAutocomplete,
-						},
+							size,
+						}),
 						paper: {
 							elevation: 8, // match Menu elevation
 						},

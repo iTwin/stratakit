@@ -64,24 +64,6 @@
 		"aliases": ["create", "insert", "new", "attach", "plus", "+"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"add-region": {
-		"aliases": [
-			"area",
-			"zone",
-			"territory",
-			"boundary",
-			"polygon",
-			"select",
-			"add",
-			"create",
-			"bounding-box",
-			"sector",
-			"division",
-			"volume",
-			"space"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
 	"add-square": {
 		"aliases": ["create", "insert", "new", "attach", "plus", "+"],
 		"symbols": ["icon", "icon-large"]
@@ -756,6 +738,14 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"cells-merge": {
+		"aliases": ["cells", "combine", "join", "merge", "table"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"cells-split": {
+		"aliases": ["cells", "divide", "separate", "split", "table"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"cesium": {
 		"aliases": ["3d", "globe", "map", "world", "visualization"],
 		"symbols": ["icon", "icon-large"]
@@ -797,6 +787,10 @@
 			"segment",
 			"allocate"
 		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"chart-scatter": {
+		"aliases": ["plot", "chart", "data", "statistics", "analysis", "points"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"chart": {
@@ -1060,6 +1054,10 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"column-insert-right": {
+		"aliases": ["add", "data", "new"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"column-manage": {
 		"aliases": [
 			"organize",
@@ -1076,6 +1074,10 @@
 	},
 	"column": {
 		"aliases": ["structure", "support", "pillar", "post", "vertical", "frame"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"columns-delete": {
+		"aliases": ["columns", "delete", "remove", "table"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"commit-changes": {
@@ -1460,34 +1462,6 @@
 			"select",
 			"time"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"define-region-size": {
-		"aliases": [
-			"dimension",
-			"scale",
-			"crop-size",
-			"viewport-bounds",
-			"resize",
-			"frame-dimensions",
-			"area-scale",
-			"boundary-size",
-			"extent",
-			"layout-measure",
-			"footprint-dimensions"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"delete-columns": {
-		"aliases": ["columns", "delete", "remove", "table"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"delete-rows": {
-		"aliases": ["rows", "delete", "remove", "table"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"delete-table": {
-		"aliases": ["delete", "remove", "table"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"delete": {
@@ -2423,6 +2397,23 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"fit-to-view-horizontal": {
+		"aliases": [
+			"adjust",
+			"align",
+			"center",
+			"fit",
+			"frame",
+			"horizontal",
+			"position",
+			"resize",
+			"scale",
+			"stretch",
+			"view",
+			"width"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"fit-to-view": {
 		"aliases": [
 			"adjust",
@@ -2486,6 +2477,21 @@
 			"hide",
 			"reduce",
 			"shrink"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"folder-minimize": {
+		"aliases": [
+			"reduce",
+			"decrease",
+			"lessen",
+			"shrink",
+			"contract",
+			"diminish",
+			"downsize",
+			"curtail",
+			"scale down",
+			"condense"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -2794,16 +2800,16 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"gesture-one-finger-double-tap": {
+	"gesture-double-tap-one-finger": {
 		"aliases": ["touch", "interact", "tap", "press", "click"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"gesture-one-finger-drag": {
+	"gesture-drag-one-finger": {
 		"aliases": ["move", "slide", "swipe", "shift", "relocate"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"gesture-one-finger-tap": {
-		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
+	"gesture-drag-two-finger": {
+		"aliases": ["move", "slide", "swipe", "shift", "interact", "relocate"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-pinch": {
@@ -2818,6 +2824,14 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"gesture-tap-one-finger": {
+		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"gesture-tap-two-finger": {
+		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"gesture-touch": {
 		"aliases": [
 			"interact",
@@ -2828,14 +2842,6 @@
 			"handle",
 			"finger"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"gesture-two-finger-drag": {
-		"aliases": ["move", "slide", "swipe", "shift", "interact", "relocate"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"gesture-two-finger-tap": {
-		"aliases": ["touch", "press", "select", "activate", "interact", "click"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"gesture-two-finger": {
@@ -2910,10 +2916,6 @@
 	},
 	"grading-limit": {
 		"aliases": ["terrain", "boundary", "elevation", "extent", "slope"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"graph-scatter-chart": {
-		"aliases": ["plot", "chart", "data", "statistics", "analysis", "points"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"grid-lines": {
@@ -3077,21 +3079,6 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"imodel-problematic-sync": {
-		"aliases": [
-			"imodel",
-			"digital twin",
-			"sync",
-			"warning",
-			"error",
-			"alert",
-			"cloud",
-			"problem",
-			"failure",
-			"link"
-		],
-		"symbols": ["icon", "icon-large"]
-	},
 	"imodel-progress": {
 		"aliases": [
 			"imodel",
@@ -3118,6 +3105,21 @@
 			"cloud",
 			"flow",
 			"tracking"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"imodel-sync-problematic": {
+		"aliases": [
+			"imodel",
+			"digital twin",
+			"sync",
+			"warning",
+			"error",
+			"alert",
+			"cloud",
+			"problem",
+			"failure",
+			"link"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -3210,6 +3212,10 @@
 	},
 	"issue": {
 		"aliases": ["error", "alert", "support", "bug"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"item": {
+		"aliases": ["object", "shape", "diamond", "element", "entity", "product"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"itwin": {
@@ -3322,6 +3328,21 @@
 			"minus",
 			"revoke",
 			"subtract"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"license": {
+		"aliases": [
+			"contract",
+			"agreement",
+			"permit",
+			"legal",
+			"certificate",
+			"document",
+			"verify",
+			"key",
+			"subscription",
+			"access"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -3636,10 +3657,6 @@
 	},
 	"menu": {
 		"aliases": ["select", "choose", "list", "pick", "options", "hamburger"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"merge-cells": {
-		"aliases": ["cells", "combine", "join", "merge", "table"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"merge": {
@@ -4086,14 +4103,6 @@
 		"aliases": ["mark", "attach", "fix", "secure", "fasten"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"pipe-sewer": {
-		"aliases": ["drain", "waste", "utility", "infrastructure", "disposal"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"pipe-water": {
-		"aliases": ["utility", "plumbing", "infrastructure", "flow", "supply"],
-		"symbols": ["icon", "icon-large"]
-	},
 	"pipes-sewage": {
 		"aliases": [
 			"drainage",
@@ -4105,12 +4114,20 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"pipes-sewer": {
+		"aliases": ["drain", "waste", "utility", "infrastructure", "disposal"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"pipes-water-portable": {
 		"aliases": ["drinking", "pipes", "plumbing", "portable", "supply", "water"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"pipes-water-storm": {
 		"aliases": ["drainage", "pipes", "plumbing", "runoff", "storm", "water"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"pipes-water": {
+		"aliases": ["utility", "plumbing", "infrastructure", "flow", "supply"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"pipes": {
@@ -4492,6 +4509,40 @@
 		"aliases": ["renew", "update", "recreate", "rebuild", "generate"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"region-add": {
+		"aliases": [
+			"area",
+			"zone",
+			"territory",
+			"boundary",
+			"polygon",
+			"select",
+			"add",
+			"create",
+			"bounding-box",
+			"sector",
+			"division",
+			"volume",
+			"space"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"region-define-size": {
+		"aliases": [
+			"dimension",
+			"scale",
+			"crop-size",
+			"viewport-bounds",
+			"resize",
+			"frame-dimensions",
+			"area-scale",
+			"boundary-size",
+			"extent",
+			"layout-measure",
+			"footprint-dimensions"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"rename": {
 		"aliases": ["edit", "change", "modify", "alter", "update", "name", "text"],
 		"symbols": ["icon", "icon-large"]
@@ -4577,6 +4628,10 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"row-insert-below": {
+		"aliases": ["add", "data", "new"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"rows-collapse-all": {
 		"aliases": [
 			"minimize",
@@ -4600,6 +4655,10 @@
 			"fold",
 			"contract"
 		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"rows-delete": {
+		"aliases": ["rows", "delete", "remove", "table"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"rows-expand-all": {
@@ -4626,8 +4685,12 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"rule-delta-create": {
+	"rule-create-delta": {
 		"aliases": ["change", "difference", "geometry", "variation"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"rule-create-slope": {
+		"aliases": ["angle", "constraint", "geometry", "gradient"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"rule-ditch": {
@@ -4645,10 +4708,6 @@
 			"water management",
 			"land planning"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"rule-slope-create": {
-		"aliases": ["angle", "constraint", "geometry", "gradient"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"rule": {
@@ -4887,6 +4946,14 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"skip-backward": {
+		"aliases": ["previous", "rewind", "return", "back", "media", "track"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"skip-forward": {
+		"aliases": ["next", "advance", "forward", "ahead", "media", "track"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"slab-opening": {
 		"aliases": [
 			"hole",
@@ -5098,7 +5165,11 @@
 		"aliases": ["load", "snow", "environmental", "weather", "climate", "roof"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"sort-ascending": {
+	"sorting-ascending": {
+		"aliases": ["arrange", "order", "sequence", "organize", "sort", "sorting"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"sorting-ascending-alpha": {
 		"aliases": [
 			"arrange",
 			"order",
@@ -5110,7 +5181,23 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
-	"sort-descending": {
+	"sorting-ascending-numeric": {
+		"aliases": [
+			"arrange",
+			"order",
+			"sequence",
+			"organize",
+			"sort",
+			"sorting",
+			"1-9"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"sorting-descending": {
+		"aliases": ["arrange", "order", "sequence", "organize", "sort", "sorting"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"sorting-descending-alpha": {
 		"aliases": [
 			"arrange",
 			"order",
@@ -5119,6 +5206,18 @@
 			"sort",
 			"sorting",
 			"z-a"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"sorting-descending-numeric": {
+		"aliases": [
+			"arrange",
+			"order",
+			"sequence",
+			"organize",
+			"sort",
+			"sorting",
+			"9-1"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5155,10 +5254,6 @@
 	},
 	"spin": {
 		"aliases": ["rotate", "turn", "space", "revolve", "twist", "3d", "move"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"split-cells": {
-		"aliases": ["cells", "divide", "separate", "split", "table"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"spring-area": {
@@ -5349,6 +5444,21 @@
 		"aliases": ["aid", "assistance", "customer", "guidance", "help", "service"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"suppress-hide": {
+		"aliases": [
+			"block",
+			"conceal",
+			"exclude",
+			"hidden",
+			"invisible",
+			"manual",
+			"mask",
+			"obscure",
+			"remove",
+			"suppress"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"suppress": {
 		"aliases": ["hide", "remove", "eliminate", "conceal", "gavel"],
 		"symbols": ["icon", "icon-large"]
@@ -5361,8 +5471,8 @@
 		"aliases": ["select", "sample", "choose", "pick", "color"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"table-column-insert-right": {
-		"aliases": ["add", "data", "new"],
+	"table-delete": {
+		"aliases": ["delete", "remove", "table"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"table-of-contents": {
@@ -5376,10 +5486,6 @@
 			"bullets",
 			"toc"
 		],
-		"symbols": ["icon", "icon-large"]
-	},
-	"table-row-insert-below": {
-		"aliases": ["add", "data", "new"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"table-rows-comfortable": {
@@ -5517,8 +5623,38 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"text-medium": {
+		"aliases": [
+			"font size",
+			"average",
+			"regular",
+			"normal",
+			"standard",
+			"middle",
+			"moderate",
+			"default",
+			"content",
+			"paragraph"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"text-rotate-right": {
 		"aliases": ["format", "rotate", "text", "turn"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"text-small": {
+		"aliases": [
+			"font size",
+			"tiny",
+			"diminutive",
+			"petite",
+			"mini",
+			"compact",
+			"fine print",
+			"reduced",
+			"less",
+			"brief"
+		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"text": {
@@ -5587,6 +5723,36 @@
 	},
 	"tree-item-unlocked": {
 		"aliases": ["open", "access", "available", "hierarchy", "node"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"tree-navigate-down": {
+		"aliases": [
+			"branch",
+			"child",
+			"collapse",
+			"delve",
+			"descend",
+			"directory",
+			"downwards",
+			"hierarchy",
+			"level down",
+			"move down"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"tree-navigate-up": {
+		"aliases": [
+			"ascend",
+			"branch",
+			"climb",
+			"directory",
+			"expand",
+			"hierarchy",
+			"level up",
+			"move up",
+			"parent",
+			"upwards"
+		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"truck": {
@@ -5737,6 +5903,10 @@
 		"aliases": ["check", "verify", "confirm", "authenticate", "approve"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"vertex-add-mesh": {
+		"aliases": ["3d", "create", "geometry", "new", "point"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"vertex-add": {
 		"aliases": ["create", "point", "node", "new", "geometry"],
 		"symbols": ["icon", "icon-large"]
@@ -5745,20 +5915,16 @@
 		"aliases": ["bearing", "geometry", "orientation", "point", "vector"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"vertex-control-mesh": {
+		"aliases": ["3d", "edit", "geometry", "manipulate", "point"],
+		"symbols": ["icon", "icon-large"]
+	},
 	"vertex-control-slope": {
 		"aliases": ["angle", "geometry", "gradient", "incline", "point"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-edit": {
 		"aliases": ["modify", "point", "node", "adjust", "geometry"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"vertex-mesh-add": {
-		"aliases": ["3d", "create", "geometry", "new", "point"],
-		"symbols": ["icon", "icon-large"]
-	},
-	"vertex-mesh-control": {
-		"aliases": ["3d", "edit", "geometry", "manipulate", "point"],
 		"symbols": ["icon", "icon-large"]
 	},
 	"vertex-remove": {

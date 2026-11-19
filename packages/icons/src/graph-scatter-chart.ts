@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/graph-scatter-chart.svg";
+import { svgChartScatter, svgChartScatterLarge } from "./chart-scatter.js";
 
-export const svgGraphScatterChart = `${url}#icon`;
-export const svgGraphScatterChartLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgChartScatter` instead.
+ */
+export const svgGraphScatterChart = svgChartScatter;
+/**
+ * @deprecated Use `svgChartScatterLarge` instead.
+ */
+export const svgGraphScatterChartLarge = svgChartScatterLarge;

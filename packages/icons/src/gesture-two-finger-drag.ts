@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/gesture-two-finger-drag.svg";
+import {
+	svgGestureDragTwoFinger,
+	svgGestureDragTwoFingerLarge,
+} from "./gesture-drag-two-finger.js";
 
-export const svgGestureTwoFingerDrag = `${url}#icon`;
-export const svgGestureTwoFingerDragLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgGestureDragTwoFinger` instead.
+ */
+export const svgGestureTwoFingerDrag = svgGestureDragTwoFinger;
+/**
+ * @deprecated Use `svgGestureDragTwoFingerLarge` instead.
+ */
+export const svgGestureTwoFingerDragLarge = svgGestureDragTwoFingerLarge;

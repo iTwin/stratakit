@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/rule-delta-create.svg";
+import {
+	svgRuleCreateDelta,
+	svgRuleCreateDeltaLarge,
+} from "./rule-create-delta.js";
 
-export const svgRuleDeltaCreate = `${url}#icon`;
-export const svgRuleDeltaCreateLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgRuleCreateDelta` instead.
+ */
+export const svgRuleDeltaCreate = svgRuleCreateDelta;
+/**
+ * @deprecated Use `svgRuleCreateDeltaLarge` instead.
+ */
+export const svgRuleDeltaCreateLarge = svgRuleCreateDeltaLarge;

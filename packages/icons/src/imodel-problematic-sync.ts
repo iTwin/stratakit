@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/imodel-problematic-sync.svg";
+import {
+	svgIModelSyncProblematic,
+	svgIModelSyncProblematicLarge,
+} from "./imodel-sync-problematic.js";
 
-export const svgIModelProblematicSync = `${url}#icon`;
-export const svgIModelProblematicSyncLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgIModelSyncProblematic` instead.
+ */
+export const svgIModelProblematicSync = svgIModelSyncProblematic;
+/**
+ * @deprecated Use `svgIModelSyncProblematicLarge` instead.
+ */
+export const svgIModelProblematicSyncLarge = svgIModelSyncProblematicLarge;

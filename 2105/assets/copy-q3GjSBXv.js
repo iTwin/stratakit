@@ -1,0 +1,1 @@
+import{t as e}from"./copy-Cfedl2r7.js";`${e}`;var t=`${e}#icon-large`;export{t};

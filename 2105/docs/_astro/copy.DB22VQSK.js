@@ -1,0 +1,1 @@
+var e=`/2105/docs/_astro/copy.CbsQWmf4.svg`;`${e}`;var t=`${e}#icon-large`;export{t};

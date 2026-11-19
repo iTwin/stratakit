@@ -1,0 +1,1 @@
+import{t as e}from"./error-viQgH0-k.js";var t=`${e}#icon`;`${e}`;export{t};

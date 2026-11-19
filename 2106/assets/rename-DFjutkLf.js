@@ -1,0 +1,1 @@
+import{t as e}from"./rename-COmny0fG.js";var t=`${e}#icon`;`${e}`;export{t};

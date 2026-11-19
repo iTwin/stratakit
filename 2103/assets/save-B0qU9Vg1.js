@@ -1,0 +1,1 @@
+import{t as e}from"./save-Cv1IsERW.js";`${e}`;var t=`${e}#icon-large`;export{t};

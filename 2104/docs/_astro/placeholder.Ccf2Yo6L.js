@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.Cz1-_WUg.js";var t=`${e}#icon`;`${e}`;export{t};

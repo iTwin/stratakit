@@ -1,0 +1,1 @@
+import{t as e}from"./window-popout-BoKiBYW2.js";var t=`${e}#icon`;`${e}`;export{t};

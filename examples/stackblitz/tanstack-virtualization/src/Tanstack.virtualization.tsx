@@ -33,6 +33,8 @@ import { makeData } from "./makeData";
 import type { ReactTable, Row } from "@tanstack/react-table";
 import type { Person } from "./makeData";
 
+import style from "./Tanstack.virtualization.module.css";
+
 const features = tableFeatures({
 	columnSizingFeature,
 	rowSortingFeature,
@@ -48,7 +50,7 @@ const features = tableFeatures({
 
 const columnHelper = createColumnHelper<typeof features, Person>();
 
-const data = makeData(50_000);
+const data = makeData(5_000);
 
 //This is a dynamic row height example, which is more complicated, but allows for a more realistic table.
 //See https://tanstack.com/virtual/v3/docs/examples/react/table for a simpler fixed row height example.
@@ -107,39 +109,21 @@ export default function TanstackVirtualization() {
 		debugTable: true,
 	});
 
-	// All important CSS styles are included as inline styles for this example. This is not recommended for your code.
+	// Static layout styles live in the CSS module; only dynamic values (width, height, transform) are inline.
 	return (
-		<TableContainer
-			ref={setTableContainer}
-			sx={{
-				overflow: "auto", //our scrollable table container
-				position: "relative", //needed for sticky header
-				height: "800px", //should be a fixed height
-			}}
-		>
+		<TableContainer ref={setTableContainer} className={style.tableContainer}>
 			{/* Even though we're still using sematic table tags, we must use CSS grid and flexbox for dynamic row heights */}
-			<Table sx={{ display: "grid" }}>
-				<TableHead
-					sx={{
-						display: "grid",
-						position: "sticky",
-						top: 0,
-						zIndex: 1,
-						bgcolor: "background.paper", //so scrolled rows don't show through
-					}}
-				>
+			<Table className={style.table}>
+				<TableHead className={style.tableHeader}>
 					{table.getHeaderGroups().map((headerGroup) => (
-						<TableRow
-							key={headerGroup.id}
-							sx={{ display: "flex", width: "100%" }}
-						>
+						<TableRow key={headerGroup.id} className={style.headerRow}>
 							{headerGroup.headers.map((header) => {
 								const sortDirection = header.column.getIsSorted();
 								return (
 									<TableCell
 										key={header.id}
-										sx={{
-											display: "flex",
+										className={style.cell}
+										style={{
 											width: header.getSize(),
 										}}
 									>
@@ -193,10 +177,9 @@ function VirtualizedTableBody({
 
 	return (
 		<TableBody
-			sx={{
-				display: "grid",
+			className={style.tableBody}
+			style={{
 				height: `${rowVirtualizer.getTotalSize()}px`, //tells scrollbar how big the table is
-				position: "relative", //needed for absolute positioning of rows
 			}}
 		>
 			{rowVirtualizer.getVirtualItems().map((virtualRow) => {
@@ -231,19 +214,17 @@ function VirtualizedTableRow({
 			ref={(node: HTMLTableRowElement | null) =>
 				rowVirtualizer.measureElement(node)
 			} //measure dynamic row height
+			className={style.virtualizedRow}
 			style={{
-				display: "flex",
-				position: "absolute",
 				transform: `translateY(${virtualRow.start}px)`, //this should always be a `style` as it changes on scroll
-				width: "100%",
 			}}
 		>
 			{row.getAllCells().map((cell) => {
 				return (
 					<TableCell
 						key={cell.id}
-						sx={{
-							display: "flex",
+						className={style.cell}
+						style={{
 							width: cell.column.getSize(),
 						}}
 					>

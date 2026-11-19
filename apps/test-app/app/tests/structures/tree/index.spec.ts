@@ -294,6 +294,26 @@ test.describe("keyboard", () => {
 		await page.keyboard.press("ArrowRight");
 		await expect(toolbar1_1Actions.last()).toBeFocused();
 	});
+
+	test("action tooltip", async ({ page }) => {
+		await page.goto("/tests/tree?actions");
+
+		const treeitem = page.getByRole("treeitem", { name: "Item 1" });
+		const action = page.getByRole("button", { name: "Action 1" });
+		const tooltip = page.getByRole("tooltip", { name: "Action 1" });
+
+		await page.keyboard.press("Tab");
+		await expect(treeitem).toBeFocused();
+		await expect(action).toBeVisible();
+
+		await page.keyboard.press("Tab");
+		await expect(action).toBeFocused();
+		await expect(tooltip).toBeVisible();
+
+		// tooltip should dismiss when pressing Esc
+		await page.keyboard.press("Escape");
+		await expect(tooltip).not.toBeVisible();
+	});
 });
 
 test.describe("@visual", () => {

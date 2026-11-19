@@ -36,7 +36,11 @@ import {
 	MuiChipDeleteIcon,
 	MuiChipLabel,
 } from "./~components/MuiChip.js";
-import { MuiDialogPaper, MuiDialogTitle } from "./~components/MuiDialog.js";
+import {
+	MuiDialogPaper,
+	MuiDialogRootSlot,
+	MuiDialogTitle,
+} from "./~components/MuiDialog.js";
 import { MuiDivider } from "./~components/MuiDivider.js";
 import { MuiDrawerPaper } from "./~components/MuiDrawer.js";
 import { MuiIconButton } from "./~components/MuiIconButton.js";
@@ -425,6 +429,9 @@ function createTheme() {
 				defaultProps: {
 					component: Role.div,
 					disableScrollLock: true, // Handled in MuiDialog.css instead.
+					slots: {
+						root: MuiDialogRootSlot,
+					},
 					slotProps: {
 						paper: {
 							component: MuiDialogPaper,

@@ -1,0 +1,1 @@
+import{pr as e}from"./chevron-down.D3J5lc2P.js";import{t}from"./Button.DSO6UCMJ.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{tone:`accent`,children:`Accent`}),(0,n.jsx)(t,{tone:`neutral`,children:`Neutral`})]});export{r as default};

@@ -3847,7 +3847,7 @@
 		"aliases": ["network", "grid", "structure", "web", "wireframe", "points"],
 		"symbols": ["icon", "icon-large"]
 	},
-	"metadata-managment": {
+	"metadata-management": {
 		"aliases": [
 			"metadata",
 			"management",

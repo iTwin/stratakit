@@ -16,7 +16,7 @@ Added new icons:
 - `beam-t.svg`
 - `beam-z.svg`
 - `insight.svg`
-- `metadata-managment.svg`
+- `metadata-management.svg`
 - `quality-draft.svg`
 - `share-settings.svg`
 - `viewport-capture.svg`

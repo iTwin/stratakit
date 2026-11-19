@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/metadata-managment.svg";
+import url from "../icons/metadata-management.svg";
 
-export const svgMetadataManagment = `${url}#icon`;
-export const svgMetadataManagmentLarge = `${url}#icon-large`;
+export const svgMetadataManagement = `${url}#icon`;
+export const svgMetadataManagementLarge = `${url}#icon-large`;

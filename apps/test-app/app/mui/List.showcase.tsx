@@ -5,6 +5,7 @@
 import Stack from "@mui/material/Stack";
 import ListAvatar from "examples/mui/List.avatar.tsx";
 import ListDefault from "examples/mui/List.default.tsx";
+import ListNavigation from "examples/mui/List.navigation.tsx";
 import ListSecondaryActionOnly from "examples/mui/List.secondary-action-only.tsx";
 import ListSubheader from "examples/mui/List.subheader.tsx";
 
@@ -15,6 +16,7 @@ export default function ListExamples() {
 			<ListAvatar />
 			<ListSubheader />
 			<ListSecondaryActionOnly />
+			<ListNavigation />
 		</Stack>
 	);
 }

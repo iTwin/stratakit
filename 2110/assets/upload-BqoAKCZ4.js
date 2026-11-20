@@ -1,1 +1,0 @@
-import{t as e}from"./upload-CrucLfM9.js";var t=`${e}#icon`;`${e}`;export{t};

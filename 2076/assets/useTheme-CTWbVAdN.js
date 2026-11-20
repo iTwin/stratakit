@@ -1,0 +1,1 @@
+import"./rolldown-runtime-XKyaHtl9.js";import{q as e}from"./jsx-runtime-znEIPLWF.js";import{t}from"./useTheme-7cC6-tCz.js";import{o as n}from"./DefaultPropsProvider-BA5pAiEK.js";e();function r(){let e=t(n);return e.$$material||e}export{r as t};

@@ -1,0 +1,1 @@
+import{t as e}from"./clock-cDtSvRXv.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

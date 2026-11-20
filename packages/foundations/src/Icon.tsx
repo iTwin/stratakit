@@ -26,8 +26,8 @@ interface IconProps extends Omit<BaseProps<"svg">, "children"> {
 	 * By default, the `#icon` symbol is appended if no hash is provided.
 	 *
 	 * Note: The `.svg` must be an external HTTP resource for it to be processed by
-	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from
-	 * non-supported URLs; the fetched SVG content will be sanitized automatically.
+	 * the `<use>` element. As a fallback, JS will be used to `fetch` the SVG from non-supported URLs;
+	 * the fetched SVG content will be sanitized automatically in supported browsers.
 	 */
 	href?: string;
 	/**
@@ -125,21 +125,6 @@ function parseSvg(
 			attributes: ["id", "viewBox"],
 		});
 		template.setHTML(htmlString, { sanitizer });
-	} else {
-		template.innerHTML = htmlString;
-
-		// Basic best-effort sanitization for browsers without the Sanitizer API.
-		for (const element of template.content.querySelectorAll("*")) {
-			// Remove `<script>` and `<foreignObject>` elements
-			if (["script", "foreignObject"].includes(element.localName)) {
-				element.remove();
-				continue;
-			}
-			// Remove `on*` attributes
-			for (const { name } of Array.from(element.attributes)) {
-				if (name.toLowerCase().startsWith("on")) element.removeAttribute(name);
-			}
-		}
 	}
 
 	return template.content;
@@ -194,6 +179,13 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 
 			const abortController = new AbortController();
 			const { signal } = abortController;
+
+			// Throw if the HTML Sanitizer API is not available.
+			if (!ownerDocument?.defaultView?.Sanitizer) {
+				let error = `[Icon] Sanitizer API is not available.`;
+				DEV: error += ` Non-HTTP URLs cannot be safely inlined without sanitization. Please pass a valid HTTP/HTTPS URL to the href prop.`;
+				throw new Error(error);
+			}
 
 			(async () => {
 				try {

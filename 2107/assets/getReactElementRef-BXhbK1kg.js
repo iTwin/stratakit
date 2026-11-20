@@ -1,1 +1,0 @@
-import"./rolldown-runtime-XKyaHtl9.js";import{q as e}from"./jsx-runtime-znEIPLWF.js";e();function t(e){return e?.props?.ref||null}export{t};

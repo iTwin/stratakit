@@ -1,1 +1,0 @@
-import{t as e}from"./status-warning-BNNlk-iH.js";var t=`${e}#icon`;`${e}`;export{t};

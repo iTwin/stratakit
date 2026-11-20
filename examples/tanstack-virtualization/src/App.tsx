@@ -29,7 +29,7 @@ import { makeData } from "./makeData";
 import type { ReactTable, Row, SortDirection } from "@tanstack/react-table";
 import type { Person } from "./makeData";
 
-import style from "./Tanstack.virtualization.module.css";
+import style from "./App.module.css";
 
 const features = tableFeatures({
 	columnSizingFeature,

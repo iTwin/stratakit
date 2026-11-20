@@ -141,7 +141,7 @@ function VirtualizedTableBody({
 	// Important: Keep the row virtualizer in the lowest component possible to avoid unnecessary re-renders.
 	const rowVirtualizer = useVirtualizer<HTMLDivElement, HTMLTableRowElement>({
 		count: rows.length,
-		estimateSize: () => 33, //estimate row height for accurate scrollbar dragging
+		estimateSize: () => 48, //estimate row height for accurate scrollbar dragging
 		getScrollElement: () => scrollElement,
 		//measure dynamic row height, except in firefox because it measures table border height incorrectly
 		measureElement:

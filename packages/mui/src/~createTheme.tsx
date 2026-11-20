@@ -43,6 +43,7 @@ import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiMenuListSlot } from "./~components/MuiMenu.js";
 import { MuiPopoverPaperSlot } from "./~components/MuiPopover.js";
+import { MuiSelectInput } from "./~components/MuiSelect.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import {
@@ -583,9 +584,7 @@ function createTheme() {
 			MuiRating: { defaultProps: { component: Role.span } },
 			MuiSelect: {
 				defaultProps: {
-					// Always use `OutlinedInput`, regardless of the `variant` value. The `variant`
-					// only determines the utility classes used for styling.
-					input: <OutlinedInput />,
+					input: <MuiSelectInput />,
 					IconComponent: CaretsUpDownIcon,
 					variant: "contained" as never,
 				},

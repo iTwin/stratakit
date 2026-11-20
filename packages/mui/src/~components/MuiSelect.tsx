@@ -6,16 +6,19 @@
 import * as React from "react";
 import { useFormControl } from "@mui/material/FormControl";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import { forwardRef } from "@stratakit/internal-utils/react";
 
 import type { OutlinedInputProps } from "@mui/material/OutlinedInput";
 
 // ----------------------------------------------------------------------------
 
-const MuiSelectSizeContext = React.createContext<string | undefined>(undefined);
+const MuiSelectSizeContext = React.createContext<
+	"small" | "medium" | undefined
+>(undefined);
 
 // ----------------------------------------------------------------------------
 
-const MuiSelectInput = React.forwardRef<HTMLDivElement, OutlinedInputProps>(
+const MuiSelectInput = forwardRef<"div", OutlinedInputProps>(
 	(props, forwardedRef) => {
 		const formControl = useFormControl();
 		const size = props.size ?? formControl?.size ?? "medium";

@@ -1,1 +1,0 @@
-import{t as e}from"./rename-BJ7PaxrC.js";var t=`${e}#icon`;`${e}`;export{t};

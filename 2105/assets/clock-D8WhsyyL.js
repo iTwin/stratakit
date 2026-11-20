@@ -1,0 +1,1 @@
+import{t as e}from"./clock-C-GB6gmS.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

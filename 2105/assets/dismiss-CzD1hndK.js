@@ -1,0 +1,1 @@
+import{t as e}from"./dismiss-4IE1XLrg.js";var t=`${e}#icon`;`${e}`;export{t};

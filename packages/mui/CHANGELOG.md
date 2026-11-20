@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.4.0
+
+### Minor Changes
+
+- [#2059](https://github.com/iTwin/stratakit/pull/2059): Reintroduced the `variant` prop of `Select` and `NativeSelect`, supporting the `"contained"` (default) and `"outlined"` values.
+- [#2076](https://github.com/iTwin/stratakit/pull/2076): Removed best-effort fallback sanitization from `Icon`. If a non-HTTP `href` value is passed, it will throw an error in browsers that do not support the Sanitizer API.
+
+### Patch Changes
+
+- [#2107](https://github.com/iTwin/stratakit/pull/2107): Fixed the `Select` component so it forwards the correct `size` to its internal menu.
+- Updated dependencies:
+  - @stratakit/foundations@1.2.0
+  - @stratakit/icons@0.4.10
+
 ## 1.3.2
 
 ### Patch Changes

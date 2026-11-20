@@ -43,6 +43,7 @@ import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiMenuListSlot } from "./~components/MuiMenu.js";
 import { MuiPopoverPaperSlot } from "./~components/MuiPopover.js";
+import { MuiSelectInput } from "./~components/MuiSelect.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import {
@@ -583,13 +584,16 @@ function createTheme() {
 			MuiRating: { defaultProps: { component: Role.span } },
 			MuiSelect: {
 				defaultProps: {
+					input: <MuiSelectInput />,
 					IconComponent: CaretsUpDownIcon,
+					variant: "contained" as never,
 				},
 			},
 			MuiNativeSelect: {
 				defaultProps: {
 					input: <OutlinedInput />,
 					IconComponent: CaretsUpDownIcon,
+					variant: "contained" as never,
 				},
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },

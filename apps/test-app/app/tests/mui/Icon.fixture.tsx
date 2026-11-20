@@ -4,7 +4,7 @@
  *--------------------------------------------------------------------------------------------*/
 import { CheckmarkIcon } from "../../../../../packages/mui/src/Icon.tsx";
 
-import type React from "react";
+import type * as React from "react";
 
 export default function Icon(
 	props: React.ComponentProps<typeof CheckmarkIcon>,

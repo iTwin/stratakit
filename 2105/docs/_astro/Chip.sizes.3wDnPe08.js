@@ -1,0 +1,1 @@
+import{t as e}from"./Chip.B4zF0vq7.js";import{t}from"./Stack.DOqVobvx.js";import{fr as n}from"./chevron-down.NK_43M3C.js";var r=n(),i=()=>(0,r.jsxs)(t,{spacing:2,direction:`row`,sx:{alignItems:`center`,flexWrap:`wrap`},children:[(0,r.jsx)(e,{size:`small`,label:`Small`}),(0,r.jsx)(e,{label:`Medium`})]});export{i as default};

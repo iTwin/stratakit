@@ -1,0 +1,1 @@
+import{t as e}from"./getThemeProps.DY7k0Ick.js";import{Q as t}from"./chevron-down.NK_43M3C.js";function n(n){let{props:r,name:i,defaultTheme:a,themeId:o}=n,s=t(a);return o&&(s=s[o]||s),e({theme:s,name:i,props:r})}export{n as t};

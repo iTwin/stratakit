@@ -1,1 +1,0 @@
-import{t as e}from"./star-BaM8_baS.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

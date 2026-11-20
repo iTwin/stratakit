@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-Cv0fhmud.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./Button.BalTxqmC.js";import{fr as t}from"./chevron-down.Dj_uq8s4.js";var n=t(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(e,{tone:`accent`,children:`Accent`}),(0,n.jsx)(e,{tone:`neutral`,children:`Neutral`})]});export{r as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./rename-B8mv03e2.js";var t=`${e}#icon`;`${e}`;export{t};

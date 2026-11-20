@@ -1,1 +1,0 @@
-import{t as e}from"./upload-CSwompa6.js";var t=`${e}#icon`;`${e}`;export{t};

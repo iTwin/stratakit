@@ -1,0 +1,1 @@
+import{t as e}from"./save-Bhtf-T2Y.js";`${e}`;var t=`${e}#icon-large`;export{t};

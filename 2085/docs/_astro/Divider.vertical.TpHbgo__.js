@@ -1,1 +1,0 @@
-import{t as e}from"./Divider.CAT29AKV.js";import{pr as t}from"./chevron-down.DLEhM1Iq.js";var n={divider:`_divider_etlms_6`},r=t(),i=()=>(0,r.jsx)(e,{className:n.divider,orientation:`vertical`});export{i as default};

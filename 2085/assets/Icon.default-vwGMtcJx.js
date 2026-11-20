@@ -1,1 +1,0 @@
-import{t as e}from"./layers-DfhNNKXD.js";import{t}from"./Icon-XGCmLJhu.js";import{t as n}from"./jsx-runtime-znEIPLWF.js";var r=`${e}#icon`;`${e}`;var i=n(),a=()=>(0,i.jsx)(t,{href:r,alt:`Layers`});export{a as default};

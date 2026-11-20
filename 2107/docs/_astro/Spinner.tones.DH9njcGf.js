@@ -1,1 +1,0 @@
-import{t as e}from"./Spinner.fGlPM_fY.js";import{fr as t}from"./chevron-down.A6mekX8L.js";var n=t(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(e,{tone:`neutral`}),(0,n.jsx)(e,{tone:`accent`})]});export{r as default};

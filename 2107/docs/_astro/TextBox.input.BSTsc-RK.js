@@ -1,0 +1,1 @@
+import{a as e,i as t,t as n}from"./Field.CTX7m9Ry.js";import{t as r}from"./TextBox.RyPwsd1B.js";import{fr as i}from"./chevron-down.BMK9J6hj.js";var a=i(),o=()=>(0,a.jsxs)(e,{children:[(0,a.jsx)(t,{children:`Name`}),(0,a.jsx)(n,{render:(0,a.jsx)(r,{})})]});export{o as default};

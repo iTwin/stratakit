@@ -1,0 +1,1 @@
+import{t as e}from"./Checkbox.DTb2CSFe.js";import{t}from"./FormControlLabel.lXAV9rKO.js";import{fr as n}from"./chevron-down.IBsuqBLf.js";var r=n(),i=()=>(0,r.jsx)(t,{control:(0,r.jsx)(e,{indeterminate:!0}),label:`Indeterminate`});export{i as default};

@@ -2543,9 +2543,22 @@
 					{
 						"name": "Root",
 						"baseProps": ["BaseProps.render"],
-						"props": [],
+						"props": [
+							{
+								"name": "aria-label",
+								"type": "string | undefined",
+								"optional": true,
+								"jsdoc": "Accessible name for the tree control."
+							},
+							{
+								"name": "aria-labelledby",
+								"type": "string | undefined",
+								"optional": true,
+								"jsdoc": "Id of element containing the accessible name of the element."
+							}
+						],
 						"baseElement": "div",
-						"jsdoc": "A tree is a hierarchical list of items that can be expanded or collapsed, or optionally selected.\n\n`Tree.Root` is the root component for a tree. `Tree.Item`s are rendered as a flat list in the `Tree.Root` component to create a hierarchical tree structure.\n\nExample:\n```tsx\n<Tree.Root>\n  <Tree.Item label=\"Parent 1\" aria-level={1} aria-posinset={1} aria-setsize={2} />\n  <Tree.Item label=\"Child 1.1\" aria-level={2} aria-posinset={1} aria-setsize={2} />\n  <Tree.Item label=\"Child 1.2\" aria-level={2} aria-posinset={2} aria-setsize={2} />\n  <Tree.Item label=\"Parent 2\" aria-level={1} aria-posinset={2} aria-setsize={2} />\n  <Tree.Item label=\"Child 2.1\" aria-level={2} aria-posinset={1} aria-setsize={1} />\n</Tree.Root>\n```",
+						"jsdoc": "A tree is a hierarchical list of items that can be expanded or collapsed, or optionally selected.\n\n`Tree.Root` is the root component for a tree. `Tree.Item`s are rendered as a flat list in the `Tree.Root` component to create a hierarchical tree structure.\n\nExample:\n```tsx\n<Tree.Root aria-label=\"Example Tree\">\n  <Tree.Item label=\"Parent 1\" aria-level={1} aria-posinset={1} aria-setsize={2} />\n  <Tree.Item label=\"Child 1.1\" aria-level={2} aria-posinset={1} aria-setsize={2} />\n  <Tree.Item label=\"Child 1.2\" aria-level={2} aria-posinset={2} aria-setsize={2} />\n  <Tree.Item label=\"Parent 2\" aria-level={1} aria-posinset={2} aria-setsize={2} />\n  <Tree.Item label=\"Child 2.1\" aria-level={2} aria-posinset={1} aria-setsize={1} />\n</Tree.Root>\n```",
 						"barrelName": "Tree.Root"
 					},
 					{

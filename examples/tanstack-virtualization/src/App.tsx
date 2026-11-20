@@ -64,7 +64,7 @@ function getAriaSortDirection(sortDirection: SortDirection | false) {
 
 //This is a dynamic row height example, which is more complicated, but allows for a more realistic table.
 //See https://tanstack.com/virtual/v3/docs/examples/react/table for a simpler fixed row height example.
-export default function TanstackVirtualization() {
+export default function App() {
 	const columns = React.useMemo(
 		() =>
 			columnHelper.columns([

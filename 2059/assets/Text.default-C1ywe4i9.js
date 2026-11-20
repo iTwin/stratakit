@@ -1,0 +1,1 @@
+import{t as e}from"./Text-CErI_ChR.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{variant:`body-sm`,children:`Basic text`});export{r as default};

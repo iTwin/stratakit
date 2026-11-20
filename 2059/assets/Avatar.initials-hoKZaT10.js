@@ -1,0 +1,1 @@
+import{t as e}from"./Avatar-CUs_6l24.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{"aria-label":`Kit Stratan`,role:`img`,children:(0,n.jsx)(`abbr`,{"aria-hidden":`true`,children:`K`})});export{r as default};

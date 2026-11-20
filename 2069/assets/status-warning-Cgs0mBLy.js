@@ -1,0 +1,1 @@
+import{t as e}from"./status-warning-DXygmn19.js";var t=`${e}#icon`;`${e}`;export{t};

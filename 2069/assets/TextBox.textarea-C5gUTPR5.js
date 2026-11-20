@@ -1,0 +1,1 @@
+import{a as e,i as t,n,t as r}from"./Field-BdLCfSfo.js";import{a as i}from"./TextBox-Dq0qv8iX.js";import{t as a}from"./jsx-runtime-znEIPLWF.js";var o=a(),s=()=>(0,o.jsxs)(e,{children:[(0,o.jsx)(t,{children:`Bio`}),(0,o.jsx)(n,{children:`Tell us a little about yourself.`}),(0,o.jsx)(r,{render:(0,o.jsx)(i,{})})]});export{s as default};

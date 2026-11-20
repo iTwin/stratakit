@@ -1,1 +1,0 @@
-import{t as e}from"./info-DADs-lrS.js";var t=`${e}#icon`;`${e}`;export{t};

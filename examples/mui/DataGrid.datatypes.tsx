@@ -3,7 +3,8 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import { DataGrid, type GridColDef } from "@mui/x-data-grid";
+import React from "react";
+import { DataGrid, GridCell, type GridColDef } from "@mui/x-data-grid";
 
 interface Asset {
 	assetId: number;
@@ -235,24 +236,54 @@ const columns: GridColDef<Asset>[] = [
 	},
 ];
 
+function useCellWithEditDescription(id: string) {
+	const CellWithEditDescription = React.useMemo(
+		() => (props: React.ComponentProps<typeof GridCell>) => {
+			const isEditable = props.column.editable;
+			const existingDescribedBy = props["aria-describedby"];
+			const descriptionIds =
+				isEditable && existingDescribedBy
+					? `${id} ${existingDescribedBy}`
+					: isEditable
+						? id
+						: existingDescribedBy;
+			return <GridCell aria-describedby={descriptionIds} {...props} />;
+		},
+		[id],
+	);
+
+	return CellWithEditDescription;
+}
+
 export default function DataTypesExample() {
+	const editableDescriptionId = React.useId();
+	const CellWithEditDescription = useCellWithEditDescription(
+		editableDescriptionId,
+	);
+
 	return (
-		<DataGrid
-			label="Device Inventory"
-			showToolbar
-			rows={rows}
-			columns={columns}
-			getRowId={(row) => row.assetId}
-			initialState={{
-				pagination: {
-					paginationModel: {
-						pageSize: 10,
+		<>
+			<span hidden id={editableDescriptionId}>
+				editable
+			</span>
+			<DataGrid
+				label="Device Inventory"
+				showToolbar
+				rows={rows}
+				columns={columns}
+				getRowId={(row) => row.assetId}
+				initialState={{
+					pagination: {
+						paginationModel: {
+							pageSize: 10,
+						},
 					},
-				},
-			}}
-			pageSizeOptions={[5]}
-			checkboxSelection
-			disableRowSelectionOnClick
-		/>
+				}}
+				pageSizeOptions={[5]}
+				checkboxSelection
+				disableRowSelectionOnClick
+				slots={{ cell: CellWithEditDescription }}
+			/>
+		</>
 	);
 }

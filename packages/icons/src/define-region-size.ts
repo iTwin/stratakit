@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/define-region-size.svg";
+import {
+	svgRegionDefineSize,
+	svgRegionDefineSizeLarge,
+} from "./region-define-size.js";
 
-export const svgDefineRegionSize = `${url}#icon`;
-export const svgDefineRegionSizeLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgRegionDefineSize` instead.
+ */
+export const svgDefineRegionSize = svgRegionDefineSize;
+/**
+ * @deprecated Use `svgRegionDefineSizeLarge` instead.
+ */
+export const svgDefineRegionSizeLarge = svgRegionDefineSizeLarge;

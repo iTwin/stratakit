@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/add-region.svg";
+import { svgRegionAdd, svgRegionAddLarge } from "./region-add.js";
 
-export const svgAddRegion = `${url}#icon`;
-export const svgAddRegionLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgRegionAdd` instead.
+ */
+export const svgAddRegion = svgRegionAdd;
+/**
+ * @deprecated Use `svgRegionAddLarge` instead.
+ */
+export const svgAddRegionLarge = svgRegionAddLarge;

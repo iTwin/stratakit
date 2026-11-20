@@ -583,13 +583,18 @@ function createTheme() {
 			MuiRating: { defaultProps: { component: Role.span } },
 			MuiSelect: {
 				defaultProps: {
+					// Always use `OutlinedInput`, regardless of the `variant` value. The `variant`
+					// only determines the utility classes used for styling.
+					input: <OutlinedInput />,
 					IconComponent: CaretsUpDownIcon,
+					variant: "contained" as never,
 				},
 			},
 			MuiNativeSelect: {
 				defaultProps: {
 					input: <OutlinedInput />,
 					IconComponent: CaretsUpDownIcon,
+					variant: "contained" as never,
 				},
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },

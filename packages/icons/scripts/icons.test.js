@@ -15,14 +15,38 @@ const SRC_DIR = fileURLToPath(new URL("../src", import.meta.url));
 
 test("every SVG has a matching TS module", async () => {
 	const modulesWithoutIcons = [
+		"add-region.ts",
 		"collapse-rows-all.ts",
 		"collapse-rows.ts",
+		"define-region-size.ts",
+		"delete-columns.ts",
+		"delete-rows.ts",
+		"delete-table.ts",
 		"expand-rows-all.ts",
 		"expand-rows.ts",
+		"gesture-one-finger-double-tap.ts",
+		"gesture-one-finger-drag.ts",
+		"gesture-one-finger-tap.ts",
+		"gesture-two-finger-drag.ts",
+		"gesture-two-finger-tap.ts",
+		"graph-scatter-chart.ts",
+		"imodel-problematic-sync.ts",
+		"merge-cells.ts",
+		"pipe-sewer.ts",
+		"pipe-water.ts",
 		"portable-water-pipes.ts",
 		"profile.ts",
+		"rule-delta-create.ts",
+		"rule-slope-create.ts",
 		"sewage-pipes.ts",
+		"sort-ascending.ts",
+		"sort-descending.ts",
+		"split-cells.ts",
 		"storm-water-pipes.ts",
+		"table-column-insert-right.ts",
+		"table-row-insert-below.ts",
+		"vertex-mesh-add.ts",
+		"vertex-mesh-control.ts",
 	];
 
 	const actual = (await readdir(SRC_DIR)).filter(

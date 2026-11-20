@@ -163,12 +163,6 @@
 								"defaultValue": "\"aurora\""
 							},
 							{
-								"name": "unstable_htmlSanitizer",
-								"type": "((html: string) => string) | undefined",
-								"optional": true,
-								"jsdoc": "An HTML sanitizer function that will be used across all components wherever DOM elements\nare created from HTML strings.\n\nWhen this prop is not passed, sanitization will be skipped.\n\nExample:\n```tsx\nunstable_htmlSanitizer={DOMPurify.sanitize}\n```"
-							},
-							{
 								"name": "unstable_portalProvider",
 								"type": "ReactElement<unknown, string | JSXElementConstructor<any>> | undefined",
 								"optional": true,

@@ -6,14 +6,9 @@
 import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { getOwnerDocument } from "@stratakit/internal-utils/dom";
-import { useLatestRef, useSafeContext } from "@stratakit/internal-utils/hooks";
 import { forwardRef } from "@stratakit/internal-utils/react";
 import cx from "classnames";
-import {
-	HtmlSanitizerContext,
-	spriteSheetId,
-	useRootNode,
-} from "./Root.internal.js";
+import { spriteSheetId, useRootNode } from "./Root.internal.js";
 
 import type { BaseProps } from "@stratakit/internal-utils/props";
 
@@ -161,7 +156,6 @@ function parseSvg(
  */
 function useNormalizedHrefBase(rawHref: string | undefined) {
 	const generatedId = React.useId();
-	const sanitizeHtml = useLatestRef(useSafeContext(HtmlSanitizerContext));
 	const rootNode = useRootNode();
 	const inlineHref = React.useRef<string | undefined>(undefined);
 
@@ -215,11 +209,8 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 					}
 
 					// Find all `<symbol>` elements from the response.
-					const fetchedSvgString = sanitizeHtml.current(await response.text());
-					const parsedSvgContent = parseSvg(fetchedSvgString, {
-						ownerDocument,
-					});
-					const symbols = parsedSvgContent.querySelectorAll("symbol");
+					const svgContent = parseSvg(await response.text(), { ownerDocument });
+					const symbols = svgContent.querySelectorAll("symbol");
 
 					for (const symbol of symbols) {
 						symbol.id = `${prefix}--${symbol.id}`; // unique ID, using `--` instead as the delimiter for icon-specific symbols.
@@ -238,7 +229,7 @@ function useNormalizedHrefBase(rawHref: string | undefined) {
 
 			return () => abortController.abort(); // Cancel ongoing fetch.
 		},
-		[rawHref, rootNode, sanitizeHtml, generatedId],
+		[rawHref, rootNode, generatedId],
 	);
 
 	return React.useSyncExternalStore(

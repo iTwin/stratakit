@@ -1,1 +1,0 @@
-import{t as e}from"./Badge.ICCp_lce.js";import{fr as t}from"./chevron-down.CdmAdk9e.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Pending`});export{r as default};

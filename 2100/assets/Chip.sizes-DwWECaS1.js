@@ -1,1 +1,0 @@
-import{t as e}from"./Chip-BCjU3YbI.js";import{t}from"./Stack-TKtvJX5Q.js";import{t as n}from"./jsx-runtime-znEIPLWF.js";var r=n(),i=()=>(0,r.jsxs)(t,{spacing:2,direction:`row`,sx:{alignItems:`center`,flexWrap:`wrap`},children:[(0,r.jsx)(e,{size:`small`,label:`Small`}),(0,r.jsx)(e,{label:`Medium`})]});export{i as default};

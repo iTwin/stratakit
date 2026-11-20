@@ -1,1 +1,0 @@
-import{t as e}from"./Badge-sDaEZ3vw.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{badgeContent:`Pending`,variant:`inline`});export{r as default};

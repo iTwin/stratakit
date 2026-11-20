@@ -1,1 +1,0 @@
-import{t as e}from"./Badge.ICCp_lce.js";import{t}from"./status-warning.aDTabMkm.js";import{fr as n}from"./chevron-down.CdmAdk9e.js";var r=n(),i=()=>(0,r.jsx)(e,{label:`Unstable`,tone:`critical`,icon:t});export{i as default};

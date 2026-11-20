@@ -1,1 +1,0 @@
-import{n as e}from"./rolldown-runtime-XKyaHtl9.js";var t=e({default:()=>n}),n=`/2076/assets/placeholder-DKNetxeO.svg`;export{t as n,n as t};

@@ -1,1 +1,0 @@
-import{t as e}from"./Paper-DeqYRxTQ.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n={paper:`_paper_1mq3b_6`},r=t(),i=()=>(0,r.jsx)(e,{className:n.paper,elevation:4});export{i as default};

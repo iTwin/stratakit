@@ -1,1 +1,0 @@
-import{t as e}from"./delete-11-AZgBL.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

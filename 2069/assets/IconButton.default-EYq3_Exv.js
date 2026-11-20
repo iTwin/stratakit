@@ -1,1 +1,0 @@
-import{t as e}from"./IconButton-nxK90xH4.js";import{t}from"./download-_hQnie-9.js";import{t as n}from"./jsx-runtime-znEIPLWF.js";var r=n(),i=()=>(0,r.jsx)(e,{label:`Download`,icon:t});export{i as default};

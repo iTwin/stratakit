@@ -1,1 +1,0 @@
-import{t as e}from"./placeholder.C9GCZEP4.js";var t=`${e}#icon`;`${e}`;export{t};

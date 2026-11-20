@@ -1,1 +1,0 @@
-import{t as e}from"./MenuItem-D87berbz.js";import{t}from"./MenuList-D2e_AyXX.js";import{t as n}from"./jsx-runtime-znEIPLWF.js";var r=n(),i=()=>(0,r.jsxs)(t,{children:[(0,r.jsx)(e,{children:`Profile`}),(0,r.jsx)(e,{children:`My account`}),(0,r.jsx)(e,{children:`Logout`})]});export{i as default};

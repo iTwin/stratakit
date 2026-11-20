@@ -1,1 +1,0 @@
-import{t as e}from"./react.ToWdt3rz.js";import{n as t}from"./example-embed.astro_astro_type_script_index_0_lang.C-6uApFr.js";var n=t(e(),1).createContext({placement:void 0});export{n as t};

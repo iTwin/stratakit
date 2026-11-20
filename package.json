@@ -1,0 +1,22 @@
+{
+	"name": "stratakit-examples",
+	"private": true,
+	"type": "module",
+	"version": "0.0.0",
+	"description": "StrataKit examples (see the main branch for the StrataKit monorepo)",
+	"scripts": {
+		"format": "npm run format:biome && npm run prettier -- --write",
+		"format:biome": "biome format . --write",
+		"lint": "biome check --error-on-warnings --formatter-enabled=false --linter-enabled=true .",
+		"prettier": "prettier . '!**/*.{js,jsx,ts,tsx,cjs,cts,mjs,mts,css,json,jsonc}' --check"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.6.6",
+		"lefthook": "^2.2.1",
+		"prettier": "3.9.10"
+	},
+	"engines": {
+		"node": ">=22.19.0"
+	},
+	"packageManager": "pnpm@11.18.0"
+}

@@ -1,0 +1,57 @@
+name: CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - examples
+  pull_request:
+  merge_group:
+
+jobs:
+  install:
+    name: Install node modules
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11.18.0
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+  check:
+    name: Check code quality
+    needs: install
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11.18.0
+
+      - uses: biomejs/setup-biome@v2
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - run: biome ci --error-on-warnings . --reporter=github
+        if: ${{ !cancelled() }}
+
+      - run: pnpm prettier
+        if: ${{ !cancelled() }}

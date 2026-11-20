@@ -1,0 +1,1 @@
+import{X as e,Z as t}from"./chevron-down.A6mekX8L.js";function n(e){return t(`MuiListItemIcon`,e)}var r=e(`MuiListItemIcon`,[`root`,`alignItemsFlexStart`]);export{r as n,n as t};

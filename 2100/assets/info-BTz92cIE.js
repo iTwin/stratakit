@@ -1,0 +1,1 @@
+import{t as e}from"./info-YAW5L7ba.js";var t=`${e}#icon`;`${e}`;export{t};

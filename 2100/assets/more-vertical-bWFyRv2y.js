@@ -1,0 +1,1 @@
+import{t as e}from"./more-vertical-hRWTOwxk.js";var t=`${e}#icon`;`${e}`;export{t};

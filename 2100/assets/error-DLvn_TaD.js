@@ -1,0 +1,1 @@
+import{t as e}from"./error-JR0wSJaP.js";var t=`${e}#icon`;`${e}`;export{t};

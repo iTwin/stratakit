@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-DVAtGK7_.js";var t=`${e}#icon`;`${e}`;export{t};

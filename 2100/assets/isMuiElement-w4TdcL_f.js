@@ -1,1 +1,0 @@
-import{J as e,Z as t}from"./jsx-runtime-D_cWKu3M.js";var n=t(e(),1);function r(e,t){return n.isValidElement(e)&&t.indexOf(e.type.muiName??e.type?._payload?.value?.muiName)!==-1}export{r as t};

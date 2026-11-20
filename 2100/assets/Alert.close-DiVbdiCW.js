@@ -1,0 +1,1 @@
+import{t as e}from"./Alert-D1e2pwo_.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{severity:`error`,onClose:()=>{},children:`The request was not approved.`});export{r as default};

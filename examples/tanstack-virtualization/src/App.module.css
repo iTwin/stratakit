@@ -1,0 +1,40 @@
+.tableContainer {
+	overflow: auto;
+	position: relative;
+	height: 800px;
+	width: fit-content;
+	max-width: 100%;
+}
+
+.table {
+	display: grid;
+}
+
+.tableHeader {
+	display: grid;
+	position: sticky;
+	top: 0;
+	z-index: 1;
+	background-color: var(--stratakit-color-bg-page-base);
+}
+
+.headerRow {
+	width: 100%;
+	display: flex;
+}
+
+.tableBody {
+	display: grid;
+	position: relative;
+}
+
+.virtualizedRow {
+	width: 100%;
+	display: flex;
+	position: absolute;
+}
+
+.cell {
+	display: flex;
+	align-items: center;
+}

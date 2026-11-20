@@ -86,6 +86,7 @@ Replace legacy StrataKit component usage with their [MUI counterparts](https://m
 | [Checkbox](/reference/bricks/Checkbox)                         | [Checkbox](https://mui.com/material-ui/api/checkbox/)                  |
 | [Chip](/reference/structures/Chip)                             | [Chip](https://mui.com/material-ui/api/chip/)                          |
 | [Description](/reference/bricks/Description)                   | [FormHelperText](https://mui.com/material-ui/api/form-helper-text/)    |
+| [Dialog](/reference/structures/Dialog)                         | [Dialog](https://mui.com/material-ui/api/dialog/)                      |
 | [Divider](/reference/bricks/Divider)                           | [Divider](https://mui.com/material-ui/api/divider/)                    |
 | [Field](/reference/bricks/Field)                               | [FormControl](https://mui.com/material-ui/api/form-control/)           |
 | [IconButton](/reference/bricks/IconButton)                     | [IconButton](https://mui.com/material-ui/api/icon-button/)             |
@@ -226,6 +227,17 @@ Read additional [StrataKit MUI component documentation](/components/overview/) f
 
 - Replace the `Description` component from `@stratakit/bricks` with the `FormHelperText` component from `@mui/material`.
 - Remove [`tone`](/reference/bricks/Description#Description.tone) prop. Instead use [`error`](https://mui.com/material-ui/api/form-helper-text/#form-helper-text-prop-error) prop to display the message in an error state.
+
+### Dialog
+
+- Replace the `Dialog` component from `@stratakit/structures` with the `Dialog` component from `@mui/material`. See [Dialog examples](/components/dialog/) for reference.
+- Change [`Dialog.Root`](/reference/structures/Dialog#Dialog.Root) component to [`Dialog`](https://mui.com/material-ui/api/dialog/) component.
+  - Use `reason` argument of [`onClose`](https://mui.com/material-ui/api/dialog/#dialog-prop-onClose) prop to replace usage of [`hideOnInteractOutside`](/reference/structures/Dialog#Dialog.Root.hideOnInteractOutside) prop.
+- Change [`Dialog.Header`](/reference/structures/Dialog#Dialog.Header), [`Dialog.Heading`](/reference/structures/Dialog#Dialog.Heading) components to [`DialogTitle`](https://mui.com/material-ui/api/dialog-title/) component.
+- Change [`Dialog.CloseButton`](/reference/structures/Dialog#Dialog.CloseButton) component to an `IconButton` in the `actions` prop of [`DialogTitle`](https://mui.com/material-ui/api/dialog-title/) component.
+- Change [`Dialog.Content`](/reference/structures/Dialog#Dialog.Content) component to [`DialogContent`](https://mui.com/material-ui/api/dialog-content/) component.
+- Change [`Dialog.Footer`](/reference/structures/Dialog#Dialog.Footer), [`Dialog.ActionList`](/reference/structures/Dialog#Dialog.ActionList) components to [`DialogActions`](https://mui.com/material-ui/api/dialog-actions/) component.
+- Change [`Dialog.Backdrop`](/reference/structures/Dialog#Dialog.Backdrop) component to `slots.backdrop` of [`Dialog`](https://mui.com/material-ui/api/dialog/) component.
 
 ### Divider
 

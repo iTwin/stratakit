@@ -18,10 +18,11 @@ const MuiTooltipPopper = forwardRef<"div", MuiTooltipPopperProps>(
 	(props, forwardedRef) => {
 		const [popoverElement, setPopoverElement] =
 			React.useState<HTMLDivElement | null>(null);
+		const [popper, setPopper] = React.useState<object | null>(null);
 
 		const popoverProps = usePopoverApi({
 			element: popoverElement,
-			open: props.open,
+			open: !!popper, // use the popper instance which accounts for entry/exit transitions
 		});
 
 		return (
@@ -30,6 +31,7 @@ const MuiTooltipPopper = forwardRef<"div", MuiTooltipPopperProps>(
 				{...props}
 				data-color-scheme="dark" // force dark mode for all descendants
 				style={{ ...popoverProps.style, ...props.style }}
+				popperRef={useMergedRefs(setPopper, props.popperRef)}
 				ref={useMergedRefs(setPopoverElement, forwardedRef)}
 			/>
 		);

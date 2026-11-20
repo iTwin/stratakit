@@ -1,6 +1,8 @@
 # Contributing
 
-Welcome to the contribution guide for StrataKit! In here you will find all the information you need to get started.
+This guide explains how to set up your development environment and contribute code to StrataKit.
+
+We follow our [engineering principles](./notes/principles.md) when working on StrataKit.
 
 ---
 
@@ -165,11 +167,7 @@ Before creating a pull request, make sure your changes address a specific issue.
 
 To enable us to quickly review and accept your pull requests, always create one pull request per issue. Never merge multiple requests in one unless they have the same root cause. Be sure to follow best practices and keep code changes as small as possible. Avoid pure formatting changes or random "fixes" that are unrelated to the linked issue.
 
-### Responding to reviews
-
-- When updating the pull request based on feedback, link to the commit that resolves the comment and allow the reviewer to choose to resolve the comment if they are satisfied.
-- Don't resolve threads started by others.
-- Keep your branch up-to-date with the latest changes from main.
+For a more detailed overview of StrataKit's pull request process, refer to the [PR guidelines](./notes/PR-guidelines.md).
 
 ### Merging
 
@@ -177,8 +175,8 @@ Pull requests should be merged after at least two approvals from core team membe
 
 ### AI use
 
-If artificial intelligence is used to generate any portion of the code, tests, or documentation in your pull request, you are still fully responsible for reviewing the output for correctness and adherence to project standards prior to submission.
+If artificial intelligence (AI) is used to generate any portion of the code, tests, or documentation in your pull request, you are still fully responsible for reviewing the output for correctness and adherence to project standards prior to submission.
 
-AI may not be used to write pull request descriptions, comments, or responses to code reviews. All code review communication must be written directly by the contributor.
+AI must not be used to write pull request descriptions, comments, or responses to code reviews. All code review communication must be written directly by the contributor.
 
-If AI was used, clearly disclose where and how it was used in the pull request description.
+If AI was used, clearly disclose where and how it was used in the pull request description. You can also add a note or [co-author attribution](https://code.visualstudio.com/docs/sourcecontrol/staging-commits#_ai-co-author-attribution) in the commit message to more granularly indicate which specific commits were created with AI assistance.

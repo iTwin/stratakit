@@ -2,8 +2,13 @@
  * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
+import { svgRowsDelete, svgRowsDeleteLarge } from "./rows-delete.js";
 
-import url from "../icons/delete-rows.svg";
-
-export const svgDeleteRows = `${url}#icon`;
-export const svgDeleteRowsLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgRowsDelete` instead.
+ */
+export const svgDeleteRows = svgRowsDelete;
+/**
+ * @deprecated Use `svgRowsDeleteLarge` instead.
+ */
+export const svgDeleteRowsLarge = svgRowsDeleteLarge;

@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/table-row-insert-below.svg";
+import {
+	svgRowInsertBelow,
+	svgRowInsertBelowLarge,
+} from "./row-insert-below.js";
 
-export const svgTableRowInsertBelow = `${url}#icon`;
-export const svgTableRowInsertBelowLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgRowInsertBelow` instead.
+ */
+export const svgTableRowInsertBelow = svgRowInsertBelow;
+/**
+ * @deprecated Use `svgRowInsertBelowLarge` instead.
+ */
+export const svgTableRowInsertBelowLarge = svgRowInsertBelowLarge;

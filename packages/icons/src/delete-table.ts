@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/delete-table.svg";
+import { svgTableDelete, svgTableDeleteLarge } from "./table-delete.js";
 
-export const svgDeleteTable = `${url}#icon`;
-export const svgDeleteTableLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgTableDelete` instead.
+ */
+export const svgDeleteTable = svgTableDelete;
+/**
+ * @deprecated Use `svgTableDeleteLarge` instead.
+ */
+export const svgDeleteTableLarge = svgTableDeleteLarge;

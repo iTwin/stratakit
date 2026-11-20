@@ -1,5 +1,28 @@
 # Changelog
 
+## 0.4.10
+
+### Patch Changes
+
+- [#2100](https://github.com/iTwin/stratakit/pull/2100): Added new icons:
+
+  - `beam-c-double.svg`
+  - `beam-c.svg`
+  - `beam-deck.svg`
+  - `beam-l-double.svg`
+  - `beam-l-schifflerized.svg`
+  - `beam-l.svg`
+  - `beam-pipe.svg`
+  - `beam-rectangle-hollow.svg`
+  - `beam-t-double.svg`
+  - `beam-t.svg`
+  - `beam-z.svg`
+  - `insight.svg`
+  - `metadata-management.svg`
+  - `quality-draft.svg`
+  - `share-settings.svg`
+  - `viewport-capture.svg`
+
 ## 0.4.9
 
 - [#2086](https://github.com/iTwin/stratakit/pull/2086): Renamed icons in a backwards compatible way. Old icon names are now considered **deprecated** and will be removed in a future release.

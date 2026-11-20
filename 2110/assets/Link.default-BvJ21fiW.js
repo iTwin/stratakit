@@ -1,0 +1,1 @@
+import{t as e}from"./Link-DIZrqtj-.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{href:`/`,children:`Home`});export{r as default};

@@ -1,1 +1,0 @@
-import{t as e}from"./user-CbtVM4n1.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

@@ -92,7 +92,11 @@
 					"options": {
 						"paths": {
 							"@ariakit/react": "Use of Ariakit's barrel is discouraged. Import Ariakit components from their individual entrypoints instead.",
-							"@mui/material": "Use of MUI's barrel is discouraged. Import MUI components from their individual entrypoints instead.  See https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-barrel-imports"
+							"@mui/material": "Use of MUI's barrel is discouraged. Import MUI components from their individual entrypoints instead.  See https://mui.com/material-ui/guides/minimizing-bundle-size/#avoid-barrel-imports",
+							"react": {
+								"allowImportNames": ["*"],
+								"message": "Import React as a namespace: `import * as React from \"react\"`."
+							}
 						}
 					}
 				}
@@ -120,6 +124,10 @@
 									"@playwright/test": {
 										"importNames": ["expect", "test"],
 										"message": "Import `expect` and `test` from `#playwright` instead."
+									},
+									"react": {
+										"allowImportNames": ["*"],
+										"message": "Import React as a namespace: `import * as React from \"react\"`."
 									}
 								}
 							}

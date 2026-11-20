@@ -1,1 +1,0 @@
-import{t as e}from"./Skeleton-9Tog8N5o.js";import{t}from"./VisuallyHidden-kx-TmPvL.js";import{t as n}from"./jsx-runtime-znEIPLWF.js";var r=n(),i=()=>(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(e,{variant:`text`}),(0,r.jsx)(t,{children:`Loading…`})]});export{i as default};

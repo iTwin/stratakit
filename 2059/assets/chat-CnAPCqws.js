@@ -1,1 +1,0 @@
-import{t as e}from"./chat-DC9-QF2n.js";var t=`${e}#icon`;`${e}`;export{t};

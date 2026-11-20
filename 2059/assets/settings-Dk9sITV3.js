@@ -1,1 +1,0 @@
-import{n as e}from"./rolldown-runtime-XKyaHtl9.js";var t=e({default:()=>n}),n=`/2059/assets/settings-BSloW3Ma.svg`,r=`${n}#icon`,i=`${n}#icon-large`;export{i as n,t as r,r as t};

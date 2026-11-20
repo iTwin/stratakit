@@ -1,0 +1,1 @@
+import{t as e}from"./copy-C5ev-GVd.js";`${e}`;var t=`${e}#icon-large`;export{t};

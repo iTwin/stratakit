@@ -1,0 +1,1 @@
+import{t as e}from"./Checkbox-DNNNkGFv.js";import{t}from"./FormControlLabel-_F5SO0Fq.js";import{t as n}from"./jsx-runtime-znEIPLWF.js";var r=n(),i=()=>(0,r.jsx)(t,{control:(0,r.jsx)(e,{}),label:`Don't show again`});export{i as default};

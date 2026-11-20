@@ -1,1 +1,0 @@
-import{t as e}from"./copy-CB7lEX21.js";`${e}`;var t=`${e}#icon-large`;export{t};

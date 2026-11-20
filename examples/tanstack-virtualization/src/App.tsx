@@ -5,17 +5,10 @@ import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
-import TableSortLabel from "@mui/material/TableSortLabel";
 import {
 	columnSizingFeature,
 	createColumnHelper,
-	createSortedRowModel,
 	FlexRender,
-	rowSortingFeature,
-	sortFn_alphanumeric,
-	sortFn_basic,
-	sortFn_datetime,
-	sortFn_text,
 	tableFeatures,
 	useTable,
 } from "@tanstack/react-table";
@@ -26,37 +19,18 @@ import {
 } from "@tanstack/react-virtual";
 import { makeData } from "./makeData";
 
-import type { ReactTable, Row, SortDirection } from "@tanstack/react-table";
+import type { ReactTable, Row } from "@tanstack/react-table";
 import type { Person } from "./makeData";
 
 import style from "./App.module.css";
 
 const features = tableFeatures({
 	columnSizingFeature,
-	rowSortingFeature,
-	sortedRowModel: createSortedRowModel(),
-	// Register the built-in sorting functions used by the "auto" sortFn resolution
-	sortFns: {
-		alphanumeric: sortFn_alphanumeric,
-		basic: sortFn_basic,
-		datetime: sortFn_datetime,
-		text: sortFn_text,
-	},
 });
 
 const columnHelper = createColumnHelper<typeof features, Person>();
 
 const data = makeData(5_000);
-
-function getAriaSortDirection(sortDirection: SortDirection | false) {
-	if (sortDirection === "asc") {
-		return "ascending" as const;
-	}
-	if (sortDirection === "desc") {
-		return "descending" as const;
-	}
-	return undefined;
-}
 
 export default function App() {
 	const columns = React.useMemo(
@@ -132,7 +106,6 @@ export default function App() {
 							aria-rowindex={index + 1}
 						>
 							{headerGroup.headers.map((header) => {
-								const sortDirection = header.column.getIsSorted();
 								return (
 									<TableCell
 										key={header.id}
@@ -140,19 +113,8 @@ export default function App() {
 										style={{
 											width: header.getSize(),
 										}}
-										aria-sort={getAriaSortDirection(sortDirection)}
 									>
-										{header.isPlaceholder ? null : header.column.getCanSort() ? (
-											<TableSortLabel
-												active={sortDirection !== false}
-												direction={sortDirection || undefined}
-												onClick={header.column.getToggleSortingHandler()}
-											>
-												<FlexRender header={header} />
-											</TableSortLabel>
-										) : (
-											<FlexRender header={header} />
-										)}
+										<FlexRender header={header} />
 									</TableCell>
 								);
 							})}

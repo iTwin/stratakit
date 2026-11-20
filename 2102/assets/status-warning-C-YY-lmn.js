@@ -1,0 +1,1 @@
+import{t as e}from"./status-warning-UMlSG3O2.js";var t=`${e}#icon`;`${e}`;export{t};

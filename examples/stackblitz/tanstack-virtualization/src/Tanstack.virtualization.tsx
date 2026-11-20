@@ -30,7 +30,7 @@ import {
 } from "@tanstack/react-virtual";
 import { makeData } from "./makeData";
 
-import type { ReactTable, Row } from "@tanstack/react-table";
+import type { ReactTable, Row, SortDirection } from "@tanstack/react-table";
 import type { Person } from "./makeData";
 
 import style from "./Tanstack.virtualization.module.css";
@@ -51,6 +51,16 @@ const features = tableFeatures({
 const columnHelper = createColumnHelper<typeof features, Person>();
 
 const data = makeData(5_000);
+
+function getAriaSortDirection(sortDirection: SortDirection | false) {
+	if (sortDirection === "asc") {
+		return "ascending" as const;
+	}
+	if (sortDirection === "desc") {
+		return "descending" as const;
+	}
+	return undefined;
+}
 
 //This is a dynamic row height example, which is more complicated, but allows for a more realistic table.
 //See https://tanstack.com/virtual/v3/docs/examples/react/table for a simpler fixed row height example.
@@ -113,10 +123,20 @@ export default function TanstackVirtualization() {
 	return (
 		<TableContainer ref={setTableContainer} className={style.tableContainer}>
 			{/* Even though we're still using sematic table tags, we must use CSS grid and flexbox for dynamic row heights */}
-			<Table className={style.table}>
+			<Table
+				className={style.table}
+				aria-label="People"
+				aria-rowcount={
+					table.getRowModel().rows.length + table.getHeaderGroups().length
+				}
+			>
 				<TableHead className={style.tableHeader}>
-					{table.getHeaderGroups().map((headerGroup) => (
-						<TableRow key={headerGroup.id} className={style.headerRow}>
+					{table.getHeaderGroups().map((headerGroup, index) => (
+						<TableRow
+							key={headerGroup.id}
+							className={style.headerRow}
+							aria-rowindex={index + 1}
+						>
 							{headerGroup.headers.map((header) => {
 								const sortDirection = header.column.getIsSorted();
 								return (
@@ -126,6 +146,7 @@ export default function TanstackVirtualization() {
 										style={{
 											width: header.getSize(),
 										}}
+										aria-sort={getAriaSortDirection(sortDirection)}
 									>
 										{header.isPlaceholder ? null : header.column.getCanSort() ? (
 											<TableSortLabel
@@ -218,6 +239,7 @@ function VirtualizedTableRow({
 			style={{
 				transform: `translateY(${virtualRow.start}px)`, //this should always be a `style` as it changes on scroll
 			}}
+			aria-rowindex={virtualRow.index + row.table.getHeaderGroups().length + 1}
 		>
 			{row.getAllCells().map((cell) => {
 				return (

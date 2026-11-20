@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/sort-descending.svg";
+import {
+	svgSortingDescendingAlpha,
+	svgSortingDescendingAlphaLarge,
+} from "./sorting-descending-alpha.js";
 
-export const svgSortDescending = `${url}#icon`;
-export const svgSortDescendingLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgSortingDescendingAlpha` instead.
+ */
+export const svgSortDescending = svgSortingDescendingAlpha;
+/**
+ * @deprecated Use `svgSortingDescendingAlphaLarge` instead.
+ */
+export const svgSortDescendingLarge = svgSortingDescendingAlphaLarge;

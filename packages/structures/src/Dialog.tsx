@@ -79,6 +79,9 @@ interface DialogRootProps
  *   </Dialog.Footer>
  * </Dialog.Root>
  * ```
+ *
+ * @deprecated Use MUI [`Dialog`](https://mui.com/material-ui/api/dialog/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog).
  */
 const DialogRoot = forwardRef<"div", DialogRootProps>((props, forwardedRef) => {
 	useInit();
@@ -198,6 +201,8 @@ interface DialogHeaderProps extends BaseProps {}
  * <Dialog.Header render={<Dialog.Heading />}>Heading</Dialog.Header>
  * ```
  *
+ * @deprecated Use `slotProps.wrapper` of MUI [`DialogTitle`](https://mui.com/material-ui/api/dialog-title/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog).
  */
 const DialogHeader = forwardRef<"div", DialogHeaderProps>(
 	(props, forwardedRef) => {
@@ -223,6 +228,9 @@ interface DialogHeadingProps extends BaseProps<"h1"> {}
  * ```tsx
  * <Dialog.Heading>Heading</Dialog.Heading>
  * ```
+ *
+ * @deprecated Use MUI [`DialogTitle`](https://mui.com/material-ui/api/dialog-title/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog).
  */
 const DialogHeading = forwardRef<"h1", DialogHeadingProps>(
 	(props, forwardedRef) => {
@@ -258,6 +266,9 @@ interface DialogCloseButtonProps
  * ```tsx
  * <Dialog.CloseButton />
  * ```
+ *
+ * @deprecated Use [`actions`](https://stratakit.bentley.com/docs/components/dialog/#header-actions) prop of MUI [`DialogTitle`](https://mui.com/material-ui/api/dialog-title/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog).
  */
 const DialogCloseButton = forwardRef<"button", DialogCloseButtonProps>(
 	(props, forwardedRef) => {
@@ -294,6 +305,9 @@ interface DialogContentProps extends BaseProps {}
  * ```tsx
  * <Dialog.Content>Content</Dialog.Content>
  * ```
+ *
+ * @deprecated Use MUI [`DialogContent`](https://mui.com/material-ui/api/dialog-content/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog).
  */
 const DialogContent = forwardRef<"div", DialogContentProps>(
 	(props, forwardedRef) => {
@@ -327,6 +341,9 @@ interface DialogFooterProps extends BaseProps {}
  *   />
  * </Dialog.Footer>
  * ```
+ *
+ * @deprecated Use MUI [`DialogActions`](https://mui.com/material-ui/api/dialog-actions/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog).
  */
 const DialogFooter = forwardRef<"div", DialogFooterProps>(
 	(props, forwardedRef) => {
@@ -362,6 +379,9 @@ interface DialogActionListProps extends Omit<BaseProps, "children"> {
  *   ]}
  * />
  * ```
+ *
+ * @deprecated Use MUI [`DialogActions`](https://mui.com/material-ui/api/dialog-actions/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog).
  */
 const DialogActionList = forwardRef<"div", DialogActionListProps>(
 	(props, forwardedRef) => {
@@ -394,6 +414,9 @@ interface DialogBackdropProps extends BaseProps {}
  * ```tsx
  * <Dialog.Root modal={true} backdrop={<Dialog.Backdrop />} />
  * ```
+ *
+ * @deprecated Use `slots.backdrop` of MUI [`Dialog`](https://mui.com/material-ui/api/dialog/) component instead.
+ * See [migration guide](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog).
  */
 const DialogBackdrop = forwardRef<"div", DialogBackdropProps>(
 	(props, forwardedRef) => {

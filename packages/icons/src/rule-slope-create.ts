@@ -3,7 +3,16 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/rule-slope-create.svg";
+import {
+	svgRuleCreateSlope,
+	svgRuleCreateSlopeLarge,
+} from "./rule-create-slope.js";
 
-export const svgRuleSlopeCreate = `${url}#icon`;
-export const svgRuleSlopeCreateLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgRuleCreateSlope` instead.
+ */
+export const svgRuleSlopeCreate = svgRuleCreateSlope;
+/**
+ * @deprecated Use `svgRuleCreateSlopeLarge` instead.
+ */
+export const svgRuleSlopeCreateLarge = svgRuleCreateSlopeLarge;

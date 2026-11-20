@@ -3,7 +3,13 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import url from "../icons/vertex-mesh-add.svg";
+import { svgVertexAddMesh, svgVertexAddMeshLarge } from "./vertex-add-mesh.js";
 
-export const svgVertexMeshAdd = `${url}#icon`;
-export const svgVertexMeshAddLarge = `${url}#icon-large`;
+/**
+ * @deprecated Use `svgVertexAddMesh` instead.
+ */
+export const svgVertexMeshAdd = svgVertexAddMesh;
+/**
+ * @deprecated Use `svgVertexAddMeshLarge` instead.
+ */
+export const svgVertexMeshAddLarge = svgVertexAddMeshLarge;

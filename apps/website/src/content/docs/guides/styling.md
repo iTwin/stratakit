@@ -9,12 +9,47 @@ Start with a [StrataKit component](/components/overview/) when it meets your nee
 
 Follow these rules in all custom styling. Skipping them breaks component styling, accessibility, or future upgrades.
 
+### Let components own their appearance
+
+A component owns its appearance: the colors, padding, typography, and everything else inside its border. Styling an instance should mostly be about placing it in your layout. Properties like `margin`, `padding`, and `flex`/`grid` placement are fair game, while heavy overrides of a component's base styles are not. If a component's appearance doesn't fit your needs, reach for its props and variants first, or see the [component customization](/guides/component-customization) guide.
+
 ### Style component instances
 
-Avoid using [MUI's `sx` prop](https://mui.com/system/getting-started/the-sx-prop/) for application styling. The same applies to MUI's other CSS-in-JS escape hatches, such as the [`styled()`](https://mui.com/system/styled/) utility and [`createTheme`](https://mui.com/material-ui/customization/theming/) style overrides. StrataKit owns the theme, and such overrides can conflict with its styles. Add an application-owned class with `className` and define its styles in CSS instead:
+When you do style an instance, avoid using [MUI's `sx` prop](https://mui.com/system/getting-started/the-sx-prop/), even though it's the first thing MUI's documentation reaches for. The same applies to MUI's other CSS-in-JS escape hatches, such as the [`styled()`](https://mui.com/system/styled/) utility and [`createTheme`](https://mui.com/material-ui/customization/theming/) style overrides. There are a few reasons:
+
+- **The overrides lose to StrataKit styles.** `sx` and `styled()` styles are injected into the lower-priority `mui` cascade layer, so any conflicting StrataKit style (in the `stratakit` layer) wins over them.
+- **StrataKit owns the MUI theme.** `sx` and `styled()` resolve values (palette keys, spacing units, breakpoints) through that theme, whose internals are not public API and may change in any release.
+- **It only covers part of your UI.** Only MUI-based components accept `sx`; the rest of StrataKit's components don't. Plain CSS is the one approach that works everywhere.
+- **Runtime CSS-in-JS carries well-known costs.** Generating styles at runtime [hurts performance](https://github.blog/engineering/architecture-optimization/improving-site-performance-by-shipping-more-css/), and the resulting styles are less portable and harder to audit than plain CSS.
+
+Instead, pass an application-owned class through `className`. Every component accepts it and applies it to its root element:
 
 ```tsx
 <Button className="app-toolbarButton">Save</Button>
+```
+
+Define its styles in a regular CSS file that your application owns and imports (your bundler takes care of loading it onto the page):
+
+```css
+/* app.css — imported from your application's entry point */
+.app-toolbarButton {
+	margin-inline-start: auto;
+}
+```
+
+Rather than hand-prefixing global class names like `app-*` (used on this page for brevity), prefer [CSS modules](https://github.com/css-modules/css-modules), which are supported out of the box by Vite, Next.js, and most other bundlers. Class names in a `*.module.css` file are scoped at build time, so they can stay short and can't collide with other styles:
+
+```tsx
+import styles from "./Toolbar.module.css";
+
+<Button className={styles.saveButton}>Save</Button>;
+```
+
+```css
+/* Toolbar.module.css */
+.saveButton {
+	margin-inline-start: auto;
+}
 ```
 
 ### Target your own class names

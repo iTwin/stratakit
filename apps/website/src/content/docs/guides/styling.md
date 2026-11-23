@@ -17,9 +17,13 @@ Avoid using [MUI's `sx` prop](https://mui.com/system/getting-started/the-sx-prop
 <Button className="app-toolbarButton">Save</Button>
 ```
 
-### Don't target internal class names
+### Target your own class names
 
-Class names applied by StrataKit and MUI, such as `.MuiButton-root` or `.Mui-disabled`, are implementation details. They may change in any release without notice, so selectors that target them are fragile. An application-owned class passed through `className` is the only stable styling hook.
+An application-owned class passed through `className` is the most reliable styling hook. It stays stable no matter how StrataKit composes its components under the hood.
+
+Never target class names applied by StrataKit — prefixed with 🥝, such as `.🥝Tree`. They are internal implementation details and may change in any release without notice.
+
+MUI's `Mui`-prefixed class names (such as `.MuiButton-root` or `.Mui-disabled`) are different: they are part of [MUI's public API](https://mui.com/material-ui/customization/how-to-customize/#overriding-styles-with-class-names) and are sometimes the only available hook, for example when styling third-party components built for MUI. Even so, when you control the element, prefer your own class.
 
 ### Don't use private CSS variables
 

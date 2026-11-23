@@ -2,8 +2,6 @@
 
 ## 0.6.5
 
-### Patch Changes
-
 - [#2103](https://github.com/iTwin/stratakit/pull/2103): Deprecated `unstable_Dialog` components in favor of MUI [`Dialog`](https://mui.com/material-ui/api/dialog/). See [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog) for additional details.
 - [#2105](https://github.com/iTwin/stratakit/pull/2105): Fixed an issue where `Tree.ItemAction`'s tooltip could not be dismissed with <kbd>Esc</kbd> when triggered with keyboard focus.
 - [#2094](https://github.com/iTwin/stratakit/pull/2094): Documented that `Tree.Root` accepts `aria-label` prop.

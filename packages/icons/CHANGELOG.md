@@ -2,11 +2,11 @@
 
 ## 1.0.0
 
-### Major Changes
+`@stratakit/icons@1.0.0` is the first stable 1.0 release of the package. This release includes a ⚠️ **breaking change**.
 
-- [#2101](https://github.com/iTwin/stratakit/pull/2101): `@stratakit/icons@1.0.0` is the first stable 1.0 release of the package. This release includes a ⚠️ breaking change due to the removal of previously deprecated icons.
+### Breaking changes
 
-  ⚠️ Removed deprecated icons:
+- [#2101](https://github.com/iTwin/stratakit/pull/2101): ⚠️ Removed previously deprecated icons:
 
   | Removed                       | Replacement                   |
   | ----------------------------- | ----------------------------- |
@@ -43,7 +43,7 @@
   | vertex-mesh-add               | vertex-add-mesh               |
   | vertex-mesh-control           | vertex-control-mesh           |
 
-### Patch Changes
+### Non-breaking changes
 
 - [#2100](https://github.com/iTwin/stratakit/pull/2100): Added new icons:
 

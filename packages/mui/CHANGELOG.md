@@ -4,13 +4,14 @@
 
 ### Minor Changes
 
-- [#2059](https://github.com/iTwin/stratakit/pull/2059): Reintroduced the `variant` prop of `Select` and `NativeSelect`, supporting the `"contained"` (default) and `"outlined"` values.
+- [#2059](https://github.com/iTwin/stratakit/pull/2059): Reintroduced the `variant` prop to `Select` and `NativeSelect`, supporting the `"contained"` (default) and `"outlined"` values.
+  - Changed the default value of the `variant` prop from `"outlined"` to `"contained"`.
 - [#2076](https://github.com/iTwin/stratakit/pull/2076): Removed best-effort fallback sanitization from `Icon`. If a non-HTTP `href` value is passed, it will throw an error in browsers that do not support the Sanitizer API.
 
 ### Patch Changes
 
-- [#2102](https://github.com/iTwin/stratakit/pull/2102): Use generic sort icons in `Table` and `DataGrid` components.
-- [#2107](https://github.com/iTwin/stratakit/pull/2107): Fixed the `Select` component so it forwards the correct `size` to its internal menu.
+- [#2102](https://github.com/iTwin/stratakit/pull/2102): Used generic sort icons in `Table` and `DataGrid` components.
+- [#2107](https://github.com/iTwin/stratakit/pull/2107): Fixed `Select` so it forwards the correct `size` to its internal menu.
 - [#2104](https://github.com/iTwin/stratakit/pull/2104): Fixed `Tooltip` positioning when re-hovering before the exit animation finishes.
 - Updated dependencies:
   - @stratakit/foundations@1.2.0

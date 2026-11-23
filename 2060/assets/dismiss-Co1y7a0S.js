@@ -1,1 +1,0 @@
-import{t as e}from"./dismiss-BmeJmETE.js";var t=`${e}#icon`;`${e}`;export{t};

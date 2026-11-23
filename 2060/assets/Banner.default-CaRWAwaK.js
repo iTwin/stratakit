@@ -1,0 +1,1 @@
+import{s as e}from"./Banner-B37oAfcY.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Update complete`,message:`Your settings have been saved successfully.`});export{r as default};

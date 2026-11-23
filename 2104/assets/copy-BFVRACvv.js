@@ -1,1 +1,0 @@
-import{t as e}from"./copy-Ble9hdTK.js";`${e}`;var t=`${e}#icon-large`;export{t};

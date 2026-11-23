@@ -17,7 +17,11 @@ export default () => {
 	]);
 
 	return (
-		<Tree.Root className={styles.tree} aria-multiselectable="true">
+		<Tree.Root
+			className={styles.tree}
+			aria-label="Engineering Departments"
+			aria-multiselectable="true"
+		>
 			{flatData.map((item) => {
 				const ancestorCollapsed = item.parentIds.some(
 					(parentId) => !expandedItems.includes(parentId),
@@ -69,39 +73,39 @@ interface TreeItem {
 const data = [
 	{
 		id: "item1",
-		label: "Item 1",
+		label: "Software Engineering",
 		children: [
 			{
 				id: "item1.1",
-				label: "Item 1.1",
+				label: "Frontend",
 			},
 			{
 				id: "item1.2",
-				label: "Item 1.2",
+				label: "Backend",
 			},
 		],
 	},
 	{
 		id: "item2",
-		label: "Item 2",
+		label: "Mechanical Engineering",
 		children: [
 			{
 				id: "item2.1",
-				label: "Item 2.1",
+				label: "Design",
 			},
 			{
 				id: "item2.2",
-				label: "Item 2.2",
+				label: "Manufacturing",
 			},
 			{
 				id: "item2.3",
-				label: "Item 2.3",
+				label: "Testing",
 			},
 		],
 	},
 	{
 		id: "item3",
-		label: "Item 3",
+		label: "Civil Engineering",
 	},
 ] as const satisfies TreeItem[];
 

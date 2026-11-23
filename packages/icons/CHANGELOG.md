@@ -1,5 +1,69 @@
 # Changelog
 
+## 1.0.0
+
+`@stratakit/icons@1.0.0` is the first stable 1.0 release of the package. This release includes a ⚠️ **breaking change**.
+
+### Breaking changes
+
+- [#2101](https://github.com/iTwin/stratakit/pull/2101): ⚠️ Removed previously deprecated icons:
+
+  | Removed                       | Replacement                   |
+  | ----------------------------- | ----------------------------- |
+  | add-region                    | region-add                    |
+  | collapse-rows-all             | rows-collapse-all             |
+  | collapse-rows                 | rows-collapse                 |
+  | define-region-size            | region-define-size            |
+  | delete-columns                | columns-delete                |
+  | delete-rows                   | rows-delete                   |
+  | delete-table                  | table-delete                  |
+  | expand-rows-all               | rows-expand-all               |
+  | expand-rows                   | rows-expand                   |
+  | gesture-one-finger-double-tap | gesture-double-tap-one-finger |
+  | gesture-one-finger-drag       | gesture-drag-one-finger       |
+  | gesture-one-finger-tap        | gesture-tap-one-finger        |
+  | gesture-two-finger-drag       | gesture-drag-two-finger       |
+  | gesture-two-finger-tap        | gesture-tap-two-finger        |
+  | graph-scatter-chart           | chart-scatter                 |
+  | imodel-problematic-sync       | imodel-sync-problematic       |
+  | merge-cells                   | cells-merge                   |
+  | pipe-sewer                    | pipes-sewer                   |
+  | pipe-water                    | pipes-water                   |
+  | portable-water-pipes          | pipes-water-portable          |
+  | profile                       | user-profile                  |
+  | rule-delta-create             | rule-create-delta             |
+  | rule-slope-create             | rule-create-slope             |
+  | sewage-pipes                  | pipes-sewage                  |
+  | sort-ascending                | sorting-ascending-alpha       |
+  | sort-descending               | sorting-descending-alpha      |
+  | split-cells                   | cells-split                   |
+  | storm-water-pipes             | pipes-water-storm             |
+  | table-column-insert-right     | column-insert-right           |
+  | table-row-insert-below        | row-insert-below              |
+  | vertex-mesh-add               | vertex-add-mesh               |
+  | vertex-mesh-control           | vertex-control-mesh           |
+
+### Non-breaking changes
+
+- [#2100](https://github.com/iTwin/stratakit/pull/2100): Added new icons:
+
+  - `beam-c-double.svg`
+  - `beam-c.svg`
+  - `beam-deck.svg`
+  - `beam-l-double.svg`
+  - `beam-l-schifflerized.svg`
+  - `beam-l.svg`
+  - `beam-pipe.svg`
+  - `beam-rectangle-hollow.svg`
+  - `beam-t-double.svg`
+  - `beam-t.svg`
+  - `beam-z.svg`
+  - `insight.svg`
+  - `metadata-management.svg`
+  - `quality-draft.svg`
+  - `share-settings.svg`
+  - `viewport-capture.svg`
+
 ## 0.4.9
 
 - [#2086](https://github.com/iTwin/stratakit/pull/2086): Renamed icons in a backwards compatible way. Old icon names are now considered **deprecated** and will be removed in a future release.

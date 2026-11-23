@@ -1,0 +1,1 @@
+import{t as e}from"./save-Bymq5wrd.js";`${e}`;var t=`${e}#icon-large`;export{t};

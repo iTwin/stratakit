@@ -1,1 +1,0 @@
-import{t as e}from"./upload-DKN1dOpu.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,1 +1,0 @@
-import{t as e}from"./delete-rP8Wc-3b.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-XKyaHtl9.js";var t=e({default:()=>n}),n=`/2104/assets/brand-bentley-systems-DMOR13Wg.svg`;export{t as n,n as t};

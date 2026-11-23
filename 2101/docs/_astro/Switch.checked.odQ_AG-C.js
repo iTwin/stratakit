@@ -1,0 +1,1 @@
+import{t as e}from"./FormControlLabel.DpHU7Pcu.js";import{t}from"./Switch.pBKoOTZ-.js";import{fr as n}from"./chevron-down.Ciz4nlXH.js";var r=n(),i=()=>(0,r.jsx)(e,{control:(0,r.jsx)(t,{defaultChecked:!0}),label:`Default checked`});export{i as default};

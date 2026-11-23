@@ -1,1 +1,0 @@
-import{t as e}from"./copy-_Z41V_QB.js";`${e}`;var t=`${e}#icon-large`;export{t};

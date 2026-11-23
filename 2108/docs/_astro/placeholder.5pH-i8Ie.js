@@ -1,0 +1,1 @@
+var e=`/2108/docs/_astro/placeholder.DKNetxeO.svg`;export{e as t};

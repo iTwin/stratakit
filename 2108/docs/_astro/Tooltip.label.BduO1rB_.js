@@ -1,0 +1,1 @@
+import{t as e}from"./Avatar.j4E5P0Lf.js";import{t}from"./Tooltip.BOg2bLB-.js";import{t as n}from"./user.CTMLcg8f.js";import{fr as r,wt as i}from"./chevron-down.C7uJxQoH.js";var a=r(),o=()=>(0,a.jsx)(t,{title:`User profile`,describeChild:!1,children:(0,a.jsx)(`button`,{children:(0,a.jsx)(e,{children:(0,a.jsx)(i,{href:n})})})});export{o as default};

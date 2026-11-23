@@ -1,0 +1,1 @@
+import{t as e}from"./Spinner.D5GqoMxc.js";import{fr as t}from"./chevron-down.C7uJxQoH.js";var n=t(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(e,{tone:`neutral`}),(0,n.jsx)(e,{tone:`accent`})]});export{r as default};

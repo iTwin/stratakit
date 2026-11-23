@@ -1,1 +1,0 @@
-import{t as e}from"./Chip-BCjU3YbI.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Deletable Chip`,onDelete:()=>{console.log(`Deleted`)}});export{r as default};

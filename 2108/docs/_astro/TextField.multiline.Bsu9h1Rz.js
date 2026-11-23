@@ -1,1 +1,0 @@
-import{t as e}from"./TextField.D-566va6.js";import{fr as t}from"./chevron-down.C7uJxQoH.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Description`,multiline:!0});export{r as default};

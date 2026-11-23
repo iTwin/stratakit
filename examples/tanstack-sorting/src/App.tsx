@@ -11,6 +11,7 @@ import {
 	createSortedRowModel,
 	FlexRender,
 	rowSortingFeature,
+	type SortFn,
 	sortFn_alphanumeric,
 	sortFn_basic,
 	sortFn_datetime,
@@ -20,7 +21,6 @@ import {
 } from "@tanstack/react-table";
 import { makeData } from "./makeData";
 
-import type { SortDirection } from "@tanstack/react-table";
 import type { Person } from "./makeData";
 
 const features = tableFeatures({
@@ -38,14 +38,17 @@ const columnHelper = createColumnHelper<typeof features, Person>();
 
 const data = makeData(50);
 
-function getAriaSortDirection(sortDirection: SortDirection | false) {
-	if (sortDirection === "asc") {
-		return "ascending" as const;
-	}
-	if (sortDirection === "desc") {
-		return "descending" as const;
-	}
-	return undefined;
+const formatter = new Intl.DateTimeFormat("en-US", {month:"short", day:"numeric", year:"numeric"});
+
+const sortStatusFn: SortFn<typeof features, Person> = (
+  rowA,
+  rowB,
+  _columnId,
+) => {
+  const statusA = rowA.original.status
+  const statusB = rowB.original.status
+  const statusOrder = ['single', 'complicated', 'relationship']
+  return statusOrder.indexOf(statusA) - statusOrder.indexOf(statusB)
 }
 
 export default function App() {
@@ -57,11 +60,8 @@ export default function App() {
 				}),
 				columnHelper.accessor("firstName", {
 					header: "First Name",
-					cell: (info) => info.getValue(),
 				}),
-				columnHelper.accessor((row) => row.lastName, {
-					id: "lastName",
-					cell: (info) => info.getValue(),
+				columnHelper.accessor("lastName", {
 					header: "Last Name",
 				}),
 				columnHelper.accessor("age", {
@@ -72,13 +72,14 @@ export default function App() {
 				}),
 				columnHelper.accessor("status", {
 					header: "Status",
+					sortFn: sortStatusFn
 				}),
 				columnHelper.accessor("progress", {
 					header: "Profile Progress",
 				}),
 				columnHelper.accessor("birthDate", {
 					header: "Birth Date",
-					cell: (info) => info.getValue().toISOString().slice(0, 10),
+					cell:(info)=> formatter.format(info.getValue()),
 				}),
 			]),
 		[],
@@ -88,7 +89,8 @@ export default function App() {
 		features,
 		columns,
 		data,
-		debugTable: true,
+		enableMultiSort: false,
+		sortDescFirst: false // By default Tanstack has different sort orders for numbers and strings, force all to sort the way way first. See  https://tanstack.com/table/latest/docs/framework/react/guide/sorting#sorting-direction
 	});
 
 	return (
@@ -102,7 +104,7 @@ export default function App() {
 								return (
 									<TableCell
 										key={header.id}
-										aria-sort={getAriaSortDirection(sortDirection)}
+										sortDirection={sortDirection}
 									>
 										{header.isPlaceholder ? null : header.column.getCanSort() ? (
 											<TableSortLabel

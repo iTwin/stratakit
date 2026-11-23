@@ -38,18 +38,22 @@ const columnHelper = createColumnHelper<typeof features, Person>();
 
 const data = makeData(50);
 
-const formatter = new Intl.DateTimeFormat("en-US", {month:"short", day:"numeric", year:"numeric"});
+const formatter = new Intl.DateTimeFormat("en-US", {
+	month: "short",
+	day: "numeric",
+	year: "numeric",
+});
 
 const sortStatusFn: SortFn<typeof features, Person> = (
-  rowA,
-  rowB,
-  _columnId,
+	rowA,
+	rowB,
+	_columnId,
 ) => {
-  const statusA = rowA.original.status
-  const statusB = rowB.original.status
-  const statusOrder = ['single', 'complicated', 'relationship']
-  return statusOrder.indexOf(statusA) - statusOrder.indexOf(statusB)
-}
+	const statusA = rowA.original.status;
+	const statusB = rowB.original.status;
+	const statusOrder = ["single", "complicated", "relationship"];
+	return statusOrder.indexOf(statusA) - statusOrder.indexOf(statusB);
+};
 
 export default function App() {
 	const columns = React.useMemo(
@@ -72,14 +76,14 @@ export default function App() {
 				}),
 				columnHelper.accessor("status", {
 					header: "Status",
-					sortFn: sortStatusFn
+					sortFn: sortStatusFn,
 				}),
 				columnHelper.accessor("progress", {
 					header: "Profile Progress",
 				}),
 				columnHelper.accessor("birthDate", {
 					header: "Birth Date",
-					cell:(info)=> formatter.format(info.getValue()),
+					cell: (info) => formatter.format(info.getValue()),
 				}),
 			]),
 		[],
@@ -90,7 +94,7 @@ export default function App() {
 		columns,
 		data,
 		enableMultiSort: false,
-		sortDescFirst: false // By default Tanstack has different sort orders for numbers and strings, force all to sort the way way first. See  https://tanstack.com/table/latest/docs/framework/react/guide/sorting#sorting-direction
+		sortDescFirst: false, // By default Tanstack has different sort orders for numbers and strings, force all to sort the way way first. See  https://tanstack.com/table/latest/docs/framework/react/guide/sorting#sorting-direction
 	});
 
 	return (
@@ -102,10 +106,7 @@ export default function App() {
 							{headerGroup.headers.map((header) => {
 								const sortDirection = header.column.getIsSorted();
 								return (
-									<TableCell
-										key={header.id}
-										sortDirection={sortDirection}
-									>
+									<TableCell key={header.id} sortDirection={sortDirection}>
 										{header.isPlaceholder ? null : header.column.getCanSort() ? (
 											<TableSortLabel
 												active={sortDirection !== false}

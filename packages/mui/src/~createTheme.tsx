@@ -43,6 +43,7 @@ import { MuiIconButton } from "./~components/MuiIconButton.js";
 import { MuiInputLabel } from "./~components/MuiInputLabel.js";
 import { MuiMenuListSlot } from "./~components/MuiMenu.js";
 import { MuiPopoverPaperSlot } from "./~components/MuiPopover.js";
+import { MuiSelectInput } from "./~components/MuiSelect.js";
 import { MuiSnackbar } from "./~components/MuiSnackbar.js";
 import { MuiStepIcon } from "./~components/MuiStepper.js";
 import {
@@ -73,8 +74,8 @@ import {
 	InfoIcon,
 	MoreVerticalIcon,
 	SearchIcon,
-	SortAscendingIcon,
-	SortDescendingIcon,
+	SortingAscendingIcon,
+	SortingDescendingIcon,
 	SuccessIcon,
 	VisibilityHideIcon,
 	WarningIcon,
@@ -387,12 +388,12 @@ function createTheme() {
 						booleanCellFalseIcon: DismissIcon,
 						booleanCellTrueIcon: CheckmarkIcon,
 						columnMenuIcon: MoreVerticalIcon,
-						columnMenuSortAscendingIcon: SortAscendingIcon,
-						columnMenuSortDescendingIcon: SortDescendingIcon,
+						columnMenuSortAscendingIcon: SortingAscendingIcon,
+						columnMenuSortDescendingIcon: SortingDescendingIcon,
 						columnMenuFilterIcon: FilterIcon,
 						columnMenuHideIcon: VisibilityHideIcon,
-						columnSortedAscendingIcon: SortAscendingIcon,
-						columnSortedDescendingIcon: SortDescendingIcon,
+						columnSortedAscendingIcon: SortingAscendingIcon,
+						columnSortedDescendingIcon: SortingDescendingIcon,
 						columnFilteredIcon: FilterIcon,
 						columnMenuManageColumnsIcon: ColumnManageIcon,
 						columnSelectorIcon: ColumnManageIcon,
@@ -583,13 +584,16 @@ function createTheme() {
 			MuiRating: { defaultProps: { component: Role.span } },
 			MuiSelect: {
 				defaultProps: {
+					input: <MuiSelectInput />,
 					IconComponent: CaretsUpDownIcon,
+					variant: "contained" as never,
 				},
 			},
 			MuiNativeSelect: {
 				defaultProps: {
 					input: <OutlinedInput />,
 					IconComponent: CaretsUpDownIcon,
+					variant: "contained" as never,
 				},
 			},
 			MuiSkeleton: { defaultProps: { component: Role.span } },

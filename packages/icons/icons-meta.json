@@ -401,6 +401,169 @@
 		"aliases": ["collect", "store", "contain", "bag", "shop"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"beam-c-double": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"double",
+			"paired",
+			"c-channel",
+			"channel",
+			"c-section"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-c": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"c-channel",
+			"channel",
+			"c-section"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-deck": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"deck",
+			"decking",
+			"floor",
+			"composite"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-l-double": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"double",
+			"paired",
+			"angle",
+			"angle-iron",
+			"l-section"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-l-schifflerized": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"angle",
+			"l-section",
+			"schiffler",
+			"schifflerized"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-l": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"angle",
+			"angle-iron",
+			"l-section"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-pipe": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"pipe",
+			"tube",
+			"circular",
+			"hollow",
+			"chs"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-rectangle-hollow": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"rectangular",
+			"hollow",
+			"tube",
+			"rhs"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-t-double": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"double",
+			"paired",
+			"tee",
+			"t-section"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-t": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"tee",
+			"t-section"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"beam-z": {
+		"aliases": [
+			"beam",
+			"steel",
+			"structure",
+			"structural",
+			"profile",
+			"cross-section",
+			"z-section",
+			"z-channel",
+			"purlin"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"beam": {
 		"aliases": [
 			"structure",
@@ -3186,6 +3349,19 @@
 		"aliases": ["drainage", "water", "entry", "flow", "pipe"],
 		"symbols": ["icon", "icon-large"]
 	},
+	"insight": {
+		"aliases": [
+			"insight",
+			"lightbulb",
+			"bulb",
+			"idea",
+			"inspiration",
+			"thinking",
+			"concept",
+			"brainstorm"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"inspection": {
 		"aliases": ["check", "review", "examine", "assess", "validate"],
 		"symbols": ["icon", "icon-large"]
@@ -3669,6 +3845,19 @@
 	},
 	"mesh": {
 		"aliases": ["network", "grid", "structure", "web", "wireframe", "points"],
+		"symbols": ["icon", "icon-large"]
+	},
+	"metadata-management": {
+		"aliases": [
+			"metadata",
+			"management",
+			"database",
+			"settings",
+			"storage",
+			"records",
+			"schema",
+			"configuration"
+		],
 		"symbols": ["icon", "icon-large"]
 	},
 	"microphone": {
@@ -4353,6 +4542,19 @@
 		],
 		"symbols": ["icon", "icon-large"]
 	},
+	"quality-draft": {
+		"aliases": [
+			"quality-draft",
+			"quality",
+			"draft",
+			"layers",
+			"stacked",
+			"list",
+			"lines",
+			"document"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
 	"quality-high": {
 		"aliases": [
 			"best",
@@ -4889,6 +5091,19 @@
 			"customize",
 			"setup",
 			"preferences"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"share-settings": {
+		"aliases": [
+			"share-settings",
+			"share",
+			"sharing",
+			"connected",
+			"nodes",
+			"network",
+			"settings",
+			"configuration"
 		],
 		"symbols": ["icon", "icon-large"]
 	},
@@ -5942,6 +6157,19 @@
 			"control point",
 			"survey point",
 			"location"
+		],
+		"symbols": ["icon", "icon-large"]
+	},
+	"viewport-capture": {
+		"aliases": [
+			"viewport-capture",
+			"viewport",
+			"capture",
+			"screenshot",
+			"image",
+			"photo",
+			"frame",
+			"snapshot"
 		],
 		"symbols": ["icon", "icon-large"]
 	},

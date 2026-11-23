@@ -3,7 +3,7 @@
  * See LICENSE.md in the project root for license terms and full copyright notice.
  *--------------------------------------------------------------------------------------------*/
 
-import React from "react";
+import * as React from "react";
 import { DataGrid, GridCell, type GridColDef } from "@mui/x-data-grid";
 
 interface Asset {

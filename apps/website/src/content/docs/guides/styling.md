@@ -49,6 +49,8 @@ In the rare case where a non-color style must branch on color scheme, key off th
 
 StrataKit provides a consistent, accessible focus outline for all interactive elements and actively guards it against removal. Do not fight this: never set `outline: none` (or `outline: 0`) in application styles. People navigating with a keyboard rely on the focus outline to know where they are.
 
+The default outline is drawn slightly outside the element, so a clipping ancestor (e.g. `overflow: hidden`) or a tight container edge can cut it off. When that happens, instead of removing the outline pull it inside the element with a negative [`outline-offset`](https://developer.mozilla.org/en-US/docs/Web/CSS/outline-offset). StrataKit's own styles use this technique in tight layouts such as menus and tabs.
+
 If a custom element needs different focus styling, scope it to [`:focus-visible`](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible) and ensure the replacement indicator is clearly visible in both color schemes.
 
 ### Use logical properties

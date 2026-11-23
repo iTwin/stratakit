@@ -7,7 +7,7 @@ import * as React from "react";
 import { Role } from "@ariakit/react/role";
 import { ThemeProvider } from "@mui/material/styles";
 import { forwardRef } from "@stratakit/internal-utils/react";
-import { SortAscendingIcon, SortDescendingIcon } from "../Icon.js";
+import { SortingAscendingIcon, SortingDescendingIcon } from "../Icon.js";
 
 import type { Theme } from "@mui/material/styles";
 import type { TableSortLabelOwnerState } from "@mui/material/TableSortLabel";
@@ -81,9 +81,9 @@ const MuiTableSortLabelIconSlot = forwardRef<
 	const { ownerState, as: _, ...rest } = props;
 	switch (ownerState?.direction) {
 		case "asc":
-			return <SortAscendingIcon {...rest} ref={forwardRef} />;
+			return <SortingAscendingIcon {...rest} ref={forwardRef} />;
 		case "desc":
-			return <SortDescendingIcon {...rest} ref={forwardRef} />;
+			return <SortingDescendingIcon {...rest} ref={forwardRef} />;
 		default:
 			return null;
 	}

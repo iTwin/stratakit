@@ -25,8 +25,8 @@ import { svgFilter } from "@stratakit/icons/filter";
 import { svgInfo } from "@stratakit/icons/info";
 import { svgMoreVertical } from "@stratakit/icons/more-vertical";
 import { svgSearch } from "@stratakit/icons/search";
-import { svgSortAscending } from "@stratakit/icons/sort-ascending";
-import { svgSortDescending } from "@stratakit/icons/sort-descending";
+import { svgSortingAscending } from "@stratakit/icons/sorting-ascending";
+import { svgSortingDescending } from "@stratakit/icons/sorting-descending";
 import { svgStatusSuccess } from "@stratakit/icons/status-success";
 import { svgVisibilityHide } from "@stratakit/icons/visibility-hide";
 import { svgWarning } from "@stratakit/icons/warning";
@@ -83,8 +83,8 @@ const InfoIcon = createIconComponent(svgInfo);
 const SuccessIcon = createIconComponent(svgStatusSuccess);
 const WarningIcon = createIconComponent(svgWarning);
 
-const SortAscendingIcon = createIconComponent(svgSortAscending);
-const SortDescendingIcon = createIconComponent(svgSortDescending);
+const SortingAscendingIcon = createIconComponent(svgSortingAscending);
+const SortingDescendingIcon = createIconComponent(svgSortingDescending);
 
 const FilterIcon = createIconComponent(svgFilter);
 const MoreVerticalIcon = createIconComponent(svgMoreVertical);
@@ -117,8 +117,8 @@ export {
 	InfoIcon,
 	MoreVerticalIcon,
 	SearchIcon,
-	SortAscendingIcon,
-	SortDescendingIcon,
+	SortingAscendingIcon,
+	SortingDescendingIcon,
 	SuccessIcon,
 	VisibilityHideIcon,
 	WarningIcon,

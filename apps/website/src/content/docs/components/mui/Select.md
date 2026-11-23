@@ -25,12 +25,13 @@ Modifications to `NativeSelect`:
 
 - The `color` and `disableInjectingGlobalStyles` props are not supported via `InputBase`.
 - The `disableUnderline` prop is not supported via `Input`. Changed the default value to `true`.
-- The `variant` prop is not supported.
+- The `variant` prop supports the `"contained"` (default) and `"outlined"` values. MUI's `"standard"` and `"filled"` variants are not supported.
 - Restyled using StrataKit's visual language.
 
 Modifications to `Select`:
 
-- The `color`, `disableInjectingGlobalStyles`, `disableUnderline`, `IconComponent`, `notched` and `variant` props are not supported.
+- The `color`, `disableInjectingGlobalStyles`, `disableUnderline`, `IconComponent`, and `notched` props are not supported.
+- The `variant` prop supports the `"contained"` (default) and `"outlined"` values. MUI's `"standard"` and `"filled"` variants are not supported.
 - Restyled using StrataKit's visual language.
 - The active option implementation and styling differ from the default approach. A checkmark icon has been added using a pseudo-element.
 - Includes full `forced-colors` support.
@@ -38,6 +39,13 @@ Modifications to `Select`:
 - The default [`container`](https://mui.com/material-ui/api/popover/#popover-prop-container) of the [`MenuProps`](https://mui.com/material-ui/api/select/#select-prop-MenuProps) now resolves from StrataKit's portal context, [root portal container](/components/root/#portal-container).
 
 ## Examples
+
+### Variants
+
+- **Contained:** Default select styling. If you're not sure what variant to use, use this one.
+- **Outlined:** Reduce the visual weight with a transparent background. Use for secondary controls or to unclutter the UI.
+
+::example{src="mui/Select.variants"}
 
 ### Icon
 

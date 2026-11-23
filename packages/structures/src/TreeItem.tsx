@@ -548,9 +548,10 @@ const TreeItemActions = React.memo(
 			<ListItem.Decoration
 				{...props}
 				onClick={useEventHandlers(props.onClick, (e) => e.stopPropagation())}
-				onKeyDown={useEventHandlers(props.onKeyDown, (e) =>
-					e.stopPropagation(),
-				)}
+				onKeyDown={useEventHandlers(props.onKeyDown, (e) => {
+					if (e.key === "Escape") return; // let Esc propagate so that tooltips can be dismissed
+					e.stopPropagation(); // prevent firing keyboard handlers on parent tree when interacting with actions
+				})}
 				className={cx("🥝TreeItemActionsContainer", props.className)}
 				ref={forwardedRef}
 				render={<Toolbar focusLoop={false} />}

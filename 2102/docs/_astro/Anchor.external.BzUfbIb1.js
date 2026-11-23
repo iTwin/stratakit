@@ -1,1 +1,0 @@
-import{n as e,r as t,t as n}from"./Anchor.Bkywaw4M.js";import{fr as r}from"./chevron-down.B7zEPWq6.js";var i=r(),a=()=>(0,i.jsxs)(e,{href:`https://youtu.be/dQw4w9WgXcQ`,target:`_blank`,children:[(0,i.jsx)(t,{children:`Rick Astley’s biggest hit`}),(0,i.jsx)(n,{alt:`opens in new tab`})]});export{a as default};

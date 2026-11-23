@@ -1,1 +1,0 @@
-import{n as e,t}from"./FormLabel.Cy36pu_t.js";import{t as n}from"./Rating.VGLh9LvF.js";import{fr as r}from"./chevron-down.B7zEPWq6.js";var i=r(),a=()=>(0,i.jsxs)(e,{render:(0,i.jsx)(`fieldset`,{}),role:`radiogroup`,children:[(0,i.jsx)(t,{render:(0,i.jsx)(`legend`,{}),children:`Product rating`}),(0,i.jsx)(n,{name:`product-rating`,defaultValue:2})]});export{a as default};

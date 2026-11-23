@@ -80,21 +80,17 @@ Prefer [StrataKit tokens](/tokens/overview/) over hard-coded values. Tokens keep
 }
 ```
 
-### Use cascade layers
+### Keep selector specificity low
 
-StrataKit and MUI styles use CSS cascade layers. Declare your application layer after them to set override order, rather than increasing selector specificity or using `!important`. See [MDN's guide to cascade layers](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers) for details.
+StrataKit and MUI declare their styles in [CSS cascade layers](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers), and unlayered styles take precedence over layered ones. Plain application CSS therefore already overrides component styles. There should never be a need to escalate specificity or reach for `!important` when overriding StrataKit styling.
+
+Keep your own selectors simple too. Prefer single-class selectors, and use [`:where()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:where) when a selector needs extra qualification, so that later styles can still override earlier ones without specificity battles.
+
+If your application organizes its styles in cascade layers of its own, declare the layer order up front so your layers come after StrataKit's:
 
 ```css
 @layer reset, mui, stratakit, app;
-
-@layer app {
-	.app-toolbarButton {
-		border-radius: var(--stratakit-radius-md);
-	}
-}
 ```
-
-Within your own layer, keep selector specificity low. Prefer single-class selectors, and use [`:where()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:where) when a selector needs extra qualification, so that later styles in the same layer can still override earlier ones without specificity battles.
 
 ### Support `forced-colors` mode
 

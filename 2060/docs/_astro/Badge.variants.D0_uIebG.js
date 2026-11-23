@@ -1,1 +1,0 @@
-import{pr as e}from"./chevron-down.wqBhlhbL.js";import{t}from"./Badge.CX3z5s9b.js";var n=e(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(t,{variant:`solid`,label:`Solid`}),(0,n.jsx)(t,{variant:`muted`,label:`Muted`}),(0,n.jsx)(t,{variant:`outline`,label:`Outline`})]});export{r as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./Button.BBdPbMeT.js";import{fr as t}from"./chevron-down.C3kc-pck.js";var n=t(),r=()=>(0,n.jsx)(e,{loading:!0,children:`Create new`});export{r as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./Badge.DwOW3UML.js";import{fr as t}from"./chevron-down.C3kc-pck.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Pending`});export{r as default};

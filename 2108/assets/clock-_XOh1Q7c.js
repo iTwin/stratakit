@@ -1,0 +1,1 @@
+import{t as e}from"./clock-uMAg26l2.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

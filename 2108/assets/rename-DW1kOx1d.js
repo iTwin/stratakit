@@ -1,0 +1,1 @@
+import{t as e}from"./rename-DIYkWg3m.js";var t=`${e}#icon`;`${e}`;export{t};

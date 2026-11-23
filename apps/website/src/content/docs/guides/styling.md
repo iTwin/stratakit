@@ -29,7 +29,15 @@ Only CSS variables prefixed with `--stratakit-` are public. Variables without th
 
 StrataKit supports light and dark color modes through the [Root](/components/root/) component's `colorScheme` prop. Color tokens update automatically when the color scheme changes, so custom styles that use them adapt for free. Avoid literal color values, which look correct in one mode and break in the other. Always test custom UI in both light and dark modes.
 
-In the rare case where a style must branch on color scheme, key off the `data-color-scheme` attribute that **Root** manages on the `<html>` element:
+For a custom color that no token covers, use [`light-dark()`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/light-dark). It resolves against the CSS `color-scheme` property, which StrataKit keeps in sync with the active color scheme:
+
+```css
+.app-heroBanner {
+	border-color: light-dark(oklch(32% 0.1 250), oklch(85% 0.08 250));
+}
+```
+
+In the rare case where a non-color style must branch on color scheme, key off the `data-color-scheme` attribute that **Root** manages on the `<html>` element:
 
 ```css
 [data-color-scheme="dark"] .app-heroBanner {

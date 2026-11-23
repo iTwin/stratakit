@@ -1,0 +1,1 @@
+import{t as e}from"./status-draft-6C8g2Ldb.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

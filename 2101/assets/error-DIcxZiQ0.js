@@ -1,0 +1,1 @@
+import{t as e}from"./error-Chz86CQr.js";var t=`${e}#icon`;`${e}`;export{t};

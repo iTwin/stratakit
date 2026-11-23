@@ -1,0 +1,1 @@
+import{t as e}from"./script-cfLLf78s.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

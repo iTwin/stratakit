@@ -1,0 +1,1 @@
+import{r as e}from"./rolldown-runtime-XKyaHtl9.js";import{B as t,E as n}from"./DefaultPropsProvider-BA5pAiEK.js";import{q as r}from"./jsx-runtime-znEIPLWF.js";var i=e(r(),1);function a(e){return Object.keys(e).length===0}function o(e=null){let n=i.useContext(t);return!n||a(n)?e:n}var s=n();function c(e=s){return o(e)}export{o as n,c as t};

@@ -88,16 +88,6 @@ The default outline is drawn slightly outside the element, so a clipping ancesto
 
 If a custom element needs different focus styling, scope it to [`:focus-visible`](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible) and ensure the replacement indicator is clearly visible in both color schemes.
 
-## Use logical properties
-
-Write custom styles with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). `margin-inline-start` instead of `margin-left`, `padding-block` instead of `padding-top`/`padding-bottom`, and so on. StrataKit's own styles are written this way, keeping layouts correct in right-to-left and vertical writing modes:
-
-```css
-.app-toolbarButton {
-	margin-inline-start: var(--stratakit-space-100);
-}
-```
-
 ## Best practices
 
 These practices aren't strictly required, but they make custom styles more resilient and inclusive.
@@ -112,6 +102,16 @@ Prefer [StrataKit tokens](/tokens/overview/) over hard-coded values. Tokens keep
 	border-radius: var(--stratakit-radius-md);
 	background-color: var(--stratakit-color-bg-elevation-base);
 	color: var(--stratakit-color-text-neutral-primary);
+}
+```
+
+## Use logical properties
+
+Write custom styles with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). `margin-inline-start` instead of `margin-left`, `padding-block` instead of `padding-top`/`padding-bottom`, and so on. StrataKit's own styles are written this way, keeping layouts correct in right-to-left and vertical writing modes:
+
+```css
+.app-toolbarButton {
+	margin-inline-start: var(--stratakit-space-100);
 }
 ```
 

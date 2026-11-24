@@ -1,0 +1,30 @@
+{
+	"name": "stratakit-tanstack-sorting-example",
+	"private": true,
+	"version": "0.0.0",
+	"type": "module",
+	"scripts": {
+		"dev": "vite",
+		"build": "tsc -b && vite build",
+		"preview": "vite preview"
+	},
+	"dependencies": {
+		"@faker-js/faker": "10.6.0",
+		"@mui/material": "^9.5.0",
+		"@stratakit/foundations": "^1.2.0",
+		"@stratakit/icons": "^1.0.0",
+		"@stratakit/mui": "^1.4.0",
+		"@tanstack/react-table": "^9.3.1",
+		"react": "^19.3.1",
+		"react-dom": "^19.3.1"
+	},
+	"devDependencies": {
+		"@types/node": "^26.6.6",
+		"@types/react": "^19.3.0",
+		"@types/react-dom": "^19.3.0",
+		"@vitejs/plugin-react": "^6.3.0",
+		"oxc-transform-react": "*",
+		"typescript": "~7.0.2",
+		"vite": "^8.3.6"
+	}
+}

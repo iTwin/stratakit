@@ -28,53 +28,48 @@ const features = tableFeatures({
 	columnSizingFeature,
 });
 
-const columnHelper = createColumnHelper<typeof features, Person>();
-
 const data = makeData(5_000);
 
-export default function App() {
-	const columns = React.useMemo(
-		() =>
-			columnHelper.columns([
-				columnHelper.accessor("id", {
-					header: "ID",
-					size: 80,
-				}),
-				columnHelper.accessor("firstName", {
-					header: "First Name",
-					cell: (info) => info.getValue(),
-				}),
-				columnHelper.accessor((row) => row.lastName, {
-					id: "lastName",
-					cell: (info) => info.getValue(),
-					header: () => <span>Last Name</span>,
-				}),
-				columnHelper.accessor("age", {
-					header: () => "Age",
-					size: 80,
-				}),
-				columnHelper.accessor("visits", {
-					header: () => <span>Visits</span>,
-					size: 100,
-				}),
-				columnHelper.accessor("status", {
-					header: "Status",
-					size: 140,
-				}),
-				columnHelper.accessor("progress", {
-					header: "Profile Progress",
-					size: 170,
-				}),
-				columnHelper.accessor("birthDate", {
-					header: "Birth Date",
-					// A locale-independent date format keeps the demo (and its tests) stable
-					cell: (info) => info.getValue().toISOString().slice(0, 10),
-					size: 150,
-				}),
-			]),
-		[],
-	);
+const columnHelper = createColumnHelper<typeof features, Person>();
+const columns = columnHelper.columns([
+	columnHelper.accessor("id", {
+		header: "ID",
+		size: 80,
+	}),
+	columnHelper.accessor("firstName", {
+		header: "First Name",
+		cell: (info) => info.getValue(),
+	}),
+	columnHelper.accessor((row) => row.lastName, {
+		id: "lastName",
+		cell: (info) => info.getValue(),
+		header: () => <span>Last Name</span>,
+	}),
+	columnHelper.accessor("age", {
+		header: () => "Age",
+		size: 80,
+	}),
+	columnHelper.accessor("visits", {
+		header: () => <span>Visits</span>,
+		size: 100,
+	}),
+	columnHelper.accessor("status", {
+		header: "Status",
+		size: 140,
+	}),
+	columnHelper.accessor("progress", {
+		header: "Profile Progress",
+		size: 170,
+	}),
+	columnHelper.accessor("birthDate", {
+		header: "Birth Date",
+		// A locale-independent date format keeps the demo (and its tests) stable
+		cell: (info) => info.getValue().toISOString().slice(0, 10),
+		size: 150,
+	}),
+]);
 
+export default function App() {
 	// The virtualizer will need a reference to the scrollable container element.
 	// Held in state (not a ref) so the virtualizer re-attaches once the element mounts.
 	const [tableContainer, setTableContainer] =

@@ -1,4 +1,3 @@
-import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -55,40 +54,36 @@ const sortStatusFn: SortFn<typeof features, Person> = (
 	return statusOrder.indexOf(statusA) - statusOrder.indexOf(statusB);
 };
 
-export default function App() {
-	const columns = React.useMemo(
-		() =>
-			columnHelper.columns([
-				columnHelper.accessor("id", {
-					header: "ID",
-				}),
-				columnHelper.accessor("firstName", {
-					header: "First Name",
-				}),
-				columnHelper.accessor("lastName", {
-					header: "Last Name",
-				}),
-				columnHelper.accessor("age", {
-					header: "Age",
-				}),
-				columnHelper.accessor("visits", {
-					header: "Visits",
-				}),
-				columnHelper.accessor("status", {
-					header: "Status",
-					sortFn: sortStatusFn,
-				}),
-				columnHelper.accessor("progress", {
-					header: "Profile Progress",
-				}),
-				columnHelper.accessor("birthDate", {
-					header: "Birth Date",
-					cell: (info) => formatter.format(info.getValue()),
-				}),
-			]),
-		[],
-	);
+const columns = columnHelper.columns([
+	columnHelper.accessor("id", {
+		header: "ID",
+	}),
+	columnHelper.accessor("firstName", {
+		header: "First Name",
+	}),
+	columnHelper.accessor("lastName", {
+		header: "Last Name",
+	}),
+	columnHelper.accessor("age", {
+		header: "Age",
+	}),
+	columnHelper.accessor("visits", {
+		header: "Visits",
+	}),
+	columnHelper.accessor("status", {
+		header: "Status",
+		sortFn: sortStatusFn,
+	}),
+	columnHelper.accessor("progress", {
+		header: "Profile Progress",
+	}),
+	columnHelper.accessor("birthDate", {
+		header: "Birth Date",
+		cell: (info) => formatter.format(info.getValue()),
+	}),
+]);
 
+export default function App() {
 	const table = useTable({
 		features,
 		columns,

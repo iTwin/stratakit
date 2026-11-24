@@ -5,15 +5,11 @@ description: Style custom interfaces with StrataKit components and design tokens
 
 Start with a [StrataKit component](/components/overview/) when it meets your needs. Components provide consistent appearance, behavior, and accessibility. For custom layouts and UI, use [StrataKit tokens](/tokens/overview/) to keep styles aligned with the rest of your interface.
 
-## Requirements
-
-Follow these rules in all custom styling. Skipping them breaks component styling, accessibility, or future upgrades.
-
-### Let components own their appearance
+## Let components own their appearance
 
 A component owns its appearance: the colors, padding, typography, and everything else inside its border. Styling an instance should mostly be about placing it in your layout. Properties like `margin`, `padding`, and `flex`/`grid` placement are fair game, while heavy overrides of a component's base styles are not. If a component's appearance doesn't fit your needs, reach for its props and variants first, or see the [component customization](/guides/component-customization) guide.
 
-### Style component instances
+## Style component instances
 
 When you do style an instance, avoid using [MUI's `sx` prop](https://mui.com/system/getting-started/the-sx-prop/), even though it's the first thing MUI's documentation reaches for. The same applies to MUI's other CSS-in-JS escape hatches, such as the [`styled()`](https://mui.com/system/styled/) utility and [`createTheme`](https://mui.com/material-ui/customization/theming/) style overrides. There are a few reasons:
 
@@ -52,7 +48,7 @@ import styles from "./Toolbar.module.css";
 }
 ```
 
-### Target your own class names
+## Target your own class names
 
 An application-owned class passed through `className` is the most reliable styling hook. It stays stable no matter how StrataKit composes its components under the hood.
 
@@ -60,11 +56,11 @@ Never target class names applied by StrataKit — prefixed with 🥝, such as `.
 
 MUI's `Mui`-prefixed class names (such as `.MuiButton-root` or `.Mui-disabled`) are different: they are part of [MUI's public API](https://mui.com/material-ui/customization/how-to-customize/#overriding-styles-with-class-names) and are sometimes the only available hook, for example when styling third-party components built for MUI. Even so, when you control the element, prefer your own class.
 
-### Don't use private CSS variables
+## Don't use private CSS variables
 
 Only CSS variables prefixed with `--stratakit-` are public. Variables without this prefix (including `--_*`-prefixed ones) are private implementation details and may change without notice. Also avoid `--stratakit-mui-*` variables, which exist only for MUI compatibility. See the [token naming convention](/tokens/overview/#naming-convention) for details.
 
-### Support both color schemes
+## Support both color schemes
 
 StrataKit supports light and dark color modes through the [Root](/components/root/) component's `colorScheme` prop. Color tokens update automatically when the color scheme changes, so custom styles that use them adapt for free. Avoid literal color values, which look correct in one mode and break in the other. Always test custom UI in both light and dark modes.
 
@@ -84,7 +80,7 @@ In the rare case where a non-color style must branch on color scheme, key off th
 }
 ```
 
-### Keep focus outlines visible
+## Keep focus outlines visible
 
 StrataKit provides a consistent, accessible focus outline for all interactive elements and actively guards it against removal. Do not fight this: never set `outline: none` (or `outline: 0`) in application styles without re-introducing your own focus outline. People navigating with a keyboard rely on the focus outline to know where they are.
 
@@ -92,7 +88,7 @@ The default outline is drawn slightly outside the element, so a clipping ancesto
 
 If a custom element needs different focus styling, scope it to [`:focus-visible`](https://developer.mozilla.org/en-US/docs/Web/CSS/:focus-visible) and ensure the replacement indicator is clearly visible in both color schemes.
 
-### Use logical properties
+## Use logical properties
 
 Write custom styles with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). `margin-inline-start` instead of `margin-left`, `padding-block` instead of `padding-top`/`padding-bottom`, and so on. StrataKit's own styles are written this way, keeping layouts correct in right-to-left and vertical writing modes:
 
@@ -102,7 +98,7 @@ Write custom styles with [CSS logical properties](https://developer.mozilla.org/
 }
 ```
 
-## Recommendations
+## Best practices
 
 These practices aren't strictly required, but they make custom styles more resilient and inclusive.
 

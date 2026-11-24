@@ -56,18 +56,7 @@ A custom class passed through `className` is the most reliable styling hook. It 
 
 Never target class names or attributes applied by StrataKit. These are prefixed with 🥝 or `data-_sk-*`. Both are internal implementation details and may change in any release without notice.
 
-MUI's `Mui`-prefixed class names (such as `.MuiButton-root` or `.Mui-disabled`) are different: they are part of [MUI's public API](https://mui.com/material-ui/customization/how-to-customize/#overriding-styles-with-class-names) and are sometimes the only available hook, for example when styling third-party components built for MUI. Even so, when you control the element, prefer your own class.
-
-MUI-based components also offer public props for attaching your own hooks beyond the root element. [`slotProps`](https://mui.com/material-ui/customization/overriding-component-structure/#the-slotprops-prop) sets `className` and other attributes on a component's inner slots, and the `classes` prop applies your class names to specific slots and states. Prefer these over targeting `Mui`-prefixed class names in selectors:
-
-```tsx
-<StepLabel
-	classes={{ completed: styles.completedLabel }}
-	slotProps={{ label: { className: styles.label } }}
->
-	Review order
-</StepLabel>
-```
+MUI's `Mui`-prefixed class names (such as `.MuiButton-root` or `.Mui-disabled`) are different: they are part of [MUI's public API](https://mui.com/material-ui/customization/how-to-customize/#overriding-styles-with-class-names) and are sometimes the only available hook, for example when styling third-party components built for MUI. Even so, when you control the element, **prefer your own class**. MUI allows setting custom classes for specific slots and states using the [`slotProps`](https://mui.com/material-ui/customization/overriding-component-structure/#the-slotprops-prop) and the `classes` props.
 
 ## Don't use private CSS variables
 

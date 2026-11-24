@@ -20,13 +20,13 @@ When you do style an instance, avoid using [MUI's `sx` prop](https://mui.com/sys
 - **It only covers part of your UI.** Only MUI-based components accept `sx`; the rest of StrataKit's components don't. Plain CSS is the one approach that works everywhere.
 - **Runtime CSS-in-JS carries well-known costs.** Generating styles at runtime [hurts performance](https://github.blog/engineering/architecture-optimization/improving-site-performance-by-shipping-more-css/), and the resulting styles are less portable and harder to audit than plain CSS.
 
-Instead, pass an application-owned class through `className`. Every component accepts it and applies it to its root element:
+Instead, pass a custom class through `className`. Every component accepts it and applies it to its root element:
 
 ```tsx
 <Button className="app-toolbarButton">Save</Button>
 ```
 
-Define its styles in a regular CSS file that your application owns and imports (your bundler takes care of loading it onto the page):
+Define its styles in a regular CSS file that you own and import (your bundler takes care of loading it onto the page):
 
 ```css
 /* app.css — imported from your application's entry point */

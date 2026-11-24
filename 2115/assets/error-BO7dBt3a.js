@@ -1,0 +1,1 @@
+import{t as e}from"./error-BYWSAq7w.js";var t=`${e}#icon`;`${e}`;export{t};

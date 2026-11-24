@@ -60,7 +60,7 @@ MUI's `Mui`-prefixed class names (such as `.MuiButton-root` or `.Mui-disabled`) 
 
 ## Don't use private CSS variables
 
-Only CSS variables prefixed with `--stratakit-` are public. Variables without this prefix (including `--_*`-prefixed ones) are private implementation details and may change without notice. Also avoid `--stratakit-mui-*` variables, which exist only for MUI compatibility. See the [token naming convention](/tokens/overview/#naming-convention) for details.
+Only CSS variables prefixed with `--stratakit-` are public. Variables without this prefix (including `--_*`-prefixed ones) are private implementation details and may change without notice. Note that the `--stratakit-mui-*` variables are a special category originating from MUI: they are public and exist for compatibility, but prefer StrataKit's first-party tokens over them. See the [token naming convention](/tokens/overview/#naming-convention) for details.
 
 ## Support both color schemes
 

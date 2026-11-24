@@ -54,7 +54,7 @@ import styles from "./Toolbar.module.css";
 
 A custom class passed through `className` is the most reliable styling hook. It stays stable no matter how StrataKit composes its components under the hood.
 
-Never target class names applied by StrataKit — prefixed with 🥝, such as `.🥝Tree`. They are internal implementation details and may change in any release without notice.
+Never target class names or attributes applied by StrataKit. These are prefixed with 🥝 or `data-_sk-*`. Both are internal implementation details and may change in any release without notice.
 
 MUI's `Mui`-prefixed class names (such as `.MuiButton-root` or `.Mui-disabled`) are different: they are part of [MUI's public API](https://mui.com/material-ui/customization/how-to-customize/#overriding-styles-with-class-names) and are sometimes the only available hook, for example when styling third-party components built for MUI. Even so, when you control the element, prefer your own class.
 
@@ -75,7 +75,6 @@ For a custom color that no token covers, use [`light-dark()`](https://developer.
 ```
 
 In the rare case where a non-color style must branch on color scheme, use the [`@scope`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@scope) rule to match the closest `data-color-scheme` attribute. [**Root**](/components/root/) manages this attribute on the `<html>` element, but it can also appear deeper in the tree.
-
 
 ## Keep focus outlines visible
 

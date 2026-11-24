@@ -35,7 +35,7 @@ Define its styles in a regular CSS file that you own and import (your bundler ta
 }
 ```
 
-Rather than hand-prefixing global class names like `app-*` (used on this page for brevity), prefer [CSS modules](https://github.com/css-modules/css-modules), which are supported out of the box by Vite, Next.js, and most other bundlers. Class names in a `*.module.css` file are scoped at build time, so they can stay short and can't collide with other styles:
+Rather than hand-prefixing global class names like `app-*` (used on this page for brevity), prefer [CSS modules](https://github.com/css-modules/css-modules), which are supported out of the box by Vite, Rsbuild, and most other bundlers. Class names in a `*.module.css` file are scoped at build time, so they can stay short and can't collide with other styles:
 
 ```tsx
 import styles from "./Toolbar.module.css";

@@ -1,0 +1,1 @@
+import{t as e}from"./Alert.9dHzPH-f.js";import{t}from"./AlertTitle.CkZ-7BKn.js";import{fr as n}from"./chevron-down.CBQaJ3m5.js";var r=n(),i=()=>(0,r.jsxs)(e,{severity:`info`,children:[(0,r.jsx)(t,{children:`Connect billing required`}),`An organization administrator must connect a billing account if you want to continue using this feature.`]});export{i as default};

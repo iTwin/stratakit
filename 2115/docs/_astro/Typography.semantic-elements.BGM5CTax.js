@@ -1,0 +1,1 @@
+import{t as e}from"./Stack.CrGYTdGP.js";import{t}from"./Typography.DRZ3_q9z.js";import{fr as n}from"./chevron-down.CBQaJ3m5.js";var r=n(),i=()=>(0,r.jsxs)(e,{spacing:2,sx:{alignItems:`start`},children:[(0,r.jsx)(t,{variant:`body-md`,render:(0,r.jsx)(`kbd`,{}),children:`Kbd`}),(0,r.jsx)(t,{variant:`body-md`,render:(0,r.jsx)(`code`,{}),children:`Code`})]});export{i as default};

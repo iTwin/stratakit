@@ -135,7 +135,12 @@ If your application organizes its styles in cascade layers of its own, declare t
 
 StrataKit components are tested against [`forced-colors` mode](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors) (e.g. Windows High Contrast), where the operating system replaces author colors with a user-chosen palette. Custom UI should hold up there too:
 
-- Test custom interfaces with `forced-colors` active (in Chromium DevTools: **Rendering > Emulate CSS media feature `forced-colors`**).
-  - Ideally, also verify on Windows with a real [Contrast Theme](https://support.microsoft.com/en-us/windows/change-color-contrast-in-windows-fcc6f341-954d-9c5c-4df2-fc6d2aa5e1b6) enabled. DevTools emulation only approximates forced colors and won't reflect actual user-chosen palettes.
+- Test custom interfaces with `forced-colors` active.
 - When adjustments are needed, use a `forced-colors: active` media query with [CSS system colors](https://developer.mozilla.org/en-US/docs/Web/CSS/system-color) such as `CanvasText` or `SelectedItem`, rather than opting out with `forced-color-adjust: none`.
 - Don't rely on background color alone to convey state; borders and outlines survive `forced-colors`, backgrounds often don't.
+
+:::tip[Testing `forced-colors`]
+The quickest check is emulation in Chromium DevTools, under **Rendering** > **Emulate CSS media feature `forced-colors`**. Keep in mind that emulation only approximates forced colors and won't reflect actual user-chosen palettes.
+
+For a more faithful test, enable a real [Contrast Theme](https://support.microsoft.com/en-us/windows/change-color-contrast-in-windows-fcc6f341-954d-9c5c-4df2-fc6d2aa5e1b6) on Windows. If you're not on Windows, Microsoft Edge offers forced colors on every platform as a user-facing feature, not just a DevTools toggle.
+:::

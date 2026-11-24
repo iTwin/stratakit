@@ -1,0 +1,9 @@
+.row {
+	position: relative;
+}
+
+.label::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+}

@@ -6,6 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableFooter from "@mui/material/TableFooter";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
+import visuallyHidden from "@mui/utils/visuallyHidden";
 import { useCreateAtom } from "@tanstack/react-store";
 import {
 	createColumnHelper,
@@ -19,6 +20,8 @@ import { makeData } from "./makeData";
 import type { RowSelectionState } from "@tanstack/react-table";
 import type { Person } from "./makeData";
 
+import style from "./App.module.css";
+
 const features = tableFeatures({
 	rowSelectionFeature,
 });
@@ -31,17 +34,19 @@ const columns = columnHelper.columns([
 	columnHelper.display({
 		id: "select",
 		cell: ({ row }) => {
-			const first = row.getValue("firstName");
-			const last = row.getValue("lastName");
+			const first = row.getValue("firstName") as string;
+			const last = row.getValue("lastName") as string;
 			return (
-				<Checkbox
-					checked={row.getIsSelected()}
-					disabled={!row.getCanSelect()}
-					onChange={row.getToggleSelectedHandler({})}
-					slotProps={{
-						input: { "aria-label": `Select ${first} ${last}` },
-					}}
-				/>
+				<label className={style.label}>
+					<span style={visuallyHidden}>
+						Select {first} {last}
+					</span>
+					<Checkbox
+						checked={row.getIsSelected()}
+						disabled={!row.getCanSelect()}
+						onChange={row.getToggleSelectedHandler({})}
+					/>
+				</label>
 			);
 		},
 	}),
@@ -108,7 +113,11 @@ export default function App() {
 				<TableBody>
 					{table.getRowModel().rows.map((row) => {
 						return (
-							<TableRow key={row.id} selected={row.getIsSelected()}>
+							<TableRow
+								key={row.id}
+								selected={row.getIsSelected()}
+								className={style.row}
+							>
 								{row.getAllCells().map((cell) => {
 									return (
 										<TableCell

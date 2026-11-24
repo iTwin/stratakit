@@ -74,15 +74,8 @@ For a custom color that no token covers, use [`light-dark()`](https://developer.
 }
 ```
 
-In the rare case where a non-color style must branch on color scheme, key off the closest `data-color-scheme` attribute. [**Root**](/components/root/) sets it on the `<html>` element, but it can also appear deeper in the tree:
+In the rare case where a non-color style must branch on color scheme, use the [`@scope`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@scope) rule to match the closest `data-color-scheme` attribute. [**Root**](/components/root/) manages this attribute on the `<html>` element, but it can also appear deeper in the tree.
 
-```css
-[data-color-scheme="dark"] .app-heroBanner {
-	background-image: url("/hero-dark.webp");
-}
-```
-
-Note that a descendant selector like this matches _any_ ancestor with the attribute, not just the closest one. When color schemes nest, prefer tokens and `light-dark()` where possible.
 
 ## Keep focus outlines visible
 
@@ -109,7 +102,7 @@ Prefer [StrataKit tokens](/tokens/overview/) over hard-coded values. Tokens keep
 }
 ```
 
-## Use logical properties
+### Use logical properties
 
 Write custom styles with [CSS logical properties](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_logical_properties_and_values). `margin-inline-start` instead of `margin-left`, `padding-block` instead of `padding-top`/`padding-bottom`, and so on. StrataKit's own styles are written this way, keeping layouts correct in right-to-left and vertical writing modes:
 
@@ -148,5 +141,5 @@ StrataKit components are tested against [`forced-colors` mode](https://developer
 :::tip[Testing `forced-colors`]
 The quickest check is emulation in Chromium DevTools, under **Rendering** > **Emulate CSS media feature `forced-colors`**. Keep in mind that emulation only approximates forced colors and won't reflect actual user-chosen palettes.
 
-For a more faithful test, enable a real [Contrast Theme](https://support.microsoft.com/en-us/windows/change-color-contrast-in-windows-fcc6f341-954d-9c5c-4df2-fc6d2aa5e1b6) on Windows. If you're not on Windows, Microsoft Edge offers forced colors on every platform as a user-facing feature, not just a DevTools toggle.
+For a more faithful test, enable a real [Contrast Theme](https://support.microsoft.com/en-us/accessibility/windows/change-color-contrast-in-windows) on Windows. If you're not on Windows, Microsoft Edge offers forced colors on every platform as a user-facing feature, not just a DevTools toggle.
 :::

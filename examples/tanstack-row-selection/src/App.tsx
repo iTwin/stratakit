@@ -3,6 +3,7 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
+import TableFooter from "@mui/material/TableFooter";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { useCreateAtom } from "@tanstack/react-store";
@@ -24,7 +25,7 @@ const features = tableFeatures({
 
 const columnHelper = createColumnHelper<typeof features, Person>();
 
-const data = makeData(25);
+const data = makeData(12);
 
 const columns = columnHelper.columns([
 	columnHelper.display({
@@ -80,6 +81,10 @@ export default function App() {
 		enableRowSelection: true,
 	});
 
+	const selectedRows = Object.keys(table.state.rowSelection).length;
+	const totalRows = table.getRowModel().rows.length;
+	const selectedRowText = `${selectedRows.toLocaleString()} of ${totalRows.toLocaleString()} rows selected`;
+
 	return (
 		<TableContainer>
 			<Table aria-label="People">
@@ -120,6 +125,13 @@ export default function App() {
 						);
 					})}
 				</TableBody>
+				<TableFooter>
+					<TableRow>
+						<TableCell colSpan={table.getAllColumns().length}>
+							{selectedRowText}
+						</TableCell>
+					</TableRow>
+				</TableFooter>
 			</Table>
 		</TableContainer>
 	);

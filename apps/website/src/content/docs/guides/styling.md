@@ -3,11 +3,13 @@ title: Styling
 description: Style custom interfaces with StrataKit components and design tokens
 ---
 
-Start with a [StrataKit component](/components/overview/) when it meets your needs. Components provide consistent appearance, behavior, and accessibility. For custom layouts and UI, use [StrataKit tokens](/tokens/overview/) to keep styles aligned with the rest of your interface.
+Start with a [component](/components/overview/) when it meets your needs. Components provide consistent appearance, behavior, and accessibility. For custom layouts and UI, use [StrataKit tokens](/tokens/overview/) to keep styles aligned with the rest of your interface.
 
 ## Let components own their appearance
 
-A component owns its appearance: the colors, padding, typography, and everything else inside its border. Styling an instance should mostly be about placing it in your layout. Properties like `margin`, `padding`, and `flex`/`grid` placement are fair game, while heavy overrides of a component's base styles are not. If a component's appearance doesn't fit your needs, reach for its props and variants first, or see the [component customization](/guides/component-customization) guide.
+A design system component (from StrataKit or MUI) must own its appearance: the colors, padding, typography, and everything else inside its border. Do not apply excessive style overrides, as that could make it inconsistent with the design system or break edge cases. If a component's default appearance doesn't fit your needs, reach for its supported props and variants first.
+
+Styling a component instance should mostly be about placing it in your layout. Properties like `margin` and `flex`/`grid` placement are fair game, while overriding the base appearance is not.
 
 ## Style component instances
 
@@ -50,7 +52,7 @@ import styles from "./Toolbar.module.css";
 
 ## Target your own class names
 
-An application-owned class passed through `className` is the most reliable styling hook. It stays stable no matter how StrataKit composes its components under the hood.
+A custom class passed through `className` is the most reliable styling hook. It stays stable no matter how StrataKit composes its components under the hood.
 
 Never target class names applied by StrataKit — prefixed with 🥝, such as `.🥝Tree`. They are internal implementation details and may change in any release without notice.
 
@@ -119,9 +121,9 @@ Write custom styles with [CSS logical properties](https://developer.mozilla.org/
 
 StrataKit and MUI declare their styles in [CSS cascade layers](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers), and unlayered styles take precedence over layered ones. Plain application CSS therefore already overrides component styles. There should never be a need to escalate specificity or reach for `!important` when overriding StrataKit styling.
 
-Keep your own selectors simple too. Prefer single-class selectors, and use [`:where()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:where) when a selector needs extra qualification, so that later styles can still override earlier ones without specificity battles.
+Maintain low [specificity](https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Cascade/Specificity) in your selectors. Prefer single-class selectors, and use [`:where()`](https://developer.mozilla.org/en-US/docs/Web/CSS/:where) when a selector needs extra qualification, so that later styles can still override earlier ones without specificity battles.
 
-If your application organizes its styles in cascade layers of its own, declare the layer order up front so your layers come after StrataKit's:
+If your application organizes its styles in cascade layers of its own, declare the layer order _upfront_. Be mindful of layers used by other libraries when declaring the layer order upfront. Strongly scoped styles that are expected to beat all library styles should be placed last, while weak global styles should come earlier in the layer order.
 
 ```css
 @layer reset, mui, stratakit, app;

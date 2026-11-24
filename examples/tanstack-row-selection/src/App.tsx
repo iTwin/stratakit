@@ -137,7 +137,7 @@ export default function App() {
 				<TableFooter>
 					<TableRow>
 						<TableCell colSpan={table.getAllColumns().length}>
-							{selectedRowText}
+							<span aria-live="polite">{selectedRowText}</span>
 						</TableCell>
 					</TableRow>
 				</TableFooter>

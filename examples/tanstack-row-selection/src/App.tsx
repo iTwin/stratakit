@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import { useCreateAtom } from "@tanstack/react-store";
 import {
 	createColumnHelper,
+	FlexRender,
 	rowSelectionFeature,
 	tableFeatures,
 	useTable,
@@ -36,7 +37,9 @@ const columns = columnHelper.columns([
 					checked={row.getIsSelected()}
 					disabled={!row.getCanSelect()}
 					onChange={row.getToggleSelectedHandler({})}
-					aria-label={`${first} ${last}`}
+					slotProps={{
+						input: { "aria-label": `Select ${first} ${last}` },
+					}}
 				/>
 			);
 		},
@@ -79,14 +82,18 @@ export default function App() {
 
 	return (
 		<TableContainer>
-			<Table>
+			<Table aria-label="People">
 				<TableHead>
 					{table.getHeaderGroups().map((headerGroup) => (
 						<TableRow key={headerGroup.id}>
 							{headerGroup.headers.map((header) => {
 								return (
-									<TableCell key={header.id} colSpan={header.colSpan}>
-										<table.FlexRender header={header} />
+									<TableCell
+										key={header.id}
+										colSpan={header.colSpan}
+										padding={header.id === "select" ? "checkbox" : "normal"}
+									>
+										<FlexRender header={header} />
 									</TableCell>
 								);
 							})}
@@ -99,8 +106,13 @@ export default function App() {
 							<TableRow key={row.id} selected={row.getIsSelected()}>
 								{row.getAllCells().map((cell) => {
 									return (
-										<TableCell key={cell.id}>
-											<table.FlexRender cell={cell} />
+										<TableCell
+											key={cell.id}
+											padding={
+												cell.column.id === "select" ? "checkbox" : "normal"
+											}
+										>
+											<FlexRender cell={cell} />
 										</TableCell>
 									);
 								})}

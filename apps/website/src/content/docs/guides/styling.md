@@ -140,6 +140,12 @@ If your application organizes its styles in cascade layers of its own, declare t
 @layer reset, mui, stratakit, app;
 ```
 
+### Use well-supported CSS features
+
+When reaching for newer CSS features, check their [Baseline](https://developer.mozilla.org/en-US/docs/Glossary/Baseline/Compatibility#baseline_badges) badge shown on MDN and [Can I use](https://caniuse.com/). Features marked **Widely available** are safe to use unconditionally.
+
+Newer features can still [progressively enhance](https://developer.mozilla.org/en-US/docs/Glossary/Progressive_Enhancement) non-critical styling when gated behind [`@supports`](https://developer.mozilla.org/en-US/docs/Web/CSS/@supports), so the interface keeps working without them.
+
 ### Support `forced-colors` mode
 
 StrataKit components are tested against [`forced-colors` mode](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/forced-colors) (e.g. Windows High Contrast), where the operating system replaces author colors with a user-chosen palette. Custom UI should hold up there too:

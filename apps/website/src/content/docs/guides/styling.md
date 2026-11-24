@@ -58,6 +58,17 @@ Never target class names or attributes applied by StrataKit. These are prefixed 
 
 MUI's `Mui`-prefixed class names (such as `.MuiButton-root` or `.Mui-disabled`) are different: they are part of [MUI's public API](https://mui.com/material-ui/customization/how-to-customize/#overriding-styles-with-class-names) and are sometimes the only available hook, for example when styling third-party components built for MUI. Even so, when you control the element, prefer your own class.
 
+MUI-based components also offer public props for attaching your own hooks beyond the root element. [`slotProps`](https://mui.com/material-ui/customization/overriding-component-structure/#the-slotprops-prop) sets `className` and other attributes on a component's inner slots, and the `classes` prop applies your class names to specific slots and states. Prefer these over targeting `Mui`-prefixed class names in selectors:
+
+```tsx
+<StepLabel
+	classes={{ completed: styles.completedLabel }}
+	slotProps={{ label: { className: styles.label } }}
+>
+	Review order
+</StepLabel>
+```
+
 ## Don't use private CSS variables
 
 Only CSS variables prefixed with `--stratakit-` are public. Variables without this prefix (including `--_*`-prefixed ones) are private implementation details and may change without notice. Note that the `--stratakit-mui-*` variables are a special category originating from MUI: they are public and exist for compatibility, but prefer StrataKit's first-party tokens over them. See the [token naming convention](/tokens/overview/#naming-convention) for details.

@@ -74,13 +74,15 @@ For a custom color that no token covers, use [`light-dark()`](https://developer.
 }
 ```
 
-In the rare case where a non-color style must branch on color scheme, key off the `data-color-scheme` attribute that **Root** manages on the `<html>` element:
+In the rare case where a non-color style must branch on color scheme, key off the closest `data-color-scheme` attribute. [**Root**](/components/root/) sets it on the `<html>` element, but it can also appear deeper in the tree:
 
 ```css
 [data-color-scheme="dark"] .app-heroBanner {
 	background-image: url("/hero-dark.webp");
 }
 ```
+
+Note that a descendant selector like this matches _any_ ancestor with the attribute, not just the closest one. When color schemes nest, prefer tokens and `light-dark()` where possible.
 
 ## Keep focus outlines visible
 

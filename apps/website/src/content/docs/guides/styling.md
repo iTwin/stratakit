@@ -119,6 +119,12 @@ Write custom styles with [CSS logical properties](https://developer.mozilla.org/
 }
 ```
 
+:::tip[Testing reading direction]
+The quickest check is flipping the page to right-to-left with the [`dir` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Global_attributes/dir): edit the `<html>` element in the DevTools **Elements** panel, or run `document.documentElement.dir = "rtl"` in the console. Styles written with logical properties mirror automatically — anything still stuck to the same side of the page points to a physical property that needs converting.
+
+Ideally, also test with real right-to-left content (such as Arabic or Hebrew translations), which surfaces issues that flipped left-to-right text can't.
+:::
+
 ### Keep selector specificity low
 
 StrataKit and MUI declare their styles in [CSS cascade layers](https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics/Cascade_layers), and unlayered styles take precedence over layered ones. Plain application CSS therefore already overrides component styles. There should never be a need to escalate specificity or reach for `!important` when overriding StrataKit styling.

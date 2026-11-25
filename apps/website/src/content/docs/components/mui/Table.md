@@ -38,6 +38,8 @@ Use a [**Checkbox**](/components/checkbox) within the **Table**'s first column t
 Placing a "select all" checkbox within the column header is not recommended.
 :::
 
+This is also an example of [row selection using Tanstack](https://stackblitz.com/github/itwin/stratakit/tree/examples/examples/tanstack-row-selection).
+
 ### Sorting
 
 The [`TableSortLabel`](https://mui.com/material-ui/api/table-sort-label) component renders an interactive sort button and displays the current sort direction. A hidden description (`"change sort"`) can be associated with each sort button using `aria-describedby` to provide additional context for assistive technologies without affecting the column header.
@@ -48,6 +50,8 @@ This example is adapted from the [MUI Table Sorting example](https://mui.com/mat
 
 ::example{src="mui/Table.sort" min-height="425px"}
 
+There is also an example of [sorting using Tanstack](https://stackblitz.com/github/itwin/stratakit/tree/examples/examples/tanstack-sorting).
+
 ### Number Alignment
 
 When creating a table that has number values it is often desirable for the user to be able to quickly compare numbers by scanning down the columns of the table.
@@ -57,6 +61,16 @@ When creating a table that has number values it is often desirable for the user 
 - Use an instance of [`Intl.NumberFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/NumberFormat) to format the numbers. Set `minimumFractionDigits` and `maximumFractionDigits` set to the same value to insure that all numbers have the same number of fractional digits and the place values align.
 
 ::example{src="mui/Table.numberAlignment" min-height="500px"}
+
+### Tanstack
+
+The **Table** component can also be integrated with the [Tanstack Table](https://tanstack.com/table/latest) library to build highly customizable and feature rich tables. This allows you to leverage the power data management capability of Tanstack Table while retaining the visual appearance of StrataKit.
+
+Examples
+
+- [Row Selection](https://stackblitz.com/github/itwin/stratakit/tree/examples/examples/tanstack-row-selection)
+- [Sorting](https://stackblitz.com/github/itwin/stratakit/tree/examples/examples/tanstack-sorting)
+- [Virtualization](https://stackblitz.com/github/itwin/stratakit/tree/examples/examples/tanstack-virtualization)
 
 ## API reference
 

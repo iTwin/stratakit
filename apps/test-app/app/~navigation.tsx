@@ -115,7 +115,7 @@ export function AppNavigationRail(props: AppNavigationRailProps) {
 
 										return (
 											<NavigationRail.ListItem key={item.path}>
-												<NavigationRail.Anchor
+												<NavigationRail.Link
 													icon={item.icon}
 													label={item.label}
 													active={isActive}

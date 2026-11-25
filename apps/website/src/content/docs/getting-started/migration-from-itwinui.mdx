@@ -918,8 +918,8 @@ Replace the [`Select` component from `@itwin/itwinui-react`](https://itwinui.ben
 
 Replace the [`SideNavigation` component from `@itwin/itwinui-react`](https://itwinui.bentley.com/docs/sidenavigation) with the `NavigationRail` component from `@stratakit/structures`. See [NavigationRail examples](/components/navigationrail/) for reference.
 
-- Replace `items` with `NavigationRail.Anchor` or `NavigationRail.Button` children of `NavigationRail.Content`.
-- Replace `secondaryItems` with `NavigationRail.Anchor` or `NavigationRail.Button` children of `NavigationRail.Footer`.
+- Replace `items` with `NavigationRail.Link` or `NavigationRail.Button` children of `NavigationRail.Content`.
+- Replace `secondaryItems` with `NavigationRail.Link` or `NavigationRail.Button` children of `NavigationRail.Footer`.
 - Remove `expanderPlacement`. StrataKit supports a single expander location.
 - Replace `isExpanded` with `expanded` when managing the expanded state.
 - Replace `onExpandedClick` with [`setExpanded`](/reference/structures/NavigationRail/#NavigationRail.Root.setExpanded) when managing the expanded state.

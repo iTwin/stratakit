@@ -39,7 +39,7 @@ export default () => {
 				<NavigationRail.Content>
 					<NavigationRail.List>
 						<NavigationRail.ListItem>
-							<NavigationRail.Anchor
+							<NavigationRail.Link
 								href="#"
 								icon={svgReportLarge}
 								label="Reports"
@@ -47,7 +47,7 @@ export default () => {
 							/>
 						</NavigationRail.ListItem>
 						<NavigationRail.ListItem>
-							<NavigationRail.Anchor
+							<NavigationRail.Link
 								href="#"
 								icon={svgInspectionLarge}
 								label="Logs"
@@ -55,7 +55,7 @@ export default () => {
 						</NavigationRail.ListItem>
 					</NavigationRail.List>
 					<Divider role="presentation" margin />
-					<NavigationRail.Anchor
+					<NavigationRail.Link
 						href="#"
 						icon={svgDisconnectLarge}
 						label="Integrations"

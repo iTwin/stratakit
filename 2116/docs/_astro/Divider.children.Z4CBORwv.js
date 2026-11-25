@@ -1,0 +1,1 @@
+import{t as e}from"./Divider.C0f5v6ij.js";import{t}from"./Typography.I76RUNIz.js";import{fr as n}from"./chevron-down.CCn5y30E.js";var r=n(),i=()=>(0,r.jsx)(e,{children:(0,r.jsx)(t,{variant:`subtitle-md`,render:(0,r.jsx)(`h3`,{}),noWrap:!0,children:`New messages`})});export{i as default};

@@ -1,1 +1,0 @@
-import{t as e}from"./TextField.DeqeLTVP.js";import{fr as t}from"./chevron-down.BiBogi76.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Name`});export{r as default};

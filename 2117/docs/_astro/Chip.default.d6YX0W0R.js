@@ -1,0 +1,1 @@
+import{t as e}from"./Chip.DOcaY_GW.js";import{fr as t}from"./chevron-down.BHGcd6Fz.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Default Chip`});export{r as default};

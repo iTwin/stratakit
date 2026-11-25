@@ -1,0 +1,1 @@
+import{t as e}from"./copy-1a6Oxrta.js";`${e}`;var t=`${e}#icon-large`;export{t};

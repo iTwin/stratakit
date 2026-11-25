@@ -1,0 +1,1 @@
+import{t as e}from"./Paper-DeqYRxTQ.js";import{t}from"./Stack-TKtvJX5Q.js";import{t as n}from"./jsx-runtime-znEIPLWF.js";var r={paper:`_paper_bwm6f_6`},i=n(),a=()=>(0,i.jsx)(t,{spacing:2,direction:`row`,sx:{alignItems:`center`,inlineSize:`100%`},children:[0,1,4,8,16,24].map(t=>(0,i.jsx)(e,{className:r.paper,elevation:t,children:t},t))});export{a as default};

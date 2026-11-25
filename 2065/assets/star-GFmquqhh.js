@@ -1,1 +1,0 @@
-import{t as e}from"./star-B-BfxOAE.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

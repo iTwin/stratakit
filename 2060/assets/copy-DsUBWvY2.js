@@ -1,1 +1,0 @@
-import{t as e}from"./copy-BMP4oE47.js";`${e}`;var t=`${e}#icon-large`;export{t};

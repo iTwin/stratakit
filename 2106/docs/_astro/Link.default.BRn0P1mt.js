@@ -1,0 +1,1 @@
+import{t as e}from"./Link.CjkV8kW2.js";import{fr as t}from"./chevron-down.D6Rakp81.js";var n=t(),r=()=>(0,n.jsx)(e,{href:`/`,children:`Home`});export{r as default};

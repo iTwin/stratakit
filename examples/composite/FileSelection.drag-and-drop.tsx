@@ -36,6 +36,7 @@ export default () => {
 
 	return (
 		<Paper
+			elevation={0}
 			className={`${styles.states} ${styles.fileSelection}`}
 			data-drag-active={isDragActive || undefined}
 			onDragEnter={(event) => {

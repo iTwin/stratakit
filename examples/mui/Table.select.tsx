@@ -59,7 +59,7 @@ export default () => {
 	const rowCount = rows.length;
 
 	return (
-		<TableContainer render={<Paper />}>
+		<TableContainer render={<Paper elevation={0} />}>
 			<Table className={styles.table}>
 				<caption style={visuallyHidden}>
 					Selectable dessert nutrition table, {numSelected} of {rowCount} rows

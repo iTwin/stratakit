@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.2.0
+
+### Minor Changes
+
+- [#2069](https://github.com/iTwin/stratakit/pull/2069): Removed the `unstable_htmlSanitizer` prop from `Root`.
+- [#2076](https://github.com/iTwin/stratakit/pull/2076): Removed best-effort fallback sanitization from `Icon`. If a non-HTTP `href` value is passed, it will throw an error in browsers that do not support the Sanitizer API.
+
+## 1.1.2
+
+### Patch Changes
+
+- [#2095](https://github.com/iTwin/stratakit/pull/2095): Fixed an issue where development-only code was showing up (incorrectly) in the production build.
+
 ## 1.1.1
 
 ### Patch Changes

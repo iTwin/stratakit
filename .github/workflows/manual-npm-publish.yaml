@@ -1,0 +1,83 @@
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: "Which package to publish?"
+        required: true
+        type: choice
+        default: bricks
+        options:
+          - foundations
+          - icons
+          - bricks
+          - structures
+          - compat
+      tag:
+        description: "Which npm tag to publish to?"
+        required: true
+        type: choice
+        default: dev
+        options:
+          - dev
+          - latest
+
+  workflow_call:
+    inputs:
+      package:
+        required: true
+        type: string
+        default: bricks
+      tag:
+        required: true
+        type: string
+        default: alpha
+    secrets:
+      NPMJS_PUBLISH_ITWIN:
+        required: true
+
+jobs:
+  pack:
+    name: Build and pack
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read # for checking out repo
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: pnpm/action-setup@v6
+        with:
+          version: 11.18.0
+
+      - name: Use Node 22.x
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22.x
+          cache: "pnpm"
+
+      - run: pnpm install
+
+      - run: pnpm --filter="./packages/**" run build
+
+      - name: Pack package tarballs
+        run: pnpm pack --pack-destination "${{ github.workspace }}/dist/release/packages"
+        working-directory: "./packages/${{ inputs.package }}/"
+
+      - name: Upload package tarballs
+        uses: actions/upload-artifact@v7
+        with:
+          name: npm-tarballs
+          path: dist/release/packages/*.tgz
+
+  publish:
+    name: Publish to npm
+    needs: pack
+    permissions:
+      id-token: write # for npm provenance
+    uses: "./.github/workflows/publish-npm-tarballs.yaml"
+    with:
+      tag: ${{ inputs.tag }}
+    secrets:
+      NPMJS_PUBLISH_ITWIN: ${{ secrets.NPMJS_PUBLISH_ITWIN }}

@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.4.0
+
+### Minor Changes
+
+- [#2059](https://github.com/iTwin/stratakit/pull/2059): Reintroduced the `variant` prop to `Select` and `NativeSelect`, supporting the `"contained"` (default) and `"outlined"` values.
+  - Changed the default value of the `variant` prop from `"outlined"` to `"contained"`.
+- [#2076](https://github.com/iTwin/stratakit/pull/2076): Removed best-effort fallback sanitization from `Icon`. If a non-HTTP `href` value is passed, it will throw an error in browsers that do not support the Sanitizer API.
+
+### Patch Changes
+
+- [#2102](https://github.com/iTwin/stratakit/pull/2102): Used generic sort icons in `Table` and `DataGrid` components.
+- [#2107](https://github.com/iTwin/stratakit/pull/2107): Fixed `Select` so it forwards the correct `size` to its internal menu.
+- [#2104](https://github.com/iTwin/stratakit/pull/2104): Fixed `Tooltip` positioning when re-hovering before the exit animation finishes.
+- Updated dependencies:
+  - @stratakit/foundations@1.2.0
+  - @stratakit/icons@1.0.0
+
+## 1.3.2
+
+### Patch Changes
+
+- [#2061](https://github.com/iTwin/stratakit/pull/2061): Added a caret indicator identify editable `DataGrid` cells.
+- [#2075](https://github.com/iTwin/stratakit/pull/2075): Improved number field styling.
+- [#2078](https://github.com/iTwin/stratakit/pull/2078): Fixed `Menu` and `Popover` fallback labelling mechanism to handle functional form of `anchorEl`.
+- Updated dependencies:
+  - @stratakit/icons@0.4.9
+  - @stratakit/foundations@1.1.2
+
 ## 1.3.1
 
 ### Patch Changes

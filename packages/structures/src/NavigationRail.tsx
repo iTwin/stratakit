@@ -311,15 +311,35 @@ DEV: NavigationRailContent.displayName = "NavigationRail.Content";
 
 // ----------------------------------------------------------------------------
 
-interface NavigationRailListProps extends BaseProps<"div"> {}
+interface NavigationRailListProps extends BaseProps<"div"> {
+	/**
+	 * A list of navigation items, as an alternative to `children`. Each item will be
+	 * automatically wrapped in a `NavigationRail.ListItem`.
+	 *
+	 * Each item should be a `NavigationRail.Anchor` or `NavigationRail.Button`.
+	 */
+	items?: React.ReactNode[];
+}
 
 /**
  * The `NavigationRail.List` represents a list of top-level navigation items.
  *
- * It should be used within `NavigationRail.Content` and should contain `NavigationRail.ListItem` elements,
- * which in turn can contain `NavigationRail.Anchor` or `NavigationRail.Button`.
+ * It should be used within `NavigationRail.Content` or `NavigationRail.Footer`.
  *
- * Example (with `NavigationRail.Anchor`):
+ * Each list item should be a `NavigationRail.Anchor` or `NavigationRail.Button`, wrapped in a `NavigationRail.ListItem`.
+ * The `items` prop will automatically wrap each item in a `NavigationRail.ListItem`.
+ *
+ * Example (with `items`):
+ * ```tsx
+ * <NavigationRail.List
+ *   items={[
+ *     <NavigationRail.Anchor key="home" label="Home" icon={homeIcon} href="/" />,
+ *     <NavigationRail.Anchor key="projects" label="Projects" icon={projectsIcon} href="/projects" />,
+ *   ]}
+ * />
+ * ```
+ *
+ * Example (with `NavigationRail.Anchor` as `children`):
  * ```tsx
  * <NavigationRail.List>
  *   <NavigationRail.ListItem>
@@ -347,13 +367,21 @@ interface NavigationRailListProps extends BaseProps<"div"> {}
  */
 const NavigationRailList = forwardRef<"div", NavigationRailListProps>(
 	(props, forwardedRef) => {
+		const { items, children, ...rest } = props;
+
 		return (
 			<Role
 				role="list"
-				{...props}
+				{...rest}
 				className={cx("🥝NavigationRailList", props.className)}
 				ref={forwardedRef}
-			/>
+			>
+				{children ??
+					React.Children.map(items, (item) => {
+						if (!item) return null;
+						return <NavigationRailListItem>{item}</NavigationRailListItem>;
+					})}
+			</Role>
 		);
 	},
 );

@@ -29,23 +29,23 @@ export default () => {
 				</NavigationRail.Header>
 
 				<NavigationRail.Content>
-					<NavigationRail.List>
-						<NavigationRail.ListItem>
+					<NavigationRail.List
+						items={[
 							<NavigationRail.Anchor
+								key="reports"
 								href="#"
 								icon={svgReportLarge}
 								label="Reports"
 								active
-							/>
-						</NavigationRail.ListItem>
-						<NavigationRail.ListItem>
+							/>,
 							<NavigationRail.Anchor
+								key="logs"
 								href="#"
 								icon={svgInspectionLarge}
 								label="Logs"
-							/>
-						</NavigationRail.ListItem>
-					</NavigationRail.List>
+							/>,
+						]}
+					/>
 					<Divider role="presentation" margin />
 					<NavigationRail.Anchor
 						href="#"

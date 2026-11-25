@@ -12,9 +12,11 @@ test("default", async ({ page }) => {
 	const navigationRail = page.getByRole("navigation");
 	await expect(navigationRail).toBeVisible();
 
-	const activeItem = navigationRail.getByRole("link", {
-		name: "Administration",
-	});
+	const list = navigationRail.getByRole("list").first();
+	const listItems = list.getByRole("listitem");
+	await expect(listItems).toHaveCount(5);
+
+	const activeItem = list.getByRole("link", { name: "Administration" });
 	await expect(activeItem).toHaveAttribute("aria-current");
 
 	const marketplaceItem = navigationRail.getByRole("link", {

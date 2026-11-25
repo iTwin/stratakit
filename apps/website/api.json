@@ -2230,9 +2230,16 @@
 					{
 						"name": "List",
 						"baseProps": ["BaseProps.render"],
-						"props": [],
+						"props": [
+							{
+								"name": "items",
+								"type": "ReactNode[] | undefined",
+								"optional": true,
+								"jsdoc": "A list of navigation items, as an alternative to `children`. Each item will be\nautomatically wrapped in a `NavigationRail.ListItem`.\n\nEach item should be a `NavigationRail.Anchor` or `NavigationRail.Button`."
+							}
+						],
 						"baseElement": "div",
-						"jsdoc": "The `NavigationRail.List` represents a list of top-level navigation items.\n\nIt should be used within `NavigationRail.Content` and should contain `NavigationRail.ListItem` elements,\nwhich in turn can contain `NavigationRail.Anchor` or `NavigationRail.Button`.\n\nExample (with `NavigationRail.Anchor`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Anchor label=\"Home\" icon={homeIcon} href=\"/\" />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Anchor label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nExample (with `NavigationRail.Button`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…}  />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nMultiple `NavigationRail.List` elements can be used together and be separated by a [`Divider`](https://stratakit.bentley.com/docs/components/divider/).",
+						"jsdoc": "The `NavigationRail.List` represents a list of top-level navigation items.\n\nIt should be used within `NavigationRail.Content` or `NavigationRail.Footer`.\n\nEach list item should be a `NavigationRail.Anchor` or `NavigationRail.Button`, wrapped in a `NavigationRail.ListItem`.\nThe `items` prop will automatically wrap each item in a `NavigationRail.ListItem`.\n\nExample (with `items`):\n```tsx\n<NavigationRail.List\n  items={[\n    <NavigationRail.Anchor key=\"home\" label=\"Home\" icon={homeIcon} href=\"/\" />,\n    <NavigationRail.Anchor key=\"projects\" label=\"Projects\" icon={projectsIcon} href=\"/projects\" />,\n  ]}\n/>\n```\n\nExample (with `NavigationRail.Anchor` as `children`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Anchor label=\"Home\" icon={homeIcon} href=\"/\" />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Anchor label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nExample (with `NavigationRail.Button`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…}  />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nMultiple `NavigationRail.List` elements can be used together and be separated by a [`Divider`](https://stratakit.bentley.com/docs/components/divider/).",
 						"barrelName": "unstable_NavigationRail.List"
 					},
 					{

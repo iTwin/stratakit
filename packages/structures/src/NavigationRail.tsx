@@ -136,38 +136,29 @@ interface NavigationRailRootProps extends NavigationRailRootInnerProps {
  * <NavigationRail.Root>
  *   <NavigationRail.Header>
  *     <IconButton label="Home" render={<a href="/" />}>
- *       <Icon href={applicationIcon} />
+ *       <Icon href={svgBrandBentleySystemsFilled} />
  *     </IconButton>
  *     <NavigationRail.ToggleButton />
  *   </NavigationRail.Header>
  *
  *   <NavigationRail.Content>
- *     <NavigationRail.List>
- *       <NavigationRail.ListItem>
- *         <NavigationRail.Link label="Dashboard" icon={dashboardIcon} href="/dashboard" />
- *       </NavigationRail.ListItem>
- *       <NavigationRail.ListItem>
- *         <NavigationRail.Link label="Projects" icon={projectsIcon} href="/projects" />
- *       </NavigationRail.ListItem>
- *       <NavigationRail.ListItem>
- *         <NavigationRail.Link label="Reports" icon={reportsIcon} href="/reports" />
- *       </NavigationRail.ListItem>
- *     </NavigationRail.List>
- *
+ *     <NavigationRail.List
+ *       items={[
+ *         <NavigationRail.Link key="dashboard" label="Dashboard" icon={svgDashboardLarge} href="/dashboard" />,
+ *         <NavigationRail.Link key="projects" label="Projects" icon={svgProjectLarge} href="/projects" />,
+ *         <NavigationRail.Link key="reports" label="Reports" icon={svgReportLarge} href="/reports" />,
+ *       ]}
+ *     />
  *   </NavigationRail.Content>
  *
  *   <NavigationRail.Footer>
- *     <NavigationRail.List>
- *       <NavigationRail.ListItem>
- *         <NavigationRail.Button label="Help" icon={helpIcon} onClick={…} />
- *       </NavigationRail.ListItem>
- *       <NavigationRail.ListItem>
- *         <NavigationRail.Button label="Settings" icon={settingsIcon} onClick={…} />
- *       </NavigationRail.ListItem>
- *       <NavigationRail.ListItem>
- *         <NavigationRail.Button label="Profile" icon={userIcon} onClick={…} />
- *       </NavigationRail.ListItem>
- *     </NavigationRail.List>
+ *     <NavigationRail.List
+ *       items={[
+ *         <NavigationRail.Button key="help" label="Help" icon={svgHelpLarge} onClick={…} />,
+ *         <NavigationRail.Button key="settings" label="Settings" icon={svgSettingsLarge} onClick={…} />,
+ *         <NavigationRail.Button key="profile" label="Profile" icon={svgUserLarge} onClick={…} />,
+ *       ]}
+ *     />
  *   </NavigationRail.Footer>
  * </NavigationRail.Root>
  * ```
@@ -292,7 +283,7 @@ interface NavigationRailContentProps extends BaseProps {}
  * Example:
  * ```tsx
  * <NavigationRail.Content>
- *   <NavigationRail.List>…</NavigationRail.List>
+ *   <NavigationRail.List items={[…]} />
  * </NavigationRail.Content>
  * ```
  */
@@ -313,10 +304,10 @@ DEV: NavigationRailContent.displayName = "NavigationRail.Content";
 
 interface NavigationRailListProps extends BaseProps<"div"> {
 	/**
-	 * A list of navigation items, as an alternative to `children`. Each item will be
-	 * automatically wrapped in a `NavigationRail.ListItem`.
+	 * List of the navigation items. Each item should be a `NavigationRail.Link` or `NavigationRail.Button`,
+	 * and will be automatically wrapped in a `NavigationRail.ListItem`.
 	 *
-	 * Each item should be a `NavigationRail.Anchor` or `NavigationRail.Button`.
+	 * This is the recommended alternative to the `children` prop.
 	 */
 	items?: React.ReactNode[];
 
@@ -334,39 +325,40 @@ interface NavigationRailListProps extends BaseProps<"div"> {
  *
  * It should be used within `NavigationRail.Content` or `NavigationRail.Footer`.
  *
- * Each list item should be a `NavigationRail.Link` or `NavigationRail.Button`, wrapped in a `NavigationRail.ListItem`.
- * The `items` prop will automatically wrap each item in a `NavigationRail.ListItem`.
+ * Pass the navigation items (`NavigationRail.Link` or `NavigationRail.Button`) to the `items` prop.
+ * Each item will be automatically wrapped in a `NavigationRail.ListItem`.
  *
- * Example (with `items`):
+ * Example (with `NavigationRail.Link`):
  * ```tsx
  * <NavigationRail.List
  *   items={[
- *     <NavigationRail.Link key="home" label="Home" icon={homeIcon} href="/" />,
- *     <NavigationRail.Link key="projects" label="Projects" icon={projectsIcon} href="/projects" />,
+ *     <NavigationRail.Link key="home" label="Home" icon={svgHomeLarge} href="/" />,
+ *     <NavigationRail.Link key="projects" label="Projects" icon={svgProjectLarge} href="/projects" />,
  *   ]}
  * />
  * ```
  *
- * Example (with `NavigationRail.Link` as `children`):
- * ```tsx
- * <NavigationRail.List>
- *   <NavigationRail.ListItem>
- *     <NavigationRail.Link label="Home" icon={homeIcon} href="/" />
- *   </NavigationRail.ListItem>
- *   <NavigationRail.ListItem>
- *     <NavigationRail.Link label="Projects" icon={projectsIcon} href="/projects" />
- *   </NavigationRail.ListItem>
- * </NavigationRail.List>
- * ```
- *
  * Example (with `NavigationRail.Button`):
  * ```tsx
+ * <NavigationRail.List
+ *   items={[
+ *     <NavigationRail.Button key="help" label="Help" icon={svgHelpLarge} onClick={…} />,
+ *     <NavigationRail.Button key="settings" label="Settings" icon={svgSettingsLarge} onClick={…} />,
+ *   ]}
+ * />
+ * ```
+ *
+ * Alternatively, use `children` instead of the `items` prop.
+ * When using `children`, each item must be manually wrapped in a `NavigationRail.ListItem`.
+ *
+ * Example (with `children`):
+ * ```tsx
  * <NavigationRail.List>
  *   <NavigationRail.ListItem>
- *     <NavigationRail.Button label="Help" icon={helpIcon} onClick={…} />
+ *     <NavigationRail.Link label="Home" icon={svgHomeLarge} href="/" />
  *   </NavigationRail.ListItem>
  *   <NavigationRail.ListItem>
- *     <NavigationRail.Button label="Settings" icon={settingsIcon} onClick={…}  />
+ *     <NavigationRail.Link label="Projects" icon={svgProjectLarge} href="/projects" />
  *   </NavigationRail.ListItem>
  * </NavigationRail.List>
  * ```
@@ -400,18 +392,22 @@ DEV: NavigationRailList.displayName = "NavigationRail.List";
 interface NavigationRailListItemProps extends BaseProps<"div"> {}
 
 /**
- * The `NavigationRail.Item` represents a single navigation list item, which should contain
+ * The `NavigationRail.ListItem` represents a single navigation list item, which should contain
  * either a `NavigationRail.Link` or a `NavigationRail.Button`.
+ *
+ * This component only needs to be used when passing `children` to `NavigationRail.List`.
+ * When using the `items` prop, each item is automatically wrapped in a `NavigationRail.ListItem`.
  *
  * Example:
  * ```tsx
- * <NavigationRail.ListItem>
- *   <NavigationRail.Link label="Home" icon={homeIcon} href="/" />
- * </NavigationRail.ListItem>
- * // or
- * <NavigationRail.ListItem>
- *   <NavigationRail.Button label="Settings" icon={settingsIcon} onClick={…} />
- * </NavigationRail.ListItem>
+ * <NavigationRail.List>
+ *   <NavigationRail.ListItem>
+ *     <NavigationRail.Link label="Home" icon={svgHomeLarge} href="/" />
+ *   </NavigationRail.ListItem>
+ *   <NavigationRail.ListItem>
+ *     <NavigationRail.Button label="Settings" icon={svgSettingsLarge} onClick={…} />
+ *   </NavigationRail.ListItem>
+ * </NavigationRail.List>
  * ```
  *
  * **Note:** This is a non-interactive wrapper element and should not directly handle user interactions.
@@ -685,14 +681,16 @@ interface NavigationRailLinkProps
 /**
  * `NavigationRail.Link` is used for top-level navigation items that link to major pages.
  *
- * Should be used inside `NavigationRail.ListItem` and must have a short `label` and a recognizable `icon`.
- * The `label` will be shown as a tooltip when the `NavigationRail` is collapsed.
+ * - Should be passed to the `items` prop of `NavigationRail.List` (or as a child of `NavigationRail.ListItem`).
+ * - Must have a short `label` and a recognizable `icon`. The `label` will be shown as a tooltip when collapsed.
  *
  * Example:
  * ```tsx
- * <NavigationRail.ListItem>
- *   <NavigationRail.Link label="Home" icon={homeIcon} href="/" />
- * </NavigationRail.ListItem>
+ * <NavigationRail.List
+ *   items={[
+ *     <NavigationRail.Link key="home" label="Home" icon={svgHomeLarge} href="/" />,
+ *   ]}
+ * />
  * ```
  */
 const NavigationRailLink = forwardRef<"a", NavigationRailLinkProps>(
@@ -725,14 +723,16 @@ interface NavigationRailButtonProps
  * `NavigationRail.Button` is used for actions that do not navigate to a new page, but rather perform
  * an in-page action, such as opening a dialog or menu.
  *
- * Should be used inside `NavigationRail.ListItem` and must have a short `label` and a recognizable `icon`.
- * The `label` will be shown as a tooltip when the `NavigationRail` is collapsed.
+ * - Should be passed to the `items` prop of `NavigationRail.List` (or as a child of `NavigationRail.ListItem`).
+ * - Must have a short `label` and a recognizable `icon`. The `label` will be shown as a tooltip when collapsed.
  *
  * Example:
  * ```tsx
- * <NavigationRail.ListItem>
- *   <NavigationRail.Button label="Notifications" icon={notificationsIcon} onClick={showNotificationsDialog} />
- * </NavigationRail.ListItem>
+ * <NavigationRail.List
+ *   items={[
+ *     <NavigationRail.Button key="notifications" label="Notifications" icon={svgNotificationsLarge} onClick={showNotificationsDialog} />,
+ *   ]}
+ * />
  * ```
  */
 const NavigationRailButton = forwardRef<"button", NavigationRailButtonProps>(
@@ -762,7 +762,7 @@ interface NavigationRailFooterProps extends BaseProps<"footer"> {}
  * Example:
  * ```tsx
  * <NavigationRail.Footer>
- *   <NavigationRail.List>…</NavigationRail.List>
+ *   <NavigationRail.List items={[…]} />
  * </NavigationRail.Footer>
  * ```
  */

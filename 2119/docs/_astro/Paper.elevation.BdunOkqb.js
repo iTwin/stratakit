@@ -1,0 +1,1 @@
+import{t as e}from"./Paper.D45hDv_7.js";import{t}from"./Stack.CQYpEpfP.js";import{fr as n}from"./chevron-down.BiBogi76.js";var r={paper:`_paper_bwm6f_6`},i=n(),a=()=>(0,i.jsx)(t,{spacing:2,direction:`row`,sx:{alignItems:`center`,inlineSize:`100%`},children:[0,1,4,8,16,24].map(t=>(0,i.jsx)(e,{className:r.paper,elevation:t,children:t},t))});export{a as default};

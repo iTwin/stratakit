@@ -1,0 +1,1 @@
+import{t as e}from"./Chip.CxArOWma.js";import{fr as t}from"./chevron-down.BiBogi76.js";var n=t(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(e,{label:`HTML`}),(0,n.jsx)(e,{label:`CSS`}),(0,n.jsx)(e,{label:`JS`})]});export{r as default};

@@ -319,6 +319,14 @@ interface NavigationRailListProps extends BaseProps<"div"> {
 	 * Each item should be a `NavigationRail.Anchor` or `NavigationRail.Button`.
 	 */
 	items?: React.ReactNode[];
+
+	/**
+	 * The navigation items as `children`. Each child should be a `NavigationRail.ListItem`,
+	 * containing a `NavigationRail.Link` or `NavigationRail.Button`.
+	 *
+	 * This is an alternative to the `items` prop.
+	 */
+	children?: React.ReactNode;
 }
 
 /**

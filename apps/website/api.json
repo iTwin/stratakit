@@ -2240,6 +2240,12 @@
 						"baseProps": ["BaseProps.render"],
 						"props": [
 							{
+								"name": "children",
+								"type": "ReactNode",
+								"optional": true,
+								"jsdoc": "The navigation items as `children`. Each child should be a `NavigationRail.ListItem`,\ncontaining a `NavigationRail.Link` or `NavigationRail.Button`.\n\nThis is an alternative to the `items` prop."
+							},
+							{
 								"name": "items",
 								"type": "ReactNode[] | undefined",
 								"optional": true,

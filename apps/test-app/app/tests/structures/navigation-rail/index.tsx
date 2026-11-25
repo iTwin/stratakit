@@ -69,7 +69,7 @@ export default definePage(
 				<NavigationRail.Content>
 					<NavigationRail.List
 						items={Object.entries(exampleNavItems).map(([key, item]) => (
-							<NavigationRail.Anchor
+							<NavigationRail.Link
 								key={key}
 								icon={item.icon}
 								label={item.label}
@@ -82,7 +82,7 @@ export default definePage(
 
 					<Divider />
 
-					<NavigationRail.Anchor
+					<NavigationRail.Link
 						href="#"
 						label="Marketplace"
 						icon={svgPlugins}
@@ -134,7 +134,7 @@ function VisualTest() {
 			<NavigationRail.Content>
 				<NavigationRail.List>
 					<NavigationRail.ListItem>
-						<NavigationRail.Anchor
+						<NavigationRail.Link
 							href="#"
 							icon={svgPlaceholder}
 							label="Item #1"
@@ -142,14 +142,14 @@ function VisualTest() {
 						/>
 					</NavigationRail.ListItem>
 					<NavigationRail.ListItem>
-						<NavigationRail.Anchor
+						<NavigationRail.Link
 							href="#"
 							icon={svgPlaceholder}
 							label="Item #2"
 						/>
 					</NavigationRail.ListItem>
 					<NavigationRail.ListItem>
-						<NavigationRail.Anchor
+						<NavigationRail.Link
 							href="#"
 							icon={svgPlaceholder}
 							label="Item #3"
@@ -204,7 +204,7 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 				<NavigationRail.Content>
 					<NavigationRail.List>
 						<NavigationRail.ListItem>
-							<NavigationRail.Anchor
+							<NavigationRail.Link
 								href="#"
 								icon={svgPlaceholder}
 								label="Item #1"
@@ -212,14 +212,14 @@ function ControlledState({ defaultExpanded }: VariantProps) {
 							/>
 						</NavigationRail.ListItem>
 						<NavigationRail.ListItem>
-							<NavigationRail.Anchor
+							<NavigationRail.Link
 								href="#"
 								icon={svgPlaceholder}
 								label="Item #2"
 							/>
 						</NavigationRail.ListItem>
 						<NavigationRail.ListItem>
-							<NavigationRail.Anchor
+							<NavigationRail.Link
 								href="#"
 								icon={svgPlaceholder}
 								label="Item #3"

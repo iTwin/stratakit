@@ -53,7 +53,7 @@ This is for the application branding and [`NavigationRail.ToggleButton`](/refere
 
 ### [NavigationRail.Content](/reference/structures/NavigationRail#NavigationRail.Content)
 
-The `NavigationRail.Content` component houses a number of [interactive navigation components](#interaction). These can each be one of [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) or [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
+The `NavigationRail.Content` component houses a number of [interactive navigation components](#interaction). These can each be one of [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link) or [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
 
 You can group related navigation components using the [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) and [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) components. Place a [**Divider**](/components/divider/) between groups for clear visual demarcation.
 
@@ -70,11 +70,11 @@ You can group related navigation components using the [`NavigationRail.List`](/r
 		<NavigationRail.ListItem>...</NavigationRail.ListItem>
 	</NavigationRail.List>
 	<Divider role="presentation" />
-	<NavigationRail.Anchor>...</NavigationRail.Anchor>
+	<NavigationRail.Link>...</NavigationRail.Link>
 </NavigationRail.Content>
 ```
 
-Note the _standalone_ [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor). Not all items belong to groups.
+Note the _standalone_ [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link). Not all items belong to groups.
 
 :::note[Presentational dividers]
 
@@ -95,7 +95,7 @@ Any supplementary items, such as settings or account preferences, should be plac
 			<NavigationRail.Button icon={svgSettingsLarge} label="Settings" />
 		</NavigationRail.ListItem>
 		<NavigationRail.ListItem>
-			<NavigationRail.Anchor icon={svgAccountLarge} label="Account" />
+			<NavigationRail.Link icon={svgAccountLarge} label="Account" />
 		</NavigationRail.ListItem>
 	</NavigationRail.List>
 </NavigationRail.Footer>
@@ -103,22 +103,22 @@ Any supplementary items, such as settings or account preferences, should be plac
 
 ## Interaction
 
-Choose a [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) or [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button), depending on the type of interaction.
+Choose a [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link) or [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button), depending on the type of interaction.
 
 | Component                                                                             | Interaction                                          |
 | ------------------------------------------------------------------------------------- | ---------------------------------------------------- |
-| [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) | Navigation between screens                           |
+| [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link)     | Navigation between screens                           |
 | [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) | Action on the current screen (e.g. opening a dialog) |
 
-[`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) is not itself interactive. It houses either a [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) or a [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
+[`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) is not itself interactive. It houses either a [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link) or a [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
 
 ### The `active` prop
 
-Mark a [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor)’s current link destination with the [`active`](/reference/structures/NavigationRail#NavigationRail.Anchor.active) prop. This prop is not supported on [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
+Mark a [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link)’s current link destination with the [`active`](/reference/structures/NavigationRail#NavigationRail.Link.active) prop. This prop is not supported on [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
 
 :::caution[Routing]
 
-Each [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) must take the user to a separate screen belonging to the application. Each screen/page must have a [unique title](/guides/language-and-labels/#the-page-title). If you are using a single-page application architecture, the `<title>` will have to be updated dynamically. When the new screen is rendered, keyboard focus must be relocated. Typically, this will be to the `<h1>` heading of the new screen, giving context to screen reader users.
+Each [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link) must take the user to a separate screen belonging to the application. Each screen/page must have a [unique title](/guides/language-and-labels/#the-page-title). If you are using a single-page application architecture, the `<title>` will have to be updated dynamically. When the new screen is rendered, keyboard focus must be relocated. Typically, this will be to the `<h1>` heading of the new screen, giving context to screen reader users.
 
 Your router component may implement some of these behaviors for you.
 
@@ -126,10 +126,10 @@ Your router component may implement some of these behaviors for you.
 
 ### The `suffix` prop
 
-Use the [`suffix`](/reference/structures/NavigationRail#NavigationRail.Anchor.suffix) prop to display additional information. For example, for items that open in a new tab, render an icon with the alternate text "(opens in a new tab)".
+Use the [`suffix`](/reference/structures/NavigationRail#NavigationRail.Link.suffix) prop to display additional information. For example, for items that open in a new tab, render an icon with the alternate text "(opens in a new tab)".
 
 ```jsx
-<NavigationRail.Anchor suffix="(opens in a new tab)">Help</NavigationRail.Anchor>
+<NavigationRail.Link suffix="(opens in a new tab)">Help</NavigationRail.Link>
 ```
 
 ## Examples
@@ -153,14 +153,14 @@ In the example below:
 
 - Include a [`NavigationRail.Header`](/reference/structures/NavigationRail#NavigationRail.Header), [`NavigationRail.Content`](/reference/structures/NavigationRail#NavigationRail.Content), and [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer), in that order.
 - Organize related items into [`NavigationRail.List`s](/reference/structures/NavigationRail#NavigationRail.List) separated by presentational [**Dividers**](/components/divider/).
-- Use the [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor) and [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) components for navigational items.
+- Use the [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link) and [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) components for navigational items.
 - Use [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) for any items that do not navigate the user away from the current screen.
 
 ## 🚫 Don't
 
 - Don't insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
 - Don't place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer).
-- Don't make multiple [`NavigationRail.Anchor`](/reference/structures/NavigationRail#NavigationRail.Anchor)s `active` at the same time.
+- Don't make multiple [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link)s `active` at the same time.
 
 ## API reference
 
@@ -170,6 +170,6 @@ In the example below:
 - [`NavigationRail.Footer`](/reference/structures/NavigationRail/#NavigationRail.Footer)
 - [`NavigationRail.List`](/reference/structures/NavigationRail/#NavigationRail.List)
 - [`NavigationRail.ListItem`](/reference/structures/NavigationRail/#NavigationRail.ListItem)
-- [`NavigationRail.Anchor`](/reference/structures/NavigationRail/#NavigationRail.Anchor)
+- [`NavigationRail.Link`](/reference/structures/NavigationRail/#NavigationRail.Link)
 - [`NavigationRail.Button`](/reference/structures/NavigationRail/#NavigationRail.Button)
 - [`NavigationRail.ToggleButton`](/reference/structures/NavigationRail/#NavigationRail.ToggleButton)

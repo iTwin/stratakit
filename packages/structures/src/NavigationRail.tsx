@@ -144,13 +144,13 @@ interface NavigationRailRootProps extends NavigationRailRootInnerProps {
  *   <NavigationRail.Content>
  *     <NavigationRail.List>
  *       <NavigationRail.ListItem>
- *         <NavigationRail.Anchor label="Dashboard" icon={dashboardIcon} href="/dashboard" />
+ *         <NavigationRail.Link label="Dashboard" icon={dashboardIcon} href="/dashboard" />
  *       </NavigationRail.ListItem>
  *       <NavigationRail.ListItem>
- *         <NavigationRail.Anchor label="Projects" icon={projectsIcon} href="/projects" />
+ *         <NavigationRail.Link label="Projects" icon={projectsIcon} href="/projects" />
  *       </NavigationRail.ListItem>
  *       <NavigationRail.ListItem>
- *         <NavigationRail.Anchor label="Reports" icon={reportsIcon} href="/reports" />
+ *         <NavigationRail.Link label="Reports" icon={reportsIcon} href="/reports" />
  *       </NavigationRail.ListItem>
  *     </NavigationRail.List>
  *
@@ -326,27 +326,27 @@ interface NavigationRailListProps extends BaseProps<"div"> {
  *
  * It should be used within `NavigationRail.Content` or `NavigationRail.Footer`.
  *
- * Each list item should be a `NavigationRail.Anchor` or `NavigationRail.Button`, wrapped in a `NavigationRail.ListItem`.
+ * Each list item should be a `NavigationRail.Link` or `NavigationRail.Button`, wrapped in a `NavigationRail.ListItem`.
  * The `items` prop will automatically wrap each item in a `NavigationRail.ListItem`.
  *
  * Example (with `items`):
  * ```tsx
  * <NavigationRail.List
  *   items={[
- *     <NavigationRail.Anchor key="home" label="Home" icon={homeIcon} href="/" />,
- *     <NavigationRail.Anchor key="projects" label="Projects" icon={projectsIcon} href="/projects" />,
+ *     <NavigationRail.Link key="home" label="Home" icon={homeIcon} href="/" />,
+ *     <NavigationRail.Link key="projects" label="Projects" icon={projectsIcon} href="/projects" />,
  *   ]}
  * />
  * ```
  *
- * Example (with `NavigationRail.Anchor` as `children`):
+ * Example (with `NavigationRail.Link` as `children`):
  * ```tsx
  * <NavigationRail.List>
  *   <NavigationRail.ListItem>
- *     <NavigationRail.Anchor label="Home" icon={homeIcon} href="/" />
+ *     <NavigationRail.Link label="Home" icon={homeIcon} href="/" />
  *   </NavigationRail.ListItem>
  *   <NavigationRail.ListItem>
- *     <NavigationRail.Anchor label="Projects" icon={projectsIcon} href="/projects" />
+ *     <NavigationRail.Link label="Projects" icon={projectsIcon} href="/projects" />
  *   </NavigationRail.ListItem>
  * </NavigationRail.List>
  * ```
@@ -393,12 +393,12 @@ interface NavigationRailListItemProps extends BaseProps<"div"> {}
 
 /**
  * The `NavigationRail.Item` represents a single navigation list item, which should contain
- * either a `NavigationRail.Anchor` or a `NavigationRail.Button`.
+ * either a `NavigationRail.Link` or a `NavigationRail.Button`.
  *
  * Example:
  * ```tsx
  * <NavigationRail.ListItem>
- *   <NavigationRail.Anchor label="Home" icon={homeIcon} href="/" />
+ *   <NavigationRail.Link label="Home" icon={homeIcon} href="/" />
  * </NavigationRail.ListItem>
  * // or
  * <NavigationRail.ListItem>
@@ -544,7 +544,7 @@ interface NavigationRailItemActionOwnProps {
 }
 
 /**
- * This is the base for `NavigationRail.Anchor` and `NavigationRail.Button`.
+ * This is the base for `NavigationRail.Link` and `NavigationRail.Button`.
  * @private
  */
 const NavigationRailItemAction = forwardRef<
@@ -646,7 +646,7 @@ const NavigationRailItemActionSuffix = forwardRef<
 	const ref = React.useRef<HTMLElement>(undefined);
 	DEV: useWarnOnInteractiveDescendants(
 		ref,
-		`NavigationRail: interactive elements (e.g. buttons or links) should not be used in the "suffix" prop of "NavigationRail.Anchor" and "NavigationRail.Button". If you have a use case for trailing actions, please open an issue: https://github.com/iTwin/stratakit/issues`,
+		`NavigationRail: interactive elements (e.g. buttons or links) should not be used in the "suffix" prop of "NavigationRail.Link" and "NavigationRail.Button". If you have a use case for trailing actions, please open an issue: https://github.com/iTwin/stratakit/issues`,
 	);
 
 	return (
@@ -665,7 +665,7 @@ DEV: NavigationRailItemActionSuffix.displayName =
 
 // ----------------------------------------------------------------------------
 
-interface NavigationRailAnchorProps
+interface NavigationRailLinkProps
 	extends Omit<BaseProps<"a">, "children">,
 		NavigationRailItemActionOwnProps {
 	/**
@@ -675,7 +675,7 @@ interface NavigationRailAnchorProps
 }
 
 /**
- * `NavigationRail.Anchor` is used for top-level navigation items that link to major pages.
+ * `NavigationRail.Link` is used for top-level navigation items that link to major pages.
  *
  * Should be used inside `NavigationRail.ListItem` and must have a short `label` and a recognizable `icon`.
  * The `label` will be shown as a tooltip when the `NavigationRail` is collapsed.
@@ -683,11 +683,11 @@ interface NavigationRailAnchorProps
  * Example:
  * ```tsx
  * <NavigationRail.ListItem>
- *   <NavigationRail.Anchor label="Home" icon={homeIcon} href="/" />
+ *   <NavigationRail.Link label="Home" icon={homeIcon} href="/" />
  * </NavigationRail.ListItem>
  * ```
  */
-const NavigationRailAnchor = forwardRef<"a", NavigationRailAnchorProps>(
+const NavigationRailLink = forwardRef<"a", NavigationRailLinkProps>(
 	(props, forwardedRef) => {
 		const { label, icon, suffix, active, ...rest } = props;
 
@@ -702,7 +702,10 @@ const NavigationRailAnchor = forwardRef<"a", NavigationRailAnchorProps>(
 		);
 	},
 );
-DEV: NavigationRailAnchor.displayName = "NavigationRail.Anchor";
+DEV: NavigationRailLink.displayName = "NavigationRail.Link";
+
+/** @deprecated Use `NavigationRail.Link` instead. */
+const NavigationRailAnchor = NavigationRailLink;
 
 // ----------------------------------------------------------------------------
 
@@ -777,6 +780,7 @@ export {
 	NavigationRailContent as Content,
 	NavigationRailFooter as Footer,
 	NavigationRailHeader as Header,
+	NavigationRailLink as Link,
 	NavigationRailList as List,
 	NavigationRailListItem as ListItem,
 	NavigationRailRoot as Root,

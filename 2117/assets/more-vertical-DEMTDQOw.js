@@ -1,0 +1,1 @@
+import{t as e}from"./more-vertical-DOC80UO9.js";var t=`${e}#icon`;`${e}`;export{t};

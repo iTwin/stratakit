@@ -1,0 +1,1 @@
+import{t as e}from"./TextField-B7kREvt7.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Description`,multiline:!0});export{r as default};

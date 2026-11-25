@@ -10,6 +10,12 @@ links:
 
 ## Examples
 
+### Elevation
+
+Use the `elevation` prop to control how prominently the surface is raised.
+
+::example{src="mui/Paper.elevation" min-height="200px"}
+
 ### Outlined
 
 Set `variant="outlined"` for a visual effect that relies on outline instead of shadow for separation.

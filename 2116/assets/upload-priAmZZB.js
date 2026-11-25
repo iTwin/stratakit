@@ -1,1 +1,0 @@
-import{t as e}from"./upload-0q9kJEQf.js";var t=`${e}#icon`;`${e}`;export{t};

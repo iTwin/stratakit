@@ -1,0 +1,1 @@
+import{t as e}from"./info-CHPMnr1M.js";var t=`${e}#icon`;`${e}`;export{t};

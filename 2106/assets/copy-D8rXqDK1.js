@@ -1,1 +1,0 @@
-import{t as e}from"./copy-BRA7sl4d.js";`${e}`;var t=`${e}#icon-large`;export{t};

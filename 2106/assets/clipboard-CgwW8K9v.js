@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-XKyaHtl9.js";var t=e({default:()=>n}),n=`/2106/assets/clipboard-VhgNiA6T.svg`;export{t as n,n as t};

@@ -12,8 +12,12 @@
 	}
 
 	/* #region Elevations */
+	&:where(.MuiPaper-elevation:not(.MuiPaper-elevation0)) {
+		border: 1px solid var(--stratakit-color-border-page-base);
+	}
+
 	&:where(.MuiPaper-elevation1, .MuiPaper-elevation2, .MuiPaper-elevation3) {
-		background-color: var(--stratakit-color-bg-page-depth);
+		background-color: var(--stratakit-color-bg-page-base);
 		box-shadow: var(--stratakit-shadow-surface-xs);
 	}
 

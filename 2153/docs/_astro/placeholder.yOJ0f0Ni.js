@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.RKQ964ks.js";var t=`${e}#icon`;`${e}`;export{t};

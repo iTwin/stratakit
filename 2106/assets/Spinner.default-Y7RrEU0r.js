@@ -1,1 +1,0 @@
-import{t as e}from"./Spinner-BeJOsyhN.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=t(),r=()=>(0,n.jsx)(e,{});export{r as default};

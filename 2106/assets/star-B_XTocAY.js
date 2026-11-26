@@ -1,1 +1,0 @@
-import{t as e}from"./star-Bef-hq6G.js";var t=`${e}#icon`,n=`${e}#icon-large`;`${e}`,`${e}`;export{n,t};

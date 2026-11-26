@@ -1,1 +1,0 @@
-import{t as e}from"./rename-Ca-6hlpc.js";var t=`${e}#icon`;`${e}`;export{t};

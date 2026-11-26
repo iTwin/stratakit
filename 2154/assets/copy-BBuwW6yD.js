@@ -1,0 +1,1 @@
+import{t as e}from"./copy-Cin4U-aM.js";`${e}`;var t=`${e}#icon-large`;export{t};

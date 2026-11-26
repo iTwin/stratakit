@@ -1,0 +1,1 @@
+import{t as e}from"./upload-CUWMkd2j.js";var t=`${e}#icon`;`${e}`;export{t};

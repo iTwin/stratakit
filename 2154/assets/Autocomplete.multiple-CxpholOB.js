@@ -1,0 +1,1 @@
+import{t as e}from"./Autocomplete-TD30w12D.js";import{t}from"./TextField-D4njU_pN.js";import{t as n}from"./jsx-runtime-znEIPLWF.js";var r=n(),i=()=>(0,r.jsx)(e,{options:[`Badge`,`Button`,`Checkbox`,`Dialog`,`Divider`,`Progress`,`Rating`,`Select`,`Switch`,`TextField`],renderInput:e=>(0,r.jsx)(t,{...e,label:`Favorite components`}),multiple:!0});export{i as default};

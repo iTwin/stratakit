@@ -1,0 +1,1 @@
+import{C as e,S as t}from"./DefaultPropsProvider-BA5pAiEK.js";function n(t){return e(`MuiMenu`,t)}var r=t(`MuiMenu`,[`root`,`paper`,`list`]);export{r as n,n as t};

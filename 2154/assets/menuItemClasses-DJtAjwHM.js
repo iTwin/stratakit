@@ -1,0 +1,1 @@
+import{C as e,S as t}from"./DefaultPropsProvider-BA5pAiEK.js";function n(t){return e(`MuiMenuItem`,t)}var r=t(`MuiMenuItem`,[`root`,`focusVisible`,`dense`,`disabled`,`divider`,`gutters`,`selected`]);export{r as n,n as t};

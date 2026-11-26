@@ -1,0 +1,1 @@
+import{t as e}from"./arrow-down-Cdf4U_E4.js";var t=`${e}#icon`;`${e}`;export{t};

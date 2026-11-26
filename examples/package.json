@@ -7,6 +7,8 @@
 		"./*": "./*"
 	},
 	"dependencies": {
+		"classnames": "^2.5.1",
+		"@ariakit/react": "^0.4.41",
 		"@mui/material": "catalog:",
 		"@mui/utils": "catalog:",
 		"@mui/x-date-pickers": "catalog:",

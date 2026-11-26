@@ -1,0 +1,1 @@
+import{t as e}from"./rename-lewaj8uH.js";var t=`${e}#icon`;`${e}`;export{t};

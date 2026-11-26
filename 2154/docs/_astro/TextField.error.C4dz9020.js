@@ -1,0 +1,1 @@
+import{t as e}from"./TextField.CAyv0WpV.js";import{t}from"./visuallyHidden.BgYNxp1M.js";import{fr as n}from"./chevron-down.C9kVkQYZ.js";var r=n(),i=()=>(0,r.jsx)(e,{label:`Email`,error:!0,helperText:(0,r.jsxs)(r.Fragment,{children:[(0,r.jsx)(`span`,{style:t,children:`Error: `}),`Invalid email address.`]})});export{i as default};

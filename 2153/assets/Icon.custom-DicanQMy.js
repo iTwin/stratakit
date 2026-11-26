@@ -1,0 +1,1 @@
+import{t as e}from"./Icon-xr-QVCU_.js";import{t}from"./jsx-runtime-znEIPLWF.js";var n=`/2153/assets/Icon.custom-QzTIDwip.svg`,r=t(),i=()=>(0,r.jsx)(e,{href:`${n}#icon`,alt:`Filled Circle`});export{i as default};

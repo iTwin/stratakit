@@ -1,0 +1,1 @@
+import{t as e}from"./upload-B86349H2.js";var t=`${e}#icon`;`${e}`;export{t};

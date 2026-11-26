@@ -67,19 +67,18 @@ export default definePage(
 				</NavigationRail.Header>
 
 				<NavigationRail.Content>
-					<NavigationRail.List>
-						{Object.entries(exampleNavItems).map(([key, item]) => (
-							<NavigationRail.ListItem key={key}>
-								<NavigationRail.Link
-									icon={item.icon}
-									label={item.label}
-									href="#" // placeholder
-									active={active === key}
-									onClick={() => setActive(key)}
-								/>
-							</NavigationRail.ListItem>
+					<NavigationRail.List
+						items={Object.entries(exampleNavItems).map(([key, item]) => (
+							<NavigationRail.Link
+								key={key}
+								icon={item.icon}
+								label={item.label}
+								href="#" // placeholder
+								active={active === key}
+								onClick={() => setActive(key)}
+							/>
 						))}
-					</NavigationRail.List>
+					/>
 
 					<Divider />
 

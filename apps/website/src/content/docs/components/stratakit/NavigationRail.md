@@ -55,22 +55,26 @@ This is for the application branding and [`NavigationRail.ToggleButton`](/refere
 
 The `NavigationRail.Content` component houses a number of [interactive navigation components](#interaction). These can each be one of [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link) or [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
 
-You can group related navigation components using the [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) and [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) components. Place a [**Divider**](/components/divider/) between groups for clear visual demarcation.
+You can group related navigation components using the [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) component. Place a [**Divider**](/components/divider/) between groups for clear visual demarcation.
 
 ```jsx
 <NavigationRail.Content>
-	<NavigationRail.List>
-		<NavigationRail.ListItem>...</NavigationRail.ListItem>
-		<NavigationRail.ListItem>...</NavigationRail.ListItem>
-		<NavigationRail.ListItem>...</NavigationRail.ListItem>
-	</NavigationRail.List>
+	<NavigationRail.List
+		items={[
+			<NavigationRail.Link key="reports" … />,
+			<NavigationRail.Link key="logs" … />,
+			<NavigationRail.Link key="issues" … />,
+		]}
+	/>
 	<Divider role="presentation" />
-	<NavigationRail.List>
-		<NavigationRail.ListItem>...</NavigationRail.ListItem>
-		<NavigationRail.ListItem>...</NavigationRail.ListItem>
-	</NavigationRail.List>
+	<NavigationRail.List
+		items={[
+			<NavigationRail.Link key="users" … />,
+			<NavigationRail.Link key="roles" … />,
+		]}
+	/>
 	<Divider role="presentation" />
-	<NavigationRail.Link>...</NavigationRail.Link>
+	<NavigationRail.Link … />
 </NavigationRail.Content>
 ```
 
@@ -90,14 +94,12 @@ Any supplementary items, such as settings or account preferences, should be plac
 
 ```jsx
 <NavigationRail.Footer>
-	<NavigationRail.List>
-		<NavigationRail.ListItem>
-			<NavigationRail.Button icon={svgSettingsLarge} label="Settings" />
-		</NavigationRail.ListItem>
-		<NavigationRail.ListItem>
-			<NavigationRail.Link icon={svgAccountLarge} label="Account" />
-		</NavigationRail.ListItem>
-	</NavigationRail.List>
+	<NavigationRail.List
+		items={[
+			<NavigationRail.Button key="settings" icon={svgSettingsLarge} label="Settings" />,
+			<NavigationRail.Button key="account" icon={svgUserLarge} label="Account" />,
+		]}
+	/>
 </NavigationRail.Footer>
 ```
 
@@ -110,7 +112,7 @@ Choose a [`NavigationRail.Link`](/reference/structures/NavigationRail#Navigation
 | [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link)     | Navigation between screens                           |
 | [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) | Action on the current screen (e.g. opening a dialog) |
 
-[`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem) is not itself interactive. It houses either a [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link) or a [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button).
+[`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) wraps each of its `items` in a non-interactive [`NavigationRail.ListItem`](/reference/structures/NavigationRail#NavigationRail.ListItem). If you pass `children` instead of `items`, you must wrap each [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link) or [`NavigationRail.Button`](/reference/structures/NavigationRail#NavigationRail.Button) in a `NavigationRail.ListItem` yourself.
 
 ### The `active` prop
 
@@ -129,7 +131,13 @@ Your router component may implement some of these behaviors for you.
 Use the [`suffix`](/reference/structures/NavigationRail#NavigationRail.Link.suffix) prop to display additional information. For example, for items that open in a new tab, render an icon with the alternate text "(opens in a new tab)".
 
 ```jsx
-<NavigationRail.Link suffix="(opens in a new tab)">Help</NavigationRail.Link>
+<NavigationRail.Link
+	icon={…}
+	label="Help"
+	suffix={<Icon href={svgWindowPopout} alt="(opens in a new tab)" />}
+	href="…"
+	target="_blank"
+/>
 ```
 
 ## Examples
@@ -158,7 +166,7 @@ In the example below:
 
 ## 🚫 Don't
 
-- Don't insert [**Dividers**](/components/divider/) between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
+- Don't insert [**Dividers**](/components/divider/) inside a [`NavigationRail.List`](/reference/structures/NavigationRail#NavigationRail.List) or between [`NavigationRail.ListItem`s](/reference/structures/NavigationRail#NavigationRail.ListItem).
 - Don't place important navigation items in [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer).
 - Don't make multiple [`NavigationRail.Link`](/reference/structures/NavigationRail#NavigationRail.Link)s `active` at the same time.
 

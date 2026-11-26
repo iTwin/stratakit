@@ -2195,7 +2195,7 @@
 							}
 						],
 						"baseElement": "nav",
-						"jsdoc": "The `NavigationRail` presents top-level navigation items in a vertical orientation.\n\nExample:\n```tsx\n<NavigationRail.Root>\n  <NavigationRail.Header>\n    <IconButton label=\"Home\" render={<a href=\"/\" />}>\n      <Icon href={applicationIcon} />\n    </IconButton>\n    <NavigationRail.ToggleButton />\n  </NavigationRail.Header>\n\n  <NavigationRail.Content>\n    <NavigationRail.List>\n      <NavigationRail.ListItem>\n        <NavigationRail.Link label=\"Dashboard\" icon={dashboardIcon} href=\"/dashboard\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Link label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Link label=\"Reports\" icon={reportsIcon} href=\"/reports\" />\n      </NavigationRail.ListItem>\n    </NavigationRail.List>\n\n  </NavigationRail.Content>\n\n  <NavigationRail.Footer>\n    <NavigationRail.List>\n      <NavigationRail.ListItem>\n        <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…} />\n      </NavigationRail.ListItem>\n      <NavigationRail.ListItem>\n        <NavigationRail.Button label=\"Profile\" icon={userIcon} onClick={…} />\n      </NavigationRail.ListItem>\n    </NavigationRail.List>\n  </NavigationRail.Footer>\n</NavigationRail.Root>\n```",
+						"jsdoc": "The `NavigationRail` presents top-level navigation items in a vertical orientation.\n\nExample:\n```tsx\n<NavigationRail.Root>\n  <NavigationRail.Header>\n    <IconButton label=\"Home\" render={<a href=\"/\" />}>\n      <Icon href={svgBrandBentleySystemsFilled} />\n    </IconButton>\n    <NavigationRail.ToggleButton />\n  </NavigationRail.Header>\n\n  <NavigationRail.Content>\n    <NavigationRail.List\n      items={[\n        <NavigationRail.Link key=\"dashboard\" label=\"Dashboard\" icon={svgDashboardLarge} href=\"/dashboard\" />,\n        <NavigationRail.Link key=\"projects\" label=\"Projects\" icon={svgProjectLarge} href=\"/projects\" />,\n        <NavigationRail.Link key=\"reports\" label=\"Reports\" icon={svgReportLarge} href=\"/reports\" />,\n      ]}\n    />\n  </NavigationRail.Content>\n\n  <NavigationRail.Footer>\n    <NavigationRail.List\n      items={[\n        <NavigationRail.Button key=\"help\" label=\"Help\" icon={svgHelpLarge} onClick={…} />,\n        <NavigationRail.Button key=\"settings\" label=\"Settings\" icon={svgSettingsLarge} onClick={…} />,\n        <NavigationRail.Button key=\"profile\" label=\"Profile\" icon={svgUserLarge} onClick={…} />,\n      ]}\n    />\n  </NavigationRail.Footer>\n</NavigationRail.Root>\n```",
 						"barrelName": "unstable_NavigationRail.Root"
 					},
 					{
@@ -2232,15 +2232,28 @@
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "`NavigationRail.Content` wraps the main content of the `NavigationRail`, including\nthe primary navigation list.\n\nExample:\n```tsx\n<NavigationRail.Content>\n  <NavigationRail.List>…</NavigationRail.List>\n</NavigationRail.Content>\n```",
+						"jsdoc": "`NavigationRail.Content` wraps the main content of the `NavigationRail`, including\nthe primary navigation list.\n\nExample:\n```tsx\n<NavigationRail.Content>\n  <NavigationRail.List items={[…]} />\n</NavigationRail.Content>\n```",
 						"barrelName": "unstable_NavigationRail.Content"
 					},
 					{
 						"name": "List",
 						"baseProps": ["BaseProps.render"],
-						"props": [],
+						"props": [
+							{
+								"name": "children",
+								"type": "ReactNode",
+								"optional": true,
+								"jsdoc": "The navigation items as `children`. Each child should be a `NavigationRail.ListItem`,\ncontaining a `NavigationRail.Link` or `NavigationRail.Button`.\n\nThis is an alternative to the `items` prop."
+							},
+							{
+								"name": "items",
+								"type": "ReactNode[] | undefined",
+								"optional": true,
+								"jsdoc": "List of the navigation items. Each item should be a `NavigationRail.Link` or `NavigationRail.Button`,\nand will be automatically wrapped in a `NavigationRail.ListItem`.\n\nThis is the recommended alternative to the `children` prop."
+							}
+						],
 						"baseElement": "div",
-						"jsdoc": "The `NavigationRail.List` represents a list of top-level navigation items.\n\nIt should be used within `NavigationRail.Content` and should contain `NavigationRail.ListItem` elements,\nwhich in turn can contain `NavigationRail.Link` or `NavigationRail.Button`.\n\nExample (with `NavigationRail.Link`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Link label=\"Home\" icon={homeIcon} href=\"/\" />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Link label=\"Projects\" icon={projectsIcon} href=\"/projects\" />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nExample (with `NavigationRail.Button`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Help\" icon={helpIcon} onClick={…} />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…}  />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nMultiple `NavigationRail.List` elements can be used together and be separated by a [`Divider`](https://stratakit.bentley.com/docs/components/divider/).",
+						"jsdoc": "The `NavigationRail.List` represents a list of top-level navigation items.\n\nIt should be used within `NavigationRail.Content` or `NavigationRail.Footer`.\n\nPass the navigation items (`NavigationRail.Link` or `NavigationRail.Button`) to the `items` prop.\nEach item will be automatically wrapped in a `NavigationRail.ListItem`.\n\nExample (with `NavigationRail.Link`):\n```tsx\n<NavigationRail.List\n  items={[\n    <NavigationRail.Link key=\"home\" label=\"Home\" icon={svgHomeLarge} href=\"/\" />,\n    <NavigationRail.Link key=\"projects\" label=\"Projects\" icon={svgProjectLarge} href=\"/projects\" />,\n  ]}\n/>\n```\n\nExample (with `NavigationRail.Button`):\n```tsx\n<NavigationRail.List\n  items={[\n    <NavigationRail.Button key=\"help\" label=\"Help\" icon={svgHelpLarge} onClick={…} />,\n    <NavigationRail.Button key=\"settings\" label=\"Settings\" icon={svgSettingsLarge} onClick={…} />,\n  ]}\n/>\n```\n\nAlternatively, use `children` instead of the `items` prop.\nWhen using `children`, each item must be manually wrapped in a `NavigationRail.ListItem`.\n\nExample (with `children`):\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Link label=\"Home\" icon={svgHomeLarge} href=\"/\" />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Link label=\"Projects\" icon={svgProjectLarge} href=\"/projects\" />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\nMultiple `NavigationRail.List` elements can be used together and be separated by a [`Divider`](https://stratakit.bentley.com/docs/components/divider/).",
 						"barrelName": "unstable_NavigationRail.List"
 					},
 					{
@@ -2248,7 +2261,7 @@
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "div",
-						"jsdoc": "The `NavigationRail.Item` represents a single navigation list item, which should contain\neither a `NavigationRail.Link` or a `NavigationRail.Button`.\n\nExample:\n```tsx\n<NavigationRail.ListItem>\n  <NavigationRail.Link label=\"Home\" icon={homeIcon} href=\"/\" />\n</NavigationRail.ListItem>\n// or\n<NavigationRail.ListItem>\n  <NavigationRail.Button label=\"Settings\" icon={settingsIcon} onClick={…} />\n</NavigationRail.ListItem>\n```\n\n**Note:** This is a non-interactive wrapper element and should not directly handle user interactions.",
+						"jsdoc": "The `NavigationRail.ListItem` represents a single navigation list item, which should contain\neither a `NavigationRail.Link` or a `NavigationRail.Button`.\n\nThis component only needs to be used when passing `children` to `NavigationRail.List`.\nWhen using the `items` prop, each item is automatically wrapped in a `NavigationRail.ListItem`.\n\nExample:\n```tsx\n<NavigationRail.List>\n  <NavigationRail.ListItem>\n    <NavigationRail.Link label=\"Home\" icon={svgHomeLarge} href=\"/\" />\n  </NavigationRail.ListItem>\n  <NavigationRail.ListItem>\n    <NavigationRail.Button label=\"Settings\" icon={svgSettingsLarge} onClick={…} />\n  </NavigationRail.ListItem>\n</NavigationRail.List>\n```\n\n**Note:** This is a non-interactive wrapper element and should not directly handle user interactions.",
 						"barrelName": "unstable_NavigationRail.ListItem"
 					},
 					{
@@ -2281,7 +2294,7 @@
 							}
 						],
 						"baseElement": "a",
-						"jsdoc": "`NavigationRail.Link` is used for top-level navigation items that link to major pages.\n\nShould be used inside `NavigationRail.ListItem` and must have a short `label` and a recognizable `icon`.\nThe `label` will be shown as a tooltip when the `NavigationRail` is collapsed.\n\nExample:\n```tsx\n<NavigationRail.ListItem>\n  <NavigationRail.Link label=\"Home\" icon={homeIcon} href=\"/\" />\n</NavigationRail.ListItem>\n```",
+						"jsdoc": "`NavigationRail.Link` is used for top-level navigation items that link to major pages.\n\n- Should be passed to the `items` prop of `NavigationRail.List` (or as a child of `NavigationRail.ListItem`).\n- Must have a short `label` and a recognizable `icon`. The `label` will be shown as a tooltip when collapsed.\n\nExample:\n```tsx\n<NavigationRail.List\n  items={[\n    <NavigationRail.Link key=\"home\" label=\"Home\" icon={svgHomeLarge} href=\"/\" />,\n  ]}\n/>\n```",
 						"barrelName": "unstable_NavigationRail.Link"
 					},
 					{
@@ -2308,7 +2321,7 @@
 							}
 						],
 						"baseElement": "button",
-						"jsdoc": "`NavigationRail.Button` is used for actions that do not navigate to a new page, but rather perform\nan in-page action, such as opening a dialog or menu.\n\nShould be used inside `NavigationRail.ListItem` and must have a short `label` and a recognizable `icon`.\nThe `label` will be shown as a tooltip when the `NavigationRail` is collapsed.\n\nExample:\n```tsx\n<NavigationRail.ListItem>\n  <NavigationRail.Button label=\"Notifications\" icon={notificationsIcon} onClick={showNotificationsDialog} />\n</NavigationRail.ListItem>\n```",
+						"jsdoc": "`NavigationRail.Button` is used for actions that do not navigate to a new page, but rather perform\nan in-page action, such as opening a dialog or menu.\n\n- Should be passed to the `items` prop of `NavigationRail.List` (or as a child of `NavigationRail.ListItem`).\n- Must have a short `label` and a recognizable `icon`. The `label` will be shown as a tooltip when collapsed.\n\nExample:\n```tsx\n<NavigationRail.List\n  items={[\n    <NavigationRail.Button key=\"notifications\" label=\"Notifications\" icon={svgNotificationsLarge} onClick={showNotificationsDialog} />,\n  ]}\n/>\n```",
 						"barrelName": "unstable_NavigationRail.Button"
 					},
 					{
@@ -2316,7 +2329,7 @@
 						"baseProps": ["BaseProps.render"],
 						"props": [],
 						"baseElement": "footer",
-						"jsdoc": "`NavigationRail.Footer` is typically used for grouping secondary actions list near the bottom\nof the `NavigationRail`, away from the main navigation items.\n\nExample:\n```tsx\n<NavigationRail.Footer>\n  <NavigationRail.List>…</NavigationRail.List>\n</NavigationRail.Footer>\n```",
+						"jsdoc": "`NavigationRail.Footer` is typically used for grouping secondary actions list near the bottom\nof the `NavigationRail`, away from the main navigation items.\n\nExample:\n```tsx\n<NavigationRail.Footer>\n  <NavigationRail.List items={[…]} />\n</NavigationRail.Footer>\n```",
 						"barrelName": "unstable_NavigationRail.Footer"
 					}
 				],

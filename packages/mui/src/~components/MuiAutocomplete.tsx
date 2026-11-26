@@ -36,60 +36,69 @@ type OnKeyDownEvent = Parameters<
 	NonNullable<AutocompleteProps["onKeyDown"]>
 >[0];
 
-const MuiAutocomplete = forwardRef<"div", BaseProps>((props, forwardedRef) => {
-	const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
-	const [inputRootRef, setInputRootRef] = React.useState<HTMLElement | null>(
-		null,
-	);
+interface MuiAutocompleteProps
+	extends BaseProps,
+		Pick<AutocompleteProps, "size"> {}
 
-	return (
-		<ThemeProvider
-			theme={(outerTheme: Theme) => ({
-				...outerTheme,
-				components: {
-					...outerTheme.components,
-					MuiTextField: {
-						...outerTheme.components?.MuiTextField,
-						defaultProps: {
-							...outerTheme.components?.MuiTextField?.defaultProps,
-							slotProps: {
-								...outerTheme.components?.MuiTextField?.defaultProps?.slotProps,
-								input: {
+const MuiAutocomplete = forwardRef<"div", MuiAutocompleteProps>(
+	(props, forwardedRef) => {
+		const { size, ...rest } = props;
+		const [labelId, setLabelId] = React.useState<string | undefined>(undefined);
+		const [inputRootRef, setInputRootRef] = React.useState<HTMLElement | null>(
+			null,
+		);
+
+		return (
+			<ThemeProvider
+				theme={(outerTheme: Theme) => ({
+					...outerTheme,
+					components: {
+						...outerTheme.components,
+						MuiTextField: {
+							...outerTheme.components?.MuiTextField,
+							defaultProps: {
+								...outerTheme.components?.MuiTextField?.defaultProps,
+								size,
+								slotProps: {
 									...outerTheme.components?.MuiTextField?.defaultProps
-										?.slotProps?.input,
-									component: MuiAutocompleteTextFieldInput,
-								},
-								htmlInput: {
-									...outerTheme.components?.MuiTextField?.defaultProps
-										?.slotProps?.htmlInput,
-									slot: "input", // Assign input element to the slot named "input"
+										?.slotProps,
+									input: {
+										...outerTheme.components?.MuiTextField?.defaultProps
+											?.slotProps?.input,
+										component: MuiAutocompleteTextFieldInput,
+									},
+									htmlInput: {
+										...outerTheme.components?.MuiTextField?.defaultProps
+											?.slotProps?.htmlInput,
+										slot: "input", // Assign input element to the slot named "input"
+									},
 								},
 							},
 						},
 					},
-				},
-			})}
-		>
-			<MuiAutocompleteContext.Provider
-				value={{ inputRootRef, setInputRootRef }}
+				})}
 			>
-				<MuiInputLabelContext.Provider value={{ setLabelId }}>
-					<Role.div
-						role="group"
-						aria-labelledby={labelId}
-						{...props}
-						onKeyDown={useEventHandlers<OnKeyDownEvent>((e) => {
-							if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
-								e.defaultMuiPrevented = true; // Prevent MUI from closing the listbox while trying to focus the tags
-							}
-						}, props.onKeyDown)}
-						ref={forwardedRef}
-					/>
-				</MuiInputLabelContext.Provider>
-			</MuiAutocompleteContext.Provider>
-		</ThemeProvider>
-	);
-});
+				<MuiAutocompleteContext.Provider
+					value={{ inputRootRef, setInputRootRef }}
+				>
+					<MuiInputLabelContext.Provider value={{ setLabelId }}>
+						<Role.div
+							role="group"
+							aria-labelledby={labelId}
+							{...rest}
+							onKeyDown={useEventHandlers<OnKeyDownEvent>((e) => {
+								if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+									e.defaultMuiPrevented = true; // Prevent MUI from closing the listbox while trying to focus the tags
+								}
+							}, props.onKeyDown)}
+							ref={forwardedRef}
+						/>
+					</MuiInputLabelContext.Provider>
+				</MuiAutocompleteContext.Provider>
+			</ThemeProvider>
+		);
+	},
+);
 DEV: MuiAutocomplete.displayName = "MuiAutocomplete";
 
 // ----------------------------------------------------------------------------

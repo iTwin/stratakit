@@ -1,0 +1,1 @@
+import{t as e}from"./Chip.DIuqR0MS.js";import{fr as t}from"./chevron-down.8uO8jaa5.js";var n=t(),r=()=>(0,n.jsxs)(`div`,{style:{display:`flex`,gap:8},children:[(0,n.jsx)(e,{onDismiss:()=>{},label:`sort:updated-desc`}),(0,n.jsx)(e,{onDismiss:()=>{},label:`is:pr`}),(0,n.jsx)(e,{onDismiss:()=>{},label:`is:open`})]});export{r as default};

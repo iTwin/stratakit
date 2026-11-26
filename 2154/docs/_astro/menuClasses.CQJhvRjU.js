@@ -1,0 +1,1 @@
+import{X as e,Z as t}from"./chevron-down.8uO8jaa5.js";function n(e){return t(`MuiMenu`,e)}var r=e(`MuiMenu`,[`root`,`paper`,`list`]);export{r as n,n as t};

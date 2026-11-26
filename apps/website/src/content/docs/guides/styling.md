@@ -74,7 +74,7 @@ For a custom color that no token covers, use [`light-dark()`](https://developer.
 }
 ```
 
-In the rare case where a non-color style must branch on color scheme, use the [`@scope`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@scope) rule to match the closest `data-color-scheme` attribute. [**Root**](/components/root/) manages this attribute on the `<html>` element, but it can also appear deeper in the tree.
+In the rare case where a non-color style must branch on color scheme, use the [`@scope`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@scope) rule to [match the closest](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@scope#how_scope_conflicts_are_resolved) `data-color-scheme` attribute. [**Root**](/components/root/) manages this attribute on the `<html>` element, but it can also appear deeper in the tree.
 
 ```css
 @scope ([data-color-scheme]) {

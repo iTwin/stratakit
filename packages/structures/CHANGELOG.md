@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.6
+
+### Patch Changes
+
+- [#2116](https://github.com/iTwin/stratakit/pull/2116): Renamed `NavigationRail.Anchor` to `NavigationRail.Link`. The old `NavigationRail.Anchor` has been deprecated.
+
 ## 0.6.5
 
 - [#2103](https://github.com/iTwin/stratakit/pull/2103): Deprecated `unstable_Dialog` components in favor of MUI [`Dialog`](https://mui.com/material-ui/api/dialog/). See [migration documentation](https://stratakit.bentley.com/docs/getting-started/migration-from-legacy-stratakit/#dialog) for additional details.

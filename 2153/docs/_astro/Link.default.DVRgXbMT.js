@@ -1,1 +1,0 @@
-import{t as e}from"./Link.OKw-al5D.js";import{fr as t}from"./chevron-down.CJwGE5d2.js";var n=t(),r=()=>(0,n.jsx)(e,{href:`/`,children:`Home`});export{r as default};

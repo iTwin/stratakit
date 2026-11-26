@@ -1,1 +1,0 @@
-import{n as e,r as t,t as n}from"./AccordionSummary.D5wggh2t.js";import{fr as r}from"./chevron-down.DeKsk-ik.js";var i=r(),a=()=>(0,i.jsxs)(t,{defaultExpanded:!0,children:[(0,i.jsx)(n,{children:`What is StrataKit?`}),(0,i.jsx)(e,{children:`StrataKit is Bentley Systems' open source design system and the successor to iTwinUI.`})]});export{a as default};

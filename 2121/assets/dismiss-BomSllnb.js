@@ -1,1 +1,0 @@
-import{t as e}from"./dismiss-CSAgms3h.js";var t=`${e}#icon`;`${e}`;export{t};

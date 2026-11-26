@@ -1,1 +1,0 @@
-import{t as e}from"./chevron-up-Rpvlmnf8.js";var t=`${e}#icon`;`${e}`;export{t};

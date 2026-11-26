@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.4.1
+
+### Patch Changes
+
+- [#2106](https://github.com/iTwin/stratakit/pull/2106): Updated `Autocomplete` so it forwards `size="medium"` to its input.
+
 ## 1.4.0
 
 ### Minor Changes

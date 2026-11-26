@@ -8,6 +8,8 @@ import Button from "@mui/material/Button";
 import ListItem from "@mui/material/ListItem";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
+import Typography from "@mui/material/Typography";
+import { visuallyHidden } from "@mui/utils";
 import { svgChevronDown } from "@stratakit/icons/chevron-down";
 import { svgChevronUp } from "@stratakit/icons/chevron-up";
 import { Icon } from "@stratakit/mui";
@@ -33,7 +35,18 @@ export default () => {
 				<div role="group" aria-label="Group 1">
 					<ListItem aria-hidden="true">Group 1</ListItem>
 					<MenuItem onClick={handleClose}>Item 1</MenuItem>
-					<MenuItem onClick={handleClose}>Item 2</MenuItem>
+					<MenuItem onClick={handleClose}>
+						Item 2
+						<Typography
+							render={<kbd />}
+							style={{
+								marginLeft: "auto",
+							}}
+						>
+							<span aria-hidden="true">⌘+X</span>
+							<span style={visuallyHidden}>Command+X</span>
+						</Typography>
+					</MenuItem>
 					<MenuItem onClick={handleClose}>Item 3</MenuItem>
 				</div>
 				<div role="group" aria-label="Group 2">

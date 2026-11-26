@@ -76,6 +76,14 @@ For a custom color that no token covers, use [`light-dark()`](https://developer.
 
 In the rare case where a non-color style must branch on color scheme, use the [`@scope`](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/At-rules/@scope) rule to match the closest `data-color-scheme` attribute. [**Root**](/components/root/) manages this attribute on the `<html>` element, but it can also appear deeper in the tree.
 
+```css
+@scope ([data-color-scheme]) {
+	&[data-color-scheme="dark"] .app-heroBanner {
+		background-image: url("/hero-dark.webp");
+	}
+}
+```
+
 ## Keep focus outlines visible
 
 StrataKit provides a consistent, accessible focus outline for all interactive elements and actively guards it against removal. Do not fight this: never set `outline: none` (or `outline: 0`) in application styles without re-introducing your own focus outline. People navigating with a keyboard rely on the focus outline to know where they are.

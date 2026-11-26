@@ -78,7 +78,7 @@ In the rare case where a non-color style must branch on color scheme, use the [`
 
 ```css
 @scope ([data-color-scheme]) {
-	&[data-color-scheme="dark"] .app-heroBanner {
+	:where(:scope[data-color-scheme="dark"]) .app-heroBanner {
 		background-image: url("/hero-dark.webp");
 	}
 }

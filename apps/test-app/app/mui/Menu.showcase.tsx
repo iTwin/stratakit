@@ -6,6 +6,7 @@ import Stack from "@mui/material/Stack";
 import MenuDefault from "examples/mui/Menu.default.tsx";
 import MenuDense from "examples/mui/Menu.dense.tsx";
 import MenuSelectable from "examples/mui/Menu.selectable.tsx";
+import MenuSubmenu from "examples/mui/Menu.submenu.tsx";
 import MenuListDefault_ from "examples/mui/MenuList._default.tsx";
 
 export default function MenuExamples() {
@@ -14,6 +15,7 @@ export default function MenuExamples() {
 			<MenuDefault />
 			<MenuDense />
 			<MenuSelectable />
+			<MenuSubmenu />
 			<MenuListDefault_ />
 		</Stack>
 	);

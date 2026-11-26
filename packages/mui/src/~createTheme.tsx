@@ -164,6 +164,7 @@ function createTheme() {
 				defaultProps: {
 					component: Role.div,
 					disableGutters: true,
+					elevation: 0,
 					slots: {
 						root: MuiAccordionRootSlot,
 						heading: MuiAccordionHeadingSlot,

@@ -11,46 +11,57 @@
 		border-radius: var(--stratakit-radius-md);
 	}
 
-	&:where(.MuiPaper-elevation1) {
-		background-color: var(--stratakit-color-bg-page-base);
-	}
-
-	&:where(.MuiPaper-elevation:not(.MuiPaper-elevation0, .MuiPaper-elevation1)) {
+	/* #region Elevations */
+	&:where(.MuiPaper-elevation:not(.MuiPaper-elevation0)) {
 		border: 1px solid var(--stratakit-color-border-page-base);
 	}
 
-	&:where(
-			.MuiPaper-elevation2,
-			.MuiPaper-elevation3,
-			.MuiPaper-elevation4,
-			.MuiPaper-elevation5,
-			.MuiPaper-elevation6,
-			.MuiPaper-elevation7
-		) {
-		background-color: var(--stratakit-color-bg-elevation-base);
+	&:where(.MuiPaper-elevation1, .MuiPaper-elevation2, .MuiPaper-elevation3) {
+		background-color: var(--stratakit-color-bg-page-base);
+		box-shadow: var(--stratakit-shadow-surface-xs);
+	}
+
+	&:where(.MuiPaper-elevation4, .MuiPaper-elevation5, .MuiPaper-elevation6) {
+		background-color: var(--stratakit-color-bg-page-base);
+		box-shadow: var(--stratakit-shadow-surface-sm);
 	}
 
 	&:where(
+			.MuiPaper-elevation7,
 			.MuiPaper-elevation8,
 			.MuiPaper-elevation9,
 			.MuiPaper-elevation10,
 			.MuiPaper-elevation11,
-			.MuiPaper-elevation12,
+			.MuiPaper-elevation12
+		) {
+		background-color: var(--stratakit-color-bg-elevation-base);
+		box-shadow: var(--stratakit-shadow-surface-md);
+	}
+
+	&:where(
 			.MuiPaper-elevation13,
 			.MuiPaper-elevation14,
 			.MuiPaper-elevation15,
 			.MuiPaper-elevation16,
 			.MuiPaper-elevation17,
 			.MuiPaper-elevation18,
-			.MuiPaper-elevation19,
+			.MuiPaper-elevation19
+		) {
+		background-color: var(--stratakit-color-bg-elevation-level-1);
+		box-shadow: var(--stratakit-shadow-surface-lg);
+	}
+
+	&:where(
 			.MuiPaper-elevation20,
 			.MuiPaper-elevation21,
 			.MuiPaper-elevation22,
 			.MuiPaper-elevation23,
 			.MuiPaper-elevation24
 		) {
-		background-color: var(--stratakit-color-bg-elevation-level-1);
+		background-color: var(--stratakit-color-bg-elevation-level-2);
+		box-shadow: var(--stratakit-shadow-surface-xl);
 	}
+	/* #endregion */
 
 	&:where(.MuiPaper-outlined) {
 		border: 1px solid var(--stratakit-color-border-page-base);

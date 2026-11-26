@@ -36,7 +36,7 @@ export default () => {
 	];
 
 	return (
-		<TableContainer render={<Paper />}>
+		<TableContainer render={<Paper elevation={0} />}>
 			<Table className={styles.table}>
 				<caption style={visuallyHidden}>Dessert nutrition</caption>
 				<TableHead>

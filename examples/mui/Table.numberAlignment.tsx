@@ -32,7 +32,7 @@ export default () => {
 	});
 
 	return (
-		<TableContainer render={<Paper />}>
+		<TableContainer render={<Paper elevation={0} />}>
 			<Table>
 				<caption style={visuallyHidden}>System metrics</caption>
 				<TableHead>

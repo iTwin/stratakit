@@ -205,6 +205,12 @@
 	}
 }
 
+.MuiPaper-root {
+	&:where(:not(.MuiPaper-elevation0)) {
+		border: 1px solid;
+	}
+}
+
 :is(.MuiPickerDay-root, .MuiYearCalendar-button) {
 	background-color: ButtonFace;
 	border-color: ButtonBorder;

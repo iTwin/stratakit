@@ -1,0 +1,13 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.paper {
+	text-align: center;
+	align-content: center;
+	inline-size: 128px;
+	aspect-ratio: 1;
+	min-inline-size: 0;
+	flex-shrink: 1;
+}

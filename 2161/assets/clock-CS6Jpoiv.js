@@ -1,0 +1,1 @@
+import{t as e}from"./clock-2mOPPi76.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

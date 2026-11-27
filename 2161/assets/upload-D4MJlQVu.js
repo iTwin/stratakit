@@ -1,0 +1,1 @@
+import{t as e}from"./upload-BMu7e0md.js";var t=`${e}#icon`;`${e}`;export{t};

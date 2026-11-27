@@ -1,0 +1,14 @@
+/*---------------------------------------------------------------------------------------------
+ * Copyright (c) Bentley Systems, Incorporated. All rights reserved.
+ * See LICENSE.md in the project root for license terms and full copyright notice.
+ *--------------------------------------------------------------------------------------------*/
+
+.header {
+	border-block-end: 1px solid var(--stratakit-color-border-page-base);
+	padding-inline: var(--stratakit-space-300);
+	padding-block: var(--stratakit-space-200);
+}
+
+.navigationRail {
+	border-inline-end: none; /* the Drawer already has a border */
+}

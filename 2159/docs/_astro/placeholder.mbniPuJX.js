@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.DrTN-TGb.js";var t=`${e}#icon`;`${e}`;export{t};

@@ -1,0 +1,1 @@
+import{t as e}from"./Button.Ci-7fQ4n.js";import{fr as t}from"./chevron-down.DfFBaUPw.js";var n=t(),r=()=>(0,n.jsx)(e,{loading:!0,children:`Create new`});export{r as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./Chip.BtCT_Axp.js";import{fr as t}from"./chevron-down.D62lccQN.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Default Chip`});export{r as default};

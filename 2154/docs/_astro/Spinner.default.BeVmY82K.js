@@ -1,1 +1,0 @@
-import{t as e}from"./Spinner.Bv2uWiuS.js";import{fr as t}from"./chevron-down.C9kVkQYZ.js";var n=t(),r=()=>(0,n.jsx)(e,{});export{r as default};

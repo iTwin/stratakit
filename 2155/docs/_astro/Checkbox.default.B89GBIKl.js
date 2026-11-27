@@ -1,1 +1,0 @@
-import{t as e}from"./Checkbox.CYFNotcm.js";import{t}from"./FormControlLabel.D-LX2xmI.js";import{fr as n}from"./chevron-down.DM0Ve9II.js";var r=n(),i=()=>(0,r.jsx)(t,{control:(0,r.jsx)(e,{}),label:`Don't show again`});export{i as default};

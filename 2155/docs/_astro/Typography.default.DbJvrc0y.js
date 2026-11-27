@@ -1,1 +1,0 @@
-import{t as e}from"./Typography.BdVAQNRO.js";import{fr as t}from"./chevron-down.DM0Ve9II.js";var n=t(),r=()=>(0,n.jsx)(e,{children:`Basic text`});export{r as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./Banner.BDhg5fDw.js";import{fr as t}from"./chevron-down.Drcn60VT.js";var n=t(),r=()=>(0,n.jsx)(e,{label:`Update complete`,message:`Your settings have been saved successfully.`});export{r as default};

@@ -1,0 +1,1 @@
+import{t as e}from"./info-D-hv32VH.js";var t=`${e}#icon`;`${e}`;export{t};

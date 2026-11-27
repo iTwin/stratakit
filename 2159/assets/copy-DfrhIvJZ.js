@@ -1,0 +1,1 @@
+import{t as e}from"./copy-xTmi_lFY.js";`${e}`;var t=`${e}#icon-large`;export{t};

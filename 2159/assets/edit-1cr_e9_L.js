@@ -1,0 +1,1 @@
+import{t as e}from"./edit-B6_KphHM.js";var t=`${e}#icon`,n=`${e}#icon-large`;export{n,t};

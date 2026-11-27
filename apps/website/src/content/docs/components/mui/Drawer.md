@@ -20,6 +20,10 @@ links:
 
 ::example{src="mui/SwipeableDrawer.default"}
 
+### NavigationRail
+
+The [**NavigationRail**](/components/navigationrail/) can be rendered inside a **Drawer**. See [**NavigationRail** drawer example](/components/navigationrail/#drawer).
+
 ## API reference
 
 - [`Drawer`](https://mui.com/material-ui/api/drawer/)

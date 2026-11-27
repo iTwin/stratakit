@@ -149,6 +149,14 @@ In the example below:
 
 ::example{src="structures/NavigationRail.comprehensive" min-height="450px" min-width="450px" vertical-stretch}
 
+### Drawer
+
+The **NavigationRail** can be rendered inside a [**Drawer**](/components/drawer/) triggered by an [**IconButton**](/components/iconbutton/). This can be useful when screen real estate is at a premium or otherwise limited (e.g. on narrow viewports).
+
+The [`defaultExpanded`](/reference/structures/NavigationRail#NavigationRail.Root.defaultExpanded) prop is used to keep the **NavigationRail** expanded inside the **Drawer**.
+
+::example{src="structures/NavigationRail.drawer" min-width="450px"}
+
 ## ✅ Do
 
 - Include a [`NavigationRail.Header`](/reference/structures/NavigationRail#NavigationRail.Header), [`NavigationRail.Content`](/reference/structures/NavigationRail#NavigationRail.Content), and [`NavigationRail.Footer`](/reference/structures/NavigationRail#NavigationRail.Footer), in that order.
@@ -173,3 +181,4 @@ In the example below:
 - [`NavigationRail.Link`](/reference/structures/NavigationRail/#NavigationRail.Link)
 - [`NavigationRail.Button`](/reference/structures/NavigationRail/#NavigationRail.Button)
 - [`NavigationRail.ToggleButton`](/reference/structures/NavigationRail/#NavigationRail.ToggleButton)
+- [`Drawer`](https://mui.com/material-ui/api/drawer/)

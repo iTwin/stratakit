@@ -1,0 +1,1 @@
+import{t as e}from"./rename-Bp1Urc11.js";var t=`${e}#icon`;`${e}`;export{t};

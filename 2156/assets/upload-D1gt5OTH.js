@@ -1,0 +1,1 @@
+import{t as e}from"./upload-Dd924eWi.js";var t=`${e}#icon`;`${e}`;export{t};

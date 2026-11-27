@@ -1,0 +1,1 @@
+import{n as e}from"./rolldown-runtime-XKyaHtl9.js";var t=e({default:()=>n}),n=`/2156/assets/more-horizontal-LP9pxLSq.svg`;export{t as n,n as t};

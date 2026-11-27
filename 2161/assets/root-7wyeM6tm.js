@@ -19,7 +19,6 @@ import{r as e}from"./rolldown-runtime-XKyaHtl9.js";import{c as t,g as n,n as r,o
   font-weight: 100 700;
   font-display: swap;
   src: url(${Xn}) format("woff2");
-  size-adjust: 104%;
 }
 @font-face {
   font-family: 'IBM Plex Mono Var';
@@ -27,6 +26,5 @@ import{r as e}from"./rolldown-runtime-XKyaHtl9.js";import{c as t,g as n,n as r,o
   font-weight: 100 700;
   font-display: swap;
   src: url(${Yn}) format("woff2");
-  size-adjust: 104%;
 }
 `}),e[0]=t):t=e[0],t}export{or as HydrateFallback,tr as Layout,ar as clientLoader,rr as default,er as links};

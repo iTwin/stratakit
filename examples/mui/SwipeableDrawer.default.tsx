@@ -16,6 +16,8 @@ import { svgStarLarge } from "@stratakit/icons/star";
 import { svgStatusDraftLarge } from "@stratakit/icons/status-draft";
 import { Icon } from "@stratakit/mui";
 
+import styles from "./SwipeableDrawer.default.module.css";
+
 export default () => {
 	const [open, setOpen] = React.useState(false);
 
@@ -28,7 +30,7 @@ export default () => {
 				onOpen={() => setOpen(true)}
 				onClose={() => setOpen(false)}
 			>
-				<List>
+				<List className={styles.list}>
 					<ListItem disablePadding>
 						<ListItemButton>
 							<ListItemIcon>

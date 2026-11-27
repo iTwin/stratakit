@@ -1,1 +1,0 @@
-import{t as e}from"./Alert.Bt7BlNl2.js";import{fr as t}from"./chevron-down.CbZuF0Kx.js";var n=t(),r=()=>(0,n.jsx)(e,{severity:`error`,onClose:()=>{},children:`The request was not approved.`});export{r as default};

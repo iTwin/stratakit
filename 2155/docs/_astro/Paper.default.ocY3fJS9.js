@@ -1,1 +1,0 @@
-import{t as e}from"./Paper.B2MKgzXI.js";import{fr as t}from"./chevron-down.D6uW_H53.js";var n={paper:`_paper_1mq3b_6`},r=t(),i=()=>(0,r.jsx)(e,{className:n.paper,elevation:4});export{i as default};

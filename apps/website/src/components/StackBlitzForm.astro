@@ -1,0 +1,101 @@
+---
+import { readFile } from "node:fs/promises";
+
+const paths = [
+	".gitignore",
+	"index.html",
+	"package.json",
+	"tsconfig.json",
+	"vite.config.js",
+	"src/main.tsx",
+];
+const files = await Promise.all(
+	paths.map(async (path) => {
+		let source = await readFile(
+			new URL(import.meta.resolve(`internal/minimal-template/${path}`)),
+			"utf8",
+		);
+		if (path === "index.html") {
+			source = source.replaceAll(/@font-face\s*\{[^}]*\}/g, ""); // TODO
+		}
+		return [path, source] satisfies [string, string];
+	}),
+);
+---
+
+<stackblitz-project hidden="">
+	<template shadowrootmode="open">
+		<form method="post" action="https://stackblitz.com/run?file=src%2FApp.tsx" target="_blank">
+			<input type="hidden" name="project[title]" value="StrataKit" />
+			<input type="hidden" name="project[template]" value="node" />
+			<input type="hidden" name="project[files][src/App.tsx]" value="" />
+			<input type="hidden" name="project[files][src/App.module.css]" value="" disabled />
+			{
+				files.map(([path, source]) => (
+					<input type="hidden" name={`project[files][${path}]`} value={source} />
+				))
+			}
+		</form>
+	</template>
+</stackblitz-project>
+
+<script>
+	interface StackBlitzExample {
+		/** Unique name to identify the example. */
+		name: string;
+		/** Source code for files to include in the StackBlitz project. */
+		files: {
+			"src/App.tsx": string;
+			"src/App.module.css"?: string;
+			"package.json"?: string;
+		};
+	}
+	declare global {
+		interface HTMLElementTagNameMap {
+			"stackblitz-project": StackBlitzProject;
+		}
+	}
+
+	class StackBlitzProject extends HTMLElement {
+		#templatePackageJson: string | undefined;
+
+		get #form() {
+			return this.shadowRoot?.querySelector("form")!;
+		}
+		get #titleField() {
+			return this.#form?.querySelector<HTMLInputElement>('[name="project[title]"]')!;
+		}
+		get #appField() {
+			return this.#form?.querySelector<HTMLInputElement>('[name="project[files][src/App.tsx]"]')!;
+		}
+		get #cssField() {
+			return this.#form?.querySelector<HTMLInputElement>(
+				'[name="project[files][src/App.module.css]"]',
+			)!;
+		}
+		get #pkgJsonField() {
+			return this.#form?.querySelector<HTMLInputElement>('[name="project[files][package.json]"]')!;
+		}
+
+		connectedCallback() {
+			if (this.#templatePackageJson === undefined) {
+				this.#templatePackageJson = this.#pkgJsonField.value;
+			}
+		}
+
+		open({ name, files }: StackBlitzExample) {
+			this.#titleField.value = `StrataKit - ${name}`;
+
+			this.#appField.value = files["src/App.tsx"];
+
+			this.#cssField.disabled = files["src/App.module.css"] === undefined;
+			this.#cssField.value = files["src/App.module.css"] ?? "";
+
+			this.#pkgJsonField.value = files["package.json"] ?? this.#templatePackageJson ?? "";
+
+			this.#form.requestSubmit();
+		}
+	}
+
+	customElements.define("stackblitz-project", StackBlitzProject);
+</script>

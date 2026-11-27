@@ -1,0 +1,1 @@
+import{t as e}from"./info-K7KHR4II.js";var t=`${e}#icon`;`${e}`;export{t};

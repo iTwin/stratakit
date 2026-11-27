@@ -1,0 +1,1 @@
+import{t as e}from"./upload-DvWO2Gm8.js";var t=`${e}#icon`;`${e}`;export{t};

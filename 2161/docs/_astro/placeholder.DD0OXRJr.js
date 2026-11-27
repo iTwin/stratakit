@@ -1,0 +1,1 @@
+import{t as e}from"./placeholder.DeLPT3Pn.js";var t=`${e}#icon`;`${e}`;export{t};

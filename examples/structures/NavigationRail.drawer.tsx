@@ -44,6 +44,8 @@ export default () => {
 							size="large"
 						/>
 						<NavigationRail.ToggleButton
+							label="Close navigation"
+							aria-pressed={undefined}
 							onClick={(e) => {
 								// close the Drawer, not the NavigationRail
 								e.preventDefault();

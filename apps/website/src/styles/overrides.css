@@ -72,6 +72,8 @@
 
 .sl-markdown-content code:not(:where(.not-content *)) {
 	border-radius: var(--stratakit-radius-sm);
+	font-size: inherit;
+	line-height: inherit;
 }
 
 .right-sidebar-panel {

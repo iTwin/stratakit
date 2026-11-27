@@ -1,0 +1,1 @@
+import{t as e}from"./email-Dp9icQc9.js";`${e}`;var t=`${e}#icon-large`;export{t};

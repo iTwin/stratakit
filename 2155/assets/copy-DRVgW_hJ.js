@@ -1,0 +1,1 @@
+import{t as e}from"./copy-DLMI28Sv.js";`${e}`;var t=`${e}#icon-large`;export{t};

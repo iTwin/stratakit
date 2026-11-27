@@ -1,0 +1,1 @@
+import{t as e}from"./menu-I3P9Wnr_.js";`${e}`;var t=`${e}#icon-large`;export{t};

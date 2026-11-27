@@ -138,7 +138,7 @@
 			}
 		}
 
-		&:where([aria-pressed="true"]) {
+		&:where([aria-pressed="true"], .🥝NavigationRail[data-_sk-expanded="true"] &) {
 			rotate: 180deg;
 		}
 	}
